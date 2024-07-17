@@ -1,7 +1,5 @@
 \chapter{Term Frequency-Inverse Document Frequency (TF-IDF) \cite{nlp-1}} \label{Term Frequancy-Inverse Document Frequency (TF-IDF)}
 
-\url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
-121/577
 
 \section{Vectors and documents \cite{nlp-1}}\label{tf-idf: Vectors and documents}
 
@@ -43,21 +41,39 @@
 \end{itemize}
 
 
-\section{Cosine Similarity \cite{nlp-1}}\label{Cosine Similarity}
+
+\section{Cosine Similarity ( $\operatorname{cosine}(\mathbf{v,w})$ / $\operatorname{cos}(\mathbf{v,w})$ ) \cite{nlp-1}}\label{Cosine Similarity}
+
+\textbf{Raw Dot Product}: \( \displaystyle\mathbf{v \cdot w} = \sum_{i=1}^{N} v_i w_i \)
+
+\begin{itemize}
+    \item The \textbf{dot product} acts as a similarity metric because it will tend to be high just when the two vectors have large values in the same dimensions. 
+    
+    \item Vectors that have zeros in different dimensions - orthogonal vectors - will have a dot product of 0, representing their strong dissimilarity.
+
+    \item The dot product is higher if a vector is longer, with higher values in each dimension.
+    
+    \item More frequent words have longer vectors, since they tend to co-occur with more words and have higher co-occurrence values with each of them. The raw dot product thus will be higher for frequent words.
+
+    \item \textbf{Disadvantage}: This raw dot product, however, has a problem as a similarity metric: it favors long vectors.
+
+    
+\end{itemize}
+
+
+\textbf{Normalized Dot Product}: \( \displaystyle \operatorname{cosine}(\mathbf{v,w}) = \frac{\mathbf{v\cdot w}}{|\mathbf{v}|\cdot|\mathbf{w}|} = \frac{\displaystyle\sum_{i=1}^{N} v_i w_i}{\displaystyle \sqrt{\sum_{i=1}^{N} v_i^2}\sqrt{\sum_{i=1}^{N} w_i^2}} \)
+
+
+\section{}
 
 
 
 
 
 
-
-
-
-
-
-
-
-
+\vspace{4cm}
+\url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
+124/577
 
 
 
