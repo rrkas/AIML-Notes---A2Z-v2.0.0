@@ -1,0 +1,681 @@
+\chapter{NLP: Text Processing}
+
+\section{Lexical Semantics \cite{nlp-1}}
+
+\textbf{Lexical semantics} means drawing on results in the linguistic study of word meaning.
+
+
+\section{The Study of Language \cite{nlp-Thinking-like-a-Linguist}}\label{NLP: The Study of Language}
+
+
+\subsection{Character \cite{wiki-character}}\label{language: Character}
+A sign or a symbol.
+
+
+\subsection{Phoneme - \cite{wiki-phone-phonetics}}\label{Language: Phoneme}
+A \textbf{phoneme} is a speech sound in a given language that, if swapped with another phoneme, could change one word to another. Phones are absolute and are not specific to any language, but phonemes can be discussed only in reference to specific languages.
+
+
+\subsection{Phone \cite{wiki-phone-phonetics}}\label{Language: Phone}
+In phonetics (a branch of linguistics), a \textbf{phone} is any distinct speech sound or gesture, regardless of whether the exact sound is critical to the meanings of words.
+
+
+\subsection{Syllable \cite{wiki-syllable}}\label{Language: Syllable}
+A \textbf{syllable} is a unit of organization for a sequence of speech sounds, typically made up of a syllable nucleus (most often a vowel) with optional initial and final margins (typically, consonants). Syllables are often considered the phonological "building blocks" of words. They can influence the rhythm of a language, its prosody, its poetic metre and its stress patterns. Speech can usually be divided up into a whole number of syllables: for example, the word ignite is made of two syllables: ig and nite.
+
+
+\subsection{Morpheme}\label{Language: Morpheme}
+The units of meaning that make up words are called \textbf{morphemes}.\\
+A word can consist of one or multiple morphemes.\\
+Examples:
+\begin{longtable}[H]{l l l}
+    \caption{Morphemes in word examples}\\
+    \hline
+
+    \textbf{Word} & \multicolumn{2}{c}{\textbf{Morphemes in the word}} \\ 
+    & \textbf{Representation-1} & \textbf{Representation-2} \\ \hline
+    \endfirsthead
+    
+    \textbf{Word} & \multicolumn{2}{c}{\textbf{Morphemes in the word}} \\ 
+    & \textbf{Representation-1} & \textbf{Representation-2} \\ \hline
+    \endhead
+    
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+    
+    word & \textbf{word} & \textbf{word} \\
+    walking & \textbf{walk}-ing & \textbf{walk} $+$ ing \\
+    disrespectful & dis-\textbf{respect}-ful & dis $+$ \textbf{respect} $+$ ful \\ 
+    \hline
+    imbalance & im-\textbf{balance} &  im $+$ \textbf{balance} \\
+    prehistoric & pre-\textbf{histor(y)}-ic &  pre $+$ \textbf{histor(y)} $+$ ic \\
+    builder & \textbf{build}-er & \textbf{build} + er \\
+    anti-science & anti-\textbf{science} & anti- $+$ science \\
+    government & \textbf{govern}-ment & \textbf{govern} $+$ ment \\
+    Frida's & Frida-'s & \textbf{Frida} + 's \\
+    \hline
+    spacious & \textbf{space}-(i)ous & \textbf{space} $+$ (i)ous \\
+    happily & \textbf{happy}-ly & \textbf{happy} $+$ ly \\
+    description & \textbf{describe}-tion & \textbf{describe} $+$ tion \\
+    understandably & \textbf{understand}-able-ly & \textbf{understand} $+$ able $+$ ly \\
+    
+    
+\end{longtable}
+
+\subsubsection{Bound morphemes}\label{Language: Bound morphemes} 
+\textbf{Bound morphemes} are those whose meanings are calculable upon their attachment to the rest of the word, i.e., they can't stand on their own and have meaning.
+
+\subsubsection{Free morphemes}\label{Language: Free morphemes}
+\textbf{Free morphemes} are those that can stand alone and still have meaning. Each of the bolded roots above is an example of a free morpheme. This might look like that all roots are free, but that’s not quite right.
+
+\subsubsection{Affixes}\label{Language: Affixes}
+Like mathematical or logical operations, a morphosyntactic operation will typically have a former operator, such as a \textbf{suffix} \index{morphosyntactic operation: suffix} (like -s in bugs) or a \textbf{prefix} \index{morphosyntactic operation: prefix} (like re- in reread), collectively called \textbf{affixes}, that operate in a syntactic way on the base form (like bug \& read).
+
+
+\subsection{Lemma/ Citation Form \cite{wiki-Lemma_morphology}}\label{lemma}
+In morphology and lexicography, a lemma (pl.: lemmas or lemmata) is the canonical form, dictionary form, or citation form of a set of word forms. In English, for example, break, breaks, broke, broken and breaking are forms of the same lexeme, with break as the lemma by which they are indexed. Lexeme, in this context, refers to the set of all the inflected or alternating forms in the paradigm of a single word, and lemma refers to the particular form that is chosen by convention to represent the lexeme. Lemmas have special significance in highly inflected languages such as Arabic, Turkish, and Russian. The process of determining the lemma for a given lexeme is called lemmatisation. The lemma can be viewed as the chief of the principal parts, although lemmatisation is at least partly arbitrary.
+
+
+\subsection{Word Stem \cite{wiki-word-stem}}\label{word-stem}
+In linguistics, a word stem is a part of a word responsible for its lexical meaning. Typically, a stem remains unmodified during inflection with few exceptions due to apophony (for example in Polish, miast-o ("city") and w mieść-e ("in the city"); in English, sing, sang, and sung, where it can be modified according to morphological rules or peculiarities, such as sandhi)
+
+
+\subsection{Root/ Root Word/ Radical \cite{wiki-root-word}}\label{root-word}
+A root (or root word or radical) is the core of a word that is irreducible into more meaningful elements. In morphology, a root is a morphologically simple unit which can be left bare or to which a prefix or a suffix can attach. The root word is the primary lexical unit of a word, and of a word family (this root is then called the base word), which carries aspects of semantic content and cannot be reduced into smaller constituents. Content words in nearly all languages contain, and may consist only of, root morphemes. However, sometimes the term "root" is also used to describe the word without its inflectional endings, but with its lexical endings in place. For example, chatters has the inflectional root or lemma chatter, but the lexical root chat. Inflectional roots are often called stems. A root, or a root morpheme, in the stricter sense, may be thought of as a monomorphemic stem.
+
+
+
+\subsection{Word \cite{wiki-word}}\label{Language: word}
+A \textbf{word} is a basic element of language that carries meaning, can be used on its own, and is uninterruptible. Despite the fact that language speakers often have an intuitive grasp of what a word is, there is no consensus among linguists on its definition and numerous attempts to find specific criteria of the concept remain controversial. Different standards have been proposed, depending on the theoretical background and descriptive context; these do not converge on a single definition. Some specific definitions of the term "word" are employed to convey its different meanings at different levels of description, for example based on phonological, grammatical or orthographic basis. Others suggest that the concept is simply a convention used in everyday situations.
+
+
+\subsubsection{Word Sense \cite{wiki-word-sense}}\label{word-sense}
+In linguistics, a word sense is one of the meanings of a word. For example, a dictionary may have over 50 different senses of the word "play", each of these having a different meaning based on the context of the word's usage in a sentence, as follows:
+
+\begin{itemize}
+    \item We went to see the play Romeo and Juliet at the theater.
+    \item The coach devised a great play that put the visiting team on the defensive.
+    \item The children went out to play in the park.
+\end{itemize}
+
+
+
+
+\subsection{Phrase/ Expression \cite{wiki-phrase}}\label{Language: Phrase/ Expression}
+In grammar, a phrase-called expression in some contexts—is a group of words or singular word acting as a grammatical unit. For instance, the English expression "the very happy squirrel" is a noun phrase which contains the adjective phrase "very happy". Phrases can consist of a single word or a complete sentence. In theoretical linguistics, phrases are often analyzed as units of syntactic structure such as a constituent. There is a difference between the common use of the term phrase and its technical use in linguistics. In common usage, a phrase is usually a group of words with some special idiomatic meaning or other significance, such as "all rights reserved", "economical with the truth", "kick the bucket", and the like. It may be a euphemism, a saying or proverb, a fixed expression, a figure of speech, etc.. In linguistics, these are known as phrasemes.
+
+\begin{itemize}
+    \item \textbf{Noun Phrase (NP)} : head is noun
+    \item \textbf{Prepositional Phrase (PP)} : head is Preposition
+    \item \textbf{Verb Phrase (VP)} : head is verb
+\end{itemize}
+
+\subsection{Clause \cite{wiki-clause}}\label{Language: Clause}
+In language, a clause is a constituent or phrase that comprises a semantic predicand (expressed or not) and a semantic predicate. A typical clause consists of a subject and a syntactic predicate, the latter typically a verb phrase composed of a verb with or without any objects and other modifiers. However, the subject is sometimes unexpressed if it is easily deductable from the context, especially in null-subject language but also in other languages, including instances of the imperative mood in English.
+
+\subsection{Predicate \cite{wiki-Predicate}}\label{Language: Predicate}
+The term predicate is used in two ways in linguistics and its subfields. 
+\begin{itemize}
+    \item The first defines a predicate as everything in a standard declarative sentence except the subject.\\
+    The predicate of the sentence \textbf{Frank likes cake} is \textbf{likes cake}.
+
+    \item The other defines it as only the main content verb or associated predicative expression of a clause.\\
+    By the second definition, for the sentence \textbf{Frank likes cake} it is only the content verb \textbf{likes}, and \textbf{Frank} and \textbf{cake} are the arguments of this predicate.    
+\end{itemize}
+
+The conflict between these two definitions can lead to confusion.
+
+
+\subsection{Sentence \cite{wiki-sentence-linguistics,wiki-sentence}}\label{Language: Sentence}
+In linguistics and grammar, a sentence is a linguistic expression, such as the English example "\textbf{The quick brown fox jumps over the lazy dog.}" \\
+Definitions:
+\begin{itemize}
+    \item In \textbf{traditional grammar}, it is typically defined as a string of words that expresses a complete thought, or as a unit consisting of a subject and predicate.
+    \item In \textbf{non-functional linguistics}, it is typically defined as a maximal unit of syntactic structure such as a constituent.
+    \item In \textbf{functional linguistics}, it is defined as a unit of written texts delimited by graphological features such as upper-case letters and markers such as periods, question marks, and exclamation marks. This notion contrasts with a curve, which is delimited by phonologic features such as pitch and loudness and markers such as pauses; and with a clause, which is a sequence of words that represents some process going on throughout time.
+\end{itemize}
+
+A sentence can include words grouped meaningfully to express a statement, question, exclamation, request, command, or suggestion.
+
+
+\subsubsection{Types of Sentences (complexity)}
+\begin{itemize}
+    \item A \textbf{simple sentence}\index{simple sentence} has only one clause, and one independent variable.\\ \textbf{Example}: The cat is sleeping.
+    \item A \textbf{compound sentence}\index{compound sentence} has two or more clauses. These clauses are joined with conjunctions, punctuation, or both.\\ \textbf{Example}: The dog is happy, but the cat is sad.
+    \item A \textbf{complex sentence}\index{complex sentence} has one clause with a relative clause. \\ \textbf{Example}: The dog, which is eating the bone, is happy.
+    \item A complex-compound sentence (or compound-complex sentence) has many clauses, at least one of which is a relative clause.\\ \textbf{Example}: The dog, which is eating the bone, is happy, but the cat is sad.
+\end{itemize}
+
+\subsubsection{Types of sentence (purpose)}
+\begin{itemize}
+    \item A \textbf{declarative sentence}, or declaration, is the most common type of sentence. It tells something. It ends with a full stop . \\The dog is happy.
+    \item An \textbf{interrogative sentence}, or question, asks something. It ends with a question mark ? \\Are you happy?
+    \item An \textbf{exclamatory sentence}, or exclamation, says something out of the ordinary. It ends with an exclamation mark ! \\That dog is the happiest dog I have ever seen!
+    \item An \textbf{imperative sentence}, or command, tells someone to do something. \\Give the dog a bone.
+\end{itemize}
+
+\section{Phonology \cite{wiki-phonology}}\label{Language: Phonology}
+\textbf{Phonology} is the branch of linguistics that studies how languages systematically organize their phones or, for sign languages, their constituent parts of signs. The term can also refer specifically to the sound or sign system of a particular language variety. At one time, the study of phonology related only to the study of the systems of phonemes in spoken languages, but may now relate to any linguistic analysis either:
+
+\begin{itemize}
+    \item at a level beneath the word (including syllable, onset and rime, articulatory gestures, articulatory features, mora, etc.)
+    \item all levels of language in which sound or signs are structured to convey linguistic meaning.
+\end{itemize}
+
+Sign languages have a phonological system equivalent to the system of sounds in spoken languages. The building blocks of signs are specifications for movement, location, and handshape. At first, a separate terminology was used for the study of sign phonology ("chereme" instead of "phoneme", etc.), but the concepts are now considered to apply universally to all human languages.
+
+
+\section{Morphology}\label{Language: Morphology}
+\textbf{Morphology} is study of forms or shapes.\\
+In linguistics, it is used to refer to the inner and outer forms of words - their parts and shapes as well as their functions.
+
+
+
+\section{Syntax}\label{Language: Syntax}
+    \textbf{Syntax} is the study of phrases and clauses, or of the sentence structure.\\ Syntax comes from the \textit{Greek} \textbf{suntaxis}\index{suntaxis} meaning 'arrange together'.
+
+\section{Study of syntax}\label{Language: Study of syntax}
+    \textbf{Study of syntax}: Study of putting together words and their parts in particular ways.
+
+\section{Morphosyntactic Operations} \label{morphosyntactic operations}
+    Analyzing a number of \textbf{morphosyntactic operations}, i.e., relationships between one linguistic form and another, that results in a particular meaning distinction. \\ Example: \textbf{bug} $+$ \textbf{-s}
+        
+
+\section{Syntactic operations}\label{Syntactic operations}
+    \item \textbf{Syntactic operations} work across a clause rather than just a word. (sometimes clause = single word)\\
+    instead of affixes, there can be a shift in stress or a doubing of morpheme.\\
+    Example: tense (or aspect) \index{Syntactic operations: tense/ aspect} \label{Syntactic operations: aspect/ tense} is a necessary operator within a clause that must interact with the noun and verb in order for the components to form a licit sentence.
+
+\section{Parts of Speech (POS)}\label{Parts of Speech (POS)}
+
+\subsection{Nouns \cite{wiki-noun}}
+In grammar, a noun is a word that represents a concrete or abstract thing, such as living creatures, places, actions, qualities, states of existence, and ideas. A noun may serve as an object or subject within a phrase, clause, or sentence.
+\subsubsection{Gender \cite{wiki-noun}}
+In some languages common and proper nouns have grammatical gender, typically masculine, feminine, and neuter. The gender of a noun (as well as its number and case, where applicable) will often require agreement in words that modify or are used along with it. In French for example, the singular form of the definite article is le for masculine nouns and la for feminine; adjectives and certain verb forms also change (sometimes with the simple addition of -e for feminine). Grammatical gender often correlates with the form of the noun and the inflection pattern it follows; for example, in both Italian and Romanian most nouns ending in -a are feminine. Gender can also correlate with the sex or social gender of the noun's referent, particularly in the case of nouns denoting people (and sometimes animals), though with exceptions (the feminine French noun personne can refer to a male or a female person).
+
+\subsubsection{Proper and common nouns \cite{wiki-noun}}
+\begin{itemize}
+    \item A proper noun (sometimes called a proper name, though the two terms normally have different meanings) is a noun that represents a unique entity (India, Pegasus, Jupiter, Confucius, Pequod)
+    \item A common noun (or appellative noun), describes a class of entities (country, animal, planet, person, ship).
+\end{itemize}
+
+In Modern English, most proper nouns - unlike most common nouns - are capitalized regardless of context (Albania, Newton, Pasteur, America), as are many of the forms that are derived from them (the common noun in "he's an Albanian"; the adjectival forms in "he's of Albanian heritage" and "Newtonian physics", but not in "pasteurized milk"; the second verb in "they sought to Americanize us").
+
+
+\subsubsection{Countable nouns and mass nouns \cite{wiki-noun}}
+\begin{itemize}
+    \item Count nouns or countable nouns are common nouns that can take a plural, can combine with numerals or counting quantifiers (e.g., one, two, several, every, most), and can take an indefinite article such as a or an (in languages that have such articles). \\ Examples of count nouns are chair, nose, and occasion.
+    \item Mass nouns or uncountable (non-count) nouns differ from count nouns in precisely that respect: they cannot take plurals or combine with number words or the above type of quantifiers. \\
+    For example, the forms a furniture and three furnitures are not used - even though pieces of furniture can be counted. 
+\end{itemize}
+
+The distinction between mass and count nouns does not primarily concern their corresponding referents but more how the nouns present those entities.\\
+Many nouns have both countable and uncountable uses; for example, soda is countable in "give me three sodas", but uncountable in "he likes soda".
+
+
+\subsubsection{Collective nouns \cite{wiki-noun}}
+Collective nouns are nouns that - even when they are treated in their morphology and syntax as singular - refer to groups consisting of more than one individual or entity. Examples include committee, government, and police. In English these nouns may be followed by a singular or a plural verb and referred to by a singular or plural pronoun, the singular being generally preferred when referring to the body as a unit and the plural often being preferred, especially in British English, when emphasizing the individual members. \\Examples of acceptable and unacceptable use given by Gowers in Plain Words include:
+
+\begin{itemize}
+    \item "A committee was appointed to consider this subject." (singular)
+    \item "The committee were unable to agree." (plural)
+    \item "The committee were of one mind when I sat in on them." (unacceptable use of plural)
+\end{itemize}
+
+\subsubsection{Concrete nouns and abstract nouns \cite{wiki-noun}}
+\begin{itemize}
+    \item Concrete nouns refer to physical entities that can, in principle at least, be observed by at least one of the senses (chair, apple, Janet, atom), as items supposed to exist in the physical world.
+    \item Abstract nouns, on the other hand, refer to abstract objects: ideas or concepts (justice, anger, solubility, duration).
+\end{itemize}
+Some nouns have both concrete and abstract meanings: art usually refers to something abstract ("Art is important in human culture"), but it can also refer to a concrete item ("I put my daughter's art up on the fridge"). A noun might have a literal (concrete) and also a figurative (abstract) meaning: "a brass key" and "the key to success"; "a block in the pipe" and "a mental block". Similarly, some abstract nouns have developed etymologically by figurative extension from literal roots (drawback, fraction, holdout, uptake).\\
+
+Many abstract nouns in English are formed by adding a suffix (-ness, -ity, -ion) to adjectives or verbs (happiness and serenity from the adjectives happy and serene; circulation from the verb circulate).
+
+
+\subsubsection{Alienable vs. inalienable nouns}
+Illustrating the wide range of possible classifying principles for nouns, the Awa language of Papua New Guinea regiments nouns according to how ownership is assigned: as alienable possession or inalienable possession. 
+\begin{itemize}
+    \item An alienably possessed item (a tree, for example) can exist even without a possessor.
+    \item But inalienably possessed items are necessarily associated with their possessor and are referred to differently, for example with nouns that function as kin terms (meaning "father", etc.), body-part nouns (meaning "shadow", "hair", etc.), or part-whole nouns (meaning "top", "bottom", etc.).
+\end{itemize}
+
+
+
+\subsection{Pronouns \cite{wiki-pronoun}}
+In linguistics and grammar, a pronoun (glossed pro) is a word or a group of words that one may substitute for a noun or noun phrase.
+
+\begin{longtable}{|l|m{1.7cm}|l|l|m{2.2cm}|m{2.2cm}|l|}
+    \caption{Personal pronouns in standard Modern English} \\
+    \hline
+    \textbf{Person} & \textbf{Number \& gender} & \textbf{Subject} & \textbf{Object} & \textbf{Dependent possessive (determiner)} & \textbf{Independent possessive} & \textbf{Reflexive} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+
+    \hline
+    
+    \multirow{2}{*}{First} & Singular & I & me & my & mine & myself \\ \cline{2-7}
+    & Plural & we & us & our & ours & ourselves \\ \hline
+
+    \multirow{2}{*}{Second} & Singular & you & you & your & yours & yourself \\ \cline{2-7}
+    & Plural & you & you & your & yours & yourselves \\ \hline
+
+    \multirow{4}{*}{Third} & Masculine & he & him & his & his & himself \\ \cline{2-7}
+    & Feminine & she & her & her & hers & herself \\ \cline{2-7}
+    & Neuter/ Inanimate & it & it & its & its & itself \\ \cline{2-7}
+    & Plural & they & them & their & theirs & themselves \\ \hline
+
+
+\end{longtable}
+
+\begin{longtable}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+    \caption{Other Types of Pronouns}
+    \\ \hline
+
+    \textbf{Demonstrative} & \textbf{Relative} & \textbf{Indefinite} & \textbf{Interrogative}\\
+    \hline
+    \endfirsthead
+    \hline \endhead
+    \hline \endlastfoot
+    \hline \endfoot
+
+    this & who/ whom/ whose & one/ one's/ oneself & who/ whom/ whose \\ \hline
+    these & what & something/ anything/ nothing (things) & what \\ \hline
+    that & which & someone/ anyone/ no one (people) & which \\ \hline
+    those & that & somebody/ anybody/ nobody (people) & \\ \hline
+    former/ latter & & & \\ \hline
+
+\end{longtable}
+
+
+
+\subsection{Adjectives (adj.) \cite{wiki-adjective,wiki-eng-adjective}}
+
+An adjective (abbreviated adj.) is a word that describes or defines a noun or noun phrase. Its semantic role is to change information given by the noun.\\
+
+Traditionally adjectives are considered one of the main parts of speech of the English language, although historically they were classed together with nouns. Nowadays, certain words that usually had been classified as adjectives, including the, this, my, etc., typically are classed separately, as determiners. \\
+
+Here are some examples:
+\begin{itemize}
+    \item That's a \textbf{funny} idea. (attributive)
+    \item That idea is \textbf{funny}. (predicative)
+    \item Tell me something \textbf{funny}. (postpositive)
+    \item The \textbf{good}, the \textbf{bad}, and the \textbf{funny}. (substantive)
+\end{itemize}
+
+
+\subsubsection{Non-attributive and non-predicative adjectives \cite{wiki-eng-adjective}}
+While most adjectives can function as both attributive modifier (e.g., a new job) and predicative complement (e.g., the job was new), some are limited to one or the other of these two functions.\\ For example, the adjective drunken cannot be used predicatively (a drunken fool vs *the fool was drunken), while the adjective awake has the opposite limitation (*an awake child vs the child is awake).
+
+\subsubsection{Gradable and non gradable adjectives \cite{wiki-eng-adjective}}
+Most adjectives are gradable, but some are not (e.g., ancillary, bovine, municipal, pubic, first, etc.), or at least have particular senses in which they are not. For example a very Canadian embassy can imply that the embassy has the stereotypically Canadian characteristics (politeness perhaps), but it cannot mean that the embassy represents Canada in the way that a Canadian embassy does.
+
+
+\subsubsection{Quantitative adjectives \cite{wiki-eng-adjective}}
+Words like many and few, along with numbers (e.g., many good people, two times) are traditionally categorized as adjectives, where modern grammars see them as determiners. This term has also been used for ordinals like first, tenth, and hundredth, which are undisputed adjectives.
+
+
+\subsubsection{Demonstrative adjectives \cite{wiki-eng-adjective}}
+This type includes \textbf{this}, \textbf{that}, \textbf{these}, and \textbf{those}, which are seen by most modern grammars as determiners. It also includes the undisputed adjective \textbf{such}.
+
+
+\subsubsection{Possessive adjectives \cite{wiki-eng-adjective}}
+This type includes my, your, our, their, etc. (e.g., my friend). These are categorized by most modern grammars as pronouns or determiners.
+
+
+\subsubsection{Interrogative adjectives \cite{wiki-eng-adjective}}
+This type includes what, which and whose (e.g., what time). These are categorized by most modern grammars as pronouns or determiners. (What in exclamatives, e.g., what a lovely day! is an adjective, but is not interrogative.)\\
+
+How in questions like How are you? is sometimes categorized as an interrogative adjective.
+
+\subsubsection{Distributive adjectives \cite{wiki-eng-adjective}}
+This type includes words like any, each, and neither (e.g., any time). These are categorized by most modern grammars as determiners.
+
+
+\subsubsection{Indefinite adjectives \cite{wiki-eng-adjective}}
+This type includes words like all, another, any, both, and each (e.g., another day). These are categorized by most modern grammars as determiners.
+
+\subsubsection{Pronominal adjectives \cite{wiki-eng-adjective}}
+This type includes words that "qualify" a noun and must agree with it in number: all, these, some, no, etc.(e.g., these days). These are categorized by other grammars as determiners or pronouns.
+
+
+\subsubsection{Proper adjectives \cite{wiki-eng-adjective}}
+This type includes words that are derived (or thought to be derived) from common nouns and are capitalized (e.g., an Italian vacation, a New York minute). Some of these are categorized by modern grammars as adjectives (e.g., Italian, Christian, Dubliner, Chinese, Thatcherite, etc.) and some as nouns (e.g., the Reagan administration, the Tokyo train system).
+
+\subsubsection{Compound adjectives \cite{wiki-eng-adjective}}
+This type includes adjectives, or what were/are thought to be adjectives, composed of two or more words operating "as a single adjective" (e.g., straightlaced, New York (see above), long-term, etc.).
+
+
+\subsubsection{Relative adjectives \cite{wiki-eng-adjective}}
+
+This type includes which and whose (e.g., the person whose book I bought) appearing in relative constructions. These are categorized by most modern grammars as pronouns or determiners.
+
+
+
+
+\subsection{Verbs \cite{wiki-verb,wiki-eng-verb}}
+A verb (from Latin verbum 'word') is a word (part of speech) that in syntax generally conveys an action (bring, read, walk, run, learn), an occurrence (happen, become), or a state of being (be, exist, stand). In the usual description of English, the basic form, with or without the particle to, is the infinitive. In many languages, verbs are inflected (modified in form) to encode tense, aspect, mood, and voice. A verb may also agree with the person, gender or number of some of its arguments, such as its subject, or object. Verbs have tenses: present, to indicate that an action is being carried out; past, to indicate that an action has been done; future, to indicate that an action will be done.
+
+\subsubsection{Intransitive verbs \cite{wiki-verb}}
+An intransitive verb is one that does not have a direct object. Intransitive verbs may be followed by an adverb (a word that addresses how, where, when, and how often) or end a sentence. For example: "The woman spoke softly." "The athlete ran faster than the official." "The boy wept."
+
+\subsubsection{Transitive verbs \cite{wiki-verb}}
+A transitive verb is followed by a noun or noun phrase. These noun phrases are not called predicate nouns, but are instead called direct objects because they refer to the object that is being acted upon. For example: "My friend read the newspaper." "The teenager earned a speeding ticket." \\
+
+A way to identify a transitive verb is to invert the sentence, making it passive. For example: "The newspaper was read by my friend." "A speeding ticket was earned by the teenager."
+
+\subsubsection{Ditransitive verbs \cite{wiki-verb}}
+Ditransitive verbs (sometimes called Vg verbs after the verb give) precede either two noun phrases or a noun phrase and then a prepositional phrase often led by to or for. For example: "The players gave their teammates high fives." "The players gave high fives to their teammates." \\
+
+When two noun phrases follow a transitive verb, the first is an indirect object, that which is receiving something, and the second is a direct object, that being acted upon. Indirect objects can be noun phrases or prepositional phrases.
+
+
+\subsubsection{Double transitive verbs \cite{wiki-verb}}
+Double transitive verbs (sometimes called Vc verbs after the verb consider) are followed by a noun phrase that serves as a direct object and then a second noun phrase, adjective, or infinitive phrase. The second element (noun phrase, adjective, or infinitive) is called a complement, which completes a clause that would not otherwise have the same meaning. For example: "The young couple considers the neighbors wealthy people." "Some students perceive adults quite inaccurately." "Sarah deemed her project to be the hardest she has ever completed."
+
+\subsubsection{Copular verbs \cite{wiki-verb}}
+Copular verbs (a.k.a. linking verbs) include be, seem, become, appear, look, and remain. For example: "Her daughter was a writing tutor." "The singers were very nervous." "His mother looked worried." "Josh remained a reliable friend." These verbs precede nouns or adjectives in a sentence, which become predicate nouns and predicate adjectives.[5] Copulae are thought to 'link' the predicate adjective or noun to the subject. They can also be followed by an adverb of place, which is sometimes referred to as a predicate adverb. For example: "My house is down the street." \\
+
+The main copular verb be is manifested in eight forms be, is, am, are, was, were, been, and being in English.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Adverbs \cite{wiki-adverb}}
+An adverb is a word or an expression that generally modifies a verb, adjective, another adverb, determiner, clause, preposition, or sentence. Adverbs typically express manner, place, time, frequency, degree, level of certainty, etc., answering questions such as how, in what way, when, where, to what extent. This is called the adverbial function and may be performed by single words (adverbs) or by multi-word adverbial phrases and adverbial clauses.
+
+\subsubsection{Adverbs of Manner \cite{byjus-english-types-of-adverbs}}
+These adverbs are those that describe the manner in which an action is done. Basically, it can be said that the adverbs of manner answer the question ‘how’. \\
+
+Examples of adverbs of manner: Quickly, promptly, clearly, slowly, gradually, eventually, rapidly, seriously, instantly, keenly, etc.
+
+\subsubsection{Adverbs of Time \cite{byjus-english-types-of-adverbs}}
+As the name suggests, the adverbs of time are used to tell the reader when some action is occurring. Adverbs of time include general time periods and specific times. We can identify an adverb of time by asking the question ‘when’.\\
+
+Examples of adverbs of time: Now, soon, today, tomorrow, the day after tomorrow, next month, recently, forever, etc.
+
+\subsubsection{Adverbs of Place \cite{byjus-english-types-of-adverbs}}
+These adverbs are used to indicate where the action mentioned in the sentence is taking place. Adverbs of place can be identified by asking the question ‘where’. \\
+
+Examples of adverbs of place: Somewhere, anywhere, nowhere, here, outside, inside, wherever, elsewhere, left, right, north, east, south, west, etc.
+
+\subsubsection{Adverbs of Frequency \cite{byjus-english-types-of-adverbs}}
+These adverbs are used to denote how often an action or event is happening. The adverbs of frequency can be recognised by asking the question ‘how often’.\\
+
+Examples of adverbs of frequency: Seldom, rarely, never, often, weekly, monthly, yearly, annually, usually, sometimes, occasionally, constantly, frequently, etc.
+
+\subsubsection{Adverbs of Degree \cite{byjus-english-types-of-adverbs}}
+These adverbs are used to indicate how intense an action of quality is. It is used to describe adjectives and adverbs. For instance, an adverb of manner expresses how fast or how slow a vehicle is moving, how hot or cold the weather is, how interesting or boring a movie is and so on. \\
+
+Examples of adverbs of degree: Very, too, extremely, much, more, most, little, less, incredibly, totally, greatly, hardly, deeply, barely, etc.
+
+
+\subsubsection{Conjunctive Adverbs \cite{byjus-english-types-of-adverbs}}
+Conjunctive adverbs perform a little differently from the other types of adverbs. These adverbs are seen to act like a conjunction to link two sentences or clauses together and hence the name, ‘conjunctive adverbs’.\\
+
+Examples of conjunctive adverbs: However, nevertheless, meanwhile, therefore, instead, likewise, notably, subsequently, rather, namely, on the other hand, incidentally, in addition to, etc.
+
+
+
+
+\subsection{Auxiliary Verbs}
+Examples: may, should, have, be
+
+\subsection{Prepositions \cite{wiki-English_prepositions}}
+English prepositions are words – such as of, in, on, at, from, etc. – that function as the head of a prepositional phrase, and most characteristically license a noun phrase object (e.g., in the water). Semantically, they most typically denote relations in space and time. Morphologically, they are usually simple and do not inflect. They form a closed lexical category.
+
+\subsubsection{Prepositions of Time \cite{byjus-english-prepositions}}
+used to show when something is happening.\\
+For example:
+\begin{itemize}
+    \item We will be meeting on Friday.
+    \item The supermarket will be closed from 9 p.m. to 9 a.m.
+    \item Can you come after some time?
+\end{itemize}
+
+
+\subsubsection{Prepositions of Place \cite{byjus-english-prepositions}}
+indicate the place or position of something. \\
+For example:
+\begin{itemize}
+    \item I have kept the book I borrowed from you on the table.
+    \item Henry hid behind the door.
+    \item The dog jumped over the fence.
+\end{itemize}
+
+\subsubsection{Prepositions of Direction \cite{byjus-english-prepositions}}
+used to denote the direction in which something travels or moves.\\
+For example:
+\begin{itemize}
+    \item The girl ran toward her father the moment she saw him.
+    \item Jerry jumped into the river to help his sister.
+    \item Veena passed the book to Priya.
+\end{itemize}
+
+\subsubsection{Prepositions of Location \cite{byjus-english-prepositions}}
+employed to denote the location of a particular object.\\
+For example:
+\begin{itemize}
+    \item Kenny would be staying at his cousin’s place for the weekend.
+    \item Make sure you keep all the toys back in its place after you play.
+    \item I lay on the floor for a really long time.
+\end{itemize}
+
+\subsubsection{Prepositions of Spatial Relationship \cite{byjus-english-prepositions}}
+used to denote an object’s movement away from the source and towards a source.\\
+For example:
+\begin{itemize}
+    \item Navya sat leaning against the wall.
+    \item The circus was stationed opposite the children’s park.
+    \item Lakshmi sat beneath the trees.
+\end{itemize}
+
+\subsubsection{Prepositional Phrase \cite{byjus-english-prepositions}} 
+a combination of a preposition and a noun(the object it is affecting).\\
+For example:
+\begin{itemize}
+    \item See to it that you reach the venue on time.
+    \item The medicines you asked for are out of stock.
+    \item Why don’t we try taking classes outside for a change.
+\end{itemize}
+
+
+
+
+\subsection{Conjunction \cite{wiki-Conjunction}}\label{Conjunction}
+Conjunctions are words which join phrases, clauses and sentences.
+
+
+\begin{longtable}{|p{2.5cm}|p{5cm}|p{6cm}|}
+    \caption{Conjunctions: basic forms} \\
+    \hline
+    \textbf{Form} & \textbf{Words} & \textbf{Sentences} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Form} & \textbf{Words} & \textbf{Sentences} \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \hline
+    \endlastfoot
+    Single Word & and, but, because, although, or, so, for, etc. & Do you want chips \textbf{or} cake? \\
+    \hline
+    Compound & provided that, as long as, in order that/to, etc. & You need to exercise \textbf{in order to} lose weight. \\
+    \hline
+    Correlative & both/and, either/or, neither/nor, if/then, not/but, not only/but also & \tableitemize{
+        \item \textbf{Either} Monday \textbf{or} Tuesday is fine.
+        \item \textbf{Not only} should you eat fruit, \textbf{but also} vegetables.
+    } \\
+    \hline
+\end{longtable}
+
+\begin{longtable}{|p{3cm}|p{3cm}|p{3cm}|p{4cm}|}
+    \caption{Conjunctions: functions} \\
+    \hline
+    \textbf{Type} & \textbf{Function} & \textbf{Position} & \textbf{Examples} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Type} & \textbf{Function} & \textbf{Position} & \textbf{Examples} \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \hline
+    \endlastfoot
+
+    Coordinating conjunctions & Join equal (independent) parts of a sentence. & Always come between the words/clauses that they join. & \tableitemize{
+        \item Jack \textbf{and} Jill went up the hill.
+        \item The water was warm, \textbf{but} I didn't go swimming.
+    } \\ \hline
+
+    Subordinating conjunctions & Join subordinate clauses to main clauses. & Usually come at the beginning of subordinate clauses. & I went swimming \textbf{although} it was cold. \\ \hline
+
+\end{longtable}
+
+\subsection{Determiners/ Articles}
+
+\textbf{Examples}: the, an, a
+
+\begin{longtable}{|m{3cm}|m{1.3cm}|}
+    \caption{Parts of Speech (POS) : Abbr. Table/ Symbol Table} \\ \hline
+    
+    \textbf{POS} & \textbf{Abbr.(s)} \\ \hline
+    \endfirsthead
+    
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+
+    \textbf{Nouns} & \\ \hline
+    \textbf{Pronouns} & \\ \hline
+    \textbf{Adjectives} & \\ \hline
+    \textbf{Verbs} & V \\ \hline
+    \textbf{Adverbs} & \\ \hline
+    \textbf{Auxiliary Verbs} &  \\ \hline
+    \textbf{Propositions} & P \\ \hline
+    \textbf{Conjunctions} &  \\ \hline
+    \textbf{Determiners/ Articles} & \\ \hline
+
+\end{longtable}
+
+\section{The Different Levels of Language Analysis \cite{medium-levels-in-natural-language-processing-nlp}}
+
+\begin{longtable}{|c|m{2.7cm}|m{10cm}|}
+    \caption{Levels of Language Analysis} \\ \hline
+
+    \textbf{Level} & \textbf{Level Name} & \textbf{Description} \\ \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Level} & \textbf{Level Name} & \textbf{Description} \\ \hline
+    \endhead
+    \hline \endfoot
+    \hline \endlastfoot
+
+    1 & Phonology Level & \begin{itemize}
+        \item At this level basically, it deals with pronunciation.
+        \item It deals with the interpretation of speech sound across words
+    \end{itemize} \\ \hline
+
+    2 & Morphological Level & \begin{itemize}
+        \item It deals with the smallest words that convey meaning and suffixes and prefixes.
+        \item Morphemes mean studying the words that are built from smaller meanings.
+        \item Example: So the rabbit word has single morphemes while the rabbits have two morphemes. The 's' denotes the singular and plural concepts.
+    \end{itemize} \\ \hline
+
+    3 & Lexical Level & \begin{itemize}
+        \item This deals with the study at the level of words with respect to their lexical meaning and Part of speech (POS).
+        \item It uses the lexicon that is collection of lexemes.
+        \item A Lexeme is a basic unit of lexical meaning which is an abstract unit of morphological analysis.
+    \end{itemize} \\ \hline
+
+    4 & Syntactic Level & \begin{itemize}
+        \item This level deals with the grammar and structure of sentences.
+        \item It studies the proper relationships between the words.
+        \item The POS tagging output of lexical analysis can be used at the syntactic level of two group words into the phrase and clause brackets.
+    \end{itemize} \\ \hline
+
+    5 & Semantics Level & \begin{itemize}
+        \item This level deals with the meaning of words and sentences.
+        \item There are different two approaches:
+        \begin{itemize}
+            \item Syntax driven semantic analysis
+            \item Semantic grammar
+        \end{itemize} 
+        \item Its a study of meaning of words that are associated with grammatical structure.
+    \end{itemize} \\ \hline
+
+    6 & Disclosure Level & \begin{itemize}
+        \item This level deals with the structure of different kinds of text.
+        \item There are 2 types of discourse
+        \begin{itemize}
+            \item Anaphora resolution
+            \item Discourse/ text structure recognition
+        \end{itemize}
+        \item Words are replaced in anaphora resolution.
+    \end{itemize} \\ \hline
+
+    7 & Pragmatic Level & \begin{itemize}
+        \item This level deals with the use real world knowledge and understanding of how this influences the meaning of what is being communicated.
+        \item Pragmatics identifies the meaning of words and phrases based on how language is used to communicate.
+    \end{itemize}
+
+\end{longtable}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

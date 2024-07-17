@@ -1,0 +1,518 @@
+\chapter{Linear Algebra \cite{mfml-1}}
+
+\section{Groups ( $G = (\mathbb{G}, \otimes)$ ) \cite{mfml-1}}\label{lin-alg-Groups}
+Consider a set $\mathbb{G}$ and an operation $\otimes$ : $\mathbb{G} \times \mathbb{G} \rightarrow \mathbb{G}$ group defined on $\mathbb{G}$. Then $G := (\mathbb{G}, \otimes)$ is called a group if the following hold:
+
+\begin{table}[H]
+    \begin{tabular}{l p{10cm}}
+        Closure of $\mathbb{G}$ under $\otimes$ & $\forall x,y \in \mathbb{G} : x \otimes y \in \mathbb{G}$ \\
+        Associativity & $\forall x,y,z \in \mathbb{G}:(x \otimes y) \otimes z = x \otimes (y \otimes z) $ \\
+        Neutral Element & $\exists e \in \mathbb{G} \text{ , } \forall x\in \mathbb{G}: x \otimes e = e \otimes x = x$ \\
+        Inverse Element & $\forall x\in \mathbb{G} \text{ , } \exists y \in \mathbb{G}: x\otimes y = y\otimes x = e$ where $e$ is the neutral element. ( $y = x^{-1}$ and $x = y^{-1}$ ) \\
+    \end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item Inverse of element is w.r.t. operation $\otimes$, does not necessarily mean $\displaystyle\frac{1}{x}$.
+\end{itemize}
+
+Examples:
+\begin{itemize}
+    \item $(\mathbb{N}_0, +)$ is \textbf{NOT} a group: Although $(\mathbb{N}_0, +)$ possesses a neutral element ($0$), the inverse elements are missing. ($\mathbb{N}_0 = \mathbb{N} \cup {0} $)
+
+    \item $(\mathbb{Z}, \cdot)$ is \textbf{NOT} a group: Although $(\mathbb{Z}, \cdot)$ contains a neutral element ($1$), the inverse elements for any $z \in \mathbb{Z}$, $z \neq \pm 1$, are missing.
+
+    \item $(\mathbb{R}, \cdot)$ is \textbf{NOT} a group since $0$ does not possess an inverse element.
+
+    
+\end{itemize}
+
+
+\section{Abelian Group \cite{mfml-1}}\label{Abelian Group}
+
+If additionally $\forall x,y \in \mathbb{G}:x\otimes y = y\otimes x$ (commutative), then $G = (\mathbb{G}, \otimes)$ is an Abelian Group.
+
+Examples:
+\begin{itemize}
+    \item $(\mathbb{Z}, +)$ is an Abelian group.
+    \item $(\mathbb{R}\textbackslash {0}, ·)$ is Abelian.
+    \item $(R^n, +)$, $(Z^n, +)$, $n \in N$ are Abelian if $+$ is defined componentwise, i.e., 
+    \[
+        (x_1, \cdots , x_n) + (y_1, \cdots , y_n) = (x_1 + y_1, \cdots , x_n + y_n)
+    \]
+    Then, $(x_1, \cdots , x_n)^{-1} := (-x_1, \cdots , -x_n)$ is the inverse element and $e = (0, \cdots , 0)$ is the neutral element.
+    \item $(R^{m×n}, +)$, the set of $m \times n$-matrices is Abelian (with componentwise addition)
+\end{itemize}
+
+\section{General Linear Group ( $GL(n,\mathbb{R})$ ) \cite{mfml-1}}\label{General Linear Group}
+The set of regular (invertible) matrices $A \in R^{n \times n}$ is a group with respect to matrix multiplication as defined in and is called general linear group $GL(n, \mathbb{R})$. However, general linear group since matrix multiplication is not commutative, the group is \textbf{NOT} Abelian.
+
+\begin{itemize}
+    \item Closure and associativity follow directly from the definition of matrix multiplication.
+    
+    \item \textbf{Neutral element}: The identity matrix $\mathbb{I}_n$ is the neutral element with respect to matrix multiplication "$\cdot$" in $(R^{n\times n}, \cdot)$.
+
+    \item \textbf{Inverse element}: If the inverse exists ($\mathbf{A}$ is regular), then $\mathbf{A}^{-1}$ is the inverse element of $\mathbf{A} \in R^{n\times n}$, and in exactly this case $(R^{n\times n}, \cdot)$ is a group, called the \textbf{general linear group}.
+\end{itemize}
+
+
+\section{Vector Spaces ( $V = (\mathbb{V}, +, \cdot)$ ) \cite{mfml-1}}\label{Vector Spaces}
+
+A real-valued vector space $V = (\mathbb{V}, +, \cdot)$ is a set $\mathbb{V}$ with two operations:
+\begin{align}
+    + &: \mathbb{V} \times \mathbb{V} \rightarrow \mathbb{V}\\ \notag
+    \cdot &: \mathbb{R} \times \mathbb{V} \rightarrow \mathbb{V} \notag
+\end{align}
+
+where,
+\begin{itemize}
+    \item $(\mathbb{V}, +)$ is an Abelian group
+    \item Distributivity:
+    \begin{enumerate}
+        \item $\forall \lambda \in \mathbb{R}, \mathbf{x,y}\in \mathbb{V} : \lambda\cdot(\mathbf{x+y}) = \lambda\cdot\mathbf{x} + \lambda\cdot\mathbf{y}$
+        
+        \item $\forall \lambda,\psi \in \mathbb{R}, \textbf{x}\in \mathbb{V} : (\lambda + \psi) \cdot\textbf{x} = \lambda\cdot\textbf{x} + \psi\cdot\textbf{x}$
+        
+    \end{enumerate}
+
+    \item Associativity (outer operation): $\forall \lambda,\psi\in\mathbb{R}, \mathbf{x}\in\mathbb{V}: \lambda\cdot(\psi\cdot\mathbf{x}) = (\lambda\psi)\cdot\mathbf{x}$
+
+    \item Neutral element with respect to the outer operation: $\forall \mathbf{x}\in\mathbb{V}:1\cdot\mathbf{x}=\mathbf{x}$
+\end{itemize}
+\vspace{0.3cm}
+
+\textbf{Notes:}
+\begin{itemize}
+    \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\index{vectors}\label{vectors}.
+
+    \item The neutral element of $(\mathbb{V}, +)$ is the zero vector $0 = [0, ..., 0]^T$ \\
+    the inner operation $+$ is called \textbf{vector addition}\index{vector addition}\label{vector addition}.
+
+    \item The elements $\lambda\in\mathbb{R}$ are called \textbf{scalars}\index{scalars}\label{scalars} and the outer operation $\cdot$ is a multiplication by scalars.
+
+    \item “vector multiplication” $\mathbf{ab, a, b} \in \mathbb{R}^n$, is \textbf{NOT} defined
+
+    \item we could define an element-wise multiplication, such that $\mathbf{c = ab}$ with $c_j = a_j \times b_j$
+
+    \item $\mathbb{V} = \mathbb{R}^n, n \in \mathbb{N}$ is a vector space with operations defined as follows:
+    \begin{itemize}
+        \item \textbf{Addition}:\\ $\mathbf{x+y} = (x_1, ..., x_n)+(y_1, ..., y_n) = (x_1+y_1, ..., x_n+y_n) \forall \mathbf{x, y} \in \mathbb{R}^n$
+
+        \item \textbf{Multiplication by scalars}:\\ $\lambda\mathbf{x} = \lambda(x_1, ..., x_n) = (\lambda x_1, ..., \lambda x_n) \forall \lambda \in \mathbb{R}, \mathbf{x} \in \mathbb{R}^n$
+        
+    \end{itemize}
+
+    \item $\mathbb{V} = \mathbb{R}^{m\times n}, m, n \in \mathbb{N}$ is a vector space with:
+    \begin{itemize}
+        \item \textbf{Addition} is defined element-wise $\forall \mathbf{A, B} \in \mathbb{V}$: 
+        \[
+            \mathbf{A + B} = \begin{bmatrix}
+                a_{11} + b_{11} & \cdots & a_{1n} + b_{1n} \\
+                \vdots & & \vdots \\
+                a_{m1} + b_{m1} & \cdots & a_{mn} + b_{mn} \\
+            \end{bmatrix}
+        \]
+
+        \item \textbf{Multiplication by scalars} $\forall \lambda\in\mathbb{R}, \mathbf{A}\in\mathbb{R}^{m\times n}$:
+        \[
+            \lambda\mathbf{A} = \begin{bmatrix}
+                \lambda a_{11} & \cdots & \lambda a_{1n} \\
+                \vdots & & \vdots \\
+                \lambda a_{m1} & \cdots & \lambda a_{mn} \\
+            \end{bmatrix}
+        \]
+    \end{itemize}
+
+    \item The vector spaces $\mathbb{R}^n$, $\mathbb{R}^{n\times 1}$, $\mathbb{R}^{1\times n}$ are only different in the way we write vectors:
+    \begin{itemize}
+        \item default: n-tuples as \textbf{column vectors}\index{column vectors}\label{column vectors} ($\mathbb{R}^n = \mathbb{R}^{n \times 1}$) : $\mathbf{x}$
+
+        \item default: n-tuples as \textbf{row vectors}\index{row vectors}\label{row vectors} ($\mathbb{R}^{1 \times n}$) : $\mathbf{x}^\top$
+    \end{itemize}
+\end{itemize}
+
+
+\section{Vector Subspaces/ linear subspace ( $U = (\mathbb{U}, +, \cdot)$ ) \cite{mfml-1}}\label{Vector Subspaces/ linear subspace}
+Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \mathbb{V}$, $\mathbb{U} \neq \varnothing$. Then $U = (\mathbb{U}, +, \cdot)$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ linear subspace and $\cdot$ restricted to $\mathbb{U} \times \mathbb{U}$ and $\mathbb{R} \times \mathbb{U}$. We write $U \subseteq V$ to denote a subspace $U$ of $V$.
+
+\begin{itemize}
+    \item Vector subspace inherits Abelian group properties, the distributivity, the associativity and the neutral element from the vector space.
+
+    \item To determine whether $U = (\mathbb{U}, +, \cdot)$ is a subspace of $V$ we still do need to show:
+    \begin{itemize}
+        \item $\mathbb{U} \neq \varnothing$, in particular: $\mathbf{0} \in \mathbb{U}$ (zero vector)
+        \item Closure of $U$:
+        \begin{enumerate}
+            \item With respect to the \textbf{outer operation}: $\forall\lambda \in \mathbb{R}, \forall\mathbf{x} \in \mathbb{U} : \lambda \mathbf{x} \in \mathbb{U}$
+            \item With respect to the \textbf{inner operation}: $\forall\mathbf{x, y} \in \mathbb{U} : \mathbf{x + y} \in \mathbb{U}$
+        \end{enumerate}
+    \end{itemize}
+
+    \item For every vector space $V$, the trivial subspaces are $V$ itself and ${\mathbf{0}}$.
+    
+\end{itemize}
+
+\section{Dimension of Vector Space ( $\dim(V)$ ) \cite{mfml-1}}\label{lin-alg: Dimension-vector-space}
+
+\begin{itemize}
+    \item The dimension of $V$ is the number of basis vectors of $V$, and we write $\dim(V)$.
+
+    \item If $U \subseteq V$ is a subspace of $V$, then $\dim(U) \leq \dim(V)$ and $\dim(U) = \dim(V)$ if and only if $U = V$.
+
+    \item the dimension of a vector space can be thought of as the number of independent directions in this vector space.
+
+    \item The dimension of a vector space is \textbf{NOT} necessarily the number of elements in a vector.\\
+    \textbf{Example}: $V = \operatorname{span}[\begin{bmatrix}0\\1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
+    
+\end{itemize}
+
+
+
+\section{Outer Product ( $\mathbf{ab^\top} \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}} \label{vector: Outer Product}
+\[
+    \mathbf{ab^\top} \in \mathbb{R}^{n\times n}
+\]
+
+\section{Inner/ Scalar /Dot Product ( $\mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml-1}} \label{vector: Inner/ Scalar /Dot Product}
+\[
+    \mathbf{a^\top b} \in \mathbb{R}
+\]
+
+
+\section{Linear Combination \cite{mfml-1}}\label{Linear Combination}
+Consider a vector space $V$ and a finite number of vectors $\mathbf{x_1, ... , x_k} \in V$ . Then, every $\mathbf{v} \in V$ of the form
+\(
+    \mathbf{v} = \displaystyle\sum_{i=1}^{k} \lambda_i \mathbf{x}_i \in V
+\) 
+with $\lambda_1, ..., \lambda_k \in \mathbb{R}$ is a linear combination of the vectors $\mathbf{x_1, ..., x_k}$.
+
+\begin{itemize}
+    \item The $\mathbf{0}$-vector can always be written as the linear combination of $k$ vectors $\mathbf{x_1, ..., x_k}$ because $\displaystyle\mathbf{0} = \sum_{i=0}^{k} 0\cdot\mathbf{x_i}$ is always true.
+\end{itemize}
+
+\section{Linear (In)dependence \cite{mfml-1}}\label{Linear (In)dependence}
+
+Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, ..., x_k} \in V$. If there is a non-trivial linear combination, such that $0 = \displaystyle\sum^k_{i=1} \lambda_i\mathbf{x_i}$ with at least one $\lambda_i \neq 0$, the vectors $\mathbf{x_1, ..., x_k}$ are \textbf{linearly dependent}. \\If only the trivial solution exists, i.e., $\lambda_1 = ... = \lambda_k = 0$ the vectors $\mathbf{x_1, ..., x_k}$ are \textbf{linearly independent}.
+
+\vspace{0.3cm}
+\noindent\textbf{Properties}:
+\begin{enumerate}
+    \item $k$ vectors are either linearly dependent or linearly independent. There is no third option.
+
+    \item If at least one of the vectors $\mathbf{x_1, ..., x_k}$ is $\mathbf{0}$ then they are linearly dependent. The same holds if two vectors are identical.
+
+    \item The vectors $\{\mathbf{x_1, ..., x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, ..., k\}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\{\mathbf{x_1, ..., x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, ..., k\}$ is linearly dependent.
+
+    \item A practical way of checking whether vectors $\mathbf{x_1, ..., x_k} \in V$ are linearly independent is to use Gaussian elimination: 
+    \begin{itemize}
+        \item Write all vectors as columns of a matrix A and perform Gaussian elimination until the matrix is in row echelon form (the reduced row-echelon form is unnecessary here)
+        
+        \item The pivot columns indicate the vectors, which are linearly independent of the vectors on the left. Note that there is an ordering of vectors when the matrix is built.
+
+        \item The non-pivot columns can be expressed as linear combinations of the pivot columns on their left.
+
+        \item All column vectors are linearly independent if and only if all columns are pivot columns. If there is at least one non-pivot column, the columns (and, therefore, the corresponding vectors) are linearly dependent.
+    \end{itemize}
+
+    \item Consider a vector space $V$ with $k$ linearly independent vectors $\mathbf{b_1, ..., b_k}$ and $m$ linear combinations
+    \begin{itemize}
+        \item \( \displaystyle \mathbf{x}_1 \notag = \sum_{i=1}^{k} \bm{\lambda}_{1i} \mathbf{b}_i  \quad\quad\cdots\quad\quad \mathbf{x}_m = \sum_{i=1}^{k} \bm{\lambda}_{im} \mathbf{b}_i \)
+
+        \item $\mathbf{B} = [\mathbf{b_1, ..., b_k}]$ as the matrix whose columns are the linearly independent vectors $\mathbf{b_1, ..., b_k}$
+        \[
+            \mathbf{x}_j = \mathbf{B{\bm{\lambda}}}_j \quad\quad\quad\quad \bm{\lambda}_j = [\lambda_{1j}, \cdots, \lambda_{kj}]^\top
+            \hfill (j=1, ...,m)
+        \]
+
+        \item \( \displaystyle \sum_{j=1}^{m} \psi_j \mathbf{x}_j = \sum_{j=1}^{m} \psi_j \mathbf{B}\bm{\lambda}_j = \mathbf{B}\sum_{j=1}^{m} \psi_j \bm{\lambda}_j \)\\
+        This means that $\{\mathbf{x_1, ..., x_m}\}$ are linearly independent if and only if the column vectors $\{\bm{\lambda_1, ..., \lambda_m}\}$ are linearly independent.
+
+    \end{itemize}
+
+    \item In a vector space $V$, $m$ linear combinations of $k$ vectors $\mathbf{x_1, ..., x_k}$ are linearly dependent if $m > k$.
+\end{enumerate}
+
+
+\section{Generating Set ( $\mathbb{A}$ ) \cite{mfml-1}}\label{Generating Set}
+Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\{x_1, . . . , x_k\}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, . . . , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
+
+\begin{itemize}
+    \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
+\end{itemize}
+
+
+\section{Span ( $\operatorname{span}[\mathbb{A}]$ ) \cite{mfml-1}} \label{lin-alg: Span}
+The set of all linear combinations of vectors in a generating set $\mathbb{A}$ is called the span of $\mathbb{A}$. If $\mathbb{A}$ spans the vector space $V$, we write $V = span[\mathbb{A}]$ or $V = span[\mathbf{x_1, . . . , x_k}]$.
+
+
+
+
+\section{Basis ( $\mathbb{B}$ ) \cite{mfml-1}}\label{lin-alg: Basis}
+Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and $\mathbb{A} \subseteq \mathbb{V}$. A generating set $\mathbb{A}$ of $V$ is called \textbf{minimal} if there exists no smaller set $\tilde{\mathbb{A}} \not\subseteq \mathbb{A} \subseteq V$ that spans $V$. Every linearly independent generating set of $V$ is minimal and is called a basis of $V$.
+
+\vspace{0.2cm}
+Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \mathbb{V}, \mathbb{B} \neq \varnothing$. Then, the following statements are equivalent:
+
+\begin{itemize}
+    \item $\mathbb{B}$ is a basis of $V$.
+    
+    \item $\mathbb{B}$ is a minimal generating set.
+    
+    \item $\mathbb{B}$ is a maximal linearly independent set of vectors in $V$, i.e., adding any other vector to this set will make it linearly dependent.
+
+    \item Every vector $\mathbf{x} \in V$ is a linear combination of vectors from $\mathbb{B}$, and every linear combination is unique, i.e., with \( \displaystyle \mathbf{x} = \sum_{i=1}^{k} \lambda_i \mathbf{b}_i = \sum_{i=1}^{k} \psi_i \mathbf{b}_i \) and $\lambda_i, \psi_i \in \mathbb{R}, \mathbf{b}_i \in \mathbb{B}$, it follows that $\lambda_i = \psi_i$, $i=1,...,k$
+
+    
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{Note}:
+\begin{itemize}
+    \item Every vector space $V$ possesses a basis $\mathbb{B}$. 
+    
+    \item There is no unique basis. 
+    
+    \item All bases possess the same number of elements, the \textbf{basis vectors}\index{basis vectors}\label{basis vectors}.
+
+\end{itemize}
+
+\subsection{Finding Basis \cite{mfml-1}}
+A basis of a subspace $U = span[\mathbf{x_1, ..., x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
+\begin{enumerate}
+    \item Write the spanning vectors as columns of a matrix $\mathbf{A}$
+    \item Determine the row-echelon form of $\mathbf{A}$
+    \item The spanning vectors associated with the pivot columns are a basis of $U$
+\end{enumerate}
+
+
+\section{Rank ( $rk(\mathbf{A})$ ) \cite{mfml-1}}\label{matrix: Rank}
+
+The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R}^{m \times n}$ equals the number of linearly independent rows and is called the rank rank of $\mathbf{A}$ and is denoted by $rk(\mathbf{A})$.
+
+\begin{itemize}
+    \item $rk(\mathbf{A}) = rk(\mathbf{A}^\top)$, i.e., the column rank equals the row rank.
+
+    \item The columns of $\mathbf{A} \in \mathbb{R}^{m \times n}$ span a subspace $U \subseteq \mathbb{R}^m$ with $\dim(U) = rk(\mathbf{A})$. 
+
+    \item The rows of $\mathbf{A} \in \mathbb{R}^{m\times n}$ span a subspace $W \subseteq \mathbb{R}^n$ with $\dim(W) = rk(\mathbf{A})$. A basis of $W$ can be found by applying Gaussian elimination to $A^\top$.
+
+    \item For all $\mathbf{A} \in \mathbb{R}^{n\times n}$ it holds that $\mathbf{A}$ is regular (invertible) if and only if $rk(\mathbf{A}) = n$.
+
+    \item For all $\mathbf{A} \in \mathbb{R}^{m\times n}$ and all $\mathbf{b} \in \mathbb{R}^m$ it holds that the linear equation system $\mathbf{Ax = b}$ can be solved if and only if $rk(\mathbf{A}) = rk(\mathbf{A}|\mathbf{b})$, where $\mathbf{A}|\mathbf{b}$ denotes the augmented system.
+
+    \item For $\mathbf{A} \in \mathbb{R}^{m\times n}$ the subspace of solutions for $\mathbf{Ax = 0}$ possesses dimension $n - rk(\mathbf{A})$. This subspace is called the \textbf{kernel space} or the \textbf{null space} \label{kernel space/ null space}\index{kernel space/ null space}.
+
+    \item A matrix $\mathbf{A} \in \mathbb{R}^{m\times n}$ has \textbf{full rank}\label{matrix: full rank}\index{matrix: full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $rk(A) = \min(m, n)$. A matrix is said to be \textbf{rank deficient}\index{matrix: rank deficient}\label{matrix: rank deficient} if it does not have full rank.
+
+\end{itemize}
+
+
+\section{Linear Mappings/ vector space homomorphism/ linear transformation ( $\Phi(x)$ ) \cite{mfml-1}}\label{Linear Mappings/ vector space homomorphism/ linear transformation}
+
+For vector spaces $V$, $W$, a mapping $\Phi : V \rightarrow W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if:
+\[
+    \forall \mathbf{x, y} \in V, \forall\lambda, \psi \in \mathbb{R} : \Phi(\lambda\mathbf{x} + \psi\mathbf{y}) = \lambda\Phi(\mathbf{x}) + \psi\Phi(\mathbf{y})
+\]
+
+\begin{itemize}
+    \item we can represent linear mappings as matrices
+    \item Consider a mapping $\Phi : \mathbb{V} \rightarrow \mathbb{W}$, where $\mathbb{V}$, $\mathbb{W}$ can be arbitrary sets. Then $\Phi$ is called
+    \begin{itemize}
+        \item \textbf{Injective} if $\forall \mathbf{x, y} \in \mathbb{V}: \Phi(\mathbf{x}) = \Phi(\mathbf{y}) \Rightarrow \mathbf{x} = \mathbf{y}$ \index{Injective mapping}\label{Injective mapping}
+
+        \item \textbf{Surjective} if $\Phi(\mathbb{V}) = \mathbb{W}$\index{Surjective mapping}\label{Surjective mapping}\\
+        If $\Phi$ is surjective, then every element in $\mathbb{W}$ can be “\textbf{reached}” from $\mathbb{V}$ using $\Phi$.
+
+        \item \textbf{Bijective} if it is injective and surjective.\index{Bijective mapping}\label{Bijective mapping}\\
+        A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \rightarrow \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\index{inverse linear mapping}\label{inverse linear mapping}
+        
+    \end{itemize}
+
+    \item 
+    
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\vspace{4cm}
+\url{https://drive.google.com/file/d/1JS4tlbMRYv8oHYrLgISR_NV9y6-_2j5h/edit}\\
+53 / 417
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,187 @@
+\chapter{Vector Semantics and Embeddings \cite{nlp-1}}
+
+$https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view$\\
+114/577
+
+\begin{itemize}
+    \item \textit{Words that occur in similar contexts tend to have similar meanings.}\\ This link between similarity in how words are distributed and similarity in what they mean is called the \textbf{distributional hypothesis} \index{distributional hypothesis} \label{distributional hypothesis}.
+
+    \item \textbf{Word Embeddings} are numeric representations of words in a lower-dimensional space, capturing semantic and syntactic information. \cite{gfg-word-embeddings-in-nlp}
+    
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Feature} & \textbf{Static Word Embeddings} & \textbf{Contextual Word Embeddings} \\
+        \hline
+        \textbf{Examples} & Word2Vec, GloVe, FastText & ELMo, BERT, GPT, RoBERTa \\
+        \hline
+        \textbf{Context Sensitivity} & Context-independent & Context-dependent \\
+        \hline
+        \textbf{Model Complexity} & Simpler, faster to compute & More complex, computationally intensive \\
+        \hline
+        \textbf{Vector Representation} & Single vector per word & Different vectors for the same word in different contexts \\
+        \hline
+        \textbf{Applications} & Suitable for tasks where context is not crucial & Excels in tasks requiring context understanding (e.g., NER, QA, sentiment analysis) \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Static and Contextual Word Embeddings \cite{chatgpt}}
+\end{table}
+
+\section{Synonymy \cite{nlp-1}}\label{Synonymy}
+\begin{itemize}
+    \item when one word has a sense whose meaning is identical to a sense of another word, or nearly identical, we say the two senses of those two words are \textbf{synonyms} \index{synonyms} \label{synonyms}.
+
+    \item A more formal definition of synonymy (between words rather than senses) is that two words are synonymous if they are substitutable for one another in any sentence without changing the \textbf{truth conditions} of the sentence, the situations in which the sentence would be true.
+
+    \item One of the fundamental tenets of semantics, called the \textbf{principle of contrast} \index{principle of contrast}\label{principle of contrast}, states that a difference in linguistic form is always associated with some difference in meaning.
+\end{itemize}
+
+
+\section{Word Similarity \cite{nlp-1}}\label{Word Similarity}
+\begin{itemize}
+    \item While words don’t have many synonyms, most words do have lots of similar words.
+    
+    \item The notion of word \textbf{similarity} is very useful in larger semantic tasks.
+
+    \item Knowing how similar two words are can help in computing how similar the meaning of two phrases or sentences are, a very important component of tasks like question answering, paraphrasing, and summarization.
+
+    
+\end{itemize}
+
+\section{Word Relatedness/ Association \cite{nlp-1}}\label{Word Relatedness/ Association}
+\begin{itemize}
+    \item The meaning of two words can be related in ways other than similarity.\\
+    \textbf{Example}: Coffee \& cup
+
+    \item One common kind of relatedness between words is if they belong to the same \textbf{semantic field} \index{semantic field}\label{semantic field}. A semantic field is a set of words which cover a particular semantic domain and bear structured relations with each other.\\
+    \textbf{Example}: hospitals (surgeon, scalpel, nurse, anesthetic, hospital)
+
+\end{itemize}
+
+\section{Semantic Frames and Roles \cite{nlp-1}} \label{Semantic Frames and Roles}
+\begin{itemize}
+    \item A semantic frame is a set of words that denote perspectives or participants in a particular type of event.
+
+    \item Frames have semantic roles (like buyer, seller, goods, money), and words in a sentence can take on these roles.
+
+    \item \textbf{Example}: \textbf{Sam bought the book from Ling} could be paraphrased as \textbf{Ling sold the book to Sam}, and that \textbf{Sam} has the role of the \textbf{buyer} in the frame and \textbf{Ling} the \textbf{seller}.
+\end{itemize}
+
+\section{Connotation \cite{nlp-1}}\label{Connotation}
+\begin{itemize}
+    \item Connotation means aspects of a word’s meaning that are related to a writer or reader’s emotions, sentiment, opinions, or evaluations.\\
+    \textbf{Example}: some words have positive connotations (wonderful) while others have negative connotations (dreary).
+
+    \item Even words whose meanings are similar in other ways can vary in connotation.\\
+    \textbf{Example}: innocent (positive connotation) and naive (negative connotation).
+
+    \item Positive or negative evaluation language is called \textbf{sentiment}\index{sentiment}\label{sentiment}.\\
+    \textbf{Example}: positive evaluation (great, love) and negative evaluation (terrible, hate). 
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|p{7cm}|}
+        \hline
+        \textbf{valence} & pleasantness of the stimulus \\
+        \hline
+        \textbf{arousal} & intensity of emotion provoked by the stimulus \\
+        \hline
+        \textbf{dominance} & degree of control exerted by the \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Vector Semantics \cite{nlp-1}}\label{Vector Semantics}
+\begin{itemize}
+    \item The idea of vector semantics is to represent a word as a point in a multi-dimensional semantic space that is derived from the distributions of word neighbors.
+
+    \item The meaning of a word can be defined by its \textbf{distribution} in language use, meaning its neighboring words or grammatical environments. 
+
+    \item The idea was that two words that occur in very similar distributions (whose neighboring words are similar) have similar meanings.
+
+    \item Vectors for representing words are called \textbf{embeddings}\index{word embeddings}\label{word embeddings}. The word “embedding” derives from its mathematical sense as a mapping from one space or structure to another.
+
+\end{itemize}
+
+SEE: \nameref{Term Frequancy-Inverse Document Frequency (TF-IDF)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,197 @@
+\chapter{Term Frequency-Inverse Document Frequency (TF-IDF) \cite{nlp-1}} \label{Term Frequancy-Inverse Document Frequency (TF-IDF)}
+
+\url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
+121/577
+
+\section{Vectors and documents \cite{nlp-1}}\label{tf-idf: Vectors and documents}
+
+\begin{itemize}
+    \item In a \textbf{term-document matrix}\index{term-document matrix} \label{term-document matrix}, each row represents a word in the vocabulary and each column represents a document from some collection of documents.
+    
+    \item The term-document matrix was first defined as part of the \textbf{vector space model}\index{vector space model}\label{vector space model} of information retrieval. In this model, a document is represented as a count vector.
+
+    \item in term-document matrices, the vectors representing each document would have dimensionality $|V|$ (vocabulary size).
+
+    \item Two documents that are similar will tend to have similar words, and if two documents have similar words their column vectors will tend to be similar.
+
+    \item documents can be represented as vectors in a vector space. A \textbf{vector space} (SEE: \nameref{Vector Spaces}) is a collection of vectors, characterized by their dimension.
+\end{itemize}
+
+\section{Words as vectors: document dimensions \cite{nlp-1}}\label{tf-idf: Words as vectors: document dimensions}
+
+\begin{itemize}
+    \item Vector semantics can also be used to represent the meaning of words. 
+
+    \item We do this row vector by associating each word with a word vector - a \textbf{row vector} rather than a column vector, hence with different dimensions.
+
+    \item similar words have similar vectors because they tend to occur in similar documents. The term-document matrix thus lets us represent the meaning of a word by the documents it tends to occur in.
+\end{itemize}
+
+
+\section{Words as vectors: word dimensions \cite{nlp-1}} \label{tf-idf: Words as vectors: word dimensions}
+
+\begin{itemize}
+    \item \textbf{term-term matrix/ word-word matrix/ term-context matrix}\index{term-term matrix/ word-word matrix/ term-context matrix}\label{term-term matrix/ word-word matrix/ term-context matrix}, in which the columns are labeled by words rather than documents. 
+    
+    \item Dimensionality $|V|\times|V|$ and each cell records the number of times the row (target) word and the column (context) word co-occur in some context in some training corpus.
+
+    \item The context could be the document, in which case the cell represents the number of times the two words appear in the same document.
+
+    \item It is most common, however, to use smaller contexts, generally a window around the word, for example of $4$ words to the left and $4$ words to the right, in which case the cell represents the number of times (in some training corpus) the column word occurs in such a $\pm 4$ word window around the row word.
+
+    \item Since most of the entries of the matrix are zero these are \textbf{sparse vector representations}.
+\end{itemize}
+
+
+\section{Cosine Similarity \cite{nlp-1}}\label{Cosine Similarity}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

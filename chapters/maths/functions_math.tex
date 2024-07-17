@@ -1,0 +1,297 @@
+\chapter{Common Functions \& Operators: Math}
+
+
+
+\section{Absolute Value ( $|x|$ )}\label{abs_value}
+\begin{align}
+    \left| x \right| = \begin{cases}
+       x & \text{ if\ } x \geq 0 \\
+       -x & \text{ if\ } x < 0 
+    \end{cases}
+\end{align}
+
+
+\section{Factorial ( $x!$ )}\label{Factorial}
+\[
+    x! = \prod_{i=1}^{x} i = 1 \cdot 2 \cdots (x-1) \cdot x 
+\]
+
+\section{Combination ( $C(n,r)$ / $^nC_r$ / $nCr$ ) } \label{Combination}
+
+\[
+    C(n,r) = ^nC_r = nCr = \displaystyle\binom{n}{r} = \displaystyle\frac{n!}{(n-r)!r!}
+\]
+
+\section{Permutation \( \left(\ P(n,r)\ /\ ^nP_r\ /\ nPr\ \right) \)} \label{Permutation}
+
+\[
+    P(n,r) = ^nP_r = nPr = \displaystyle\frac{n!}{(n-r)!}
+\]
+
+\section{Exponential Function ( $exp(x)$ )}\label{Exponential Function}
+
+\[
+    exp(x) = e^x
+\]
+
+\section{Gamma Function ( $\Gamma(x)$ )}\label{Gamma Function}
+
+\[
+    \Gamma(x) = \displaystyle\int_{0}^{\infty} t^{x-1} e^{-t} dt
+\]
+
+
+\section{Logarithm Function ( $\log(x)$ / $\ln(x)$ )}\label{Logarithm Function}
+\[
+    y = \log_a(x) \Leftrightarrow x = a^y
+\]
+
+Natural Logarithm Function ($a=e$):
+\[
+    y = \ln(x) \Leftrightarrow x = e^y
+\]
+
+
+\section{Sign Function ( $\operatorname{sgn}(x)$ )}\label{Sign Function}
+\begin{align}
+    \operatorname{sgn}(x) = \begin{cases}
+         1 & \text{ if } x > 0 \\
+         0 & \text{ if } x = 0 \\
+         -1 & \text{ if } x < 0 
+        \end{cases}
+\end{align}
+
+
+
+\section{Indicator function ( $\mathbbm{1}_x$ )}\label{Indicator function}
+
+\begin{align}
+    \mathbbm{1}_x = {\begin{cases}
+        1 & \text{ if x is true } \\
+        0 & \text{ if x is false }
+    \end{cases}}
+\end{align}
+
+\section{Infinite Step Function ( $1(z)$ )}
+
+\begin{align}
+    1(z) = {\begin{cases}
+        0 & \text{ if } z \leq 0 \\
+        \infty & \text{ otherwise }
+    \end{cases}}
+\end{align}
+
+\section{Trigonometric functions - TODO \cite{wiki-Trigonometric_functions}}\label{Trigonometric_functions}
+
+\begin{table}[H]
+    \centering
+    \begin{minipage}[t]{0.3\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=4.5cm]{Pictures/maths/TrigFunctions.jpg}
+            \caption{Trigonometry Functions Comparison}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.3\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=4.5cm]{Pictures/maths/Trigonometric_function_quadrant_sign.png}
+            \caption{Trigonometry Quadrant Signs}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}[t]{0.3\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=4.5cm]{Pictures/maths/TrigonometryTriangle.jpg}
+            \caption{Trigonometry Triangle}
+        \end{figure}        
+    \end{minipage}
+\end{table}
+
+\subsection{sine ( $\sin(\theta)$ )}\label{sin}
+
+\[
+    \sin(\theta) = \displaystyle \frac{\mathrm{opposite}}{\mathrm{hypotenuse}}
+\]
+\[    \sin(\theta + 2k\pi) = \sin(\theta)   \]
+
+\subsection{cosine ( $\cos(\theta)$ )}\label{cos}
+
+\[
+    \cos(\theta) = \displaystyle\frac{\mathrm {adjacent} }{\mathrm {hypotenuse} }
+\]
+\[  \cos(\theta + 2k\pi ) = \cos(\theta)  \]
+
+\subsection{tangent ( $\tan(\theta)$ )}\label{tan}
+
+\[
+    \tan(\theta) =\displaystyle \frac {\mathrm {opposite} }{\mathrm {adjacent} }
+\]
+\[  \tan(\theta + k\pi ) = \tan(\theta)  \]
+
+\subsection{cosecant ( $\csc(\theta)$ }\label{csc}
+\[
+    \csc(\theta) =\displaystyle\frac {\mathrm {hypotenuse} }{\mathrm {opposite} }
+\]
+
+\subsection{secant ( $\sec(\theta)$ )}\label{sec}
+\[
+    \sec(\theta) =\displaystyle\frac {\mathrm {hypotenuse} }{\mathrm {adjacent} }
+\]
+
+\subsection{cotangent ( $\cot(\theta)$ )}\label{cot}
+
+\[
+    \cot(\theta) =\displaystyle\frac {\mathrm {adjacent} }{\mathrm {opposite} }
+\]
+\[  \cot(\theta + k\pi ) = \cot(\theta)  \]
+
+
+\subsection{Properties \& Formulas}
+\begin{itemize}
+    \item \( \sin^2(\theta) + \cos^2(\theta) = 1 \)
+\end{itemize}
+
+
+\section{Inverse trigonometric functions - TODO \cite{wiki-Inverse_trigonometric_functions}}\label{Inverse trigonometric functions}
+
+\section{Hyperbolic Functions \cite{wiki-Hyperbolic_functions}}\label{Hyperbolic_functions}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\csch}{\operatorname{csch}}
+
+\begin{table}[H]
+    \centering
+    \begin{minipage}[t]{0.45\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=7.5cm]{Pictures/maths/Sinh_cosh_tanh.jpg}
+            \caption{$\sinh(x)$, $\cosh(x)$ \& $\tanh(x)$}
+        \end{figure}        
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=7.5cm]{Pictures/maths/Csch_sech_coth.jpg}
+            \caption{$\csch(x)$, $\sech(x)$ \& $\coth(x)$}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\subsection{Hyperbolic sine ( $\sinh(x)$ ) }\label{sinh}
+\[
+    (\sinh(x) = {\displaystyle\frac{e^{x} - e^{-x}}{2}}={\displaystyle\frac{e^{2x} - 1}{2e^{x}}}={\displaystyle\frac{1 - e^{-2x}}{2e^{-x}}}
+\]
+
+\subsection{Hyperbolic cosine ( $\cosh(x)$ ) }\label{cosh}
+\[
+    \cosh(x) = {\displaystyle\frac{e^{x} + e^{-x}}{2}} = {\displaystyle\frac{e^{2x} + 1}{2e^{x}}} = {\displaystyle\frac{1 + e^{-2x}}{2e^{-x}}}
+\]
+
+\subsection{Hyperbolic tangent ( $\tanh(x)$ )}\label{tanh}
+\[
+    \tanh(x) = \displaystyle\frac{\sinh(x)}{\cosh(x)} = \displaystyle\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} = \displaystyle\frac{e^{2x} - 1}{e^{2x} + 1}
+\]
+
+\subsection{Hyperbolic cotangent ( $\coth(x)$ )}\label{coth}
+\[
+    \coth(x) = \displaystyle\frac{1}{\tanh(x)} = \displaystyle\frac{\cosh(x)}{\sinh(x)} = \displaystyle\frac{e^{x} + e^{-x}}{e^{x} - e^{-x}} = \displaystyle\frac{e^{2x} + 1}{e^{2x} - 1}
+\]
+
+$x \neq 0$
+
+\subsection{Hyperbolic secant ( $\sech(x)$ )} \label{sech}
+\[
+    \sech(x) = \displaystyle\frac{1}{\cosh(x)} = \displaystyle\frac{2}{e^{x} + e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} + 1}
+\]
+
+\subsection{Hyperbolic cosecant ( $\csch(x)$ )}\label{csch}
+\[
+    \csch(x) = \displaystyle\frac{1}{\sinh(x)} = \displaystyle\frac{2}{e^{x} - e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} - 1}
+\]
+$x \neq 0$
+
+\subsection{Properties \& Formulas}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|r|r|r|r|r|r|}
+        \hline
+        $\theta$ & $\sinh(\theta)$ & $\cosh(\theta)$ & $\tanh(\theta)$ & $\coth(\theta)$ & $\sech(\theta)$ & $\csch(\theta)$ \\ \hline
+
+        $-\theta$ & $-\sinh(\theta)$ & $\cosh(\theta)$ & $-\tanh(\theta)$ & $-\coth(\theta)$ & $\sech(\theta)$ & $-\csch(\theta)$ \\ \hline
+    \end{tabular}
+    \caption{Hyperbolic angles}
+\end{table}
+
+\section{Softmax function ( $\sigma (\mathbf {z})$ ) \cite{wiki-softmax-function}}\label{Softmax function}
+The softmax function, also known as softargmax or normalized exponential function, converts a vector of $K$ real numbers into a probability distribution of $K$ possible outcomes. It is a generalization of the logistic function to multiple dimensions, and used in multinomial logistic regression. The softmax function is often used as the last activation function of a neural network to normalize the output of a network to a probability distribution over predicted output classes.
+
+\[
+    {\displaystyle \sigma (\mathbf {z} )_{i}={\displaystyle\frac {e^{z_{i}}}{\sum _{j=1}^{K}e^{z_{j}}}}}
+\]
+
+Where:
+\[
+    {\displaystyle \sigma \colon \mathbb {R} ^{K}\to (0,1)^{K}}
+    \hfill
+    {\displaystyle K\geq 1}
+\]
+\[
+    {\displaystyle \mathbf {z} =(z_{1},\dotsc ,z_{K})\in \mathbb {R} ^{K}}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

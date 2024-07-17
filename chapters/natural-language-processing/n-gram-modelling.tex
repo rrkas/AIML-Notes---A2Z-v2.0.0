@@ -1,0 +1,469 @@
+\chapter{N-gram Language Modelling (LM)}
+
+\section{N-gram/ shingles \cite{wiki-n-gram}}
+
+An n-gram is a sequence of n adjacent symbols in particular order. The symbols may be n adjacent letters (including punctuation marks and blanks), syllables, or rarely whole words found in a language dataset; or adjacent phonemes extracted from a speech-recording dataset, or adjacent base pairs extracted from a genome. They are collected from a text corpus or speech corpus. \\
+If Latin numerical prefixes are used, then n-gram of size 1 is called a "unigram", size 2 a "bigram" (or, less commonly, a "digram") etc. \\
+If, instead of the Latin ones, the English cardinal numbers are furtherly used, then they are called "four-gram", "five-gram", etc. \\
+Similarly, using Greek numerical prefixes such as "monomer", "dimer", "trimer", "tetramer", "pentamer", etc., or English cardinal numbers, "one-mer", "two-mer", "three-mer", etc. are used in computational biology, for polymers or oligomers of a known size, called k-mers. When the items are words, n-grams may also be called shingles.
+
+\[
+    C(\text{\textbf{text}}) : \text{Count of \textbf{text} in corpus}
+\]
+
+\[
+    P(X_1...X_n) = P(X_1)P(X_2|X_1)P(X_3|X_{1:2})...P(X_n|X_{1:n-1}) = \prod_{k=1}^{n} P(X_k|X_{1:k-1}) 
+\]
+
+Or,
+\[
+    P(w_{1:n}) = P(w_1)P(w_2|w_1)P(w_3|w_{1:2})...P(w_n|w_{1:n-1}) = \prod_{k=1}^{n} P(w_k|w_{1:k-1}) 
+\]
+
+N-gram approximation (using \textbf{Markov assumption}):
+\[
+    P(w_n|w_{1:n-1}) \approx P(w_n|w_{n-N+1:n-1})
+\]
+
+\subsection{Bigram \cite{nlp-1}}
+bigram: \(w_{n-1}w_n\)
+\[
+    \text{count of the bigram} = C(w_{n-1}w_n)
+\]
+\[
+    P(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n)}{\sum_w C(w_{n-1}w)} = \displaystyle\frac{C(w_{n-1}w_n)}{C(w_{n-1})} 
+\]
+
+\subsection{General N-gram \cite{nlp-1}}
+
+\[
+    P(w_n|w_{n-N+1:n-1}) = \displaystyle\frac{C(w_{n-N+1:n-1} w_n)}{C(w_{n-N+1:n-1})}
+\]
+
+where,
+\[
+    n \text{ is the position of the current word in the text.}
+\]
+\[
+    N \text{ is the order of the N-gram model.}
+\]
+
+
+\section{Perplexity (PP/ PPL) \cite{nlp-1}}
+
+The perplexity (sometimes abbreviated as PP or PPL) of a language model on a test set is the inverse probability of the test set (one over the probability of the test set), normalized by the number of words. For this reason it’s sometimes called the \textbf{per-word perplexity}\index{per-word perplexity}.
+
+Let word: \(W = w_1w_2 ...w_N\)
+
+\[
+    perplexity(W) = P(w_1w_2 ...w_N)^{-\displaystyle\frac{1}{N}} = \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2 ...w_N)}} = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2 ...w_{i-1})}}
+\]
+
+For Unigram:
+\(
+   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i)}}
+\)
+
+\vspace{0.2cm}
+
+For Bigram:
+\(
+   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_{i-1})}}
+\)
+
+\subsection{Perplexity’s Relation to Entropy}
+The perplexity measure actually arises from the information-theoretic concept of cross-entropy, which explains otherwise mysterious properties of perplexity.
+
+\subsubsection{Entropy}\label{Entropy}
+\textbf{Entropy} is a measure of information.\\
+Given a random variable $X$ ranging over whatever we are predicting (words, letters, parts of speech, the set of which we’ll call $\chi$) and with a particular probability function, call it $p(x)$, the entropy of the random variable $X$ is:
+\[
+    \displaystyle H(\chi) = - \sum_{x \in \chi} p(x)\log_2p(x)
+\]
+The log can, in principle, be computed in any base. If we use log base 2, the
+resulting value of entropy will be measured in \textbf{bits}.
+
+One intuitive way to think about entropy is as a lower bound on the number of bits it would take to encode a certain decision or piece of information in the optimal coding scheme.
+
+\subsubsection{Entropy for sequence of words}\label{Entropy for sequence of words}
+sequence of words: $W = {w_1,w_2,...,w_n}$\\
+language: $L$
+
+\[
+    H(w_1,w_2,...,w_n) = H(w_{1:n}) = -\displaystyle\sum_{w_{1:n}\in L} p(w_{1:n})\log(p(w_{1:n}))
+\]
+
+\subsubsection{Entropy Rate/ Per-word Entropy}
+We could define the entropy rate (we could also think of this as the per-word entropy) as the entropy of this sequence divided by the number of words:
+
+\[
+    \text{Entropy Rate} = \displaystyle\frac{1}{n}H(w_{1:n}) = -\displaystyle\frac{1}{n}\sum_{w_{1:n}\in L} p(w_{1:n})\log(p(w_{1:n}))
+\]
+
+But to measure the true entropy of a language, we need to consider sequences of infinite length. If we think of a language as a stochastic process $L$ that produces a sequence of words, and allow $W$ to represent the sequence of words $w_1,...,w_n$, then $L$’s entropy rate $H(L)$ is defined as:
+
+\[
+    H(L) = \lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}H(w_{1:n}) = -\lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}\sum_{W \in L} p(w_{1:n})\log(p(w_{1:n}))
+\]
+
+The \textbf{Shannon-McMillan-Breiman theorem}\index{Shannon-McMillan-Breiman theorem} states that if the language is regular in certain ways (to be exact, if it is both \textbf{stationary} and \textbf{ergodic}). That is, we can take a single sequence that is long enough instead of summing over all possible sequences. The intuition of the Shannon-McMillan-Breiman theorem is that a long-enough sequence of words will contain in it many other shorter sequences and that each of these shorter sequences will reoccur in the longer sequence according to their probabilities.\\By making some incorrect but convenient simplifying assumptions, we can compute the entropy of some stochastic process by taking a very long sample of the output and computing its average log probability
+
+\begin{itemize}
+    \item A \textbf{stochastic process} is said to be \textbf{stationary} if the probabilities it assigns to a sequence are \textbf{invariant} with respect to shifts in the time index.\\ In other words, the probability distribution for words at time $t$ is the same as the probability distribution at time $t + 1$. Markov models, and hence n-grams, are stationary.\\ For example, in a bigram, $P_i$ is dependent only on $P_{i-1}$. So if we shift our time index by $x$, $P_{i+x}$ is still dependent on $P_{i+x-1}$.
+    \item \textbf{ergodic}\index{ergodic}: of or relating to a process in which every sequence or sizable sample is equally representative of the whole (as in regard to a statistical parameter)\\
+    Source: \href{https://www.merriam-webster.com/dictionary/ergodic}{https://www.merriam-webster.com/dictionary/ergodic}
+\end{itemize}
+
+\[
+    H(L) = \lim_{n \rightarrow \infty} -\displaystyle\frac{1}{n} \log(p(w_{1:n}))
+\]
+
+\subsubsection{Cross-Entropy}
+The cross-entropy is useful when we \textbf{don’t know} the actual probability distribution p that generated some data. It allows us to use some $m$, which is a model of $p$ (i.e., an approximation to $p$). The
+cross-entropy of $m$ on $p$ is defined by:
+\[
+    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\frac{1}{n}\sum_{W\in L} p(w_{1:n})\log(m(w_{1:n}))
+\]
+
+Following the \textbf{Shannon-McMillan-Breiman theorem}, for a stationary ergodic process:
+
+\[
+    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\frac{1}{n}\log(m(w_{1:n}))
+\]
+
+This means that, as for entropy, we can estimate the cross-entropy of a model $m$ on some distribution $p$ by taking a single sequence that is long enough instead of summing over all possible sequences.\\
+
+What makes the cross-entropy useful is that the cross-entropy $H(p,m)$ is an upper bound on the entropy $H(p)$. For any model $m$, \(H(p) \leq H(p,m)\).
+
+
+This means that we can use some simplified model $m$ to help estimate the true entropy of a sequence of symbols drawn according to probability $p$. The more accurate $m$ is, the closer the cross-entropy $H(p,m)$ will be to the true entropy $H(p)$. Thus, the difference between $H(p,m)$ and $H(p)$ is a measure of how accurate a model is. Between two models $m_1$ and $m_2$, the more accurate model will be the one with the lower cross-entropy. (The cross-entropy can never be lower than the true entropy, so a model cannot err by underestimating the true entropy.)
+
+Cross-entropy is defined in the limit as the length of the observed word sequence goes to infinity. We will need an approximation to cross-entropy, relying on a (sufficiently long) sequence of fixed length. This approximation to the cross-entropy of a model $M = P(w_i|w_{i-N+1:i-1})$ on a sequence of words $W$ is:
+\[
+    H(W) = -\displaystyle\frac{1}{N}\log(P(w_1w_2...w_N))
+\]
+
+
+\subsubsection{Putting pieces together}
+\begin{align}
+    Perplexity(W)       \notag
+        &= 2^{H(W)}    \\ \notag
+        &= P(w_1w_2...w_N)^{-\displaystyle\frac{1}{N}} \\ \notag
+        &= \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2...w_N)}} \\ \notag
+        &= \sqrt[N]{\sum_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2...w_{i-1})}} \notag
+\end{align}
+
+
+
+
+
+\section{Sampling sentences from a language model \cite{nlp-1}}
+
+\textbf{Sampling} from a distribution means to choose random points according to their likelihood. Thus sampling from a language model—which represents a distribution over sentences—means to generate some sentences, choosing each sentence according to its likelihood as defined by the model. Thus we are more likely to generate sentences that the model thinks have a high probability and less likely to generate sentences that the model thinks have a low probability.
+
+\begin{algorithm}
+    \caption{Sampling from a Language Model}
+    Initialize Tokens with the tokenized input prompt\;
+    Set MaxLength to the desired maximum sequence length\;
+    Set k to the desired number of top tokens to consider\;
+    
+    \While{Length(Tokens) < MaxLength}{
+        \Comment{Get the probability distribution for the next token}
+        NextTokenProbs $\leftarrow$ Model(Tokens)\; 
+        
+        \Comment{Select the top-k probabilities and their indices}
+        TopKProbs, TopKIndices $\leftarrow$ TopK(NextTokenProbs, k)\; 
+        
+        \Comment{Normalize the top-k probabilities to form a probability distribution}
+        TopKProbs $\leftarrow$ Normalize(TopKProbs)\; 
+        
+        \Comment{Sample an index from the top-k indices based on the normalized probabilities}
+        SampledIndex $\leftarrow$ Sample(TopKIndices, TopKProbs)\; 
+        
+        \Comment{Append the sampled token index to the sequence}
+        Tokens.append(SampledIndex)\; 
+    }
+    
+    Detokenize Tokens to form the final generated sentence\;
+\end{algorithm}
+
+
+\section{Generalization of n-grams \cite{nlp-1}}
+\begin{itemize}
+    \item $V$ = vocabulary size, or the number of unique words in the corpus
+    \item $N$ = total count of word tokens ( $N \geq V$ )
+\end{itemize}
+
+Total possible n-grams = $V^n$
+
+\section{Zero probability n-grams (zeros) \cite{nlp-1}}
+
+As any corpus is limited, some perfectly acceptable English word sequences are bound to be missing from it. That is, we’ll have many cases of putative “zero probability n-grams” that should really have some non-zero probability.
+
+\begin{itemize}
+    \item Their presence means we are underestimating the probability of all sorts of words that might occur, which will hurt the performance of any application we want to run on this data.
+    \item If the probability of any word in the test set is 0, the entire probability of the test set is 0. By definition, perplexity is based on the inverse probability of the test set. Thus if some words have zero probability, we can’t compute perplexity at all, since we can’t divide by 0!
+\end{itemize}
+
+
+\section{Closed vocabulary \cite{nlp-1}}
+
+Stipulating that we already know all the words that can occur. In such a \textbf{closed vocabulary} system the test set can only contain words from closed vocabulary this known lexicon, and there will be \textbf{no unknown words}.
+
+
+\section{Unknown Words/ Out Of Vocabulary (OOV) \cite{nlp-1}}
+
+If our language model is using words instead of tokens, however, we have to deal with unknown words, or out of vocabulary (OOV) words: words we haven’t seen before. The percentage of OOV words that appear in the test set is called the OOV rate.
+
+
+\section{Smoothing or Discounting \cite{nlp-1}}
+
+To keep a language model from assigning zero probability to these unseen events, we’ll have to shave off a bit of probability mass from some more frequent events and give it to the events we’ve never seen. This modification is called \textbf{smoothing} or \textbf{discounting}.
+
+\begin{table}[H]
+    \begin{tabular}{l l}
+        $w_i$ & word token \\
+        $c_i$ & original count of word token $w_i$ \\
+        $N$ & total number of word tokens \\
+        $P(w_i)$ & original (unigram) probability of $w_i$ \\
+        $c_i^*$ & adjusted/ discounted count of $w_i$ \\
+        $P_i^*$ & adjusted/ discounted probability of $w_i$ \\
+    \end{tabular}
+\end{table}
+
+\subsection{Dicounting \cite{nlp-1}}
+A related way to view smoothing is as discounting (lowering) some non-zero counts in order to get the probability mass that will be assigned to the zero counts.
+
+
+\[
+    d_c = \displaystyle\frac{c^*}{c}  \hfill \text{(relative discount)}
+\]
+
+\subsection{Absolute Discounting}
+Absolute discounting means subtracting a fixed (absolute) discount d from each count. The intuition is that since we have good estimates already for the very high counts, a small discount $d$ won’t affect them much. It will mainly modify the smaller counts, for which we don’t necessarily trust the estimate anyway. 
+\[
+    P_{AbsoluteDiscounting}(w_i|w_{i-1}) = \displaystyle\frac{C(w_{i-1}w_i)-d}{\sum_v C(w_{i-1} v)} + \lambda (w_{i-1})P(w_i) \hfill \text{(for bigrams)}
+\]
+
+\begin{itemize}
+    \item \textbf{First Term}: discounted bigram with $0 \leq d \leq 1$\\
+    There are principled methods for setting $d$. Example:\\
+    Set $d$ as a function of $n_1$ and $n_2$, the number of unigrams that have a count of 1 and a count of 2:\\
+    \[
+        d = \displaystyle\frac{n_1}{n_1 + n_2}
+    \]
+    \item \textbf{Second Term}: unigram with an interpolation weight $\lambda$
+\end{itemize}
+
+\subsection{Kneser-Ney Discounting}\label{Kneser-Ney Discounting}
+The Kneser-Ney intuition is to base our estimate of $P_{CONTINUATION}$ on the number of different contexts word w has appeared in, that is, the number of bigram types it completes. Every bigram type was a novel continuation the first time it was seen. We hypothesize that words that have appeared in more contexts in the
+past are more likely to appear in some new context as well. The number of times a word w appears as a novel continuation can be expressed as:
+
+\[
+    P_{CONTINUATION}(w) \propto |\{v : C(vw) > 0\}|
+\]
+\[
+    P_{CONTINUATION}(w) = \displaystyle\frac{|\{v : C(vw) > 0\}|}{|\{(u',w') : C(u'w') > 0\}| } = \displaystyle\frac{|\{v : C(vw) > 0\}|}{\sum_{w'} |\{v : C(vw') > 0\}|}
+\]
+
+\subsection{Laplace (add-one) Smoothing \cite{nlp-1}}
+The simplest way to do smoothing is to add one to all the n-gram counts, before we normalize them into probabilities.
+
+For unigrams,
+\[
+    P(w_i) = \displaystyle\frac{c_i}{N}
+\]
+\[
+    P_{Laplace}(w_i) = \displaystyle\frac{c_i + 1}{N + V} \hfill \text{(Laplace)}
+\]
+\[
+    c_i^* = (c_i +1)\displaystyle\frac{N}{N + V}
+\]
+\[
+    P^*(w_i) = \displaystyle\frac{c_i^*}{N}
+\]
+For bigrams,
+\[
+    P_{Laplace}(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n) + 1}{\sum_w (C(w_{n-1}w) + 1)} = \displaystyle\frac{C(w_{n-1}w_n) + 1}{C(w_{n-1}) + V} 
+\]
+\[
+    c^*(w_{n-1}w_n) = \displaystyle\frac{[C(w_{n-1}w_n)+1] \times C(w_{n-1})}{C(w_{n-1}) + V} 
+\]
+
+\subsection{Add-k smoothing \cite{nlp-1}}
+
+For bigrams,
+\[
+    P_{Add-k}(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n) + k}{\sum_w (C(w_{n-1}w) + k)} = \displaystyle\frac{C(w_{n-1}w_n) + k}{C(w_{n-1}) + kV} 
+\]
+
+\subsection{(Interpolated) Kneser-Ney smoothing}
+
+For bigram:
+\begin{align}
+    P_{KN}(w_i|w_{i-1}) \notag &= \displaystyle\frac{max(C(w_{i-1}w_i)-d,0)}{C(w_{i-1})} \\ \notag
+    &+ \lambda (w_{i-1})P_{CONTINUATION}(w_i) \\ \notag
+\end{align}
+where, $\lambda$ is a normalizing constant that is used to distribute the probability mass we’ve discounted:
+\[
+    \lambda(w_{i-1}) = \displaystyle\frac{d}{\sum_v C(w_{i-1}v)} |\{w : C(w_{i-1}w) > 0\}|
+\]
+
+General recursive formula:
+\begin{align}
+    P_{KN}(w_i|w_{i-n+1:i-1}) \notag &= \displaystyle\frac{max(c_{KN}(w_{i-n+1:i})-d,0)}{\sum_v c_{KN}(w_{i-n+1:i-1} v)} \\ \notag
+    &+ \lambda (w_{i-n+1:i-1})P_{KN}(w_i|w_{i-n+2:i-1}) \notag
+\end{align}
+
+At termination:
+\[
+    P_{KN}(w) = \displaystyle\frac{max(c_{KN}(w)-d,0)}{\sum_{w'} c_{KN}(w')} + \lambda(\epsilon)\displaystyle\frac{1}{V}
+\]
+
+\textbf{Note}:
+
+\begin{itemize}[itemsep=0.1cm]
+    \item $\epsilon$ = empty string
+    \item If we want to include an unknown word <UNK>, it’s just included as a regular vocabulary entry with count zero, and hence its probability will be a lambda-weighted uniform distribution \(\displaystyle\frac{\lambda(\epsilon)}{V}\)
+    \item \(c_{KN}(\cdot) = \begin{cases}
+        \operatorname{count}(\cdot) & \text{for the highest order} \\
+        \operatorname{continuationcount}(\cdot) & \text{for lower orders}
+    \end{cases}\)
+    \item $\operatorname{continuationcount}(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
+    \item discount: $0 \leq d \leq 1$ 
+    \item \(\displaystyle\frac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
+    \item \(|\{w : C(w_{i-1}w) > 0\}|\) is number of word types that can follow $w_{i-1}$ or equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount.
+\end{itemize}
+
+\vspace{0.2cm}
+
+SEE: \nameref{Kneser-Ney Discounting}
+
+\subsection{Modified Kneser-Ney smoothing}
+Rather than use a single modified
+Kneser-Ney fixed discount d, modified Kneser-Ney uses three different discounts d1, d2, and d3+ for n-grams with counts of 1, 2 and three or more, respectively.
+
+\section{Backoff \& Interpolation for \textit{zeros} \cite{nlp-1}}
+If we are trying to compute $P(w_n|w_{n-2}w_{n-1})$ but we have no examples of a particular trigram $w_{n-2}w_{n-1}w_n$, we can instead estimate its probability by using the bigram probability $P(w_n|w_{n-1})$. Similarly, if we don’t have counts to compute $P(w_n|w_{n-1})$, we can look to the unigram $P(w_n)$.
+
+In other words, sometimes using less context is a good thing, helping to generalize more for contexts that the model hasn’t learned much about. There are two ways to use this n-gram “hierarchy”.
+
+\subsection{Backoff}
+In backoff, we use the trigram if the evidence is sufficient, otherwise we use the bigram, otherwise the unigram. In other words, we only “back off” to a lower-order n-gram if we have zero evidence for a higher-order n-gram. 
+
+In a backoff n-gram model, if the n-gram we need has zero counts, we approximate it by backing off to the (n-1)-gram. We continue backing off until we reach a history that has some counts.
+
+\subsubsection{Katz backoff}
+
+In order for a backoff model to give a correct probability distribution, we have discount to discount the higher-order n-grams to save some probability mass for the lower order n-grams. Just as with add-one smoothing, if the higher-order n-grams aren’t discounted and we just used the undiscounted MLE probability, then as soon as we replaced an n-gram which has zero probability with a lower-order n-gram, we would be adding probability mass, and the total probability assigned to all possible strings by the language model would be \textbf{greater than 1}! In addition to this explicit discount factor, we’ll need a function $\alpha$ to distribute this probability mass to the lower order n-grams.
+
+In Katz backoff we rely on a discounted probability $P^*$
+if we’ve seen this n-gram before (i.e., if we have non-zero counts). Otherwise, we recursively back off to the Katz probability for the shorter-history (n-1)-gram. The probability for a backoff n-gram $P_{BO}$ is thus computed as follows:
+
+\[
+    P_{BO}(w_n|w_{n-N+1:n-1}) =
+\begin{cases} 
+    P^*(w_n|w_{n-N+1:n-1}), & \text{if } C(w_{n-N+1:n}) > 0 \\
+    \alpha(w_{n-N+1:n-1}) P_{BO}(w_n|w_{n-N+2:n-1}), & \text{otherwise}.
+\end{cases}
+\]
+
+\subsubsection{Good-Turing backoff}
+Katz backoff is often combined with a smoothing method called Good-Turing. The combined Good-Turing backoff algorithm involves quite detailed computation for estimating the Good-Turing smoothing and the $P^*$ and $\alpha$ values.
+
+\subsubsection{Stupid backoff}
+Stupid backoff gives up the idea of trying to make the language model a true probability distribution. There is no discounting of the higher-order probabilities. If a higher-order n-gram has a zero count, we simply backoff to a lower order n-gram, weighed by a fixed (context-independent) weight. This algorithm does not produce a probability distribution.
+
+\[
+    S(w_i|w_{i-N+1:i-1}) = \begin{cases}
+        \displaystyle\frac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})} & \text{ if $count(w_{i-N+1:i}) > 0$}\\[0.2cm]
+        \lambda S(w_i|w_{i-N+2:i-1}) & \text{ otherwise}
+    \end{cases}
+\]
+where the termination is:
+\[
+    S(w) = \displaystyle\frac{C(w)}{N} \hfill \text{(for unigram)}
+\]
+
+\subsection{Interpolation}
+In interpolation, we always mix the probability estimates from all the n-gram estimators, weighting and combining the trigram, bigram, and unigram counts.
+
+\subsubsection{Simple Interpolation}
+In simple linear interpolation, we combine different order n-grams by linearly interpolating them. Thus, we estimate the trigram probability $P(w_n|w_{n-2}w_{n-1})$ by mixing together the unigram, bigram, and trigram probabilities, each weighted by a $\lambda$:
+
+\begin{align}
+    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1 \cdot P(w_n)  \\ \notag
+    &+ \lambda_2 \cdot P(w_n|w_{n-1}) \\ \notag
+    &+ \lambda_3 \cdot P(w_n|w_{n-2}w_{n-1}) \notag
+\end{align}
+
+
+if \( \left( \sum_\lambda = 1 \right)\), then its equivalent to a weighted average.
+
+\subsubsection{Conditional Interpolation}
+With context-conditioned weights:
+\begin{align}
+    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1(w_{n-2:n-1})P(w_n) \\ \notag
+    &+ \lambda_2(w_{n-2:n-1})P(w_n|w_{n-1}) \\ \notag
+    &+ \lambda_3(w_{n-2:n-1})P(w_n|w_{n-2}w_{n-1}) \\ \notag
+\end{align}
+
+if \( \left( \sum_\lambda = 1 \right)\), then its equivalent to a weighted average.
+
+Both the simple interpolation and conditional interpolation $\lambda$s are learned from a held-out corpus. A held-out corpus is an additional training corpus, so-called because we hold it out from the training data, that we use to set hyperparameters like these $\lambda$ values. We do so by choosing the $\lambda$ values that maximize the likelihood of the held-out corpus.
+
+SEE: Expectation–Maximization (EM) algorithm (TODO)
+
+
+\section{Huge Language Model}
+Efficiency considerations are important when building language models that use such large sets of n-grams. 
+\begin{itemize}
+    \item Rather than store each word as a string, it is generally represented in memory as a 64-bit hash number, with the words themselves stored on disk. Probabilities are generally quantized using only 4-8 bits (instead of 8-byte floats), and n-grams are stored in reverse tries.
+    \item An n-gram language model can also be shrunk by pruning, for example only storing n-grams with counts greater than some threshold (such as the count threshold of 40 used for the Google n-gram release) or using entropy to prune less-important n-grams.
+    \item Another option is to build approximate language models using techniques like \textbf{Bloom filters}\index{Bloom filters}.
+    \item efficient language model toolkits like \href{https://github.com/kpu/kenlm}{https://github.com/kpu/kenlm (\textbf{Kenlm})}\index{KenLM} use sorted arrays, efficiently combine probabilities and backoffs in a single value, and use merge sorts to efficiently build the probability tables in a minimal number of passes through a large corpus.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,143 @@
+\RequirePackage[hyphens]{url}
+\documentclass[11pt,fleqn,twoside]{book} % Default font size and left-justified equations
+
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,a4paper]{geometry} % Page margins
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{52,177,201} % Define the orange color used for highlighting throughout the book
+
+% Font Settings
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Symbol, Chancery and Computer Modern fonts
+\usepackage{mathrsfs}
+
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{amsmath}
+
+\usepackage{float} % For the H option in the figure environment
+\usepackage{longtable}
+\usepackage{multicol,multirow}
+\setlength{\columnsep}{1cm}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage[none]{hyphenat}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{nameref}
+\usepackage{datetime}
+\usepackage{cancel}
+
+
+\usepackage[ruled,vlined,linesnumbered,resetcount,algochapter]{algorithm2e}
+\SetKwComment{Comment}{/* }{ */}
+
+
+% Bibliography
+\usepackage[style=numeric,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=false,backend=biber]{biblatex}
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{\chapter*{References}}
+
+\usepackage{array}
+\renewcommand{\arraystretch}{1.5} % Adjust the value to increase/decrease vertical padding in table
+
+\usepackage{ragged2e}
+
+
+\usepackage{imakeidx}
+\makeindex
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+
+\title{AIML Notes - A2Z}
+
+\begin{document}
+
+\frontmatter
+\include{extra_pages/title_page}
+\include{extra_pages/copyright}
+% \include{extra_pages/acknowledgement}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\mainmatter
+\pagenumbering{roman}
+\pagestyle{empty} % No headers
+\tableofcontents % Print the table of contents itself
+\listoffigures
+\listoftables
+\listofalgorithms
+\lstlistoflistings
+\include{chapters/notations}
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+\pagestyle{fancy} % Print headers again
+\cleardoublepage
+
+%----------------------------------------------------------------------------------------
+%	CHAPTERs
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+\pagenumbering{arabic}
+\cleardoublepage
+
+\begin{justify}
+    
+    \include{chapters/maths/functions_math}
+    \include{chapters/maths/calculus}
+    \include{chapters/maths/linear-algebra}
+    
+    \include{chapters/data/data}
+    \include{chapters/data/data_visualization}
+
+    \input{chapters/data-structs-algo/--dsa--}
+    
+    \include{chapters/data_for_ml/data_for_ml}
+    \include{chapters/data_for_ml/data_for_ml_text}
+
+    \include{chapters/ai_ml/ai}
+    \include{chapters/ai_ml/ml}
+    
+    \include{chapters/deep_neural_networks/artificial_neural_network}
+    \include{chapters/deep_neural_networks/activation_functions}
+
+
+    \include{chapters/information-retrieval/intro-to-ir}
+    \include{chapters/information-retrieval/tf-idf}
+    
+    \include{chapters/natural-language-processing/nlp}
+    \include{chapters/natural-language-processing/text-processing}
+    \include{chapters/natural-language-processing/n-gram-modelling}
+    \include{chapters/natural-language-processing/neural-lm}
+    \include{chapters/natural-language-processing/vector-semantics-n-embeddings}
+
+
+    \include{chapters/deep-reinforcement-learning/deep-reinforcement-learning}
+    \include{chapters/deep-reinforcement-learning/multi-arm-bandits-problem}
+    \include{chapters/deep-reinforcement-learning/Markov-Decision-Processes}
+    \include{chapters/deep-reinforcement-learning/solving-rl-problem}
+\end{justify}
+
+
+%----------------------------------------------------------------------------------------
+%	Additional pages
+%----------------------------------------------------------------------------------------
+
+\pagestyle{empty}
+\newgeometry{top=3cm,bottom=1.5cm,left=2cm,right=2cm}
+\nocite{*}
+\begin{justify}
+    \cleardoublepage
+    \printbibliography[heading=bibempty]
+\end{justify}
+
+\cleardoublepage
+\printindex
+
+\end{document}
+

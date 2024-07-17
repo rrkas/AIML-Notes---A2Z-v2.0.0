@@ -1,0 +1,205 @@
+\chapter{Data}
+
+\section{Measurement Levels \cite{ism-1}}\label{measurement_levels}
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        & \multicolumn{2}{c|}{Categorical Data} & \multicolumn{2}{c|}{Numerical Data} \\ \hline
+        & Nominal & Ordinal & Interval & Ratio \\ \hline
+        distinction between groups / individuals & YES & YES & YES & YES \\ \hline
+        Logical Order & & YES & YES & YES \\ \hline
+        provides a magnitude of the differences in some unit & & & YES & YES \\ \hline
+        a clear reference point or ``0'' & & & & YES \\ \hline
+    \end{tabular}
+    \caption{Measurement Levels}
+    \label{tab:data_comparison}
+\end{table}
+
+\section{Issues With Data}
+\subsection{Outliers \cite{ism-1}}\label{outliers}
+\begin{enumerate}
+    \item very extreme values
+    \item Handling outliers
+    \begin{enumerate}
+        \item Ignoring them
+        \item Removing them
+        \item Substitute them, using statistical methods, with a more plausible alternative (imputation\index{imputation})
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Unrealistic Values \cite{ism-1}}\label{unrealistic_values}
+\begin{enumerate}
+    \item erroneous, non-sensical, or otherwise unclear
+\end{enumerate}
+
+\subsection{Missing values \cite{ism-1}}\label{missing_values}
+
+\section{Describing Data \cite{ism-1}}
+
+\subsection{Frequency \cite{ism-1}}\label{frequency}
+\begin{enumerate}
+    \item Nominal and ordinal data are often described using frequency tables.
+    \item Frequency is just the number of times a value occurs in the dataset.
+    \item Interval and Ratio type data can be tackled using “binning”.
+    \subsubsection{Types of Frequencies}
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.7}
+        \begin{tabular}{|p{3.5cm}|l|}
+            \hline
+            Cumulative Frequency \cite{ism-1} \label{cumulative_frequency} & Cumulative frequency for a specific value xj is given by: \(\sum_{k=1}^{j} f_k\) \\ \hline
+            Relative Frequency \cite{ism-1} \label{relative_frequency} & \(\displaystyle\frac{f_j}{\sum_{k=1}^{n} f_k}\) \\ \hline
+            Relative Cumulative Frequency \cite{ism-1} \label{relative_cumulative_frequency} & \(\displaystyle\frac{\sum_{k=1}^{j} f_k}{\sum_{k=1}^{n} f_k}\)  \\ \hline
+        \end{tabular}
+        \caption{Types of Data Frequency}
+    \end{table}
+\end{enumerate}
+
+\subsection{Central Tendency \cite{ism-1}}
+\subsubsection{Arithmetic mean ( $\bar{x}$ ) \cite{ism-1}}\label{arithmetic_mean}
+\vspace{0.2cm}
+\[
+    \bar{x} = \displaystyle\frac{1}{n} \cdot \sum_{n}^{i=1} x_i
+\]
+
+\subsubsection{Mode \cite{ism-1}}\label{mode}
+The mode is merely the most frequently occurring value.
+
+\subsubsection{Median \cite{ism-1}}\label{median}
+The median is a value that divides the ordered data from small to large (or large to small) into two equal parts: 50% of the data is below the median and 50% is above. The median is not necessarily a value that is present in the data. Practically, we sort the data and choose the middle-most value when n is odd, or the average of the two middle values when n is even.
+
+\subsubsection{Trimmed Mean \cite{ism-1}}\label{Trimmed Mean}
+A trimmed mean is a compromise between mean and median. A 10\% trimmed mean, for example, would be computed by \textbf{eliminating} the smallest 10\% and the largest 10\% of the sample and then averaging what remains.
+
+\subsubsection{Quantiles \cite{ism-1}}\label{Quantiles}
+A quantile $x_q$ is a value that splits the ordered data of a variable x into two parts: $q \dot 100\%$ of the data is below the value xq and $(1 - q) \dot 100\%$ of the data is above. The parameter q can take any value in the interval [0, 1].
+
+\subsubsection{Quartiles \cite{ism-1}}\label{Quartiles}
+When q = 0, q = 0.25, q = 0.50, q = 0.75 and q = 1 the quantiles are referred to as the first, second, and third quartiles, respectively.
+\begin{itemize}
+    \item A cut-off of 0 (0\%) is used to indicate the minimum.
+    \item A cut-off of 1 (100\%) is used to indicate the maximum.
+\end{itemize}
+
+\subsubsection{Deciles \cite{ism-1}}\label{Deciles}
+We call quantiles deciles when q is restricted to the set {0.1, 0.2, ... , 0.9}
+
+\subsubsection{Percentiles \cite{ism-1}}\label{Percentiles}
+We call quantiles percentiles when the q is restricted to {0.01, 0.02, 0.03, ... , 0.99}.
+
+\subsection{Range \cite{ism-1}}\label{Range}
+Range is the difference between the maximum and minimum.
+
+\subsection{Interquartile Range (IQR) \cite{ism-1}}\label{iqr}
+The interquartile range (IQR) calculates the difference between the third quartile and the first quartile.
+
+\subsection{Mean absolute deviation (MAD) \cite{ism-1}}\label{Mean absolute deviation}
+\[
+    MAD = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left| x_i - \bar{x} \right|
+\]
+SEE: \hyperref[abs_value]{Absolute Value}
+
+
+\subsection{Mean squared deviation (MSD) \cite{ism-1}} \label{Mean squared deviation}
+\[
+    MSD = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2
+\]
+
+
+\subsection{Sample Variance ( $s^2$ ) \cite{ism-1}}\label{Sample Variance}
+\[
+    s^2 = \displaystyle\frac{1}{(n-1)} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2 = \displaystyle\frac{n}{(n-1)} \cdot MSD
+\]
+
+\subsection{Standard Deviation ( $s$ ) \cite{ism-1}}\label{Standard Deviation}
+\[
+    s = \sqrt{s^2}
+\]
+
+\subsection{Skewness ( $g_1$ ) \cite{ism-1}}\label{Skewness}
+\[
+    g_1 = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left( \frac{x_i - \bar{x}}{s} \right)^3
+\]
+
+Skewness is used to measure the asymmetry in data and kurtosis is used to measure the “peakedness” of data. Data is considered skewed or asymmetric when the variation on one side of the middle of the data is larger than the variation on the other side.
+
+\begin{itemize}
+    \item Compare the mean with the median to get an impression of the skewness, since the median and mean are identical under symmetric data, but this measure is more difficult to interpret than $g_1$
+    \item Data with skewness values of $|g_1| \leq 0.3$ are considered close to symmetry, since it is difficult to demonstrate that data is skewed when the value for g1 is close to zero.
+    \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
+\end{itemize}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|m{13cm}|}
+        \hline
+        $g_1 > 0$ & \vspace{0.5cm}\begin{itemize}
+            \item data is called skewed to the right
+            \item The values on the right side of the mean are further away from each other than the values on the left side of the mean. In other words, the “tail” on the right is longer than the “tail” on the left.
+        \end{itemize}\vspace{-0.5cm} \\ \hline
+        $g_1 = 0$ & data is considered symmetric around its mean \\ \hline
+        $g_1 < 0$ & \vspace{0.5cm} \begin{itemize}
+            \item data is called skewed to the left
+            \item tail on the left is longer than the tail on the right
+        \end{itemize} \vspace{-1cm} \\ \hline
+    \end{tabular}
+    \caption{Interpreting skewness ( $g_1$ ) value}
+\end{table}
+
+\subsection{Kurtosis ( $g_2$ ) \cite{ism-1}}\label{Kurtosis}
+\[
+    g_2 = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left( \frac{x_i - \bar{x}}{s} \right)^4 - 3
+\]
+
+\begin{itemize}
+    \item Values of $g_2$ in the asymmetric interval of [-0.5, 1.5] indicate near-mesokurtic data.
+    \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
+\end{itemize}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $g_2 > 0$ & leptokurtic & data has long heavy tails and is severely peaked in the middle \\ \hline
+        $g_2 = 0$ & mesokurtic & \\ \hline
+        $g_2 < 0$ & platykurtic & tails of the data are shorter with a flat peak in the middle \\ \hline
+    \end{tabular}
+    \caption{Interpreting Kurtosis ( $g_2$ ) value}
+\end{table}
+
+\subsection{Aggregated Data \cite{ism-1}}\label{Aggregated Data}
+\[
+    \bar{x} = \displaystyle\frac{\sum_{i=1}^{n} x_i \cdot f_i}{\sum_{i=1}^{n} f_i}
+\]
+\[
+    s^2 = \displaystyle\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i}{\left( \sum_{i=1}^{n} f_i \right) - 1}
+\]
+
+\begin{itemize}
+    \item Frequency $f_j$ for each group $j$
+    \item Each group $j$ we need to determine or set the value $x_j$ as a value that belongs to the group, before we can compute these measures.
+    \item $n$ : the number of groups
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
