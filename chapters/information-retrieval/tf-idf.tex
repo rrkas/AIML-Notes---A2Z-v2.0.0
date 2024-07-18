@@ -29,7 +29,7 @@
 
     \item Two documents that are similar will tend to have similar words, and if two documents have similar words their column vectors will tend to be similar.
 
-    \item documents can be represented as vectors in a vector space. A \textbf{vector space} (SEE: \nameref{Vector Spaces}) is a collection of vectors, characterized by their dimension.
+    \item documents can be represented as vectors in a vector space. A \textbf{vector space} (SEE: \fullref{Vector Spaces}) is a collection of vectors, characterized by their dimension.
 \end{itemize}
 
 \section{Words as vectors: document dimensions \cite{nlp-1}}\label{tf-idf: Words as vectors: document dimensions}
@@ -152,6 +152,22 @@ Where,
 \]
 
 
+\section{Document similarity using tf-idf}
+\begin{itemize}
+    \item The tf-idf model of meaning is often used for document functions like deciding if two documents are similar.
+
+    \item We represent a document by taking the vectors of all the words in the document, and computing the \textbf{centroid} of all those vectors.
+    
+    \item The centroid is the \textit{multidimensional version of the mean}; the centroid of a set of vectors is a single vector that has the minimum sum of squared distances to each of the vectors in the set.
+
+    \item Given $k$ word vectors $w_1,w_2,...,w_k$, the centroid document vector $d$ is:
+    \[
+        \displaystyle d = \frac{1}{k}\displaystyle\sum_{i=1}^{k} w_i
+    \]
+
+    
+
+\end{itemize}
 
 
 

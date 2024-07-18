@@ -67,7 +67,7 @@ The simplest way to estimate the value of any particular action is to average th
     Q_t(a) = \displaystyle\frac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\frac{\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
 \]
 
-SEE: \nameref{Indicator function}
+SEE: \fullref{Indicator function}
 
 \subsection{Incremental Updates}
 The simplest implementation of sample averaging would be to store the rewards for each action as well as the number of times each action was taken, then these could be used to calculate the above sample averaging formula.
@@ -138,7 +138,7 @@ In the short-run however, optimistic initialization \textbf{encourages explorati
 
 \textbf{Example}: Consider the simple 5-arm bandit environment below in which 1 arm outputs a constant reward while other arms output no reward. The only difference is that every 500 steps in the environment, the reward outputting arm changes randomly.
 
-The methods above (\nameref{MAB: Greedy Action Selection}, \nameref{MAB: Epsilon-Greedy Action Selection}) struggle to handle this type of environment.
+The methods above (\fullref{MAB: Greedy Action Selection}, \fullref{MAB: Epsilon-Greedy Action Selection}) struggle to handle this type of environment.
 
 \subsection{Problem with Sample Averaging}
 The reason that the agents perform poorly when the reward distribution is suddenly changed, is because their action-value estimations are heavily based on rewards from an old distribution.
@@ -208,7 +208,7 @@ As opposed to action-value methods that estimate the value of actions, gradient 
 
 This preference has no interpretation in terms of reward. only the relative preference over other actions matters.
 
-The probability of selecting any action is given according to a \textbf{soft-max distribution} (SEE: \nameref{Softmax function}):
+The probability of selecting any action is given according to a \textbf{soft-max distribution} (SEE: \fullref{Softmax function}):
 \[
     \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\frac{e^{H_t(a)}}{\sum_{i=1}^{k} e^{H_t(i)}}
 \]

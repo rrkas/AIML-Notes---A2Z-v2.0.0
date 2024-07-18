@@ -169,7 +169,7 @@ The SiLU (sigmoid linear unit) or swish function is another smooth approximation
     f'(x)=x\cdot \operatorname {sigmoid} '(x)+\operatorname {sigmoid} (x)
 \]
 
-SEE \nameref{sigmoid}
+SEE \fullref{sigmoid}
 
 \subsection{SmoothReLU/ Softplus \cite{wiki-Rectifier}}\label{SmoothReLU}
 A smooth approximation to the rectifier is the analytic function.
@@ -194,9 +194,9 @@ In these formulas, \(\displaystyle a\) is a hyper-parameter to be tuned with the
 \subsection{Mish \cite{wiki-Rectifier}}\label{Mish}
 The mish function can also be used as a smooth approximation of the rectifier
 \[
-\displaystyle f(x)=x\tanh {\big (}\operatorname {softplus} (x){\big )}
+\displaystyle f(x)=x\tanh {\big (}\rcmdXsoftplus (x){\big )}
 \]
-where \({\displaystyle \tanh(x)}\) is the hyperbolic tangent, and \({\displaystyle \operatorname {softplus} (x)}\) is the softplus function.\par
+where \({\displaystyle \tanh(x)}\) is the hyperbolic tangent, and \({\displaystyle \rcmdXsoftplus(x)}\) is the softplus function.\par
 Mish is non-monotonic and self-gated. It was inspired by Swish, itself a variant of ReLU.
 
 \subsection{Squareplus \cite{wiki-Rectifier}}\label{Squareplus}

@@ -103,9 +103,9 @@ For class $k \in \{1,2,...,K\}$ ($K$ classes),
 \]
 \begin{align}
     L_{CE}(\mathbf{\hat{y}}, \mathbf{y}) &= -\sum_{k=1}^{K} \mathbbm{1}_{\mathbf{y}_k =1}\log(\mathbf{\hat{y}}_k) \notag
-    \repeatn{16}{\quad} \text{SEE: \nameref{Indicator function}}\\
+    \repeatn{16}{\quad} \text{(SEE: \fullref{Indicator function})}\\
     &= -\log(\mathbf{\hat{y}}_c)\notag \repeatn{20}{\quad} \text{(where c is the correct class)}\\
-    &= -\log\displaystyle\frac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)} \notag \repeatn{7}{\quad} \text{(using softmax | SEE: \nameref{Softmax function})}
+    &= -\log\displaystyle\frac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)} \notag \repeatn{7}{\quad} \text{(using \fullref{Softmax function})}
 \end{align}
 
 
@@ -192,7 +192,7 @@ Steps:
         \( \mathbf{e = [Ex_{t-3};Ex_{t-2};Ex_{t-1}]} \)
     \end{center}
 
-    \item \textbf{Multiply by} $\mathbf{W}$: We multiply by $\mathbf{W}$ (and add $\mathbf{b}$) and pass through the ReLU (or other) activation function (SEE: \nameref{chapter: Activation Functions}) to get the hidden layer $\mathbf{h}$.
+    \item \textbf{Multiply by} $\mathbf{W}$: We multiply by $\mathbf{W}$ (and add $\mathbf{b}$) and pass through the ReLU (or other) activation function (SEE: \fullref{chapter: Activation Functions}) to get the hidden layer $\mathbf{h}$.
     \begin{center}
         \(\mathbf{h = \sigma(W\cdot e+b)}\)
     \end{center}

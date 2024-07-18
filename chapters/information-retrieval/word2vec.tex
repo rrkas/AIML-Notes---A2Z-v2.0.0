@@ -1,0 +1,89 @@
+\chapter{Word2Vec \cite{nlp-1}}
+
+\begin{itemize}
+    \item Word2vec embeddings are \textbf{static embeddings}, meaning that the method learns one fixed embedding for each word in the vocabulary.
+    
+    \item The intuition of word2vec is that instead of counting how often each word w occurs near, say, apricot, we’ll instead train a classifier on a binary prediction task: “Is word w likely to show up near apricot?” 
+    
+    \item We don’t actually care about this prediction task; instead we’ll take the learned classifier weights as the word embeddings.
+
+    \item (\textbf{self-supervision}) The revolutionary intuition here is that we can just use running text as implicitly supervised training data for such a classifier; a word c that occurs near the target word \textbf{apricot} acts as gold ‘correct answer’ to the question “\textit{Is word c likely to show self-supervision up near apricot?}”\\
+    avoids the need for any sort of hand-labeled supervision signal.
+
+    \item word2vec is a much simpler model than the neural network language model:
+    \begin{enumerate}
+        \item word2vec simplifies the task (making it binary classification instead of word prediction)
+
+        \item word2vec simplifies the architecture (training a logistic regression classifier instead of a multi-layer neural network with hidden layers that demand more sophisticated training algorithms)
+    \end{enumerate}
+\end{itemize}
+
+\section{Embedding \cite{nlp-1}}\label{Embedding}
+\begin{itemize}
+    \item powerful word representation
+    
+    \item short \textbf{dense vectors} \index{dense vectors} \label{dense vectors}\\
+    instead of vector entries being sparse, mostly-zero counts or functions of counts, the values will be real-valued numbers that can be negative.
+
+    \item embeddings are \textbf{short}, with number of dimensions $d$ ranging from $50-1000$, rather than the much larger vocabulary size $|V|$ or number of documents $D$
+
+    \item These $d$ dimensions don’t have a clear interpretation.
+
+    \item dense vectors work \textbf{better} in every NLP task than sparse vectors.\\
+    \textbf{Intuition}: Representing words as $300$-dimensional dense vectors requires our classifiers to learn far fewer weights than if we represented words as $50,000$-dimensional vectors, and the smaller parameter space possibly helps with generalization and avoiding overfitting.
+
+    \item Dense vectors may also do a better job of capturing \textbf{synonymy}. (SEE: \fullref{Synonymy})
+
+    
+\end{itemize}
+
+\section{Skip-gram \cite{nlp-1}}\label{Skip-gram}
+\textbf{Intuition}:
+\begin{enumerate}
+    \item Treat the target word and a neighboring context word as positive examples.
+    \item Randomly sample other words in the lexicon to get negative samples.
+    \item Use logistic regression to train a classifier to distinguish those two cases.
+    \item Use the learned weights as the embeddings.
+\end{enumerate}
+
+\subsection{Classifier - Example \cite{nlp-1}}
+\begin{enumerate}
+    \item Imagine a sentence like the following, with a target word apricot, and assume we’re using a window of $\pm 2$ context words:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c c c c c c c c c}
+            $\cdots$ & lemon, a & \textbf{[tablespoon} & \textbf{of} & \textbf{apricot} & \textbf{jam,} & \textbf{a]} & pinch & $\cdots$ \\
+             &  & c1 & c2 & w & c3 & c4 &  &  \\
+        \end{tabular}
+    \end{table}
+
+    \item \textbf{Goal}: train a classifier such that, given a tuple $(w, c)$ of a target word $w$ paired with a candidate context word $c$ it will return the probability that $c$ is a real context word: \[ P(+|w, c) \]
+
+    \item The probability that word $c$ is not a real context word for $w$ is just $1$ minus: \[ P(-|w, c) = 1-P(+|w, c) \]
+
+    \item The \textbf{intuition} of the skip-gram model is to base this probability on embedding similarity:\\
+    a word is likely to occur near the target if its embedding vector is similar to the target embedding.\\
+    To compute similarity between these dense embeddings, we rely on the intuition that two vectors are similar if they have a high \textbf{dot product}
+    \[ \rcmdXSimilarity(w,c) \approx \mathbf{c\cdot w} \hfill \in (-\infty,\infty) \]
+
+    \item Using \fullref{Logistic function}:
+    \[
+        \displaystyle P(+|w, c) = \sigma(\mathbf{c\cdot w}) = \frac{1}{1 + \exp(-\mathbf{c\cdot w})} \hfill \in [0,1]
+    \]
+    \[
+        P(-|w, c) = 1 - P(+|w, c) = \sigma(\mathbf{-c\cdot w}) = \frac{1}{1 + \exp(\mathbf{c\cdot w})} \hfill \in [0,1]
+    \]
+
+    
+\end{enumerate}
+
+
+
+
+
+
+\vspace{4cm}
+\url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
+130/577
+
+

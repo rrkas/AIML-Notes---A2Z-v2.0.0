@@ -297,7 +297,7 @@ Control problem refers to the problem of estimating optimal policies, because, i
 
 The only problem being that some of the action-state pairs may not be visited ever, this problem is part of the general problem of \textbf{maintaining sufficient exploration in reinforcement learning}, one of the naive approach that is often taken is called the \textbf{assumption of exploring starts}, which states that every state-action pair has a non-zero probability of being selected as the starting state \& action of the episode, although this does satisfy our requirement of visiting every state \& action pair, it is quite evident that this does not solve the problem of exploration since start states are not very relevant to the outcome of the entire episode.
 
-Optimal policy estimation in Monte Carlo, is based on the general method of \textbf{Generalized Policy Iteration (GPI)} (SEE: \nameref{Generalized Policy Iteration (GPI)}), where the value function is repeatedly altered to more closely approximate the value function for the current policy, and the policy is repeatedly improved with respect to the current value function.
+Optimal policy estimation in Monte Carlo, is based on the general method of \textbf{Generalized Policy Iteration (GPI)} (SEE: \fullref{Generalized Policy Iteration (GPI)}), where the value function is repeatedly altered to more closely approximate the value function for the current policy, and the policy is repeatedly improved with respect to the current value function.
 
 We perform policy evaluation and then subsequently policy improvement repeatedly till we converge and find the optimal policy.
 
