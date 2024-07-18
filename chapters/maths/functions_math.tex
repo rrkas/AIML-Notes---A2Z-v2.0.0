@@ -52,9 +52,9 @@ Natural Logarithm Function ($a=e$):
 \]
 
 
-\section{Sign Function ( $\operatorname{sgn}(x)$ )}\label{Sign Function}
+\section{Sign Function ( $\rcmdXsgn(x)$ )}\label{Sign Function}
 \begin{align}
-    \operatorname{sgn}(x) = \begin{cases}
+    \rcmdXsgn(x) = \begin{cases}
          1 & \text{ if } x > 0 \\
          0 & \text{ if } x = 0 \\
          -1 & \text{ if } x < 0 
@@ -157,8 +157,7 @@ Natural Logarithm Function ($a=e$):
 \section{Inverse trigonometric functions - TODO \cite{wiki-Inverse_trigonometric_functions}}\label{Inverse trigonometric functions}
 
 \section{Hyperbolic Functions \cite{wiki-Hyperbolic_functions}}\label{Hyperbolic_functions}
-\newcommand{\sech}{\operatorname{sech}}
-\newcommand{\csch}{\operatorname{csch}}
+
 
 \begin{table}[H]
     \centering
@@ -174,7 +173,7 @@ Natural Logarithm Function ($a=e$):
         \begin{figure}[H]
             \centering
             \includegraphics[height=7.5cm]{Pictures/maths/Csch_sech_coth.jpg}
-            \caption{$\csch(x)$, $\sech(x)$ \& $\coth(x)$}
+            \caption{$\rcmdXcsch(x)$, $\rcmdXsech(x)$ \& $\coth(x)$}
         \end{figure}
     \end{minipage}
 \end{table}
@@ -201,14 +200,14 @@ Natural Logarithm Function ($a=e$):
 
 $x \neq 0$
 
-\subsection{Hyperbolic secant ( $\sech(x)$ )} \label{sech}
+\subsection{Hyperbolic secant ( $\rcmdXsech(x)$ )} \label{sech}
 \[
-    \sech(x) = \displaystyle\frac{1}{\cosh(x)} = \displaystyle\frac{2}{e^{x} + e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} + 1}
+    \rcmdXsech(x) = \displaystyle\frac{1}{\cosh(x)} = \displaystyle\frac{2}{e^{x} + e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} + 1}
 \]
 
-\subsection{Hyperbolic cosecant ( $\csch(x)$ )}\label{csch}
+\subsection{Hyperbolic cosecant ( $\rcmdXcsch(x)$ )}\label{csch}
 \[
-    \csch(x) = \displaystyle\frac{1}{\sinh(x)} = \displaystyle\frac{2}{e^{x} - e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} - 1}
+    \rcmdXcsch(x) = \displaystyle\frac{1}{\sinh(x)} = \displaystyle\frac{2}{e^{x} - e^{-x}} = \displaystyle\frac{2e^{x}}{e^{2x} - 1}
 \]
 $x \neq 0$
 
@@ -218,9 +217,9 @@ $x \neq 0$
     \centering
     \begin{tabular}{|c|r|r|r|r|r|r|}
         \hline
-        $\theta$ & $\sinh(\theta)$ & $\cosh(\theta)$ & $\tanh(\theta)$ & $\coth(\theta)$ & $\sech(\theta)$ & $\csch(\theta)$ \\ \hline
+        $\theta$ & $\sinh(\theta)$ & $\cosh(\theta)$ & $\tanh(\theta)$ & $\coth(\theta)$ & $\rcmdXsech(\theta)$ & $\rcmdXcsch(\theta)$ \\ \hline
 
-        $-\theta$ & $-\sinh(\theta)$ & $\cosh(\theta)$ & $-\tanh(\theta)$ & $-\coth(\theta)$ & $\sech(\theta)$ & $-\csch(\theta)$ \\ \hline
+        $-\theta$ & $-\sinh(\theta)$ & $\cosh(\theta)$ & $-\tanh(\theta)$ & $-\coth(\theta)$ & $\rcmdXsech(\theta)$ & $-\rcmdXcsch(\theta)$ \\ \hline
     \end{tabular}
     \caption{Hyperbolic angles}
 \end{table}

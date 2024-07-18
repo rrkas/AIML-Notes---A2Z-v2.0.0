@@ -326,10 +326,10 @@ At termination:
     \item $\epsilon$ = empty string
     \item If we want to include an unknown word <UNK>, it’s just included as a regular vocabulary entry with count zero, and hence its probability will be a lambda-weighted uniform distribution \(\displaystyle\frac{\lambda(\epsilon)}{V}\)
     \item \(c_{KN}(\cdot) = \begin{cases}
-        \operatorname{count}(\cdot) & \text{for the highest order} \\
-        \operatorname{continuationcount}(\cdot) & \text{for lower orders}
+        \rcmdXcount(\cdot) & \text{for the highest order} \\
+        \rcmdXcontinuationcount(\cdot) & \text{for lower orders}
     \end{cases}\)
-    \item $\operatorname{continuationcount}(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
+    \item $\rcmdXcontinuationcount(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
     \item discount: $0 \leq d \leq 1$ 
     \item \(\displaystyle\frac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
     \item \(|\{w : C(w_{i-1}w) > 0\}|\) is number of word types that can follow $w_{i-1}$ or equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount.

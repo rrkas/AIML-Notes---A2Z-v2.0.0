@@ -272,7 +272,7 @@ In the first visit Monte Carlo methods we average all the rewards observed after
                 $G\leftarrow \gamma G + R_{t+1}$\;
                 \Repeat{$S_t$ appears in $S_0,S_1,...,S_{t-1}$}{
                     Append $G$ to $Returns(S_t)$\;
-                    $V(S_t) \leftarrow \operatorname{average}(Returns(S_t))$\;
+                    $V(S_t) \leftarrow \rcmdXaverage(Returns(S_t))$\;
                 }
             }
         }
@@ -387,7 +387,7 @@ In this case, we say that learning is from data “off” the target policy, and
     \begin{itemize}
         \item \(G_t = \displaystyle\sum_{k=t+1}^{T} \gamma^{k-t+1}R_k\)
         \item Append $G_t$ to $Returns(S_t,A_t)$
-        \item $Q_b(S_t,A_t) \leftarrow \operatorname{Weighted\_AVG}(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle E[X \sim p] = \sum_x p(x)x \right) \)
+        \item $Q_b(S_t,A_t) \leftarrow \rcmXWeightedAVG(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle E[X \sim p] = \sum_x p(x)x \right) \)
         \item Computing the weighted average based on the sample probability would reduce variance (eliminate impact of noisy sampling)
     \end{itemize}
     

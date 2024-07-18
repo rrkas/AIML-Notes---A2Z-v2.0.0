@@ -162,7 +162,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
     \item the dimension of a vector space can be thought of as the number of independent directions in this vector space.
 
     \item The dimension of a vector space is \textbf{NOT} necessarily the number of elements in a vector.\\
-    \textbf{Example}: $V = \operatorname{span}[\begin{bmatrix}0\\1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
+    \textbf{Example}: $V = \rcmdXspan[\begin{bmatrix}0\\1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
     
 \end{itemize}
 
@@ -241,8 +241,8 @@ Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb
 \end{itemize}
 
 
-\section{Span ( $\operatorname{span}[\mathbb{A}]$ ) \cite{mfml-1}} \label{lin-alg: Span}
-The set of all linear combinations of vectors in a generating set $\mathbb{A}$ is called the span of $\mathbb{A}$. If $\mathbb{A}$ spans the vector space $V$, we write $V = span[\mathbb{A}]$ or $V = span[\mathbf{x_1, . . . , x_k}]$.
+\section{Span ( $\rcmdXspan[\mathbb{A}]$ ) \cite{mfml-1}} \label{lin-alg: Span}
+The set of all linear combinations of vectors in a generating set $\mathbb{A}$ is called the span of $\mathbb{A}$. If $\mathbb{A}$ spans the vector space $V$, we write $V = \rcmdXspan[\mathbb{A}]$ or $V = \rcmdXspan[\mathbf{x_1, . . . , x_k}]$.
 
 
 
@@ -277,7 +277,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
 \end{itemize}
 
 \subsection{Finding Basis \cite{mfml-1}}
-A basis of a subspace $U = span[\mathbf{x_1, ..., x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
+A basis of a subspace $U = \rcmdXspan[\mathbf{x_1, ..., x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
 \begin{enumerate}
     \item Write the spanning vectors as columns of a matrix $\mathbf{A}$
     \item Determine the row-echelon form of $\mathbf{A}$
