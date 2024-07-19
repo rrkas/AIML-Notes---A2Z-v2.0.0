@@ -394,9 +394,9 @@ In this case, we say that learning is from data “off” the target policy, and
 \end{itemize}
 
 
-\section{Importance Sampling (IS) \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817,bits-pilani-slides}}\label{Importance Sampling}
+\section{Importance Sampling (IS) \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817,bits-pilani-slides}}\label{Importance Sampling (IS)}
 
-Almost all off-policy learning methods utilize \textbf{importance sampling}, a general technique for estimating expected values under one distribution given samples from another. We apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the \textbf{importance-sampling ratio} \index{importance-sampling ratio} \label{importance-sampling ratio}.
+Almost all off-policy learning methods utilize \textbf{importance sampling}, a general technique for estimating expected values under one distribution given samples from another. We apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the \textbf{importance-sampling ratio} \indexlabel{importance-sampling ratio}.
 
 \begin{itemize}
     \item Given a trajectory $\tau$ drawn by running $b$

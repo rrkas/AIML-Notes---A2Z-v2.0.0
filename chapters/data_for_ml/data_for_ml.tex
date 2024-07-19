@@ -12,19 +12,19 @@
 
 \section{Types of Datasets}\label{Types of Datasets}
 
-\subsection{Training Data/ Train Set}\label{data_train}
+\subsection{Training Data/ Train Set}\label{Training Data/ Train Set}
 \begin{itemize}
     \item Actual data that is used to train the model
 \end{itemize}
 
-\subsection{Testing Data/ Test Set}\label{data_test}
+\subsection{Testing Data/ Test Set}\label{Testing Data/ Test Set}
 \begin{itemize}
     \item Data used to test accuracy of model
     \item Maybe or may not be subset of train set
     \item Unseen data for model
 \end{itemize}
 
-\subsection{Validation (val) Set/ Development (dev) Set}\label{data_val_dev}
+\subsection{Validation (val) Set/ Development (dev) Set}\label{Validation (val) Set/ Development (dev) Set}
 \begin{itemize}
     \item Data used for cross-validation
     \item Subset of train set
@@ -61,7 +61,7 @@ Distribution shift is a challenging problem that occurs when the joint distribut
     \end{minipage}
 \end{table}
 
-\subsection{Covariate shift / data shift}\label{data_shift}
+\subsection{Covariate shift / data shift}\label{Covariate shift / data shift}
 Covariate shift occurs when $p(x)$ changes between train and test, but $p(y|x)$ does not. In other words, the distribution of inputs changes between train and test, but the relationship between inputs and outputs does not change.
 
 \vspace{0.2cm}
@@ -90,7 +90,7 @@ Covariate shift occurs when $p(x)$ changes between train and test, but $p(y|x)$ 
     \end{minipage}
 \end{table}
 
-\subsection{Concept shift}\label{concept_shift}
+\subsection{Concept shift}\label{Concept shift}
 Concept shift occurs when $p(y|x)$ changes between train and test, but $p(x)$ does not. In other words, the input distribution does not change, but the relationship between inputs and outputs does. This can be one of the most difficult types of distribution shift to detect and correct.
 
 \vspace{0.2cm}
@@ -100,7 +100,7 @@ Concept shift occurs when $p(y|x)$ changes between train and test, but $p(x)$ do
     \item Making purchase recommendations based on web browsing behavior, trained on pre-pandemic data and deployed in March 2020.
 \end{itemize}
 
-\subsubsection{Prior probability shift / label shift}\label{label_shift}
+\subsubsection{Prior probability shift / label shift}\label{Prior probability shift / label shift}
 Prior probability shift appears only in $y \to x$ problems (when we believe $y$ causes $x$). It occurs when $p(y)$ changes between train and test, but $p(x|y)$ does not. You can think of it as the converse of covariate shift.
 
 \vspace{0.2cm}

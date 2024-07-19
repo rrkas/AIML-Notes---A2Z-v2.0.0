@@ -27,7 +27,7 @@ It is a measure of how often two events $x$ and $y$ occur, compared with what we
 \end{itemize}
 
 
-\section{Positive PMI ( $\rcmdXPPMI(w,c)$ ) \cite{nlp-1}}\label{Positive Pointwise Mutual Information (PPMI)}
+\section{Positive Pointwise mutual information ( $\rcmdXPPMI(w,c)$ ) \cite{nlp-1}}\label{Positive Pointwise Mutual Information (PPMI)}
 
 \[
     \rcmdXPPMI(w,c) = \max\left(\log_2\left(\displaystyle\frac{P(w,c)}{P(w)P(c)}\right), 0\right)
@@ -39,7 +39,7 @@ For given co-occurrence matrix $F$:
     \item $W$ rows (words)
     \item $C$ columns (Contexts)
     \item $f_{ij}$ gives the number of times word $w_i$ occurs with context $c_j$
-    \item \textbf{PPMI matrix}\index{PPMI matrix}\label{PPMI matrix}: 
+    \item \textbf{PPMI matrix}\indexlabel{PPMI matrix}: 
     \begin{itemize}
         \item $\rcmdXPPMI_{ij} = \rcmdXPPMI(w_i, c_j) = \rcmdXPPMI(w = i, c = j)$ gives the PPMI value of word $w_i$ with context $c_j$
         
@@ -57,8 +57,8 @@ For given co-occurrence matrix $F$:
 \begin{enumerate}
     \item One way to reduce this bias toward low frequency events is to slightly change the computation for $P(c)$, using a different function $P_\alpha(c)$ that raises the probability of the context word to the power of $\alpha$.
     \[
-        \displaystyle \rcmdXPPMI_\alpha(w, c) = \max\left(\log_2\left(\frac{P(w, c)}{P(w)P_\alpha(c)}\right),0\right) \hfill \left[ P_\alpha(c) = \frac{\rcmdXcount(c)^\alpha}{\displaystyle\sum_c \rcmdXcount(c)^\alpha} \right]
-    \]
+        \displaystyle \rcmdXPPMI_\alpha(w, c) = \max\left(\log_2\left(\frac{P(w, c)}{P(w)P_\alpha(c)}\right),0\right)
+    \]    
     
     If $\alpha < 1$, this works because raising the count to $\alpha < 1$ increases the probability assigned to \textbf{rare contexts}, and hence lowers their PMI ($P_\alpha(c) > P(c)$ when $c$ is rare).
 
@@ -66,8 +66,11 @@ For given co-occurrence matrix $F$:
     
 \end{enumerate}
 
+\section{Weighted Unigram Frequency ( $P_\alpha(w)$ )}\label{Weighted Unigram Frequency (p alpha)}
 
-
+\[
+    P_\alpha(w) = \frac{\rcmdXcount(w)^\alpha}{\displaystyle\sum_{w'} \rcmdXcount(w')^\alpha}
+\]
 
 
 

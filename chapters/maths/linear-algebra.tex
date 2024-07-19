@@ -83,12 +83,12 @@ where,
 
 \textbf{Notes:}
 \begin{itemize}
-    \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\index{vectors}\label{vectors}.
+    \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\indexlabel{vectors}.
 
     \item The neutral element of $(\mathbb{V}, +)$ is the zero vector $0 = [0, ..., 0]^T$ \\
-    the inner operation $+$ is called \textbf{vector addition}\index{vector addition}\label{vector addition}.
+    the inner operation $+$ is called \textbf{vector addition}\indexlabel{vector addition}.
 
-    \item The elements $\lambda\in\mathbb{R}$ are called \textbf{scalars}\index{scalars}\label{scalars} and the outer operation $\cdot$ is a multiplication by scalars.
+    \item The elements $\lambda\in\mathbb{R}$ are called \textbf{scalars}\indexlabel{scalars} and the outer operation $\cdot$ is a multiplication by scalars.
 
     \item “vector multiplication” $\mathbf{ab, a, b} \in \mathbb{R}^n$, is \textbf{NOT} defined
 
@@ -125,9 +125,9 @@ where,
 
     \item The vector spaces $\mathbb{R}^n$, $\mathbb{R}^{n\times 1}$, $\mathbb{R}^{1\times n}$ are only different in the way we write vectors:
     \begin{itemize}
-        \item default: n-tuples as \textbf{column vectors}\index{column vectors}\label{column vectors} ($\mathbb{R}^n = \mathbb{R}^{n \times 1}$) : $\mathbf{x}$
+        \item default: n-tuples as \textbf{column vectors}\indexlabel{column vectors} ($\mathbb{R}^n = \mathbb{R}^{n \times 1}$) : $\mathbf{x}$
 
-        \item default: n-tuples as \textbf{row vectors}\index{row vectors}\label{row vectors} ($\mathbb{R}^{1 \times n}$) : $\mathbf{x}^\top$
+        \item default: n-tuples as \textbf{row vectors}\indexlabel{row vectors} ($\mathbb{R}^{1 \times n}$) : $\mathbf{x}^\top$
     \end{itemize}
 \end{itemize}
 
@@ -272,7 +272,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
     
     \item There is no unique basis. 
     
-    \item All bases possess the same number of elements, the \textbf{basis vectors}\index{basis vectors}\label{basis vectors}.
+    \item All bases possess the same number of elements, the \textbf{basis vectors}\indexlabel{basis vectors}.
 
 \end{itemize}
 
@@ -300,9 +300,9 @@ The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R
 
     \item For all $\mathbf{A} \in \mathbb{R}^{m\times n}$ and all $\mathbf{b} \in \mathbb{R}^m$ it holds that the linear equation system $\mathbf{Ax = b}$ can be solved if and only if $rk(\mathbf{A}) = rk(\mathbf{A}|\mathbf{b})$, where $\mathbf{A}|\mathbf{b}$ denotes the augmented system.
 
-    \item For $\mathbf{A} \in \mathbb{R}^{m\times n}$ the subspace of solutions for $\mathbf{Ax = 0}$ possesses dimension $n - rk(\mathbf{A})$. This subspace is called the \textbf{kernel space} or the \textbf{null space} \label{kernel space/ null space}\index{kernel space/ null space}.
+    \item For $\mathbf{A} \in \mathbb{R}^{m\times n}$ the subspace of solutions for $\mathbf{Ax = 0}$ possesses dimension $n - rk(\mathbf{A})$. This subspace is called the \textbf{kernel space}\indexlabel{kernel space} or the \textbf{null space}\indexlabel{null space}.
 
-    \item A matrix $\mathbf{A} \in \mathbb{R}^{m\times n}$ has \textbf{full rank}\label{matrix: full rank}\index{matrix: full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $rk(A) = \min(m, n)$. A matrix is said to be \textbf{rank deficient}\index{matrix: rank deficient}\label{matrix: rank deficient} if it does not have full rank.
+    \item A matrix $\mathbf{A} \in \mathbb{R}^{m\times n}$ has \textbf{full rank}\indexlabel{matrix: full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $rk(A) = \min(m, n)$. A matrix is said to be \textbf{rank deficient}\indexlabel{matrix: rank deficient} if it does not have full rank.
 
 \end{itemize}
 
@@ -318,26 +318,26 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \rightarrow W$ is called a linea
     \item we can represent linear mappings as matrices
     \item Consider a mapping $\Phi : \mathbb{V} \rightarrow \mathbb{W}$, where $\mathbb{V}$, $\mathbb{W}$ can be arbitrary sets. Then $\Phi$ is called
     \begin{itemize}
-        \item \textbf{Injective} if $\forall \mathbf{x, y} \in \mathbb{V}: \Phi(\mathbf{x}) = \Phi(\mathbf{y}) \Rightarrow \mathbf{x} = \mathbf{y}$ \index{Injective mapping}\label{Injective mapping}
+        \item \textbf{Injective} if $\forall \mathbf{x, y} \in \mathbb{V}: \Phi(\mathbf{x}) = \Phi(\mathbf{y}) \Rightarrow \mathbf{x} = \mathbf{y}$ \indexlabel{Injective mapping}
 
-        \item \textbf{Surjective} if $\Phi(\mathbb{V}) = \mathbb{W}$\index{Surjective mapping}\label{Surjective mapping}\\
+        \item \textbf{Surjective} if $\Phi(\mathbb{V}) = \mathbb{W}$\indexlabel{Surjective mapping}\\
         If $\Phi$ is surjective, then every element in $\mathbb{W}$ can be “\textbf{reached}” from $\mathbb{V}$ using $\Phi$.
 
-        \item \textbf{Bijective} if it is injective and surjective.\index{Bijective mapping}\label{Bijective mapping}\\
-        A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \rightarrow \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\index{inverse linear mapping}\label{inverse linear mapping}
+        \item \textbf{Bijective} if it is injective and surjective.\indexlabel{Bijective mapping}\\
+        A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \rightarrow \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\indexlabel{inverse linear mapping}
         
     \end{itemize}
 
-    \item \textbf{Isomorphism}\index{Isomorphism} \label{Isomorphism}: $\Phi : V \rightarrow W$ linear and bijective\\
+    \item \textbf{Isomorphism}\indexlabel{Isomorphism}: $\Phi : V \rightarrow W$ linear and bijective\\
     (\textbf{Theorem}) Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V) = \dim(W)$.\\
     Intuitively, this means that vector spaces of the same dimension are kind of the same thing, as they can be transformed into each other without incurring any loss.\\
     This gives the justification to treat $\mathbb{R}^{m\times n}$ (the vector space of ${m\times n}$-matrices) and $\mathbb{R}^{mn}$ (the vector space of vectors of length $mn$) the same, as their dimensions are $mn$, and there exists a linear, bijective mapping that transforms one into the other.
 
-    \item \textbf{Endomorphism}\index{Endomorphism} \label{Endomorphism}: $\Phi : V \rightarrow V$ linear
+    \item \textbf{Endomorphism}\indexlabel{Endomorphism}: $\Phi : V \rightarrow V$ linear
 
-    \item \textbf{Automorphism}\index{Automorphism} \label{Automorphism}: $\Phi : V \rightarrow V$ linear and bijective
+    \item \textbf{Automorphism}\indexlabel{Automorphism}: $\Phi : V \rightarrow V$ linear and bijective
 
-    \item We define $id_V : V \rightarrow V , \mathbf{x} \rightarrow \mathbf{x}$ as the \textbf{identity mapping} or \textbf{identity automorphism} \index{identity mapping or identity automorphism}\label{identity mapping or identity automorphism} in V.
+    \item We define $id_V : V \rightarrow V , \mathbf{x} \rightarrow \mathbf{x}$ as the \textbf{identity mapping}\indexlabel{identity mapping} or \textbf{identity automorphism}\indexlabel{identity automorphism} in V.
 
     \item Consider vector spaces $V, W, X$. Then:
     \begin{itemize}

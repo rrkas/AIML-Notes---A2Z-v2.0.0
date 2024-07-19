@@ -123,7 +123,7 @@ where, $L=1$ , $k=1$ \& $x_{0}=0$
 \]
 
 
-\section{Rectifier (ReLU) \cite{wiki-Rectifier}}\label{ReLU}
+\section{Rectifier/ Rectified Linear Unit (ReLU) \cite{wiki-Rectifier}}\label{ReLU}
 In the context of artificial neural networks, the rectifier or ReLU (rectified linear unit) activation function is an activation function defined as the positive part of its argument:
 \[
     f(x)=x^{+}=\max(0,x)={\displaystyle\frac {x+|x|}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
@@ -140,7 +140,7 @@ f(x)=max(x, \alpha\cdot x)={\begin{cases}x&{\text{if }}x>0,\\\alpha\cdot x&{\tex
 
 $\alpha$ is a constant
 
-\subsection{Parametric ReLU (PReLU) \cite{wiki-Rectifier}}\label{PReLU}
+\subsection{Parametric ReLU (PReLU) \cite{wiki-Rectifier}}\label{Parametric ReLU (PReLU)}
 Parametric ReLUs (PReLUs) take this idea further by making the coefficient of leakage into a parameter that is learned along with the other neural-network parameters
 \[
 f(x)=max(x, a\cdot x)={\begin{cases}x&{\text{if }}x>0,\\a\cdot x&{\text{otherwise}}\end{cases}}
@@ -148,7 +148,7 @@ f(x)=max(x, a\cdot x)={\begin{cases}x&{\text{if }}x>0,\\a\cdot x&{\text{otherwis
 
 $a$ is a learnable parameter
 
-\subsection{Gaussian-error linear unit (GELU)}\label{GELU}
+\subsection{Gaussian-error linear unit (GELU)}\label{Gaussian-error linear unit (GELU)}
 GELU is a smooth approximation to the rectifier
 \[
     f(x)=x\cdot \Phi (x)
@@ -160,7 +160,7 @@ GELU is a smooth approximation to the rectifier
 $\Phi (x)$ is Standard Normal Function
 
 
-\subsection{Sigmoid linear unit/ Swish function (SiLU)}\label{SiLU}
+\subsection{Sigmoid linear unit/ Swish function (SiLU)}\label{Sigmoid linear unit/ Swish function (SiLU)}
 The SiLU (sigmoid linear unit) or swish function is another smooth approximation, first coined in the GELU paper.
 \[
     f(x)=x\cdot \operatorname {sigmoid} (x)
@@ -171,7 +171,7 @@ The SiLU (sigmoid linear unit) or swish function is another smooth approximation
 
 SEE \fullref{sigmoid}
 
-\subsection{SmoothReLU/ Softplus \cite{wiki-Rectifier}}\label{SmoothReLU}
+\subsection{SmoothReLU/ Softplus \cite{wiki-Rectifier}}\label{SmoothReLU/ Softplus}
 A smooth approximation to the rectifier is the analytic function.
 \[ 
 f(x)=\ln(1+e^{x}) 
@@ -183,7 +183,7 @@ f'(x)={\displaystyle\frac {e^{x}}{1+e^{x}}}={\displaystyle \frac {1}{1+e^{-x}}}
 \ln \left(1+e^{x}\right)\approx {\begin{cases}\ln 2,&x=0,\\[6pt]{\displaystyle \frac {x}{1-e^{-x/\ln 2}}},&x\neq 0\end{cases}} 
 \]
 
-\subsection{Exponential linear units (ELU) \cite{wiki-Rectifier}}\label{ELU}
+\subsection{Exponential linear units (ELU) \cite{wiki-Rectifier}}\label{Exponential linear units (ELU)}
 Exponential linear units try to make the mean activations closer to zero, which speeds up learning. It has been shown that ELUs can obtain higher classification accuracy than ReLUs.
 \[
 {\displaystyle f(x)={\begin{cases}x&{\text{if }}x>0,\\a\left(e^{x}-1\right)&{\text{otherwise}}.\end{cases}}\qquad \qquad f'(x)={\begin{cases}1&{\text{if }}x>0,\\a\cdot e^{x}&{\text{otherwise}}.\end{cases}}}

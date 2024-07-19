@@ -22,7 +22,7 @@
 \begin{itemize}
     \item powerful word representation
     
-    \item short \textbf{dense vectors} \index{dense vectors} \label{dense vectors}\\
+    \item short \textbf{dense vectors} \indexlabel{dense vectors}\\
     instead of vector entries being sparse, mostly-zero counts or functions of counts, the values will be real-valued numbers that can be negative.
 
     \item embeddings are \textbf{short}, with number of dimensions $d$ ranging from $50-1000$, rather than the much larger vocabulary size $|V|$ or number of documents $D$
@@ -37,6 +37,50 @@
     
 \end{itemize}
 
+\subsection{Semantic properties of embeddings \cite{nlp-1}}
+One parameter of vector semantic models that is relevant to both sparse tf-idf vectors (SEE: \fullref{tf-idf weighted value}) and dense word2vec vectors is the size of the context window used to collect counts. This is generally between $1$ and $10$ words on each side of the target word (for a total context of $2-20$ words).
+\begin{itemize}
+    \item \textbf{Shorter context windows}
+    \begin{itemize}
+        \item tend to lead to representations that are a bit more syntactic, since the information is coming from immediately nearby words.
+        \item When the vectors are computed from short context windows, the most similar words to a target word $w$ tend to be semantically similar words with the same parts of speech.
+    \end{itemize}
+
+    \item \textbf{long context windows}: When vectors are computed from long context windows, the highest cosine words to a target word w tend to be words that are topically related but not similar.
+
+    \item Two words have \textbf{first-order co-occurrence}\indexlabel{first-order co-occurrence} (sometimes called \textbf{syntagmatic association}\indexlabel{syntagmatic association}) if they are typically nearby each other.\\
+    \textbf{Example}: \textit{wrote} is a first-order associate of \textit{book} or \textit{poem}.
+
+    \item Two words have \textbf{second-order co-occurrence} \indexlabel{second-order co-occurrence} (sometimes called \textbf{paradigmatic association}\indexlabel{paradigmatic association}) if they have similar neighbors.\\
+    \textbf{Example}: \textit{wrote} is a second-order associate of words like \textit{said} or \textit{remarked}.
+
+\end{itemize}
+
+\subsubsection{Analogy/ Relational Similarity \cite{nlp-1}}\label{Analogy/ Relational Similarity}
+\begin{itemize}
+    \item \textbf{parallelogram model}\indexlabel{parallelogram model}: for solving simple analogy problems of the form \textit{a is to b as a* is to what?}
+
+    \item For $\mathbf{a : b :: a^*: b^*}$ problem, meaning the algorithm is given vectors $\mathbf{a, b}$, and $\mathbf{a^*}$ and must find $\mathbf{b^*}$, the parallelogram method is thus:
+    \[
+        \hat{\mathbf{b}}^* = \arg\min_x distance(\mathbf{x,b-a+a^*})
+    \]
+
+    
+\end{itemize}
+
+\subsubsection{Historical Semantics \cite{nlp-1}}\label{Embeddings: Historical Semantics}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth, height=5cm, keepaspectratio]{Pictures/info-retrieval/embedding-historical-semantics.png}
+    \caption{Embeddings: Historical Semantics}
+\end{figure}
+
+Embeddings can also be a useful tool for studying how meaning changes over time, by computing multiple embedding spaces, each from texts written in a particular time period.
+
+
+
+
 \section{Skip-gram \cite{nlp-1}}\label{Skip-gram}
 \textbf{Intuition}:
 \begin{enumerate}
@@ -46,9 +90,46 @@
     \item Use the learned weights as the embeddings.
 \end{enumerate}
 
+\vspace{0.2cm}
+\noindent\textbf{Note}:
+\begin{itemize}
+    \item skip-gram trains a probabilistic classifier that, given a test target word $w$ and its context window of $L$ words $c_{1:L}$, assigns a probability based on how similar this context window is to the target word.
+
+    \item The probability is based on applying the \fullref{Logistic function} to the dot product of the embeddings of the target word with each context word. 
+    
+    \item To compute this probability, we just need embeddings for each target word and context word in the vocabulary.
+\end{itemize}
+
+
+\subsection*{Notations}
+\begin{table}[h]
+    \begin{minipage}{0.44\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/info-retrieval/skip-gram-6-13.png}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \vrule
+    \hfill
+    \begin{minipage}{0.55\linewidth}
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/info-retrieval/skip-gram-6-14.png}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabular}{l l l}
+        $\mathbf{W}$ & $\mathbb{R}^{|V|\times 1}$ & target words \\
+        $\mathbf{C}$ & $\mathbb{R}^{|V|\times 1}$ & context \& noise words \\
+        $\bm{\theta}$ & $\mathbb{R}^{2|V|\times 1}$ & \\
+    \end{tabular}
+\end{table}        
+
 \subsection{Classifier - Example \cite{nlp-1}}
 \begin{enumerate}
-    \item Imagine a sentence like the following, with a target word apricot, and assume we’re using a window of $\pm 2$ context words:
+    \item Imagine a sentence like the following, with a target word apricot, and assume we’re using a window of $L = \pm 2$ context words:
     \begin{table}[h]
         \centering
         \begin{tabular}{c c c c c c c c c}
@@ -74,8 +155,99 @@
         P(-|w, c) = 1 - P(+|w, c) = \sigma(\mathbf{-c\cdot w}) = \frac{1}{1 + \exp(\mathbf{c\cdot w})} \hfill \in [0,1]
     \]
 
+    \item For multiple context words in window:
+    \[
+        \displaystyle P(+|w, c_{1:L}) = \prod_{i=1}^{L} \sigma(\mathbf{c_i\cdot w})
+    \]
+    \[
+        \displaystyle \log(P(+|w, c_{1:L})) = \sum_{i=1}^{L} \log(\sigma(\mathbf{c_i\cdot w}))
+    \]
+
     
 \end{enumerate}
+
+
+\subsection{Learning skip-gram embeddings \cite{nlp-1}}
+\begin{enumerate}
+    \item \textbf{Input}: corpus of text, and a chosen vocabulary size $N$.
+
+    \item Assign a \textbf{random embedding vector} for each of the $N$ vocabulary words, and then proceeds to iteratively shift the embedding of each word $w$ to be more like the embeddings of words that occur nearby in texts, and less like the embeddings of words that don’t occur nearby.
+
+    \item For training a binary classifier we also need \textbf{negative examples}.
+    
+    \item \textbf{Skip-gram with negative sampling (SGNS)} uses more negative examples than positive examples (with the ratio between them set by a parameter $k$).
+
+    \item For each of these $(w, c_{pos})$ training instances we’ll create $k$ negative samples $c_{neg_1},...,c_{neg_k}$, each consisting of the target $w$ plus a ‘noise word’ $c_{neg_i}$.\\
+    A \textbf{noise word}\indexlabel{noise word} is a random word from the lexicon, constrained not to be the target word w.
+
+    \item The noise words are chosen according to their \fullref{Weighted Unigram Frequency (p alpha)}, where $\alpha$ is a weight.
+
+    \item Given the set of positive and negative training instances, and an initial set of embeddings, the goal of the learning algorithm is to adjust those embeddings to
+    \begin{itemize}
+        \item Maximize the similarity of the target word, context word pairs $(w, c_{pos})$ drawn from the positive examples
+        \item  Minimize the similarity of the $(w, c_{neg})$ pairs from the negative examples.
+    \end{itemize}
+
+    \item \textbf{Loss}:
+    \begin{align}
+        L_{CE} \notag
+        &= -\log\left[ P(+|w, c_{pos}) \prod_{i=1}^{k} P(-|w, c_{neg_i}) \right]\\ \notag
+        &= -\left[ \log(P(+|w, c_{pos})) + \sum_{i=1}^{k} \log(P(-|w, c_{neg_i})) \right]\\ \notag
+        &= -\left[ \log(P(+|w, c_{pos})) + \sum_{i=1}^{k} \log(1-P(+|w, c_{neg_i})) \right]\\ \notag
+        &= -\left[ \log(\sigma(c_{pos}\cdot w)) + \sum_{i=1}^{k} \log(\sigma(-c_{neg_i}\cdot w)) \right]\\ \notag
+    \end{align}
+    \[
+        \displaystyle \frac{\partial L_{CE}}{\partial c_{pos}} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{w} \hfill \displaystyle \frac{\partial L_{CE}}{\partial c_{neg}} = [\sigma(\mathbf{c_{neg}\cdot w})]\cdot \mathbf{w}
+    \]
+    \[
+        \displaystyle \frac{\partial L_{CE}}{\partial w} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{c}_{pos} + \sum_{i=1}^{k}[\sigma(\mathbf{c_{neg_i}\cdot w})-1]\cdot \mathbf{c}_{neg_i}
+    \]
+
+
+    \item we want to \textbf{maximize} the dot product of the word with the actual context words, and \textbf{minimize} the dot products of the word with the k negative sampled non-neighbor words.
+
+    
+    
+\end{enumerate}
+
+\section*{Disadvantages of word2vec \cite{nlp-1}}
+\begin{itemize}
+    \item \textbf{Unknown Words}: words that appear in a test corpus but were unseen in the training corpus.
+
+    \item \textbf{word sparsity}: in languages with rich morphology, where some of the many forms for each noun and verb may only occur rarely.
+\end{itemize}
+
+\section{Fasttext \cite{nlp-1}}\label{Fasttext}
+SEE: \url{https://fasttext.cc}
+
+\vspace{0.2cm}
+\noindent Uses \textbf{subword} models, representing each word as itself plus a bag of constituent n-grams, with special boundary symbols \texttt{<} and \texttt{>} added to each word.
+
+\vspace{0.2cm}
+\noindent\textbf{Example}:\\
+\begin{itemize}
+    \item $n=3$
+    \item \textbf{word}: where
+    \item \textbf{embeddings}: \\ \texttt{<where>} \\ \texttt{<wh, whe, her, ere, re>}
+\end{itemize}
+
+\begin{enumerate}
+    \item Then a skipgram embedding is learned for each constituent n-gram, and the word where is represented by the sum of all of the embeddings of its constituent n-grams.
+    
+    \item Unknown words can then be presented only by the sum of the constituent n-grams.
+\end{enumerate}
+
+
+
+\section{Global Vectors (GloVe) \cite{nlp-1}}\label{Global Vectors (GloVe)}
+
+\begin{itemize}
+    \item the model is based on capturing global corpus statistics.
+
+    \item it is based on ratios of probabilities from the word-word co-occurrence matrix (SEE: \fullref{term-term matrix}), combining the intuitions of count-based models like PPMI (SEE: \fullref{Positive Pointwise Mutual Information (PPMI)}) while also capturing the linear structures used by methods like word2vec.
+
+    \item It turns out that dense embeddings like word2vec actually have an elegant mathematical relationship with sparse embeddings like PPMI, in which word2vec can be seen as implicitly optimizing a shifted version of a PPMI matrix.
+\end{itemize}
 
 
 
@@ -84,6 +256,7 @@
 
 \vspace{4cm}
 \url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
-130/577
+137/577
+
 
 

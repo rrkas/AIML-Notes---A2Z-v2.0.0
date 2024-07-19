@@ -51,7 +51,7 @@ where,
 
 \section{Perplexity (PP/ PPL) \cite{nlp-1}}
 
-The perplexity (sometimes abbreviated as PP or PPL) of a language model on a test set is the inverse probability of the test set (one over the probability of the test set), normalized by the number of words. For this reason it’s sometimes called the \textbf{per-word perplexity}\index{per-word perplexity}.
+The perplexity (sometimes abbreviated as PP or PPL) of a language model on a test set is the inverse probability of the test set (one over the probability of the test set), normalized by the number of words. For this reason it’s sometimes called the \indexlabel{per-word perplexity}.
 
 Let word: \(W = w_1w_2 ...w_N\)
 
@@ -106,11 +106,11 @@ But to measure the true entropy of a language, we need to consider sequences of 
     H(L) = \lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}H(w_{1:n}) = -\lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}\sum_{W \in L} p(w_{1:n})\log(p(w_{1:n}))
 \]
 
-The \textbf{Shannon-McMillan-Breiman theorem}\index{Shannon-McMillan-Breiman theorem} states that if the language is regular in certain ways (to be exact, if it is both \textbf{stationary} and \textbf{ergodic}). That is, we can take a single sequence that is long enough instead of summing over all possible sequences. The intuition of the Shannon-McMillan-Breiman theorem is that a long-enough sequence of words will contain in it many other shorter sequences and that each of these shorter sequences will reoccur in the longer sequence according to their probabilities.\\By making some incorrect but convenient simplifying assumptions, we can compute the entropy of some stochastic process by taking a very long sample of the output and computing its average log probability
+The \textbf{Shannon-McMillan-Breiman theorem}\indexlabel{Shannon-McMillan-Breiman theorem} states that if the language is regular in certain ways (to be exact, if it is both \textbf{stationary} and \textbf{ergodic}). That is, we can take a single sequence that is long enough instead of summing over all possible sequences. The intuition of the Shannon-McMillan-Breiman theorem is that a long-enough sequence of words will contain in it many other shorter sequences and that each of these shorter sequences will reoccur in the longer sequence according to their probabilities.\\By making some incorrect but convenient simplifying assumptions, we can compute the entropy of some stochastic process by taking a very long sample of the output and computing its average log probability
 
 \begin{itemize}
     \item A \textbf{stochastic process} is said to be \textbf{stationary} if the probabilities it assigns to a sequence are \textbf{invariant} with respect to shifts in the time index.\\ In other words, the probability distribution for words at time $t$ is the same as the probability distribution at time $t + 1$. Markov models, and hence n-grams, are stationary.\\ For example, in a bigram, $P_i$ is dependent only on $P_{i-1}$. So if we shift our time index by $x$, $P_{i+x}$ is still dependent on $P_{i+x-1}$.
-    \item \textbf{ergodic}\index{ergodic}: of or relating to a process in which every sequence or sizable sample is equally representative of the whole (as in regard to a statistical parameter)\\
+    \item \textbf{ergodic}\indexlabel{ergodic}: of or relating to a process in which every sequence or sizable sample is equally representative of the whole (as in regard to a statistical parameter)\\
     Source: \href{https://www.merriam-webster.com/dictionary/ergodic}{https://www.merriam-webster.com/dictionary/ergodic}
 \end{itemize}
 
@@ -420,8 +420,8 @@ Efficiency considerations are important when building language models that use s
 \begin{itemize}
     \item Rather than store each word as a string, it is generally represented in memory as a 64-bit hash number, with the words themselves stored on disk. Probabilities are generally quantized using only 4-8 bits (instead of 8-byte floats), and n-grams are stored in reverse tries.
     \item An n-gram language model can also be shrunk by pruning, for example only storing n-grams with counts greater than some threshold (such as the count threshold of 40 used for the Google n-gram release) or using entropy to prune less-important n-grams.
-    \item Another option is to build approximate language models using techniques like \textbf{Bloom filters}\index{Bloom filters}.
-    \item efficient language model toolkits like \href{https://github.com/kpu/kenlm}{https://github.com/kpu/kenlm (\textbf{Kenlm})}\index{KenLM} use sorted arrays, efficiently combine probabilities and backoffs in a single value, and use merge sorts to efficiently build the probability tables in a minimal number of passes through a large corpus.
+    \item Another option is to build approximate language models using techniques like \indexlabel{Bloom filters}.
+    \item efficient language model toolkits like \href{https://github.com/kpu/kenlm}{https://github.com/kpu/kenlm (\textbf{Kenlm})}\indexlabel{KenLM} use sorted arrays, efficiently combine probabilities and backoffs in a single value, and use merge sorts to efficiently build the probability tables in a minimal number of passes through a large corpus.
 \end{itemize}
 
 

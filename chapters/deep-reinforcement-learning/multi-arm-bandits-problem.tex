@@ -42,7 +42,7 @@ It is called Multi-armed bandits because slot machines (aka "One-armed Bandits")
 \textbf{Goal}: The goal is to get $Q_t(a)$ to be as close to $q*(a)$ as possible. If we can closely estimate the true values of each action, we can know which actions to take to maximize reward.
 
 \section{Exploration vs. Exploitation \cite{medium-numsmt2-rl-ch2-part-1}}\label{Exploration vs. Exploitation}
-At any point in time there will be one action whose estimated value is highest, we call this action the \textbf{greedy action}\index{MAB: greedy action}.
+At any point in time there will be one action whose estimated value is highest, we call this action the \textbf{greedy action}\indexlabel{MAB: greedy action}.
 
 \textbf{Exploiting}: Choosing the greedy action is called exploiting. This is because we are making use of the knowledge we have gained thus far to choose the action we think will give us the highest reward.
 
@@ -51,17 +51,17 @@ At any point in time there will be one action whose estimated value is highest, 
 Note:
 \begin{itemize}
     \item Exploitation might maximize reward for 1 timestep but exploration could maximize reward in the long run.
-    \item The conflict between choosing when to exploit your knowledge of the environment vs. when to explore the environment in hopes of gaining new knowledge is called the \textbf{exploration-exploitation dilemma}\index{MAB: exploration-exploitation dilemma}.
+    \item The conflict between choosing when to exploit your knowledge of the environment vs. when to explore the environment in hopes of gaining new knowledge is called the \textbf{exploration-exploitation dilemma}\indexlabel{MAB: exploration-exploitation dilemma}.
 \end{itemize}
 
 
 \section{Action-Value Methods - Stationary Rewards \cite{medium-numsmt2-rl-ch2-part-2}}\label{Action-Value Methods - Stationary Rewards}
 Action-value methods are a group of solutions to the Multi-Armed Bandits problem that focus on getting accurate estimations of the value of each action \& using these estimations to make decisions about which action to choose.
 
-\textbf{Stationary Rewards}\index{MAB: Stationary Rewards}: Reward distributions do not change over time — any action would give out a reward with the same probability the 1st, 100th, and 1000th time it was selected.
+\textbf{Stationary Rewards}\indexlabel{MAB: Stationary Rewards}: Reward distributions do not change over time — any action would give out a reward with the same probability the 1st, 100th, and 1000th time it was selected.
 
 \subsection{Estimating Action Values}
-The simplest way to estimate the value of any particular action is to average the rewards that were received every time this action was taken. This is called \textbf{sample averaging}\index{MAB: sample averaging}.
+The simplest way to estimate the value of any particular action is to average the rewards that were received every time this action was taken. This is called \textbf{sample averaging}\indexlabel{MAB: sample averaging}.
 
 \[
     Q_t(a) = \displaystyle\frac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\frac{\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
@@ -178,7 +178,6 @@ Consider the case when $\alpha$ is a constant value in range $[0, 1]$ (e.g. $\al
     \centering
     \includegraphics[height=4.5cm]{Pictures/deep-reinforcement-learning/greedy-vs-e-greedy-vs-c-alpha.jpg}
     \caption{Greedy (0.09) VS $\epsilon$-Greedy (0.37) VS Constant Alpha (0.88)}
-    \label{fig:enter-label}
 \end{figure}
 
 \subsection{Upper-Confidence-Bound (UCB) Action Selection \cite{medium-numsmt2-rl-ch2-part-4}}\label{MAB: Upper-Confidence-Bound (UCB) Action Selection}
@@ -239,9 +238,9 @@ On each step, after selecting the action $A_t$ and receiving the reward $R_t$, t
 \end{itemize}
 
 
-\section{Associative Search (Contextual Bandits) \cite{medium-numsmt2-rl-ch2-part-6, kaggle-parsasam-reinforcement-learning-notes-multi-armed-bandits}}\label{Associative Search}
+\section{Associative Search (Contextual Bandits) \cite{medium-numsmt2-rl-ch2-part-6, kaggle-parsasam-reinforcement-learning-notes-multi-armed-bandits}}\label{Associative Search (Contextual Bandits)}
 
-The variations of the k-armed bandits problem we’ve seen thus far have been nonassociative: we haven’t had to associate different actions with different situations. In \textbf{nonassociative tasks}\index{MAB: nonassociative tasks}, the agent tries to find a single best action if the reward is stationary, or to track the best action over time if the reward is nonstationary.
+The variations of the k-armed bandits problem we’ve seen thus far have been nonassociative: we haven’t had to associate different actions with different situations. In \textbf{nonassociative tasks}\indexlabel{MAB: nonassociative tasks}, the agent tries to find a single best action if the reward is stationary, or to track the best action over time if the reward is nonstationary.
 
 \textbf{Associative search task} involves both trial-and-error learning to search for the best actions, and association of these actions with the situations in which they are best. Associative search tasks are often called \textbf{contextual bandits}.
 

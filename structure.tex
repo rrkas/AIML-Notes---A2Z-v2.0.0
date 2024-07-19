@@ -342,6 +342,8 @@ innerbottommargin=5pt]{cBox}
 }
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{(\ref*{#1}) \nameref*{#1}}} % One single link
 
+\newcommand{\indexlabel}[1]{\index{#1}\label{#1}}
+
 %----------------------------------------------------------------------------------------
 %	CHAPTER HEADINGS
 %----------------------------------------------------------------------------------------
@@ -426,7 +428,9 @@ innerbottommargin=5pt]{cBox}
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=4
+    tabsize=4,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    columns=fullflexible,
 }
 
 

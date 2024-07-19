@@ -13,7 +13,7 @@
     \hfill
     \begin{minipage}[t]{0.35\linewidth}
         \begin{table}[H]
-            \begin{tabular}{l l p{4cm}}
+            \begin{tabular}{l l l}
                 \multicolumn{3}{c}{\textbf{Time Complexity}} \\
                  Best Case & $O(1)$ & first index \\
                  Average Case & $O(N)$ &  \\
@@ -56,7 +56,7 @@
 \end{table}
 
 \begin{lstlisting}[language=Python, caption=Linear Search Algorithm - Python]
-def search(arr: list, N: int, x: object):
+def search(arr: list, N: int, x: object) -> int:
     for i in range(0, N):
         if (arr[i] == x):
             return i
@@ -69,14 +69,14 @@ def search(arr: list, N: int, x: object):
     \begin{minipage}[t]{0.45\linewidth}
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\linewidth,height=6cm,keepaspectratio]{Pictures/ds-algo/binnary-search.jpg}
+            \includegraphics[width=\linewidth,height=6cm,keepaspectratio]{Pictures/ds-algo/BinarySearch.png}
             \caption{Binary Search Algorithm}
         \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.55\linewidth}
         \begin{table}[H]
-            \begin{tabular}{l l p{4cm}}
+            \begin{tabular}{l l l}
                 \multicolumn{3}{c}{\textbf{Time Complexity}} \\
                  Best Case & $O(1)$ & \\
                  Average Case & $O(\log(N))$ &  \\
@@ -124,7 +124,7 @@ def search(arr: list, N: int, x: object):
 \end{table}
 
 \begin{lstlisting}[language=Python, caption=Binary Search (iterative) - Python]
-def binarySearch(arr: list, low: int, high: int, x: object):
+def binarySearch(arr: list, low: int, high: int, x: object) -> int:
     while low <= high:
         mid = low + (high - low) // 2
 
@@ -142,7 +142,7 @@ def binarySearch(arr: list, low: int, high: int, x: object):
 \end{lstlisting}
 
 \begin{lstlisting}[language=Python, caption=Binary Search (recursive) - Python]
-def binarySearch(arr: list, low: int, high: int, x: object):
+def binarySearch(arr: list, low: int, high: int, x: object) -> int:
     # Check base case
     if high >= low:
         mid = low + (high - low) // 2
@@ -163,21 +163,177 @@ def binarySearch(arr: list, low: int, high: int, x: object):
     else: return -1
 \end{lstlisting}
 
+\section{Ternary Search \cite{gfg-ternary-search}}\label{Ternary Search}
+\begin{table}[h]
+    \begin{minipage}{0.5\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=10cm, keepaspectratio]{Pictures/ds-algo/Ternary-Search.jpg}
+            \caption{Ternary Search}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+        \begin{table}[H]
+            \begin{tabular}{l l l}
+                \multicolumn{3}{c}{\textbf{Time Complexity}} \\
+                 Recursive & $O(2*\log_3(N))$ & \\
+                 Iterative & $O(\log_3(N))$ & \\
+                 \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+                 Auxiliary Space & $O(2*\log_3(N))$ & Recursive \\
+                 Auxiliary Space & $O(1)$ & Iterative \\
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+\vspace{0.2cm}
+\textbf{Steps}:
+\begin{enumerate}
+    \item \textbf{Initialization}: Set two pointers, \textbf{left} and \textbf{right}, initially pointing to the first and last elements of our search space.
+
+    \item \textbf{Divide the search space}:
+    \begin{enumerate}
+        \item Calculate two midpoints, mid1 and mid2, dividing the current search space into three roughly equal parts:
+        \item[] $mid1 = left + (right - left) / 3$
+        \item[] $mid2 = right - (right - left) / 3$
+        \item The array is now effectively divided into $[left, mid1]$, $(mid1, mid2)$, and $[mid2, right]$.
+    \end{enumerate}
+
+    \item \textbf{Comparison with Target}:
+    \begin{enumerate}
+        \item If the \textbf{target} is equal to the element at \textbf{mid1} or \textbf{mid2}, the search is successful, and the index is returned.
+
+        \item If the target is less than the element at mid1, update the right pointer to $mid1 - 1$.
+
+        \item If the target is greater than the element at mid2, update the left pointer to $mid2 + 1$.
+
+        \item If the target is between the elements at mid1 and mid2, update the left pointer to $mid1 + 1$ and the right pointer to $mid2 - 1$.
+    \end{enumerate}
+
+    \item \textbf{Repeat or Conclude}:
+    \begin{enumerate}
+        \item Repeat the process with the reduced search space until the target is found or the search space becomes empty.
+
+        \item If the search space is empty and the target is not found, return a value indicating that the target is not present in the array.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{table}[h]
+    \begin{minipage}[t]{0.48\linewidth}
+        \textbf{Advantages}:
+        \begin{itemize}
+            \item Ternary search can find maxima/minima for unimodal functions, where binary search is not applicable.
+            
+            \item Ternary Search has a time complexity of $O(2 * \log_3(N))$, which is more efficient than linear search and comparable to binary search.
+
+            \item Fits well with optimization problems.
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \textbf{Disadvantages}:
+        \begin{itemize}
+            \item Ternary Search is only applicable to ordered lists or arrays, and cannot be used on unordered or non-linear data sets.
+
+            \item Ternary Search takes more time to find maxima/ minima of monotonic functions as compared to Binary Search.
+        \end{itemize}
+    \end{minipage}
+\end{table}
+
+\begin{lstlisting}[language=Python, caption=Ternary Search (recursive) - Python]
+def ternarySearch(l: int, r: int, key: int, ar: list) -> int:
+    if (r >= l):
+        # Find the mid1 and mid2
+        mid1 = l + (r - l) //3
+        mid2 = r - (r - l) //3
+
+        # Check if key is present at any mid
+        if (ar[mid1] == key):  return mid1
+        
+        if (ar[mid2] == key): return mid2
+        
+        # Since key is not present at mid,
+        # check in which region it is present
+        # then repeat the Search operation
+        # in that region
+        if (key < ar[mid1]): 
+            # The key lies in between l and mid1
+            return ternarySearch(l, mid1 - 1, key, ar)
+        
+        elif (key > ar[mid2]): 
+            # The key lies in between mid2 and r
+            return ternarySearch(mid2 + 1, r, key, ar)
+        
+        else: 
+            # The key lies in between mid1 and mid2
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar)
+        
+    # Key not found
+    return -1
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption=Ternary Search (iterative) - Python]
+def ternarySearch(l: int, r: int, key: int, ar: list) -> int:
+    while r >= l:
+        # Find mid1 and mid2
+        mid1 = l + (r-l) // 3
+        mid2 = r - (r-l) // 3
+
+        # Check if key is at any mid
+        if key == ar[mid1]: return mid1
+        if key == ar[mid2]: return mid2
+
+        # Since key is not present at mid, 
+        # Check in which region it is present
+        # Then repeat the search operation in that region
+        if key < ar[mid1]:
+            # key lies between l and mid1
+            r = mid1 - 1
+        elif key > ar[mid2]:
+            # key lies between mid2 and r
+            l = mid2 + 1
+        else:
+            # key lies between mid1 and mid2
+            l = mid1 + 1
+            r = mid2 - 1
+
+    # key not found
+    return -1
+\end{lstlisting}
 
 
+\section{Exponential Search \cite{gfg-exponential-search}}\label{Exponential Search}
 
+\begin{table}[h]
+    \begin{tabular}{l l l}
+         \textbf{Time Complexity} & $O(\log(N))$ &  \\
+         \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+         Auxiliary Space & $O(1)$ & iterative \\
+         Auxiliary Space & $O(\log(N))$ & recursive \\
+    \end{tabular}
+\end{table}
 
+\textbf{Steps}:
+\begin{enumerate}
+    \item Find range where element is present
+    \item Do \fullref{Binary Search Algorithm} in above found range
+\end{enumerate}
 
-
-
-
-
-
-
-
-
-
-
+\begin{lstlisting}[language=Python, caption=Exponential Search - Python]
+# Returns the position of first occurrence of x in array
+def exponentialSearch(arr: list, n: int, x: object) -> int:
+    # IF x is present at first 
+    # location itself
+    if arr[0] == x: return 0
+         
+    # Find range for binary search 
+    # j by repeated doubling
+    i = 1
+    while i < n and arr[i] <= x: i = i * 2
+     
+    # Call binary search for the found range
+    return binarySearch(arr, i // 2, min(i, n-1), x)
+\end{lstlisting}
 
 
 

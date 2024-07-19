@@ -127,7 +127,7 @@ Forward inference is the task, given an input, of running a forward pass on the 
 
 \begin{itemize}
     \item We first represent each of the $N$ previous words as a one-hot vector of length one-hot vector $|V|$, i.e., with one dimension for each word in the vocabulary.
-    \item A \textbf{one-hot vector}\index{one-hot vector}\label{one-hot vector} is a vector that has one element equal to $1$ - in the dimension corresponding to that word’s index in the vocabulary - while all the other elements are set to $0$.
+    \item A \textbf{one-hot vector}\indexlabel{one-hot vector} is a vector that has one element equal to $1$ - in the dimension corresponding to that word’s index in the vocabulary - while all the other elements are set to $0$.
     \item Thus in a one-hot representation for the word “toothpaste”, supposing it is $V_5$, i.e., index $5$ in the vocabulary, $x_5 = 1$, and $x_i = 0 \quad\forall\quad i \neq 5$, as shown here:\\
     \begin{table}[h!]
         \centering
@@ -152,9 +152,9 @@ Forward inference is the task, given an input, of running a forward pass on the 
 
             \item When $N=3$, so the $3$ words $w_{t-1}$, $w_{t-2}$, and $w_{t-3}$ are each represented as a one-hot vector.
 
-            \item We then multiply these one-hot vectors by the \textbf{embedding matrix}\index{embedding matrix} $\mathbf{E}$.
+            \item We then multiply these one-hot vectors by the \textbf{embedding matrix} \indexlabel{embedding matrix} $\mathbf{E}$.
 
-            \item The \textbf{embedding weight matrix}\index{embedding weight matrix}\label{embedding weight matrix} $\mathbf{E}$ has a column for each word, each a column vector of $d$ dimensions, and hence has dimensionality $d \times |V|$. 
+            \item The \textbf{embedding weight matrix}\indexlabel{embedding weight matrix} $\mathbf{E}$ has a column for each word, each a column vector of $d$ dimensions, and hence has dimensionality $d \times |V|$. 
             
             \item Multiplying by a one-hot vector that has only one non-zero element $x_i = 1$ simply selects out the relevant column vector for word $i$, resulting in the embedding for word $i$.
 
@@ -187,7 +187,7 @@ Forward inference is the task, given an input, of running a forward pass on the 
 Steps:
 \begin{enumerate}
     \item \textbf{Select $3$ embeddings from} $\mathbf{E}$:\\
-    Given the $3$ previous words, we look up their indices, create $3$ one-hot vectors, and then multiply each by the embedding matrix $\mathbf{E}$. The one-hot vector for word is multiplied by the embedding matrix $\mathbf{E}$, to give the first part of the first hidden layer, the \textbf{embedding layer}\index{embedding layer}\label{embedding layer}. Since each column of the input matrix $\mathbf{E}$ is an embedding for a word, and the input is a one-hot column vector $x_i$ for word $V_i$, the embedding layer for input $w$ will be $Ex_i = e_i$, the embedding for word $i$. We now concatenate the 3 embeddings for the 3 context words to produce the embedding layer $\mathbf{e}$.
+    Given the $3$ previous words, we look up their indices, create $3$ one-hot vectors, and then multiply each by the embedding matrix $\mathbf{E}$. The one-hot vector for word is multiplied by the embedding matrix $\mathbf{E}$, to give the first part of the first hidden layer, the \textbf{embedding layer}\indexlabel{embedding layer}. Since each column of the input matrix $\mathbf{E}$ is an embedding for a word, and the input is a one-hot column vector $x_i$ for word $V_i$, the embedding layer for input $w$ will be $Ex_i = e_i$, the embedding for word $i$. We now concatenate the 3 embeddings for the 3 context words to produce the embedding layer $\mathbf{e}$.
     \begin{center}
         \( \mathbf{e = [Ex_{t-3};Ex_{t-2};Ex_{t-1}]} \)
     \end{center}
