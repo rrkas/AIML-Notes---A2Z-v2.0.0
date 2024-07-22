@@ -89,17 +89,17 @@ Moreover, if there are only a finite number of states and actions, then it’s c
 
 Next state ($S'$) probability given the current state and action:
 \[
-    p(s' \mid s, a) = \Pr\{S_{t+1} = s' \mid S_t = s, A_t = a\} = \sum_{r \in \mathcal{R}} p(s', r \mid s, a)
+    p(s' \mid s, a) = \Pr\{S_{t+1} = s' \mid S_t = s, A_t = a\} = \sum_{r \in {R}} p(s', r \mid s, a)
 \]
 
 Reward for a certain state and action:
 \[
-    r(s, a) = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a] = \sum_{r \in \mathcal{R}} r \sum_{s' \in \mathcal{S}} p(s', r \mid s, a)
+    r(s, a) = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a] = \sum_{r \in {R}} r \sum_{s' \in {S}} p(s', r \mid s, a)
 \]
 
 Reward for a certain state, action, and next state:
 \[
-    r(s, a, s') = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a, S_{t+1} = s'] = \frac{\sum_{r \in \mathcal{R}} r p(s', r \mid s, a)}{p(s' \mid s, a)}
+    r(s, a, s') = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a, S_{t+1} = s'] = \frac{\displaystyle\sum_{r \in {R}} r p(s', r \mid s, a)}{p(s' \mid s, a)}
 \]
 
 \begin{table}[H]
@@ -120,7 +120,7 @@ Reward for a certain state, action, and next state:
 \end{table}
 
 A transition diagram is simply a graph that tells you, the agent, what are the possible actions at each state. It can sometimes have the probability of taking each action, and what are the rewards for taking each action.\\
-In the above example, first row - We can see how in this environment we can go from the state "$high$" to the state "$high$" by taking the action "$search$" . We can also see that we have a probability of "$\alpha$" of moving the state "$high$" after being in state "$high$" and taking action "$\alpha$". Lastly, we can see that the reward that we will get doing such, will be "$r_search$".
+In the above example, first row - We can see how in this environment we can go from the state "$high$" to the state "$high$" by taking the action "$search$" . We can also see that we have a probability of "$\alpha$" of moving the state "$high$" after being in state "$high$" and taking action "$\alpha$". Lastly, we can see that the reward that we will get doing such, will be "$r_{search}$".
 
 
 \section{Bellman equation \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}
@@ -170,14 +170,14 @@ The optimal value of a state is denoted by $V_*(s)$
 
 
 \begin{align}
-v_*(s) &= \max_{a \in \mathcal{A}(s)} q_{\pi_*}(s, a) \\
+v_*(s) &= \max_{a \in {A}(s)} q_{\pi_*}(s, a) \\
     &= \max_a \mathbb{E}_{\pi_*} [G_t \mid S_t = s, A_t = a] \\
     &= \max_a \mathbb{E}_{\pi_*} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \mid S_t = s, A_t = a \right] \\
     &= \max_a \mathbb{E}_{\pi_*} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} \mid S_t = s, A_t = a \right] \\
     &= \max_a \mathbb{E} [R_{t+1} + \gamma v_*(S_{t+1}) \mid S_t = s, A_t = a]
 \end{align}
 \[
-    v_*(s) = \max_{a \in \mathcal{A}(s)} \sum_{s',r} p(s', r \mid s, a) \left[ r + \gamma v_*(s') \right]
+    v_*(s) = \max_{a \in {A}(s)} \sum_{s',r} p(s', r \mid s, a) \left[ r + \gamma v_*(s') \right]
 \]
 
 \begin{align}

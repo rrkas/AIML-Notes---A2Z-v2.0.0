@@ -32,14 +32,15 @@ It is called Multi-armed bandits because slot machines (aka "One-armed Bandits")
 \begin{itemize}
     \item $A_t$ : action taken at time t
     \item $R_t$ : reward at time t
-    \item $q*(a)$ : the value of any action $a$, defined as the expected reward for that action if it’s chosen \[
-        q*(a) = E[R_t | A_t = a]
+    \item $q_*(a)$ : the value of any action $a$, defined as the expected reward for that action if it’s chosen \[
+        q_*(a) = \mathbb{E}[R_t | A_t = a]
     \]\\[-0.5cm]
-    i.e., the expectation ($E$) of getting some reward at time $t$ ($R_t$) given that the action at time $t$ is $a$ ($A_t = a$)
+    i.e., the expectation ($E$) of getting some reward at time $t$ ($=R_t$) given that the action at time $t$ is $A_t = a$
     \item $Q_t(a)$ : estimated value of action $a$ at time $t$, (since we don’t know the actual value of any action we have to estimate)
 \end{itemize}
 
-\textbf{Goal}: The goal is to get $Q_t(a)$ to be as close to $q*(a)$ as possible. If we can closely estimate the true values of each action, we can know which actions to take to maximize reward.
+\vspace{0.2cm}
+\noindent\textbf{Goal}: The goal is to get $Q_t(a)$ to be as close to $q_*(a)$ as possible. If we can closely estimate the true values of each action, we can know which actions to take to maximize reward.
 
 \section{Exploration vs. Exploitation \cite{medium-numsmt2-rl-ch2-part-1}}\label{Exploration vs. Exploitation}
 At any point in time there will be one action whose estimated value is highest, we call this action the \textbf{greedy action}\indexlabel{MAB: greedy action}.
@@ -64,7 +65,7 @@ Action-value methods are a group of solutions to the Multi-Armed Bandits problem
 The simplest way to estimate the value of any particular action is to average the rewards that were received every time this action was taken. This is called \textbf{sample averaging}\indexlabel{MAB: sample averaging}.
 
 \[
-    Q_t(a) = \displaystyle\frac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\frac{\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
+    Q_t(a) = \displaystyle\frac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\frac{\displaystyle\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\displaystyle\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
 \]
 
 SEE: \fullref{Indicator function}
@@ -82,7 +83,7 @@ $Q_n$ = estimate of this action’s value after it has been selected $n-1$ times
 
 \begin{align}    
     Q_{n+1} &= \displaystyle\frac{1}{n} \sum_{i=1}^{n} R_i = \displaystyle\frac{1}{n} \left( R_n + \sum_{i=1}^{n-1} R_i \right) \\
-    &= \displaystyle\frac{1}{n} \left( R_n + (n-1) \displaystyle\frac{1}{(n-1)}  \left(\sum_{i=1}^{n-1} R_i\right) \right)\\
+    &= \displaystyle\frac{1}{n} \left( R_n + (n-1) \displaystyle\frac{1}{(n-1)}  \left(\displaystyle\sum_{i=1}^{n-1} R_i\right) \right)\\
     &= \displaystyle\frac{1}{n} (R_n + (n-1)Q_n) = \displaystyle\frac{1}{n} (R_n + nQ_n - Q_n)\\
     &= Q_n + \displaystyle\frac{1}{n} [R_n - Q_n]
 \end{align}
@@ -92,7 +93,7 @@ NewEstimate = OldEstimate + StepSize [ Target - OldEstimate ]
 
 \begin{itemize}
     \item This implementation requires memory only for $Q_n$ and $n$ and only the final computation for each new reward.
-    \item The expression [ Target — OldEstimate ] is an error in the current estimate of the action’s value.
+    \item The expression [ Target - OldEstimate ] is an error in the current estimate of the action’s value.
     \item We are moving our estimate toward the “Target” (the current reward) which represents a ground truth (though it may be noisy).
 \end{itemize}
 
@@ -174,7 +175,7 @@ Consider the case when $\alpha$ is a constant value in range $[0, 1]$ (e.g. $\al
     \item In this way we can quickly respond to a changing reward distribution.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[height=4.5cm]{Pictures/deep-reinforcement-learning/greedy-vs-e-greedy-vs-c-alpha.jpg}
     \caption{Greedy (0.09) VS $\epsilon$-Greedy (0.37) VS Constant Alpha (0.88)}
@@ -187,7 +188,7 @@ One better way to select actions could be to choose them with a preference for t
 Choose which arm to exploit based on how satisfying the reward was, but also with a preference for arms that you’ve exploited less. For an arm that you haven’t tried as much you are less confident about the reward, so you may want to experiment with it more to become more confident about its quality on average. This concept is called Upper-Confidence-Bound Action Selection (UCB).
 
 \[
-    A_t = \arg\max_a \left[ Q_t(a) + c \sqrt{\displaystyle\frac{ln(t)}{N_t(a)}} \right]
+    A_t = \arg\max_a \left[ Q_t(a) + c \sqrt{\displaystyle\frac{\ln(t)}{N_t(a)}} \right]
 \]
 
 Interpretation:
@@ -196,7 +197,7 @@ Interpretation:
     \item $Q_t(a)$ is the estimated value of the action
     \item The right side of the equation in the brackets can be thought of as a representation of the uncertainty of what the reward will be for any given action.
     \item $N_t(a)$ is the number of times this action has been selected. Since it’s in the denominator, as it increases it causes the value on the right side to shrink. This encapsulates the concept that as we select an action more we become less uncertain of its value.
-    \item $ln(t)$ denotes the natural logarithm of $t$ which is the current timestep. As $t$ rises our uncertainty increases but slower over time as per the natural log function.
+    \item $\ln(t)$ denotes the natural logarithm of $t$ which is the current timestep. As $t$ rises our uncertainty increases but slower over time as per the natural log function.
     \item The parameter $c$ (constant in range $[0, 1]$) can be be considered as determining the \textbf{degree of exploration}. Higher $c$ values cause greater exploration because they cause the uncertainty about actions to be larger.
 \end{itemize}
 
@@ -209,7 +210,7 @@ This preference has no interpretation in terms of reward. only the relative pref
 
 The probability of selecting any action is given according to a \textbf{soft-max distribution} (SEE: \fullref{Softmax function}):
 \[
-    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\frac{e^{H_t(a)}}{\sum_{i=1}^{k} e^{H_t(i)}}
+    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\frac{e^{H_t(a)}}{\displaystyle\sum_{i=1}^{k} e^{H_t(i)}}
 \]
 
 \begin{itemize}

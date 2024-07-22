@@ -191,10 +191,10 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
     \item \textbf{Loss}:
     \begin{align}
         L_{CE} \notag
-        &= -\log\left[ P(+|w, c_{pos}) \prod_{i=1}^{k} P(-|w, c_{neg_i}) \right]\\ \notag
-        &= -\left[ \log(P(+|w, c_{pos})) + \sum_{i=1}^{k} \log(P(-|w, c_{neg_i})) \right]\\ \notag
-        &= -\left[ \log(P(+|w, c_{pos})) + \sum_{i=1}^{k} \log(1-P(+|w, c_{neg_i})) \right]\\ \notag
-        &= -\left[ \log(\sigma(c_{pos}\cdot w)) + \sum_{i=1}^{k} \log(\sigma(-c_{neg_i}\cdot w)) \right]\\ \notag
+        &= -\log\left[ P(+|\mathbf{w, c_{pos}}) \prod_{i=1}^{k} P(-|\mathbf{w, c_{neg_i}}) \right]\\ \notag
+        &= -\left[ \log(P(+|\mathbf{w, c_{pos}})) + \sum_{i=1}^{k} \log(P(-|\mathbf{w, c_{neg_i}})) \right]\\ \notag
+        &= -\left[ \log(P(+|\mathbf{w, c_{pos}})) + \sum_{i=1}^{k} \log(1-P(+|\mathbf{w, c_{neg_i}})) \right]\\ \notag
+        &= -\left[ \log(\sigma(\mathbf{c_{pos}\cdot w})) + \sum_{i=1}^{k} \log(\sigma(\mathbf{-c_{neg_i}\cdot w})) \right]\\ \notag
     \end{align}
     \[
         \displaystyle \frac{\partial L_{CE}}{\partial c_{pos}} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{w} \hfill \displaystyle \frac{\partial L_{CE}}{\partial c_{neg}} = [\sigma(\mathbf{c_{neg}\cdot w})]\cdot \mathbf{w}

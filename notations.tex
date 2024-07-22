@@ -1,11 +1,14 @@
 \chapter*{Mathematical Notations}
 
-\begin{longtable}{|p{3cm}|p{11.5cm}|}
+\section*{Brackets}
+
+\begin{longtable}{|p{3cm}|p{12cm}|}
     \hline
 
     \textbf{Notation} & \textbf{Description/ Usage}\\ \hline
     \endfirsthead
-    
+
+    \hline
     \textbf{Notation} & \textbf{Description/ Usage}\\ \hline
     \endhead
 
@@ -15,24 +18,8 @@
     \hline
     \endlastfoot
 
-    $a$, $b$, $a_i$ & \tableitemize{
-        \item scalar
-    }\\
-    \hline
-
-    $\mathbf{a}$, $\mathbf{b}$, $\mathbf{a}_i$, $\mathbf{v}^\top$ & \tableitemize{
-        \item vector
-    }\\
-    \hline
-
-    $\mathbf{A}$, $\mathbf{B}$, $\mathbf{M}^\top$ & \tableitemize{
-        \item matrix
-        \item vector space
-    }\\
-    \hline
-
-    $\mathbb{A}$, $\mathbb{B}$, $\mathbb{R}$, $\mathbb{R}^{m\times n}$ & \tableitemize{
-        \item set
+    $<...>$ & \tableitemize{
+        \item 
     }\\
     \hline
 
@@ -43,13 +30,256 @@
 
     $(...)$ & \tableitemize{
         \item ordered set
+        \item $(a,b)$: range with \textbf{neither limits} included
+    }\\
+    \hline
+
+    $(...]$ & \tableitemize{
+        \item $(a,b]$: range with only \textbf{upper limit} included
+    }\\
+    \hline
+
+    $[...)$ & \tableitemize{
+        \item $[a,b)$: range with only \textbf{lower limit} included
     }\\
     \hline
 
     $[...]$ & \tableitemize{
+        \item $[a,b]$: range with \textbf{both limits} included
+        \item \fullref{vectors} \& matrix
+        \[
+            \begin{bmatrix}
+                x_{11} & \cdots & x_{1n}\\
+                \vdots & \ddots & \vdots \\
+                x_{m1} & \cdots & x_{mn}
+            \end{bmatrix}
+        \]
+    }\\
+    \hline
+
+    $|...|$ & \tableitemize{
+        \item \fullref{abs_value}
+    }\\
+    \hline
+
+\end{longtable}
+
+
+
+
+
+
+\section*{Operator}
+
+\begin{longtable}{|p{3cm}|p{12cm}|}
+    \hline
+
+    \textbf{Symbol} & \textbf{Description/ Usage}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Symbol} & \textbf{Description/ Usage}\\ \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    $+$ & \tableitemize{
+        \item Addition
+    }\\
+    \hline
+
+    $-$ & \tableitemize{
+        \item Subtraction
+    }\\
+    \hline
+
+    $a/b$ or $\frac{a}{b}$ or $\displaystyle\frac{a}{b}$ & \tableitemize{
+        \item Division (a divided by b)
+        \item Or (a or b)
+    }\\
+    \hline
+
+    $\times$ / $*$ / $\cdot$ & \tableitemize{
+        \item Multiplication
+    }\\
+    \hline
+
+    $\cdots$ / $\vdots$ / $\ddots$ & \tableitemize{
+        \item to show a lot of elements
+    }\\
+    \hline
+    
+
+
+\end{longtable}
+
+
+
+
+
+
+\section*{Symbols}
+
+\begin{longtable}{|p{1.5cm}|p{3cm}|p{10cm}|}
+    \hline
+
+    \textbf{Symbol} & \textbf{Name} & \textbf{Description/ Usage}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Symbol} & \textbf{Name} & \textbf{Description/ Usage}\\ \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    
+    $\pi$ / $\Pi$ & pi & \tableitemize{
+        \item $\displaystyle\pi \approx \frac{22}{7} \text{ or } \frac{355}{113} \text{ or } 3.1415926535$
+
+        \item \( \displaystyle\prod_{i=1}^{n} x_i = x_1 \cdot x_2 \cdots x_n \)
+    
+        \item \fullref{DRL: Policy}
+    }\\
+    \hline
+
+    $e$ & Euler's number & \tableitemize{
+        \item \( \displaystyle e = \sum \limits _{n=0}^{\infty }{\frac {1}{n!}}\approx 2.71828 \)
+
+        \item 
+        
+    }\\
+    \hline
+
+    $\alpha$ & Alpha & \tableitemize{
         \item 
     }\\
     \hline
+
+
+    $\beta$ & Beta & \tableitemize{
+        \item  
+    }\\
+    \hline
+
+    $\gamma$ / $\Gamma$ & Gamma & \tableitemize{
+        \item \fullref{Gamma Function}
+    }\\
+    \hline
+
+    $\sigma$ / $\Sigma$ & Sigma & \tableitemize{
+        \item $\displaystyle\sum_{i=1}^{n} x_i= x_1 + x_2 + \cdots + c_n$
+        \item \fullref{Logistic function}
+    }\\
+    \hline
+
+    $\phi$ / $\Phi$ & Phi & \tableitemize{
+        \item \fullref{Linear Mappings/ vector space homomorphism/ linear transformation}
+    }\\
+    \hline
+
+    $\psi$ / $\Psi$ & Psi & \\
+    \hline
+
+    $\epsilon$ & epsilon & \tableitemize{
+        \item Exploration: \fullref{Exploration vs. Exploitation}
+    }\\
+    \hline
+
+    $\eta$ & Eta & \tableitemize{
+        \item Learning Rate
+    } \\
+    \hline
+
+    $\delta$ / $\Delta$ & Delta & \tableitemize{
+        \item \fullref{Difference Quotient}
+        \item 
+    } \\
+    \hline
+
+    $\theta$ / $\Theta$ & Theta & \tableitemize{
+        \item angles:
+        \begin{itemize}
+            \item\fullref{Trigonometric functions}
+            \item\fullref{Inverse trigonometric functions}
+            \item\fullref{Hyperbolic functions}
+        \end{itemize}
+    }\\
+    \hline
+
+    $\xi$ / $\Xi$ & Xi & \\
+    \hline
+
+    $\chi$ & Chi & \\
+    \hline
+
+    $\omega$ / $\Omega$ & Omega & \\
+    \hline
+
+
+    $\lambda$ / $\Lambda$ & Lambda & \\
+    \hline
+
+
+\end{longtable}
+
+
+
+
+
+
+
+\section*{Alphabetical Notations}
+
+\begin{longtable}{|p{3cm}|p{12cm}|}
+    \hline
+
+    \textbf{Notation} & \textbf{Description/ Usage}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Notation} & \textbf{Description/ Usage}\\ \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+
+    $a$, $b$, $a_i$ & \tableitemize{
+        \item scalar
+    }\\
+    \hline
+
+    $\mathbf{a}$, $\mathbf{b}$, $\mathbf{a}_i$, $\mathbf{v}^\top$ & \tableitemize{
+        \item \fullref{vectors}
+    }\\
+    \hline
+
+    $\mathbf{A}$, $\mathbf{B}$, $\mathbf{M}^\top$ & \tableitemize{
+        \item matrix
+        \item vector space
+    }\\
+    \hline
+
+    $\mathbb{A}$, $\mathbb{B}$, $\mathbb{R}$, $\mathbb{R}^{m\times n}$ & \tableitemize{ 
+        \item set
+        \item $\mathbb{E}$: Expected value
+        \item $\mathbbm{1}$: \fullref{Indicator function}
+    }\\
+    \hline
+
+
+
     
 \end{longtable}
 

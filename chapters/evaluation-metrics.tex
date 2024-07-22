@@ -1,0 +1,63 @@
+\chapter{Evaluation Metrics}
+
+\section*{Notation}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        
+       $n$  & Number of records \\ 
+       \hline
+       
+       $y$ & actual output (reference) \\ 
+       \hline
+       
+       $\hat{y}$ & predicted output (hypothesis) \\ 
+       \hline 
+       
+    \end{tabular}
+\end{table}
+
+
+\section{Mean Absolute Difference (MAD)/ Mean Absolute Error (MAE)}\label{Mean Absolute Difference (MAD)}\label{Mean Absolute Error (MAE)}
+
+\[
+    MAD = MAE = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
+\]
+
+
+\section{Mean Square Error (MSE)}\label{Mean Square Error (MSE)}
+\[
+    MSE = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} ( y_i - \hat{y}_i )^2
+\]
+
+\section{Root Mean Square Error (RMSE)}\label{Root Mean Square Error (RMSE)}
+\[
+    RMSE = \sqrt{MSE} = \displaystyle\sqrt{\frac{1}{n} \cdot \sum_{i=1}^{n} ( y_i - \hat{y}_i )^2}
+\]
+
+
+\section{Confusion Matrix}
+\subsection{Accuracy}
+
+\subsection{Precision}
+
+\subsection{Recall}
+
+\subsection{F-Score}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

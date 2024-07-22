@@ -179,14 +179,14 @@ GPI works as follows:
         \textbf{Aspect} & \textbf{Policy Iteration} & \textbf{Generalized Policy Iteration (GPI)} \\
         \hline
         \textbf{Steps} & 
-        \begin{itemize}
+        \tableitemize{
             \item Policy Evaluation
             \item Policy Improvement
-        \end{itemize} & 
-        \begin{itemize}
+        } & 
+        \tableitemize{
             \item Policy Evaluation (or Estimation)
             \item Policy Improvement (or Control)
-        \end{itemize} \\
+        } \\
         \hline
         \textbf{Step Completion} & 
         Each step is performed to completion before moving to the next. & 
@@ -387,7 +387,7 @@ In this case, we say that learning is from data “off” the target policy, and
     \begin{itemize}
         \item \(G_t = \displaystyle\sum_{k=t+1}^{T} \gamma^{k-t+1}R_k\)
         \item Append $G_t$ to $Returns(S_t,A_t)$
-        \item $Q_b(S_t,A_t) \leftarrow \rcmXWeightedAVG(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle E[X \sim p] = \sum_x p(x)x \right) \)
+        \item $Q_b(S_t,A_t) \leftarrow \rcmXWeightedAVG(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle \mathbb{E}[X \sim p] = \sum_x p(x)x \right) \)
         \item Computing the weighted average based on the sample probability would reduce variance (eliminate impact of noisy sampling)
     \end{itemize}
     

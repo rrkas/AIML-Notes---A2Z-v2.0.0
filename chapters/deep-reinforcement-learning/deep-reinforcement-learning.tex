@@ -1,4 +1,4 @@
-\chapter{Deep Reinforcement Learning (DRL)}\label{Deep Reinforcement Learning}
+\chapter{Deep Reinforcement Learning (DRL)}\label{Deep Reinforcement Learning (DRL)}
 
 \begin{table}[H]
     \begin{minipage}{0.45\linewidth}
@@ -25,11 +25,11 @@
     
     \item \textbf{Reward}: Reward defines the goal of the problem. The reward is given to the agent from the environment to encourage or punish certain behaviors. \\ A chess agent could get small positive rewards for doing things like taking opponent’s pieces and a big positive reward for winning the game. \\ A self-driving car could get negative rewards for doing things like crashing or disobeying traffic laws.
 
-    \item \textbf{Value Function}: While the reward defines what’s good in the short-term, value functions define what’s good in the long-term. They do this by calculating the value of being in a particular state from the perspective of maximizing cumulative reward (the total reward the agent will receive over time). In complex environments, it may be better to forgo short-term rewards in exchange for greater long-term reward (similar to delayed-gratification).
+    \item \textbf{Value Function}: While the reward defines what’s good in the short-term, value functions define what’s good in the \textbf{long-term}. They do this by calculating the value of being in a particular state from the perspective of maximizing cumulative reward (the total reward the agent will receive over time). In complex environments, it may be better to forgo short-term rewards in exchange for greater long-term reward (similar to delayed-gratification).
 
     \item \textbf{Actions}: The agent must have the ability to influence the environment and it does so by taking actions.\\ An action could be moving a game piece to a new position on the board or increasing the velocity of a car.
 
-    \item \textbf{Policy}: The policy defines the way the agent behaves. Given an observation from the environment, the policy determines which actions the agent should take. As the agent gains experience it tries to improve it’s policy to get greater cumulative rewards.
+    \item \textbf{Policy} ( $\pi$ )\indexlabel{DRL: Policy}: The policy defines the way the agent behaves. Given an observation from the environment, the policy determines which actions the agent should take. As the agent gains experience it tries to improve it’s policy to get greater cumulative rewards.
 \end{enumerate}
 
 
