@@ -1,18 +1,185 @@
 \chapter{Boolean Retrieval \cite{ir-1}}\label{Boolean retrieval}
 
 \begin{itemize}
-    \item The Boolean retrieval model is a model for information retrieval in which we can pose any query which is in the form of a Boolean expression of terms, that is, in which terms are combined with the operators \textbf{AND}, \textbf{OR}, and \textbf{NOT}.
+    \item The \textbf{Boolean retrieval model}\indexlabel{Boolean retrieval model} is a model for information retrieval in which we can pose any query which is in the form of a Boolean expression of terms, that is, in which terms are combined with the operators \textbf{AND}, \textbf{OR}, and \textbf{NOT}.
 
     \item The model views each document as just a set of words.
 
+    \item word/ term vectors are rows of \fullref{Term-document incidence matrix}
+
+    \item \textbf{Query optimization}\indexlabel{Query optimization} is the process of selecting how to organize the work of answering a query so that the least total amount of work needs to be done by the system.\\
+    A major element of this for Boolean queries is the \textbf{order} in which postings lists are accessed.
 
 \end{itemize}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l l}
+        $term1$ \textbf{AND} $term2$ & \textbf{BIT-WISE AND} of $term1$ \textbf{and} $term2$ \\
+        $term1$ \textbf{OR} $term2$ & \textbf{BIT-WISE OR} of $term1$ \textbf{and} $term2$ \\
+        \textbf{NOT} $term1$ & \textbf{COMPLEMENT} of $term1$
+    \end{tabular}
+\end{table}
+
+Example:
+\begin{table}[h]
+    \begin{tabular}{|c|>{\centering\arraybackslash}p{1.7cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|c|c|c|}
+    
+         \hline
+         & \textbf{Antony and Cleopatra} & \textbf{Julius Caesar} & \textbf{The Tempest} & \textbf{Hamlet} & \textbf{Othello} & \textbf{Macbeth} \\
+         \hline
+
+        \textbf{Antony} & 1 & 1 & 0 & 0 & 0 & 1 \\ \hline
+        \textbf{Brutus} & 1 & 1 & 0 & 1 & 0 & 0 \\ \hline
+        \textbf{Caesar} & 1 & 1 & 0 & 1 & 1 & 1 \\ \hline
+        \textbf{Calpurnia} & 0 & 1 & 0 & 0 & 0 & 0 \\ \hline
+        \textbf{Cleopatra} & 1 & 0 & 0 & 0 & 0 & 0 \\ \hline
+        \textbf{mercy} & 1 & 0 & 1 & 1 & 1 & 1 \\ \hline
+        \textbf{worser} & 1 & 0 & 1 & 1 & 1 & 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+\noindent\textbf{QUERY}: Brutus \textbf{AND} Caesar \textbf{AND} \textbf{NOT} Calpurnia\\
+= $110100$ \textbf{AND} $110111$ \textbf{AND NOT} $010000$ \\
+= $110100$ \textbf{AND} $110111$ \textbf{AND} $101111$ \hfill (\textbf{NOT} $010000$ = $101111$)\\
+= $100100$
+
+\section{Using Inverted Index \cite{ir-1}}
+SEE: \fullref{Inverted Index/ inverted file}
+
+\begin{itemize}
+    \item The information about the statistics (doc freq) is not vital for a basic Boolean search engine, but it allows us to improve the efficiency of the search engine at query time, and it is a statistic later used in many ranked retrieval models.
+
+    \item justification for keeping the frequency of terms in the dictionary:
+    \begin{itemize}
+        \item it allows us to make this ordering decision based on in-memory data before accessing any postings list.
+
+        \item we can then (conservatively) estimate the size of each OR by the sum of the frequencies of its disjuncts.\\
+        We can then process the query in increasing order of the size of each \textbf{disjunctive}\indexlabel{disjunctive} (expressed by mutually exclusive alternatives joined by or) term.
+
+        \item For arbitrary Boolean queries, we have to evaluate and temporarily store the answers for intermediate expressions in a complex expression. \\
+        However, in many circumstances, either because of the nature of the query language, or just because this is the most common type of query that users submit, a query is purely \textbf{conjunctive}\indexlabel{conjunctive} (relating to or forming a connection or combination of things).\\
+        In this case, rather than viewing merging postings lists as a function with two inputs and a distinct output, it is more efficient to intersect each retrieved postings list with the current intermediate result in memory, where we initialize the intermediate result by loading the postings list of the least frequent term.
+
+        \item The intersection operation is then \textbf{asymmetric}: the intermediate results list is in \textbf{memory} while the list it is being intersected with is being read from \textbf{disk}.\\
+        Moreover the intermediate results list is always at least as short as the other list, and in many cases it is orders of magnitude shorter.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Processing Boolean queries \cite{ir-1}}\label{Processing Boolean queries}
+
+\textbf{Example Query}: Brutus \textbf{AND} Calpurnia
+
+\vspace{0.2cm}
+\textbf{Steps}:
+\begin{enumerate}
+    \item Locate \textbf{Brutus} in the Dictionary
+
+    \item Retrieve its postings
+
+    \item Locate \textbf{Calpurnia} in the Dictionary
+
+    \item Retrieve its postings
+
+    \item Perform set operation as per boolean operation in query:
+    \begin{itemize}
+        \item \textbf{AND}: Intersect the two postings lists
+        \item \textbf{OR}: Union the two postings lists
+        \item \textbf{NOT}: TODO
+    \end{itemize}
+
+    
+\end{enumerate}
+
+\begin{table}[h]
+    \begin{minipage}[t]{0.65\linewidth}
+        \begin{algorithm}[H]
+            \caption{INTERSECT: inverted index posting}
+        
+            \SetKwFunction{FINTERSECT}{INTERSECT}
+            \SetKwProg{Fn}{Function}{:}{}
+            \Fn{\FINTERSECT{$p_1,p_2$}}{
+                $answer \gets ()$\\
+                \While{$p_1 \neq NIL$ and $p_2 \neq NIL$}{
+                    \If{$docID(p_1) = docID(p_2)$}{
+                        $ADD(answer,docID(p_1))$\\
+                        $p_1 \gets next(p_1)$\\
+                        $p_2 \gets next(p_2)$
+                    }
+                    \ElseIf{$docID(p_1) < docID(p_2)$}{
+                        $p_1 \gets next(p_1)$
+                    }
+                    \Else{
+                        $p_2 \gets next(p_2)$
+                    }
+                }
+                \Return answer
+            }    
+        \end{algorithm}        
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.35\linewidth}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|p{0.7\linewidth}|c|}
+                \hline
+
+                \multicolumn{2}{|c|}{\textbf{Analysis}}\\
+                \hline\hline
+
+                Number of documents & $N$\\
+                \hline
+
+                \textbf{length} of $p_1$ & $x$ \\
+                \hline
+
+                \textbf{length} of $p_2$ & $y$ \\
+                \hline\hline
+                
+                \textbf{operations} & $O(x+y)$ \\
+                \hline
+                
+                \textbf{Time Complexity} & $\Theta(N)$ \\
+                \hline
+                 
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+
+\begin{table}[h]
+    \begin{minipage}[t]{0.65\linewidth}
+        \begin{algorithm}[H]
+            \caption{INTERSECT: conjunctive queries}
+        
+            \SetKwFunction{FINTERSECT}{INTERSECT}
+            \SetKwFunction{FSortByIncreasingFrequency}{SortByIncreasingFrequency}
+            \SetKwProg{Fn}{Function}{:}{}
+            \Fn{\FINTERSECT{$<t_1,\cdots,t_n>$}}{
+                $terms \gets$ \FSortByIncreasingFrequency{$<t_1,\cdots,t_n>$}\\
+                $result \gets postings(first(terms))$\\
+                $terms \gets rest(terms)$\\
+                \While{$terms \neq NIL$ and $result \neq NIL$}{
+                    $result \gets$ \FINTERSECT{$result,postings(first(terms))$}\\
+                    $terms \gets rest(terms)$\\
+                }
+                \Return result\\
+            }    
+        \end{algorithm}        
+    \end{minipage}
+    \hfill
+\end{table}
+
+
+
 
 
 
 \vspace{5cm}
 \url{https://drive.google.com/file/d/1Tli7Dx_VTNAfYA4RSuZ3m_iKArGPI7HZ/view}\\
-29 / 569
+44 / 569
 
 
 

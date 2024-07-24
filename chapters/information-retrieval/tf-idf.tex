@@ -1,44 +1,9 @@
-\chapter{Term Frequency-Inverse Document Frequency (TF-IDF) \cite{nlp-1}} \label{Term Frequancy-Inverse Document Frequency (TF-IDF)}
-
-
-\section{Terminologies \cite{nlp-1, chatgpt}}
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{| m{2   cm} | m{6cm} | m{6cm} |}
-        \hline
-        \textbf{Term} & \textbf{Definition} & \textbf{Example} \\
-        \hline
-        Corpus & A large and structured set of texts, often used for linguistic research, text mining, or NLP. & The British National Corpus (BNC), which contains 100 million words of text samples from a wide range of sources. \\
-        \hline
-        Collections & A group of documents or texts gathered together, often around a specific theme, topic, or source. Collections can be subsets within a larger corpus. & A collection of scientific articles on climate change, or a collection of user reviews from a specific website. \\
-        \hline
-        Documents & Individual pieces of text within a corpus or a collection. They are the smallest unit of analysis and can vary in length and format. & A single news article, a research paper, a blog post, or a book chapter. \\
-        \hline
-    \end{tabular}
-\end{table}
-
-
-\section{Term-document incidence matrix \cite{ir-1}}\label{Term-document incidence matrix}
-
-Matrix element $(t, d)$ is $1$ if the play in column $d$ contains the word in row $t$, and is $0$ otherwise.
-
-
-
+\chapter{Term Frequency-Inverse Document Frequency (TF-IDF) \cite{nlp-1, ir-1}} \label{Term Frequancy-Inverse Document Frequency (TF-IDF)}
 
 
 \section{Vectors and documents \cite{nlp-1}}\label{tf-idf: Vectors and documents}
+Uses \fullref{Term-document matrix}
 
-\begin{itemize}
-    \item In a \textbf{term-document matrix}\indexlabel{term-document matrix}, each row represents a word in the vocabulary and each column represents a document from some collection of documents.
-    
-    \item The term-document matrix was first defined as part of the \textbf{vector space model}\indexlabel{vector space model} of information retrieval. In this model, a document is represented as a count vector.
-
-    \item in term-document matrices, the vectors representing each document would have dimensionality $|V|$ (vocabulary size).
-
-    \item Two documents that are similar will tend to have similar words, and if two documents have similar words their column vectors will tend to be similar.
-
-    \item documents can be represented as vectors in a vector space. A \textbf{vector space} (SEE: \fullref{Vector Spaces}) is a collection of vectors, characterized by their dimension.
-\end{itemize}
 
 \section{Words as vectors: document dimensions \cite{nlp-1}}\label{tf-idf: Words as vectors: document dimensions}
 
@@ -47,23 +12,13 @@ Matrix element $(t, d)$ is $1$ if the play in column $d$ contains the word in ro
 
     \item We do this row vector by associating each word with a word vector - a \textbf{row vector} rather than a column vector, hence with different dimensions.
 
-    \item similar words have similar vectors because they tend to occur in similar documents. The term-document matrix thus lets us represent the meaning of a word by the documents it tends to occur in.
+    \item similar words have similar vectors because they tend to occur in similar documents. The \fullref{Term-document matrix} thus lets us represent the meaning of a word by the documents it tends to occur in.
 \end{itemize}
 
 
 \section{Words as vectors: word dimensions \cite{nlp-1}} \label{tf-idf: Words as vectors: word dimensions}
 
-\begin{itemize}
-    \item \textbf{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-context matrix}\indexlabel{Co-occurrence matrix} \indexlabel{term-term matrix} \indexlabel{word-word matrix} \indexlabel{term-context matrix}, in which the columns are labeled by words rather than documents. 
-    
-    \item Dimensionality $|V|\times|V|$ and each cell records the number of times the row (target) word and the column (context) word co-occur in some context in some training corpus.
-
-    \item The context could be the document, in which case the cell represents the number of times the two words appear in the same document.
-
-    \item It is most common, however, to use smaller contexts, generally a window around the word, for example of $4$ words to the left and $4$ words to the right, in which case the cell represents the number of times (in some training corpus) the column word occurs in such a $\pm 4$ word window around the row word.
-
-    \item Since most of the entries of the matrix are zero these are \textbf{sparse vector representations}.
-\end{itemize}
+Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-context matrix}
 
 
 
@@ -89,7 +44,7 @@ Matrix element $(t, d)$ is $1$ if the play in column $d$ contains the word in ro
 \textbf{Normalized Dot Product}: \( \displaystyle \rcmdXcosine(\mathbf{v,w}) = \frac{\mathbf{v\cdot w}}{|\mathbf{v}|\cdot|\mathbf{w}|} = \frac{\displaystyle\sum_{i=1}^{N} v_i w_i}{\displaystyle \sqrt{\sum_{i=1}^{N} v_i^2}\sqrt{\sum_{i=1}^{N} w_i^2}} \)
 
 
-\section{TF-IDF: Weighing terms in the vector \cite{nlp-1}}\label{TF-IDF: Weighing terms in the vector}
+\section{TF-IDF: Weighing terms in the vector \cite{nlp-1}}\label{TF-IDF: concept}
 
 \begin{itemize}
     \item raw frequency is \textbf{NOT} the best measure of association between words.\\
@@ -101,63 +56,13 @@ Matrix element $(t, d)$ is $1$ if the play in column $d$ contains the word in ro
 \end{itemize}
 
 
-\subsection{Term Frequency ( $\rcmdXtf_{t,d}$ ) \cite{nlp-1}} \label{Term Frequency}
-
-the frequency of the word/ term $t$ in the document $d$.
-\[
-    \rcmdXtf_{t,d} = \rcmdXcount(t,d) \hfill \text{(raw count)}
-\]
-\[
-    \rcmdXtf_{t,d} = \begin{cases}
-        1 + \log_{10}(\rcmdXcount(t,d)) & \text{ if } \rcmdXcount(t,d) > 0\\
-        0 & \text{ otherwise}
-    \end{cases} \hfill \text{(Squashed raw frequency)}
-\]
-
-\subsection{Document Frequency ( $\rcmdXdf_t$ ) \cite{nlp-1}}\label{Document Frequency}
-
+\noindent \textbf{SEE}:
 \begin{itemize}
-    \item The second factor in tf-idf is used to give a higher weight to words that occur only in a few documents.
-
-    \item Terms that are limited to a few documents are useful for discriminating those documents from the rest of the collection; terms that occur frequently across entire collection aren't as helpful.
-
-    \item The document frequency $\rcmdXdf_t$ of a word/ term $t$ is the number of documents it occurs in.
-
-    
+    \item \fullref{Document Frequency}
+    \item \fullref{Collection frequency}
+    \item \fullref{inverse document frequency/ idf term weight}
+    \item \fullref{tf-idf weighted value: formula}
 \end{itemize}
-
-\subsection{Collection frequency \cite{nlp-1}}\label{Collection frequency}
-total number of times the word appears in the whole collection in any document.
-
-\subsection{inverse document frequency/ idf term weight ( $\rcmdXidf_t$ )}\label{inverse document frequency/ idf term weight}
-\[
-    \rcmdXidf_t = \displaystyle\frac{N}{\rcmdXdf_t} \hfill \text{(raw frequancies)}
-\]
-\[
-    \rcmdXidf_t = \log_{10} \left(\displaystyle\frac{N}{\rcmdXdf_t} \right) \hfill \text{(squashed)}
-\]
-
-Where,
-\begin{itemize}
-    \item $N$ is the total number of documents in the collection
-    \item $dft$ is the number of documents in which term t occurs.
-\end{itemize}
-
-\vspace{0.2cm}
-\textbf{Note}:
-\begin{itemize}
-    \item The fewer documents in which a term occurs, the higher this weight.
-
-    \item The lowest weight of $1$ is assigned to terms that occur in all the documents.
-
-    
-\end{itemize}
-
-
-\subsection{tf-idf weighted value ( $w_{t,d}$ ) \cite{nlp-1}}\label{tf-idf weighted value}
-\[
-    w_{t,d} = \rcmdXtf_{t,d} \times\rcmdXidf_t
-\]
 
 
 \section{Document similarity using tf-idf}

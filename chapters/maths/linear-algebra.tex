@@ -1,7 +1,7 @@
 \chapter{Linear Algebra \cite{mfml-1}}
 
 \section{Groups ( $G = (\mathbb{G}, \otimes)$ ) \cite{mfml-1}}\label{lin-alg-Groups}
-Consider a set $\mathbb{G}$ and an operation $\otimes$ : $\mathbb{G} \times \mathbb{G} \rightarrow \mathbb{G}$ group defined on $\mathbb{G}$. Then $G := (\mathbb{G}, \otimes)$ is called a group if the following hold:
+Consider a set $\mathbb{G}$ and an operation $\otimes$ : $\mathbb{G} \times \mathbb{G} \to \mathbb{G}$ group defined on $\mathbb{G}$. Then $G := (\mathbb{G}, \otimes)$ is called a group if the following hold:
 
 \begin{table}[H]
     \begin{tabular}{l p{10cm}}
@@ -60,8 +60,8 @@ The set of regular (invertible) matrices $A \in R^{n \times n}$ is a group with 
 
 A real-valued vector space $V = (\mathbb{V}, +, \cdot)$ is a set $\mathbb{V}$ with two operations:
 \begin{align}
-    + &: \mathbb{V} \times \mathbb{V} \rightarrow \mathbb{V}\\ \notag
-    \cdot &: \mathbb{R} \times \mathbb{V} \rightarrow \mathbb{V} \notag
+    + &: \mathbb{V} \times \mathbb{V} \to \mathbb{V}\\ \notag
+    \cdot &: \mathbb{R} \times \mathbb{V} \to \mathbb{V} \notag
 \end{align}
 
 where,
@@ -85,7 +85,7 @@ where,
 \begin{itemize}
     \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\indexlabel{vectors}.
 
-    \item The neutral element of $(\mathbb{V}, +)$ is the zero vector $0 = [0, ..., 0]^T$ \\
+    \item The neutral element of $(\mathbb{V}, +)$ is the zero vector $0 = [0, \cdots, 0]^T$ \\
     the inner operation $+$ is called \textbf{vector addition}\indexlabel{vector addition}.
 
     \item The elements $\lambda\in\mathbb{R}$ are called \textbf{scalars}\indexlabel{scalars} and the outer operation $\cdot$ is a multiplication by scalars.
@@ -96,9 +96,9 @@ where,
 
     \item $\mathbb{V} = \mathbb{R}^n, n \in \mathbb{N}$ is a vector space with operations defined as follows:
     \begin{itemize}
-        \item \textbf{Addition}:\\ $\mathbf{x+y} = (x_1, ..., x_n)+(y_1, ..., y_n) = (x_1+y_1, ..., x_n+y_n) \forall \mathbf{x, y} \in \mathbb{R}^n$
+        \item \textbf{Addition}:\\ $\mathbf{x+y} = (x_1, \cdots, x_n)+(y_1, \cdots, y_n) = (x_1+y_1, \cdots, x_n+y_n) \forall \mathbf{x, y} \in \mathbb{R}^n$
 
-        \item \textbf{Multiplication by scalars}:\\ $\lambda\mathbf{x} = \lambda(x_1, ..., x_n) = (\lambda x_1, ..., \lambda x_n) \forall \lambda \in \mathbb{R}, \mathbf{x} \in \mathbb{R}^n$
+        \item \textbf{Multiplication by scalars}:\\ $\lambda\mathbf{x} = \lambda(x_1, \cdots, x_n) = (\lambda x_1, \cdots, \lambda x_n) \forall \lambda \in \mathbb{R}, \mathbf{x} \in \mathbb{R}^n$
         
     \end{itemize}
 
@@ -180,30 +180,30 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
 
 
 \section{Linear Combination \cite{mfml-1}}\label{Linear Combination}
-Consider a vector space $V$ and a finite number of vectors $\mathbf{x_1, ... , x_k} \in V$ . Then, every $\mathbf{v} \in V$ of the form
+Consider a vector space $V$ and a finite number of vectors $\mathbf{x_1, \cdots , x_k} \in V$ . Then, every $\mathbf{v} \in V$ of the form
 \(
     \mathbf{v} = \displaystyle\sum_{i=1}^{k} \lambda_i \mathbf{x}_i \in V
 \) 
-with $\lambda_1, ..., \lambda_k \in \mathbb{R}$ is a linear combination of the vectors $\mathbf{x_1, ..., x_k}$.
+with $\lambda_1, \cdots, \lambda_k \in \mathbb{R}$ is a linear combination of the vectors $\mathbf{x_1, \cdots, x_k}$.
 
 \begin{itemize}
-    \item The $\mathbf{0}$-vector can always be written as the linear combination of $k$ vectors $\mathbf{x_1, ..., x_k}$ because $\displaystyle\mathbf{0} = \sum_{i=0}^{k} 0\cdot\mathbf{x_i}$ is always true.
+    \item The $\mathbf{0}$-vector can always be written as the linear combination of $k$ vectors $\mathbf{x_1, \cdots, x_k}$ because $\displaystyle\mathbf{0} = \sum_{i=0}^{k} 0\cdot\mathbf{x_i}$ is always true.
 \end{itemize}
 
 \section{Linear (In)dependence \cite{mfml-1}}\label{Linear (In)dependence}
 
-Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, ..., x_k} \in V$. If there is a non-trivial linear combination, such that $0 = \displaystyle\sum^k_{i=1} \lambda_i\mathbf{x_i}$ with at least one $\lambda_i \neq 0$, the vectors $\mathbf{x_1, ..., x_k}$ are \textbf{linearly dependent}. \\If only the trivial solution exists, i.e., $\lambda_1 = ... = \lambda_k = 0$ the vectors $\mathbf{x_1, ..., x_k}$ are \textbf{linearly independent}.
+Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cdots, x_k} \in V$. If there is a non-trivial linear combination, such that $0 = \displaystyle\sum^k_{i=1} \lambda_i\mathbf{x_i}$ with at least one $\lambda_i \neq 0$, the vectors $\mathbf{x_1, \cdots, x_k}$ are \textbf{linearly dependent}. \\If only the trivial solution exists, i.e., $\lambda_1 = \cdots = \lambda_k = 0$ the vectors $\mathbf{x_1, \cdots, x_k}$ are \textbf{linearly independent}.
 
 \vspace{0.3cm}
 \noindent\textbf{Properties}:
 \begin{enumerate}
     \item $k$ vectors are either linearly dependent or linearly independent. There is no third option.
 
-    \item If at least one of the vectors $\mathbf{x_1, ..., x_k}$ is $\mathbf{0}$ then they are linearly dependent. The same holds if two vectors are identical.
+    \item If at least one of the vectors $\mathbf{x_1, \cdots, x_k}$ is $\mathbf{0}$ then they are linearly dependent. The same holds if two vectors are identical.
 
-    \item The vectors $\{\mathbf{x_1, ..., x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, ..., k\}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\{\mathbf{x_1, ..., x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, ..., k\}$ is linearly dependent.
+    \item The vectors $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}$ is linearly dependent.
 
-    \item A practical way of checking whether vectors $\mathbf{x_1, ..., x_k} \in V$ are linearly independent is to use Gaussian elimination: 
+    \item A practical way of checking whether vectors $\mathbf{x_1, \cdots, x_k} \in V$ are linearly independent is to use Gaussian elimination: 
     \begin{itemize}
         \item Write all vectors as columns of a matrix A and perform Gaussian elimination until the matrix is in row echelon form (the reduced row-echelon form is unnecessary here)
         
@@ -214,27 +214,27 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, ...
         \item All column vectors are linearly independent if and only if all columns are pivot columns. If there is at least one non-pivot column, the columns (and, therefore, the corresponding vectors) are linearly dependent.
     \end{itemize}
 
-    \item Consider a vector space $V$ with $k$ linearly independent vectors $\mathbf{b_1, ..., b_k}$ and $m$ linear combinations
+    \item Consider a vector space $V$ with $k$ linearly independent vectors $\mathbf{b_1, \cdots, b_k}$ and $m$ linear combinations
     \begin{itemize}
         \item \( \displaystyle \mathbf{x}_1 \notag = \sum_{i=1}^{k} \bm{\lambda}_{1i} \mathbf{b}_i  \quad\quad\cdots\quad\quad \mathbf{x}_m = \sum_{i=1}^{k} \bm{\lambda}_{im} \mathbf{b}_i \)
 
-        \item $\mathbf{B} = [\mathbf{b_1, ..., b_k}]$ as the matrix whose columns are the linearly independent vectors $\mathbf{b_1, ..., b_k}$
+        \item $\mathbf{B} = [\mathbf{b_1, \cdots, b_k}]$ as the matrix whose columns are the linearly independent vectors $\mathbf{b_1, \cdots, b_k}$
         \[
             \mathbf{x}_j = \mathbf{B{\bm{\lambda}}}_j \quad\quad\quad\quad \bm{\lambda}_j = [\lambda_{1j}, \cdots, \lambda_{kj}]^\top
-            \hfill (j=1, ...,m)
+            \hfill (j=1, \cdots,m)
         \]
 
         \item \( \displaystyle \sum_{j=1}^{m} \psi_j \mathbf{x}_j = \sum_{j=1}^{m} \psi_j \mathbf{B}\bm{\lambda}_j = \mathbf{B}\sum_{j=1}^{m} \psi_j \bm{\lambda}_j \)\\
-        This means that $\{\mathbf{x_1, ..., x_m}\}$ are linearly independent if and only if the column vectors $\{\bm{\lambda_1, ..., \lambda_m}\}$ are linearly independent.
+        This means that $\{\mathbf{x_1, \cdots, x_m}\}$ are linearly independent if and only if the column vectors $\{\bm{\lambda_1, \cdots, \lambda_m}\}$ are linearly independent.
 
     \end{itemize}
 
-    \item In a vector space $V$, $m$ linear combinations of $k$ vectors $\mathbf{x_1, ..., x_k}$ are linearly dependent if $m > k$.
+    \item In a vector space $V$, $m$ linear combinations of $k$ vectors $\mathbf{x_1, \cdots, x_k}$ are linearly dependent if $m > k$.
 \end{enumerate}
 
 
 \section{Generating Set ( $\mathbb{A}$ ) \cite{mfml-1}}\label{Generating Set}
-Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\{x_1, . . . , x_k\}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, . . . , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
+Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\{x_1, \cdots , x_k\}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, \cdots , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
 
 \begin{itemize}
     \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
@@ -242,7 +242,7 @@ Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb
 
 
 \section{Span ( $\rcmdXspan[\mathbb{A}]$ ) \cite{mfml-1}} \label{lin-alg: Span}
-The set of all linear combinations of vectors in a generating set $\mathbb{A}$ is called the span of $\mathbb{A}$. If $\mathbb{A}$ spans the vector space $V$, we write $V = \rcmdXspan[\mathbb{A}]$ or $V = \rcmdXspan[\mathbf{x_1, . . . , x_k}]$.
+The set of all linear combinations of vectors in a generating set $\mathbb{A}$ is called the span of $\mathbb{A}$. If $\mathbb{A}$ spans the vector space $V$, we write $V = \rcmdXspan[\mathbb{A}]$ or $V = \rcmdXspan[\mathbf{x_1, \cdots , x_k}]$.
 
 
 
@@ -260,7 +260,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
     
     \item $\mathbb{B}$ is a maximal linearly independent set of vectors in $V$, i.e., adding any other vector to this set will make it linearly dependent.
 
-    \item Every vector $\mathbf{x} \in V$ is a linear combination of vectors from $\mathbb{B}$, and every linear combination is unique, i.e., with \( \displaystyle \mathbf{x} = \sum_{i=1}^{k} \lambda_i \mathbf{b}_i = \sum_{i=1}^{k} \psi_i \mathbf{b}_i \) and $\lambda_i, \psi_i \in \mathbb{R}, \mathbf{b}_i \in \mathbb{B}$, it follows that $\lambda_i = \psi_i$, $i=1,...,k$
+    \item Every vector $\mathbf{x} \in V$ is a linear combination of vectors from $\mathbb{B}$, and every linear combination is unique, i.e., with \( \displaystyle \mathbf{x} = \sum_{i=1}^{k} \lambda_i \mathbf{b}_i = \sum_{i=1}^{k} \psi_i \mathbf{b}_i \) and $\lambda_i, \psi_i \in \mathbb{R}, \mathbf{b}_i \in \mathbb{B}$, it follows that $\lambda_i = \psi_i$, $i=1,\cdots,k$
 
     
 \end{itemize}
@@ -274,15 +274,142 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
     
     \item All bases possess the same number of elements, the \textbf{basis vectors}\indexlabel{basis vectors}.
 
+    \item A basis effectively defines a \textbf{coordinate system}. (SEE: \fullref{Coordinate vector})
 \end{itemize}
 
 \subsection{Finding Basis \cite{mfml-1}}
-A basis of a subspace $U = \rcmdXspan[\mathbf{x_1, ..., x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
+A basis of a subspace $U = \rcmdXspan[\mathbf{x_1, \cdots, x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
 \begin{enumerate}
     \item Write the spanning vectors as columns of a matrix $\mathbf{A}$
     \item Determine the row-echelon form of $\mathbf{A}$
     \item The spanning vectors associated with the pivot columns are a basis of $U$
 \end{enumerate}
+
+
+\subsection{Ordered Basis ( $\mathit{B}$ ) \cite{mfml-1}}\label{ordered basis}
+$n$-tuple an \textbf{ordered basis} of $\mathbf{V}$: $\mathit{B} = (\mathbf{b_1, \cdots, b_n})$
+
+\subsection{Basis Change \cite{mfml-1}}\label{Basis Change}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth, height=2.5cm, keepaspectratio]{Pictures/maths/basis-change.png}
+    \caption{Basis Change}
+\end{figure}
+
+\textbf{Notations}:
+\begin{itemize}
+    \item linear mapping:  $\Phi : \mathbf{V \to W}$
+    
+    \item ordered bases of $\mathbf{V}$ : \(         \mathit{B} = \mathbf{(b_1, \cdots , b_n)} \quad\quad \tilde{\mathit{B}} = \mathbf{( \tilde{b}1, \cdots , \tilde{b}_n)}     \)
+
+    \item ordered bases of $\mathbf{W}$ : \( \mathit{C} = \mathbf{(c_1, \cdots , c_n)} \quad\quad \tilde{\mathit{C}} = \mathbf{( \tilde{c}1, \cdots , \tilde{c}_n)} \)
+
+    \item Transformation matrix of $\Phi: \mathbf{V} \to \mathbf{W}$ wrt bases $\mathit{B}$ and $\mathit{C}$ : $\mathbf{A}_\Phi \in \mathbb{R}^{m \times n}$
+
+    \item Transformation matrix of $\Phi: \mathbf{V} \to \mathbf{W}$ wrt bases $\tilde{\mathit{B}}$ and $\tilde{\mathit{C}}$ : $\tilde{\mathbf{A}}_\Phi \in \mathbb{R}^{m \times n}$
+
+    
+\end{itemize}
+
+\vspace{0.2cm}
+\noindent \textbf{Note}:
+\begin{itemize}
+    \item Transformation matrices of a linear mapping $\Phi : \mathbf{V \to W}$ change if we change the bases in $\mathbf{V}$ and $\mathbf{W}$.
+
+    \item 
+\end{itemize}
+
+\begin{theorem}[Basis Change]\label{theorem: Basis Change}
+    For a linear mapping $\Phi : \mathbf{V \to W}$, ordered bases\\ 
+    \(
+        \mathit{B} = \mathbf{(b_1, \cdots , b_n)} \quad\quad \tilde{\mathit{B}} = \mathbf{( \tilde{b}1, \cdots , \tilde{b}_n)}  \hfill \text{ of }\mathbf{V}
+    \)\\
+    and\\
+    \(
+        \mathit{C} = \mathbf{(c_1, \cdots , c_n)} \quad\quad \tilde{\mathit{C}} = \mathbf{( \tilde{c}1, \cdots , \tilde{c}_n)}  \hfill \text{ of }\mathbf{W}
+    \)\\
+    and a transformation matrix $\mathbf{A}_\Phi$ of $\Phi$ with respect to $\mathit{B}$ and $\mathit{C}$, the corresponding transformation matrix $\tilde{\mathbf{A}}_\Phi$ with respect to the bases $\tilde{\mathit{B}}$ and $\tilde{\mathit{C}}$ is given as\\
+    \( \tilde{\mathbf{A}}_\Phi = \mathbf{T^{-\top} \mathbf{A}_\Phi S} \)
+\end{theorem}
+
+\vspace{0.2cm}
+\noindent \textbf{where}:
+\begin{itemize}
+    \item $\mathbf{S} \in \mathbb{R}^{n\times n}$ is the transformation matrix of $id_V$ that maps coordinates with respect to $\tilde{\mathit{B}}$ onto coordinates with respect to $\mathit{B}$
+
+    \item $\mathbf{T} \in \mathbb{R}^{m\times m}$ is the transformation matrix of $id_W$ that maps coordinates with respect to $\tilde{\mathit{C}}$ onto coordinates with respect to $\mathit{C}$.
+\end{itemize}
+
+\vspace{0.2cm}
+\noindent \textbf{Proof}:
+\begin{enumerate}
+    \item we can write the vectors of the new basis $\hat{\mathit{B}}$ of $\mathbf{V}$ as a linear combination of the basis vectors of $\mathit{B}$, such that\\
+    \(
+        \displaystyle \hat{\mathbf{b}}_j = s_{1j}\mathbf{b}_1 + \cdots + s_{nj}\mathbf{b}_n = \sum_{i=1}^{n} s_{ij}\mathbf{b}_i \hfill (j = 1,\cdots,n)
+    \)\\
+    and,\\
+    \(
+        \displaystyle \hat{\mathbf{c}}_k = t_{1k}\mathbf{c}_1 + \cdots + t_{mk}\mathbf{c}_m = \sum_{l=1}^{n} t_{lk}\mathbf{c}_l \hfill (k = 1,\cdots,m)
+    \)
+
+    \item $\mathbf{S} = ((s_{ij})) \in \mathbb{R}^{n\times n}$ as the transformation matrix that maps coordinates with respect to $\tilde{\mathit{B}}$ onto coordinates with respect to $\mathit{B}$\\
+    $j$th column of $\mathbf{S}$ is the \textbf{coordinate} representation of  $\tilde{\mathbf{b}}_j$ with respect to $\mathit{B}$\\
+    $\mathbf{S}$ is a \textbf{regular matrix}.
+    
+    
+    \item $\mathbf{T} = ((T_{lk})) \in \mathbb{R}^{m\times m}$ as the transformation matrix that maps coordinates with respect to $\tilde{\mathit{C}}$ onto coordinates with respect to $\mathit{C}$\\
+    $k$th column of $\mathbf{T}$ is the \textbf{coordinate} representation of $\tilde{\mathbf{c}}_k$ with respect to $\mathbf{C}$\\
+    $\mathbf{T}$ is a \textbf{regular matrix}.
+
+    \item \( \displaystyle
+        \Phi(\tilde{\mathbf{b}}_j) = \sum_{k=1}^{m} \tilde{a}_{kj}\textcolor{blue}{\tilde{\mathbf{c}}_k} = \sum_{k=1}^{m} \tilde{a}_{kj} \textcolor{blue}{\sum_{l=1}^{m} t_{lk} \mathbf{c}_l} = \sum_{l=1}^{m}\left( \textcolor{Magenta}{\sum_{k=1}^{m} t_{lk}\tilde{a}_{kj}} \right)\mathbf{c}_l
+    \)  \\
+    \( \displaystyle
+     \Phi(\textcolor{blue}{\tilde{\mathbf{b}}_j}) = \Phi \left( \textcolor{blue}{\sum_{i=1}^{m} s_{ij}\mathbf{b}_i} \right) = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\Phi(\mathbf{b}_i)} = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\sum_{i=1}^{m} a_{li}\mathbf{c}_l} = \sum_{l=1}^{m}\left( \textcolor{Magenta}{\sum_{i=1}^{n} a_{li}s_{ij}} \right)\mathbf{c}_l
+    \)
+
+    \item \( \displaystyle
+        \sum_{k=1}^{m} t_{lk}\tilde{a}_{kj} = \sum_{i=1}^{n} a_{li}s_{ij} 
+    \)\\
+    \(
+        \Rightarrow \mathbf{T\tilde{A}}_\Phi = \mathbf{A}_\Phi \mathbf{S} \in \mathbb{R}^{m\times n}
+    \)\\
+    \(
+        \Rightarrow \mathbf{\tilde{A}}_\Phi = \mathbf{T^{-\top}A}_\Phi \mathbf{S}
+    \)
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Coordinate vector ( $\alpha$ ) \cite{mfml-1}}\label{Coordinate vector}
+
+Consider a vector space $\mathbf{V}$ and an ordered basis $\mathit{B} = \mathbf{(b_1, \cdots , b_n)}$ of $\mathbf{V}$. For any $\mathbf{x \in V}$ we obtain a unique representation (linear combination) \( \mathbf{x} = \alpha_1\mathbf{b}_1 + \cdots + \alpha_n\mathbf{b}_n \) of $\mathbf{x}$ with respect to $\mathit{B}$. Then $\alpha_1, \cdots , \alpha_n$ are the \textbf{coordinates} of $\mathbf{x}$ with respect to $\mathit{B}$, and the vector \( \displaystyle \bm{\alpha} = \begin{bmatrix}
+    \alpha_1 \\
+    \vdots \\
+    \alpha_n
+\end{bmatrix} \in \mathbb{R}^n \) is the \textbf{coordinate vector}/ coordinate representation of $\mathbf{x}$ with respect to the ordered basis $\mathit{B}$.
+
+
+\noindent SEE:
+\begin{itemize}
+    \item \fullref{ordered basis}
+    \item \fullref{Linear Combination} 
+\end{itemize}
+
+\vspace{0.2cm}
+\noindent \textbf{Note}:
+\begin{itemize}
+    \item For an $n$-dimensional vector space $\mathbf{V}$ and an ordered basis $\mathit{B}$ of $\mathbf{V}$, the mapping $\Phi : \mathbb{R}^n \to \mathbf{V}$, $\Phi(\mathbf{e}_i) = \mathbf{b}_i$, $i = 1, \cdots , n$, is linear (and because of \theoremref{theorem: isomorphic} an \textbf{isomorphism}), where $(\mathbf{e}_1, \cdots , \mathbf{e}_n)$ is the standard basis of $\mathbb{R}^n$.
+\end{itemize}
+
+
 
 
 \section{Rank ( $rk(\mathbf{A})$ ) \cite{mfml-1}}\label{matrix: Rank}
@@ -309,14 +436,20 @@ The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R
 
 \section{Linear Mappings/ vector space homomorphism/ linear transformation ( $\Phi(x)$ ) \cite{mfml-1}}\label{Linear Mappings/ vector space homomorphism/ linear transformation}
 
-For vector spaces $V$, $W$, a mapping $\Phi : V \rightarrow W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth, height=2.5cm, keepaspectratio]{Pictures/maths/linear-mapping.png}
+    \caption{Linear Mappings/ vector space homomorphism/ linear transformation}
+\end{figure}
+
+For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mapping (or vector space homomorphism/ linear transformation) if:
 \[
     \forall \mathbf{x, y} \in V, \forall\lambda, \psi \in \mathbb{R} : \Phi(\lambda\mathbf{x} + \psi\mathbf{y}) = \lambda\Phi(\mathbf{x}) + \psi\Phi(\mathbf{y})
 \]
 
 \begin{itemize}
     \item we can represent linear mappings as matrices
-    \item Consider a mapping $\Phi : \mathbb{V} \rightarrow \mathbb{W}$, where $\mathbb{V}$, $\mathbb{W}$ can be arbitrary sets. Then $\Phi$ is called
+    \item Consider a mapping $\Phi : \mathbb{V} \to \mathbb{W}$, where $\mathbb{V}$, $\mathbb{W}$ can be arbitrary sets. Then $\Phi$ is called
     \begin{itemize}
         \item \textbf{Injective} if $\forall \mathbf{x, y} \in \mathbb{V}: \Phi(\mathbf{x}) = \Phi(\mathbf{y}) \Rightarrow \mathbf{x} = \mathbf{y}$ \indexlabel{Injective mapping}
 
@@ -324,45 +457,67 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \rightarrow W$ is called a linea
         If $\Phi$ is surjective, then every element in $\mathbb{W}$ can be “\textbf{reached}” from $\mathbb{V}$ using $\Phi$.
 
         \item \textbf{Bijective} if it is injective and surjective.\indexlabel{Bijective mapping}\\
-        A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \rightarrow \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\indexlabel{inverse linear mapping}
+        A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \to \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\indexlabel{inverse linear mapping}
         
     \end{itemize}
 
-    \item \textbf{Isomorphism}\indexlabel{Isomorphism}: $\Phi : V \rightarrow W$ linear and bijective\\
-    (\textbf{Theorem}) Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V) = \dim(W)$.\\
+    \item \textbf{Isomorphism}\indexlabel{Isomorphism}: $\Phi : V \to W$ linear and bijective\\
+    
+    \begin{theorem}\label{theorem: isomorphic}
+        Finite-dimensional vector spaces $V$ and $W$ are isomorphic if and only if $\dim(V) = \dim(W)$.
+    \end{theorem}
+    
     Intuitively, this means that vector spaces of the same dimension are kind of the same thing, as they can be transformed into each other without incurring any loss.\\
     This gives the justification to treat $\mathbb{R}^{m\times n}$ (the vector space of ${m\times n}$-matrices) and $\mathbb{R}^{mn}$ (the vector space of vectors of length $mn$) the same, as their dimensions are $mn$, and there exists a linear, bijective mapping that transforms one into the other.
 
-    \item \textbf{Endomorphism}\indexlabel{Endomorphism}: $\Phi : V \rightarrow V$ linear
+    \item \textbf{Endomorphism}\indexlabel{Endomorphism}: $\Phi : V \to V$ linear
 
-    \item \textbf{Automorphism}\indexlabel{Automorphism}: $\Phi : V \rightarrow V$ linear and bijective
+    \item \textbf{Automorphism}\indexlabel{Automorphism}: $\Phi : V \to V$ linear and bijective
 
-    \item We define $id_V : V \rightarrow V , \mathbf{x} \rightarrow \mathbf{x}$ as the \textbf{identity mapping}\indexlabel{identity mapping} or \textbf{identity automorphism}\indexlabel{identity automorphism} in V.
+    \item We define $id_V : V \to V , \mathbf{x} \to \mathbf{x}$ as the \textbf{identity mapping}\indexlabel{identity mapping} or \textbf{identity automorphism}\indexlabel{identity automorphism} in V.
 
     \item Consider vector spaces $V, W, X$. Then:
     \begin{itemize}
-        \item For linear mappings $\Phi : V \rightarrow W$ and $\Psi : W \rightarrow X$, the mapping $\Psi \circ \Phi : V \rightarrow X$ is also linear.
+        \item For linear mappings $\Phi : V \to W$ and $\Psi : W \to X$, the mapping $\Psi \circ \Phi : V \to X$ is also linear.
 
-        \item If $\Phi : V \rightarrow W$ is an isomorphism, then $\Phi^{-1} : W \rightarrow V$ is an isomorphism, too.
+        \item If $\Phi : V \to W$ is an isomorphism, then $\Phi^{-1} : W \to V$ is an isomorphism, too.
 
-        \item If $\Phi : V \rightarrow W$, $\Psi : V \rightarrow W$ are linear, then $\Phi + \Psi$ and $\lambda\Phi$, $\lambda \in \mathbb{R}$, are linear, too.
+        \item If $\Phi : V \to W$, $\Psi : V \to W$ are linear, then $\Phi + \Psi$ and $\lambda\Phi$, $\lambda \in \mathbb{R}$, are linear, too.
     \end{itemize}
     
 \end{itemize}
 
+\subsection{Matrix Representation of Linear Mappings \cite{mfml-1}}\label{Matrix Representation of Linear Mappings}
 
+\begin{itemize}
+    \item Any $n$-dimensional vector space is \textbf{isomorphic} to $R^n$. (SEE: \theoremref{theorem: isomorphic})
+    
+\end{itemize}
 
+\subsection{Transformation Matrix ( $\mathbf{A}_\Phi$ ) \cite{mfml-1}}\label{Transformation Matrix}
 
+\begin{itemize}
+    \item Consider vector spaces $\mathbf{V}$, $\mathbf{W}$ with corresponding (ordered) bases $\mathit{B} = \mathbf{(b_1, \cdots , b_n)}$ and $\mathit{C} = \mathbf{(c_1, \cdots , c_m)}$. (SEE: \fullref{ordered basis})
 
+    \item Moreover, we consider a linear mapping $\Phi : \mathbf{V} \to \mathbf{W}$. 
 
+    \item For $j \in \{1, \cdots , n\}$, \(     \displaystyle \Phi(\mathbf{b}_j) = \alpha_{1j}\mathbf{c}_1 + \cdots + \alpha_{mj}\mathbf{c}_m = \sum_{i=1}^{m} \alpha_{ij}\mathbf{c}_{i} \) is the \textbf{unique} representation of $\Phi(\mathbf{b}_j)$ with respect to $\mathit{C}$. 
 
+    \item The $m \times n$-matrix $\mathbf{A}_\Phi$, whose elements are given by \( \mathbf{A}_\Phi(i, j) = \alpha_{ij} \), is called \textbf{transformation matrix} of $\Phi$ (with respect to the ordered bases $\mathit{B}$ of $\mathbf{V}$ and $\mathit{C}$ of $\mathbf{W}$)
 
+    \item The coordinates of $\Phi(\mathbf{b}_j)$ with respect to the ordered basis $\mathit{C}$ of $\mathbf{W}$ are the $j$-th column of $\mathbf{A}_\Phi$. (SEE: \fullref{Coordinate vector})
+
+    \item Consider (\textbf{finite-dimensional}) vector spaces $\mathbf{V, W}$ with ordered bases $\mathit{B, C}$ and a linear mapping $\Phi : \mathbf{V \to W}$ with transformation matrix $\mathbf{A}_\Phi$. \\
+    If $\hat{\mathbf{x}}$ is the coordinate vector of $\mathbf{x} \in \mathbf{V}$ with respect to $\mathit{B}$ and $\hat{\mathbf{y}}$ the coordinate vector of $\mathbf{y} = \Phi(\mathbf{x}) \in \mathbf{W}$ with respect to $\mathit{C}$, then $\hat{\mathbf{y}} = \mathbf{A}_\Phi\hat{\mathbf{x}}$.
+
+    \item The transformation matrix can be used to map coordinates with respect to an ordered basis in $\mathbf{V}$ to coordinates with respect to an ordered basis in $\mathbf{W}$.
+\end{itemize}
 
 
 
 \vspace{4cm}
 \url{https://drive.google.com/file/d/1JS4tlbMRYv8oHYrLgISR_NV9y6-_2j5h/edit}\\
-55 / 417
+61 / 417
 
 
 

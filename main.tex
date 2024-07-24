@@ -3,7 +3,7 @@
 
 \usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,a4paper]{geometry} % Page margins
 
-\usepackage{xcolor} % Required for specifying colors by name
+\usepackage[dvipsnames]{xcolor} % Required for specifying colors by name
 \definecolor{ocre}{RGB}{52,177,201} % Define the orange color used for highlighting throughout the book
 
 % Font Settings
@@ -72,6 +72,7 @@
 \tableofcontents % Print the table of contents itself
 \listoffigures
 \listoftables
+% \listoftheorems % TODO
 \listofalgorithms
 \lstlistoflistings
 \include{notations}
@@ -105,8 +106,8 @@
     \include{chapters/ai_ml/ai}
     \include{chapters/ai_ml/ml}
 
-    \input{chapters/evaluation-metrics}
-    
+    \include{chapters/evaluation-metrics}
+    \include{chapters/optimizers}
     \include{chapters/deep_neural_networks/artificial_neural_network}
     \include{chapters/deep_neural_networks/activation_functions}
     \include{chapters/layers}
@@ -115,8 +116,8 @@
     \include{chapters/convolution-neural-network/popular-cnn-models}
 
     \include{chapters/information-retrieval/intro-to-ir}
-    \include{chapters/information-retrieval/Boolean-retrieval}
     \include{chapters/information-retrieval/tf-idf}
+    \include{chapters/information-retrieval/Boolean-retrieval}
     \include{chapters/information-retrieval/pointwise-mutual-info}
     \include{chapters/information-retrieval/word2vec}
     

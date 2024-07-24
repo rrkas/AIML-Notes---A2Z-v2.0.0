@@ -25,11 +25,15 @@
 
     $\{...\}$ & \tableitemize{
         \item unordered set
+        \item unordered basis: $\mathbf{B = \{b_1, . . . , b_n\}}$
     }\\
     \hline
 
     $(...)$ & \tableitemize{
         \item ordered set
+        
+        \item ordered basis: $\mathit{B} = \mathbf{(b_1, . . . , b_n)}$ \fullref{ordered basis}
+        
         \item $(a,b)$: range with \textbf{neither limits} included
     }\\
     \hline
@@ -46,7 +50,8 @@
 
     $[...]$ & \tableitemize{
         \item $[a,b]$: range with \textbf{both limits} included
-        \item \fullref{vectors} \& matrix
+        
+        \item vectors (\fullref{vectors}) \& matrix
         \[
             \begin{bmatrix}
                 x_{11} & \cdots & x_{1n}\\
@@ -54,6 +59,8 @@
                 x_{m1} & \cdots & x_{mn}
             \end{bmatrix}
         \]
+
+        \item $\mathbf{B = [b_1, . . . , b_n]}$ is a matrix whose columns are the vectors $\mathbf{b_1, . . . , b_n}$.
     }\\
     \hline
 
@@ -94,6 +101,9 @@
 
     $-$ & \tableitemize{
         \item Subtraction
+        
+        \item \textbf{(Set) Difference}: $\mathbb{A}-\mathbb{B}$: It includes all the elements that are in set $\mathbb{A}$ but not in set $\mathbb{B}$.
+        $\mathbb{A}-\mathbb{B}=\{ x | x \in \mathbb{A} \text{ and } x \not\in \mathbb{B} \}$
     }\\
     \hline
 
@@ -105,6 +115,24 @@
 
     $\times$ / $*$ / $\cdot$ & \tableitemize{
         \item Multiplication
+    }\\
+    \hline
+
+    $\cup$ & \tableitemize{
+        \item \textbf{Union}: $\mathbb{A}\cup\mathbb{B}$ means elements that are in either $\mathbb{A}$ or $\mathbb{B}$. 
+        $\mathbb{A}\cup\mathbb{B}=\{ x | x \in \mathbb{A} \text{ or } x \in \mathbb{B} \}$
+    }\\
+    \hline
+
+    $\cap$ & \tableitemize{
+        \item \textbf{Intersection}: $\mathbb{A}\cup\mathbb{B}$ means elements that are in both $\mathbb{A}$ and $\mathbb{B}$.  
+        $\mathbb{A}\cap\mathbb{B}=\{ x | x \in \mathbb{A} \text{ and } x \in \mathbb{B} \}$
+    }\\
+    \hline
+
+    $\backslash$ & \tableitemize{
+         \item \textbf{(Set) Difference}: $\mathbb{A}-\mathbb{B}$: It includes all the elements that are in set $\mathbb{A}$ but not in set $\mathbb{B}$.
+        $\mathbb{A}\backslash\mathbb{B}=\{ x | x \in \mathbb{A} \text{ and } x \not\in \mathbb{B} \}$
     }\\
     \hline
 
@@ -159,7 +187,7 @@
     \hline
 
     $\alpha$ & Alpha & \tableitemize{
-        \item 
+        \item \fullref{Coordinate vector}
     }\\
     \hline
 
@@ -200,7 +228,7 @@
 
     $\delta$ / $\Delta$ & Delta & \tableitemize{
         \item \fullref{Difference Quotient}
-        \item 
+        \item \textbf{Symmetric (Set) Difference/ disjunctive union/ set sum}\indexlabel{Symmetric (Set) Difference/ disjunctive union/ set sum}: $\mathbb{A}\Delta\mathbb{B} = (\mathbb{A}-\mathbb{B})\cup(\mathbb{B}-\mathbb{A})$ 
     } \\
     \hline
 
@@ -227,6 +255,10 @@
     $\lambda$ / $\Lambda$ & Lambda & \\
     \hline
 
+    $\nabla$ & Nabla & \tableitemize{
+        \item $\nabla F(x)$: Gradient of the function $F(x)$ wrt $x$
+    }\\
+    \hline
 
 \end{longtable}
 
@@ -273,7 +305,11 @@
 
     $\mathbb{A}$, $\mathbb{B}$, $\mathbb{R}$, $\mathbb{R}^{m\times n}$ & \tableitemize{ 
         \item set
+
         \item $\mathbb{E}$: Expected value
+        
+        \item $\mathbb{U}$: Universal set (set theory)
+        
         \item $\mathbbm{1}$: \fullref{Indicator function}
     }\\
     \hline
