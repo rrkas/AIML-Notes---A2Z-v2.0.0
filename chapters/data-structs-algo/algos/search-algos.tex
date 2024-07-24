@@ -336,6 +336,60 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 \end{lstlisting}
 
 
+\section{Selective Search (CNN) \cite{https://www.geeksforgeeks.org/r-cnn-region-based-cnns/}}\label{Selective Search (CNN)}
+
+\begin{table}[h]
+    \begin{minipage}[t]{0.39\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=3cm, keepaspectratio]{Pictures/convolutional-neural-network/rcnn-selective-search.png}
+            \caption{Selective Search}
+        \end{figure}        
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.59\linewidth}
+        \begin{itemize}
+            \item Selective search is a \textbf{greedy algorithm} that combines smaller segmented regions to generate region proposals.
+            
+            \item This algorithm takes an image as input and output generates region proposals on it.
+        
+            \item This algorithm has the advantage over random proposal generation in that it limits the number of proposals to approximately 2000 and these region proposals have a high recall.
+        \end{itemize}    
+    \end{minipage}
+\end{table}
+
+
+\vspace{0.2cm}
+\textbf{Algorithm}:
+\begin{enumerate}
+    \item Generate initial sub-segmentation of the input image.
+
+    \item Combine similar bounding boxes into larger ones recursively.
+
+    \item Use these larger boxes to generate region proposals for object detection.
+\end{enumerate}
+
+\vspace{0.2cm}
+\textbf{Challenges}:
+\begin{enumerate}
+    \item The selective Search algorithm is very rigid and there is no learning happening in that. This sometimes leads to bad region proposal generation for object detection.
+
+    \item Since there are approximately 2000 candidate proposals. It takes a lot of time to train the network. Also, we need to train multiple steps separately (CNN architecture, SVM model, bounding box regressor). So, This makes it very slow to implement.
+
+    \item \textbf{R-CNN} (SEE: \fullref{Region Based CNNs (R-CNN/ RCNN)}) cannot be used in real-time because it takes approximately 50 sec to test an image with a bounding box regressor.
+
+    \item Since we need to save feature maps of all the region proposals. It also increases the amount of disk memory required during training.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
 
 
 
