@@ -373,12 +373,6 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 \textbf{Challenges}:
 \begin{enumerate}
     \item The selective Search algorithm is very rigid and there is no learning happening in that. This sometimes leads to bad region proposal generation for object detection.
-
-    \item Since there are approximately 2000 candidate proposals. It takes a lot of time to train the network. Also, we need to train multiple steps separately (CNN architecture, SVM model, bounding box regressor). So, This makes it very slow to implement.
-
-    \item \textbf{R-CNN} (SEE: \fullref{Region Based CNNs (R-CNN/ RCNN)}) cannot be used in real-time because it takes approximately 50 sec to test an image with a bounding box regressor.
-
-    \item Since we need to save feature maps of all the region proposals. It also increases the amount of disk memory required during training.
 \end{enumerate}
 
 

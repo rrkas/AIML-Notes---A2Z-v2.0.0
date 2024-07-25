@@ -51,11 +51,21 @@ Essentially, formulas are \textbf{same}.
 \end{table}
 
 
-\section{Mean Absolute Difference (MAD)/ Mean Absolute Error (MAE)}\label{Mean Absolute Difference (MAD)}\label{Mean Absolute Error (MAE)}
+\section{Mean Absolute Difference (MAD)/ Mean Absolute Error (MAE)/ $L_1$ Loss}\label{Mean Absolute Difference (MAD)}\label{Mean Absolute Error (MAE)}\label{L1 Loss}
 
 \[
     MAD = MAE = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
 \]
+
+\section{Smooth $L_1$ Loss ( $\operatorname{smooth}_{L_1}$ )}
+\[
+    \displaystyle
+    \operatorname{smooth}_{L_1}(x) = \begin{cases}
+        0.5x^2 & \text{ if } |x| < 1 \\
+        |x| - 0.5 & \text{ otherwise}
+    \end{cases}
+\]
+
 
 
 \section{Mean Square Error (MSE)}\label{Mean Square Error (MSE)}

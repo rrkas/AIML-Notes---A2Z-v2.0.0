@@ -167,18 +167,65 @@
     }
 \end{algorithm}
 
+\subsection{Soft Non-maximum Suppression (soft-NMS)}\label{Soft Non-maximum Suppression (soft-NMS)}
+
+\[
+    s_i = \begin{cases}
+        s_i & IOU(M, b_i) < N_t \\
+        s_i(1 - IOU(M, b_i)) & IOU(M, b_i) \geq N_t
+    \end{cases}
+\]
+
+\begin{itemize}
+    \item $s_i$ : score of proposal $i$ \\
+            $b_i$ : box corresponding to proposal $i$ \\
+            $M$ : box corresponding to maximum confidence \\
+            $N_t$ : $IOU$ threshold
+    
+    \item instead of completely removing the proposals with high IOU and high confidence, \textbf{reduce the confidences} of the proposals proportional to IOU value
+
+    
+\end{itemize}
+
+\begin{algorithm}[h]
+    \caption{Soft Non-maximum Suppression (soft-NMS) \cite{medium/towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c,arxiv/1704.04503-soft-nms}}
+
+    \SetKwFunction{Fsnms}{SoftNMS}
+    \SetKwProg{Fn}{Function}{:}{}
+    \Comment{
+        $\mathbb{B}$ is the list of initial detection boxes\\
+        $\mathbb{S}$ contains corresponding detection scores\\
+        $N_t$ is the NMS threshold
+    }
+    \Fn{\Fsnms{$ \mathbb{B} = \{ b_1,\cdots, b_N \}, \mathbb{S} = \{ s_1,\cdots, s_N \}, N_t $}}{
+        \Comment{set of final detections}
+        $\mathbb{D} \gets \{\} $ \\
+        \While{$\mathbb{B} \neq$ empty}{
+            $m \gets \arg\max S$\\
+            $M \gets b_m$\\
+            $\mathbb{D} \gets \mathbb{D} \cup \mathbb{M}$\\
+            $\mathbb{B} \gets \mathbb{B} - \mathbb{M}$\\
+    
+            \For{$b_i$ in $\mathbb{B}$}{
+                \Comment{NMS}
+                \If{$IOU(M,b_i) \geq N_t$}{
+                    $\mathbb{B} \gets \mathbb{B} - b_i$\\
+                    $\mathbb{S} \gets \mathbb{S} - s_i$\\
+                }
+                \Comment{Soft-NMS}
+                $s_i \gets s_i \cdot f(IOU(M,b_i))$
+            }
+        }
+        
+        \Return $\mathbb{D},\mathbb{S}$
+    }
+
+\end{algorithm}
+
+
+
+
 \url{https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c}
-
-
-
-
-
-
-
-
-
-
-
 
 
 

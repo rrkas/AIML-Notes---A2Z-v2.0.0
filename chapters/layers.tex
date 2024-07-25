@@ -21,17 +21,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Convolution Layer \cite{gfg-convolutional-neural-network-cnn-in-machine-learning}}\label{nn: Convolution Layer}
+\section{(Linear) Convolution Layer \cite{gfg-convolutional-neural-network-cnn-in-machine-learning}}\label{nn: Convolution Layer}
 
-\[
-   \displaystyle n_{out} = \left[ \frac{n_{in} + 2p - k}{s} \right] + 1
-\]
+\begin{table}[h]
+    \begin{minipage}{0.44\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/layers/conv-layer-linear.jpg}
+            \caption{(Linear) Convolution Layer \cite{medium/towardsdatascience.com/review-nin-network-in-network-image-classification-69e271e499ee}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.54\linewidth}
+        \[
+           \displaystyle n_{out} = \left[ \frac{n_{in} + 2p - k}{s} \right] + 1
+        \]
+        
+        \begin{itemize}
+            \item These layers apply convolutional operations to input images, using filters (also known as kernels) to detect features such as edges, textures, and more complex patterns. 
+            
+            \item Convolutional operations help preserve the spatial relationships between pixels.
+        \end{itemize}
+    \end{minipage}
+\end{table}
 
-\begin{itemize}
-    \item These layers apply convolutional operations to input images, using filters (also known as kernels) to detect features such as edges, textures, and more complex patterns. 
-    
-    \item Convolutional operations help preserve the spatial relationships between pixels.
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{MLP Convolutional (mlpconv) Layer \cite{medium/towardsdatascience.com/review-nin-network-in-network-image-classification-69e271e499ee}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/layers/conv-layer-mlp.jpg}
+    \caption{MLP Convolutional (mlpconv) Layer}
+\end{figure}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -79,7 +103,7 @@
 \end{itemize}
 
 \begin{table}[h]
-    \begin{minipage}[t]{0.32\linewidth}
+    \begin{minipage}[b]{0.32\linewidth}
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/pooling-max.png}
@@ -87,7 +111,7 @@
         \end{figure}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.32\linewidth}
+    \begin{minipage}[b]{0.32\linewidth}
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/pooling-average.png}
@@ -95,7 +119,7 @@
         \end{figure}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.32\linewidth}
+    \begin{minipage}[b]{0.32\linewidth}
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/pooling-global.png}
@@ -103,6 +127,35 @@
         \end{figure}
     \end{minipage}
 \end{table}
+
+
+\subsection{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer \cite{arxiv/1406.4729-sppnet}}\label{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer}
+
+\begin{itemize}
+    \item The SPP layer pools the features and generates fixed-length outputs, which are then fed into the fully-connected layers (or other classifiers).
+
+    \item we perform some \textbf{information “aggregation”} at a deeper stage of the network hierarchy (between convolutional layers and fully-connected layers) to avoid the need for cropping or warping at the beginning.
+
+    \item  It partitions the image into divisions from finer to coarser levels, and aggregates local features in them.
+
+    
+\end{itemize}
+
+
+
+\subsection{Region of Interest (ROI) Pooling Layer \cite{arxiv/1504.08083-fast-rcnn}}\label{cnn: Region of Interest (ROI) Pooling Layer}
+
+\begin{itemize}
+    \item The RoI pooling layer uses max pooling to convert the features inside any valid region of interest into a small feature map with a fixed spatial extent of $H \times W$ (e.g., $7 \times 7$), where $H$ and $W$ are layer \textbf{hyper-parameters} that are \textbf{independent} of any particular RoI.
+
+    \item Each RoI is defined by a four-tuple $(r, c, h, w)$ that specifies its top-left corner $(r, c)$ and its height and width $(h, w)$.
+
+    \item RoI max pooling works by dividing the $h \times w$ RoI window into an $H \times W$ grid of sub-windows of approximate size ${\displaystyle \frac{h}{H} \times \frac{w}{W}}$ and then \textbf{max-pooling} (SEE: \fullref{cnn: Max Pooling}) the values in each sub-window into the corresponding output grid cell.
+
+    \item Pooling is applied \textbf{independently} to each feature map channel, as in standard max pooling. 
+
+    \item Special case of \fullref{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
