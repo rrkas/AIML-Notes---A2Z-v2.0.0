@@ -167,18 +167,6 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
 \end{itemize}
 
 
-
-\section{Outer Product ( $\mathbf{ab^\top} \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}} \label{vector: Outer Product}
-\[
-    \mathbf{ab^\top} \in \mathbb{R}^{n\times n}
-\]
-
-\section{Inner/ Scalar /Dot Product ( $\mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml-1}} \label{vector: Inner/ Scalar /Dot Product}
-\[
-    \mathbf{a^\top b} \in \mathbb{R}
-\]
-
-
 \section{Linear Combination \cite{mfml-1}}\label{Linear Combination}
 Consider a vector space $V$ and a finite number of vectors $\mathbf{x_1, \cdots , x_k} \in V$ . Then, every $\mathbf{v} \in V$ of the form
 \(
@@ -297,10 +285,10 @@ $n$-tuple an \textbf{ordered basis} of $\mathbf{V}$: $\mathit{B} = (\mathbf{b_1,
     \caption{Basis Change}
 \end{figure}
 
-\textbf{Notations}:
+\noindent\textbf{Notations}:
 \begin{itemize}
     \item linear mapping:  $\Phi : \mathbf{V \to W}$
-    
+
     \item ordered bases of $\mathbf{V}$ : \(         \mathit{B} = \mathbf{(b_1, \cdots , b_n)} \quad\quad \tilde{\mathit{B}} = \mathbf{( \tilde{b}1, \cdots , \tilde{b}_n)}     \)
 
     \item ordered bases of $\mathbf{W}$ : \( \mathit{C} = \mathbf{(c_1, \cdots , c_n)} \quad\quad \tilde{\mathit{C}} = \mathbf{( \tilde{c}1, \cdots , \tilde{c}_n)} \)
@@ -309,6 +297,17 @@ $n$-tuple an \textbf{ordered basis} of $\mathbf{V}$: $\mathit{B} = (\mathbf{b_1,
 
     \item Transformation matrix of $\Phi: \mathbf{V} \to \mathbf{W}$ wrt bases $\tilde{\mathit{B}}$ and $\tilde{\mathit{C}}$ : $\tilde{\mathbf{A}}_\Phi \in \mathbb{R}^{m \times n}$
 
+    \item $A_\Phi$ is \textbf{transformation matrix} of $\Phi_{CB}$ wrt ordered bases $B$, $C$\\
+
+    \item $\Psi_{B\tilde{B}} : V \to V$ maps coordinates with respect to the new basis $\tilde{B}$ onto the (unique) coordinates with respect to the “old” basis $B$ (in $V$)
+
+    \item $\Xi_{\tilde{C}C} : W \to W$ maps coordinates with respect to $C$ onto coordinates with respect to $\tilde{C}$
+
+    \item  \begin{align}
+        \Phi_{\tilde{C}\tilde{B}}  \notag
+        &= \Xi_{\tilde{C}C} \circ \Phi_{CB} \circ \Psi_{B\tilde{B}} \\ \notag
+        &= \Xi^{-1}_{C\tilde{C}} \circ \Phi_{CB} \circ \Psi_{B\tilde{B}} \\ \notag
+    \end{align} 
     
 \end{itemize}
 
@@ -377,7 +376,8 @@ $n$-tuple an \textbf{ordered basis} of $\mathbf{V}$: $\mathit{B} = (\mathbf{b_1,
     \)\\
     \(
         \Rightarrow \mathbf{\tilde{A}}_\Phi = \mathbf{T^{-\top}A}_\Phi \mathbf{S}
-    \)
+    \)\\
+    Hence, Proved!
     
 \end{enumerate}
 
@@ -434,7 +434,7 @@ The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R
 \end{itemize}
 
 
-\section{Linear Mappings/ vector space homomorphism/ linear transformation ( $\Phi(x)$ ) \cite{mfml-1}}\label{Linear Mappings/ vector space homomorphism/ linear transformation}
+\section{Linear Mappings/ vector space homomorphism/ linear transformation ( $\Phi(\mathbf{x})$ ) \cite{mfml-1}}\label{Linear Mappings/ vector space homomorphism/ linear transformation}
 
 \begin{figure}[h]
     \centering

@@ -1,0 +1,150 @@
+\chapter{Matrix \cite{mfml-1}}\label{chapter: Matrix}
+
+\section*{Intro \cite{mfml-1}}
+
+With $m, n \in \mathbb{N}$ a real-valued $(m, n)$-matrix $\mathbf{A}$ is an $m\cdot n$-tuple of elements $a_{ij}$, $i = 1, \cdots , m$, $j = 1, \cdots , n$, which is ordered according to a rectangular scheme consisting of $m$ rows and $n$ columns:
+\[
+    \hfill
+    \mathbf{A} = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n}\\
+        a_{21} & a_{22} & \cdots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} & a_{m2} & \cdots & a_{mn}\\
+    \end{bmatrix}
+    \in \mathbb{R}^{m\times n}
+    \hfill
+\]
+
+\begin{itemize}
+    \item $\mathbb{R}^{m\times n}$ is the set of all real-valued $(m, n)$-matrices
+
+    \item (\textbf{flattening}) $\mathbf{A} \in \mathbb{R}^{m\times n}$ (matrix) can be equivalently represented as $\mathbf{a} \in \mathbb{R}^{mn\times 1}$ (vector) by stacking all $n$ columns of the matrix into a long vector
+\end{itemize}
+
+
+\section{Matrix Addition ( $\mathbf{A + B}$ ) \cite{mfml-1}}\label{Matrix Addition}
+The sum of two matrices $\mathbf{A, B} \in \mathbb{R}^{m\times n}$ is defined as the element-wise sum:
+\[
+    \hfill
+    \mathbf{A + B} = \begin{bmatrix}
+        a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n}\\
+        a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}\\
+    \end{bmatrix}
+    \in \mathbb{R}^{m\times n}
+    \hfill
+\]
+
+
+\section{Matrix Multiplication ( $AB = A@B$ ) \cite{mfml-1}}
+For matrices $\mathbf{A} \in \mathbb{R}^{m\times n}$, $\mathbf{B} \in \mathbb{R}^{n\times k}$, the elements $c_{ij}$ of the product $C = AB = A@B \in \mathbb{R}^{m\times k}$ are computed as:
+\[
+    \displaystyle
+    c_{ij} = \sum_{n}^{l=1} a_{il}b_{lj}
+    \hfill
+    (i=1,\cdots,m)(j=1,\cdots,k)
+\]
+
+\begin{itemize}
+    \item to compute element $c_{ij}$ we multiply the elements of the $i$th row of $\mathbf{A}$ with the $j$th column of $\mathbf{B}$ and sum them up
+
+    \item Matrices can only be multiplied if their “neighboring” dimensions match
+
+    \item Matrix multiplication is \textbf{NOT} defined as an element-wise operation on matrix elements, i.e., $c_{ij} \neq a_{ij}b_{ij}$
+
+    \item matrix multiplication is \textbf{NOT} commutative, i.e., $\mathbf{AB \neq BA}$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

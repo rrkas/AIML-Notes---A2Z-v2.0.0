@@ -299,8 +299,16 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
 
 \section{Adaptive Moment Estimation (Adam) (2014) \cite{arxiv-1412.6980-adam}}\label{Adaptive Moment Estimation (Adam)}
 
+\begin{itemize}
+    \item Combines the idea of:
+    \begin{enumerate}
+        \item \fullref{SGD with Momentum}
+        \item \fullref{Root Mean Square Propagation (RMSProp)}
+    \end{enumerate}
+\end{itemize}
+
 \begin{algorithm}[h]
-    \caption{Adaptive Moment Estimation (Adam) (2014)}
+    \caption{Adaptive Moment Estimation (Adam) (2014) \cite{arxiv-1412.6980-adam}}
 
     \textbf{Require}:\\
     $\quad$ $\alpha$: Stepsize\\
@@ -329,13 +337,22 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
         \Comment{Update biased second raw moment estimate}
         $v_t \gets \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g^2_t$ 
         
-        \Comment{Compute bias-corrected first moment estimate}
+        \Comment{
+            Compute bias-corrected first moment estimate\\
+            Borrowed from \fullref{SGD with Momentum}
+        }
         ${\displaystyle \hat{m}_t \gets \frac{m_t}{1 - \beta^t_1}}$ 
 
-        \Comment{Compute bias-corrected second raw moment estimate}
+        \Comment{
+            Compute bias-corrected second raw moment estimate\\
+            Borrowed from \fullref{Root Mean Square Propagation (RMSProp)}
+        }
         ${\displaystyle \hat{v}_t \gets \frac{v_t}{1 - \beta^t_2}}$
 
-        \Comment{Update parameters}
+        \Comment{
+            Update parameters\\
+            $\epsilon$ is a small constant (typically on the order of $10^{-8}$) added to the denominator to improve \textbf{numerical stability}. \cite{chatgpt}
+        }
         ${\displaystyle \theta_t \gets \theta_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}}$
     }
     
@@ -343,13 +360,7 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
     \Return $\theta_t$  
 \end{algorithm}
 
-\begin{itemize}
-    \item Combines the idea of:
-    \begin{enumerate}
-        \item \fullref{SGD with Momentum}
-        \item \fullref{Root Mean Square Propagation (RMSProp)}
-    \end{enumerate}
-\end{itemize}
+
 
 
 

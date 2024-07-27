@@ -36,8 +36,24 @@
         \[
            \displaystyle n_{out} = \left[ \frac{n_{in} + 2p - k}{s} \right] + 1
         \]
+        \[
+            n_{params} = n_f^{curr} \times ( f_h \times f_w \times  n_f^{prev} + 1)
+        \]
         
         \begin{itemize}
+            \item[] 
+            \begin{table}[H]
+                \begin{tabular}{l p{5.5cm}}
+                    $n_f^{curr}$ & number of filters in current layer \\
+                
+                    $f_h$ & height of each filter \\
+                    
+                    $f_w$ & width of each filter\\
+                    
+                    $n_f^{prev}$ & number of channels in image/ num of filters in previous layer
+                \end{tabular}
+            \end{table}
+            
             \item These layers apply convolutional operations to input images, using filters (also known as kernels) to detect features such as edges, textures, and more complex patterns. 
             
             \item Convolutional operations help preserve the spatial relationships between pixels.
@@ -63,9 +79,13 @@
 
 \[
    \displaystyle n_{out} = \left[ \frac{n_{in} - k}{s} \right] + 1
+   \hfill
+   n_{params} = 0 \text{ (no trainable params)}
 \]
 
 \begin{itemize}
+    \item default: $s=k$, so that pooling windows dont overlap
+
     \item Pooling layers \textbf{downsample} the spatial dimensions of the input, reducing the computational complexity and the number of parameters in the network. 
     
     \item Max pooling is a common pooling operation, selecting the maximum value from a group of neighboring pixels.
