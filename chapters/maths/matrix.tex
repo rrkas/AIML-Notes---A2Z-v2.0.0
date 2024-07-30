@@ -57,61 +57,405 @@ For matrices $\mathbf{A} \in \mathbb{R}^{m\times n}$, $\mathbf{B} \in \mathbb{R}
 \end{itemize}
 
 
+\section{Equivalence ( $\mathbf{\tilde{A} = T^{-1}AS}$ ) \cite{mfml-1}}\label{Equivalence}
+
+Two matrices $\mathbf{A, \tilde{A}} \in \mathbb{R}^{m\times n}$ are equivalent if there exist regular matrices $\mathbf{S} \in \mathbb{R}^{n\times n}$ and $\mathbf{T} \in \mathbb{R}^{m\times m}$, such that $\mathbf{\tilde{A} = T^{-1}AS}$.
+
+\begin{itemize}
+    \item equivalent matrices are \textbf{NOT} necessarily similar.
+\end{itemize}
+
+
+\section{Similarity/ Similar Matrices ( $\mathbf{\tilde{A} = S^{-1}AS}$ ) \cite{mfml-1}}\label{Similarity/ Similar Matrices}
+
+Two matrices $\mathbf{A, \tilde{A}} \in \mathbb{R}^{m\times n}$ are similar if there exists a regular matrix $\mathbf{S} \in \mathbb{R}^{n\times n}$ with $\mathbf{\tilde{A} = S^{-1}AS}$.
+
+\begin{itemize}
+    \item Similar matrices are \textbf{ALWAYS} equivalent.
+\end{itemize}
+
+
+\section{Hadamard Product/ element-wise product ( $A \odot B$ )}\label{matrix: Hadamard Product/ element-wise product}
+
+For matrices $\mathbf{A, B} \in \mathbb{R}^{m\times n}$, the elements $c_{ij}$ of the product $C \in \mathbb{R}^{m\times n}$ are computed as:
+\[
+    \hfill
+    C = A \odot B	
+    \Rightarrow	c_{ij} = a_{ij}b_{ij}
+    \hfill
+\]
+
+
+\section{Special matrices}
+
+\subsection{Identity Matrix ( $\mathbf{I}_n \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}}\label{Identity Matrix}
+In $\mathbb{R}^{n\times n}$, we define the identity matrix:
+\[
+    \renewcommand{\arraystretch}{0.6}
+    \mathbf{I}_n = \begin{bmatrix}
+        1 & 0 & \cdots & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & 1 \\
+    \end{bmatrix} \in \mathbb{R}^{n\times n}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Square Matrix ( $\mathbf{A} \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}}\label{Square Matrix}
+\begin{itemize}
+    \item possesses the same number of columns and rows
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Diagonal Matrix ( $\mathbf{D} \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}}\label{Diagonal Matrix}
+
+A diagonal matrix is a matrix that has value zero on all off-diagonal elements, i.e., they are of the form:
+\[
+    \renewcommand{\arraystretch}{0.6}
+    \mathbf{D} = \begin{bmatrix}
+        c_1 & 0 & \cdots & 0 & \cdots & 0 \\
+        0 & c_2 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & c_k & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & c_n \\
+    \end{bmatrix} \in \mathbb{R}^{n\times n}
+\]
+
+\begin{itemize}
+    \item determinant = $det(\mathbf{D}) = |\mathbf{D}|$ = product of its diagonal entries = $\displaystyle \prod_{k=1}^{n} c_k$
+
+    \item matrix power $\mathbf{D}^k$ is given by each diagonal element raised to the power $k$
+    \[
+        \displaystyle
+        \renewcommand{\arraystretch}{0.6}
+        \mathbf{D}^{k} = \begin{bmatrix}
+            c_1^k & 0 & \cdots & 0 & \cdots & 0 \\
+            0 & {c_2}^k & \cdots & 0 & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & {c_j}^k & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & 0 & \cdots & {c_n}^k \\
+        \end{bmatrix} \in \mathbb{R}^{n\times n}
+    \]
+
+    \item inverse $\mathbf{D}^{-1}$ is the reciprocal of its diagonal elements if \textbf{ALL} of them are nonzero:
+    \[
+        \displaystyle
+        \renewcommand{\arraystretch}{0.6}
+        \mathbf{D}^{-1} = \begin{bmatrix}
+            {1}/{c_1} & 0 & \cdots & 0 & \cdots & 0 \\
+            0 & {1}/{c_2} & \cdots & 0 & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & {1}/{c_k} & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & 0 & \cdots & {1}/{c_n} \\
+        \end{bmatrix} \in \mathbb{R}^{n\times n}
+    \]  
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Diagonalization/ Diagonalizable Matrix \cite{mfml-1}} \label{Diagonalization/ Diagonalizable Matrix}
+
+A matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is \textbf{diagonalizable} if it is \textbf{similar} (SEE: \fullref{Similarity/ Similar Matrices}) to a \textbf{diagonal matrix}, i.e., if there exists an \textbf{invertible matrix} (SEE: \fullref{Regular/ Invertible/ Nonsingular Matrix}) $\mathbf{P} \in \mathbb{R}^{n\times n}$ such that $\mathbf{D = P^{-1}AP}$
+
+\begin{itemize}
+    \item if and only if $\lambda_1, \cdots , \lambda_n$ are the eigenvalues of $\mathbf{A}$ and $\mathbf{p}_1, \cdots , \mathbf{p}_n$ are corresponding eigenvectors of $\mathbf{A}$.
+\[
+    \mathbf{P := [p_1, \cdots , p_n]}
+\]
+\[
+    \mathbf{AP = A[p_1, \cdots , p_n] = [Ap_1, \cdots , Ap_n]}
+\]
+\[
+    \mathbf{PD} = \mathbf{[p_1, \cdots , p_n]}\begin{bmatrix}
+        \lambda_1 & \cdots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & \lambda_n \\
+    \end{bmatrix} = \mathbf{[\lambda_1 p_1, \cdots ,\lambda_n p_n]}
+\]
+    
+\end{itemize}
+\begin{itemize}
+    \item[] $\Rightarrow \mathbf{Ap}_i = \lambda_i \mathbf{p}_i$
+
+    \item[] $\Rightarrow$ columns of $\mathbf{P}$ must be eigenvectors of $\mathbf{A}$
+
+    \item only non-defective matrices can be diagonalized and that the columns of $\mathbf{P}$ are the $n$ eigenvectors of $\mathbf{A}$
+
+    \item \textbf{Spectral theorem} states that we can find an ONB of eigenvectors of $\mathbb{R}^n$. This makes $\mathbf{P}$ an orthogonal matrix so that $\mathbf{D = P^\top AP}$
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Regular/ Invertible/ Nonsingular Matrix \cite{mfml-1}} \label{Regular/ Invertible/ Nonsingular Matrix}
+
+\begin{itemize}
+    \item Inverse exists
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Singular/ Non-invertible Matrix \cite{mfml-1}}\label{Singular/ Non-invertible Matrix}
+
+\begin{itemize}
+    \item Inverse doesn’t exists
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Symmetric Matrix ( $\mathbf{A = A^\top}$ ) \cite{mfml-1}}\label{Symmetric Matrix}
+A matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is symmetric if symmetric matrix $\mathbf{A = A^\top}$.
+
+\begin{itemize}
+    \item only $(n, n)$-matrices can be symmetric
+\end{itemize}
+
+\textbf{Properties}
+\begin{itemize}
+    \item sum of symmetric matrices $\mathbf{A, B} \in \mathbb{R}^{n\times n}$ is \textbf{ALWAYS} symmetric
+
+    \item product of symmetric matrices $\mathbf{A, B} \in \mathbb{R}^{n\times n}$ is \textbf{ALWAYS} defined, but generally \textbf{NOT} symmetric
+
+    \item A symmetric matrix $\mathbf{S} \in \mathbb{R}^{n\times n}$ can \textbf{ALWAYS} be diagonalized
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Upper-Triangular Matrix \cite{mfml-1}}\label{Upper-Triangular Matrix}
+We call a square matrix $\mathbf{T}$ an upper-triangular matrix if $\mathbf{T}_{ij} = 0$ for $i > j$, i.e., the matrix is zero below its diagonal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Lower-Triangular Matrix \cite{mfml-1}}\label{Lower-Triangular Matrix}
+We call a square matrix $\mathbf{T}$ a lower-triangular matrix if $\mathbf{T}_{ij} = 0$ for $i < j$, i.e., the matrix is zero above its diagonal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Defective matrix \cite{mfml-1}}\label{Defective matrix}
+A square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is defective if it possesses fewer than $n$ linearly independent eigenvectors.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Symmetric, Positive Definite (SPD) Matrix/ positive definite Matrix \cite{mfml-1}}\label{Symmetric, Positive Definite (SPD) Matrix/ positive definite Matrix}
+
+Consider an $n$-dimensional vector space $V$. A symmetric matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ that satisfies:
+\[
+    \displaystyle
+    \hfill
+    \mathbf{A^\top = A}
+    \hfill
+    \forall \mathbf{x} \in V \backslash \{ 0 \} : \mathbf{x^\top A x} > 0
+    \hfill
+\]
+
+is called symmetric, positive definite, or just positive definite. 
+
+\begin{itemize}
+    \item If only $geq$ holds, then $\mathbf{A}$ is called \textbf{symmetric, positive semidefinite}\indexlabel{symmetric, positive semidefinite}.
+    
+\end{itemize}
+
+\begin{theorem}
+    Given a matrix $\mathbf{A} \in \mathbb{R}^{m\times n}$, we can always obtain a symmetric, positive semidefinite matrix $\mathbf{S} \in \mathbb{R}^{n\times n}$ by defining $\mathbf{S := A^\top A}$
+\end{theorem}
+
+\begin{itemize}
+    \item Symmetry : $S = A^\top A = A^\top (A^\top )^\top  = (A^\top A)^\top  = S^\top$ 
+
+    \item positive semidefiniteness : $x^\top Sx = x^\top A^\top Ax = (x^\top A^\top )(Ax) = (Ax)^\top (Ax) \geq 0$ 
+
+    \item If $rk(A) = n$, then $S := A^\top A$ is symmetric, positive definite.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Orthogonal Matrix ( $A^{-1} = A^\top$ ) \cite{mfml-1}}\label{Orthogonal Matrix}
+A square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is an orthogonal matrix if and only if its columns are orthonormal so that 
+\[
+    \hfill
+    AA^\top  = I = A^\top A 	
+    \Rightarrow	 A^{-1} = A^\top 
+    \hfill
+\]
+
+\begin{itemize}
+    \item inverse is obtained by simply transposing the matrix
+
+    \item $||Ax||^2 = (Ax)^\top (Ax) = x^\top A^\top Ax = x^\top Ix = x^\top x = ||x||^2$
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Inverse of a matrix ( $\mathbf{A}^{-1}$ ) \cite{mfml-1}}\label{Inverse of a matrix}
+
+Consider a square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$. Let matrix $\mathbf{B} \in \mathbb{R}^{n\times n}$ have the property that $\mathbf{AB = I_n = BA}$. $\mathbf{B}$ is called the inverse of $\mathbf{A}$ and denoted by $\mathbf{A}^{-1}$.
+
+\begin{itemize}
+    \item not every matrix $\mathbf{A}$ possesses an inverse $\mathbf{A}^{-1}$
+
+    \item When the matrix inverse exists, it is unique.
+    
+    \item we can generally use the \textbf{determinant} to check whether a matrix is invertible.
+\end{itemize}
+
+\begin{theorem}
+    For any square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ it holds that $\mathbf{A}$ is invertible if and only if $det(\mathbf{A}) \neq 0$
+\end{theorem}
+
+\subsection{Calculating the Inverse \cite{mfml-1}}
+
+\subsubsection{Using Gaussian Elimination}
+To compute the inverse $A^{-1}$ of $A \in R^{n\times n}$, we need to find a matrix $X$ that satisfies $AX=I_n$. Then, $\mathbf{X = A^{-1}}$. We can write this down as a set of simultaneous linear equations $AX=I_n$, where we solve for $\mathbf{X = [x_1,\cdots,x_n]}$.
+
+\[
+    \displaystyle
+    \hfill
+    \mathbf{[A|I_n] \Rightarrow \cdots \Rightarrow [I_n|A^{-1}]}
+    \hfill
+\]
+
+\subsubsection{Moore-Penrose pseudo-inverse ( $\mathbf{A^{-1} = (A^\top A)^{-1}A^\top }$ ) \cite{mfml-1}} \label{Moore-Penrose pseudo-inverse}
+
+\begin{align*}
+    \mathbf{AX} &= \mathbf{I}_n \\
+    \mathbf{A^\top AX} &= \mathbf{A^\top} &&&& (\text{ multiplying both sides by } \mathbf{A^\top}) \\
+    \mathbf{(A^\top A)^{-1}(A^\top A)X} &= (\mathbf{A^\top A})^{-1}\mathbf{A^\top} &&&& (\text{ multiplying both sides by } (\mathbf{A^\top A)^{-1}}) \\
+    \mathbf{X} &= \mathbf{(A^\top A)^{-1}A^\top }
+\end{align*}
+
+
+\begin{itemize}
+    \item Works on square and even \textbf{rectangular matrices} (non-square matrix)
+\end{itemize}
+
+
+\section{Transpose ( $A^\top$ ) \cite{mfml-1}}\label{matrix: Transpose}
+For $\mathbf{A} \in R^{m\times n}$ the matrix $B \in R^{n\times m}$ with $b_{ij} = a_{ji}$ is called the transpose of $\mathbf{A}$
+\[
+    \hfill
+    \mathbf{B = A}^\top
+    \hfill
+\]
+
+
+\section{Properties of matrices}
+
+\subsection{Associativity \cite{mfml-1}}\label{matrix: Associativity}
+
+$\forall A \in R^{m\times n} , B \in R^{n\times p} , C \in R^{p\times q} , \lambda, \psi \in R$:
+
+\begin{itemize}
+    \item $(AB)C = A(BC)$
+    
+    \item $(\lambda\psi)C = \lambda(\Psi C)$
+
+    \item  $\lambda(BC) = (\lambda B)C = B(\lambda C) = (BC)\lambda$
+\end{itemize}
+
+
+\subsection{Distributivity \cite{mfml-1}}\label{matrix: Distributivity}
+
+$\forall A, B \in R^{m\times n} , C, D \in R^{n\times p} , \lambda, \psi \in R$:
+
+\begin{itemize}
+    \item $(A + B)C = AC + BC$
+    \item $A(C + D) = AC + AD$
+    \item $(\lambda + \psi)C = \lambda C + \psi C$
+    \item $\lambda (B + C) = \lambda B + \lambda C$
+\end{itemize}
 
 
 
+\subsection{Multiplication by a Scalar \cite{mfml-1}} \label{matrix: Multiplication by a Scalar}
+$\forall A \in  Rm\times n , \lambda  \in  R$
+
+\begin{itemize}
+
+    \item $\lambda A = K \hfill (K_{ij} = \lambda a_{ij})$
+
+    \item $\lambda$ scales each element of $A$
+\end{itemize}
 
 
+\subsection{Multiplication with the identity matrix}
+$\forall A \in  R^{m\times n}$:
+
+\begin{itemize}
+    \item $I_mA = AI_n = A \hfill (I_m \neq I_n \text{ for } m \neq n)$
+\end{itemize}
 
 
+\subsection{Inverses and transposes}
+\begin{enumerate}
+    \item $AA^{-1} = I = A^{-1}A$
+
+    \item $(AB)^\top  = B^\top A^\top $
+
+    \item $(AB)^{-1} = B^{-1}A^{-1}$
+
+    \item $(A + B)^\top  = A^\top  + B^\top $
+
+    \item $(A + B)^{-1} \neq A^{-1} + B^{-1}$
+
+    \item $(A^\top )^\top  = A$
+
+    \item $(A^{-1})^{-1} = A$
+
+    \item $(A^{-1})^\top  = (A^\top )^{-1} = A^{-^\top} $
+
+    \item $(\lambda C)^\top  = C^\top \lambda ^\top  = C^\top \lambda  = \lambda C^\top  \hfill (\lambda  = \lambda ^\top , \forall\lambda  \in R)$
+\end{enumerate}
 
 
+\section{Rank of a matrix ( $rk(A)$ )}\label{Rank of a matrix}
+The number of linearly independent columns of a matrix $A \in  R^{m\times n}$ equals the number of linearly independent rows and is called the rank of $A$ and is denoted by $rk(A)$.
 
+\vspace{0.2cm}
+\noindent\textbf{Properties}
+\begin{enumerate}
+    \item $rk(A) = rk(A^\top )$, i.e., the column rank equals the row rank
 
+    \item The columns of $A \in  R^{m\times n}$ span a subspace (aka image/ range) $U \subseteq R^m$ with $dim(U) = rk(A)$\\
+    Use Gaussian elimination to $A$ to find basis
+    
+    \item The rows of $A \in  R^{m\times n}$ span a subspace $W \subseteq R^n$ with $-dim(W) = rk(A)$\\
+    Use Gaussian elimination to $A^\top$ to find basis
+    
+    \item For all $A \in  R^{n\times n}$ it holds that $A$ is regular (invertible) if and only if $rk(A) = n$
+    
+    \item For all $A \in  R^{m\times n}$ and all $b \in  R^m$ it holds that the linear equation system $Ax = b$ can be solved if and only if $rk(A) = rk(A|b)$, where $A|b$ denotes the augmented system
+    
+    \item For $A \in  R^{m\times n}$ the subspace (aka kernel/ null space) of solutions for $Ax = 0$ possesses dimension $n - rk(A)$
+    
+    \item A matrix $A \in  R^{m\times n}$ has \textbf{full rank}\indexlabel{matrix: full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. $rk(A) = min(m, n)$
+    
+    \item A matrix is said to be \textbf{rank deficient}\indexlabel{matrix: rank deficient} if it does not have full rank
+\end{enumerate}
 
+\section{Determinant (det(A) or |A|)}\label{matrix: Determinant}
+The determinant of a square matrix $A \in R^{n\times n}$ is a function that maps $A$ onto a real number.
+\[
+    det(A) = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn} \\
+    \end{bmatrix}
+\]
 
+\begin{enumerate}
+    \item if $A \in R^1, det(A) = det(a_{11}) = a_{11}$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+\end{enumerate}
 
 
 

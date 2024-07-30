@@ -145,13 +145,13 @@ Cross-entropy is defined in the limit as the length of the observed word sequenc
 
 
 \subsubsection{Putting pieces together}
-\begin{align}
-    Perplexity(W)       \notag
-        &= 2^{H(W)}    \\ \notag
-        &= P(w_1w_2...w_N)^{-\displaystyle\frac{1}{N}} \\ \notag
-        &= \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2...w_N)}} \\ \notag
-        &= \sqrt[N]{\sum_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2...w_{i-1})}} \notag
-\end{align}
+\begin{align*}
+    Perplexity(W)       
+        &= 2^{H(W)}    \\ 
+        &= P(w_1w_2...w_N)^{-\displaystyle\frac{1}{N}} \\ 
+        &= \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2...w_N)}} \\ 
+        &= \sqrt[N]{\sum_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2...w_{i-1})}} 
+\end{align*}
 
 
 
@@ -300,20 +300,20 @@ For bigrams,
 \subsection{(Interpolated) Kneser-Ney smoothing}
 
 For bigram:
-\begin{align}
-    P_{KN}(w_i|w_{i-1}) \notag &= \displaystyle\frac{max(C(w_{i-1}w_i)-d,0)}{C(w_{i-1})} \\ \notag
-    &+ \lambda (w_{i-1})P_{CONTINUATION}(w_i) \\ \notag
-\end{align}
+\begin{align*}
+    P_{KN}(w_i|w_{i-1})  &= \displaystyle\frac{max(C(w_{i-1}w_i)-d,0)}{C(w_{i-1})} \\ 
+    &+ \lambda (w_{i-1})P_{CONTINUATION}(w_i) \\ 
+\end{align*}
 where, $\lambda$ is a normalizing constant that is used to distribute the probability mass we’ve discounted:
 \[
     \lambda(w_{i-1}) = \displaystyle\frac{d}{\sum_v C(w_{i-1}v)} |\{w : C(w_{i-1}w) > 0\}|
 \]
 
 General recursive formula:
-\begin{align}
-    P_{KN}(w_i|w_{i-n+1:i-1}) \notag &= \displaystyle\frac{max(c_{KN}(w_{i-n+1:i})-d,0)}{\sum_v c_{KN}(w_{i-n+1:i-1} v)} \\ \notag
-    &+ \lambda (w_{i-n+1:i-1})P_{KN}(w_i|w_{i-n+2:i-1}) \notag
-\end{align}
+\begin{align*}
+    P_{KN}(w_i|w_{i-n+1:i-1})  &= \displaystyle\frac{max(c_{KN}(w_{i-n+1:i})-d,0)}{\sum_v c_{KN}(w_{i-n+1:i-1} v)} \\ 
+    &+ \lambda (w_{i-n+1:i-1})P_{KN}(w_i|w_{i-n+2:i-1}) 
+\end{align*}
 
 At termination:
 \[
@@ -391,22 +391,22 @@ In interpolation, we always mix the probability estimates from all the n-gram es
 \subsubsection{Simple Interpolation}
 In simple linear interpolation, we combine different order n-grams by linearly interpolating them. Thus, we estimate the trigram probability $P(w_n|w_{n-2}w_{n-1})$ by mixing together the unigram, bigram, and trigram probabilities, each weighted by a $\lambda$:
 
-\begin{align}
-    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1 \cdot P(w_n)  \\ \notag
-    &+ \lambda_2 \cdot P(w_n|w_{n-1}) \\ \notag
-    &+ \lambda_3 \cdot P(w_n|w_{n-2}w_{n-1}) \notag
-\end{align}
+\begin{align*}
+    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1 \cdot P(w_n)  \\ 
+    &+ \lambda_2 \cdot P(w_n|w_{n-1}) \\ 
+    &+ \lambda_3 \cdot P(w_n|w_{n-2}w_{n-1}) 
+\end{align*}
 
 
 if \( \left( \sum_\lambda = 1 \right)\), then its equivalent to a weighted average.
 
 \subsubsection{Conditional Interpolation}
 With context-conditioned weights:
-\begin{align}
-    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1(w_{n-2:n-1})P(w_n) \\ \notag
-    &+ \lambda_2(w_{n-2:n-1})P(w_n|w_{n-1}) \\ \notag
-    &+ \lambda_3(w_{n-2:n-1})P(w_n|w_{n-2}w_{n-1}) \\ \notag
-\end{align}
+\begin{align*}
+    \hat{P}(w_n|w_{n-2}w_{n-1}) &= \lambda_1(w_{n-2:n-1})P(w_n) \\ 
+    &+ \lambda_2(w_{n-2:n-1})P(w_n|w_{n-1}) \\ 
+    &+ \lambda_3(w_{n-2:n-1})P(w_n|w_{n-2}w_{n-1}) \\ 
+\end{align*}
 
 if \( \left( \sum_\lambda = 1 \right)\), then its equivalent to a weighted average.
 

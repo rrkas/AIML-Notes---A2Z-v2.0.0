@@ -180,13 +180,13 @@ f(x)=\ln(1+e^{x})
 f'(x)={\displaystyle\frac {e^{x}}{1+e^{x}}}={\displaystyle \frac {1}{1+e^{-x}}} 
 \]
 \[ 
-\ln \left(1+e^{x}\right)\approx {\begin{cases}\ln 2,&x=0,\\[6pt]{\displaystyle \frac {x}{1-e^{-x/\ln 2}}},&x\neq 0\end{cases}} 
+    \ln \left(1+e^{x}\right)\approx {\begin{cases}\ln 2,&x=0,\\[6pt]{\displaystyle \frac {x}{1-e^{-x/\ln 2}}},&x\neq 0\end{cases}} 
 \]
 
 \subsection{Exponential linear units (ELU) \cite{wiki-Rectifier}}\label{Exponential linear units (ELU)}
 Exponential linear units try to make the mean activations closer to zero, which speeds up learning. It has been shown that ELUs can obtain higher classification accuracy than ReLUs.
 \[
-{\displaystyle f(x)={\begin{cases}x&{\text{if }}x>0,\\a\left(e^{x}-1\right)&{\text{otherwise}}.\end{cases}}\qquad \qquad f'(x)={\begin{cases}1&{\text{if }}x>0,\\a\cdot e^{x}&{\text{otherwise}}.\end{cases}}}
+    {\displaystyle f(x)={\begin{cases}x&{\text{if }}x>0,\\a\left(e^{x}-1\right)&{\text{otherwise}}.\end{cases}}\qquad \qquad f'(x)={\begin{cases}1&{\text{if }}x>0,\\a\cdot e^{x}&{\text{otherwise}}.\end{cases}}}
 \]
 
 In these formulas, \(\displaystyle a\) is a hyper-parameter to be tuned with the constraint \(\displaystyle a\geq 0\).
@@ -194,14 +194,14 @@ In these formulas, \(\displaystyle a\) is a hyper-parameter to be tuned with the
 \subsection{Mish \cite{wiki-Rectifier}}\label{Mish}
 The mish function can also be used as a smooth approximation of the rectifier
 \[
-\displaystyle f(x)=x\tanh {\big (}\rcmdXsoftplus (x){\big )}
+    \displaystyle f(x)=x\tanh {\big (}\rcmdXsoftplus (x){\big )}
 \]
 where \({\displaystyle \tanh(x)}\) is the hyperbolic tangent, and \({\displaystyle \rcmdXsoftplus(x)}\) is the softplus function.\par
 Mish is non-monotonic and self-gated. It was inspired by Swish, itself a variant of ReLU.
 
 \subsection{Squareplus \cite{wiki-Rectifier}}\label{Squareplus}
 \[
-{\displaystyle \operatorname {squareplus} _{b}(x)={\displaystyle\frac {x+{\sqrt {x^{2}+b}}}{2}}}
+    {\displaystyle \operatorname {squareplus} _{b}(x)={\displaystyle\frac {x+{\sqrt {x^{2}+b}}}{2}}}
 \]
 
 where \({\displaystyle b\geq 0}\) is a hyperparameter that determines the "size" of the curved \({\displaystyle x=0}\).

@@ -101,26 +101,26 @@ For class $k \in \{1,2,...,K\}$ ($K$ classes),
 \[
     L_{CE}(\mathbf{\hat{y}}, \mathbf{y}) = -\sum_{k=1}^{K} \mathbf{y}_k\log(\mathbf{\hat{y}}_k)
 \]
-\begin{align}
-    L_{CE}(\mathbf{\hat{y}}, \mathbf{y}) &= -\sum_{k=1}^{K} \mathbbm{1}_{\mathbf{y}_k =1}\log(\mathbf{\hat{y}}_k) \notag
+\begin{align*}
+    L_{CE}(\mathbf{\hat{y}}, \mathbf{y}) &= -\sum_{k=1}^{K} \mathbbm{1}_{\mathbf{y}_k =1}\log(\mathbf{\hat{y}}_k) 
     \repeatn{16}{\quad} \text{(SEE: \fullref{Indicator function})}\\
-    &= -\log(\mathbf{\hat{y}}_c)\notag \repeatn{20}{\quad} \text{(where c is the correct class)}\\
-    &= -\log\displaystyle\frac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)} \notag \repeatn{7}{\quad} \text{(using \fullref{Softmax function})}
-\end{align}
+    &= -\log(\mathbf{\hat{y}}_c) \repeatn{20}{\quad} \text{(where c is the correct class)}\\
+    &= -\log\displaystyle\frac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)}  \repeatn{7}{\quad} \text{(using \fullref{Softmax function})}
+\end{align*}
 
 
 \subsection{Gradient of Loss}
-\begin{align}
+\begin{align*}
     \frac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial w_j} &= (\hat{y} - y) \mathbf{x}_j \\
     &= (\sigma(\mathbf{w} \cdot \mathbf{x} + b) - y) \mathbf{x}_j
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
     \frac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial \mathbf{w}_{k,i}} 
     &= -(\mathbf{y}_{k} - \mathbf{\hat{y}}_{k})\mathbf{x}_{i}\\
     &=-(\mathbf{y}_{k} - p(\mathbf{y}_{k}=1|\mathbf{x}))\mathbf{x}_{i}\\
     &=-\left(\mathbf{y}_{k} - \displaystyle\frac{\exp(\mathbf{w}_{k}\cdot \mathbf{x} + b_{k})}{\sum_{j=1}^{K} \exp(\mathbf{w}_{j}\cdot \mathbf{x} + b_{j})}\right)\mathbf{x}_i
-\end{align}
+\end{align*}
 
 \section{Forward Inference (Decoding)}
 Forward inference is the task, given an input, of running a forward pass on the network to produce a probability distribution over possible outputs, in this case next words.

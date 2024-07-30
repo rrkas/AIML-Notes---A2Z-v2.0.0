@@ -2,17 +2,28 @@
 
 \section{Difference Quotient ( $\displaystyle\frac{\delta y}{\delta x}$ )}\label{Difference Quotient}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=4cm]{Pictures/maths/Difference Quotient.png}
-    \caption{Difference Quotient}
-\end{figure}
+\begin{table}[H]
+    \begin{minipage}{0.39\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[height=4cm]{Pictures/maths/Difference Quotient.png}
+            \caption{Difference Quotient}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.59\linewidth}
+        \begin{itemize}
+            \item The difference quotient \( \displaystyle\frac{\delta y}{\delta x} = \displaystyle\frac{f(x + \delta x) - f(x)}{\delta x} \) computes the slope of the secant line through two points on the graph of $y = f(x)$. 
+            
+            \item The difference quotient can also be considered the average slope of $f$ between $x$ and $x + \delta x$ if we assume $f$ to be a linear function. 
+            
+            \item In the limit for $\delta x \rightarrow 0$, we obtain the tangent of $f$ at $x$, if $f$ is differentiable.
 
-\begin{itemize}
-    \item The difference quotient \( \displaystyle\frac{\delta y}{\delta x} = \displaystyle\frac{f(x + \delta x) - f(x)}{\delta x} \) computes the slope of the secant line through two points on the graph of $y = f(x)$. 
-    \item The difference quotient can also be considered the average slope of $f$ between $x$ and $x + \delta x$ if we assume $f$ to be a linear function. 
-    \item In the limit for $\delta x \rightarrow 0$, we obtain the tangent of $f$ at $x$, if $f$ is differentiable.
-\end{itemize}
+        \end{itemize}
+    \end{minipage}
+\end{table}
+
+
 
 \section{Derivative ( $\displaystyle\frac{dy}{dx}$ / $y'$)}\label{Derivative}
 
@@ -45,7 +56,7 @@ For $h > 0$ the derivative of $y = f(x)$ at $x$ is defined as the limit \( \disp
 where $a_k$ are coefficients and $c$ is a constant
 
 \section{Taylor Polynomial ( $T_n(x)$ )}\label{Taylor Polynomial}
-The Taylor polynomial of degree $n$ of $f : R \rightarrow R$ at $x_0$ is defined as: 
+The Taylor polynomial of degree $n$ of $f : \mathbb{R} \rightarrow \mathbb{R}$ at $x_0$ is defined as: 
 \[
     T_n(x) = \sum_{k=0}^{n}\displaystyle\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
 \]
@@ -60,7 +71,7 @@ The Taylor polynomial of degree $n$ of $f$ at $x0$ contains the first $n + 1$ co
 
 where, $D_x^kf(x_0)$ is the $k$-th (total) derivative of $f$ with respect to $x$, evaluated at $x_0$.
 
-$k$th-order tensor \( \delta^k \in \mathbb{R}^{\overset{k \text{ times}}{\overbrace{D \times D \times \cdots \times D}}} \) is obtained as a $k$-fold outer product, denoted by $\bigotimes$, of the vector $\delta \in R^D$
+$k$th-order tensor \( \delta^k \in \mathbb{R}^{\overset{k \text{ times}}{\overbrace{D \times D \times \cdots \times D}}} \) is obtained as a $k$-fold outer product, denoted by $\bigotimes$, of the vector $\delta \in \mathbb{R}^D$
 
 \begin{table}[H]
     \centering
@@ -73,13 +84,13 @@ $k$th-order tensor \( \delta^k \in \mathbb{R}^{\overset{k \text{ times}}{\overbr
 $D_x^kf(x_0)\delta k$ contains $k$-th order polynomial:
 \begin{table}[H]
     \begin{tabular}{l l}
-        $k = 0$ & $D_x^0f(x_0)\delta^0 = f(x_0) \in R$ \\
+        $k = 0$ & $D_x^0f(x_0)\delta^0 = f(x_0) \in \mathbb{R}$ \\
          
-        $k = 1$ & \( D_x^1f(x_0)\delta^1 = \underbrace{\nabla_xf(x_0)}_{1\times D} \underbrace{\delta}_{D \times 1} = \displaystyle\sum_{i=1}^{D} \nabla_xf(x_0)[i]\delta [i] \in R \) \\
+        $k = 1$ & \( D_x^1f(x_0)\delta^1 = \underbrace{\nabla_xf(x_0)}_{1\times D} \underbrace{\delta}_{D \times 1} = \displaystyle\sum_{i=1}^{D} \nabla_xf(x_0)[i]\delta [i] \in \mathbb{R} \) \\
 
-        $k = 2$ & \( D_x^2f(x_0)\delta^2 = \operatorname{tr}(\underbrace{H(x_0)}_{D\times D} \underbrace{\delta}_{D \times 1} \underbrace{\delta^\top}_{1 \times D}) = \delta^\top H(x_0)\delta = \displaystyle\sum_{i=1}^{D}\displaystyle\sum_{j=1}^{D} H[i,j]\delta [i]\delta [j] \in R \) \\
+        $k = 2$ & \( D_x^2f(x_0)\delta^2 = \operatorname{tr}(\underbrace{H(x_0)}_{D\times D} \underbrace{\delta}_{D \times 1} \underbrace{\delta^\top}_{1 \times D}) = \delta^\top H(x_0)\delta = \displaystyle\sum_{i=1}^{D}\displaystyle\sum_{j=1}^{D} H[i,j]\delta [i]\delta [j] \in \mathbb{R} \) \\
 
-        $k = 3$ & \( D_x^3f(x_0)\delta^3 = \displaystyle\sum_{i=1}^{D} \displaystyle\sum_{j=1}^{D} \displaystyle\sum_{k=1}^{D} D_x^3f(x_0)[i,j,k]\delta [i] \delta [j] \delta [k] \in R \) \\
+        $k = 3$ & \( D_x^3f(x_0)\delta^3 = \displaystyle\sum_{i=1}^{D} \displaystyle\sum_{j=1}^{D} \displaystyle\sum_{k=1}^{D} D_x^3f(x_0)[i,j,k]\delta [i] \delta [j] \delta [k] \in \mathbb{R} \) \\
          
     \end{tabular}
 \end{table}
@@ -88,7 +99,7 @@ $H(x_0)$ is the \textbf{Hessian} of $f$ evaluated at $x_0$.
 
 
 \section{Taylor Series ( $T_\infty(x)$ )}\label{Taylor Series}
-For a smooth function $f \in C^\infty$, $f : R \rightarrow R$, the taylor series of $f$ at $x_0$ is defined as:
+For a smooth function $f \in C^\infty$, $f : \mathbb{R} \rightarrow \mathbb{R}$, the taylor series of $f$ at $x_0$ is defined as:
 
 \[
     T_\infty(x) = \sum_{k=0}^{\infty}\displaystyle\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
@@ -116,7 +127,7 @@ SEE: \fullref{Taylor Polynomial}
 \section{Multivariate Taylor Series}\label{Multivariate Taylor Series}
 
 SEE: \fullref{Multivariate Taylor Polynomial}\\
-We consider a function $f : R^D \rightarrow R$, $x \rightarrow f(x)$, $x \in R^D$, that is smooth at $x_0$. When we define the difference vector $\delta := x - x_0$, the multivariate Taylor series of $f$ at $x_0$ is defined as
+We consider a function $f : \mathbb{R}^D \rightarrow \mathbb{R}$, $x \rightarrow f(x)$, $x \in \mathbb{R}^D$, that is smooth at $x_0$. When we define the difference vector $\delta := x - x_0$, the multivariate Taylor series of $f$ at $x_0$ is defined as
 \[
     f(x) = \sum_{k=0}^{\infty} \displaystyle\frac{D_x^k f(x_0)}{k!}\delta^k
 \]
