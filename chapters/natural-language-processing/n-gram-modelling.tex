@@ -31,13 +31,13 @@ bigram: \(w_{n-1}w_n\)
     \text{count of the bigram} = C(w_{n-1}w_n)
 \]
 \[
-    P(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n)}{\sum_w C(w_{n-1}w)} = \displaystyle\frac{C(w_{n-1}w_n)}{C(w_{n-1})} 
+    P(w_n|w_{n-1}) = \displaystyle\dfrac{C(w_{n-1}w_n)}{\sum_w C(w_{n-1}w)} = \displaystyle\dfrac{C(w_{n-1}w_n)}{C(w_{n-1})} 
 \]
 
 \subsection{General N-gram \cite{nlp-1}}
 
 \[
-    P(w_n|w_{n-N+1:n-1}) = \displaystyle\frac{C(w_{n-N+1:n-1} w_n)}{C(w_{n-N+1:n-1})}
+    P(w_n|w_{n-N+1:n-1}) = \displaystyle\dfrac{C(w_{n-N+1:n-1} w_n)}{C(w_{n-N+1:n-1})}
 \]
 
 where,
@@ -56,19 +56,19 @@ The perplexity (sometimes abbreviated as PP or PPL) of a language model on a tes
 Let word: \(W = w_1w_2 ...w_N\)
 
 \[
-    perplexity(W) = P(w_1w_2 ...w_N)^{-\displaystyle\frac{1}{N}} = \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2 ...w_N)}} = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2 ...w_{i-1})}}
+    perplexity(W) = P(w_1w_2 ...w_N)^{-\displaystyle\dfrac{1}{N}} = \sqrt[N]{\displaystyle\dfrac{1}{P(w_1w_2 ...w_N)}} = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\dfrac{1}{P(w_i|w_1w_2 ...w_{i-1})}}
 \]
 
 For Unigram:
 \(
-   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i)}}
+   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\dfrac{1}{P(w_i)}}
 \)
 
 \vspace{0.2cm}
 
 For Bigram:
 \(
-   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_{i-1})}}
+   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \displaystyle\dfrac{1}{P(w_i|w_{i-1})}}
 \)
 
 \subsection{Perplexity’s Relation to Entropy}
@@ -97,13 +97,13 @@ language: $L$
 We could define the entropy rate (we could also think of this as the per-word entropy) as the entropy of this sequence divided by the number of words:
 
 \[
-    \text{Entropy Rate} = \displaystyle\frac{1}{n}H(w_{1:n}) = -\displaystyle\frac{1}{n}\sum_{w_{1:n}\in L} p(w_{1:n})\log(p(w_{1:n}))
+    \text{Entropy Rate} = \displaystyle\dfrac{1}{n}H(w_{1:n}) = -\displaystyle\dfrac{1}{n}\sum_{w_{1:n}\in L} p(w_{1:n})\log(p(w_{1:n}))
 \]
 
 But to measure the true entropy of a language, we need to consider sequences of infinite length. If we think of a language as a stochastic process $L$ that produces a sequence of words, and allow $W$ to represent the sequence of words $w_1,...,w_n$, then $L$’s entropy rate $H(L)$ is defined as:
 
 \[
-    H(L) = \lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}H(w_{1:n}) = -\lim_{n \rightarrow \infty} \displaystyle\frac{1}{n}\sum_{W \in L} p(w_{1:n})\log(p(w_{1:n}))
+    H(L) = \lim_{n \rightarrow \infty} \displaystyle\dfrac{1}{n}H(w_{1:n}) = -\lim_{n \rightarrow \infty} \displaystyle\dfrac{1}{n}\sum_{W \in L} p(w_{1:n})\log(p(w_{1:n}))
 \]
 
 The \textbf{Shannon-McMillan-Breiman theorem}\indexlabel{Shannon-McMillan-Breiman theorem} states that if the language is regular in certain ways (to be exact, if it is both \textbf{stationary} and \textbf{ergodic}). That is, we can take a single sequence that is long enough instead of summing over all possible sequences. The intuition of the Shannon-McMillan-Breiman theorem is that a long-enough sequence of words will contain in it many other shorter sequences and that each of these shorter sequences will reoccur in the longer sequence according to their probabilities.\\By making some incorrect but convenient simplifying assumptions, we can compute the entropy of some stochastic process by taking a very long sample of the output and computing its average log probability
@@ -115,20 +115,20 @@ The \textbf{Shannon-McMillan-Breiman theorem}\indexlabel{Shannon-McMillan-Breima
 \end{itemize}
 
 \[
-    H(L) = \lim_{n \rightarrow \infty} -\displaystyle\frac{1}{n} \log(p(w_{1:n}))
+    H(L) = \lim_{n \rightarrow \infty} -\displaystyle\dfrac{1}{n} \log(p(w_{1:n}))
 \]
 
 \subsubsection{Cross-Entropy}
 The cross-entropy is useful when we \textbf{don’t know} the actual probability distribution p that generated some data. It allows us to use some $m$, which is a model of $p$ (i.e., an approximation to $p$). The
 cross-entropy of $m$ on $p$ is defined by:
 \[
-    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\frac{1}{n}\sum_{W\in L} p(w_{1:n})\log(m(w_{1:n}))
+    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\dfrac{1}{n}\sum_{W\in L} p(w_{1:n})\log(m(w_{1:n}))
 \]
 
 Following the \textbf{Shannon-McMillan-Breiman theorem}, for a stationary ergodic process:
 
 \[
-    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\frac{1}{n}\log(m(w_{1:n}))
+    H(p,m) = \lim_{n \rightarrow \infty} - \displaystyle\dfrac{1}{n}\log(m(w_{1:n}))
 \]
 
 This means that, as for entropy, we can estimate the cross-entropy of a model $m$ on some distribution $p$ by taking a single sequence that is long enough instead of summing over all possible sequences.\\
@@ -140,7 +140,7 @@ This means that we can use some simplified model $m$ to help estimate the true e
 
 Cross-entropy is defined in the limit as the length of the observed word sequence goes to infinity. We will need an approximation to cross-entropy, relying on a (sufficiently long) sequence of fixed length. This approximation to the cross-entropy of a model $M = P(w_i|w_{i-N+1:i-1})$ on a sequence of words $W$ is:
 \[
-    H(W) = -\displaystyle\frac{1}{N}\log(P(w_1w_2...w_N))
+    H(W) = -\displaystyle\dfrac{1}{N}\log(P(w_1w_2...w_N))
 \]
 
 
@@ -148,9 +148,9 @@ Cross-entropy is defined in the limit as the length of the observed word sequenc
 \begin{align*}
     Perplexity(W)       
         &= 2^{H(W)}    \\ 
-        &= P(w_1w_2...w_N)^{-\displaystyle\frac{1}{N}} \\ 
-        &= \sqrt[N]{\displaystyle\frac{1}{P(w_1w_2...w_N)}} \\ 
-        &= \sqrt[N]{\sum_{i=1}^{N} \displaystyle\frac{1}{P(w_i|w_1w_2...w_{i-1})}} 
+        &= P(w_1w_2...w_N)^{-\displaystyle\dfrac{1}{N}} \\ 
+        &= \sqrt[N]{\displaystyle\dfrac{1}{P(w_1w_2...w_N)}} \\ 
+        &= \sqrt[N]{\sum_{i=1}^{N} \displaystyle\dfrac{1}{P(w_i|w_1w_2...w_{i-1})}} 
 \end{align*}
 
 
@@ -236,13 +236,13 @@ A related way to view smoothing is as discounting (lowering) some non-zero count
 
 
 \[
-    d_c = \displaystyle\frac{c^*}{c}  \hfill \text{(relative discount)}
+    d_c = \displaystyle\dfrac{c^*}{c}  \hfill \text{(relative discount)}
 \]
 
 \subsection{Absolute Discounting}
 Absolute discounting means subtracting a fixed (absolute) discount d from each count. The intuition is that since we have good estimates already for the very high counts, a small discount $d$ won’t affect them much. It will mainly modify the smaller counts, for which we don’t necessarily trust the estimate anyway. 
 \[
-    P_{AbsoluteDiscounting}(w_i|w_{i-1}) = \displaystyle\frac{C(w_{i-1}w_i)-d}{\sum_v C(w_{i-1} v)} + \lambda (w_{i-1})P(w_i) \hfill \text{(for bigrams)}
+    P_{AbsoluteDiscounting}(w_i|w_{i-1}) = \displaystyle\dfrac{C(w_{i-1}w_i)-d}{\sum_v C(w_{i-1} v)} + \lambda (w_{i-1})P(w_i) \hfill \text{(for bigrams)}
 \]
 
 \begin{itemize}
@@ -250,7 +250,7 @@ Absolute discounting means subtracting a fixed (absolute) discount d from each c
     There are principled methods for setting $d$. Example:\\
     Set $d$ as a function of $n_1$ and $n_2$, the number of unigrams that have a count of 1 and a count of 2:\\
     \[
-        d = \displaystyle\frac{n_1}{n_1 + n_2}
+        d = \displaystyle\dfrac{n_1}{n_1 + n_2}
     \]
     \item \textbf{Second Term}: unigram with an interpolation weight $\lambda$
 \end{itemize}
@@ -263,7 +263,7 @@ past are more likely to appear in some new context as well. The number of times 
     P_{CONTINUATION}(w) \propto |\{v : C(vw) > 0\}|
 \]
 \[
-    P_{CONTINUATION}(w) = \displaystyle\frac{|\{v : C(vw) > 0\}|}{|\{(u',w') : C(u'w') > 0\}| } = \displaystyle\frac{|\{v : C(vw) > 0\}|}{\sum_{w'} |\{v : C(vw') > 0\}|}
+    P_{CONTINUATION}(w) = \displaystyle\dfrac{|\{v : C(vw) > 0\}|}{|\{(u',w') : C(u'w') > 0\}| } = \displaystyle\dfrac{|\{v : C(vw) > 0\}|}{\sum_{w'} |\{v : C(vw') > 0\}|}
 \]
 
 \subsection{Laplace (add-one) Smoothing \cite{nlp-1}}
@@ -271,67 +271,67 @@ The simplest way to do smoothing is to add one to all the n-gram counts, before 
 
 For unigrams,
 \[
-    P(w_i) = \displaystyle\frac{c_i}{N}
+    P(w_i) = \displaystyle\dfrac{c_i}{N}
 \]
 \[
-    P_{Laplace}(w_i) = \displaystyle\frac{c_i + 1}{N + V} \hfill \text{(Laplace)}
+    P_{Laplace}(w_i) = \displaystyle\dfrac{c_i + 1}{N + V} \hfill \text{(Laplace)}
 \]
 \[
-    c_i^* = (c_i +1)\displaystyle\frac{N}{N + V}
+    c_i^* = (c_i +1)\displaystyle\dfrac{N}{N + V}
 \]
 \[
-    P^*(w_i) = \displaystyle\frac{c_i^*}{N}
+    P^*(w_i) = \displaystyle\dfrac{c_i^*}{N}
 \]
 For bigrams,
 \[
-    P_{Laplace}(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n) + 1}{\sum_w (C(w_{n-1}w) + 1)} = \displaystyle\frac{C(w_{n-1}w_n) + 1}{C(w_{n-1}) + V} 
+    P_{Laplace}(w_n|w_{n-1}) = \displaystyle\dfrac{C(w_{n-1}w_n) + 1}{\sum_w (C(w_{n-1}w) + 1)} = \displaystyle\dfrac{C(w_{n-1}w_n) + 1}{C(w_{n-1}) + V} 
 \]
 \[
-    c^*(w_{n-1}w_n) = \displaystyle\frac{[C(w_{n-1}w_n)+1] \times C(w_{n-1})}{C(w_{n-1}) + V} 
+    c^*(w_{n-1}w_n) = \displaystyle\dfrac{[C(w_{n-1}w_n)+1] \times C(w_{n-1})}{C(w_{n-1}) + V} 
 \]
 
 \subsection{Add-k smoothing \cite{nlp-1}}
 
 For bigrams,
 \[
-    P_{Add-k}(w_n|w_{n-1}) = \displaystyle\frac{C(w_{n-1}w_n) + k}{\sum_w (C(w_{n-1}w) + k)} = \displaystyle\frac{C(w_{n-1}w_n) + k}{C(w_{n-1}) + kV} 
+    P_{Add-k}(w_n|w_{n-1}) = \displaystyle\dfrac{C(w_{n-1}w_n) + k}{\sum_w (C(w_{n-1}w) + k)} = \displaystyle\dfrac{C(w_{n-1}w_n) + k}{C(w_{n-1}) + kV} 
 \]
 
 \subsection{(Interpolated) Kneser-Ney smoothing}
 
 For bigram:
 \begin{align*}
-    P_{KN}(w_i|w_{i-1})  &= \displaystyle\frac{max(C(w_{i-1}w_i)-d,0)}{C(w_{i-1})} \\ 
+    P_{KN}(w_i|w_{i-1})  &= \displaystyle\dfrac{max(C(w_{i-1}w_i)-d,0)}{C(w_{i-1})} \\ 
     &+ \lambda (w_{i-1})P_{CONTINUATION}(w_i) \\ 
 \end{align*}
 where, $\lambda$ is a normalizing constant that is used to distribute the probability mass we’ve discounted:
 \[
-    \lambda(w_{i-1}) = \displaystyle\frac{d}{\sum_v C(w_{i-1}v)} |\{w : C(w_{i-1}w) > 0\}|
+    \lambda(w_{i-1}) = \displaystyle\dfrac{d}{\sum_v C(w_{i-1}v)} |\{w : C(w_{i-1}w) > 0\}|
 \]
 
 General recursive formula:
 \begin{align*}
-    P_{KN}(w_i|w_{i-n+1:i-1})  &= \displaystyle\frac{max(c_{KN}(w_{i-n+1:i})-d,0)}{\sum_v c_{KN}(w_{i-n+1:i-1} v)} \\ 
+    P_{KN}(w_i|w_{i-n+1:i-1})  &= \displaystyle\dfrac{max(c_{KN}(w_{i-n+1:i})-d,0)}{\sum_v c_{KN}(w_{i-n+1:i-1} v)} \\ 
     &+ \lambda (w_{i-n+1:i-1})P_{KN}(w_i|w_{i-n+2:i-1}) 
 \end{align*}
 
 At termination:
 \[
-    P_{KN}(w) = \displaystyle\frac{max(c_{KN}(w)-d,0)}{\sum_{w'} c_{KN}(w')} + \lambda(\epsilon)\displaystyle\frac{1}{V}
+    P_{KN}(w) = \displaystyle\dfrac{max(c_{KN}(w)-d,0)}{\sum_{w'} c_{KN}(w')} + \lambda(\epsilon)\displaystyle\dfrac{1}{V}
 \]
 
 \textbf{Note}:
 
 \begin{itemize}[itemsep=0.1cm]
     \item $\epsilon$ = empty string
-    \item If we want to include an unknown word <UNK>, it’s just included as a regular vocabulary entry with count zero, and hence its probability will be a lambda-weighted uniform distribution \(\displaystyle\frac{\lambda(\epsilon)}{V}\)
+    \item If we want to include an unknown word <UNK>, it’s just included as a regular vocabulary entry with count zero, and hence its probability will be a lambda-weighted uniform distribution \(\displaystyle\dfrac{\lambda(\epsilon)}{V}\)
     \item \(c_{KN}(\cdot) = \begin{cases}
         \rcmdXcount(\cdot) & \text{for the highest order} \\
         \rcmdXcontinuationcount(\cdot) & \text{for lower orders}
     \end{cases}\)
     \item $\rcmdXcontinuationcount(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
     \item discount: $0 \leq d \leq 1$ 
-    \item \(\displaystyle\frac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
+    \item \(\displaystyle\dfrac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
     \item \(|\{w : C(w_{i-1}w) > 0\}|\) is number of word types that can follow $w_{i-1}$ or equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount.
 \end{itemize}
 
@@ -376,13 +376,13 @@ Stupid backoff gives up the idea of trying to make the language model a true pro
 
 \[
     S(w_i|w_{i-N+1:i-1}) = \begin{cases}
-        \displaystyle\frac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})} & \text{ if $count(w_{i-N+1:i}) > 0$}\\[0.2cm]
+        \displaystyle\dfrac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})} & \text{ if $count(w_{i-N+1:i}) > 0$}\\[0.2cm]
         \lambda S(w_i|w_{i-N+2:i-1}) & \text{ otherwise}
     \end{cases}
 \]
 where the termination is:
 \[
-    S(w) = \displaystyle\frac{C(w)}{N} \hfill \text{(for unigram)}
+    S(w) = \displaystyle\dfrac{C(w)}{N} \hfill \text{(for unigram)}
 \]
 
 \subsection{Interpolation}

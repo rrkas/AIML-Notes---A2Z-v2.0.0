@@ -332,8 +332,8 @@ These attempt to evaluate or improve the policy that is used to make decisions, 
             $A^* \leftarrow \displaystyle\arg\max_a Q(s,a)$ (with ties broken arbitrarily)\\
             \ForEach{$a\in A(s)$}{
                 \( \pi(a|s) \leftarrow \begin{cases}
-                    1-\epsilon + \displaystyle\frac{\epsilon}{|A(s)|} & \text{ if } a=A^*\\
-                    \displaystyle\frac{\epsilon}{|A(s)|} & \text{ if } a\neq A^*\\
+                    1-\epsilon + \displaystyle\dfrac{\epsilon}{|A(s)|} & \text{ if } a=A^*\\
+                    \displaystyle\dfrac{\epsilon}{|A(s)|} & \text{ if } a\neq A^*\\
                 \end{cases} \)
             }
         }
@@ -402,10 +402,10 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
     \item Given a trajectory $\tau$ drawn by running $b$
     \item we can define (not compute) the probability $Pr\{\tau|b\}$
     \item we can also define $Pr\{\tau|\pi\}$
-    \item define the importance sampling ratio as $\rho_t = \displaystyle\frac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}}$
+    \item define the importance sampling ratio as $\rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}}$
     \item Computing $\rho$ without $p(S_{K+1}|S_K,A_K)$ 
     \[
-        \rho_t = \displaystyle\frac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}} = \displaystyle\frac{\displaystyle\prod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\displaystyle\prod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \displaystyle\prod_{k=t}^{T-1}\displaystyle\frac{\pi(A_k|S_k)}{b(A_k|S_k)}
+        \rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}} = \displaystyle\dfrac{\displaystyle\prod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\displaystyle\prod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \displaystyle\prod_{k=t}^{T-1}\displaystyle\dfrac{\pi(A_k|S_k)}{b(A_k|S_k)}
     \]
     \item \textbf{Fact}: \( \mathbb{E}_{\tau \sim b}[G_t|S_t=s]=v_b(s) \)
     \item Importance sampling allows us to compute an unbiased estimate of $v_\pi(s)$ by running $b$.
@@ -414,7 +414,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
     \item Assume visiting state $s$ over $M$ episodes using policy $b$
     \item $s$ is first visited during time step $t^m$ during each episode, $m\in M$
     \[
-        v_\pi(s) = \displaystyle\frac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{M}
+        v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{M}
     \]
 \end{itemize}
 
@@ -424,7 +424,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
 Importance sampling with a simple average is called ordinary sampling.
 
 \[
-    V(s) = \displaystyle\frac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
+    V(s) = \displaystyle\dfrac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
 \]
 
 \begin{itemize}
@@ -437,10 +437,10 @@ Importance sampling with a simple average is called ordinary sampling.
 Importance Sampling with a weighted average is known as weighted importance sampling.
 
 \[
-    V(s) = \displaystyle\frac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}} \hfill \text{\cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}
+    V(s) = \displaystyle\dfrac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}} \hfill \text{\cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}
 \]
 \[
-    v_\pi(s) = \displaystyle\frac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{\displaystyle\sum_{m\in M} \rho_t m} \hfill \text{\cite{bits-pilani-slides}}
+    v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{\displaystyle\sum_{m\in M} \rho_t m} \hfill \text{\cite{bits-pilani-slides}}
 \]
 
 \begin{itemize}
@@ -458,12 +458,12 @@ weighted estimator is strongly preferred.
     
     \item \textbf{Ordinary importance sampling}:
     \[
-        V_{n+1} = V_n + \displaystyle\frac{1}{n}[W_nG_n - V_n]
+        V_{n+1} = V_n + \displaystyle\dfrac{1}{n}[W_nG_n - V_n]
     \]
 
     \item \textbf{Weighted importance sampling:}
     \[
-        V_{n+1} = V_n + \displaystyle\frac{W_n}{C_n}[G_n - V_n] \hfill \text{(for $n\geq 1$)}
+        V_{n+1} = V_n + \displaystyle\dfrac{W_n}{C_n}[G_n - V_n] \hfill \text{(for $n\geq 1$)}
     \]
     \[
         C_{n+1} = C_n + W_{n+1}
@@ -490,8 +490,8 @@ weighted estimator is strongly preferred.
             \ForEach{step of episode $t=T-1,T-2,...,0$}{
                 $G \leftarrow \gamma G + R_{t+1}$\\
                 $C(S_t,A_t) \leftarrow C(S_t,A_t) + W$\\
-                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\frac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$\\
-                $W \leftarrow W\displaystyle\frac{\pi(A_t|S_t)}{b(A_t|S_t)}$\\
+                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$\\
+                $W \leftarrow W\displaystyle\dfrac{\pi(A_t|S_t)}{b(A_t|S_t)}$\\
                 \If{$W=0$}{
                     exit For loop
                 }
@@ -531,7 +531,7 @@ weighted estimator is strongly preferred.
                 $C(S_t,A_t) \leftarrow C(S_t,A_t) + W$
 
                 \Comment{Incremental update of Q values (waited moving average)}
-                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\frac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$
+                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$
 
                 \Comment{update target policy (greedy)}
                 $\pi(S_t) \leftarrow \displaystyle\arg\max_a Q(S_t,a)$ (with ties broken consistently)
@@ -542,7 +542,7 @@ weighted estimator is strongly preferred.
                 }
 
                 \Comment{Update the joint prob by multiplying by $\rho_t$. Notice that $\pi(S_t)=1$ in this example (deterministic target policy).}
-                $W \leftarrow W\displaystyle\frac{1}{b(A_t|S_t)}$
+                $W \leftarrow W\displaystyle\dfrac{1}{b(A_t|S_t)}$
             }
         }
     }

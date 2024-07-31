@@ -149,10 +149,10 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
 
     \item Using \fullref{Logistic function}:
     \[
-        \displaystyle P(+|w, c) = \sigma(\mathbf{c\cdot w}) = \frac{1}{1 + \exp(-\mathbf{c\cdot w})} \hfill \in [0,1]
+        \displaystyle P(+|w, c) = \sigma(\mathbf{c\cdot w}) = \dfrac{1}{1 + \exp(-\mathbf{c\cdot w})} \hfill \in [0,1]
     \]
     \[
-        P(-|w, c) = 1 - P(+|w, c) = \sigma(\mathbf{-c\cdot w}) = \frac{1}{1 + \exp(\mathbf{c\cdot w})} \hfill \in [0,1]
+        P(-|w, c) = 1 - P(+|w, c) = \sigma(\mathbf{-c\cdot w}) = \dfrac{1}{1 + \exp(\mathbf{c\cdot w})} \hfill \in [0,1]
     \]
 
     \item For multiple context words in window:
@@ -197,10 +197,10 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
         &= -\left[ \log(\sigma(\mathbf{c_{pos}\cdot w})) + \sum_{i=1}^{k} \log(\sigma(\mathbf{-c_{neg_i}\cdot w})) \right]\\ 
     \end{align*}
     \[
-        \displaystyle \frac{\partial L_{CE}}{\partial c_{pos}} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{w} \hfill \displaystyle \frac{\partial L_{CE}}{\partial c_{neg}} = [\sigma(\mathbf{c_{neg}\cdot w})]\cdot \mathbf{w}
+        \displaystyle \dfrac{\partial L_{CE}}{\partial c_{pos}} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{w} \hfill \displaystyle \dfrac{\partial L_{CE}}{\partial c_{neg}} = [\sigma(\mathbf{c_{neg}\cdot w})]\cdot \mathbf{w}
     \]
     \[
-        \displaystyle \frac{\partial L_{CE}}{\partial w} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{c}_{pos} + \sum_{i=1}^{k}[\sigma(\mathbf{c_{neg_i}\cdot w})-1]\cdot \mathbf{c}_{neg_i}
+        \displaystyle \dfrac{\partial L_{CE}}{\partial w} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{c}_{pos} + \sum_{i=1}^{k}[\sigma(\mathbf{c_{neg_i}\cdot w})-1]\cdot \mathbf{c}_{neg_i}
     \]
 
 

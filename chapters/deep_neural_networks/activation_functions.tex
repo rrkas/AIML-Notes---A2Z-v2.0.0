@@ -81,7 +81,7 @@ $u$ refers in all cases to the weighted sum of all the inputs to the neuron
 
 General Equation:
 \[
-    f(x) = {\displaystyle\frac{L}{1 + e^{-k(x - x_{0})}}}
+    f(x) = {\displaystyle\dfrac{L}{1 + e^{-k(x - x_{0})}}}
 \]
 
 
@@ -96,14 +96,14 @@ General Equation:
 \vspace{0.2cm}
 \noindent Standard logistic function (sigmoid/ expit):\label{sigmoid}
 \(
-\sigma(x) = {\displaystyle\frac{1}{1+e^{-x}}} = {\displaystyle\frac{e^{x}}{1+e^{x}}} = 1- \sigma(-x)
+\sigma(x) = {\displaystyle\dfrac{1}{1+e^{-x}}} = {\displaystyle\dfrac{e^{x}}{1+e^{x}}} = 1- \sigma(-x)
 \)
 
 where, $L=1$ , $k=1$ \& $x_{0}=0$
 
 
 \[
-    \displaystyle\frac{d\sigma(z)}{dz} = \sigma(z)(1 - \sigma(z))
+    \displaystyle\dfrac{d\sigma(z)}{dz} = \sigma(z)(1 - \sigma(z))
 \]
 
 
@@ -113,7 +113,7 @@ where, $L=1$ , $k=1$ \& $x_{0}=0$
     f(x)=\tanh(x)={\displaystyle\frac {e^{x}-e^{-x}}{e^{x}+e^{-x}}}
 \]
 \[
-    \displaystyle\frac{d\tanh(z)}{dz} = 1-\tanh^2(z)
+    \displaystyle\dfrac{d\tanh(z)}{dz} = 1-\tanh^2(z)
 \]
 
 
@@ -129,7 +129,7 @@ In the context of artificial neural networks, the rectifier or ReLU (rectified l
     f(x)=x^{+}=\max(0,x)={\displaystyle\frac {x+|x|}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
 \]
 \[
-    \displaystyle\frac{d\operatorname{ReLU}(z)}{dz}={\begin{cases}1&{\text{if }}z>0,\\0&{\text{otherwise}}\end{cases}}
+    \displaystyle\dfrac{d\operatorname{ReLU}(z)}{dz}={\begin{cases}1&{\text{if }}z>0,\\0&{\text{otherwise}}\end{cases}}
 \]
 
 \subsection{Leaky ReLU \cite{wiki-Rectifier}}\label{Leaky ReLU}

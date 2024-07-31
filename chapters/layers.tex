@@ -34,7 +34,7 @@
     \hfill
     \begin{minipage}{0.54\linewidth}
         \[
-           \displaystyle n_{out} = \left[ \frac{n_{in} + 2p - k}{s} \right] + 1
+           \displaystyle n_{out} = \left[ \dfrac{n_{in} + 2p - k}{s} \right] + 1
         \]
         \[
             n_{params} = n_f^{curr} \times ( f_h \times f_w \times  n_f^{prev} + 1)
@@ -78,7 +78,7 @@
 \section{Pooling Layer \cite{gfg-convolutional-neural-network-cnn-in-machine-learning}}\label{nn: Pooling Layer}
 
 \[
-   \displaystyle n_{out} = \left[ \frac{n_{in} - k}{s} \right] + 1
+   \displaystyle n_{out} = \left[ \dfrac{n_{in} - k}{s} \right] + 1
    \hfill
    n_{params} = 0 \text{ (no trainable params)}
 \]
@@ -170,7 +170,7 @@
 
     \item Each RoI is defined by a four-tuple $(r, c, h, w)$ that specifies its top-left corner $(r, c)$ and its height and width $(h, w)$.
 
-    \item RoI max pooling works by dividing the $h \times w$ RoI window into an $H \times W$ grid of sub-windows of approximate size ${\displaystyle \frac{h}{H} \times \frac{w}{W}}$ and then \textbf{max-pooling} (SEE: \fullref{cnn: Max Pooling}) the values in each sub-window into the corresponding output grid cell.
+    \item RoI max pooling works by dividing the $h \times w$ RoI window into an $H \times W$ grid of sub-windows of approximate size ${\displaystyle \dfrac{h}{H} \times \dfrac{w}{W}}$ and then \textbf{max-pooling} (SEE: \fullref{cnn: Max Pooling}) the values in each sub-window into the corresponding output grid cell.
 
     \item Pooling is applied \textbf{independently} to each feature map channel, as in standard max pooling. 
 

@@ -61,11 +61,11 @@
 
             Cumulative Frequency \cite{ism-1} \indexlabel{cumulative frequency} & Cumulative frequency for a specific value xj is given by: \(\sum_{k=1}^{j} f_k\) \\ \hline
             
-            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & \(\displaystyle\frac{f_j}{\sum_{k=1}^{n} f_k}\) \\ 
+            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & \(\displaystyle\dfrac{f_j}{\sum_{k=1}^{n} f_k}\) \\ 
             
             \hline
 
-            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \(\displaystyle\frac{\sum_{k=1}^{j} f_k}{\sum_{k=1}^{n} f_k}\)  \\ \hline
+            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \(\displaystyle\dfrac{\sum_{k=1}^{j} f_k}{\sum_{k=1}^{n} f_k}\)  \\ \hline
         \end{tabular}
         \caption{Types of Data Frequency}
     \end{table}
@@ -75,7 +75,7 @@
 \subsubsection{Arithmetic mean ( $\bar{x}$ ) \cite{ism-1}}\label{arithmetic_mean}
 \vspace{0.2cm}
 \[
-    \bar{x} = \displaystyle\frac{1}{n} \cdot \sum^{n}_{i=1} x_i
+    \bar{x} = \displaystyle\dfrac{1}{n} \cdot \sum^{n}_{i=1} x_i
 \]
 
 \subsubsection{Mode \cite{ism-1}}\label{mode}
@@ -111,20 +111,20 @@ The interquartile range (IQR) calculates the difference between the third quarti
 
 \subsection{Mean absolute deviation (MAD) \cite{ism-1}}\label{Mean absolute deviation}
 \[
-    MAD = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left| x_i - \bar{x} \right|
+    MAD = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \left| x_i - \bar{x} \right|
 \]
 SEE: \hyperref[abs_value]{Absolute Value}
 
 
 \subsection{Mean squared deviation (MSD) \cite{ism-1}} \label{Mean squared deviation}
 \[
-    MSD = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2
+    MSD = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2
 \]
 
 
 \subsection{Sample Variance ( $s^2$ ) \cite{ism-1}}\label{Sample Variance}
 \[
-    s^2 = \displaystyle\frac{1}{(n-1)} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2 = \displaystyle\frac{n}{(n-1)} \cdot MSD
+    s^2 = \displaystyle\dfrac{1}{(n-1)} \cdot \sum_{i=1}^{n} ( x_i - \bar{x} )^2 = \displaystyle\dfrac{n}{(n-1)} \cdot MSD
 \]
 
 \subsection{Standard Deviation ( $s$ ) \cite{ism-1}}\label{Standard Deviation}
@@ -134,7 +134,7 @@ SEE: \hyperref[abs_value]{Absolute Value}
 
 \subsection{Skewness ( $g_1$ ) \cite{ism-1}}\label{Skewness}
 \[
-    g_1 = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left( \frac{x_i - \bar{x}}{s} \right)^3
+    g_1 = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \left( \dfrac{x_i - \bar{x}}{s} \right)^3
 \]
 
 Skewness is used to measure the asymmetry in data and kurtosis is used to measure the “peakedness” of data. Data is considered skewed or asymmetric when the variation on one side of the middle of the data is larger than the variation on the other side.
@@ -164,7 +164,7 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
 
 \subsection{Kurtosis ( $g_2$ ) \cite{ism-1}}\label{Kurtosis}
 \[
-    g_2 = \displaystyle\frac{1}{n} \cdot \sum_{i=1}^{n} \left( \frac{x_i - \bar{x}}{s} \right)^4 - 3
+    g_2 = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \left( \dfrac{x_i - \bar{x}}{s} \right)^4 - 3
 \]
 
 \begin{itemize}
@@ -185,10 +185,10 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
 
 \subsection{Aggregated Data \cite{ism-1}}\label{Aggregated Data}
 \[
-    \bar{x} = \displaystyle\frac{\sum_{i=1}^{n} x_i \cdot f_i}{\sum_{i=1}^{n} f_i}
+    \bar{x} = \displaystyle\dfrac{\sum_{i=1}^{n} x_i \cdot f_i}{\sum_{i=1}^{n} f_i}
 \]
 \[
-    s^2 = \displaystyle\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i}{\left( \sum_{i=1}^{n} f_i \right) - 1}
+    s^2 = \displaystyle\dfrac{\sum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i}{\left( \sum_{i=1}^{n} f_i \right) - 1}
 \]
 
 \begin{itemize}

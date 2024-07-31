@@ -105,21 +105,21 @@ For class $k \in \{1,2,...,K\}$ ($K$ classes),
     L_{CE}(\mathbf{\hat{y}}, \mathbf{y}) &= -\sum_{k=1}^{K} \mathbbm{1}_{\mathbf{y}_k =1}\log(\mathbf{\hat{y}}_k) 
     \repeatn{16}{\quad} \text{(SEE: \fullref{Indicator function})}\\
     &= -\log(\mathbf{\hat{y}}_c) \repeatn{20}{\quad} \text{(where c is the correct class)}\\
-    &= -\log\displaystyle\frac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)}  \repeatn{7}{\quad} \text{(using \fullref{Softmax function})}
+    &= -\log\displaystyle\dfrac{\exp(\mathbf{z}_c)}{\sum_{j=1}^{K} \exp(\mathbf{z}_j)}  \repeatn{7}{\quad} \text{(using \fullref{Softmax function})}
 \end{align*}
 
 
 \subsection{Gradient of Loss}
 \begin{align*}
-    \frac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial w_j} &= (\hat{y} - y) \mathbf{x}_j \\
+    \dfrac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial w_j} &= (\hat{y} - y) \mathbf{x}_j \\
     &= (\sigma(\mathbf{w} \cdot \mathbf{x} + b) - y) \mathbf{x}_j
 \end{align*}
 
 \begin{align*}
-    \frac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial \mathbf{w}_{k,i}} 
+    \dfrac{\partial L_{CE}(\mathbf{\hat{y}}, \mathbf{y})}{\partial \mathbf{w}_{k,i}} 
     &= -(\mathbf{y}_{k} - \mathbf{\hat{y}}_{k})\mathbf{x}_{i}\\
     &=-(\mathbf{y}_{k} - p(\mathbf{y}_{k}=1|\mathbf{x}))\mathbf{x}_{i}\\
-    &=-\left(\mathbf{y}_{k} - \displaystyle\frac{\exp(\mathbf{w}_{k}\cdot \mathbf{x} + b_{k})}{\sum_{j=1}^{K} \exp(\mathbf{w}_{j}\cdot \mathbf{x} + b_{j})}\right)\mathbf{x}_i
+    &=-\left(\mathbf{y}_{k} - \displaystyle\dfrac{\exp(\mathbf{w}_{k}\cdot \mathbf{x} + b_{k})}{\sum_{j=1}^{K} \exp(\mathbf{w}_{j}\cdot \mathbf{x} + b_{j})}\right)\mathbf{x}_i
 \end{align*}
 
 \section{Forward Inference (Decoding)}
@@ -221,7 +221,7 @@ Steps:
          \hline
          SGD & \begin{minipage}{8cm}
              \vspace{0.2cm}
-             \( \theta^{s+1} = \theta^s - \eta\displaystyle\frac{\partial[-\log(p(w_t|w_{t-1},...,w_{t-n+1}))]}{\partial\theta} \)
+             \( \theta^{s+1} = \theta^s - \eta\displaystyle\dfrac{\partial[-\log(p(w_t|w_{t-1},...,w_{t-n+1}))]}{\partial\theta} \)
              \vspace{0.2cm}
          \end{minipage}\\
          \hline

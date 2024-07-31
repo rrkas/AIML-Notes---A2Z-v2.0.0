@@ -80,8 +80,8 @@ Two matrices $\mathbf{A, \tilde{A}} \in \mathbb{R}^{m\times n}$ are similar if t
 For matrices $\mathbf{A, B} \in \mathbb{R}^{m\times n}$, the elements $c_{ij}$ of the product $C \in \mathbb{R}^{m\times n}$ are computed as:
 \[
     \hfill
-    C = A \odot B	
-    \Rightarrow	c_{ij} = a_{ij}b_{ij}
+    C = A \odot B 
+    \Rightarrow c_{ij} = a_{ij}b_{ij}
     \hfill
 \]
 
@@ -281,8 +281,8 @@ is called symmetric, positive definite, or just positive definite.
 A square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is an orthogonal matrix if and only if its columns are orthonormal so that 
 \[
     \hfill
-    AA^\top  = I = A^\top A 	
-    \Rightarrow	 A^{-1} = A^\top 
+    AA^\top  = I = A^\top A  
+    \Rightarrow  A^{-1} = A^\top 
     \hfill
 \]
 
@@ -525,7 +525,7 @@ The determinant of a square matrix $A \in R^{n\times n}$ is a function that maps
 
     \item Determinants are invariant to transposition, i.e., $det(A) = det(A^\top)$.
 
-    \item If $A$ is regular (invertible), then $\displaystyle det(A^{-1}) = \displaystyle\disfrac{1}{det(A)}$.
+    \item If $A$ is regular (invertible), then $\displaystyle det(A^{-1}) = \displaystyle\dfrac{1}{det(A)}$.
 
     \item Similar matrices (SEE: \fullref{Similarity/ Similar Matrices}) possess the \textbf{same} determinant. Therefore, for a linear mapping $\Phi : V \to V$ all transformation matrices $A_\Phi$ of $\Phi$ have the same determinant. Thus, the determinant is invariant to the choice of basis of a linear mapping.
 
@@ -567,7 +567,7 @@ The trace of a square matrix $A \in R^{n\times n}$ is defined as the trace is th
 
     \item for $x, y \in  R^n$, $tr(xy^\top ) = tr(y^\top x) = y^\top x \in  R$
 
-    \item for $\Phi  : V \to  V$,	$tr(\Phi ) = tr(A_\Phi )$
+    \item for $\Phi  : V \to  V$, $tr(\Phi ) = tr(A_\Phi )$
 
     \item for basis change $A_\Phi  \to  B_\Phi$, $tr(B) = tr(S^{-1}AS) = tr(ASS^{-1}) = tr(A)$
 
@@ -599,7 +599,7 @@ where, $c_0, \cdots  , c_{n-1} \in R$, is the characteristic polynomial of $A$
 
 \section{Eigenvalues ($\lambda$) and Eigenvectors} \label{Eigenvalues and Eigenvectors}
 
-Let $A \in  R^{n\times n}$ be a \textbf{square matrix}. Then $\lambda  \in  R$ is an eigenvalue of $A$ and $x \in  R^n\backslash \{0\}$ is the corresponding eigenvector of $A$ if $Ax = \lambda x$	(aka \textbf{eigenvalue equation}\indexlabel{eigenvalue equation})
+Let $A \in  R^{n\times n}$ be a \textbf{square matrix}. Then $\lambda  \in  R$ is an eigenvalue of $A$ and $x \in  R^n\backslash \{0\}$ is the corresponding eigenvector of $A$ if $Ax = \lambda x$ (aka \textbf{eigenvalue equation}\indexlabel{eigenvalue equation})
 
 \begin{enumerate}
     \item $\lambda$  is an eigenvalue of $A \in  R^{n\times n}$
@@ -698,7 +698,7 @@ Then the geometric multiplicity of $\lambda_i$ is the \textbf{number of linearly
 For $x \in  R^n\backslash \{0\}$, the spectral norm of a matrix $A \in  R^{m\times n}$ is defined as:
 \[
     \displaystyle
-    ||A||_2 = \max_x \disfrac{||Ax||_2}{||x||_2}
+    ||A||_2 = \max_x \dfrac{||Ax||_2}{||x||_2}
 \]
 
 
@@ -818,7 +818,7 @@ A symmetric, positive definite matrix $A$ can be factorized into a product $A = 
 
     \item Assume that the eigendecomposition $A = PDP^{-1}$ exists. Then:
     \[
-    det(A) = det(PDP^{-1}) = det(P)det(D)det(P^{-1}) = det(D) = 	
+    det(A) = det(PDP^{-1}) = det(P)det(D)det(P^{-1}) = det(D) =  
     \hfill (det(P-1) = 1 / det(P))
     \]
     allows for an efficient computation of the determinant of $A$
@@ -949,7 +949,7 @@ $C, \tilde{C} \in R^m$
             \]
         \end{enumerate}
     \end{enumerate}
-			
+   
 \end{enumerate}
 
 
@@ -965,7 +965,7 @@ $C, \tilde{C} \in R^m$
 
         \item $A = U\Sigma V^\top$
 
-        \item $\hfill U = P = V	\hfill D = \Sigma \hfill$
+        \item $\hfill U = P = V \hfill D = \Sigma \hfill$
     \end{enumerate}
 
     \item General $A \in R^{m\times n}$:
@@ -1022,14 +1022,14 @@ $C, \tilde{C} \in R^m$
             \end{align*}
 
             \item $U^\top = P^\top \Rightarrow  U = P$
-	    
+     
             \item $\sigma_j^2 = \lambda_j$
-	    
+     
             \item eigenvalues of $AA^\top$ are the squared singular values of $\Sigma$
 
-            \item \( \displaystyle u_i = \disfrac{Av_i}{||Av_i||} = \disfrac{Av_i}{\sqrt{\lambda_i}} = \disfrac{Av_i}{\sigma_i} \)
+            \item \( \displaystyle u_i = \dfrac{Av_i}{||Av_i||} = \dfrac{Av_i}{\sqrt{\lambda_i}} = \dfrac{Av_i}{\sigma_i} \)
 
-            \item \textbf{singular value equation}\indexlabel{singular value equation}: $ Av_i = \sigma_iu_i 	\hfill (i = 1, \cdots , r)$
+            \item \textbf{singular value equation}\indexlabel{singular value equation}: $ Av_i = \sigma_iu_i  \hfill (i = 1, \cdots , r)$
         \end{enumerate}
 
         \vspace{0.5cm}
@@ -1039,7 +1039,7 @@ $C, \tilde{C} \in R^m$
 
             \vspace{0.5cm}
             \textbf{Proof}:
-            \item $AA^\top x = \lambda x	\Rightarrow A^\top A(A^\top x) = A^\top \lambda x = \lambda (A^\top x)$
+            \item $AA^\top x = \lambda x \Rightarrow A^\top A(A^\top x) = A^\top \lambda x = \lambda (A^\top x)$
 
             \item inner product between $Av_i$ and $Av_j$ must be $0$ for $i \neq j$
             \[
@@ -1069,7 +1069,7 @@ $C, \tilde{C} \in R^m$
                 \hfill
             \]
 
-            \item (\textbf{Truncated SVD})\indexlabel{Truncated SVD}	TODO
+            \item (\textbf{Truncated SVD})\indexlabel{Truncated SVD} TODO
 
             \item It is possible to define the SVD of a rank-$r$ matrix $A$ so that $U$ is an $m\times r$ matrix, $\Sigma$  a diagonal matrix $r\times r$, and $V$ an $r\times n$ matrix. This construction is very similar to our definition, and ensures that the diagonal matrix $\Sigma$  has only nonzero entries along the diagonal. The main convenience of this alternative notation is that $\Sigma$  is diagonal, as in the eigenvalue decomposition.
 
@@ -1137,9 +1137,9 @@ $C, \tilde{C} \in R^m$
         \end{bmatrix}
         =
         \begin{bmatrix}
-            \disfrac{5}{\sqrt{30}} & 0 & -\disfrac{1}{\sqrt{6}} \\
-            -\disfrac{2}{\sqrt{30}} & \disfrac{1}{\sqrt{5}} & -\disfrac{2}{\sqrt{6}} \\
-            \disfrac{1}{\sqrt{30}} & \disfrac{2}{\sqrt{5}} & \disfrac{1}{\sqrt{6}} \\
+            \dfrac{5}{\sqrt{30}} & 0 & -\dfrac{1}{\sqrt{6}} \\
+            -\dfrac{2}{\sqrt{30}} & \dfrac{1}{\sqrt{5}} & -\dfrac{2}{\sqrt{6}} \\
+            \dfrac{1}{\sqrt{30}} & \dfrac{2}{\sqrt{5}} & \dfrac{1}{\sqrt{6}} \\
         \end{bmatrix}
         \begin{bmatrix}
             6 & 0 & 0\\
@@ -1147,9 +1147,9 @@ $C, \tilde{C} \in R^m$
             0 & 0 & 0 \\
         \end{bmatrix}
         \begin{bmatrix}
-            \disfrac{5}{\sqrt{30}} & -\disfrac{2}{\sqrt{30}} & \disfrac{1}{\sqrt{30}} \\
-            0 & \disfrac{1}{\sqrt{5}} & \disfrac{2}{\sqrt{5}} \\
-            -\disfrac{1}{\sqrt{6}} & -\disfrac{2}{\sqrt{6}} & \disfrac{1}{\sqrt{6}}
+            \dfrac{5}{\sqrt{30}} & -\dfrac{2}{\sqrt{30}} & \dfrac{1}{\sqrt{30}} \\
+            0 & \dfrac{1}{\sqrt{5}} & \dfrac{2}{\sqrt{5}} \\
+            -\dfrac{1}{\sqrt{6}} & -\dfrac{2}{\sqrt{6}} & \dfrac{1}{\sqrt{6}}
         \end{bmatrix}
         = PDP^\top
     \]
@@ -1158,9 +1158,9 @@ $C, \tilde{C} \in R^m$
         \renewcommand{\arraystretch}{2}
         V = P =
         \begin{bmatrix}
-            \disfrac{5}{\sqrt{30}} & 0 & -\disfrac{1}{\sqrt{6}} \\
-            -\disfrac{2}{\sqrt{30}} & \disfrac{1}{\sqrt{5}} & -\disfrac{2}{\sqrt{6}} \\
-            \disfrac{1}{\sqrt{30}} & \disfrac{2}{\sqrt{5}} & \disfrac{1}{\sqrt{6}} \\
+            \dfrac{5}{\sqrt{30}} & 0 & -\dfrac{1}{\sqrt{6}} \\
+            -\dfrac{2}{\sqrt{30}} & \dfrac{1}{\sqrt{5}} & -\dfrac{2}{\sqrt{6}} \\
+            \dfrac{1}{\sqrt{30}} & \dfrac{2}{\sqrt{5}} & \dfrac{1}{\sqrt{6}} \\
         \end{bmatrix}
     \]
 
@@ -1181,37 +1181,37 @@ $C, \tilde{C} \in R^m$
     \[
         \hfill
         \renewcommand{\arraystretch}{2}
-        u_1 = \disfrac{Av_1}{\sigma_1} = \disfrac{1}{\sqrt{6}} 
+        u_1 = \dfrac{Av_1}{\sigma_1} = \dfrac{1}{\sqrt{6}} 
         \begin{bmatrix}
             1 & 0 & 1 \\
             -2 & 1 & 0 \\
         \end{bmatrix}
         \begin{bmatrix}
-            \disfrac{5}{\sqrt{30}} \\
-            -\disfrac{2}{\sqrt{30}} \\
-            \disfrac{1}{\sqrt{30}} \\
+            \dfrac{5}{\sqrt{30}} \\
+            -\dfrac{2}{\sqrt{30}} \\
+            \dfrac{1}{\sqrt{30}} \\
         \end{bmatrix}
         = 
         \begin{bmatrix}
-            \disfrac{1}{\sqrt{5}} \\
-            -\disfrac{2}{\sqrt{5}}
+            \dfrac{1}{\sqrt{5}} \\
+            -\dfrac{2}{\sqrt{5}}
         \end{bmatrix}
         \hspace{0.5cm}
         \renewcommand{\arraystretch}{2}
-        u_2 = \disfrac{Av_2}{\sigma_2} = \disfrac{1}{1} 
+        u_2 = \dfrac{Av_2}{\sigma_2} = \dfrac{1}{1} 
         \begin{bmatrix}
             1 & 0 & 1 \\
             -2 & 1 & 0 \\
         \end{bmatrix}
         \begin{bmatrix}
             0 \\
-            \disfrac{1}{\sqrt{5}} \\
-            \disfrac{2}{\sqrt{5}} \\
+            \dfrac{1}{\sqrt{5}} \\
+            \dfrac{2}{\sqrt{5}} \\
         \end{bmatrix}
         = 
         \begin{bmatrix}
-            \disfrac{2}{\sqrt{5}} \\
-            \disfrac{1}{\sqrt{5}}
+            \dfrac{2}{\sqrt{5}} \\
+            \dfrac{1}{\sqrt{5}}
         \end{bmatrix}
         \hfill
     \]
@@ -1219,11 +1219,11 @@ $C, \tilde{C} \in R^m$
         \renewcommand{\arraystretch}{2}
         U = [u_1, u_2] = 
         \begin{bmatrix}
-            \disfrac{1}{\sqrt{5}} & \disfrac{2}{\sqrt{5}} \\
-            -\disfrac{2}{\sqrt{5}} & \disfrac{1}{\sqrt{5}} \\
+            \dfrac{1}{\sqrt{5}} & \dfrac{2}{\sqrt{5}} \\
+            -\dfrac{2}{\sqrt{5}} & \dfrac{1}{\sqrt{5}} \\
         \end{bmatrix}
         = 
-        \disfrac{1}{\sqrt{5}}
+        \dfrac{1}{\sqrt{5}}
         \begin{bmatrix}
             1 & {2} \\
             -{2} & {1} \\

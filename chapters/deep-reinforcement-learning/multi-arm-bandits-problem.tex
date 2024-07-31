@@ -65,7 +65,7 @@ Action-value methods are a group of solutions to the Multi-Armed Bandits problem
 The simplest way to estimate the value of any particular action is to average the rewards that were received every time this action was taken. This is called \textbf{sample averaging}\indexlabel{MAB: sample averaging}.
 
 \[
-    Q_t(a) = \displaystyle\frac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\frac{\displaystyle\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\displaystyle\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
+    Q_t(a) = \displaystyle\dfrac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\dfrac{\displaystyle\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\displaystyle\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
 \]
 
 SEE: \fullref{Indicator function}
@@ -82,10 +82,10 @@ $R_i$ = reward received after the $i^{th}$ selection of this action
 $Q_n$ = estimate of this action’s value after it has been selected $n-1$ times
 
 \begin{align*}    
-    Q_{n+1} &= \displaystyle\frac{1}{n} \sum_{i=1}^{n} R_i = \displaystyle\frac{1}{n} \left( R_n + \sum_{i=1}^{n-1} R_i \right) \\
-    &= \displaystyle\frac{1}{n} \left( R_n + (n-1) \displaystyle\frac{1}{(n-1)}  \left(\displaystyle\sum_{i=1}^{n-1} R_i\right) \right)\\
-    &= \displaystyle\frac{1}{n} (R_n + (n-1)Q_n) = \displaystyle\frac{1}{n} (R_n + nQ_n - Q_n)\\
-    &= Q_n + \displaystyle\frac{1}{n} [R_n - Q_n]
+    Q_{n+1} &= \displaystyle\dfrac{1}{n} \sum_{i=1}^{n} R_i = \displaystyle\dfrac{1}{n} \left( R_n + \sum_{i=1}^{n-1} R_i \right) \\
+    &= \displaystyle\dfrac{1}{n} \left( R_n + (n-1) \displaystyle\dfrac{1}{(n-1)}  \left(\displaystyle\sum_{i=1}^{n-1} R_i\right) \right)\\
+    &= \displaystyle\dfrac{1}{n} (R_n + (n-1)Q_n) = \displaystyle\dfrac{1}{n} (R_n + nQ_n - Q_n)\\
+    &= Q_n + \displaystyle\dfrac{1}{n} [R_n - Q_n]
 \end{align*}
 
 NewEstimate = OldEstimate + StepSize [ Target - OldEstimate ]
@@ -117,7 +117,7 @@ Another method is to choose the greedy action most of the time, but choose some 
         \end{cases}$\\
         $R \gets \text{bandit}(A)$\;
         $N(A) \gets N(A) + 1$\;
-        $Q(A) \gets Q(A) + \displaystyle\frac{1}{N(A)}[R - Q(A)]$\;
+        $Q(A) \gets Q(A) + \displaystyle\dfrac{1}{N(A)}[R - Q(A)]$\;
     }
 \end{algorithm}
 
@@ -188,7 +188,7 @@ One better way to select actions could be to choose them with a preference for t
 Choose which arm to exploit based on how satisfying the reward was, but also with a preference for arms that you’ve exploited less. For an arm that you haven’t tried as much you are less confident about the reward, so you may want to experiment with it more to become more confident about its quality on average. This concept is called Upper-Confidence-Bound Action Selection (UCB).
 
 \[
-    A_t = \arg\max_a \left[ Q_t(a) + c \sqrt{\displaystyle\frac{\ln(t)}{N_t(a)}} \right]
+    A_t = \arg\max_a \left[ Q_t(a) + c \sqrt{\displaystyle\dfrac{\ln(t)}{N_t(a)}} \right]
 \]
 
 Interpretation:
@@ -210,7 +210,7 @@ This preference has no interpretation in terms of reward. only the relative pref
 
 The probability of selecting any action is given according to a \textbf{soft-max distribution} (SEE: \fullref{Softmax function}):
 \[
-    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\frac{e^{H_t(a)}}{\displaystyle\sum_{i=1}^{k} e^{H_t(i)}}
+    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\dfrac{e^{H_t(a)}}{\displaystyle\sum_{i=1}^{k} e^{H_t(i)}}
 \]
 
 \begin{itemize}

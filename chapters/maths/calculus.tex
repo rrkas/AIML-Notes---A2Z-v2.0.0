@@ -13,7 +13,7 @@
     \hfill
     \begin{minipage}{0.59\linewidth}
         \begin{itemize}
-            \item The difference quotient \( \displaystyle\frac{\delta y}{\delta x} = \displaystyle\frac{f(x + \delta x) - f(x)}{\delta x} \) computes the slope of the secant line through two points on the graph of $y = f(x)$. 
+            \item The difference quotient \( \displaystyle\dfrac{\delta y}{\delta x} = \displaystyle\dfrac{f(x + \delta x) - f(x)}{\delta x} \) computes the slope of the secant line through two points on the graph of $y = f(x)$. 
             
             \item The difference quotient can also be considered the average slope of $f$ between $x$ and $x + \delta x$ if we assume $f$ to be a linear function. 
             
@@ -27,7 +27,7 @@
 
 \section{Derivative ( $\displaystyle\frac{dy}{dx}$ / $y'$)}\label{Derivative}
 
-For $h > 0$ the derivative of $y = f(x)$ at $x$ is defined as the limit \( \displaystyle\frac{\delta y}{\delta x} = \lim_{h\rightarrow 0}\displaystyle\frac{f(x + h) - f(x)}{h} \) and the secant becomes a tangent.
+For $h > 0$ the derivative of $y = f(x)$ at $x$ is defined as the limit \( \displaystyle\dfrac{\delta y}{\delta x} = \lim_{h\rightarrow 0}\displaystyle\dfrac{f(x + h) - f(x)}{h} \) and the secant becomes a tangent.
 
 \subsection{Sum rule}
 \[
@@ -46,7 +46,7 @@ For $h > 0$ the derivative of $y = f(x)$ at $x$ is defined as the limit \( \disp
 
 \subsection{Quotient rule}
 \[
-    \left( \displaystyle\frac{f(x)}{g(x)} \right)' = \displaystyle\frac{[f'(x)g(x) - f(x)g'(x)]}{(g(x))^2}
+    \left( \displaystyle\dfrac{f(x)}{g(x)} \right)' = \displaystyle\dfrac{[f'(x)g(x) - f(x)g'(x)]}{(g(x))^2}
 \]
 
 \section{Power Series}\label{Power Series}
@@ -58,15 +58,15 @@ where $a_k$ are coefficients and $c$ is a constant
 \section{Taylor Polynomial ( $T_n(x)$ )}\label{Taylor Polynomial}
 The Taylor polynomial of degree $n$ of $f : \mathbb{R} \rightarrow \mathbb{R}$ at $x_0$ is defined as: 
 \[
-    T_n(x) = \sum_{k=0}^{n}\displaystyle\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+    T_n(x) = \sum_{k=0}^{n}\displaystyle\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k
 \]
-where, $f^{(k)}(x_0)$ is the $k$th derivative of $f$ at $x_0$ and $\displaystyle\frac{f^{(k)}(x_0)}{k!}$ are the coefficients of the polynomial.
+where, $f^{(k)}(x_0)$ is the $k$th derivative of $f$ at $x_0$ and $\displaystyle\dfrac{f^{(k)}(x_0)}{k!}$ are the coefficients of the polynomial.
 
 
 \section{Multivariate Taylor Polynomial}\label{Multivariate Taylor Polynomial}
 The Taylor polynomial of degree $n$ of $f$ at $x0$ contains the first $n + 1$ components of the series and is defined as:
 \[
-    f(x) = \sum_{k=0}^{n} \displaystyle\frac{D_x^k f(x_0)}{k!}\delta^k
+    f(x) = \sum_{k=0}^{n} \displaystyle\dfrac{D_x^k f(x_0)}{k!}\delta^k
 \]
 
 where, $D_x^kf(x_0)$ is the $k$-th (total) derivative of $f$ with respect to $x$, evaluated at $x_0$.
@@ -102,7 +102,7 @@ $H(x_0)$ is the \textbf{Hessian} of $f$ evaluated at $x_0$.
 For a smooth function $f \in C^\infty$, $f : \mathbb{R} \rightarrow \mathbb{R}$, the taylor series of $f$ at $x_0$ is defined as:
 
 \[
-    T_\infty(x) = \sum_{k=0}^{\infty}\displaystyle\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+    T_\infty(x) = \sum_{k=0}^{\infty}\displaystyle\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k
 \]
 
 SEE: \fullref{Taylor Polynomial}
@@ -129,7 +129,7 @@ SEE: \fullref{Taylor Polynomial}
 SEE: \fullref{Multivariate Taylor Polynomial}\\
 We consider a function $f : \mathbb{R}^D \rightarrow \mathbb{R}$, $x \rightarrow f(x)$, $x \in \mathbb{R}^D$, that is smooth at $x_0$. When we define the difference vector $\delta := x - x_0$, the multivariate Taylor series of $f$ at $x_0$ is defined as
 \[
-    f(x) = \sum_{k=0}^{\infty} \displaystyle\frac{D_x^k f(x_0)}{k!}\delta^k
+    f(x) = \sum_{k=0}^{\infty} \displaystyle\dfrac{D_x^k f(x_0)}{k!}\delta^k
 \]
 
 where, $D_x^kf(x_0)$ is the $k$-th (total) derivative of $f$ with respect to $x$, evaluated at $x_0$.

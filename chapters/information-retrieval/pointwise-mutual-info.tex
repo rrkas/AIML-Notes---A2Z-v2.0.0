@@ -3,13 +3,13 @@
 \section{Pointwise mutual information ( $\rcmdXPMI(w,c)$ ) \cite{nlp-1}}
 It is a measure of how often two events $x$ and $y$ occur, compared with what we would expect if they were independent:
 \[
-    I(x,y) = \log_2\left(\displaystyle\frac{P(x,y)}{P(x)P(y)}\right)
+    I(x,y) = \log_2\left(\displaystyle\dfrac{P(x,y)}{P(x)P(y)}\right)
 \]
 \[
-    \displaystyle I(X,Y) = \sum_x \sum_y P(x,y) \log_2\left(\frac{P(x,y)}{P(x)P(y)}\right)
+    \displaystyle I(X,Y) = \sum_x \sum_y P(x,y) \log_2\left(\dfrac{P(x,y)}{P(x)P(y)}\right)
 \]
 \[
-    \rcmdXPMI(w,c) = \log_2\left(\displaystyle\frac{P(w,c)}{P(w)P(c)}\right)
+    \rcmdXPMI(w,c) = \log_2\left(\displaystyle\dfrac{P(w,c)}{P(w)P(c)}\right)
 \]
 
 \begin{itemize}
@@ -30,7 +30,7 @@ It is a measure of how often two events $x$ and $y$ occur, compared with what we
 \section{Positive Pointwise mutual information ( $\rcmdXPPMI(w,c)$ ) \cite{nlp-1}}\label{Positive Pointwise Mutual Information (PPMI)}
 
 \[
-    \rcmdXPPMI(w,c) = \max\left(\log_2\left(\displaystyle\frac{P(w,c)}{P(w)P(c)}\right), 0\right)
+    \rcmdXPPMI(w,c) = \max\left(\log_2\left(\displaystyle\dfrac{P(w,c)}{P(w)P(c)}\right), 0\right)
 \]
 
 
@@ -43,9 +43,9 @@ For given co-occurrence matrix $F$:
     \begin{itemize}
         \item $\rcmdXPPMI_{ij} = \rcmdXPPMI(w_i, c_j) = \rcmdXPPMI(w = i, c = j)$ gives the PPMI value of word $w_i$ with context $c_j$
         
-        \item \( \displaystyle P_{ij}=\frac{f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}}  \quad\quad P_{i*}=\frac{\displaystyle\sum_{j=1}^{C} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \quad\quad P_{*j}=\frac{\displaystyle\sum_{i=1}^{W} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \)
+        \item \( \displaystyle P_{ij}=\dfrac{f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}}  \quad\quad P_{i*}=\dfrac{\displaystyle\sum_{j=1}^{C} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \quad\quad P_{*j}=\dfrac{\displaystyle\sum_{i=1}^{W} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \)
         
-        \item \( \displaystyle \rcmdXPPMI_{ij} = \max\left( \log_2\left( \frac{p_{ij}}{p_{i*}p_{*j}} \right),0\right) \)
+        \item \( \displaystyle \rcmdXPPMI_{ij} = \max\left( \log_2\left( \dfrac{p_{ij}}{p_{i*}p_{*j}} \right),0\right) \)
         
     \end{itemize}
 \end{itemize}
@@ -57,7 +57,7 @@ For given co-occurrence matrix $F$:
 \begin{enumerate}
     \item One way to reduce this bias toward low frequency events is to slightly change the computation for $P(c)$, using a different function $P_\alpha(c)$ that raises the probability of the context word to the power of $\alpha$.
     \[
-        \displaystyle \rcmdXPPMI_\alpha(w, c) = \max\left(\log_2\left(\frac{P(w, c)}{P(w)P_\alpha(c)}\right),0\right)
+        \displaystyle \rcmdXPPMI_\alpha(w, c) = \max\left(\log_2\left(\dfrac{P(w, c)}{P(w)P_\alpha(c)}\right),0\right)
     \]    
     
     If $\alpha < 1$, this works because raising the count to $\alpha < 1$ increases the probability assigned to \textbf{rare contexts}, and hence lowers their PMI ($P_\alpha(c) > P(c)$ when $c$ is rare).
@@ -69,7 +69,7 @@ For given co-occurrence matrix $F$:
 \section{Weighted Unigram Frequency ( $P_\alpha(w)$ )}\label{Weighted Unigram Frequency (p alpha)}
 
 \[
-    P_\alpha(w) = \frac{\rcmdXcount(w)^\alpha}{\displaystyle\sum_{w'} \rcmdXcount(w')^\alpha}
+    P_\alpha(w) = \dfrac{\rcmdXcount(w)^\alpha}{\displaystyle\sum_{w'} \rcmdXcount(w')^\alpha}
 \]
 
 
