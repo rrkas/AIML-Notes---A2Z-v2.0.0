@@ -4,11 +4,11 @@
 
 \begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
     \hline
-    \textbf{Point of Difference} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
+    \textbf{Aspect} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
     \endfirsthead
 
     \hline
-    \textbf{Point of Difference} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
+    \textbf{Aspect} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
     \endhead
 
     \hline\endfoot
@@ -42,6 +42,10 @@
 \end{longtable}
 
 
+\section{Infimum VS Minimum}\label{Infimum VS Minimum}
+Similar to \fullref{Supremum VS Maximum}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Covariate Shift (Data Shift) VS Concept Shift VS Prior Probability Shift (Label Shift) \cite{chatgpt}} \label{Covariate Shift (Data Shift) VS Concept Shift VS Prior Probability Shift (Label Shift)}
@@ -51,7 +55,8 @@
     
     \textbf{Aspect} & \textbf{Covariate Shift (Data Shift)} & \textbf{Concept Shift} & \textbf{Prior Probability Shift (Label Shift)} \\ \hline
     \endfirsthead
-    
+
+    \hline
     \textbf{Aspect} & \textbf{Covariate Shift (Data Shift)} & \textbf{Concept Shift} & \textbf{Prior Probability Shift (Label Shift)} \\ \hline
     \endhead
     
@@ -374,6 +379,285 @@
     
     \textbf{Flexibility} & Less flexible compared to other ANN architectures & Highly flexible with many architectures available \\
 \end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Model Parameter VS Model Hyperparameter \cite{chatgpt}}\label{Model Parameter VS Model Hyperparameter}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Model Parameter} & \textbf{Model Hyperparameter} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Model Parameter} & \textbf{Model Hyperparameter} \\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Setting/ changing} & Learned from the training data & Set before the training process \\ 
+    \hline
+
+    \textbf{Impact/ Significance} & Directly affect the predictions of the model & Affect the training process and the structure of the model \\
+    \hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Underfitting VS Overfitting \cite{chatgpt}}\label{Underfitting VS Overfitting}
+
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Underfitting} & \textbf{Overfitting} \\ 
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Underfitting} & \textbf{Overfitting} \\ 
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Model’s complexity} & Underfitting occurs when a model is too simple to capture the underlying structure of the data & Overfitting occurs when a model is too complex and learns the noise in the training data rather than the actual underlying pattern\\
+    \hline
+
+    \textbf{Model’s Params} & model has too few parameters & model has too many parameters relative to the amount of training data \\
+    \hline
+
+    \textbf{Num of training iters} & model is not trained for enough iterations & reduce number of iters\\
+    \hline
+
+    \textbf{Training data performance} & Poor & Excellent\\
+    \hline
+
+    \textbf{Test data performance} & Poor & Poor \\
+    \hline
+
+    \textbf{Bias} & High & \\
+    \hline
+
+    \textbf{Variance} & & High \\
+    \hline
+
+    \textbf{Solution(s)} & \tableenumerate{
+        \item \textbf{Increase model complexity}: Use a more complex model with more parameters
+        
+        \item \textbf{Train longer}: Ensure the model has sufficient time to learn from the data.
+        
+        \item \textbf{Feature engineering}: Create more relevant features that can help the model capture the underlying patterns
+        
+        \item \textbf{Reduce regularization}: Decrease the strength of regularization to allow the model to fit the training data better.
+    } &
+    \tableenumerate{
+        \item \textbf{Simplify the model}: Use a less complex model with fewer parameters
+        
+        \item \textbf{Increase training data}: More data can help the model learn the underlying pattern rather than noise
+        
+        \item \textbf{Use regularization}: Techniques like L1 or L2 regularization can penalize large coefficients and prevent the model from becoming too complex
+        
+        \item \textbf{Cross-validation}: Use cross-validation techniques to ensure the model generalizes well to unseen data
+        
+        \item \textbf{Pruning}: In decision trees, remove branches that have little importance to reduce complexity
+    }\\
+    \hline
+
+
+    \textbf{Risk Estimate} \cite{mfml-1} & & risk estimate from the training data $R_{emp}(f, X_{train}, y_{train})$ underestimates the expected risk $R_true(f)$\\
+    \hline
+
+
+
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Likelihood VS Marginal likelihood (evidence) \cite{chatgpt}} \label{Likelihood VS Marginal likelihood (evidence)}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Likelihood} & \textbf{Marginal Likelihood} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Likelihood} & \textbf{Marginal Likelihood} \\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Definition} & The likelihood function measures how likely it is to observe the given data under different parameter values of a statistical model. It is a function of the model parameters, given the data. & The marginal likelihood, or evidence, is the probability of observing the data under a particular model, integrated over all possible parameter values weighted by their prior distribution. It serves as a measure of how well a model explains the observed data, considering both the likelihood and the prior distribution of the parameters. \\
+    \hline
+
+    \textbf{Formula} & $L(\theta;X) = P(X|\theta)$ & $P(X|M) = \int P(X|\theta,M) P(\theta|M) d\theta$ \\
+    \hline
+
+    \textbf{Usage} & 
+    \tableenumerate{
+        \item \textbf{Parameter Estimation}: In frequentist statistics, the maximum likelihood estimation (MLE) involves finding the parameter values that maximize the likelihood function.
+        
+        \item \textbf{Model Fitting}: It helps in fitting the model to the observed data by identifying the most probable parameters
+    } &
+    \tableenumerate{
+        \item \textbf{Model Comparison}: In Bayesian model comparison, the marginal likelihood is used to compute the Bayes factor, which compares the relative plausibility of different models.
+        
+        \item \textbf{Model Selection}: It helps in selecting the model that best explains the observed data while incorporating the prior beliefs about the parameters.
+    }\\
+    \hline
+
+    \textbf{Characteristics} &
+    \tableenumerate{
+        \item  It is not a probability distribution over the parameters but rather a measure of fit
+        
+        \item  It does not account for the prior distribution of parameters (in a Bayesian context)
+    } &
+    \tableenumerate{
+        \item It accounts for both the fit of the model to the data (through the likelihood) and the complexity of the model (through the prior).
+        
+        \item It is a probability of the data given the model, hence it is used for comparing different models
+    }\\
+    \hline
+
+    \textbf{Model Fitting} & likelihood is prone to overfitting & marginal likelihood is typically not as the model parameters have been marginalized out (i.e., we no longer have to fit the parameters) \\
+    \hline
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linked List VS Array \cite{geeksforgeeks/linked-list-vs-array}}\label{Linked List VS Array}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Array} & \textbf{Linked List} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Array} & \textbf{Linked List} \\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Memory} & contiguous & not contiguous \\
+    \hline
+
+    \textbf{Size} & Fixed & Dynamic \\
+    \hline
+
+    \textbf{Memory allocation} & Compile time & Runtime \\
+    \hline
+
+    \textbf{Memory Usage} & Less & More \\
+    \hline
+
+    \textbf{Element Access} & Easy & Difficult\\
+    \hline
+
+    \textbf{Insertion \& Deletion operations} & Difficult & Easy \\
+    \hline
+\end{longtable}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Morphemes VS Lemma VS Stem \cite{chatgpt}} \label{Morphemes VS Lemma VS Stem}
+
+\begin{longtable}{|p{2.5cm}|p{4cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Morpheme} & \textbf{Lemma} & \textbf{Stem} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Morpheme} & \textbf{Lemma} & \textbf{Stem} \\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Definition} & The smallest grammatical units in a language carrying meaning; cannot be further divided. & The canonical or dictionary form of a word, encompassing all its inflected forms. & The form of a word to which affixes can be added, representing the core meaning. \\
+    \hline
+
+    \textbf{Function} & Constructs words and conveys grammatical relationships and meanings & Used for dictionary entries and linguistic analysis & Serves as the base for inflectional and derivational affixes \\
+    \hline
+
+    \textbf{Types} & Free Morphemes (can stand alone) and Bound Morphemes (cannot stand alone) & Single form representing all inflections of a word & Base form which can have derivational or inflectional affixes attached\\
+    \hline
+
+    \textbf{Word Analysis} & "unhappiness" = "un-" + "happy" + "-ness" & Lemma for "running", "ran", "runs" is "run" & Stem for "running", "runs" is "run" \\
+    \hline
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ridge Regression (L2) VS Lasso Regression (L1)}\label{Ridge Regression VS Lasso Regression}
+
+\begin{longtable}{|p{7cm}|p{7cm}|}
+    \hline
+    \textbf{Ridge Regression} & \textbf{Lasso Regression}\\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Ridge Regression} & \textbf{Lasso Regression}\\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    Shrinks the coefficients toward zero & Encourages some coefficients to be exactly zero\\
+    \hline
+
+    Adds a penalty term proportional to the sum of squared coefficients & Adds a penalty term proportional to the sum of absolute values of coefficients \\
+    \hline
+
+    Does not eliminate any features & Can eliminate some features \\
+    \hline
+
+    Suitable when all features are importantly & Suitable when some features are irrelevant or redundant\\
+    \hline
+
+    More computationally efficient & Less computationally efficient\\
+    \hline
+
+    Requires setting a hyperparameter & Requires setting a hyperparameter\\
+    \hline
+
+    Performs better when there are many small to medium-sized coefficients & Performs better when there are a few large coefficients\\
+    \hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
