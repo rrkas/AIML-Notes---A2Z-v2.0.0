@@ -13,12 +13,12 @@ Consider a set $\mathbb{G}$ and an operation $\otimes$ : $\mathbb{G} \times \mat
     \end{tabular}
 \end{table}
 
-\begin{itemize}
+\begin{enumerate}
     \item Inverse of element is w.r.t. operation $\otimes$, does not necessarily mean $\displaystyle\dfrac{1}{x}$.
-\end{itemize}
+\end{enumerate}
 
 Examples:
-\begin{itemize}
+\begin{enumerate}
     \item $(\mathbb{N}_0, +)$ is \textbf{NOT} a group: Although $(\mathbb{N}_0, +)$ possesses a neutral element ($0$), the inverse elements are missing. ($\mathbb{N}_0 = \mathbb{N} \cup {0} $)
 
     \item $(\mathbb{Z}, \cdot)$ is \textbf{NOT} a group: Although $(\mathbb{Z}, \cdot)$ contains a neutral element ($1$), the inverse elements for any $z \in \mathbb{Z}$, $z \neq \pm 1$, are missing.
@@ -26,7 +26,7 @@ Examples:
     \item $(\mathbb{R}, \cdot)$ is \textbf{NOT} a group since $0$ does not possess an inverse element.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -47,7 +47,7 @@ All properties of Group (SEE: \fullref{lin-alg-Groups}) with additional conditio
 \end{table}
 
 Examples:
-\begin{itemize}
+\begin{enumerate}
     \item $(\mathbb{Z}, +)$ is an Abelian group.
     \item $(\mathbb{R}\textbackslash {0}, ·)$ is Abelian.
     \item $(\mathbb{R}^n, +)$, $(Z^n, +)$, $n \in N$ are Abelian if $+$ is defined componentwise, i.e., 
@@ -56,7 +56,7 @@ Examples:
     \]
     Then, $(x_1, \cdots , x_n)^{-1} := (-x_1, \cdots , -x_n)$ is the inverse element and $e = (0, \cdots , 0)$ is the neutral element.
     \item $(\mathbb{R}^{m\times n}, +)$, the set of $m \times n$-matrices is Abelian (with componentwise addition)
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -113,7 +113,7 @@ A real-valued vector space $V = (\mathbb{V}, +, \cdot)$ is a set $\mathbb{V}$ wi
 \end{table}
 
 where,
-\begin{itemize}
+\begin{enumerate}
     \item $(\mathbb{V}, +)$ is an Abelian group (SEE: \fullref{Abelian Group})
     \item Distributivity:
     \begin{enumerate}
@@ -126,20 +126,20 @@ where,
     \item Associativity (outer operation): $\forall \lambda,\psi\in\mathbb{R}, \mathbf{x}\in\mathbb{V}: \lambda\cdot(\psi\cdot\mathbf{x}) = (\lambda\psi)\cdot\mathbf{x}$
 
     \item Neutral element with respect to the outer operation: $\forall \mathbf{x}\in\mathbb{V}:1\cdot\mathbf{x}=\mathbf{x}$
-\end{itemize}
+\end{enumerate}
 \vspace{0.3cm}
 
 \textbf{Notes:}
-\begin{itemize}
+\begin{enumerate}
     \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\indexlabel{vectors}.
         \item The vector spaces $\mathbb{R}^n$, 
-        \begin{itemize}
+        \begin{enumerate}
             \item $\mathbb{R}^{n\times 1}$, $\mathbb{R}^{1\times n}$ are only different in the way we write vectors
         
             \item default: n-tuples as \textbf{column vectors}\indexlabel{column vectors} ($\mathbb{R}^n = \mathbb{R}^{n \times 1}$) : $\mathbf{x}$
     
             \item default: n-tuples as \textbf{row vectors}\indexlabel{row vectors} ($\mathbb{R}^{1 \times n}$) : $\mathbf{x}^\top$
-        \end{itemize}
+        \end{enumerate}
 
     \item The \textbf{neutral element} of $(\mathbb{V}, +)$ is the zero vector $0 = [0, \cdots, 0]^T$ \\
     the inner operation $+$ is called \textbf{vector addition}\indexlabel{vector addition}.
@@ -151,15 +151,15 @@ where,
     \item we could define an \textbf{element-wise multiplication}, such that $\mathbf{c = ab}$ with $c_j = a_j \times b_j$
 
     \item $\mathbb{V} = \mathbb{R}^n, n \in \mathbb{N}$ is a vector space with operations defined as follows:
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{Addition}:\\ $\mathbf{x+y} = (x_1, \cdots, x_n)+(y_1, \cdots, y_n) = (x_1+y_1, \cdots, x_n+y_n) \forall \mathbf{x, y} \in \mathbb{R}^n$
 
         \item \textbf{Multiplication by scalars}:\\ $\lambda\mathbf{x} = \lambda(x_1, \cdots, x_n) = (\lambda x_1, \cdots, \lambda x_n) \forall \lambda \in \mathbb{R}, \mathbf{x} \in \mathbb{R}^n$
         
-    \end{itemize}
+    \end{enumerate}
 
     \item $\mathbb{V} = \mathbb{R}^{m\times n}, m, n \in \mathbb{N}$ is a vector space with:
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{Addition} is defined element-wise $\forall \mathbf{A, B} \in \mathbb{V}$: 
         \[
             \mathbf{A + B} = \begin{bmatrix}
@@ -177,10 +177,10 @@ where,
                 \lambda a_{m1} & \cdots & \lambda a_{mn} \\
             \end{bmatrix}
         \]
-    \end{itemize}
+    \end{enumerate}
 
 
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -197,22 +197,22 @@ where,
 \section{Vector Subspaces/ linear subspace ( $U = (\mathbb{U}, +, \cdot)$ ) \cite{mfml-1}}\label{Vector Subspaces/ linear subspace}
 Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \mathbb{V}$, $\mathbb{U} \neq \varnothing$. Then $U = (\mathbb{U}, +, \cdot)$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ linear subspace and $\cdot$ restricted to $\mathbb{U} \times \mathbb{U}$ and $\mathbb{R} \times \mathbb{U}$. We write $U \subseteq V$ to denote a subspace $U$ of $V$.
 
-\begin{itemize}
+\begin{enumerate}
     \item Vector subspace inherits Abelian group properties, the distributivity, the associativity and the neutral element from the vector space.
 
     \item To determine whether $U = (\mathbb{U}, +, \cdot)$ is a subspace of $V$ we still do need to show:
-    \begin{itemize}
+    \begin{enumerate}
         \item $\mathbb{U} \neq \varnothing$, in particular: $\mathbf{0} \in \mathbb{U}$ (zero vector)
         \item Closure of $U$:
         \begin{enumerate}
             \item With respect to the \textbf{outer operation}: $\forall\lambda \in \mathbb{R}, \forall\mathbf{x} \in \mathbb{U} : \lambda \mathbf{x} \in \mathbb{U}$
             \item With respect to the \textbf{inner operation}: $\forall\mathbf{x, y} \in \mathbb{U} : \mathbf{x + y} \in \mathbb{U}$
         \end{enumerate}
-    \end{itemize}
+    \end{enumerate}
 
     \item For every vector space $V$, the trivial subspaces are $V$ itself and ${\mathbf{0}}$.
     
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -223,7 +223,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
 
 \section{Dimension of Vector Space ( $\dim(V)$ ) \cite{mfml-1}}\label{lin-alg: Dimension-vector-space}
 
-\begin{itemize}
+\begin{enumerate}
     \item The dimension of $V$ is the number of basis vectors of $V$, and we write $\dim(V)$.
 
     \item If $U \subseteq V$ is a subspace of $V$, then $\dim(U) \leq \dim(V)$ and $\dim(U) = \dim(V)$ if and only if $U = V$.
@@ -233,7 +233,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
     \item The dimension of a vector space is \textbf{NOT} necessarily the number of elements in a vector.\\
     \textbf{Example}: $V = \rcmdXspan[\begin{bmatrix}0\\1\end{bmatrix}]$ is one-dimensional, although the basis vector possesses two elements.
     
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -253,9 +253,9 @@ Consider a vector space $V$ and a finite number of vectors $\mathbf{x_1, \cdots 
 \] 
 with $\lambda_1, \cdots, \lambda_k \in \mathbb{R}$ is a linear combination of the vectors $\mathbf{x_1, \cdots, x_k}$.
 
-\begin{itemize}
+\begin{enumerate}
     \item The $\mathbf{0}$-vector can always be written as the linear combination of $k$ vectors $\mathbf{x_1, \cdots, x_k}$ because $\displaystyle\mathbf{0} = \sum_{i=0}^{k} 0\cdot\mathbf{x_i}$ is always true.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -276,7 +276,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
     \item The vectors $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}$ is \textbf{linearly dependent}.
 
     \item A practical way of checking whether vectors $\mathbf{x_1, \cdots, x_k} \in V$ are linearly independent is to use Gaussian elimination: 
-    \begin{itemize}
+    \begin{enumerate}
         \item Write all vectors as columns of a matrix A and perform Gaussian elimination until the matrix is in row echelon form (the reduced row-echelon form is unnecessary here)
         
         \item The pivot columns indicate the vectors, which are linearly independent of the vectors on the left. Note that there is an ordering of vectors when the matrix is built.
@@ -284,10 +284,10 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
         \item The non-pivot columns can be expressed as linear combinations of the pivot columns on their left.
 
         \item All column vectors are linearly independent if and only if all columns are pivot columns. If there is at least one non-pivot column, the columns (and, therefore, the corresponding vectors) are \textbf{linearly dependent}.
-    \end{itemize}
+    \end{enumerate}
 
     \item Consider a vector space $V$ with $k$ linearly independent vectors $\mathbf{b_1, \cdots, b_k}$ and $m$ linear combinations
-    \begin{itemize}
+    \begin{enumerate}
         \item \( \displaystyle \mathbf{x}_1  = \sum_{i=1}^{k} \bm{\lambda}_{1i} \mathbf{b}_i  \quad\quad\cdots\quad\quad \mathbf{x}_m = \sum_{i=1}^{k} \bm{\lambda}_{im} \mathbf{b}_i \)
 
         \item $\mathbf{B} = [\mathbf{b_1, \cdots, b_k}]$ as the matrix whose columns are the linearly independent vectors $\mathbf{b_1, \cdots, b_k}$
@@ -299,7 +299,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
         \item \( \displaystyle \sum_{j=1}^{m} \psi_j \mathbf{x}_j = \sum_{j=1}^{m} \psi_j \mathbf{B}\bm{\lambda}_j = \mathbf{B}\sum_{j=1}^{m} \psi_j \bm{\lambda}_j \)\\
         This means that $\{\mathbf{x_1, \cdots, x_m}\}$ are linearly independent if and only if the column vectors $\{\bm{\lambda_1, \cdots, \lambda_m}\}$ are linearly independent.
 
-    \end{itemize}
+    \end{enumerate}
 
     \item In a vector space $V$, $m$ linear combinations of $k$ vectors $\mathbf{x_1, \cdots, x_k}$ are linearly dependent if $m > k$.
 \end{enumerate}
@@ -313,9 +313,9 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
 \section{Generating Set ( $\mathbb{A}$ ) \cite{mfml-1}}\label{Generating Set}
 Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\{x_1, \cdots , x_k\}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, \cdots , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
 
-\begin{itemize}
+\begin{enumerate}
     \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -359,7 +359,7 @@ Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and $\mathbb{A} \subseteq \
 \vspace{0.2cm}
 Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \mathbb{V}, \mathbb{B} \neq \varnothing$. Then, the following statements are equivalent:
 
-\begin{itemize}
+\begin{enumerate}
     \item $\mathbb{B}$ is a basis of $V$.
     
     \item $\mathbb{B}$ is a minimal generating set.
@@ -369,11 +369,11 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
     \item Every vector $\mathbf{x} \in V$ is a linear combination of vectors from $\mathbb{B}$, and every linear combination is unique, i.e., with \( \displaystyle \mathbf{x} = \sum_{i=1}^{k} \lambda_i \mathbf{b}_i = \sum_{i=1}^{k} \psi_i \mathbf{b}_i \) and $\lambda_i, \psi_i \in \mathbb{R}, \mathbf{b}_i \in \mathbb{B}$, it follows that $\lambda_i = \psi_i$, $i=1,\cdots,k$
 
     
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item Every vector space $V$ possesses a basis $\mathbb{B}$. 
     
     \item There is \textbf{NO} unique basis. 
@@ -381,7 +381,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{B} \subseteq \ma
     \item All bases possess the same number of elements, the \textbf{basis vectors}\indexlabel{basis vectors}.
 
     \item A basis effectively defines a \textbf{coordinate system}. (SEE: \fullref{Coordinate vector})
-\end{itemize}
+\end{enumerate}
 
 \subsection{Finding Basis \cite{mfml-1}}
 A basis of a subspace $U = \rcmdXspan[\mathbf{x_1, \cdots, x_m}] \subseteq \mathbb{R}^n$ can be found by executing the following steps:
@@ -451,7 +451,7 @@ SEE: projection - TODO
 \end{figure}
 
 \noindent\textbf{Notations}:
-\begin{itemize}
+\begin{enumerate}
     \item linear mapping:  $\Phi : \mathbf{V \to W}$
 
     \item ordered bases of $\mathbf{V}$ : \(         \mathit{B} = \mathbf{(b_1, \cdots , b_n)} \quad\quad \tilde{\mathit{B}} = \mathbf{( \tilde{b}1, \cdots , \tilde{b}_n)}     \)
@@ -474,15 +474,15 @@ SEE: projection - TODO
         &= \Xi^{-1}_{C\tilde{C}} \circ \Phi_{CB} \circ \Psi_{B\tilde{B}} \\ 
     \end{align} 
     
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent \textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item Transformation matrices of a linear mapping $\Phi : \mathbf{V \to W}$ change if we change the bases in $\mathbf{V}$ and $\mathbf{W}$.
 
     \item 
-\end{itemize}
+\end{enumerate}
 
 \begin{theorem}[Basis Change]\label{theorem: Basis Change}
     For a linear mapping $\Phi : \mathbf{V \to W}$, ordered bases\\ 
@@ -499,11 +499,11 @@ SEE: projection - TODO
 
 \vspace{0.2cm}
 \noindent \textbf{where}:
-\begin{itemize}
+\begin{enumerate}
     \item $\mathbf{S} \in \mathbb{R}^{n\times n}$ is the transformation matrix of $id_V$ that maps coordinates with respect to $\tilde{\mathit{B}}$ onto coordinates with respect to $\mathit{B}$
 
     \item $\mathbf{T} \in \mathbb{R}^{m\times m}$ is the transformation matrix of $id_W$ that maps coordinates with respect to $\tilde{\mathit{C}}$ onto coordinates with respect to $\mathit{C}$.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent \textbf{Proof}:
@@ -559,16 +559,16 @@ Consider a vector space $\mathbf{V}$ and an ordered basis $\mathit{B} = \mathbf{
 
 
 \noindent SEE:
-\begin{itemize}
+\begin{enumerate}
     \item \fullref{ordered basis}
     \item \fullref{Linear Combination} 
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent \textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item For an $n$-dimensional vector space $\mathbf{V}$ and an ordered basis $\mathit{B}$ of $\mathbf{V}$, the mapping $\Phi : \mathbb{R}^n \to \mathbf{V}$, $\Phi(\mathbf{e}_i) = \mathbf{b}_i$, $i = 1, \cdots , n$, is linear (and because of \theoremref{theorem: isomorphic} an \textbf{isomorphism}), where $(\mathbf{e}_1, \cdots , \mathbf{e}_n)$ is the standard basis of $\mathbb{R}^n$.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -577,7 +577,7 @@ Consider a vector space $\mathbf{V}$ and an ordered basis $\mathit{B} = \mathbf{
 
 The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R}^{m \times n}$ equals the number of linearly independent rows and is called the rank rank of $\mathbf{A}$ and is denoted by $rk(\mathbf{A})$.
 
-\begin{itemize}
+\begin{enumerate}
     \item $rk(\mathbf{A}) = rk(\mathbf{A}^\top)$, i.e., the column rank equals the row rank.
 
     \item The columns of $\mathbf{A} \in \mathbb{R}^{m \times n}$ span a subspace $U \subseteq \mathbb{R}^m$ with $\dim(U) = rk(\mathbf{A})$. 
@@ -592,7 +592,7 @@ The number of linearly independent columns of a matrix $\mathbf{A} \in \mathbb{R
 
     \item A matrix $\mathbf{A} \in \mathbb{R}^{m\times n}$ has \textbf{full rank}\indexlabel{matrix: full rank} if its rank equals the largest possible rank for a matrix of the same dimensions. This means that the rank of a full-rank matrix is the lesser of the number of rows and columns, i.e., $rk(A) = \min(m, n)$. A matrix is said to be \textbf{rank deficient}\indexlabel{matrix: rank deficient} if it does not have full rank.
 
-\end{itemize}
+\end{enumerate}
 
 
 \section{Linear Mappings/ vector space homomorphism/ linear transformation ( $\Phi(\mathbf{x})$ ) \cite{mfml-1}}\label{Linear Mappings/ vector space homomorphism/ linear transformation}
@@ -608,10 +608,10 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
     \forall \mathbf{x, y} \in V, \forall\lambda, \psi \in \mathbb{R} : \Phi(\lambda\mathbf{x} + \psi\mathbf{y}) = \lambda\Phi(\mathbf{x}) + \psi\Phi(\mathbf{y})
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item we can represent linear mappings as matrices
     \item Consider a mapping $\Phi : \mathbb{V} \to \mathbb{W}$, where $\mathbb{V}$, $\mathbb{W}$ can be arbitrary sets. Then $\Phi$ is called
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{Injective} if $\forall \mathbf{x, y} \in \mathbb{V}: \Phi(\mathbf{x}) = \Phi(\mathbf{y}) \Rightarrow \mathbf{x} = \mathbf{y}$ \indexlabel{Injective mapping}
 
         \item \textbf{Surjective} if $\Phi(\mathbb{V}) = \mathbb{W}$\indexlabel{Surjective mapping}\\
@@ -620,7 +620,7 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
         \item \textbf{Bijective} if it is injective and surjective.\indexlabel{Bijective mapping}\\
         A bijective $\Phi$ can be “\textbf{undone}”, i.e., there exists a mapping $\Psi : \mathbb{W} \to \mathbb{V}$ so that $\Psi \circ \Phi(\textbf{x}) = \textbf{x}$. This mapping $\Psi$ is then called the \textbf{inverse} of $\Phi$ and normally denoted by $\Phi^{-1}$.\indexlabel{inverse linear mapping}
         
-    \end{itemize}
+    \end{enumerate}
 
     \item \textbf{Isomorphism}\indexlabel{Isomorphism}: $\Phi : V \to W$ linear and bijective\\
     
@@ -638,26 +638,26 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
     \item We define $id_V : V \to V , \mathbf{x} \to \mathbf{x}$ as the \textbf{identity mapping}\indexlabel{identity mapping} or \textbf{identity automorphism}\indexlabel{identity automorphism} in V.
 
     \item Consider vector spaces $V, W, X$. Then:
-    \begin{itemize}
+    \begin{enumerate}
         \item For linear mappings $\Phi : V \to W$ and $\Psi : W \to X$, the mapping $\Psi \circ \Phi : V \to X$ is also linear.
 
         \item If $\Phi : V \to W$ is an isomorphism, then $\Phi^{-1} : W \to V$ is an isomorphism, too.
 
         \item If $\Phi : V \to W$, $\Psi : V \to W$ are linear, then $\Phi + \Psi$ and $\lambda\Phi$, $\lambda \in \mathbb{R}$, are linear, too.
-    \end{itemize}
+    \end{enumerate}
     
-\end{itemize}
+\end{enumerate}
 
 \subsection{Matrix Representation of Linear Mappings \cite{mfml-1}}\label{Matrix Representation of Linear Mappings}
 
-\begin{itemize}
+\begin{enumerate}
     \item Any $n$-dimensional vector space is \textbf{isomorphic} to $\mathbb{R}^n$. (SEE: \theoremref{theorem: isomorphic})
     
-\end{itemize}
+\end{enumerate}
 
 \subsection{Transformation Matrix ( $\mathbf{A}_\Phi$ ) \cite{mfml-1}}\label{Transformation Matrix}
 
-\begin{itemize}
+\begin{enumerate}
     \item Consider vector spaces $\mathbf{V}$, $\mathbf{W}$ with corresponding (ordered) bases $\mathit{B} = \mathbf{(b_1, \cdots , b_n)}$ and $\mathit{C} = \mathbf{(c_1, \cdots , c_m)}$. (SEE: \fullref{ordered basis})
 
     \item Moreover, we consider a linear mapping $\Phi : \mathbf{V} \to \mathbf{W}$. 
@@ -676,7 +676,7 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
     \item for linear mappings $\Phi : V \to W$ and $\Psi : W \to X$ the mapping $\Psi \circ \Phi : V \to X$ is also \textbf{linear}.\\
     With transformation matrices $\mathbf{A}_\Phi$ and $\mathbf{A}_\Psi$ of the corresponding mappings, the overall transformation matrix is $\mathbf{A}\Psi\circ\Phi = \mathbf{A}_\Psi \mathbf{A}_\Phi$
 
-    \begin{itemize}
+    \begin{enumerate}
         \item[] \fullref{Basis Change}
 
         \item $\mathbf{A}_\Phi$ is the transformation matrix of a linear mapping $\Phi_{CB} : V \to W$ with respect to the bases $B$, $C$.
@@ -722,9 +722,9 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
 
         \textbf{Note}: execution order is from right to left because vectors are multiplied at the right-hand side 
         
-    \end{itemize}
+    \end{enumerate}
     
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -741,7 +741,7 @@ For $\Phi : V \to W$, we define the kernel/ null space
     \hfill
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item kernel is the set of vectors $v \in V$ that $\Phi$ maps onto the neutral element $0_W \in W$
 
     \item It \textbf{ALWAYS} holds that $\Phi(0_V) = 0_W$ and, therefore, $0_V \in ker(\Phi)$
@@ -751,7 +751,7 @@ For $\Phi : V \to W$, we define the kernel/ null space
     \item $ker(\Phi) \subseteq V$ is a subspace of $V$
 
     
-\end{itemize}
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -766,11 +766,11 @@ For $\Phi : V \to W$, we define the image/ range
     \hfill
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item image is the set of vectors $w \in W$ that can be “reached” by $\Phi$ from any vector in $V$
 
     \item $Im(\Phi) \subseteq W$ is a subspace of $W$
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -779,10 +779,10 @@ For $\Phi : V \to W$, we define the image/ range
 \section{Domain and Codomain \cite{mfml-1}}\label{Domain and Codomain}
 
 if $\Phi : V \to W$, then:
-\begin{itemize}
+\begin{enumerate}
     \item $V$ is domain
     \item $W$ is codomain
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -790,7 +790,7 @@ if $\Phi : V \to W$, then:
 
 Let us consider $\mathbf{A} \in \mathbb{R}^{m\times n}$ and a linear mapping $\Phi : \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{x} \mapsto \mathbf{Ax}$.
 
-\begin{itemize}
+\begin{enumerate}
     \item For $\mathbf{A} = [\mathbf{a}_1, \cdots , \mathbf{a}_n]$, where $\mathbf{a}_i$ are the columns of $\mathbf{A}$:
     \begin{align*}
         \displaystyle
@@ -809,7 +809,7 @@ Let us consider $\mathbf{A} \in \mathbb{R}^{m\times n}$ and a linear mapping $\P
     \item The kernel is a subspace of $\mathbb{R}^n$, where $n$ is the \textbf{“width” of the matrix}\indexlabel{width of the matrix}.
 
     \item The kernel focuses on the relationship among the columns, and we can use it to determine whether/ how we can express a column as a linear combination of other columns.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -828,23 +828,23 @@ For vector spaces $V, W$ and a linear mapping $\Phi : V \to W$ it holds that
 
 The rank-nullity theorem is also referred to as the \textbf{fundamental theorem of linear mappings}\indexlabel{fundamental theorem of linear mappings}.
 
-\begin{itemize}
+\begin{enumerate}
     \item If $dim(Im(\Phi)) < dim(V)$, then $ker(\Phi)$ is non-trivial, i.e., the kernel contains more than $0_V$ and $dim(ker(\Phi)) \geq 1$
 
     \item If $\mathbf{A}_\Phi$ is the transformation matrix of $\Phi$ with respect to an ordered basis and $dim(Im(\Phi)) < dim(V)$, then the system of linear equations $\mathbf{A}_\Phi x = 0$ has infinitely many solutions
 
     \item If $dim(V) = dim(W)$, then the following three-way equivalence holds: 
-    \begin{itemize}
+    \begin{enumerate}
         \item $\Phi$ is injective
 
         \item $\Phi$ is surjective
 
         \item $\Phi$ is bijective 
-    \end{itemize}
+    \end{enumerate}
     since $Im(\Phi) \subseteq W$
 
     
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -878,14 +878,14 @@ Let $V$ be a vector space, $x_0 \in V$ and $U \subseteq V$ a subspace. Then the 
 is called affine subspace or linear manifold of $V$. 
 
 
-\begin{itemize}
+\begin{enumerate}
     \item an affine subspace is not a (linear) subspace (vector subspace) of $V$ for $x_0 \not\in U$
 
     \item Consider two affine subspaces $L = x_0 + U$ and  of a vector space $V$\\
     $L \subseteq \tilde{L}$ if and only if $U \subseteq \tilde{U}$ and $x_0 - \tilde{x}_0 \in \tilde{U}$
     
     \item Describing affine space using parameters:
-    \begin{itemize}
+    \begin{enumerate}
         \item Consider a k-dimensional affine space $L = x_0 + U$ of $V$
 
         \item If $\mathbf{(b_1, \cdots , b_k)}$ is an ordered basis of $U$, then every element $x \in L$ can be uniquely described as
@@ -898,9 +898,9 @@ is called affine subspace or linear manifold of $V$.
 
         \item This representation is called \textbf{parametric equation}\indexlabel{parametric equation} of $L$ with directional vectors $b_1, \cdots , b_k$ and parameters $\lambda_1, \cdots , \lambda_k$
         
-    \end{itemize}
+    \end{enumerate}
     
-\end{itemize}
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -908,14 +908,75 @@ is called affine subspace or linear manifold of $V$.
 
 \section{System of Linear Equations \cite{mfml-1}}\label{System of Linear Equations}
 
+\subsection*{Setup/ Scenario}
+
+\textbf{Equations}:
+
+\noindent\textbf{Common/ Classical representation}:
+\[
+    \begin{matrix}
+        a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1\\
+        \vdots \\
+        a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+    \end{matrix}
+\]       
+\textbf{Matrix-vector representations/ Compact representations} ( $Ax=b$ ):
+\[
+    \begin{bmatrix}
+        a_{11}\\ \vdots\\ a_{m1}
+    \end{bmatrix} x_1 +
+    \begin{bmatrix}
+        a_{12}\\ \vdots\\ a_{m2}
+    \end{bmatrix} x_2 +
+    \cdots
+    \begin{bmatrix}
+        a_{1n}\\ \vdots\\ a_{mn}
+    \end{bmatrix} x_n
+    =
+    \underset{A}{
+        \underbrace{
+            \begin{bmatrix}
+                a_{11} & \cdots & a_{1n}\\
+                \vdots & \ddots & \vdots \\
+                a_{m1} & \cdots & a_{mn}\\
+            \end{bmatrix}
+        }
+    }
+    \underset{x}{
+        \underbrace{
+            \begin{bmatrix}
+                x_1 \\ \vdots \\ x_n
+            \end{bmatrix}
+        }
+    }
+    =
+    \underset{b}{
+        \underbrace{
+            \begin{bmatrix}
+                b_{1}\\ \vdots\\ b_{m}
+            \end{bmatrix}
+        }
+    }
+\]
+
+
+\begin{table}[h]
+    \begin{tabular}{l l l}
+        no of \textbf{equations} & $m$ & $(i=1,\cdots,m)$\\
+        no of \textbf{variables} & $n$ & $(j=1,\cdots,n)$ \\
+        \textbf{unknowns} & $x = (x_1,\cdots,x_n) \in R^n$\\
+        \textbf{knowns} & $a_{ij}, b_{i} \in R$
+    \end{tabular}
+\end{table}
+
 
 \subsection{Homogeneous systems of linear equations ( $\mathbf{Ax = 0}$ ) \cite{mfml-1, chatgpt}}\label{Homogeneous systems of linear equations}
 
-\begin{itemize}
+\begin{enumerate}
     \item For homogeneous equation systems $\mathbf{Ax = 0}$ the solution was a vector subspace, which we can also think of as a special affine space with support point $\mathbf{x}_0 = \mathbf{0}$.
 
     \item A homogeneous system of linear equations is one in which \textbf{ALL} the constant terms are zero.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \textbf{Properties}:
@@ -932,7 +993,7 @@ is called affine subspace or linear manifold of $V$.
 \subsection{Inhomogeneous systems of linear equations ( $\mathbf{Ax = b}$ ) \cite{mfml-1, chatgpt}}\label{Inhomogeneous systems of linear equations}
 
 
-\begin{itemize}
+\begin{enumerate}
     \item For $\mathbf{A} \in \mathbb{R}^{m\times n}$ and $\mathbf{x} \in \mathbb{R}^m$, the solution of the system of linear equations $\mathbf{A\boldsymbol{\lambda} = x}$ is either the empty set or an affine subspace of Rn of dimension $n - rk(\mathbf{A})$.
 
     \item The solution of the linear equation $\lambda_1\mathbf{b}_1 + \cdots + \lambda_n\mathbf{b}_n = \mathbf{x}$, where $(\lambda_1, \cdots , \lambda_n) \neq (0, \cdots , 0)$, is a hyperplane in $\mathbb{R}^n$.
@@ -940,7 +1001,7 @@ is called affine subspace or linear manifold of $V$.
     \item In $\mathbb{R}^n$, every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $\mathbf{Ax = b}$, where $\mathbf{A} \in \mathbb{R}^{m\times n}$, $\mathbf{b} \in \mathbb{R}^m$ and $rk(\mathbf{A}) = n - k$.
 
     \item An inhomogeneous system of linear equations includes non-zero constant terms.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \textbf{Properties}:
@@ -951,6 +1012,260 @@ is called affine subspace or linear manifold of $V$.
 
     \item \textbf{Particular and General Solutions}: If a particular solution $\mathbf{x}_p$ exists, the general solution can be written as $\mathbf{x}=\mathbf{x}_p +\mathbf{x}_h$, where $\mathbf{x}_h$ is the general solution to the corresponding homogeneous system $\mathbf{Ax=0}$.
 \end{enumerate}
+
+\subsection{Consistent System}\label{Consistent System of equations}
+
+\begin{enumerate}
+    \item A system of equations is considered consistent if there exists \textbf{AT LEAST ONE SOLUTION} that satisfies all the equations.
+\end{enumerate}
+
+
+\subsection{Dependent Solution}\label{Dependent Solution of linear equations}
+
+\begin{enumerate}
+    \item happens when no of equations $<$ no of variables
+    
+    \item Solutions are dependent if one can be expressed as a linear combination of the others.
+\end{enumerate}
+
+\subsection{Types of Solutions}
+\begin{enumerate}
+    \item \textbf{No solution}
+    \begin{enumerate}
+        \item Inconsistent
+    \end{enumerate}
+    
+    \item \textbf{Unique solution}
+    \begin{enumerate}
+        \item Consistent
+        \item Independent
+    \end{enumerate}
+
+    \item \textbf{Infinitely many solutions}
+    \begin{enumerate}
+        \item Consistent
+        \item Dependent
+    \end{enumerate}
+
+    \item \textbf{Trivial solution}
+    \begin{enumerate}
+        \item $x_i = 0, \forall x_i$, is a solution
+        \item Consistent
+        \item Dependent
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\subsection{Elementary Transformations \cite{mfml-1}} \label{Elementary Transformations}
+transformations that keep the solution set the same, but that transform the equation system into a simpler form:
+\begin{enumerate}
+    \item Exchange of two equations (rows in the matrix representing the system of equations)
+    \[ R_i \Leftrightarrow R_j \]
+
+    \item Multiplication of an equation (row) with a constant $\lambda \in R\backslash \{0\}$
+    \[ R_i := \lambda R_i \]
+
+    \item Addition of two equations (rows)
+    \[ R_i := R_i + R_j \]
+
+\end{enumerate}
+
+
+\subsection{Solutions of system of linear equations \cite{mfml-1}}\label{Solutions of system of linear equations}
+
+\begin{table}[h]
+    \begin{tabular}{l l}
+        Original System	& $Ax = b$ \\
+
+        Homogeneous System & $Ax = 0$ \\
+    \end{tabular}
+\end{table}
+
+\begin{align*}
+   & Ax = b \\
+   & \Rightarrow A(x_0 + \lambda _1x_1 + \lambda _2x_2 + \cdots ) = b	&&& (\lambda _i \in R) \\
+   & \Rightarrow Ax_0 + \lambda _1Ax_1 + \lambda _2Ax_2 + \cdots  = b + 0 + 0 + \cdots  = b
+\end{align*}
+
+\begin{table}[h]
+    \begin{tabular}{l l l}
+        $x = x0$ & particular solution & ($Ax = b$ part) \\
+        
+        $x = x_1, x_2, \cdots$ & solutions to homogeneous equation & ($Ax = 0$ part)
+    \end{tabular}
+\end{table}
+
+\subsubsection{Augmented Matrix ( $[A|b]$ ) \cite{mfml-1}} \label{Augmented Matrix}
+
+An augmented matrix for a system of equations is a matrix of numbers in which each row represents the constants from one equation (both the coefficients and the constant on the other side of the equal sign) and each column represents all the coefficients for a single variable.
+
+
+\subsubsection{Row-Echelon Form (REF) \cite{mfml-1,wiki/Row_echelon_form}}\label{Row-Echelon Form (REF)}
+
+\begin{enumerate}
+    \item A matrix is in row echelon form if it can be obtained as the result of \textbf{Gaussian elimination}.
+
+    \item Every matrix can be put in row echelon form by applying a sequence of \textbf{elementary row operations}.
+
+    \item can be viewed as a generalization of \textbf{upper triangular} form for rectangular matrices
+
+    \item pivots may not be $1$
+\end{enumerate}
+
+
+\subsubsection{Reduced Row Echelon Form (RREF) \cite{mfml-1,wiki/Row_echelon_form}}\label{Reduced Row Echelon Form (RREF)}
+A matrix is in row-echelon form if:
+\begin{enumerate}
+    \item All rows that contain only zeros are at the bottom of the matrix; correspondingly, all rows that contain at least one nonzero element are on top of rows that contain only zeros.
+
+    \item Looking at nonzero rows only, the first nonzero number from the left (also called the pivot or the leading coefficient) is always strictly to the right of the pivot of the row above it.
+\end{enumerate}
+
+\noindent\textbf{Note}:
+\begin{enumerate}
+    \item A matrix is in row echelon form if it can be obtained as the result of \textbf{Gauss–Jordan elimination}
+
+    \item it is in row echelon form, with the additional property that the first nonzero entry of each row is equal to $1$ and is the only nonzero entry of its column
+
+    \item The reduced row echelon form of a matrix is \textbf{unique} and does not depend on the sequence of elementary row operations used to obtain it
+
+    \item pivots \textbf{MUST} be $1$
+\end{enumerate}
+
+\subsubsection{Particular Solution (or special solution) \cite{mfml-1}} \label{Particular Solution (or special solution)}
+solution of $Ax = b$
+
+\paragraph{Direct Solution  \cite{mfml-1}}
+
+\textbf{Conditions}:
+\begin{enumerate}
+    \item A is a \textbf{square matrix} and \textbf{invertible}
+\end{enumerate}
+
+\[ Ax = b \Leftrightarrow x = A^{-1}b \]
+
+\textbf{Disadvantage}:
+\begin{enumerate}
+    \item not good at numerical precision
+\end{enumerate}
+
+
+\paragraph{Pseudo Direct Solution \cite{mfml-1}}
+\textbf{Conditions}:
+\begin{enumerate}
+    \item $A$ needs to have \textbf{linearly independent columns}
+\end{enumerate}
+
+\[
+    Ax = b 
+    \Leftrightarrow 
+    A^\top Ax = A^\top b 
+    \Leftrightarrow
+    x = (A^\top A)^{-1}A^\top b
+\]
+
+\textbf{Disadvantage:}
+\begin{enumerate}
+    \item requires many computations for the matrix-matrix product and computing the inverse of $A^\top A$
+
+    \item not good at numerical precision
+\end{enumerate}
+
+
+
+\paragraph{Using Gaussian Elimination}
+\textbf{Steps:}
+\begin{enumerate}
+    \item use RREF on Augmented matrix $[A|b]$
+
+    \item express the right-hand side of the equation system using the pivot columns, such that ${\displaystyle b = \sum_{i=1}^{P} \lambda_i p_i}$ where $p_i$ are pivot columns.
+
+    \item $\lambda _i$ are determined easiest if we start with the rightmost pivot column and work our way to the left
+
+    \item solution = $x_0 = [\lambda _1, \lambda _2, \cdots, \lambda _P]^\top$
+\end{enumerate}
+
+\subsubsection{Solutions of $Ax=0$ \cite{mfml-1}}
+
+Every subspace $U \subseteq (R^n , +, \cdot)$ is the solution space of a homogeneous system of linear equations $Ax = 0$ for $x \in R^n$
+\begin{enumerate}
+    \item As it is a homogeneous system, there can’t be “No Solution”
+
+    \item Solutions will be:
+    \begin{enumerate}
+        \item Unique solution (trivial) = $0^n \in R^n$
+        \item infinite solutions
+    \end{enumerate}
+\end{enumerate}
+
+
+\paragraph{The Minus-$1$ Trick \cite{mfml-1}}\label{Solutions of ax=0: The Minus-1 Trick}
+\textbf{Steps}:
+\begin{enumerate}
+    \item $A := RREF(A)$
+
+    \item ignore the rows with only 0s
+    \[
+        A = 
+        \begin{bmatrix}
+            0 & \cdots  & 0 & 1 & \ast & \cdots  & \ast & 0 & \ast & \cdots  & \ast & 0 & \ast & \cdots  & \ast\\
+            \vdots && \vdots & 0 & 0 & \cdots  & 0 & 1 & \ast & \cdots  & \ast & \vdots & \vdots & & \vdots\\
+            \vdots & & \vdots & \vdots & \vdots & & \vdots & 0 & \vdots & & \vdots & \vdots & \vdots && \vdots\\
+            \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots & & \vdots & 0 & \vdots && \vdots\\
+            0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & \ast & \cdots & \ast\\
+        \end{bmatrix}
+    \]
+    where $\ast$ can be an arbitrary real number, with the constraints that the \textbf{first nonzero entry} per row must be $1$ and all other entries in the corresponding column must be $0$. 
+
+    \item columns $j_1, \cdots , j_k$ with the pivots are the standard unit vectors $e_1, \cdots , e_k \in R^k$
+
+    \item extend this matrix to an $n \times n$-matrix $B$ by adding $n - k$ rows of the form
+    \[
+        \begin{bmatrix}
+            0 & \cdots & 0 & -1 & 0 & \cdots & 0
+        \end{bmatrix}
+    \]
+    so that the \textbf{diagonal} of the augmented matrix $B$ contains either $1$ or $-1$
+
+    \item columns of $B$ that contain the $-1$ as pivots are solutions of the homogeneous equation system $Ax = 0$
+
+\end{enumerate}
+
+\paragraph{Classical method \cite{mfml-1}}\label{Solutions of ax=0: Classical method}
+
+\textbf{Steps}:
+\begin{enumerate}
+    \item $A := RREF(A)$
+
+    \item express the pivot variables in terms of free variables
+
+    \item for each free variable, put it $1$ and rest free variables as $0$s
+
+    \item get $n-k$ solutions
+
+\end{enumerate}
+
+
+\subsubsection{General Solution to $Ax=b$ \cite{mfml-1}}\label{General Solution to Ax=b}
+
+General Solution = Particular Solution (solution of $Ax=b$) + $\lambda_i$ * (solutions of $Ax = 0$)
+
+
+\subsection{Systems of linear equations and affine subspaces \cite{mfml-1}}\label{Systems of linear equations and affine subspaces}
+\begin{enumerate}
+    \item For $A \in  R^{m\times n}$ and $x \in  R^m$, the solution of the system of linear equations $A\lambda  = x$ is either the empty set or an affine subspace of $Rn$ of dimension $n - rk(A)$. 
+
+    \begin{enumerate}
+        \item In particular, the solution of the linear equation $\lambda _1b_1 + \cdots  + \lambda _nb_n = x$, where $(\lambda _1, \cdots  , \lambda _n) \neq (0, \cdots  , 0)$, is a hyperplane in $R^n$
+    \end{enumerate}
+
+    \item In $R^n$, \textbf{EVERY} $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $Ax = b$, where $A \in  R^{m\times n}$, $b \in  R^m$ and $rk(A) = n - k$
+
+    \item for homogeneous equation systems $Ax = 0$ the solution was a vector subspace, which we can also think of as a special affine space with support point $x0 = 0$
+\end{enumerate}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -970,7 +1285,7 @@ For two vector spaces $V, W$, a linear mapping $\Phi : V \to W$, and $\mathbf{a}
 
 is an affine mapping from $V$ to $W$. The vector $\mathbf{a}$ is called the \textbf{translation vector}\indexlabel{affine mapping: translation vector} of $\phi$.
 
-\begin{itemize}
+\begin{enumerate}
     \item Every affine mapping $\phi : V \to W$ is also the composition of a linear mapping $\Phi : V \to W$ and a translation $\tau : W \to W$ in $W$, such that $\phi = \tau \circ \Phi$. The mappings $\Phi$ and $\tau$ are uniquely determined.
 
     \item The composition $\phi' \circ \phi$ of affine mappings $\phi : V \to W$, $\phi': W \to X$ is affine.
@@ -978,7 +1293,7 @@ is an affine mapping from $V$ to $W$. The vector $\mathbf{a}$ is called the \tex
     \item Affine mappings keep the geometric structure invariant. 
     
     \item They also preserve the dimension and parallelism.
-\end{itemize}
+\end{enumerate}
 
 
 

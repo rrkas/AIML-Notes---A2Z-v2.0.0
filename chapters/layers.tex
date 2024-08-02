@@ -1,21 +1,21 @@
 \chapter{Layers in NN models}
 
-\begin{itemize}
+\begin{enumerate}
     \item \url{https://pytorch.org/docs/stable/nn.html#linear-layers}
     \item \url{https://www.tensorflow.org/api_docs/python/tf/keras/layers}
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Linear Layer/ Dense Layer \cite{pytorch-Linear,gfg-convolutional-neural-network-cnn-in-machine-learning}}\label{nn: Linear Layer/ Dense Layer}
 
-\begin{itemize}
+\begin{enumerate}
     \item These layers are responsible for making predictions based on the high-level features learned by the previous layers. 
     
     \item They connect every neuron in one layer to every neuron in the next layer.
     
     \item Applies a linear transformation to the incoming data: $\mathbf{y=xA^\top+b}$.
-\end{itemize}
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,7 +40,7 @@
             n_{params} = n_f^{curr} \times ( f_h \times f_w \times  n_f^{prev} + 1)
         \]
         
-        \begin{itemize}
+        \begin{enumerate}
             \item[] 
             \begin{table}[H]
                 \begin{tabular}{l p{5.5cm}}
@@ -57,7 +57,7 @@
             \item These layers apply convolutional operations to input images, using filters (also known as kernels) to detect features such as edges, textures, and more complex patterns. 
             
             \item Convolutional operations help preserve the spatial relationships between pixels.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
 \end{table}
 
@@ -83,44 +83,44 @@
    n_{params} = 0 \text{ (no trainable params)}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item default: $s=k$, so that pooling windows dont overlap
 
     \item Pooling layers \textbf{downsample} the spatial dimensions of the input, reducing the computational complexity and the number of parameters in the network. 
     
     \item Max pooling is a common pooling operation, selecting the maximum value from a group of neighboring pixels.
 
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Max Pooling \cite{gfg-cnn-introduction-to-pooling-layer}}\label{cnn: Max Pooling}
 
-\begin{itemize}
+\begin{enumerate}
     \item Max pooling is a pooling operation that selects the \textbf{maximum element} from the region of the feature map covered by the filter. 
     
     \item The output after max-pooling layer would be a feature map containing the \textbf{most prominent features} of the previous feature map.
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%
 
 \subsection{Average Pooling \cite{gfg-cnn-introduction-to-pooling-layer}}\label{cnn: Average Pooling}
-\begin{itemize}
+\begin{enumerate}
     \item Average pooling computes the \textbf{average of the elements} present in the region of feature map covered by the filter.
     
     \item Average pooling gives the average of features present in a patch.
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%
 
 \subsection{Global Pooling \cite{gfg-cnn-introduction-to-pooling-layer}}\label{cnn: Global Pooling}
-\begin{itemize}
+\begin{enumerate}
     \item Global pooling reduces each channel in the feature map to a single value.
     
     \item Thus, an $n_h \times n_w \times n_c$ feature map is reduced to $1 \times 1 x nc$ feature map. 
 
     \item This is equivalent to using a filter of dimensions $n_h \times n_w$ i.e. the dimensions of the feature map.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[h]
     \begin{minipage}[b]{0.32\linewidth}
@@ -151,7 +151,7 @@
 
 \subsection{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer \cite{arxiv/1406.4729-sppnet}}\label{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer}
 
-\begin{itemize}
+\begin{enumerate}
     \item The SPP layer pools the features and generates fixed-length outputs, which are then fed into the fully-connected layers (or other classifiers).
 
     \item we perform some \textbf{information “aggregation”} at a deeper stage of the network hierarchy (between convolutional layers and fully-connected layers) to avoid the need for cropping or warping at the beginning.
@@ -159,13 +159,13 @@
     \item  It partitions the image into divisions from finer to coarser levels, and aggregates local features in them.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 
 \subsection{Region of Interest (ROI) Pooling Layer \cite{arxiv/1504.08083-fast-rcnn}}\label{cnn: Region of Interest (ROI) Pooling Layer}
 
-\begin{itemize}
+\begin{enumerate}
     \item The RoI pooling layer uses max pooling to convert the features inside any valid region of interest into a small feature map with a fixed spatial extent of $H \times W$ (e.g., $7 \times 7$), where $H$ and $W$ are layer \textbf{hyper-parameters} that are \textbf{independent} of any particular RoI.
 
     \item Each RoI is defined by a four-tuple $(r, c, h, w)$ that specifies its top-left corner $(r, c)$ and its height and width $(h, w)$.
@@ -175,7 +175,7 @@
     \item Pooling is applied \textbf{independently} to each feature map channel, as in standard max pooling. 
 
     \item Special case of \fullref{Spatial Pyramid Pooling (SPP) Layer/ spatial pyramid matching (SPM) Layer}
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -187,7 +187,7 @@
     \caption{Dropout Layer \cite{medium/towardsdatascience.com/dropout-in-neural-networks-47a162d621d9}}
 \end{figure}
 
-\begin{itemize}
+\begin{enumerate}
     \item The term “dropout” refers to dropping out the nodes (input and hidden layer) in a neural network. 
     
     \item All the forward and backwards connections with a dropped node are temporarily removed, thus creating a new network architecture out of the parent network. 
@@ -197,7 +197,7 @@
     \item In every iteration, you will work on a smaller neural network than the previous one and therefore, it approaches \textbf{regularization}.
 
     \item Dropout helps in \textbf{shrinking} the squared norm of the weights and this tends to a reduction in overfitting.
-\end{itemize}
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,11 +205,11 @@
 
 \section{Flatten Layer \cite{gfg/what-is-a-neural-network-flatten-layer}}\label{Flatten Layer}
 
-\begin{itemize}
+\begin{enumerate}
     \item A neural network flatten layer is used to convert the multi-dimensional output from the previous layer into a \textbf{one-dimensional array}, typically before feeding it into a fully connected layer for further processing.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

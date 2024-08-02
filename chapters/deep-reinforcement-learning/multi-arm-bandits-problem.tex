@@ -21,15 +21,15 @@
 
 \section{Intro to Multi-armed bandit}
 Scenario: 
-\begin{itemize}
+\begin{enumerate}
     \item we are in a casino, where we can choose any of the slot machines amongst the machines available.
     \item the winning probability of the machines is unknown to the user/ agent
-\end{itemize}
+\end{enumerate}
 Multi-armed bandits is a simple but very powerful framework for algorithms that make decisions over time under uncertainty.\\
 It is called Multi-armed bandits because slot machines (aka "One-armed Bandits") (as in casinos) were called bandits in earlier times because they loot people (winning probability is very less, so they keep loosing money).
 
 \section{Notation \& Terminologies \cite{medium-numsmt2-rl-ch2-part-1}}
-\begin{itemize}
+\begin{enumerate}
     \item $A_t$ : action taken at time t
     \item $R_t$ : reward at time t
     \item $q_*(a)$ : the value of any action $a$, defined as the expected reward for that action if it’s chosen \[
@@ -37,7 +37,7 @@ It is called Multi-armed bandits because slot machines (aka "One-armed Bandits")
     \]\\[-0.5cm]
     i.e., the expectation ($E$) of getting some reward at time $t$ ($=R_t$) given that the action at time $t$ is $A_t = a$
     \item $Q_t(a)$ : estimated value of action $a$ at time $t$, (since we don’t know the actual value of any action we have to estimate)
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent\textbf{Goal}: The goal is to get $Q_t(a)$ to be as close to $q_*(a)$ as possible. If we can closely estimate the true values of each action, we can know which actions to take to maximize reward.
@@ -50,10 +50,10 @@ At any point in time there will be one action whose estimated value is highest, 
 \textbf{Exploring}: Choosing an action other than the greedy action is called exploring. This is because we are trying a different action to see if we can learn something new (maybe the action we think is the best isn’t actually the best).
 
 Note:
-\begin{itemize}
+\begin{enumerate}
     \item Exploitation might maximize reward for 1 timestep but exploration could maximize reward in the long run.
     \item The conflict between choosing when to exploit your knowledge of the environment vs. when to explore the environment in hopes of gaining new knowledge is called the \textbf{exploration-exploitation dilemma}\indexlabel{MAB: exploration-exploitation dilemma}.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Action-Value Methods - Stationary Rewards \cite{medium-numsmt2-rl-ch2-part-2}}\label{Action-Value Methods - Stationary Rewards}
@@ -91,11 +91,11 @@ $Q_n$ = estimate of this action’s value after it has been selected $n-1$ times
 NewEstimate = OldEstimate + StepSize [ Target - OldEstimate ]
 \vspace{0.2cm}
 
-\begin{itemize}
+\begin{enumerate}
     \item This implementation requires memory only for $Q_n$ and $n$ and only the final computation for each new reward.
     \item The expression [ Target - OldEstimate ] is an error in the current estimate of the action’s value.
     \item We are moving our estimate toward the “Target” (the current reward) which represents a ground truth (though it may be noisy).
-\end{itemize}
+\end{enumerate}
 
 \subsection{Greedy Action Selection}\label{MAB: Greedy Action Selection}
 The simplest way is to always choose the greedy action (the action with the highest-estimated value). This can be thought of as always exploiting.
@@ -122,10 +122,10 @@ Another method is to choose the greedy action most of the time, but choose some 
 \end{algorithm}
 
 \subsection{Optimistic Initial Values}
-\begin{itemize}
+\begin{enumerate}
     \item The simplest way is to initialize them all to 0 and this works fine.
     \item Another way is to initialize them \textbf{optimistically} - start them off with values much higher than they could ever be in reality.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 
@@ -152,12 +152,12 @@ At the start of the game the best action could be action 1. Then 500 steps later
 
 To understand why this works, consider what’s actually happening when $\alpha = (1/n)$: the ability to change our estimation for an action diminishes over time.
 
-\begin{itemize}
+\begin{enumerate}
     \item At episode 10, $\alpha = (1/10) = 0.1$
     \item At episode 1000, $\alpha = (1/1000) = 0.001$
     \item As an action is chosen more and more $\alpha$ shrinks causing increasingly smaller changes to the estimation of the value for that action.
     \item This means it can be difficult to change our estimation even if the rewards that action gives us changes, and the estimation can be heavily biased to the rewards that it used to give.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Constant Alpha \cite{medium-numsmt2-rl-ch2-part-3}}\label{MAB: Constant Alpha}
 
@@ -167,13 +167,13 @@ One way to accomplish this is with a constant $\alpha$. In the same action-value
 
 \subsubsection{How this solves problem with sample averaging}
 Consider the case when $\alpha$ is a constant value in range $[0, 1]$ (e.g. $\alpha = 0.9$).
-\begin{itemize}
+\begin{enumerate}
     \item At episode 10, $\alpha = 0.9$
     \item At episode 1000, $\alpha$ remains the same.
     \item If an action that used to give a reward suddenly stops giving rewards, $\alpha$ will cause the estimation of that action’s value to quickly diminish.
     \item $\alpha$ can also cause an estimation to quickly increase if it suddenly starts being rewarding.
     \item In this way we can quickly respond to a changing reward distribution.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[h]
     \centering
@@ -192,14 +192,14 @@ Choose which arm to exploit based on how satisfying the reward was, but also wit
 \]
 
 Interpretation:
-\begin{itemize}
+\begin{enumerate}
     \item $A_t$ is the action at time $t$, selected as the action that maximizes the formula in between the brackets.
     \item $Q_t(a)$ is the estimated value of the action
     \item The right side of the equation in the brackets can be thought of as a representation of the uncertainty of what the reward will be for any given action.
     \item $N_t(a)$ is the number of times this action has been selected. Since it’s in the denominator, as it increases it causes the value on the right side to shrink. This encapsulates the concept that as we select an action more we become less uncertain of its value.
     \item $\ln(t)$ denotes the natural logarithm of $t$ which is the current timestep. As $t$ rises our uncertainty increases but slower over time as per the natural log function.
     \item The parameter $c$ (constant in range $[0, 1]$) can be be considered as determining the \textbf{degree of exploration}. Higher $c$ values cause greater exploration because they cause the uncertainty about actions to be larger.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Gradient Bandit Algorithms \cite{medium-numsmt2-rl-ch2-part-5}}\label{MAB: Gradient Bandit Algorithms}
@@ -213,11 +213,11 @@ The probability of selecting any action is given according to a \textbf{soft-max
     \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\dfrac{e^{H_t(a)}}{\displaystyle\sum_{i=1}^{k} e^{H_t(i)}}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item The set of numbers are the actions, so each action will be given a probability of being selected and the probabilities of all those actions will sum to 1.
     \item For example, if there are 3 actions and the game is at some timestep $t$ you could have: $\pi_t(1) = 0.3$, $\pi_t(2) = 0.6$, $\pi_t(3) = 0.1$.
     \item The value $H_t(a)$ represents the preference of selecting an action a over the other actions.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 
@@ -230,13 +230,13 @@ On each step, after selecting the action $A_t$ and receiving the reward $R_t$, t
     \end{cases}
 \end{align*}
 
-\begin{itemize}
+\begin{enumerate}
     \item The top part of the equation represents the preference update for the action just taken and the bottom part represents the preference updates for all other actions.
     \item $\alpha > 0$ is a step-size parameter that determines the degree to which the preferences are changed at each step
     \item $\bar{R_t}$ or “$R$ mean at timestep $t$” is the average of all the rewards from all timesteps including timestep $t$ for $A_t$. Similar to previous methods, this can be updated using incremental updates with the sample-averaging method or a constant-$\alpha$ parameter that is better suited for nonstationary rewards.
     \item $\bar{R_t}$ can be thought of as a baseline against which the current reward is compared. If the reward is higher than the baseline, then the preference for this action is increased. If the reward is lower than the baseline, then vice-versa.
     \item The bottom part of the equation moves the preferences for all other actions in the opposite direction.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Associative Search (Contextual Bandits) \cite{medium-numsmt2-rl-ch2-part-6, kaggle-parsasam-reinforcement-learning-notes-multi-armed-bandits}}\label{Associative Search (Contextual Bandits)}

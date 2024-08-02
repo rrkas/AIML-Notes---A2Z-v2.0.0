@@ -4,12 +4,12 @@
 
 \section{How Does Dynamic Programming (DP) Work?}
 
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Identify Subproblems}: Divide the main problem into smaller, independent subproblems.
     \item \textbf{Store Solutions}: Solve each subproblem and store the solution in a table or array.
     \item \textbf{Build Up Solutions}: Use the stored solutions to build up the solution to the main problem.
     \item \textbf{Avoid Redundancy}: By storing solutions, DP ensures that each subproblem is solved only once, reducing computation time.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[H]
     \begin{minipage}{0.45\linewidth}
@@ -19,12 +19,12 @@
     \end{minipage}
     \hfill
     \begin{minipage}{0.52\linewidth}
-        \begin{itemize}
+        \begin{enumerate}
             \item \textbf{Subproblems}: $F(0)$, $F(1)$, $F(2)$, $F(3)$, ...
             \item \textbf{Store Solutions}: Create a table to store the values of $F(n)$ as they are calculated.
             \item \textbf{Build Up Solutions}: For $F(n)$, look up $F(n-1)$ and $F(n-2)$ in the table and add them.
             \item \textbf{Avoid Redundancy}: The table ensures that each subproblem (e.g., $F(2)$) is solved only once.
-        \end{itemize}        
+        \end{enumerate}        
     \end{minipage}
 \end{table}
 

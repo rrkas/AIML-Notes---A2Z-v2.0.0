@@ -17,29 +17,7 @@
     \end{tabular}
 \end{table}
 
-\section*{Metrics VS Criterion}
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|p{2cm}|p{6cm}|p{6cm}|}
-        \hline
-        
-        \textbf{Aspect} & \textbf{Evaluation Metrics} & \textbf{Loss Function (Criterion)} \\
-        \hline
-        
-        \textbf{Purpose} & Measure model performance on test or validation data after training. & Quantify error between predicted and actual values to guide optimization during training. \\
-        \hline
-        
-        \textbf{Usage} & Assess model generalization and overall performance. & Internally used by optimizer to update model parameters based on prediction errors. \\
-        \hline
-        
-        \textbf{Focus} & Reflects how well the model generalizes to new, unseen data. & Minimizing error on training data to improve model accuracy. \\
-        \hline
-
-        \textbf{Examples} & Accuracy, precision, recall, F1-score for classification tasks; RMSE, MAE for regression tasks. & MSE (Mean Squared Error), cross-entropy loss for classification tasks, etc. \\
-        \hline
-    \end{tabular}
-\end{table}
-
+SEE: \fullref{Evaluation Metrics VS Criterion}
 Essentially, formulas are \textbf{same}.
 
 \begin{table}[h]
@@ -83,14 +61,14 @@ Essentially, formulas are \textbf{same}.
 \subsection{Accuracy}
 
 \subsection{Precision}
-\begin{itemize}
+\begin{enumerate}
     \item What fraction of the returned results are relevant to the information need? \cite{ir-1}
-\end{itemize}
+\end{enumerate}
 
 \subsection{Recall}
-\begin{itemize}
+\begin{enumerate}
     \item What fraction of the relevant documents in the collection were returned by the system? \cite{ir-1}
-\end{itemize}
+\end{enumerate}
 
 \subsection{F-Score}
 

@@ -5,20 +5,20 @@
 The activation function of a node in an artificial neural network is a function that calculates the output of the node based on its individual inputs and their weights. Nontrivial problems can be solved using only a few nodes if the activation function is nonlinear
 
 \vspace{0.2cm}
-\begin{itemize}
+\begin{enumerate}
     \item  The transfer functions usually have a \textbf{sigmoid} shape, but they may also take the form of other non-linear functions, piecewise linear functions, or step functions.
     \item They are also often monotonically increasing, continuous, differentiable and bounded. 
     \item  Non-monotonic, unbounded and oscillating activation functions with multiple zeros that outperform sigmoidal and ReLU-like activation functions on many tasks have also been recently explored
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent From \cite{wiki-Artificial_neuron} \\
 
-\begin{itemize}
+\begin{enumerate}
     \item $n$ is number of inputs
     \item $w_i$ is a vector of synaptic weights
     \item $x_i$ is a vector of inputs
-\end{itemize}
+\end{enumerate}
 \[
     u=\sum _{i=1}^{n}w_{i}x_{i}
 \]
@@ -37,13 +37,13 @@ $u$ refers in all cases to the weighted sum of all the inputs to the neuron
     y={\begin{cases}1&{\text{if }}u\geq \theta \\0&{\text{if }}u<\theta \end{cases}}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item The output y of this transfer function is binary, depending on whether the input meets a specified threshold, $\theta$. 
     \item The "signal" is sent, i.e. the output is set to one, if the activation meets the threshold.
     \item It performs a division of the space of inputs by a hyperplane. 
     \item It is specially useful in the last layer of a network intended to perform binary classification of the inputs. 
     \item It can be approximated from other sigmoidal functions by assigning large values to the weights.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Linear combination \cite{wiki-Artificial_neuron}}
@@ -51,25 +51,25 @@ $u$ refers in all cases to the weighted sum of all the inputs to the neuron
     y = u + b
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item The output unit is simply the weighted sum of its inputs plus a bias term. A number of such linear neurons perform a linear transformation of the input vector. 
     \item This is usually more useful in the first layers of a network. 
     \item A number of analysis tools exist based on linear models, such as harmonic analysis, and they can all be used in neural networks with this linear neuron. 
     \item The bias term allows us to make affine transformations to the data.
-\end{itemize}
+\end{enumerate}
 
 
 
 \section{Sigmoid function \cite{wiki-activation-fn,wiki-Sigmoid_function}}
 
-\begin{itemize}
+\begin{enumerate}
     \item A sigmoid function is any mathematical function whose graph has a characteristic S-shaped or sigmoid curve.
     \item A sigmoid function is a bounded, differentiable, real function that is defined for all real input values and has a non-negative derivative at each point and exactly one inflection point.
     \item A sigmoid function is monotonic, and has a first derivative which is bell shaped
     \item The integral of any continuous, non-negative, bell-shaped function (with one local maximum and no local minimum, unless degenerate) will be \textbf{sigmoidal}.
     \item A sigmoid function is constrained by a pair of \textbf{horizontal asymptotes} as $x\rightarrow \pm \infty$
     \item A sigmoid function is \textbf{convex} for values less than a particular point, and it is \textbf{concave} for values greater than that point: in many of the examples here, that point is 0.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Logistic function ( $\sigma(x)$ ) \cite{wiki-Logistic_function,wiki-Sigmoid_function}}\label{Logistic function}
 
@@ -87,11 +87,11 @@ General Equation:
 
 \vspace{0.2cm}
 
-\begin{itemize}
+\begin{enumerate}
     \item $L$ is the carrying capacity, the supremum of the values of the function
     \item $k$ is the logistic growth rate, the steepness of the curve
     \item $x_{0}$ is the $x$ value of the function's midpoint
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \noindent Standard logistic function (sigmoid/ expit):\label{sigmoid}
@@ -206,12 +206,12 @@ Mish is non-monotonic and self-gated. It was inspired by Swish, itself a variant
 
 where \({\displaystyle b\geq 0}\) is a hyperparameter that determines the "size" of the curved \({\displaystyle x=0}\).
 
-\begin{itemize}
+\begin{enumerate}
     \item $b=0$ yields ReLU
     \item It is monotonic, strictly positive, approaches 0 as \({\displaystyle x\to -\infty }\), approaches the identity as \({\displaystyle x\to +\infty }\), and is \({\displaystyle C^{\infty }}\) smooth.
     \item squareplus can be computed using only algebraic functions, making it well-suited for settings where computational resources or instruction sets are limited.
     \item squareplus requires no special consideration to ensure numerical stability when \({\displaystyle x}\) is large.
-\end{itemize}
+\end{enumerate}
 
 
 

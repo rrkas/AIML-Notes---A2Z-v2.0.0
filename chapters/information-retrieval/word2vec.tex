@@ -1,6 +1,6 @@
 \chapter{Word2Vec \cite{nlp-1}}
 
-\begin{itemize}
+\begin{enumerate}
     \item Word2vec embeddings are \textbf{static embeddings}, meaning that the method learns one fixed embedding for each word in the vocabulary.
     
     \item The intuition of word2vec is that instead of counting how often each word w occurs near, say, apricot, we’ll instead train a classifier on a binary prediction task: “Is word w likely to show up near apricot?” 
@@ -16,10 +16,10 @@
 
         \item word2vec simplifies the architecture (training a logistic regression classifier instead of a multi-layer neural network with hidden layers that demand more sophisticated training algorithms)
     \end{enumerate}
-\end{itemize}
+\end{enumerate}
 
 \section{Embedding \cite{nlp-1}}\label{Embedding}
-\begin{itemize}
+\begin{enumerate}
     \item powerful word representation
     
     \item short \textbf{dense vectors} \indexlabel{dense vectors}\\
@@ -35,16 +35,16 @@
     \item Dense vectors may also do a better job of capturing \textbf{synonymy}. (SEE: \fullref{Synonymy})
 
     
-\end{itemize}
+\end{enumerate}
 
 \subsection{Semantic properties of embeddings \cite{nlp-1}}
 One parameter of vector semantic models that is relevant to both sparse tf-idf vectors (SEE: \fullref{TF-IDF: concept}) and dense word2vec vectors is the size of the context window used to collect counts. This is generally between $1$ and $10$ words on each side of the target word (for a total context of $2-20$ words).
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Shorter context windows}
-    \begin{itemize}
+    \begin{enumerate}
         \item tend to lead to representations that are a bit more syntactic, since the information is coming from immediately nearby words.
         \item When the vectors are computed from short context windows, the most similar words to a target word $w$ tend to be semantically similar words with the same parts of speech.
-    \end{itemize}
+    \end{enumerate}
 
     \item \textbf{long context windows}: When vectors are computed from long context windows, the highest cosine words to a target word w tend to be words that are topically related but not similar.
 
@@ -54,10 +54,10 @@ One parameter of vector semantic models that is relevant to both sparse tf-idf v
     \item Two words have \textbf{second-order co-occurrence} \indexlabel{second-order co-occurrence} (sometimes called \textbf{paradigmatic association}\indexlabel{paradigmatic association}) if they have similar neighbors.\\
     \textbf{Example}: \textit{wrote} is a second-order associate of words like \textit{said} or \textit{remarked}.
 
-\end{itemize}
+\end{enumerate}
 
 \subsubsection{Analogy/ Relational Similarity \cite{nlp-1}}\label{Analogy/ Relational Similarity}
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{parallelogram model}\indexlabel{parallelogram model}: for solving simple analogy problems of the form \textit{a is to b as a* is to what?}
 
     \item For $\mathbf{a : b :: a^*: b^*}$ problem, meaning the algorithm is given vectors $\mathbf{a, b}$, and $\mathbf{a^*}$ and must find $\mathbf{b^*}$, the parallelogram method is thus:
@@ -66,7 +66,7 @@ One parameter of vector semantic models that is relevant to both sparse tf-idf v
     \]
 
     
-\end{itemize}
+\end{enumerate}
 
 \subsubsection{Historical Semantics \cite{nlp-1}}\label{Embeddings: Historical Semantics}
 
@@ -92,13 +92,13 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
 
 \vspace{0.2cm}
 \noindent\textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item skip-gram trains a probabilistic classifier that, given a test target word $w$ and its context window of $L$ words $c_{1:L}$, assigns a probability based on how similar this context window is to the target word.
 
     \item The probability is based on applying the \fullref{Logistic function} to the dot product of the embeddings of the target word with each context word. 
     
     \item To compute this probability, we just need embeddings for each target word and context word in the vocabulary.
-\end{itemize}
+\end{enumerate}
 
 
 \subsection*{Notations}
@@ -183,10 +183,10 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
     \item The noise words are chosen according to their \fullref{Weighted Unigram Frequency (p alpha)}, where $\alpha$ is a weight.
 
     \item Given the set of positive and negative training instances, and an initial set of embeddings, the goal of the learning algorithm is to adjust those embeddings to
-    \begin{itemize}
+    \begin{enumerate}
         \item Maximize the similarity of the target word, context word pairs $(w, c_{pos})$ drawn from the positive examples
         \item  Minimize the similarity of the $(w, c_{neg})$ pairs from the negative examples.
-    \end{itemize}
+    \end{enumerate}
 
     \item \textbf{Loss}:
     \begin{align*}
@@ -211,11 +211,11 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
 \end{enumerate}
 
 \section*{Disadvantages of word2vec \cite{nlp-1}}
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Unknown Words}: words that appear in a test corpus but were unseen in the training corpus.
 
     \item \textbf{word sparsity}: in languages with rich morphology, where some of the many forms for each noun and verb may only occur rarely.
-\end{itemize}
+\end{enumerate}
 
 \section{Fasttext \cite{nlp-1}}\label{Fasttext}
 SEE: \url{https://fasttext.cc}
@@ -225,11 +225,11 @@ SEE: \url{https://fasttext.cc}
 
 \vspace{0.2cm}
 \noindent\textbf{Example}:\\
-\begin{itemize}
+\begin{enumerate}
     \item $n=3$
     \item \textbf{word}: where
     \item \textbf{embeddings}: \\ \texttt{<where>} \\ \texttt{<wh, whe, her, ere, re>}
-\end{itemize}
+\end{enumerate}
 
 \begin{enumerate}
     \item Then a skipgram embedding is learned for each constituent n-gram, and the word where is represented by the sum of all of the embeddings of its constituent n-grams.
@@ -241,13 +241,13 @@ SEE: \url{https://fasttext.cc}
 
 \section{Global Vectors (GloVe) \cite{nlp-1}}\label{Global Vectors (GloVe)}
 
-\begin{itemize}
+\begin{enumerate}
     \item the model is based on capturing global corpus statistics.
 
     \item it is based on ratios of probabilities from the word-word co-occurrence matrix (SEE: \fullref{term-term matrix}), combining the intuitions of count-based models like PPMI (SEE: \fullref{Positive Pointwise Mutual Information (PPMI)}) while also capturing the linear structures used by methods like word2vec.
 
     \item It turns out that dense embeddings like word2vec actually have an elegant mathematical relationship with sparse embeddings like PPMI, in which word2vec can be seen as implicitly optimizing a shifted version of a PPMI matrix.
-\end{itemize}
+\end{enumerate}
 
 
 

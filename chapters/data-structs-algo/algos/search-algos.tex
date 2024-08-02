@@ -38,20 +38,20 @@
 \begin{table}[h]
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Advantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item Linear search can be used irrespective of whether the array is sorted or not. 
             \item It can be used on arrays of any data type.
             \item Does not require any additional memory.
             \item It is a well-suited algorithm for small datasets.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Disadvantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item Linear search has a time complexity of $O(N)$, which in turn makes it \textbf{SLOW} for large datasets.
             \item \textbf{NOT} suitable for large arrays.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
 \end{table}
 
@@ -106,20 +106,20 @@ def search(arr: list, N: int, x: object) -> int:
 \begin{table}[h]
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Advantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item Binary search is faster than linear search, especially for large arrays.
             \item More efficient than other searching algorithms with a similar time complexity, such as interpolation search or exponential search.
             \item Binary search is well-suited for searching large datasets that are stored in external memory, such as on a hard drive or in the cloud.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Disadvantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item The array should be \textbf{sorted}.
             \item Binary search requires that the data structure being searched be stored in contiguous memory locations. 
             \item Binary search requires that the elements of the array be comparable, meaning that they must be able to be ordered.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
 \end{table}
 
@@ -222,22 +222,22 @@ def binarySearch(arr: list, low: int, high: int, x: object) -> int:
 \begin{table}[h]
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Advantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item Ternary search can find maxima/minima for unimodal functions, where binary search is not applicable.
             
             \item Ternary Search has a time complexity of $O(2 * \log_3(N))$, which is more efficient than linear search and comparable to binary search.
 
             \item Fits well with optimization problems.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\linewidth}
         \textbf{Disadvantages}:
-        \begin{itemize}
+        \begin{enumerate}
             \item Ternary Search is only applicable to ordered lists or arrays, and cannot be used on unordered or non-linear data sets.
 
             \item Ternary Search takes more time to find maxima/ minima of monotonic functions as compared to Binary Search.
-        \end{itemize}
+        \end{enumerate}
     \end{minipage}
 \end{table}
 
@@ -348,13 +348,13 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.59\linewidth}
-        \begin{itemize}
+        \begin{enumerate}
             \item Selective search is a \textbf{greedy algorithm} that combines smaller segmented regions to generate region proposals.
             
             \item This algorithm takes an image as input and output generates region proposals on it.
         
             \item This algorithm has the advantage over random proposal generation in that it limits the number of proposals to approximately 2000 and these region proposals have a high recall.
-        \end{itemize}    
+        \end{enumerate}    
     \end{minipage}
 \end{table}
 

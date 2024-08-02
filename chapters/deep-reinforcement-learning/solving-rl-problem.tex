@@ -145,13 +145,13 @@ Policy iteration consists of policy evaluation (in which we make the value funct
 Generalized policy iteration (GPI) refers to the idea of letting these two processes — policy evaluation and policy improvement, to interact.
 
 GPI works as follows:
-\begin{itemize}
+\begin{enumerate}
     \item We randomly initialize our value function estimates of every state, and start with a random policy.
 
     \item We then evaluate the values of every state using this policy.
 
     \item We update the policy by making greedy action choices, with respect to the value functions (i.e. taking the action that moves you to the state with the highest value).
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[h]
     \begin{minipage}{0.35\linewidth}
@@ -216,7 +216,7 @@ GPI works as follows:
 \section{Monte Carlo (MC)}\label{Monte Carlo (MC)}
 Still assuming underlying Markov Decision Process (MDP), but model and reward function are unknown. Agent \textbf{MUST} interact with the environment to learn.
 
-\begin{itemize}
+\begin{enumerate}
     \item Monte Carlo methods are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results.
 
     \item The underlying concept is to obtain unbiased samples from a complex/ unknown distribution through a random process.
@@ -229,7 +229,7 @@ Still assuming underlying Markov Decision Process (MDP), but model and reward fu
 
     \item Monte Carlo methods are based on averaging complete returns, and to ensure that those complete returns are available, Monte Carlo methods are generally defined for episodic tasks, which means that only on the completion of an episode, is the value of the state estimated and policy updated. \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}
 
-\end{itemize}
+\end{enumerate}
 
 \subsection{Monte Carlo Prediction (MC Prediction) \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}} \label{Monte Carlo Prediction}
 
@@ -237,7 +237,7 @@ Prediction refers to the problem of estimating the values of states, a value of 
 
 An obvious way to estimate the value of a state is to simply average all the returns that are observed after a visit to the state, and as we visit the state more often, the average return will converge to the true value of the state in expectation.
 
-\begin{itemize}
+\begin{enumerate}
     \item Both first-visit and every-visit Monte Carlo methods converge to true state values when we visit each state many times.
 
     \item Monte Carlo is one of the few methods in reinforcement learning that do not bootstrap. \textbf{Bootstrapping}\label{RL: Bootstrapping} means making use of estimates to make a further estimations.
@@ -246,7 +246,7 @@ An obvious way to estimate the value of a state is to simply average all the ret
 
     \item 
 
-\end{itemize} 
+\end{enumerate} 
 
 \vspace{0.2cm}
 \textbf{Example}: Consider an MDP with a single nonterminal state and a single action that transitions back to the nonterminal state with probability $p$ and transitions to the terminal state with probability $1-p$. Let the reward be $+1$ on all transitions, and let $\gamma=1$. Suppose you observe one episode that lasts $10$ steps, with a return of $10$. What are the first-visit and every-visit estimators of the value of the nonterminal state?
@@ -352,17 +352,17 @@ A more straightforward approach is to use two policies:
 In this case, we say that learning is from data “off” the target policy, and the overall process is termed \textbf{off-policy learning}.
 
 
-\begin{itemize}
+\begin{enumerate}
     \item we would like to use observations drawn from some policy $b$ to evaluate $q_\pi$ where $\pi \neq b$, specifically, we want to evaluate $q_\pi *$
     \item we strive for full utilization of previous experience
     \item off-policy learning allows us to optimize a \textbf{target policy} while following another \textbf{behavior policy}.
     \item \textbf{Pros}: sample efficient
     \item \textbf{Cons}: greater variance in value estimations
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.3cm}
 \textbf{Off-policy learning conditions}:
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Objective}: use episodes from $b$ to estimate values for $\pi$
     \item For off-policy learning, we must assume coverage:
     \[
@@ -370,11 +370,11 @@ In this case, we say that learning is from data “off” the target policy, and
     \]
     \item if coverage is \textbf{true}, then by running $b$ repeatedly we will eventually discover all possible trajectories for $\pi$
     \item if coverage is \textbf{violated} for some $s,a$, then no inference is possible regarding that state-action value.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.3cm}
 \textbf{Trajectory probability}
-\begin{itemize}
+\begin{enumerate}
     \item An agent following policy $b$ sampled the following trajectory:
     \[
         \tau = {S_0,A_0,R_1,...A_{T-1},R_T,S_T}
@@ -384,21 +384,21 @@ In this case, we say that learning is from data “off” the target policy, and
     \]
     \item but $p(S_{K+1}|S_K,A_K)$ is unknown! so, $Pr(\tau|b)$ cannot be computed!
     \item Assuming MC Control:
-    \begin{itemize}
+    \begin{enumerate}
         \item \(G_t = \displaystyle\sum_{k=t+1}^{T} \gamma^{k-t+1}R_k\)
         \item Append $G_t$ to $Returns(S_t,A_t)$
         \item $Q_b(S_t,A_t) \leftarrow \rcmXWeightedAVG(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle \mathbb{E}[X \sim p] = \sum_x p(x)x \right) \)
         \item Computing the weighted average based on the sample probability would reduce variance (eliminate impact of noisy sampling)
-    \end{itemize}
+    \end{enumerate}
     
-\end{itemize}
+\end{enumerate}
 
 
 \section{Importance Sampling (IS) \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817,bits-pilani-slides}}\label{Importance Sampling (IS)}
 
 Almost all off-policy learning methods utilize \textbf{importance sampling}, a general technique for estimating expected values under one distribution given samples from another. We apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the \textbf{importance-sampling ratio} \indexlabel{importance-sampling ratio}.
 
-\begin{itemize}
+\begin{enumerate}
     \item Given a trajectory $\tau$ drawn by running $b$
     \item we can define (not compute) the probability $Pr\{\tau|b\}$
     \item we can also define $Pr\{\tau|\pi\}$
@@ -416,7 +416,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
     \[
         v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{M}
     \]
-\end{itemize}
+\end{enumerate}
 
 
 \subsection{Ordinary Importance Sampling \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}\label{RL: Ordinary Importance Sampling}
@@ -427,10 +427,10 @@ Importance sampling with a simple average is called ordinary sampling.
     V(s) = \displaystyle\dfrac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item it is unbiased
     \item results in high variance
-\end{itemize}
+\end{enumerate}
 
 \subsection{Weighted importance sampling \cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}\label{RL: Weighted importance sampling}
 
@@ -443,17 +443,17 @@ Importance Sampling with a weighted average is known as weighted importance samp
     v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{\displaystyle\sum_{m\in M} \rho_t m} \hfill \text{\cite{bits-pilani-slides}}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item it is biased (initially)
     \item results in bounded variance
-\end{itemize}
+\end{enumerate}
 
 the decision of which one to use when, circles back to the classic bias-variance tradeoff, however in practice, the 
 weighted estimator is strongly preferred.
 
 \section{Incremental Monte Carlo (Incremental MC) \cite{redirect.cs.umbc.edu/courses/graduate/678/fall21/RL05}} \label{RL: Incremental Monte Carlo (Incremental MC)}
 
-\begin{itemize}
+\begin{enumerate}
     \item Update value without tracking all returns
     
     \item \textbf{Ordinary importance sampling}:
@@ -468,7 +468,7 @@ weighted estimator is strongly preferred.
     \[
         C_{n+1} = C_n + W_{n+1}
     \]
-\end{itemize}
+\end{enumerate}
 
 \begin{algorithm}[h!]
     \caption{Off-Policy Monte Carlo Prediction (Policy Evaluation) for estimating $Q \approx q_*$}

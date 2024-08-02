@@ -1,6 +1,6 @@
 \chapter{Boolean Retrieval \cite{ir-1}}\label{Boolean retrieval}
 
-\begin{itemize}
+\begin{enumerate}
     \item The \textbf{Boolean retrieval model}\indexlabel{Boolean retrieval model} is a model for information retrieval in which we can pose any query which is in the form of a Boolean expression of terms, that is, in which terms are combined with the operators \textbf{AND}, \textbf{OR}, and \textbf{NOT}.
 
     \item The model views each document as just a set of words.
@@ -10,7 +10,7 @@
     \item \textbf{Query optimization}\indexlabel{Query optimization} is the process of selecting how to organize the work of answering a query so that the least total amount of work needs to be done by the system.\\
     A major element of this for Boolean queries is the \textbf{order} in which postings lists are accessed.
 
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[h]
     \centering
@@ -47,11 +47,11 @@ Example:
 \section{Using Inverted Index \cite{ir-1}}
 SEE: \fullref{Inverted Index/ inverted file}
 
-\begin{itemize}
+\begin{enumerate}
     \item The information about the statistics (doc freq) is not vital for a basic Boolean search engine, but it allows us to improve the efficiency of the search engine at query time, and it is a statistic later used in many ranked retrieval models.
 
     \item justification for keeping the frequency of terms in the dictionary:
-    \begin{itemize}
+    \begin{enumerate}
         \item it allows us to make this ordering decision based on in-memory data before accessing any postings list.
 
         \item we can then (conservatively) estimate the size of each OR by the sum of the frequencies of its disjuncts.\\
@@ -63,8 +63,8 @@ SEE: \fullref{Inverted Index/ inverted file}
 
         \item The intersection operation is then \textbf{asymmetric}: the intermediate results list is in \textbf{memory} while the list it is being intersected with is being read from \textbf{disk}.\\
         Moreover the intermediate results list is always at least as short as the other list, and in many cases it is orders of magnitude shorter.
-    \end{itemize}
-\end{itemize}
+    \end{enumerate}
+\end{enumerate}
 
 
 \section{Processing Boolean queries \cite{ir-1}}\label{Processing Boolean queries}
@@ -83,11 +83,11 @@ SEE: \fullref{Inverted Index/ inverted file}
     \item Retrieve its postings
 
     \item Perform set operation as per boolean operation in query:
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{AND}: Intersect the two postings lists
         \item \textbf{OR}: Union the two postings lists
         \item \textbf{NOT}: TODO
-    \end{itemize}
+    \end{enumerate}
 
     
 \end{enumerate}

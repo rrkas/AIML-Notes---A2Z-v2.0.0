@@ -35,7 +35,7 @@ Alternate Definition: SEE \fullref{vectors}
     (a\otimes b)_{ij} = a_i b_j
 \]
 
-\section{Inner/ Scalar /Dot Product ( $\langle a, b \rangle =a\cdot b = \mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml-1,wiki/Dot_product}} \label{vector: Inner/ Scalar /Dot Product}
+\section{Inner/ Scalar /Dot Product ( $\langle a, b \rangle =a\cdot b = \mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml^{-1}wiki/Dot_product}} \label{vector: Inner/ Scalar /Dot Product}
 
 The dot product or scalar product is an algebraic operation that takes two vectors of equal length, and returns a \textbf{single number}.
 the dot product between two vectors $a, b$ is denoted by $a^\top b$ or $\langle a, b\rangle \in R$:
@@ -336,7 +336,7 @@ The Hessian is the collection of all \textbf{second-order partial derivative}.
 
     \item $d(Ax)/dA = v^\top\otimes I $
     
-    \item \( \partial (A-1y)/\partial y = A-1 \)
+    \item \( \partial (A^{-1})/\partial y = A^{-1}\)
 
     \subsection{matrix-matrix}
     \item \(
@@ -345,7 +345,7 @@ The Hessian is the collection of all \textbf{second-order partial derivative}.
     
     \item  $d(X^\top X)/dX = ??$
     
-    \item  $d(XXT)/dX = ??$
+    \item  $d(XX^\top )/dX = ??$
 
     \subsection{vector-vector}
     \item  $\partial (a^\top x)/\partial x = a^\top$
@@ -359,34 +359,170 @@ The Hessian is the collection of all \textbf{second-order partial derivative}.
     \item  \(
         \partial (x^\top Bx)/\partial x = \begin{cases}
             x^\top(B + B^\top) & \text{ general}\\
-            2xTB & \text{ $B$ is symmetric}
+            2x^\top B & \text{ $B$ is symmetric}
         \end{cases}
     \)
 
     \item  $\partial (a^\top X^{-1}b)/\partial X = -(X^{-1})^\top ab^\top (X^{-1})^\top$
 
-    \item  $d(xTAx)/dA = xxT$
+    \item  $d(x^\top Ax)/dA = xx^\top $
 
     \item  $\partial (a^\top Xb)/\partial X = ab^\top$
 
-    \item  $\partial [(x - As)^\top W(x - As)]/\partial s = -2(x - As)^\top WA$  ($W$ is symmetric)
+    \item  $\partial [(x - As)^\top W(x - As)]/\partial s = -2(x - As)^\top WA$ $\hfill$ ($W$ is symmetric)
 
-% \partial (f(X)⊤)/\partial X = (\partial f(X)/\partial X)⊤
-% \partial (f(X)-1)/\partial X = -f(X)-1 ⋅ (\partial f(X)/\partial X) ⋅ f(X)-1
-% \partial [tr(f(X))]/\partial X = tr(\partial f(X)/\partial X)
-% \partial [det(f(X))]/\partial X = det(f(X)) ⋅ tr(f(X)-1 ⋅ (\partial f(X)/\partial X))
+    \item $\partial (f(X)^\top)/\partial X = (\partial f(X)/\partial X)^\top$
+
+    \item $\partial (f(X)^{-1})/\partial X = -f(X)^{-1}\cdot  (\partial f(X)/\partial X) \cdot  f(X)^{-1}$
+
+    \item $\partial [tr(f(X))]/\partial X = tr(\partial f(X)/\partial X)$
+
+    \item $\partial [det(f(X))]/\partial X = det(f(X)) \cdot  tr(f(X)^{-1}\cdot  (\partial f(X)/\partial X))$
 
 
 \end{enumerate}
 
 
+\section{Automatic Differentiation (AutoDiff) \cite{mfml-1}} \label{Automatic Differentiation}
+
+SEE: \fullref{Automatic Differentiation (AutoDiff) VS Backpropagation VS Chain Rule}
+
+\begin{enumerate}
+    \item Automatic differentiation is different from symbolic differentiation and numerical approximations of the gradient, e.g., by using finite differences.
+
+    \item We can think of automatic differentiation as a set of techniques to numerically (in contrast to symbolically) evaluate the exact (up to machine precision) gradient of a function by working with intermediate variables and applying the chain rule. 
+
+    \item Automatic differentiation applies a series of elementary arithmetic operations, e.g., addition and multiplication and elementary functions, e.g., sin, cos, exp, log. 
+
+    \item By applying the chain rule to these operations, the gradient of quite complicated functions can be computed automatically.
+
+    \item \textbf{backpropagation} is a \textbf{special case} of a general technique in numerical analysis called automatic differentiation
+
+    \item \textbf{NOT ALL} computer programs can be automatically differentiated, e.g., if we cannot find differential elementary functions
+\end{enumerate}
+
+Let $x_1, \cdots , x_d$ be the input variables to the function, $x_{d+1}, \cdots , x_{D-1}$ be the intermediate variables, and $x_D$ the output variable. Then the computation graph can be expressed as follows:
 
 
+\subsubsection*{forward propagation}
+\[
+    x_i = g_i(x_{P_a(x_i)}) \hfill (i = d+1, \cdots, D)
+\]
+where
+\begin{enumerate}
+    \item $g_i(\cdot)$ are \textbf{elementary functions}
 
+    \item $x_{P_a(xi)}$ are the \textbf{parent nodes} of the variable $x_i$ in the \textbf{graph}
 
+\end{enumerate}
 
+\subsubsection*{backpropagation}
+\[
+    f = x_D \Rightarrow \dfrac{\partial f}{\partial x_D} = 1
+\]
+\[
+    \displaystyle 
+    \dfrac{\partial f}{ \partial x_i} = 
+    \sum_{x_j:x_i\in P_a(x_j)} \dfrac{\partial f}{\partial x_j} \dfrac{\partial x_j}{\partial x_i} =
+    \sum_{x_j:x_i\in P_a(x_j)} \dfrac{\partial f}{\partial x_j} \dfrac{\partial g_j}{\partial x_i} 
+\]
 
+  
 
+\subsubsection*{Example}
+
+\[
+    \hfill
+    f(x) = \sqrt{x^2 + exp(x^2)} + cos(x^2 + exp(x^2))
+    \hfill
+\]
+\begin{table}[H]
+    \begin{minipage}{0.59\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=2cm, keepaspectratio]{Pictures/maths/AutoDiff-ex5.14.png}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.39\linewidth}
+        \begin{table}[H]
+            \centering
+            \renewcommand{\arraystretch}{2}
+            \begin{tabular}{p{2.5cm} l}
+                \textbf{Forward propagation} & \textbf{Backward Propagation} \\ \hline
+                
+                $a = x^2$ & $\dfrac{\partial a}{\partial x} = 2x$ \\
+        
+                $b = exp(a) = e^a$ & $\dfrac{\partial b}{\partial a} = b = e^a$\\
+        
+                $c = a+b$ & $
+                \dfrac{\partial c}{\partial a}=1 
+                \hspace{0.5cm} 
+                \dfrac{\partial c}{\partial b}=1$ \\
+        
+                $d = \sqrt{c} = c^{0.5}$ & $\dfrac{\partial d}{\partial c}=0.5c^{-0.5} = \dfrac{1}{2\sqrt{c}}$ \\
+        
+                $e = cos(c)$ & $\dfrac{\partial e}{\partial c} = -sin(c)$\\
+        
+                $f = d + e$ & $
+                \dfrac{\partial f}{\partial d} = 1 
+                \hspace{0.5cm} 
+                \dfrac{\partial f}{\partial e} = 1$
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+\end{table}
+
+\begin{table}[H]
+    \renewcommand{\arraystretch}{2}
+    \centering
+    \begin{tabular}{l l l}
+        & \textbf{Calculation} & \textbf{Evaluation} \\
+        \hline
+    
+        $\dfrac{\partial f}{\partial c}$ & 
+        $=
+            \dfrac{\partial f}{\partial d}
+            \dfrac{\partial d}{\partial c}
+            +
+            \dfrac{\partial f}{\partial e}
+            \dfrac{\partial e}{\partial c}
+        $ &
+        $=
+            1\cdot \dfrac{1}{2\sqrt{c}}+
+            1\cdot (-sin(c))
+        $\\
+
+        $\dfrac{\partial f}{\partial b}$ &
+        $=
+            \dfrac{\partial f}{\partial c} 
+            \dfrac{\partial c}{\partial b}
+        $ &
+        $
+            = \dfrac{\partial f}{\partial c} \cdot 1
+        $\\
+
+        $\dfrac{\partial f}{\partial a}$ &
+        $=
+            \dfrac{\partial f}{\partial b} 
+            \dfrac{\partial b}{\partial a}
+            +
+            \dfrac{\partial f}{\partial c} 
+            \dfrac{\partial c}{\partial a}
+        $ &
+        $
+            = \dfrac{\partial f}{\partial b}\exp(a)+
+            \dfrac{\partial f}{\partial c}\cdot 1
+        $\\
+
+        $\dfrac{\partial f}{\partial x}$ &
+        $=
+            \dfrac{\partial f}{\partial a}
+            \dfrac{\partial a}{\partial x}
+        $ &
+        $=\dfrac{\partial f}{\partial a}\cdot 2x$
+    \end{tabular}
+\end{table}
 
 
 

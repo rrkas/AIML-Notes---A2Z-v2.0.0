@@ -1,11 +1,11 @@
 \chapter{Vector Semantics and Embeddings \cite{nlp-1}}
 
-\begin{itemize}
+\begin{enumerate}
     \item \textit{Words that occur in similar contexts tend to have similar meanings.}\\ This link between similarity in how words are distributed and similarity in what they mean is called the \textbf{distributional hypothesis} \indexlabel{distributional hypothesis}.
 
     \item \textbf{Word Embeddings} are numeric representations of words in a lower-dimensional space, capturing semantic and syntactic information. \cite{gfg-word-embeddings-in-nlp}
     
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[h!]
     \centering
@@ -28,17 +28,17 @@
 \end{table}
 
 \section{Synonymy \cite{nlp-1}}\label{Synonymy}
-\begin{itemize}
+\begin{enumerate}
     \item when one word has a sense whose meaning is identical to a sense of another word, or nearly identical, we say the two senses of those two words are \textbf{synonyms} \indexlabel{synonyms}.
 
     \item A more formal definition of synonymy (between words rather than senses) is that two words are synonymous if they are substitutable for one another in any sentence without changing the \textbf{truth conditions} of the sentence, the situations in which the sentence would be true.
 
     \item One of the fundamental tenets of semantics, called the \textbf{principle of contrast} \indexlabel{principle of contrast}, states that a difference in linguistic form is always associated with some difference in meaning.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Word Similarity \cite{nlp-1}}\label{Word Similarity}
-\begin{itemize}
+\begin{enumerate}
     \item While words don’t have many synonyms, most words do have lots of similar words.
     
     \item The notion of word \textbf{similarity} is very useful in larger semantic tasks.
@@ -46,29 +46,29 @@
     \item Knowing how similar two words are can help in computing how similar the meaning of two phrases or sentences are, a very important component of tasks like question answering, paraphrasing, and summarization.
 
     
-\end{itemize}
+\end{enumerate}
 
 \section{Word Relatedness/ Association \cite{nlp-1}}\label{Word Relatedness/ Association}
-\begin{itemize}
+\begin{enumerate}
     \item The meaning of two words can be related in ways other than similarity.\\
     \textbf{Example}: Coffee \& cup
 
     \item One common kind of relatedness between words is if they belong to the same \textbf{semantic field} \indexlabel{semantic field}. A semantic field is a set of words which cover a particular semantic domain and bear structured relations with each other.\\
     \textbf{Example}: hospitals (surgeon, scalpel, nurse, anesthetic, hospital)
 
-\end{itemize}
+\end{enumerate}
 
 \section{Semantic Frames and Roles \cite{nlp-1}} \label{Semantic Frames and Roles}
-\begin{itemize}
+\begin{enumerate}
     \item A semantic frame is a set of words that denote perspectives or participants in a particular type of event.
 
     \item Frames have semantic roles (like buyer, seller, goods, money), and words in a sentence can take on these roles.
 
     \item \textbf{Example}: \textbf{Sam bought the book from Ling} could be paraphrased as \textbf{Ling sold the book to Sam}, and that \textbf{Sam} has the role of the \textbf{buyer} in the frame and \textbf{Ling} the \textbf{seller}.
-\end{itemize}
+\end{enumerate}
 
 \section{Connotation \cite{nlp-1}}\label{Connotation}
-\begin{itemize}
+\begin{enumerate}
     \item Connotation means aspects of a word’s meaning that are related to a writer or reader’s emotions, sentiment, opinions, or evaluations.\\
     \textbf{Example}: some words have positive connotations (wonderful) while others have negative connotations (dreary).
 
@@ -77,7 +77,7 @@
 
     \item Positive or negative evaluation language is called \textbf{sentiment}\indexlabel{sentiment}.\\
     \textbf{Example}: positive evaluation (great, love) and negative evaluation (terrible, hate). 
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[h!]
     \centering
@@ -93,7 +93,7 @@
 \end{table}
 
 \section{Vector Semantics \cite{nlp-1}}\label{Vector Semantics}
-\begin{itemize}
+\begin{enumerate}
     \item The idea of vector semantics is to represent a word as a point in a multi-dimensional semantic space that is derived from the distributions of word neighbors.
 
     \item The meaning of a word can be defined by its \textbf{distribution} in language use, meaning its neighboring words or grammatical environments. 
@@ -102,7 +102,7 @@
 
     \item Vectors for representing words are called \textbf{embeddings}\indexlabel{word embeddings}. The word “embedding” derives from its mathematical sense as a mapping from one space or structure to another.
 
-\end{itemize}
+\end{enumerate}
 
 SEE: \fullref{Term Frequancy-Inverse Document Frequency (TF-IDF)}
 

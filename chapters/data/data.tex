@@ -1,12 +1,12 @@
 \chapter{Data}
 
 \section{Types of Data \cite{ir-1}}
-\begin{itemize}
+\begin{enumerate}
     \item “\textbf{unstructured data}”\indexlabel{unstructured data} refers to data which does not have clear, semantically overt, easy-for-a-computer structure.\\
     In reality, almost no data are truly “unstructured”.
 
     \item \textbf{structured data}\indexlabel{structured data}, the canonical example of which is a relational database, of the sort companies usually use to maintain product inventories and personnel records.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Measurement Levels \cite{ism-1}}\label{measurement_levels}
@@ -92,10 +92,10 @@ A quantile $x_q$ is a value that splits the ordered data of a variable x into tw
 
 \subsubsection{Quartiles \cite{ism-1}}\label{Quartiles}
 When q = 0, q = 0.25, q = 0.50, q = 0.75 and q = 1 the quantiles are referred to as the first, second, and third quartiles, respectively.
-\begin{itemize}
+\begin{enumerate}
     \item A cut-off of 0 (0\%) is used to indicate the minimum.
     \item A cut-off of 1 (100\%) is used to indicate the maximum.
-\end{itemize}
+\end{enumerate}
 
 \subsubsection{Deciles \cite{ism-1}}\label{Deciles}
 We call quantiles deciles when q is restricted to the set {0.1, 0.2, ... , 0.9}
@@ -139,25 +139,25 @@ SEE: \hyperref[abs_value]{Absolute Value}
 
 Skewness is used to measure the asymmetry in data and kurtosis is used to measure the “peakedness” of data. Data is considered skewed or asymmetric when the variation on one side of the middle of the data is larger than the variation on the other side.
 
-\begin{itemize}
+\begin{enumerate}
     \item Compare the mean with the median to get an impression of the skewness, since the median and mean are identical under symmetric data, but this measure is more difficult to interpret than $g_1$
     \item Data with skewness values of $|g_1| \leq 0.3$ are considered close to symmetry, since it is difficult to demonstrate that data is skewed when the value for g1 is close to zero.
     \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}
     \centering
     \begin{tabular}{|c|m{13cm}|}
         \hline
-        $g_1 > 0$ & \vspace{0.5cm}\begin{itemize}
+        $g_1 > 0$ & \vspace{0.5cm}\begin{enumerate}
             \item data is called skewed to the right
             \item The values on the right side of the mean are further away from each other than the values on the left side of the mean. In other words, the “tail” on the right is longer than the “tail” on the left.
-        \end{itemize}\vspace{-0.5cm} \\ \hline
+        \end{enumerate}\vspace{-0.5cm} \\ \hline
         $g_1 = 0$ & data is considered symmetric around its mean \\ \hline
-        $g_1 < 0$ & \vspace{0.5cm} \begin{itemize}
+        $g_1 < 0$ & \vspace{0.5cm} \begin{enumerate}
             \item data is called skewed to the left
             \item tail on the left is longer than the tail on the right
-        \end{itemize} \vspace{-1cm} \\ \hline
+        \end{enumerate} \vspace{-1cm} \\ \hline
     \end{tabular}
     \caption{Interpreting skewness ( $g_1$ ) value}
 \end{table}
@@ -167,10 +167,10 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     g_2 = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \left( \dfrac{x_i - \bar{x}}{s} \right)^4 - 3
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item Values of $g_2$ in the asymmetric interval of [-0.5, 1.5] indicate near-mesokurtic data.
     \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}
     \centering
@@ -191,11 +191,11 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     s^2 = \displaystyle\dfrac{\sum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i}{\left( \sum_{i=1}^{n} f_i \right) - 1}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item Frequency $f_j$ for each group $j$
     \item Each group $j$ we need to determine or set the value $x_j$ as a value that belongs to the group, before we can compute these measures.
     \item $n$ : the number of groups
-\end{itemize}
+\end{enumerate}
 
 
 

@@ -80,7 +80,7 @@
 
 \end{adjustwidth}
 
-\begin{itemize}
+\begin{enumerate}
     \item IOU(Intersection over Union) is a term used to describe the extent of overlap of two boxes. 
     
     \item The greater the region of overlap, the greater the IOU.
@@ -88,7 +88,7 @@
     \item IOU is mainly used in applications related to object detection, where we train a model to output a box that fits perfectly around an object.
 
     \item IOU is also used in non max suppression (SEE: \fullref{Non-maximum Suppression (NMS)}), which is used to eliminate multiple boxes that surround the same object, based on which box has a higher confidence.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -96,13 +96,13 @@
 \section{Non-maximum Suppression (NMS) \cite{medium/towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c}}\label{Non-maximum Suppression (NMS)}
 
 \textbf{Input}:
-\begin{itemize}
+\begin{enumerate}
     \item list of proposal boxes $B$
 
     \item corresponding confidence scores $S$
     
     \item overlap threshold $N$
-\end{itemize}
+\end{enumerate}
 
 \noindent \textbf{Output}: list of filtered proposals $D$
 
@@ -176,7 +176,7 @@
     \end{cases}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item $s_i$ : score of proposal $i$ \\
             $b_i$ : box corresponding to proposal $i$ \\
             $M$ : box corresponding to maximum confidence \\
@@ -185,7 +185,7 @@
     \item instead of completely removing the proposals with high IOU and high confidence, \textbf{reduce the confidences} of the proposals proportional to IOU value
 
     
-\end{itemize}
+\end{enumerate}
 
 \begin{algorithm}[h]
     \caption{Soft Non-maximum Suppression (soft-NMS) \cite{medium/towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c,arxiv/1704.04503-soft-nms}}

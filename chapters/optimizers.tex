@@ -25,11 +25,11 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.5\linewidth}
-        \begin{itemize}
+        \begin{enumerate}
             \item Gradient descent is a method for \textbf{unconstrained} mathematical optimization. 
             
             \item It is a \textbf{first-order iterative algorithm} for finding a local minimum of a differentiable multivariate function.
-        \end{itemize}        
+        \end{enumerate}        
     \end{minipage}
 \end{table}
 
@@ -66,75 +66,7 @@ Stochastic gradient is evaluated at the next iterate rather than the current one
     {\displaystyle w^{\text{new}}:=\arg \min _{w}\left\{Q_{i}(w)+{\frac {1}{2\eta }}\left\|w-w^{\text{old}}\right\|^{2}\right\}}
 \]
 
-
-\section{Batch Gradient Descent 
-    VS 
-    Mini-Batch Gradient Descent
-    VS 
-    Gradient Descent (SGD) 
-    \cite{chatgpt}
-}
-
-\begin{longtable}{|p{2.5cm}|p{4cm}|p{3.5cm}|p{3.5cm}|}
-    \caption{
-    Batch Gradient Descent 
-    VS 
-    Mini-Batch Gradient Descent
-    VS 
-    Gradient Descent (SGD) 
-    }\\
-    
-    \hline
-    \textbf{Aspect} & \textbf{Batch Gradient Descent} & \textbf{Mini-Batch Gradient Descent} & \textbf{Gradient Descent (SGD)} \\
-    \hline
-    \endfirsthead
-    
-    \hline
-    \textbf{Aspect} & \textbf{Batch Gradient Descent} & \textbf{Mini-Batch Gradient Descent} & \textbf{Gradient Descent (SGD)} \\
-    \hline
-    \endhead
-    
-    \hline\endfoot
-    \hline\endlastfoot
-    
-    \textbf{Definition} & Updates parameters after computing the gradient on the entire dataset & Updates parameters after computing the gradient on a small batch of data & Updates parameters for each training example \\
-    \hline
-
-    \textbf{Update Frequency} & Low (after the entire dataset) & Medium (after each mini-batch) & High (after each example) \\
-    \hline
-    
-    \textbf{Computation Cost/ Update} & High & Medium & Low \\
-    \hline
-    
-    \textbf{Memory Usage} & High & Medium & Low \\
-    \hline
-    
-    \textbf{Convergence Speed} & Slow & Fast & Fast \\
-    \hline
-    
-    \textbf{Stability of Updates} & Stable (low variance) & Moderate (reduced variance) & Noisy (high variance) \\
-    \hline
-    
-    \textbf{Convergence} & Guaranteed to decrease cost function & More stable convergence than SGD & May not converge to the global minimum \\
-    \hline
-    
-    \textbf{Practical Use} & Suitable for smaller datasets & Suitable for large datasets & Suitable for very large datasets \\
-    \hline
-    
-    \textbf{Hardware Optimization} & Limited & Allows for parallel processing & Limited \\
-    \hline
-    
-    \textbf{Escape Local Minima} & Less likely & Yes (benefits of both SGD and Batch) & Yes (due to noisy updates) \\
-    \hline
-    
-    \textbf{Example Size} & Entire dataset & Mini-batch (subset of dataset) & Single example \\
-    \hline
-    
-    \textbf{Efficiency} & Low for large datasets & High, balancing efficiency and performance & High for very large datasets \\
-    \hline
-
-\end{longtable}
-
+SEE: \fullref{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}
 
 \section{SGD with Momentum \cite{wiki-Stochastic_gradient_descent}}\label{SGD with Momentum}
 Stochastic gradient descent with momentum remembers the update $\Delta w$ at each iteration, and determines the next update as a linear combination of the gradient and the previous update:
@@ -160,13 +92,13 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
     {\displaystyle w_{j}:=w_{j}-{\frac {\eta }{\sqrt {G_{j,j}}}}g_{j}}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item learning rate = $\eta$
 
     \item Each $\{G_{(i,i)}\}$ gives rise to a scaling factor for the learning rate that applies to a single parameter $w_i$.
 
     \item Since the denominator in this factor, ${\displaystyle {\sqrt {G_{i}}}={\sqrt {\sum _{\tau =1}^{t}g_{\tau }^{2}}}}$ is the $l_2$ norm of previous derivatives, extreme parameter updates get dampened, while parameters that get few or small updates receive higher learning rates.    
-\end{itemize}
+\end{enumerate}
 
 
 \section{Resilient backpropagation (Rprop) (1992) \cite{wiki-Rprop,pytorch-Rprop,florian.github.io/rprop}}\label{Resilient backpropagation (Rprop)}
@@ -188,9 +120,9 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 \]
 
 
-\begin{itemize}
+\begin{enumerate}
     \item This is a \textbf{first-order} optimization algorithm.
-\end{itemize}
+\end{enumerate}
 
 \begin{algorithm}[h]
     \caption{Resilient backpropagation (Rprop) (1992) \cite{pytorch-Rprop}}
@@ -243,7 +175,7 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
     {\displaystyle w:=w-{\frac {\eta }{\sqrt {v(w,t)}}}\nabla Q_{i}(w)}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item ${\displaystyle \gamma}$ is the \textbf{forgetting factor}
 
     \item the learning rate is adapted for each of the parameters
@@ -253,7 +185,7 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
     \item The concept of storing the historical gradient as sum of squares is borrowed from Adagrad, but "forgetting" is introduced to solve Adagrad's diminishing learning rates in non-convex problems by gradually decreasing the influence of old data.
 
     \item RMSProp can be seen as a \textbf{generalization} of Rprop and is capable to work with mini-batches as well opposed to only full-batches.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -264,7 +196,7 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 \]
 Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neuron ${\displaystyle j}$, and ${\displaystyle E}$ is the loss function.
 
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{iterative} method
     
     \item \textbf{second order} learning methods
@@ -276,7 +208,7 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
     \item The minimum is sought in the \textbf{vertex} of the parabola.
 
     \item The Quickprop algorithm is an implementation of the \textbf{error backpropagation algorithm}, but the network can behave chaotically during the learning phase due to \textbf{large step sizes}.
-\end{itemize}
+\end{enumerate}
 
 
 
@@ -288,24 +220,24 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
     \theta_{t} = \theta_{t-1} + v_{t}
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item Nesterov Accelerated Gradient is a momentum-based SGD optimizer that "looks ahead" to where the parameters will be to calculate the gradient ex post (Latin: after the event) rather than ex ante (Latin: before the event).
 
     
-\end{itemize}
+\end{enumerate}
 
 
 
 
 \section{Adaptive Moment Estimation (Adam) (2014) \cite{arxiv-1412.6980-adam}}\label{Adaptive Moment Estimation (Adam)}
 
-\begin{itemize}
+\begin{enumerate}
     \item Combines the idea of:
     \begin{enumerate}
         \item \fullref{SGD with Momentum}
         \item \fullref{Root Mean Square Propagation (RMSProp)}
     \end{enumerate}
-\end{itemize}
+\end{enumerate}
 
 \begin{algorithm}[h]
     \caption{Adaptive Moment Estimation (Adam) (2014) \cite{arxiv-1412.6980-adam}}

@@ -4,7 +4,7 @@
 
 % https://towardsdatascience.com/introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7
 
-\begin{itemize}
+\begin{enumerate}
     \item The learner and decision-maker is called the \textbf{agent}.
     \item The thing it interacts with, comprising everything outside the agent, is called the \textbf{environment}.
     \item The agent interacts with the environment over a sequence of discrete \textbf{time steps}, $t = 0, 1, 2, 3, ...$
@@ -24,10 +24,10 @@
     \item Each episode ends in a special state called the \textbf{terminal state}. After the agent reach the terminal state, the game is reset to some starting state.
     \item Tasks with episodes of this kind are called \textbf{episodic tasks}.
     \item There are many situations where the interaction between the agent and the environment goes on continually without a limit (e.g a robot with a long life span), called \textbf{continuing tasks}.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Value Function}
-\begin{itemize}
+\begin{enumerate}
     \item Almost all RL algorithms involve estimating value functions.
     \item $\pi_t(A \mid S)$ is the probability of taking action "$A$" in state "$S$" in time step "$t$" - also called the agent’s policy.
     \item The value of a state $S$ under a policy $\pi$, denoted $V_\pi(s)$, is the expected return when starting in $S$ and following $\pi$ afterwards.
@@ -37,7 +37,7 @@
     \item $V_\pi$ the state-value function for policy $\pi$
     \item It is the expected return starting from state $S$, taking the action $A$, and following policy $\pi$ afterwards.
     \item These 2 value functions ($v_\pi$ and $q_\pi$) can be estimated from experience. Meaning, as the agent continuously interact with the environment, and keeps an average for each state it encountered, of the actual returns that have followed that state. As the interaction approaches infinity, the average will converge to the state’s value $v_\pi(s)$.
-\end{itemize}
+\end{enumerate}
 
 \textbf{Action-Value Function} \cite{medium-Kaushik_Dayalan/bellman-equation-value-functions-reinforcement-learning-b8a0a1cad84f}:
 \[
@@ -67,20 +67,20 @@ since if $\gamma < 1$, the infinite sum has a finite value (as long as the seque
 \end{align*}
 
 \section{Markov Property \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}\label{RL: Markov Property}
-\begin{itemize}
+\begin{enumerate}
     \item Optimally, we would like to have a state signal that summarize the past in such a way that all relevant information is retained.A state signal that is capable of having all of that relevant information from the past, is said to be \textbf{Markov}, or to have the \textbf{Markov property}.
     \item In other words, all the information that we need to predict the future is contained in the state representation that we have.
     \item For example, a Tic-Tac-Toe position - any state (i.e. configuration of all the pieces on the board) - would serve as a \textbf{Markov state} because it summarizes everything important. We shouldn’t care about the past (i.e. the sequence of moves that the opponent chose before). Everything that really matters for the future of the game is retained. We should only care about where we currently are (where are the pieces on the board- its state).
-\end{itemize}
+\end{enumerate}
 
 \[
     p(s',r \mid s,a) = Pr\{R_{t+1} = r, S_{t+1}=s' \mid S_t,A_t\} \hfill (\text{\textbf{dynamic function p}})
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item It allows us to predict the next state ($S'$) and expected next reward ($r$) given the current state ($S$) and action ($a$).
     \item Which basically tells us how the environment is changing as we move from state to state, and taking different actions.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Markov Decision Processes (MDP) \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}\label{RL: Markov Decision Processes (MDP)}
@@ -133,11 +133,11 @@ v_\pi(s)  &= \mathbb{E}_\pi [G_t \mid S_t = s] \\
     &= \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) \left[ r + \gamma v_\pi(s') \right] 
 \end{align*}
 
-\begin{itemize}
+\begin{enumerate}
     \item $\pi(a|s)$ is the probability of taking action "$a$" in state "$s$" under policy $\pi$
     \item It expresses a relationship between the value of a state $S$, and the values of the next state $S'$, following policy $\pi$.
     \item Think about it as “the value of a given a state (where you currently are) depends on what following states are possible”.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[H]
     \begin{minipage}{0.45\linewidth}

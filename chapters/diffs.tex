@@ -1,0 +1,399 @@
+\chapter{Differences}
+
+\section{Supremum VS Maximum \cite{chatgpt}}\label{Supremum VS Maximum}
+
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Point of Difference} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Point of Difference} & \textbf{Supremum} & \textbf{Maximum}\\ \hline
+    \endhead
+
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Inclusion in the Set} & The supremum of a set may or may not be an element of the set. & The maximum of a set must be an element of the set. \\
+    \hline
+    
+    \textbf{Existence} & Every non-empty set bounded above in a complete ordered set (like the real numbers) has a supremum & A maximum exists only if there is at least one element that is greater than or equal to all other elements in the set\\
+    \hline
+
+    \textbf{Relationship} & If the maximum exists for a set S, it is equal to the supremum. In other words, if $max(S)$ exists, then $sup(S) = max(S)$ & If the maximum does not exist, the supremum is still defined as the least upper bound\\
+    \hline
+
+    \textbf{Example} & 
+    \begin{minipage}{5cm}
+        \vspace{0.1cm}
+        $S = \{x \in R | x < 2\}$ \\
+        $sup(S) = 2$\\
+        $max(S)$ doesn’t exist
+        \vspace{0.1cm}
+    \end{minipage} &
+    \begin{minipage}{5cm}
+        \vspace{0.1cm}
+        $S = \{x \in R | x \leq 2\}$ \\
+        $sup(S) = 2$\\
+        $max(S) = 2$
+        \vspace{0.1cm}
+    \end{minipage} \\
+    \hline
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Covariate Shift (Data Shift) VS Concept Shift VS Prior Probability Shift (Label Shift) \cite{chatgpt}} \label{Covariate Shift (Data Shift) VS Concept Shift VS Prior Probability Shift (Label Shift)}
+
+\begin{longtable}{|m{2cm}|m{4.5cm}|m{4.5cm}|m{4.5cm}|}
+    \hline
+    
+    \textbf{Aspect} & \textbf{Covariate Shift (Data Shift)} & \textbf{Concept Shift} & \textbf{Prior Probability Shift (Label Shift)} \\ \hline
+    \endfirsthead
+    
+    \textbf{Aspect} & \textbf{Covariate Shift (Data Shift)} & \textbf{Concept Shift} & \textbf{Prior Probability Shift (Label Shift)} \\ \hline
+    \endhead
+    
+    \hline\endfoot
+    
+    \hline\endlastfoot
+    
+    \textbf{Definition} & Change in the distribution of the input data (features) between training and test sets. & Change in the conditional distribution of the output given the input. & Change in the distribution of the output labels between training and test sets. \\ \hline
+    
+    \textbf{Cause} & Different data sources, sampling methods, or temporal changes affecting features. & Changes in the underlying relationship between features and labels, often due to evolving contexts or environments. & Variations in the frequency or proportion of different labels in the dataset over time. \\ \hline
+
+    \textbf{Effect} & Model performance degradation due to misaligned feature distributions. & Model predictions become inaccurate because the learned relationships are no longer valid. & Bias in predicted label distribution if not accounted for, leading to misclassification. \\ \hline
+
+    \textbf{Detection} & Comparing feature distributions (e.g., using statistical tests like KS test, histograms). & Analyzing the performance metrics over time or checking for changes in decision boundaries. & Comparing label distributions (e.g., using chi-square tests) or through domain knowledge. \\ \hline
+
+    \textbf{Adjustment Techniques} & Reweighting samples, domain adaptation methods, or using robust models. & Regular retraining with updated data, transfer learning, or domain adaptation techniques. & Adjusting model outputs using methods like importance weighting, resampling, or calibration. \\ \hline
+
+    \textbf{Example} & A retail model trained on summer sales data might perform poorly in winter due to changes in purchasing behavior. & A spam detection model might become less effective if spammers change tactics and the nature of spam emails evolves. & A medical diagnosis model might require adjustment if the prevalence of certain diseases changes in the population. \\ \hline
+
+    \textbf{Relevance in Real-world Applications} & High when dealing with non-stationary environments or merging datasets from different sources. & High in dynamic environments where the relationship between input features and output labels can evolve. & High in situations with shifting class distributions, like seasonal changes or demographic shifts. \\ \hline
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Supervised Learning VS Unsupervised Learning VS Reinforcement Learning \cite{chatgpt,medium-numsmt2-rl-ch1-part-1}}\label{Supervised Learning VS Unsupervised Learning VS Reinforcement Learning}
+
+\begin{longtable}{|p{1.6cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Supervised Learning} & \textbf{Unsupervised Learning} & \textbf{Reinforcement Learning} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Supervised Learning} & \textbf{Unsupervised Learning} & \textbf{Reinforcement Learning} \\
+    \hline
+    \endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+    
+    \textbf{Training data} & Labeled data: Input-output pairs are provided for training. & Unlabeled data: Only input data is provided without corresponding output labels. & Trained from examples \& interaction with environment. \\
+    \hline
+    \textbf{Goal} & To learn a mapping from input data to output labels based on examples provided during training. & To find underlying patterns or structures in input data without explicit output labels. & To learn a policy that maximizes the cumulative reward by interacting with the environment. \\
+    \hline
+    \textbf{Feedback} & Direct feedback (error signal) is given during training based on the comparison between predicted output and actual output labels. & No explicit feedback based on labeled data; learning typically involves finding patterns or representations within the data. & Feedback is in the form of rewards or penalties from the environment. \\
+    \hline
+    \textbf{Examples} & Classification, regression tasks. & Clustering, association, dimensionality reduction. & Game playing, robotics, resource management. \\
+    \hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Automatic Differentiation (AutoDiff) VS Backpropagation VS Chain Rule \cite{chatgpt}}\label{Automatic Differentiation (AutoDiff) VS Backpropagation VS Chain Rule}
+
+\begin{longtable}{|p{2cm}|p{5cm}|p{3.5cm}|p{3.5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Automatic Differentiation (AutoDiff)} & \textbf{Backpropagation} & \textbf{Chain Rule} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Automatic Differentiation (AutoDiff)} & \textbf{Backpropagation} & \textbf{Chain Rule} \\
+    \hline\endhead
+    
+    \hline \endfoot
+    
+    \hline\endlastfoot
+    
+    \textbf{Definition} & Techniques for numerically evaluating derivatives of functions & Specific application of reverse mode AutoDiff for training neural networks & Calculus principle for computing derivatives of composed functions \\
+    \hline
+
+    \textbf{Modes} & Forward Mode, Reverse Mode & Reverse Mode & Not applicable \\
+    \hline
+    
+    \textbf{Process} & Breaks down computation into elementary operations & Forward Pass, Loss Computation, Backward Pass & \(\dfrac{dy}{dx} = \dfrac{dy}{du} \cdot \dfrac{du}{dx}\) \\
+    \hline
+    
+    \textbf{Used For} & Computing derivatives in general computational graphs & Training neural networks by computing gradients of the loss function & Computing derivatives of composed functions \\
+    \hline
+    
+    \textbf{Efficiency} & Forward Mode: Efficient for few inputs, many outputs & Efficient for training neural networks due to large number of parameters & Applies to both AutoDiff and Backpropagation \\
+    & Reverse Mode: Efficient for many inputs, few outputs & & \\
+    \hline
+    
+    \textbf{Application} & Any function specified by a computer program & Neural network training (gradient-based optimization) & Fundamental concept in calculus \\
+    \hline
+    
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD) \cite{chatgpt}} \label{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}
+
+\begin{longtable}{|p{2.5cm}|p{4cm}|p{3.5cm}|p{3.5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Batch Gradient Descent} & \textbf{Mini-Batch Gradient Descent} & \textbf{Gradient Descent (SGD)} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Batch Gradient Descent} & \textbf{Mini-Batch Gradient Descent} & \textbf{Gradient Descent (SGD)} \\
+    \hline
+    \endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+    
+    \textbf{Definition} & Updates parameters after computing the gradient on the entire dataset & Updates parameters after computing the gradient on a small batch of data & Updates parameters for each training example \\
+    \hline
+
+    \textbf{Update Frequency} & Low (after the entire dataset) & Medium (after each mini-batch) & High (after each example) \\
+    \hline
+    
+    \textbf{Computation Cost/ Update} & High & Medium & Low \\
+    \hline
+    
+    \textbf{Memory Usage} & High & Medium & Low \\
+    \hline
+    
+    \textbf{Convergence Speed} & Slow & Fast & Fast \\
+    \hline
+    
+    \textbf{Stability of Updates} & Stable (low variance) & Moderate (reduced variance) & Noisy (high variance) \\
+    \hline
+    
+    \textbf{Convergence} & Guaranteed to decrease cost function & More stable convergence than SGD & May not converge to the global minimum \\
+    \hline
+    
+    \textbf{Practical Use} & Suitable for smaller datasets & Suitable for large datasets & Suitable for very large datasets \\
+    \hline
+    
+    \textbf{Hardware Optimization} & Limited & Allows for parallel processing & Limited \\
+    \hline
+    
+    \textbf{Escape Local Minima} & Less likely & Yes (benefits of both SGD and Batch) & Yes (due to noisy updates) \\
+    \hline
+    
+    \textbf{Example Size} & Entire dataset & Mini-batch (subset of dataset) & Single example \\
+    \hline
+    
+    \textbf{Efficiency} & Low for large datasets & High, balancing efficiency and performance & High for very large datasets \\
+    \hline
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Evaluation Metrics VS Criterion}\label{Evaluation Metrics VS Criterion}
+
+\begin{longtable}{|p{2cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Evaluation Metrics} & \textbf{Loss Function (Criterion)} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Aspect} & \textbf{Evaluation Metrics} & \textbf{Loss Function (Criterion)} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+    
+    \textbf{Purpose} & Measure model performance on test or validation data after training. & Quantify error between predicted and actual values to guide optimization during training. \\
+    \hline
+    
+    \textbf{Usage} & Assess model generalization and overall performance. & Internally used by optimizer to update model parameters based on prediction errors. \\
+    \hline
+    
+    \textbf{Focus} & Reflects how well the model generalizes to new, unseen data. & Minimizing error on training data to improve model accuracy. \\
+    \hline
+
+    \textbf{Examples} & Accuracy, precision, recall, F1-score for classification tasks; RMSE, MAE for regression tasks. & MSE (Mean Squared Error), cross-entropy loss for classification tasks, etc. \\
+    \hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Perceptron vs Artificial Neuron \cite{chatgpt}}\label{Perceptron vs Artificial Neuron}
+
+\begin{longtable}{| m{3cm} | m{6cm} | m{6cm} |}
+    
+    \hline
+    \textbf{Feature} & \textbf{Perceptron} & \textbf{Neuron in a Neural Network} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Feature} & \textbf{Perceptron} & \textbf{Neuron in a Neural Network} \\
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+    \textbf{Definition} & A type of artificial neuron used in binary classifiers. & A general computational unit in a neural network. \\
+    \hline
+    
+    \textbf{Activation Function} & Uses a step function (binary output: 0 or 1). & Uses various activation functions (e.g., ReLU, sigmoid, tanh). \\
+    \hline
+    
+    \textbf{Complexity} & Simple and linear. & Can be complex and non-linear. \\
+    \hline
+    
+    \textbf{Learning Rule} & Uses the perceptron learning rule. & Uses more advanced learning rules (e.g., backpropagation). \\
+    \hline
+    
+    \textbf{Output} & Binary output (0 or 1). & Continuous output, depending on the activation function. \\
+    \hline
+    
+    \textbf{Applications} & Suitable for linear classification tasks. & Suitable for both linear and non-linear tasks. \\
+    \hline
+    
+    \textbf{Historical Context} & One of the earliest models of an artificial neuron, introduced by Frank Rosenblatt in 1958. & Evolved from the perceptron, used in modern deep learning. \\
+    \hline
+    
+    \textbf{Layers} & Typically used in single-layer models. & Used in multiple layers (deep networks). \\
+    \hline
+
+    \textbf{Expressive Power} & Limited to linearly separable problems. & Can model complex relationships and patterns. \\
+    \hline
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Connectionism vs ANN \cite{chatgpt,arxiv-2405.04048}}\label{connectionism vs ann}
+
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
+    
+    \hline
+    \textbf{Aspect} & \textbf{Connectionism} & \textbf{Artificial Neural Networks (ANNs)} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Connectionism} & \textbf{Artificial Neural Networks (ANNs)} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    
+    \hline\endlastfoot
+    
+    \textbf{Definition} & Theoretical framework for understanding the mind using interconnected networks of simple units. & Computational models inspired by brain's neural networks, used in machine learning. \\
+    \hline
+    
+    \textbf{Scope} & Broad approach to cognition and brain function. & Specific computational implementations within connectionism. \\
+    \hline
+    
+    \textbf{Focus} & Understanding cognitive processes and brain function. & Practical machine learning applications. \\
+    \hline
+    
+    \textbf{Origins} & Cognitive science and psychology. & Efforts to mimic brain function for computational purposes. \\
+    \hline
+    
+    \textbf{Key Concepts} & Neural networks, learning, parallel distributed processing, emergent properties. & Architecture (layers), activation functions, training (e.g., backpropagation), types (e.g., CNNs, RNNs). \\
+    \hline
+    
+    \textbf{Learning} & Adjusting connection strengths based on experience. & Training involves adjusting weights to minimize prediction errors. \\
+    \hline
+    
+    \textbf{Information Processing} & Parallel and distributed. & Parallel and distributed, with specific architectures (e.g., feedforward, convolutional). \\
+    \hline
+    
+    \textbf{Applications} & Understanding perception, memory, language; modeling psychological phenomena. & Image and speech recognition, natural language processing, autonomous vehicles, medical diagnosis, financial forecasting. \\
+    \hline
+    
+    \textbf{Theoretical Foundation} & Provides conceptual framework for cognition and brain modeling. & Empirical support for connectionist theories, demonstrating learning and task performance. \\
+    \hline
+
+    \textbf{Practical Implementation} & Conceptual approach with some computational models. & Implementations used in AI and machine learning. \\
+    \hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Multilayer Perceptron (MLP) vs Artificial Neural Network (ANN)}\label{mlp vs ann}
+
+
+\begin{longtable}{|>{\raggedright}m{4cm}|>{\raggedright}m{5cm}|>{\raggedright\arraybackslash}m{5cm}|}
+    \hline
+    \textbf{Feature} & \textbf{MLP (Multilayer Perceptron)} & \textbf{ANN (Artificial Neural Network)} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Feature} & \textbf{Multilayer Perceptron (MLP)} & \textbf{Artificial Neural Network (ANN)} \\
+    \hline
+    \endhead
+
+    \hline\endfoot
+    
+    \hline\endlastfoot
+    
+    \textbf{Definition} & A type of ANN with multiple layers & A broad category of machine learning models inspired by the human brain \\
+    \hline
+    
+    \textbf{Structure} & Consists of input, hidden, and output layers & Can have various structures, including MLP, CNN, RNN, etc. \\
+    \hline
+    
+    \textbf{Layers} & Always has at least one hidden layer & Can have any number of layers and types \\
+    \hline
+    
+    \textbf{Neurons} & Fully connected layers of neurons & Can include different types of neurons (e.g., convolutional, recurrent) \\
+    \hline
+    
+    \textbf{Training} & Typically trained with backpropagation & Can be trained with various algorithms depending on the type \\
+    \hline
+    
+    \textbf{Usage} & Commonly used for classification and regression tasks & Used for a wide range of tasks including image recognition, natural language processing, etc. \\
+    \hline
+    
+    \textbf{Complexity} & Generally less complex compared to other ANNs like CNNs and RNNs & Can range from simple to highly complex models \\
+    \hline
+    
+    \textbf{Flexibility} & Less flexible compared to other ANN architectures & Highly flexible with many architectures available \\
+\end{longtable}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

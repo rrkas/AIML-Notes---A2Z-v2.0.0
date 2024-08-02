@@ -12,7 +12,7 @@ It is a measure of how often two events $x$ and $y$ occur, compared with what we
     \rcmdXPMI(w,c) = \log_2\left(\displaystyle\dfrac{P(w,c)}{P(w)P(c)}\right)
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item The \textbf{numerator} tells us how often we observed the two words together (assuming we compute probability by using the MLE).
 
     \item The \textbf{denominator} tells us how often we would \textbf{expect} the two words to co-occur assuming they each occurred independently.
@@ -24,7 +24,7 @@ It is a measure of how often two events $x$ and $y$ occur, compared with what we
     \item Negative PMI values (which imply things are co-occurring less often than we would expect by chance) tend to be unreliable unless our corpora are enormous.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 \section{Positive Pointwise mutual information ( $\rcmdXPPMI(w,c)$ ) \cite{nlp-1}}\label{Positive Pointwise Mutual Information (PPMI)}
@@ -35,20 +35,20 @@ It is a measure of how often two events $x$ and $y$ occur, compared with what we
 
 
 For given co-occurrence matrix $F$:
-\begin{itemize}
+\begin{enumerate}
     \item $W$ rows (words)
     \item $C$ columns (Contexts)
     \item $f_{ij}$ gives the number of times word $w_i$ occurs with context $c_j$
     \item \textbf{PPMI matrix}\indexlabel{PPMI matrix}: 
-    \begin{itemize}
+    \begin{enumerate}
         \item $\rcmdXPPMI_{ij} = \rcmdXPPMI(w_i, c_j) = \rcmdXPPMI(w = i, c = j)$ gives the PPMI value of word $w_i$ with context $c_j$
         
         \item \( \displaystyle P_{ij}=\dfrac{f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}}  \quad\quad P_{i*}=\dfrac{\displaystyle\sum_{j=1}^{C} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \quad\quad P_{*j}=\dfrac{\displaystyle\sum_{i=1}^{W} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \)
         
         \item \( \displaystyle \rcmdXPPMI_{ij} = \max\left( \log_2\left( \dfrac{p_{ij}}{p_{i*}p_{*j}} \right),0\right) \)
         
-    \end{itemize}
-\end{itemize}
+    \end{enumerate}
+\end{enumerate}
 
 \vspace{0.2cm}
 \textbf{Disadvantage}: PMI has the problem of being biased toward infrequent events; very rare words tend to have very high PMI values.

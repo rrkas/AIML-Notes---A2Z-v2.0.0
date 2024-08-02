@@ -16,6 +16,7 @@
 \usepackage[utf8]{inputenc} % Required for including letters with accents
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage{amsmath}
+\setcounter{MaxMatrixCols}{20}
 
 \usepackage{float} % For the H option in the figure environment
 \usepackage{longtable}
@@ -48,6 +49,9 @@
 
 \usepackage{imakeidx}
 \makeindex
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
 
 \usepackage{caption}
 \captionsetup[figure]{labelfont=bf, name=Fig., labelsep=colon}
@@ -137,6 +141,9 @@
     \include{chapters/deep-reinforcement-learning/multi-arm-bandits-problem}
     \include{chapters/deep-reinforcement-learning/Markov-Decision-Processes}
     \include{chapters/deep-reinforcement-learning/solving-rl-problem}
+
+
+    \include{chapters/diffs}
 \end{justify}
 
 

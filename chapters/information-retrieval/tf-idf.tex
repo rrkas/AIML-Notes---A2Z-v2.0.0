@@ -7,13 +7,13 @@ Uses \fullref{Term-document matrix}
 
 \section{Words as vectors: document dimensions \cite{nlp-1}}\label{tf-idf: Words as vectors: document dimensions}
 
-\begin{itemize}
+\begin{enumerate}
     \item Vector semantics can also be used to represent the meaning of words. 
 
     \item We do this row vector by associating each word with a word vector - a \textbf{row vector} rather than a column vector, hence with different dimensions.
 
     \item similar words have similar vectors because they tend to occur in similar documents. The \fullref{Term-document matrix} thus lets us represent the meaning of a word by the documents it tends to occur in.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Words as vectors: word dimensions \cite{nlp-1}} \label{tf-idf: Words as vectors: word dimensions}
@@ -26,7 +26,7 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
 
 \textbf{Raw Dot Product}: \( \displaystyle\mathbf{v \cdot w} = \sum_{i=1}^{N} v_i w_i \)
 
-\begin{itemize}
+\begin{enumerate}
     \item The \textbf{dot product} acts as a similarity metric because it will tend to be high just when the two vectors have large values in the same dimensions. 
     
     \item Vectors that have zeros in different dimensions - orthogonal vectors - will have a dot product of 0, representing their strong dissimilarity.
@@ -38,7 +38,7 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
     \item \textbf{Disadvantage}: This raw dot product, however, has a problem as a similarity metric: it favors long vectors.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 \textbf{Normalized Dot Product}: \( \displaystyle \rcmdXcosine(\mathbf{v,w}) = \dfrac{\mathbf{v\cdot w}}{|\mathbf{v}|\cdot|\mathbf{w}|} = \dfrac{\displaystyle\sum_{i=1}^{N} v_i w_i}{\displaystyle \sqrt{\sum_{i=1}^{N} v_i^2}\sqrt{\sum_{i=1}^{N} w_i^2}} \)
@@ -46,27 +46,27 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
 
 \section{TF-IDF: Weighing terms in the vector \cite{nlp-1}}\label{TF-IDF: concept}
 
-\begin{itemize}
+\begin{enumerate}
     \item raw frequency is \textbf{NOT} the best measure of association between words.\\
     Raw frequency is very skewed and \textbf{NOT} very discriminative.
 
     \item \textbf{Paradox}: Words that occur nearby frequently are more important than words that only appear once or twice. Yet words that are too frequent-ubiquitous, like \textit{the} or \textit{good}- are unimportant.
 
     \item The \textbf{tf-idf weighting} is the product of two terms, each term capturing one of these two intuitions.
-\end{itemize}
+\end{enumerate}
 
 
 \noindent \textbf{SEE}:
-\begin{itemize}
+\begin{enumerate}
     \item \fullref{Document Frequency}
     \item \fullref{Collection frequency}
     \item \fullref{inverse document frequency/ idf term weight}
     \item \fullref{tf-idf weighted value: formula}
-\end{itemize}
+\end{enumerate}
 
 
 \section{Document similarity using tf-idf}
-\begin{itemize}
+\begin{enumerate}
     \item The tf-idf model of meaning is often used for document functions like deciding if two documents are similar.
 
     \item We represent a document by taking the vectors of all the words in the document, and computing the \textbf{centroid} of all those vectors.
@@ -80,7 +80,7 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
 
     
 
-\end{itemize}
+\end{enumerate}
 
 
 

@@ -7,20 +7,20 @@
         \hline
         \textbf{Term} & \textbf{Definition} & \textbf{Example} \\
         \hline
-        \textbf{(Document) Collections} aka \textbf{Corpus} & \vspace{0.2cm}\begin{itemize}
+        \textbf{(Document) Collections} aka \textbf{Corpus} & \vspace{0.2cm}\begin{enumerate}
             \item A group of documents or texts gathered together, often around a specific theme, topic, or source. 
             
             \item Collections can be subsets within a larger corpus.
 
             \item group of documents over which we perform retrieval \cite{ir-1}
-        \end{itemize} & A collection of scientific articles on climate change, or a collection of user reviews from a specific website. \\
+        \end{enumerate} & A collection of scientific articles on climate change, or a collection of user reviews from a specific website. \\
         \hline
         
-        \textbf{Documents} & \vspace{0.3cm}\begin{itemize}
+        \textbf{Documents} & \vspace{0.3cm}\begin{enumerate}
             \item Individual pieces of text within a corpus or a collection. They are the smallest unit of analysis and can vary in length and format.
             
             \item whatever units we have decided to build a retrieval system over. \cite{ir-1}
-        \end{itemize} & A single news article, a research paper, a blog post, or a book chapter. \\
+        \end{enumerate} & A single news article, a research paper, a blog post, or a book chapter. \\
         \hline
         
     \end{tabular}
@@ -32,10 +32,10 @@
     |V| = kN^{\beta} \hfill (0 < \beta < 1 \text{ and } k > 0)
 \]
 
-\begin{itemize}
+\begin{enumerate}
     \item The larger the corpora we look at, the more word types we find.
     \item value of $\beta$ depends on the corpus size and the genre
-\end{itemize}
+\end{enumerate}
 
 \section{Datasheet/ Data statement}\label{Datasheet/ Data statement}
 
@@ -91,7 +91,7 @@ Example:
 
 \section{Term-document matrix \cite{nlp-1}}\label{Term-document matrix}
 
-\begin{itemize}
+\begin{enumerate}
     \item In a term-document matrix, each row represents a word in the vocabulary and each column represents a document from some collection of documents.
     
     \item The term-document matrix was first defined as part of the \textbf{vector space model}\indexlabel{vector space model} of information retrieval. In this model, a document is represented as a count vector.
@@ -101,7 +101,7 @@ Example:
     \item Two documents that are similar will tend to have similar words, and if two documents have similar words their column vectors will tend to be similar.
 
     \item documents can be represented as vectors in a vector space. A \textbf{vector space} (SEE: \fullref{Vector Spaces}) is a collection of vectors, characterized by their dimension.
-\end{itemize}
+\end{enumerate}
 
 Example:
 \begin{table}[h]
@@ -119,7 +119,7 @@ Example:
 
 \section{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-context matrix \cite{nlp-1}}\label{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-context matrix}
 
-\begin{itemize}
+\begin{enumerate}
     \item columns are labeled by words rather than documents. 
     
     \item Dimensionality $|V|\times|V|$ and each cell records the number of times the row (target) word and the column (context) word co-occur in some context in some training corpus.
@@ -129,7 +129,7 @@ Example:
     \item It is most common, however, to use smaller contexts, generally a window around the word, for example of $4$ words to the left and $4$ words to the right, in which case the cell represents the number of times (in some training corpus) the column word occurs in such a $\pm 4$ word window around the row word.
 
     \item Since most of the entries of the matrix are zero these are \textbf{sparse vector representations}.
-\end{itemize}
+\end{enumerate}
 
 Example:
 \begin{table}[h]
@@ -160,13 +160,13 @@ the frequency of the word/ term $t$ in the document $d$.
 
 \section{Document Frequency ( $\rcmdXdf_t$ ) \cite{nlp-1}}\label{Document Frequency}
 
-\begin{itemize}
+\begin{enumerate}
     \item The second factor in tf-idf is used to give a higher weight to words that occur only in a few documents.
 
     \item Terms that are limited to a few documents are useful for discriminating those documents from the rest of the collection; terms that occur frequently across entire collection aren't as helpful.
 
     \item The document frequency $\rcmdXdf_t$ of a word/ term $t$ is the number of documents it occurs in.
-\end{itemize}
+\end{enumerate}
 
 \section{Collection frequency \cite{nlp-1}}\label{Collection frequency}
 total number of times the word appears in the whole collection in any document.
@@ -181,20 +181,20 @@ total number of times the word appears in the whole collection in any document.
 \]
 
 Where,
-\begin{itemize}
+\begin{enumerate}
     \item $N$ is the total number of documents in the collection
     \item $dft$ is the number of documents in which term t occurs.
-\end{itemize}
+\end{enumerate}
 
 \vspace{0.2cm}
 \textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item The fewer documents in which a term occurs, the higher this weight.
 
     \item The lowest weight of $1$ is assigned to terms that occur in all the documents.
 
     
-\end{itemize}
+\end{enumerate}
 
 
 \section{tf-idf weighted value ( $w_{t,d}$ ) \cite{nlp-1}}\label{tf-idf weighted value: formula}
@@ -210,11 +210,11 @@ Where,
     \caption{Inverted Index/ inverted file - example}
 \end{figure}
 
-\begin{itemize}
+\begin{enumerate}
     \item The name is actually redundant: an index always maps back from terms to the parts of a document where they occur. 
     
     \item \textbf{Inverted index}, or sometimes \textbf{inverted file}, has become the standard term in information retrieval.    
-\end{itemize}
+\end{enumerate}
 
 
 \noindent \textbf{Steps}:
@@ -236,7 +236,7 @@ Where,
 
 
 \noindent\textbf{Note}:
-\begin{itemize}
+\begin{enumerate}
     \item each document has a \textbf{unique serial number}, known as the \textbf{document identifier}\indexlabel{docID: document identifier} ($docID$).\\
     During index construction, we can simply assign \textbf{successive integers} to each new document when it is first encountered.\\
     The input to indexing is a list of normalized tokens for each document, which we can equally think of as a list of pairs of term and $docID$.
@@ -260,7 +260,7 @@ Where,
     The latter are much larger, but the dictionary is commonly kept in \textbf{memory}, while postings lists are normally kept on \textbf{disk}, so the size of each is important.
 
     \item A fixed length array would be wasteful as some words occur in many documents, and others in very few. For an in-memory postings list, two good alternatives are \textbf{singly linked lists} or \textbf{variable length arrays}.
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{Singly linked lists} allow cheap insertion of documents into postings lists, which require additional pointers.
 
         \item \textbf{Variable length arrays} win in space requirements by avoiding the overhead for pointers and in time requirements because their use of \textbf{contiguous memory} increases speed on modern processors with memory caches.\\
@@ -269,10 +269,10 @@ Where,
 
         \item We can also use a hybrid scheme with a linked list of fixed length arrays for each term.\\
         When postings lists are stored on disk, they are stored (perhaps compressed) as a contiguous run of postings without explicit pointers, so as to minimize the size of the postings list and the number of disk seeks to read a postings list into memory.
-    \end{itemize}
+    \end{enumerate}
 
     
-\end{itemize}
+\end{enumerate}
 
 \noindent \textbf{Example}:
 \begin{table}[h]
