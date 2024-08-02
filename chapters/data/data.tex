@@ -9,18 +9,22 @@
 \end{enumerate}
 
 
-\section{Measurement Levels \cite{ism-1}}\label{measurement_levels}
-\renewcommand{\arraystretch}{1.5}
+\section{Measurement Levels \cite{ism-1}} \label{measurement_levels}
 \begin{table}[h!]
     \centering
-    \begin{tabular}{|l|c|c|c|c|}
+    \begin{tabular}{|p{5cm}|c|c|c|c|}
         \hline
-        & \multicolumn{2}{c|}{Categorical Data} & \multicolumn{2}{c|}{Numerical Data} \\ \hline
-        & Nominal & Ordinal & Interval & Ratio \\ \hline
-        distinction between groups / individuals & YES & YES & YES & YES \\ \hline
-        Logical Order & & YES & YES & YES \\ \hline
-        provides a magnitude of the differences in some unit & & & YES & YES \\ \hline
-        a clear reference point or ``0'' & & & & YES \\ \hline
+        & \multicolumn{2}{c|}{\textbf{Categorical Data}} & \multicolumn{2}{c|}{\textbf{Numerical Data}} \\ \hline
+        
+        & \textbf{Nominal} & \textbf{Ordinal} & \textbf{Interval} & \textbf{Ratio} \\ \hline
+        
+        \textbf{Distinction between groups / individuals} & YES & YES & YES & YES \\ \hline
+        
+        \textbf{Logical Order} & & YES & YES & YES \\ \hline
+        
+        \textbf{Provides a magnitude of the differences in some unit} & & & YES & YES \\ \hline
+        
+        \textbf{A clear reference point or "0"} & & & & YES \\ \hline
     \end{tabular}
     \caption{Measurement Levels}
     \label{tab:data_comparison}
@@ -61,11 +65,11 @@
 
             Cumulative Frequency \cite{ism-1} \indexlabel{cumulative frequency} & Cumulative frequency for a specific value xj is given by: \(\sum_{k=1}^{j} f_k\) \\ \hline
             
-            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & \(\displaystyle\dfrac{f_j}{\sum_{k=1}^{n} f_k}\) \\ 
+            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & \(\displaystyle\dfrac{f_j}{\displaystyle\sum_{k=1}^{n} f_k}\) \\ 
             
             \hline
 
-            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \(\displaystyle\dfrac{\sum_{k=1}^{j} f_k}{\sum_{k=1}^{n} f_k}\)  \\ \hline
+            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \( {\displaystyle\dfrac{\displaystyle\sum_{k=1}^{j} f_k}{\displaystyle\sum_{k=1}^{n} f_k}} \)  \\ \hline
         \end{tabular}
         \caption{Types of Data Frequency}
     \end{table}
@@ -87,21 +91,21 @@ The median is a value that divides the ordered data from small to large (or larg
 \subsubsection{Trimmed Mean \cite{ism-1}}\label{Trimmed Mean}
 A trimmed mean is a compromise between mean and median. A 10\% trimmed mean, for example, would be computed by \textbf{eliminating} the smallest 10\% and the largest 10\% of the sample and then averaging what remains.
 
-\subsubsection{Quantiles \cite{ism-1}}\label{Quantiles}
-A quantile $x_q$ is a value that splits the ordered data of a variable x into two parts: $q \dot 100\%$ of the data is below the value xq and $(1 - q) \dot 100\%$ of the data is above. The parameter q can take any value in the interval [0, 1].
+\subsubsection{Quantiles ( $x_q$ ) \cite{ism-1}}\label{Quantiles}
+A quantile $x_q$ is a value that splits the ordered data of a variable $x$ into two parts: $q \cdot 100\%$ of the data is below the value $x_q$ and $(1 - q) \cdot 100\%$ of the data is above. The parameter $q$ can take any value in the interval $[0, 1]$.
 
 \subsubsection{Quartiles \cite{ism-1}}\label{Quartiles}
-When q = 0, q = 0.25, q = 0.50, q = 0.75 and q = 1 the quantiles are referred to as the first, second, and third quartiles, respectively.
+When $q = 0, q = 0.25, q = 0.50, q = 0.75$ and $q = 1$ the quantiles are referred to as the first, second, and third quartiles, respectively.
 \begin{enumerate}
-    \item A cut-off of 0 (0\%) is used to indicate the minimum.
-    \item A cut-off of 1 (100\%) is used to indicate the maximum.
+    \item A cut-off of $0 (0\%)$ is used to indicate the \textbf{minimum}.
+    \item A cut-off of $1 (100\%)$ is used to indicate the \textbf{maximum}.
 \end{enumerate}
 
 \subsubsection{Deciles \cite{ism-1}}\label{Deciles}
-We call quantiles deciles when q is restricted to the set {0.1, 0.2, ... , 0.9}
+We call quantiles deciles when $q$ is restricted to the set $\{0.1, 0.2, ... , 0.9\}$
 
 \subsubsection{Percentiles \cite{ism-1}}\label{Percentiles}
-We call quantiles percentiles when the q is restricted to {0.01, 0.02, 0.03, ... , 0.99}.
+We call quantiles percentiles when the $q$ is restricted to $\{0.01, 0.02, 0.03, ... , 0.99\}$.
 
 \subsection{Range \cite{ism-1}}\label{Range}
 Range is the difference between the maximum and minimum.

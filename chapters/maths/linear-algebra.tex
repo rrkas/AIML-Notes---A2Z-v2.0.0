@@ -1296,13 +1296,168 @@ is an affine mapping from $V$ to $W$. The vector $\mathbf{a}$ is called the \tex
 \end{enumerate}
 
 
+\section{Bilinear mapping ( $\Omega$ )}\label{Bilinear mapping}
+
+Let $V$ be a vector space and $\Omega  : V × V \to R$ be a bilinear mapping that takes two vectors and maps them onto a real number. Then
+\begin{enumerate}
+    \item $\Omega$  is called symmetric if $\Omega (x, y) = \Omega (y, x)$ for all $x, y \in  V$ , i.e., the order of the arguments does not matter
+
+    \item $\Omega$  is called positive definite if $\forall x \in  V\backslash \{0\} : \Omega (x, x) > 0 , \Omega (0, 0) = 0$
+\end{enumerate}
+
+\vspace{0.2cm}
+A bilinear mapping $\Omega $ is a mapping with two arguments, and it is linear in each argument, i.e., when we look at a vector space $V$ then it holds that for all $x, y, z \in V, \lambda , \Psi \in R$ that:
+\begin{enumerate}
+    \item $\Omega (\lambda x + \Psi y, z) = \lambda \Omega (x, z) + \Psi\Omega (y, z)$
+    \item $\Omega (x, \lambda y + \Psi z) = \lambda \Omega (x, y) + \Psi\Omega (x, z)$
+\end{enumerate}
 
 
 
+\section{Rotation ( $\Phi$ ) \& Rotation Matrix ($R(\theta )$ ) \cite{mfml-1}}\label{Rotation and Rotation Matrix}
+
+\begin{enumerate}
+    \item A rotation is a linear mapping (more specifically, an automorphism of a \textbf{Euclidean vector space}\indexlabel{Euclidean vector space}) that rotates a plane by an angle $\theta$  about the origin, i.e.,the origin is a fixed point. 
+
+    \item For a positive angle $\theta  > 0$, by common convention, we rotate in a \textbf{counter-clockwise direction}.
+
+    \item Rotations $\Phi$  are linear mappings so that we can express them by a \textbf{rotation matrix} $R(\theta )$
+
+    \item rotation performs a \textbf{basis change}
+\end{enumerate}
+
+\subsection{Rotation in $2$-D $R^2$ \cite{mfml-1}}\label{Rotation in 2-D}
+
+\begin{enumerate}
+    \item Rotation about a point (origin $[0, 0]^\top$)
+    \[
+        \hfill
+        \Phi(e_1) =
+        \begin{bmatrix}
+            cos(\theta) \\ 
+            sin(\theta)
+        \end{bmatrix}
+        \hfill
+        \Phi(e_2) =
+        \begin{bmatrix}
+            -sin(\theta)\\
+            cos(\theta)  
+        \end{bmatrix}
+        \hfill
+    \]
+    \[
+        \hfill
+        R(\theta) = 
+        \begin{bmatrix}
+            \Phi(e_1) & \Phi(e_2)
+        \end{bmatrix} =
+        \begin{bmatrix}
+            cos(\theta) & -sin(\theta)\\ 
+            sin(\theta) & cos(\theta)
+        \end{bmatrix}
+        \hfill
+    \]
+\end{enumerate}
 
 
+\subsection{Rotation in $3$-D $R3$ \cite{mfml-1}} \label{Rotation in 3-D}
+
+\begin{enumerate}
+    \item Rotation about a $1$-d axis:
+    \begin{enumerate}
+        \item Rotation about the $e_1$-axis:
+        \[
+            R_1(\theta) =
+            \begin{bmatrix}
+                \Phi(e_1) & \Phi(e_2) & \Phi(e_3)
+            \end{bmatrix} =
+            \begin{bmatrix}
+                1 & 0 & 0\\
+                0 & cos(\theta) & -sin(\theta) \\
+                0 & sin(\theta) & cos(\theta)
+            \end{bmatrix}
+        \]
+
+        \item Rotation about the $e_2$-axis:
+        \[
+            R_2(\theta) =
+            \begin{bmatrix}
+                cos(\theta) & 0 & sin(\theta) \\
+                0 & 1 & 0\\
+                -sin(\theta) & 0 & cos(\theta)
+            \end{bmatrix}
+        \]
+
+        \item Rotation about the $e_3$-axis:
+        \[
+            R_3(\theta) =
+            \begin{bmatrix}
+                cos(\theta) & -sin(\theta) & 0 \\
+                sin(\theta) & cos(\theta) & 0 \\
+                0 & 0 & 1 \\
+            \end{bmatrix}
+        \]
+    \end{enumerate}
+
+\end{enumerate}
 
 
+\subsection{Givens Rotation (Rotation in $n$-D) $R^n$}\label{Givens Rotation (Rotation in n-D)}
+
+Let $V$ be an $n$-dimensional Euclidean vector space and $\Phi : V \to V$ an automorphism with transformation matrix:
+
+\[
+    R_{ij}(\theta) :=
+    \begin{bmatrix}
+        I_{i-1} & 0 & \cdots & \cdots & 0\\
+        0 & cos(\theta) & 0 & -sin(\theta) & 0 \\
+        0 & 0 & I_{j-i-1} & 0 & 0 \\
+        0 & sin(\theta) & 0 & cos(\theta) & 0 \\
+        0 & \cdots & \cdots & 0 & I_{n-j} \\
+    \end{bmatrix} \in R^{n\times n}
+    \hfill
+    (1 \leq i < j \leq n \text{ and } \theta  \in R)
+\]
+
+$R_{ij}(\theta )$ is the identity matrix In with:
+\[
+    \hfill
+    r_{ii} = cos(\theta )
+    \hfill
+    r_{ij} = -sin(\theta )
+    \hfill
+    r_{ji} = sin(\theta )
+    \hfill
+    r_{jj} = cos(\theta )
+    \hfill
+\]
+
+
+\begin{enumerate}
+    \item for $2$-D ($n=2$), its a special case
+\end{enumerate}
+
+\noindent
+\textbf{Properties}:
+\begin{enumerate}
+    \item Rotations preserve distances, i.e., $||x-y|| = ||R_\theta (x) - R_\theta (y)||$
+
+    \item rotations leave the distance between any two points unchanged after the transformation
+
+    \item Rotations preserve angles, i.e., the angle between $R_\theta x$ and $R_\theta y$ equals the angle between $x$ and $y$
+
+    \item Rotations in three (or more) dimensions are generally not commutative. Therefore, the order in which rotations are applied is important, even if they rotate about the same point. 
+
+    \item Only in two dimensions vector rotations are commutative, such that 
+    \[
+        R(\phi)R(\theta ) = R(\theta )R(\phi)
+        \hfill
+        (\phi, \theta  \in [0, 2\pi))
+    \]
+
+    \item They form an Abelian group (with multiplication) only if they rotate about the same point (e.g., the origin)
+
+\end{enumerate}
 
 
 
