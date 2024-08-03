@@ -1,0 +1,162 @@
+\chapter{Statistics: Sampling Plans \cite{ism-1}}
+
+\section*{Intro \cite{ism-1}}
+
+\begin{longtable}{p{4cm} p{10cm}}
+    $S_k = \{i_1,i_2,\cdots,i_n\}$ & Sample \\
+
+    $i_h \in \{1, 2, 3,\cdots, N\}$ & index of unit (wrt population) \\
+
+    $\Omega = \{1, 2, 3, \cdots, N\}$ & units of population \\
+
+    $\pi_k$ & Probability of choosing sample $S_k$ from population\\
+
+    $p_k$ & Probability of choosing unit $i_k$ from population\\
+\end{longtable}
+
+A formal or mathematical definition for collecting a random sample of size $n$ from a population of units indicated by $\Omega = \{1, 2, 3, \cdots, N\}$, $N \geq n$, can be described as follows:
+
+\begin{enumerate}
+    \item $S_k = \{i_1,i_2,\cdots,i_n\}$  where $i_h \in \{1, 2, 3,\cdots, N\}$ and all indices unique ($i_h \neq i_l$ when $h \neq l$)
+
+    \item Let $S_1, S_2, \cdots, S_K$ be subsets of the population $\Omega$, $S_k \subset \Omega$, $k = 1, 2,\cdots, K$, such that each subset $S_k$ has $n$ \textbf{unique units} from $\Omega$ and the union of all units from $S_1, S_2,\cdots, S_K$ forms the whole population $\Omega$, i.e., ${\displaystyle \Omega = \bigcup_{k=1}^{K} S_k}$
+    
+    \item each subset $S_k$ is attached a probability $\pi_k$ such that $\pi_k > 0$, for all $k = 1, 2,\cdots, K$, and ${\displaystyle \sum_{k=1}^{K} \pi_k = 1}$
+
+    \item A random sample of size $n$ is obtained by drawing just one number from $1, 2, 3,\cdots, K$ using the probabilities $\pi_1, \pi_2, \pi_3,\cdots,\pi_K$
+
+    \item The set of samples $S_1, S_2,\cdots, S_K$ with their probabilities $pi_1, pi_2, pi_3,\cdots ,pi_K$ is referred to as a \textbf{sampling plan}.
+
+    \item Subsets $S_1, S_2, \cdots, S_K$ can be assumed to be unique, $S_k \neq S_l$ when $k \neq l$, since otherwise we can create a unique set by adding the probabilities for the subsets that are equal.
+
+    \item This does not mean that there is no overlap in units from different subsets, i.e., we do \textbf{NOT} require $S_k \cap S_l = \varnothing$.
+
+    \item sets $S_1, S_2,\cdots, S_K$ and the probabilities $\pi_1, \pi_2, \pi_3,\cdots,\pi_K$ result in a set of probabilities $p_1, p_2, p_3,\cdots, p_N$ for units $1, 2, 3,\cdots, N$ in the population $\Omega$, with $p_i > 0$
+
+    \item With every sample $S_k$ we have observed a vector of observations $\hat{x}_k^\top = (x_{i_1},\cdots,x_{i_n})$ where  $^\top$ indicates transpose
+
+\end{enumerate}
+
+
+\section{Descriptive statistic ($\hat{\theta}_k = T(x_k)$) \cite{ism-1}}\label{Descriptive statistic}
+
+\begin{enumerate}
+    \item it is used as an estimate for the population parameter $\theta$, with $T$ a function applied to the observed data
+
+    \item In many cases the function $T$ is identical to the calculation $\theta$ at the population level, but alternative functions may be used depending on the sampling plan.
+
+    \item The function $T$ is referred to as the estimator.
+
+    \item Expected population parameter: $\mathbb{E}(T) = \displaystyle\sum_{k=1}^{K} \hat{\theta}_k\pi_k$
+\end{enumerate}
+
+
+\section{
+Bias (${
+    bias = ( \sum_{k=1}^{K} \hat{\theta}_k\pi_k )
+     - \theta = \mathbb{E}(T) - \theta
+}$) 
+\cite{ism-1}}\label{sampling plans: Bias}
+
+\begin{enumerate}
+    \item the bias is the \textbf{difference} between the weighted average of the sample estimate $\hat{\theta}_k$’s and the true population parameter $\theta$.
+
+    \item The bias of an estimator is the difference between this estimator’s expected value and the true population value.
+
+    \item A small bias of an estimator under a sampling plan does not guarantee that individual sample results $\hat{\theta}_k$ are actually close to the population parameter $\theta$; it just states that they are close on average, if we were to sample over and over again.
+
+    \item if the bias is small, $\mathbb{E}(T)$ is close to the parameter value $\theta$.
+
+    
+\end{enumerate}
+
+\subsection{Unbiased estimator} \label{Unbiased estimator}
+
+If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly take samples using our sampling plan and repeatedly compute our statistic of interest, the average over all of those statistics is equal to the true population parameter.
+
+\section{Mean Squared Error (MSE) \cite{ism-1}}
+\[
+    \hfill
+    MSE = \displaystyle\sum_{k=1}^{K}
+    (\hat{\theta}_k - \theta)^2 \pi_k
+    \hfill
+    MSE = SE^2 + (\mathbb{E}(T) - \theta)^2
+    \hfill
+\]
+
+\begin{enumerate}
+    \item To capture the variability in the sample results  $\hat{\theta}_k$ ($k = 1\cdots K$) with respect to the true value $\theta$, we use the so-called mean squared error (MSE).
+
+    \item The MSE measures the weighted average squared distance of the sample results $\hat{\theta}_k$ ($k = 1\cdots K$) from the population parameter $\theta$.
+
+    \item The weights are again determined by the sampling probabilities. 
+
+    \item Often, the smaller the MSE the better the sampling plan.
+
+    \item If the MSE is small, the variability of the $\hat{\theta}_k$’s around $\theta$ is small, while if the MSE is large, the variability around $\theta$ is large.
+
+    \item if the sampling plan is unbiased and thus $\mathbb{E}(T) = \theta$, the RMSE and the SE are identical.
+
+\end{enumerate}
+
+
+\section{Root Mean Squared Error (RMSE) \cite{ism-1}}
+\[
+    \hfill
+    RMSE = \sqrt{MSE}
+    \hfill
+    RMSE = \sqrt{SE^2 + (\mathbb{E}(T) - \theta)}
+    \hfill
+\]
+
+\begin{enumerate}
+    \item Often, the smaller the RMSE the better the sampling plan.
+
+    \item RMSE is \textbf{NEVER} smaller than the SE
+\end{enumerate}
+
+
+\section{Standard Error (SE)}
+
+\[
+    \hfill
+    SE = \sqrt{
+        \displaystyle\sum_{k=1}^{K}
+        (\hat{\theta}_k - \mathbb{E}(T))^2\pi_k
+    }
+    \hspace{1cm}
+    SE = \sqrt{RMSE^2 - (\mathbb{E}(T) - \theta)^2}
+    = \sqrt{MSE - (\mathbb{E}(T) - \theta)^2}
+    \hfill
+\]
+
+\begin{enumerate}
+    \item It represents the variability of the sampling plan with respect to the expected population parameter $E(T)$ instead of using the true population parameter $\theta$.
+
+    \item Note that the standard error of an estimator is used as a measure to represent our uncertainty regarding an estimate.
+
+    \item If the SE is small, the variability of the $\hat{\theta}_k$’s around $E(T)$ is small.
+
+    \item if the sampling plan is unbiased and thus $E(T) = \theta$, the RMSE and the SE are identical.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
