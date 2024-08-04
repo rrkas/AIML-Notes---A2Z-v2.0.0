@@ -141,6 +141,224 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
 
 \end{enumerate}
 
+\section{Estimation of the Population Proportion ($\eta$) \cite{ism-1}}\label{Estimation of the Population Proportion}
+
+\begin{enumerate}
+    \item Population proportions are very much similar to population means
+
+    \item The population values $z_1, z_2,\cdots,z_N$ are now represented by binary values, i.e., $z_i \in \{0, 1\}$, and the population proportion $\eta$ is obtained by the fraction of units with the value $1$.
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+        \hline
+        & \textbf{Population} & \textbf{Sample} \\
+        \hline
+        
+        \textbf{Mean/ Average} & $
+            \eta = \dfrac{1}{N} \displaystyle\sum_{i=1}^N z_i
+        $ & $
+            \hat{\eta}_k = \dfrac{1}{n} 
+            \displaystyle\sum_{i\in S_k} z_i
+        $\\[2ex]
+        \hline
+
+        \textbf{Variance} & 
+        \begin{minipage}{\linewidth}
+            \vspace{0.1cm}
+            \[
+                \sigma^2 = \dfrac{1}{N}
+                \displaystyle\sum_{i=1}^{N} (z_i - \eta)^2
+                = \dfrac{1}{N}
+                \displaystyle\sum_{i=1}^{N} z_i^2 - \eta^2
+            \]
+            \[
+                \sigma^2 = \dfrac{1}{N}
+                \displaystyle\sum_{i=1}^{N} (x_i - \mu)^2
+            \]
+            \vspace{0.1cm}
+        \end{minipage} & 
+        \begin{minipage}{\linewidth}
+            \vspace{0.1cm}
+            \begin{enumerate}
+                \item \textbf{Unbiased}
+                \[
+                    s_k^2 = \dfrac{1}{n-1}
+                    \displaystyle\sum_{i\in S_k}
+                    (z_i - \hat{\eta}_k)^2
+                    = \dfrac{n\hat{\eta}_k(1-\hat{\eta}_k)}{n-1}
+                \]
+
+                \item \textbf{Biased}
+                \[
+                    s_k^2 = \dfrac{1}{n}
+                    \displaystyle\sum_{i\in S_k}
+                    (x_i - \hat{x}_k)^2
+                \]
+            \end{enumerate}
+            \vspace{0.1cm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\section{Estimation of the Population Variance \cite{ism-1}} \label{Estimation of the Population Variance}
+
+\begin{longtable}{|p{2cm}|p{12cm}|}
+    \hline
+
+    \textbf{Sample Variance} & \vspace{0.01cm} $
+        s_k^2 = \dfrac{1}{n-1}
+        \displaystyle\sum_{i\in S_k} (x_i \bar{x}_k)^2
+    $ \vspace{0.1cm} \\
+    \hline
+
+    \textbf{Sample Estimator} & \vspace{0.01cm} $
+        \dfrac{N-1}{Nn} \displaystyle\sum_{i\in S_k}
+        (x_i \bar{x}_k)^2
+        = \dfrac{(N-1)s_k^2}{N}
+    $ \vspace{0.1cm}\\
+    \hline
+
+    \textbf{Expected Value} & \vspace{0.01cm} $
+        \dfrac{(n-1)\sigma^2}{n}
+    $ \vspace{0.1cm} \\
+    \hline
+
+    \textbf{Bias} & \vspace{0.01cm} $
+        -\sigma^2/n
+    $ \vspace{0.1cm} \\
+    \hline
+
+    \textbf{Degrees of Freedom (DOF)} & $n-1$\\
+    \hline
+
+    \textbf{MSE} & \vspace{0.1cm} $
+        MSE\left( \dfrac{Ns_k^2}{N-1} \right)
+        = \sigma^4 \left[ 
+            \dfrac{
+                (N-n)(N-1)(Nn-N-n-1)
+            }{
+                N(N-2)(N-3)n(n-1)
+            }\gamma_2
+            + \dfrac{2(N-n)}{(N-2)(n-1)}
+        \right]
+    $ \vspace{0.1cm} \\
+    \hline
+
+    \textbf{Population excess kurtosis} & $
+        \gamma_2 = \dfrac{1}{N\sigma^4}
+        \displaystyle\sum_{i=1}^{N} (x_i-\mu)^4 - 3
+    $\\
+    \hline
+\end{longtable}
+
+\begin{enumerate}
+    \item MSE of the estimator $\dfrac{(N-1)s_k^2}{N}$ is close to $\dfrac{2\sigma^4}{n-1}$
+
+    \item when the population size is large, the MSE is approximately $\sigma^4\left( \dfrac{\gamma_2}{n} + \dfrac{2}{n-1} \right)$
+\end{enumerate}
+
+
+\section{Estimation of the MSE \cite{ism-1}} \label{Estimation of the MSE}
+
+\begin{longtable}{|p{3cm}|p{11cm}|}
+    \hline
+
+    \textbf{estimator of the squared variance $\sigma^4$} & 
+    \[
+        \dfrac{(N-1)^2 s_k^4}{N^2}
+    \] \\
+    \hline
+
+    \textbf{estimator of the precision of the variance estimator} & \[
+        \dfrac{(N-1)s_k^2}{N}
+    \]\\
+    \hline
+
+    \textbf{estimator of the MSE} & \[
+        \dfrac{(N-1)^2 s_k^4}{N^2}
+        \left[ 
+            \dfrac{
+                (N-n)(N-1)(Nn-N-n-1)
+            }{
+                N(N-2)(N-3)n(n-1)
+            }g_2
+            + \dfrac{2(N-n)}{(N-2)(n-1)}
+        \right]
+    \]\\
+    \hline
+
+    \textbf{in case we deal with large populations} & \[
+        s_k^4\left( 
+            \dfrac{g_2}{n} + \dfrac{2}{n-1} 
+        \right)
+    \]\\
+    \hline
+\end{longtable}
+
+\section{Methods of Estimation \cite{ism-1}} \label{Methods of Estimation}
+
+\begin{enumerate}
+    \item estimators obtained using either MME or MLE are themselves sample statics ($T_n$) and we can study their distribution functions
+\end{enumerate}
+
+\subsection{Method of Moments Estimation (MME)} \label{Method of Moments Estimation (MME)}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l}
+        $f_\theta$ & population density \\
+
+        $\theta$ & set of parameters ($\theta = (\theta_1, \theta_2,\cdots,\theta_m)^\top$)\\
+
+        $f_\theta(k)$ & probability that $X$ is equal to $k$\\
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}
+    \item central moments:
+    \begin{enumerate}
+        \item Continuous: 
+        \[
+            \mu _r ( f_\theta  ) 
+            = E(X - \mu ( f_\theta  ))^r 
+            = \int_\mathbb{R} (x - \mu ( f_\theta  ))^r f_\theta  (x) dx
+        \]
+
+        \item Discrete: 
+        \[
+            \mu _r ( f_\theta  ) 
+            = E(X - \mu ( f_\theta  ))^r 
+            = \sum_{k=0}^{\theta} (k - \mu ( f_\theta  ))^r f_\theta  (k)
+        \]
+    \end{enumerate}
+
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
