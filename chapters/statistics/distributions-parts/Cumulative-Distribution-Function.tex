@@ -1,0 +1,149 @@
+\section{Cumulative Distribution Function (CDF) ($F(x)$) \cite{ism-1,mfml-1}}\label{Cumulative Distribution Function (CDF)}
+
+\begin{enumerate}
+    \item When the target space $T$ is continuous, e.g., the real line $\mathbb{R}$, it is more natural to specify the probability that a random variable $X$ is in an interval, denoted by $P(a \leq X \leq b)$ for $a < b$. \cite{mfml-1}
+    \item By convention, we specify the probability that a random variable $X$ is less than a particular value $x$, denoted by $P(X \leq x)$. \cite{mfml-1}
+    \item The expression $P(X \leq x)$ for a continuous random variable $X$ is known as the \textbf{cumulative distribution function}. \cite{mfml-1}
+
+\end{enumerate}
+
+\begin{align*}
+    F(x) 
+    = \begin{cases}
+        Pr(X < x) = \displaystyle\int_{-\infty}^{x} f(z) dz & \text{ (Continuous)}\\[2ex]
+        Pr(X \leq x) = \displaystyle\sum_{k=0}^x f(k) & \text{ (Discrete)}\\
+    \end{cases}
+\end{align*}
+
+
+\begin{enumerate}
+    \item $f(z)$ is PDF of given distribution
+
+    \item $F(x)$ is called distribution function/ cumulative distribution function (CDF)
+
+    \item Each distribution function typically satisfies three conditions:
+    \begin{enumerate}
+        \item When the value $x$ increases to infinity, the distribution function becomes equal to one, i.e., $\displaystyle\lim_{x\to \infty} F(x) = 1$
+
+        \item When the value $x$ decreases to minus infinity the distribution function becomes equal to zero, i.e., $\displaystyle\lim_{x\to-\infty} F(x) = 0$
+
+        \item The distribution function is a \textbf{non-decreasing} function, i.e.,
+        \[
+            x_1 \leq x_2 \Rightarrow F(x_1) \leq F(x_2)
+        \]
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\begin{longtable}{|p{3cm}|p{9cm}|}
+    \hline
+
+    \textbf{Population Mean (first moment) ($\mu$)} & $\mu = \mathbb{E}(X)$\\
+    \hline
+
+    \textbf{$p$th moment of $X$} & $\psi(x) = x^p$ \\
+    \hline
+
+    \textbf{$p$th central moment of $X$} & $\psi(x) = (x - \mu)^p$ \\
+    \hline
+
+    \textbf{Skewness ($\gamma_1$)} & \vspace{0.01cm} $\gamma_1 = \dfrac{\mathbb{E}(X - \mu)^3}{\sigma^3}$ \vspace{0.1cm} \\[1ex]
+    \hline
+
+    \textbf{Kurtosis ($\gamma_2$)} & \vspace{0.01cm} $\gamma_2 = \dfrac{\mathbb{E}(X - \mu)^4}{\sigma^4} - 3$ \vspace{0.1cm} \\[1ex]
+    \hline
+
+    \textbf{expected value of random variable $X$} &
+    \vspace{0.1cm} \(
+        \mathbb{E}(X) =
+        \begin{cases}
+            \displaystyle\int_{-\infty}^\infty xf(x)dx &
+            \text{ (Continuous)}\\[2ex]
+            \displaystyle\sum_{x=0}^\infty xf(x) &
+            \text{ (Discrete)}\\
+        \end{cases}
+    \) \vspace{0.1cm} \\
+    \hline
+
+    \textbf{Population variance ($\sigma^2$)} & 
+    \vspace{0.1cm} \(
+        \sigma^2 =
+        \mathbb{E}(X-\mu)^2 =
+        \begin{cases}
+            \displaystyle\int_{-\infty}^\infty (X-\mu)^2 f(x)dx &
+            \text{ (Continuous)}\\[2ex]
+            \displaystyle\sum_{x=0}^\infty (X-\mu)^2 f(x) &
+            \text{ (Discrete)}\\
+        \end{cases}
+    \) \vspace{0.1cm} \\
+    \hline
+
+    \textbf{expected value of the random variable $\psi(X)$} &
+    \vspace{0.1cm} \(
+        \mathbb{E}(X-\mu)^2 =
+        \begin{cases}
+            \displaystyle\int_{-\infty}^\infty \psi(X) f(x)dx &
+            \text{ (Continuous)}\\[2ex]
+            \displaystyle\sum_{x=0}^\infty \psi(X) f(x) &
+            \text{ (Discrete)}\\
+        \end{cases}
+    \) \vspace{0.1cm} \\
+    \hline
+
+\end{longtable}
+
+\begin{align*}
+    Pr(\psi^{-1}(X) \leq x) 
+    &= Pr(x\leq\psi(X)) \\
+    &= F(\psi(x)) \\
+    &= \displaystyle\int_{-\infty}^{\psi(x)} f(z)dz\\
+    &= \displaystyle\int_{-\infty}^{\psi(x)} \psi'(x) f(\psi(x))dz &&& \left( \psi'(x) = \dfrac{d(\psi(x))}{dx} \right)\\
+\end{align*}
+
+\textbf{Properties}:
+\begin{enumerate}
+    \item $Pr(X > x) = 1 - Pr(X \leq x)$
+
+    \item $Pr(x_1 < X \leq x_2) = Pr(X \leq x_2) - Pr(X \leq x_1)$
+
+    \item we can define a distribution function without having a density. 
+
+    \item For continuous, $f(x) \neq Pr(X = x)$
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

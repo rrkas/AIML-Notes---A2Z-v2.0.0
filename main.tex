@@ -41,11 +41,38 @@
 \addbibresource{bibliography.bib} % BibTeX bibliography file
 \defbibheading{bibempty}{\chapter*{References}}
 
+\DeclareSortingScheme{title}{
+  \sort{
+    \field{title}
+  }
+  \sort{
+    \field{year}
+  }
+  \sort{
+    \field{author}
+  }
+}
+
+\ExecuteBibliographyOptions{sorting=title}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit\newblock
+  \printfield{year}%
+  \usebibmacro{finentry}%
+}
+
+
 \usepackage{array}
 \renewcommand{\arraystretch}{1.5} % Adjust the value to increase/decrease vertical padding in table
 
 \usepackage{ragged2e}
-
 
 \usepackage{imakeidx}
 \makeindex
@@ -106,6 +133,7 @@
 
     \include{chapters/statistics/sampling}
     \include{chapters/statistics/sampling-plans}
+    \input{chapters/statistics/distributions}
     
     \include{chapters/data/data}
     \include{chapters/data/data_visualization}

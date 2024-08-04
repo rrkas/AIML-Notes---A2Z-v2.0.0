@@ -1,0 +1,244 @@
+
+
+\section{Multivariate Distributions \cite{ism-1,mfml-1}} \label{Multivariate Distributions}
+
+\begin{enumerate}
+     \item if all distribution functions are identical, $F_{X_1}(x)=\cdots=F_{X_K}(x)=F(x)$, for all $x$, then $X_1, X_2,\cdots,X_K$ are i.i.d. with distribution function $F$.
+\end{enumerate}
+
+\subsection{Joint PDF/ PMF ($f_{XY}(x, y)$) \cite{ism-1}}\label{Joint PDF/ PMF}
+
+\[
+    f_{XY}(x, y) 
+    = Pr(X = x, Y = y)
+    \begin{cases}
+        \in \mathbb{R} & \text{ (Discrete (PMF))}\\
+        = 0 \text{ (always)} & \text{ (Continuous (PDF))}
+    \end{cases}
+\]
+
+\subsection{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Marginal PMF/ PDF}
+
+\begin{table}[H]
+    \begin{minipage}{0.49\linewidth}
+        \[
+            f_X(x)
+            = \begin{cases}
+                \displaystyle\sum_{y=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
+                \displaystyle\int_{-\infty}^\infty f_{XY}(x,y) dy & \text{ (Continuous)}\\
+            \end{cases}
+        \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \[
+            f_Y(y)
+            = \begin{cases}
+                \displaystyle\sum_{x=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
+                \displaystyle\int_{-\infty}^\infty f_{XY}(x,y) dx & \text{ (Continuous)}\\
+            \end{cases}
+        \]
+    \end{minipage}
+\end{table}
+
+\begin{enumerate}
+    \item if $x = [x_1, \cdots , x_D]^\top$, we obtain the marginal:\cite{mfml-1}
+    \[
+        p(x_i) = \displaystyle\int
+        p(x_1, \cdots , x_D)dx_{\backslash i}
+    \]
+    by repeated application of the sum rule where we integrate/ sum out all random variables except $x_i$, which is indicated by $\backslash i$, which reads “all except $i$”.
+
+\end{enumerate}
+
+\subsection{Joint CDF ($F_{XY}(x, y)$) \cite{ism-1,mfml-1}} \label{joint CDF}
+
+\[
+    F_{XY}(x, y)
+    = Pr(X \leq x, Y \leq y) 
+    = \begin{cases}
+        \displaystyle\sum_{k=0}^{x}
+        \displaystyle\sum_{l=0}^{y} f_{XY}(k,l) & \text{ (discrete)}\\[3ex]
+        \displaystyle\int_{-\infty}^{x}
+        \displaystyle\int_{-\infty}^{y} 
+        f_{XY}(u,v)dudv & \text{ (continuous)}\\
+    \end{cases}
+\]
+\[
+    Pr((X,Y)\in A) 
+    = \displaystyle\iint_A f_{XY}(u,v) dudv
+    \hfill
+    (A \subset \mathbb{R}^2)
+\]
+
+\begin{enumerate}
+    \item for $2$ variables, aka \textbf{bivariate distribution function}\indexlabel{bivariate distribution function}
+
+    \item in general, multivariate distribution function
+    \[
+        F_{X_1,X_2,\cdots,X_K}(x_1,x_2,\cdots,x_K)
+        = Pr(X_1 \leq x_1, X_2 \leq x_2,\cdots,X_K \leq x_K)
+        \hfill
+        \text{\cite{ism-1}}
+    \]
+
+    \item joint distribution function contains all the information on how the random variables are related to each other
+
+    \item A cumulative distribution function (cdf) of a multivariate real-valued random variable $X$ with states $x \in R^D$ is given by: \cite{mfml-1}
+    \[
+        F_X(x) = P(X_1 \leq x_1, \cdots , X_D \leq x_D)
+        \hfill
+        \text{\cite{mfml-1}}
+    \]
+    \[
+        \displaystyle
+        F_X(x) =
+        \int_{-\infty}^{x_1}
+        \cdots
+        \int_{-\infty}^{x_D}
+        f(z_1,\cdots,z_D) dz_1,\cdots,dz_D
+    \]
+\end{enumerate}
+
+\subsection{Marginal CDF \cite{ism-1}}\label{Marginal CDF}
+\[
+    \hfill
+    F_X(x) = \lim_{y\to\infty} F_{XY}(x, y)
+    \hfill
+    F_Y(y) = \lim_{x\to\infty} F_{XY}(x, y)
+    \hfill
+\]
+
+
+\subsection{Conditional PMF of $X$ given $Y = y$ ($f_{X|Y}(x|y)$) \cite{ism-1}}\label{conditional PMF}
+
+\[
+    f_{X|Y}(x|y) = Pr(X=x|Y=y)
+    =\dfrac{Pr(X=x, Y=y)}{Pr(Y=y)} 
+    = \dfrac{f_{XY}(x,y)}{f_Y(y)}
+    \hfill
+    (f_Y(y) > 0)
+\]
+
+\subsection{Independence of random variables \cite{ism-1}} \label{Independence of random variables}
+
+\begin{enumerate}
+    \item Two random variables $X$ and $Y$ are called \textbf{independent} when the bivariate distribution function is equal to the product of the marginal distribution functions: $F_{XY}(x, y) = F_X(x)F_Y(y)$
+
+    \item When the random variables X and Y are \textbf{independent}, the conditional PMF becomes equal to the marginal PMF: $f_{XY}(x, y) = f_X(x)f_Y(y) \quad\forall (x,y) \in \mathbb{R}^2$
+
+    \item If $X$ and $Y$ are independent, then $f_{X|Y}(x|y) = f_X(x)$
+
+    \item The random variables $X_1, X_2,\cdots, X_K$ are called mutually independent when the joint distribution function is the product of the marginal distribution functions:
+    \[
+        F_{X_1\cdots X_K}(x_1,\cdots, x_K) = F_{X_1}(x)\cdots F_{X_K}(x_K)
+        \hfill
+        (\forall x_k \in \mathbb{R})
+    \]
+
+    \item Two random variables X, Y are statistically independent if and only if $p(x,y) = p(x)p(y)$ \cite{mfml-1}
+    \begin{enumerate}
+        \item $ p(y | x) = p(y)$
+        \item $ p(x | y) = p(x)$
+    \end{enumerate}
+
+    \item Intuitively, two random variables $X$ and $Y$ are independent if the value of $y$ (once known) does not add any additional information about $x$ (and vice versa) \cite{mfml-1}
+\end{enumerate}
+
+\subsection{Conditional Independence \cite{mfml-1}} \label{Conditional Independence}
+
+\begin{enumerate}
+    \item Two random variables $X$ and $Y$ are conditionally independent given $Z$ if and only if for all $z \in Z$
+    \begin{enumerate}
+        \item $p(x, y | z) = p(x | z)p(y | z)$
+        \item alternatively, $p(x | y, z) = p(x | z)$
+    \end{enumerate}
+
+    where $Z$ is the set of states of random variable $Z$. We write $X \doubleuptack Y | Z$ to denote that $X$ is conditionally independent of $Y$ given $Z$
+
+    \item interpretation:
+    \begin{enumerate}
+        \item "given knowledge about $z$, the distribution of $x$ and $y$ factorizes"
+
+        \item (alternatively) “given that we know $z$, knowledge about $y$ does not change our knowledge of $x$”
+    \end{enumerate}
+
+    \item Independence can be cast as a special case of conditional independence if we write $X \doubleuptack Y | \varnothing$
+\end{enumerate}
+
+
+\subsection{Conditional expectation \cite{ism-1}} \label{Conditional expectation}
+
+\begin{enumerate}
+    \item[] $X, Y$ : Random variables
+    
+    \item[] $\psi$ : any function
+
+    \item conditional expectation of $\psi(Y)$ given $X = x$:
+    \[
+        \mathbb{E}(\psi(Y)|X=x)
+        = \displaystyle\sum_{y=0}^{\infty}
+        \psi(y)f_{Y|X}(y|x)
+    \]
+
+    this expectation is thus a function of $x$
+
+    \item $
+        \psi(y) = y
+        \Rightarrow
+        \mu_Y(x) = \mathbb{E}(Y|X = x)
+        \text{ (or) }
+        \mu_Y(x) = \mathbb{E}(Y|X = X)
+    $
+\end{enumerate}
+
+
+\subsection{Expected Value \cite{ism-1,mfml-1}}
+\begin{align*}
+    \mathbb{E}(\mu_Y(X))
+    &= \displaystyle\sum_{x=0}^{\infty} \mu_Y(x)f_X(x)
+    &= \displaystyle\sum_{x=0}^{\infty} 
+        \mathbb{E}(Y|X=x)f_X(x) \\
+    &= \displaystyle\sum_{x=0}^{\infty}
+        \displaystyle\sum_{y=0}^{\infty} yf_{XY}(x,y)
+    &= \displaystyle\sum_{x=0}^{\infty}
+        \displaystyle\sum_{y=0}^{\infty} yf_{Y|X}(y|x)f_X(x) \\
+    &= \displaystyle\sum_{y=0}^{\infty} yf_Y(y) = \mu_Y
+    && \text{\cite{ism-1}}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

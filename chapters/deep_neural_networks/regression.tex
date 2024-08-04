@@ -4,7 +4,9 @@
 
 \begin{table}[H]
     \begin{tabular}{l l}
-        $\mathbf{x}$ & inputs (known) \\
+        $\mathbf{x}$ & input vector (known) \\
+
+        $X$ & input matrix/ design matrix (known) \\
         
         $y$ & actual output (known) \\
 
@@ -14,7 +16,13 @@
 
         $\hat{y}$ & predicted output/ predictor (generated) \\
 
-        
+        $\hat{w}$ & current weights \\
+
+        $\hat{b}$ & current bias \\
+
+        $w^\ast$ & optimal weights \\
+
+        $b^\ast$ & optimal bias \\
     \end{tabular}
 \end{table}
 
@@ -49,19 +57,43 @@ For multi-dimensional input $X$:
     )
 \]
 
+\subsection{Loss Function}
+SEE: \fullref{Squared Error}
+
+\[
+    L(w,b) = \dfrac{1}{n}
+    \displaystyle\sum_{i=1}^{n} l^{(i)}(w,b)
+    = \dfrac{1}{n} \displaystyle\sum_{i=1}^{n}
+    \dfrac{1}{2}\left( w^\top x^{(i)} + b - y^{(i)} \right)^2
+\]
+
+When training the model, we want to find parameters $(w^\ast, b^\ast)$ that minimize the total loss
+across all training examples:
+\[
+    \displaystyle
+    \hfill
+        w^\ast, b^\ast = \arg\max_{w,b} L(w,b)
+    \hfill
+\]
+
+\subsection{Analytic Solution}
 
 
+\[
+    w^\ast = (X^\top X)^{-1}X^\top y
+\]
+
+\begin{enumerate}
+    \item we can subsume the bias $b$ into the parameter $w$ by appending a column to the design matrix consisting of \textbf{all ones}.
+
+    \item $w^\ast$ will only be unique when the matrix $X^\top X$ is invertible, i.e., when the columns of the design matrix are linearly independent
+\end{enumerate}
 
 
-
-
-
-
-
-
-
-
-
+\subsection{Predictions/ inference}
+\[
+    \hat{y} = \hat{w}^\top x + \hat{b}
+\]
 
 
 

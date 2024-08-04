@@ -29,6 +29,13 @@ Essentially, formulas are \textbf{same}.
 \end{table}
 
 
+\begin{enumerate}
+    \item \textbf{Loss functions} quantify the distance between the real and predicted values of the target. 
+    
+    \item The loss will usually be a non-negative number where \textbf{smaller values are better} and perfect predictions incur a loss of $0$.
+
+\end{enumerate}
+
 \section{Mean Absolute Difference (MAD)/ Mean Absolute Error (MAE)/ $L_1$ Loss}\label{Mean Absolute Difference (MAD)}\label{Mean Absolute Error (MAE)}\label{L1 Loss}
 
 \[
@@ -45,6 +52,18 @@ Essentially, formulas are \textbf{same}.
 \]
 
 
+\section{Squared Error \cite{dnn-1}} \label{Squared Error}
+
+\[
+    l^{(i)}(w,b) = \dfrac{1}{2}
+    \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\]
+
+\begin{enumerate}
+    \item $\dfrac{1}{2}$ makes no real difference but proves to be notationally \textbf{convenient}, since it cancels out when we take the derivative of the loss.
+
+    \item Note that large differences between estimates $\hat{y}^{(i)}$ and targets $y^{(i)}$ lead to even larger contributions to the loss, due to the quadratic form of the loss (this can be a double-edge sword. While it encourages the model to avoid large errors it can also lead to excessive sensitivity to anomalous data).
+\end{enumerate}
 
 \section{Mean Square Error (MSE)}\label{Mean Square Error (MSE)}
 \[
