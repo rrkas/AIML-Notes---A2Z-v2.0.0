@@ -28,7 +28,7 @@
 
 \section{Linear Regression \cite{dnn-1}} \label{Linear Regression}
 
-\subsection{Model/ predictor}
+\subsection{Model/ predictor \cite{dnn-1}}
 \[
     \hfill
     \hat{y} = w_1x_1 + \cdots + w_dx_d + b
@@ -57,14 +57,11 @@ For multi-dimensional input $X$:
     )
 \]
 
-\subsection{Loss Function}
+\subsection{Loss Function \cite{dnn-1}}
 SEE: \fullref{Squared Error}
 
 \[
-    L(w,b) = \dfrac{1}{n}
-    \displaystyle\sum_{i=1}^{n} l^{(i)}(w,b)
-    = \dfrac{1}{n} \displaystyle\sum_{i=1}^{n}
-    \dfrac{1}{2}\left( w^\top x^{(i)} + b - y^{(i)} \right)^2
+    {\displaystyle L(\mathbf{w}, b) =\frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b) =\frac{1}{n} \sum_{i=1}^n \frac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2}
 \]
 
 When training the model, we want to find parameters $(w^\ast, b^\ast)$ that minimize the total loss
@@ -76,7 +73,7 @@ across all training examples:
     \hfill
 \]
 
-\subsection{Analytic Solution}
+\subsection{Analytic Solution \cite{dnn-1}}
 
 
 \[
@@ -90,20 +87,36 @@ across all training examples:
 \end{enumerate}
 
 
-\subsection{Predictions/ inference}
+\subsection{Predictions/ inference \cite{dnn-1}}
 \[
     \hat{y} = \hat{w}^\top x + \hat{b}
 \]
 
+\subsection{The Normal Distribution and Squared Loss \cite{dnn-1}}
 
+\[
+    y = \mathbf{w}^\top \mathbf{x} + b + \epsilon 
+    \textrm{ where } 
+    \epsilon \sim \mathcal{N}(0, \sigma^2).
+\]
 
+likelihood of seeing a particular $y$ for a given $x$ via:
+\[
+    \displaystyle
+    P(y \mid \mathbf{x}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (y - \mathbf{w}^\top \mathbf{x} - b)^2\right)
+\]
 
+As such, the likelihood factorizes. According to the principle of maximum likelihood, the best values of parameters $w$ and $b$ are those that maximize the likelihood of the entire dataset:
+\[
+    \displaystyle
+    P(\mathbf y \mid \mathbf X) = \prod_{i=1}^{n} p(y^{(i)} \mid \mathbf{x}^{(i)})
+\]
 
-
-
-
-
-
+without changing anything, we can minimize the negative log-likelihood, which we can express as follows:
+\[
+    \displaystyle
+    -\log P(\mathbf y \mid \mathbf X) = \sum_{i=1}^n \frac{1}{2} \log(2 \pi \sigma^2) + \frac{1}{2 \sigma^2} \left(y^{(i)} - \mathbf{w}^\top \mathbf{x}^{(i)} - b\right)^2.
+\]
 
 
 

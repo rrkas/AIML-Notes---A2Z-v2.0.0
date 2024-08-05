@@ -204,14 +204,76 @@
     &= \displaystyle\sum_{x=0}^{\infty}
         \displaystyle\sum_{y=0}^{\infty} yf_{Y|X}(y|x)f_X(x) \\
     &= \displaystyle\sum_{y=0}^{\infty} yf_Y(y) = \mu_Y
-    && \text{\cite{ism-1}}
+    & \text{\cite{ism-1}}
 \end{align*}
 
 
+\begin{enumerate}
+    \item The expected value of a function $g : R \to R$ of a univariate continuous random variable $X \sim p(x)$ is given by $
+        \mathbb{E}_X[g(x)] = 
+        \begin{cases}
+            \displaystyle\int_X g(x)p(x)dx \\[2ex]
+            \displaystyle\sum_{x\in X} g(x)p(x)
+        \end{cases}
+    $ where $X$ is the set of possible outcomes (the target space) of the random variable $X$
 
+    \item The expected value of a function of a random variable is sometimes referred to as the \textbf{law of the unconscious statistician}\indexlabel{law of the unconscious statistician}
 
+    \item We consider multivariate random variables $X$ as a finite vector of univariate random variables $[X_1, \cdots , X_D]^\top$. For multivariate random variables, we define the expected value element wise:
+    \[
+        \mathbb{E}_X[g(x)]
+        = \begin{bmatrix}
+            \mathbb{E}_{X_1}[g(x)] \\
+            \vdots \\
+            \mathbb{E}_{X_D}[g(x)] \\
+        \end{bmatrix} \in \mathbb{R}^D
+    \]
+    $\mathbb{E}_{X_d}$ indicates that we are taking the expected value with respect to the $d$th element of the vector $x$
 
+    \item The mean of a random variable $X$ with states $x \in R^D$ is an average and is defined as: \cite{mfml-1}
+    \[
+        \mathbb{E}_X[x]
+        = \begin{bmatrix}
+            \mathbb{E}_{X_1}[x_1] \\
+            \vdots \\
+            \mathbb{E}_{X_D}[x_D] \\
+        \end{bmatrix} \in \mathbb{R}^D
+    \]
+    \[
+        \mathbb{E}_{X_d}[x_d]
+        = \begin{cases}
+            \displaystyle\int_X x_d p(x_d) dx_d
+            & \text{if $X$ is a continuous random variable}\\[2ex]
+            \displaystyle\sum_{x_i \in X} x_i p(x_d=x_i)
+            & \text{if $X$ is a discrete random variable}
+        \end{cases}
+    \]
 
+    \item Consider a random variable $X$ with mean $\mu$ and covariance matrix $\Sigma$ and a (deterministic) affine transformation $y = Ax + b$ of $x$. Then:
+    \[
+        \mathbb{E}_Y[y] 
+        = \mathbb{E}_X[Ax + b] 
+        = A\mathbb{E}_X[x] + b 
+        = A\mu + b
+    \]
+\end{enumerate}
+
+\subsection{Empirical Mean/ Sample Mean \cite{mfml-1}}
+\begin{enumerate}
+    \item we have a \textbf{finite dataset} (of size $N$)
+
+    \item an empirical statistic that is a function of a finite number of identical random variables, $X_1, \cdots , X_N$ with realizations $x_1, \cdots , x_N$
+
+    \item The empirical mean vector is the arithmetic average of the observations for each variable, and it is defined as:
+    \[
+        \bar{x} = \dfrac{1}{N}
+        \displaystyle\sum_{n=1}^{N} x_n
+        \hfill
+        (x_n \in \mathbb{R}^D)
+    \]
+
+    \item $\mathbb{E}[x \pm y] = \mathbb{E}[x] \pm \mathbb{E}[y]$
+\end{enumerate}
 
 
 
