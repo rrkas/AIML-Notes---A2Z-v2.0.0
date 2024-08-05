@@ -1,12 +1,10 @@
-
-
 \section{Multivariate Distributions \cite{ism-1,mfml-1}} \label{Multivariate Distributions}
 
 \begin{enumerate}
      \item if all distribution functions are identical, $F_{X_1}(x)=\cdots=F_{X_K}(x)=F(x)$, for all $x$, then $X_1, X_2,\cdots,X_K$ are i.i.d. with distribution function $F$.
 \end{enumerate}
 
-\subsection{Joint PDF/ PMF ($f_{XY}(x, y)$) \cite{ism-1}}\label{Joint PDF/ PMF}
+\subsection{Joint PDF/ PMF ($f_{XY}(x, y)$) \cite{ism-1}}\label{Multivariate Distributions: Joint PDF/ PMF}
 
 \[
     f_{XY}(x, y) 
@@ -17,7 +15,7 @@
     \end{cases}
 \]
 
-\subsection{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Marginal PMF/ PDF}
+\subsection{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Marginal PMF/ PDF}
 
 \begin{table}[H]
     \begin{minipage}{0.49\linewidth}
@@ -51,7 +49,7 @@
 
 \end{enumerate}
 
-\subsection{Joint CDF ($F_{XY}(x, y)$) \cite{ism-1,mfml-1}} \label{joint CDF}
+\subsection{Joint CDF ($F_{XY}(x, y)$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: joint CDF}
 
 \[
     F_{XY}(x, y)
@@ -100,7 +98,7 @@
     \]
 \end{enumerate}
 
-\subsection{Marginal CDF \cite{ism-1}}\label{Marginal CDF}
+\subsection{Marginal CDF \cite{ism-1}}\label{Multivariate Distributions: Marginal CDF}
 \[
     \hfill
     F_X(x) = \lim_{y\to\infty} F_{XY}(x, y)
@@ -110,7 +108,7 @@
 \]
 
 
-\subsection{Conditional PMF of $X$ given $Y = y$ ($f_{X|Y}(x|y)$) \cite{ism-1}}\label{conditional PMF}
+\subsection{Conditional PMF of $X$ given $Y = y$ ($f_{X|Y}(x|y)$) \cite{ism-1}}\label{Multivariate Distributions: conditional PMF}
 
 \[
     f_{X|Y}(x|y) = Pr(X=x|Y=y)
@@ -120,7 +118,7 @@
     (f_Y(y) > 0)
 \]
 
-\subsection{Independence of random variables \cite{ism-1}} \label{Independence of random variables}
+\subsection{Independence of random variables \cite{ism-1}} \label{Multivariate Distributions: Independence of random variables}
 
 \begin{enumerate}
     \item Two random variables $X$ and $Y$ are called \textbf{independent} when the bivariate distribution function is equal to the product of the marginal distribution functions: $F_{XY}(x, y) = F_X(x)F_Y(y)$
@@ -145,7 +143,7 @@
     \item Intuitively, two random variables $X$ and $Y$ are independent if the value of $y$ (once known) does not add any additional information about $x$ (and vice versa) \cite{mfml-1}
 \end{enumerate}
 
-\subsection{Conditional Independence \cite{mfml-1}} \label{Conditional Independence}
+\subsection{Conditional Independence \cite{mfml-1}} \label{Multivariate Distributions: Conditional Independence}
 
 \begin{enumerate}
     \item Two random variables $X$ and $Y$ are conditionally independent given $Z$ if and only if for all $z \in Z$
@@ -167,7 +165,7 @@
 \end{enumerate}
 
 
-\subsection{Conditional expectation \cite{ism-1}} \label{Conditional expectation}
+\subsection{Conditional expectation \cite{ism-1}} \label{Multivariate Distributions: Conditional expectation}
 
 \begin{enumerate}
     \item[] $X, Y$ : Random variables
@@ -193,7 +191,7 @@
 \end{enumerate}
 
 
-\subsection{Expected Value \cite{ism-1,mfml-1}}
+\subsection{Expected Value \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Expected Value}
 \begin{align*}
     \mathbb{E}(\mu_Y(X))
     &= \displaystyle\sum_{x=0}^{\infty} \mu_Y(x)f_X(x)
@@ -258,7 +256,8 @@
     \]
 \end{enumerate}
 
-\subsection{Empirical Mean/ Sample Mean \cite{mfml-1}}
+\subsection{Empirical Mean/ Sample Mean \cite{mfml-1}} \label{Multivariate Distributions: Empirical Mean/ Sample Mean}
+
 \begin{enumerate}
     \item we have a \textbf{finite dataset} (of size $N$)
 
@@ -274,6 +273,330 @@
 
     \item $\mathbb{E}[x \pm y] = \mathbb{E}[x] \pm \mathbb{E}[y]$
 \end{enumerate}
+
+
+\subsection{Conditional Variance \cite{ism-1}} \label{Multivariate Distributions: Conditional Variance}
+
+\begin{enumerate}
+    \item[] $g(x, y)$	: general function of x and y
+
+    \item[] $
+        VAR(Y|X=x) 
+        = \mathbb{E}((Y-\mu_y(x))^2|X=x)
+        = \displaystyle\sum_{y=0}^\infty
+        (y-\mu_y(x))^2 f_{Y|X}(y|x)
+    $
+
+    \item we calculate the variance around the conditional mean $\mu _Y(x)$, and not around $\mu _Y$, since $\mu _Y(x)$ is the expected value for Y when we condition on or know that $X = x$
+
+    \item conditional variance is also a function of $x$, and we may denote it by $\sigma _Y^2(x)$
+    \begin{enumerate}
+        \item[] $VAR(Y|X=x) = \sigma _Y^2(x)$
+
+    \end{enumerate}
+
+    \item $VAR(Y) = \mathbb{E}[VAR(Y|X = X)] + VAR(\mathbb{E}(Y|X = X))$
+
+    \item $
+        \mathbb{E}[g(X,Y)]
+        =\displaystyle\sum_{x=0}^{\infty}
+            \displaystyle\sum_{y=0}^{\infty}
+            g(x,y) f_{XY}(x,y)
+    $
+
+    \item if $X$ and $Y$ are independent then $\mathbb{E}(XY) = \mathbb{E}(X)\mathbb{E}(Y)$
+\end{enumerate}
+
+\begin{align*}
+    \mathbb{E}[\sigma^2_Y(X)]
+    &= \displaystyle\sum_{x=0}^{\infty}
+        \sigma_Y^2(x)f_X(x)\\
+    &= \displaystyle\sum_{x=0}^{\infty}
+        \displaystyle\sum_{y=0}^{\infty}
+        (y - \mu_Y (x))^2 f_{Y |X} (y|x) f_X (x)\\
+    &= \displaystyle\sum_{x=0}^{\infty}
+        \displaystyle\sum_{y=0}^{\infty}
+        [(y - \mu_Y ) ^2 + 2(y - \mu_Y )(\mu_Y - \mu_Y (x)) + (\mu_Y - \mu_Y (x))^2] f_{XY} (x, y)\\
+    &= \displaystyle\sum_{y=0}^{\infty} 
+        (y - \mu_Y )^2 f_Y (y) 
+        - \displaystyle\sum_{x=0}^{\infty} 
+        (\mu_Y (x) - \mu_Y ) ^2 f_X (x)\\
+    &= \sigma_Y^2 - VAR(\mu_Y(X))
+\end{align*}
+
+\subsection{Covariances/ Cross-covariance \cite{ism-1}} \label{Multivariate Distributions: Covariances/ Cross-covariance}
+
+\begin{enumerate}
+    \item $
+        COV(X, Y) 
+        = \sigma_{XY} 
+        = \mathbb{E}[(X - \mathbb{E}(X))(Y - \mathbb{E}(Y))] 
+        = \mathbb{E}(XY) - (\mathbb{E}(X))(\mathbb{E}(Y))
+    $ \hfill \cite{ism-1}
+
+    \item $
+        Cov_{X,Y}[x, y] 
+        := \mathbb{E}_{X,Y}[(x - \mathbb{E}_X[x])(y - \mathbb{E}_Y[y])]
+    $ \hfill (Univariate) \cite{mfml-1}
+
+    \item $
+        Cov[x, y] 
+        = \mathbb{E}[xy^\top] - \mathbb{E}[x]\mathbb{E}[y]^\top 
+        = Cov[y, x]^\top 
+        \in R^{D\times E}
+    $ \hfill (Multivariate) \cite{mfml-1}
+
+    
+
+\end{enumerate}
+
+\subsubsection*{Properties}
+\begin{enumerate}
+    \item $COV(X, X) = VAR(X) = \sigma_X^2$ 
+    \hfill \cite{ism-1}
+
+    \item $Cov[x, x] = V_X[x]$ 
+    \hfill \cite{mfml-1}
+
+    \item $COV(X, Y) = COV(Y, X)$ 
+    \hfill \cite{ism-1}
+
+    \item $
+        COV(\alpha X, Y) = \alpha \cdot COV(X, Y) 
+        \quad \forall \alpha \in \mathbb{R}
+    $ 
+    \hfill \cite{ism-1}
+
+    \item $
+        COV(X + \alpha, Y) = COV(X, Y) 
+        \quad \forall \alpha \in \mathbb{R}
+    $ 
+    \hfill \cite{ism-1}
+
+    \item $COV(X + Y, Z) = COV(X, Z) + COV(Y, Z)$ 
+    \hfill \cite{ism-1}
+
+    \item $VAR(X \pm Y) = VAR(X) \pm 2COV(X, Y) + VAR(Y)$ 
+    \hfill \cite{ism-1}
+
+    \item $V[x \pm y] = V[x] + V[y] \pm Cov[x, y] \pm Cov[y, x]$ 
+    \hfill \cite{mfml-1}
+
+    \item $
+        (X_i, Y_i) \sim F_{XY}
+        \Rightarrow 
+        COV(X_i, Y_i) = COV(X, Y)$ 
+    \hfill \cite{ism-1}
+
+    \item $
+        \mathbb{E}[(X_i - \mu_X)(Y_j - \mu_Y)] 
+        = \mathbb{E}(X_j - \mu_X)\mathbb{E}(Y_i - \mu_Y) 
+        = 0  \text{, when } i \neq j
+    $
+    \hfill \cite{ism-1}
+
+    \item If $X$ and $Y$ are \textbf{independent}:
+    \begin{enumerate}
+        \item $COV(X, Y) = 0$ \hfill \cite{ism-1}
+        
+        \item $Cov_{X,Y}[x, y] = 0$ \hfill \cite{mfml-1}
+
+        \item may not hold in converse, i.e., two random variables can have covariance zero but are not statistically independent. To understand why, recall that covariance measures only linear dependence. Therefore, random variables that are non-linearly dependent could have covariance zero. \cite{mfml-1}
+        
+    \end{enumerate}
+
+    \item the covariance is affected by transformations
+    
+    \item $V_X$ is variance
+
+    \item indicates how two random variables are related
+
+\end{enumerate}
+
+\subsection{Empirical Covariance ($\Sigma$) \cite{mfml-1}}\label{Multivariate Distributions: Empirical Covariance}
+
+the empirical covariance matrix is a $D\times D$ matrix:
+\[
+    \Sigma
+    := \dfrac{1}{N}
+    \displaystyle\sum_{n=1}^{N}
+    (x_n - \bar{x})(x_n - \bar{x})^\top
+    \hfill
+    \text{(biased estimate)}
+\]
+\[
+    \Sigma
+    := \dfrac{1}{N-1}
+    \displaystyle\sum_{n=1}^{N}
+    (x_n - \bar{x})(x_n - \bar{x})^\top
+    \hfill
+    \text{(unbiased/ corrected estimate)}
+\]
+
+
+\subsection{Variance \cite{mfml-1}}\label{Multivariate Distributions: Variance}
+
+The variance of a random variable $X$ with states $x \in R^D$ and a mean vector $\mu \in R^D$ is defined as
+\[
+    \mu = \mathbb{E}_X(x)
+\]
+
+\begin{align*}
+    \mathbb{V}_X[x] 
+    &= Cov_X[x,x]\\
+    &= \mathbb{E}_X[(x-\mu)(x-\mu)^\top]
+    = \mathbb{E}_X[xx^\top]
+    = \mathbb{E}_X[x]\mathbb{E}_X[x]^\top\\
+    &= \begin{bmatrix}
+        Cov[x_1,x_1] & Cov[x_1,x_2] & \cdots & Cov[x_1,x_D]\\
+        Cov[x_2,x_1] & Cov[x_2,x_2] & \cdots & Cov[x_2,x_D]\\
+        \vdots & \vdots & \ddots & \vdots \\
+        Cov[x_D,x_1] & Cov[x_D,x_2] & \cdots & Cov[x_D,x_D]\\
+    \end{bmatrix}
+\end{align*}
+
+\begin{enumerate}
+    \item $\mathbb{V}_X[x] := \mathbb{E}_X[(x - \mu)^2]$
+
+    \item $\mathbb{V}_X[x] = \mathbb{E}_X[x^2] - (\mathbb{E}X[x])^2$ \hfill (\textbf{raw-score formula for variance}\indexlabel{raw-score formula for variance})
+
+    \item $
+        \dfrac{1}{N^2}
+        \displaystyle\sum_{i,j=1}^{N} (x_i - x_j)^2
+        = 2 \left[ 
+            \dfrac{1}{N}\displaystyle\sum_{i=1}^{N} x_i^2
+            -
+            \left( 
+                \dfrac{1}{N}\displaystyle\sum_{i=1}^{N} x_i 
+            \right)^2
+        \right]
+    $
+
+    \item we can express the sum of pairwise distances (of which there are $N^2$ of them) as a sum of deviations from the mean (of which there are $N$)
+
+    \item The $D\times D$ matrix is called the \textbf{covariance matrix}\indexlabel{covariance matrix} of the multivariate random variable $X$
+
+    \item The covariance matrix is symmetric and positive semidefinite and tells us something about the spread of the data
+
+    \item The off-diagonal entries are the cross-covariance terms $Cov[x_i, x_j]$ for $i, j = 1, \cdots , D, i \neq j$
+
+    \item Consider a random variable $X$ with mean $\mu$  and covariance matrix $\Sigma$ ($= \mathbb{E}[xx^\top] - \mu \mu ^\top$) and a (deterministic) affine transformation $y = Ax + b$ of $x$. Then:
+    \begin{enumerate}
+        \item $
+            \mathbb{V}_Y[y] 
+            = \mathbb{V}_X[Ax + b] 
+            = \mathbb{V}_X[Ax] 
+            = A\mathbb{V}_X[x]A^\top = A\Sigma A^\top
+        $
+
+        \item 
+        \begin{align*}
+            Cov[x, y] 
+            &= \mathbb{E}[x(Ax + b)^\top ] - \mathbb{E}[x]\mathbb{E}[Ax + b]^\top \\
+            &= \mathbb{E}[x]b^\top  + \mathbb{E}[xx^\top ]A^\top  - \mu b^\top  - \mu \mu ^\top A^\top \\
+            &= \mu b^\top  - \mu b^\top  + (\mathbb{E}[xx^\top ] - \mu \mu ^\top )A =  \Sigma A^\top
+        \end{align*}
+
+    \end{enumerate}
+
+    \item If $X$, $Y$ are (statistically) \textbf{independent}, then: $V_{X,Y}[x + y] = V_X[x] + V_Y[y]$
+
+    \item (\textbf{law of total variance}\indexlabel{law of total variance}) $V_X[x] = E_Y[V_X[x|y]]+ V_Y[E_X[x|y]]$ \\
+    the (total) variance of $X$ is the expected conditional variance plus the variance of a conditional mean
+\end{enumerate}
+
+\subsection{Sample Covariance \cite{ism-1}}\label{Multivariate Distributions: Sample Covariance}
+
+\begin{enumerate}
+    \item[] $(X_i, Y_i) \sim F_{XY}$
+
+    \item[] $\bar{X}$: sample average of $X$
+
+    \item[] $\bar{Y}$: sample average of $Y$
+
+    \item $
+        S_{XY} = \dfrac{1}{n-1}
+        \displaystyle\sum_{i=1}^{n}
+        (X_i - \bar{X})(Y_i - \bar{Y})
+    $
+
+    \item \begin{align*}
+        \mathbb{E}(S_{XY})
+        &= \dfrac{1}{n-1}
+        \displaystyle\sum_{i=1}^{n}
+        \mathbb{E}[(X_i - \bar{X})(Y_i - \bar{Y})] \\
+        &= \dfrac{1}{n-1}
+        \displaystyle\sum_{i=1}^{n}
+        \mathbb{E}[(X_i -\mu_X + \mu_X - \bar{X})
+        (Y_i -\mu_Y + \mu_Y - \bar{Y})] \\
+        &= \dfrac{1}{n-1}
+        \displaystyle\sum_{i=1}^{n}
+        E[(X_i - \mu_X )(Y_i - \mu_Y ) - (X_i - \mu_X )(\bar{Y} - \mu_Y ) \\
+        & \quad\quad\quad\quad - (\bar{X} - \mu_X )(Y_i - \mu_Y ) + (\bar{X} - \mu_X )(\bar{Y} - \mu_Y )] \\
+        &= \dfrac{n}{n-1}COV(X,Y) - \dfrac{2}{n(n-1)}
+        \displaystyle\sum_{i=1}^n E[(X_i - \mu_X )(Y_i - \mu_Y )] \\
+        &\quad\quad\quad\quad + \dfrac{1}{n(n-1)} \displaystyle\sum_{i=1}^n
+        E[(X_i - \mu_X )(Y_i - \mu_Y )]\\
+        &=COV(X, Y )
+    \end{align*}
+\end{enumerate}
+
+\subsection{Pearson’s Correlation Coefficient ($\rho_P$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: Pearson’s Correlation Coefficient}
+
+\noindent 
+From \cite{ism-1}
+
+\begin{enumerate}
+    \item[] $X,Y$: random variables
+
+    \item Pearson’s correlation coefficient is a way of quantifying how two variables “co-relate”
+
+    \item If Pearson’s correlation is positive, the two variables $X$ and $Y$ move in the same direction. If $X$ is increasing then $Y$ should be increasing as well
+
+    \item If Pearson’s correlation is negative, the random variables move in opposite directions.
+
+    \item When Pearson’s correlation coefficient is zero the random variables are called uncorrelated.
+
+    \item Pearson’s correlation coefficient also measures the concordance or discordance in a certain way
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
