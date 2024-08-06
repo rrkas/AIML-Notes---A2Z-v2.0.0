@@ -22,8 +22,8 @@
         \[
             f_X(x)
             = \begin{cases}
-                \displaystyle\sum_{y=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
-                \displaystyle\int_{-\infty}^\infty f_{XY}(x,y) dy & \text{ (Continuous)}\\
+                \dsum_{y=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
+                \dint_{-\infty}^\infty f_{XY}(x,y) dy & \text{ (Continuous)}\\
             \end{cases}
         \]
     \end{minipage}
@@ -32,8 +32,8 @@
         \[
             f_Y(y)
             = \begin{cases}
-                \displaystyle\sum_{x=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
-                \displaystyle\int_{-\infty}^\infty f_{XY}(x,y) dx & \text{ (Continuous)}\\
+                \dsum_{x=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
+                \dint_{-\infty}^\infty f_{XY}(x,y) dx & \text{ (Continuous)}\\
             \end{cases}
         \]
     \end{minipage}
@@ -42,7 +42,7 @@
 \begin{enumerate}
     \item if $x = [x_1, \cdots , x_D]^\top$, we obtain the marginal:\cite{mfml-1}
     \[
-        p(x_i) = \displaystyle\int
+        p(x_i) = \dint
         p(x_1, \cdots , x_D)dx_{\backslash i}
     \]
     by repeated application of the sum rule where we integrate/ sum out all random variables except $x_i$, which is indicated by $\backslash i$, which reads “all except $i$”.
@@ -55,10 +55,10 @@
     F_{XY}(x, y)
     = Pr(X \leq x, Y \leq y) 
     = \begin{cases}
-        \displaystyle\sum_{k=0}^{x}
-        \displaystyle\sum_{l=0}^{y} f_{XY}(k,l) & \text{ (discrete)}\\[3ex]
-        \displaystyle\int_{-\infty}^{x}
-        \displaystyle\int_{-\infty}^{y} 
+        \dsum_{k=0}^{x}
+        \dsum_{l=0}^{y} f_{XY}(k,l) & \text{ (discrete)}\\[3ex]
+        \dint_{-\infty}^{x}
+        \dint_{-\infty}^{y} 
         f_{XY}(u,v)dudv & \text{ (continuous)}\\
     \end{cases}
 \]
@@ -175,7 +175,7 @@
     \item conditional expectation of $\psi(Y)$ given $X = x$:
     \[
         \mathbb{E}(\psi(Y)|X=x)
-        = \displaystyle\sum_{y=0}^{\infty}
+        = \dsum_{y=0}^{\infty}
         \psi(y)f_{Y|X}(y|x)
     \]
 
@@ -194,14 +194,14 @@
 \subsection{Expected Value \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Expected Value}
 \begin{align*}
     \mathbb{E}(\mu_Y(X))
-    &= \displaystyle\sum_{x=0}^{\infty} \mu_Y(x)f_X(x)
-    &= \displaystyle\sum_{x=0}^{\infty} 
+    &= \dsum_{x=0}^{\infty} \mu_Y(x)f_X(x)
+    &= \dsum_{x=0}^{\infty} 
         \mathbb{E}(Y|X=x)f_X(x) \\
-    &= \displaystyle\sum_{x=0}^{\infty}
-        \displaystyle\sum_{y=0}^{\infty} yf_{XY}(x,y)
-    &= \displaystyle\sum_{x=0}^{\infty}
-        \displaystyle\sum_{y=0}^{\infty} yf_{Y|X}(y|x)f_X(x) \\
-    &= \displaystyle\sum_{y=0}^{\infty} yf_Y(y) = \mu_Y
+    &= \dsum_{x=0}^{\infty}
+        \dsum_{y=0}^{\infty} yf_{XY}(x,y)
+    &= \dsum_{x=0}^{\infty}
+        \dsum_{y=0}^{\infty} yf_{Y|X}(y|x)f_X(x) \\
+    &= \dsum_{y=0}^{\infty} yf_Y(y) = \mu_Y
     & \text{\cite{ism-1}}
 \end{align*}
 
@@ -210,8 +210,8 @@
     \item The expected value of a function $g : R \to R$ of a univariate continuous random variable $X \sim p(x)$ is given by $
         \mathbb{E}_X[g(x)] = 
         \begin{cases}
-            \displaystyle\int_X g(x)p(x)dx \\[2ex]
-            \displaystyle\sum_{x\in X} g(x)p(x)
+            \dint_X g(x)p(x)dx \\[2ex]
+            \dsum_{x\in X} g(x)p(x)
         \end{cases}
     $ where $X$ is the set of possible outcomes (the target space) of the random variable $X$
 
@@ -240,9 +240,9 @@
     \[
         \mathbb{E}_{X_d}[x_d]
         = \begin{cases}
-            \displaystyle\int_X x_d p(x_d) dx_d
+            \dint_X x_d p(x_d) dx_d
             & \text{if $X$ is a continuous random variable}\\[2ex]
-            \displaystyle\sum_{x_i \in X} x_i p(x_d=x_i)
+            \dsum_{x_i \in X} x_i p(x_d=x_i)
             & \text{if $X$ is a discrete random variable}
         \end{cases}
     \]
@@ -266,7 +266,7 @@
     \item The empirical mean vector is the arithmetic average of the observations for each variable, and it is defined as:
     \[
         \bar{x} = \dfrac{1}{N}
-        \displaystyle\sum_{n=1}^{N} x_n
+        \dsum_{n=1}^{N} x_n
         \hfill
         (x_n \in \mathbb{R}^D)
     \]
@@ -278,12 +278,12 @@
 \subsection{Conditional Variance \cite{ism-1}} \label{Multivariate Distributions: Conditional Variance}
 
 \begin{enumerate}
-    \item[] $g(x, y)$	: general function of x and y
+    \item[] $g(x, y)$ : general function of x and y
 
     \item[] $
         VAR(Y|X=x) 
         = \mathbb{E}((Y-\mu_y(x))^2|X=x)
-        = \displaystyle\sum_{y=0}^\infty
+        = \dsum_{y=0}^\infty
         (y-\mu_y(x))^2 f_{Y|X}(y|x)
     $
 
@@ -299,8 +299,8 @@
 
     \item $
         \mathbb{E}[g(X,Y)]
-        =\displaystyle\sum_{x=0}^{\infty}
-            \displaystyle\sum_{y=0}^{\infty}
+        =\dsum_{x=0}^{\infty}
+            \dsum_{y=0}^{\infty}
             g(x,y) f_{XY}(x,y)
     $
 
@@ -309,17 +309,17 @@
 
 \begin{align*}
     \mathbb{E}[\sigma^2_Y(X)]
-    &= \displaystyle\sum_{x=0}^{\infty}
+    &= \dsum_{x=0}^{\infty}
         \sigma_Y^2(x)f_X(x)\\
-    &= \displaystyle\sum_{x=0}^{\infty}
-        \displaystyle\sum_{y=0}^{\infty}
+    &= \dsum_{x=0}^{\infty}
+        \dsum_{y=0}^{\infty}
         (y - \mu_Y (x))^2 f_{Y |X} (y|x) f_X (x)\\
-    &= \displaystyle\sum_{x=0}^{\infty}
-        \displaystyle\sum_{y=0}^{\infty}
+    &= \dsum_{x=0}^{\infty}
+        \dsum_{y=0}^{\infty}
         [(y - \mu_Y ) ^2 + 2(y - \mu_Y )(\mu_Y - \mu_Y (x)) + (\mu_Y - \mu_Y (x))^2] f_{XY} (x, y)\\
-    &= \displaystyle\sum_{y=0}^{\infty} 
+    &= \dsum_{y=0}^{\infty} 
         (y - \mu_Y )^2 f_Y (y) 
-        - \displaystyle\sum_{x=0}^{\infty} 
+        - \dsum_{x=0}^{\infty} 
         (\mu_Y (x) - \mu_Y ) ^2 f_X (x)\\
     &= \sigma_Y^2 - VAR(\mu_Y(X))
 \end{align*}
@@ -419,7 +419,7 @@ the empirical covariance matrix is a $D\times D$ matrix:
 \[
     \Sigma
     := \dfrac{1}{N}
-    \displaystyle\sum_{n=1}^{N}
+    \dsum_{n=1}^{N}
     (x_n - \bar{x})(x_n - \bar{x})^\top
     \hfill
     \text{(biased estimate)}
@@ -427,7 +427,7 @@ the empirical covariance matrix is a $D\times D$ matrix:
 \[
     \Sigma
     := \dfrac{1}{N-1}
-    \displaystyle\sum_{n=1}^{N}
+    \dsum_{n=1}^{N}
     (x_n - \bar{x})(x_n - \bar{x})^\top
     \hfill
     \text{(unbiased/ corrected estimate)}
@@ -462,12 +462,12 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
     \item $
         \dfrac{1}{N^2}
-        \displaystyle\sum_{i,j=1}^{N} (x_i - x_j)^2
+        \dsum_{i,j=1}^{N} (x_i - x_j)^2
         = 2 \left[ 
-            \dfrac{1}{N}\displaystyle\sum_{i=1}^{N} x_i^2
+            \dfrac{1}{N}\dsum_{i=1}^{N} x_i^2
             -
             \left( 
-                \dfrac{1}{N}\displaystyle\sum_{i=1}^{N} x_i 
+                \dfrac{1}{N}\dsum_{i=1}^{N} x_i 
             \right)^2
         \right]
     $
@@ -516,26 +516,26 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
     \item $
         S_{XY} = \dfrac{1}{n-1}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{i=1}^{n}
         (X_i - \bar{X})(Y_i - \bar{Y})
     $
 
     \item \begin{align*}
         \mathbb{E}(S_{XY})
         &= \dfrac{1}{n-1}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{i=1}^{n}
         \mathbb{E}[(X_i - \bar{X})(Y_i - \bar{Y})] \\
         &= \dfrac{1}{n-1}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{i=1}^{n}
         \mathbb{E}[(X_i -\mu_X + \mu_X - \bar{X})
         (Y_i -\mu_Y + \mu_Y - \bar{Y})] \\
         &= \dfrac{1}{n-1}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{i=1}^{n}
         E[(X_i - \mu_X )(Y_i - \mu_Y ) - (X_i - \mu_X )(\bar{Y} - \mu_Y ) \\
         & \quad\quad\quad\quad - (\bar{X} - \mu_X )(Y_i - \mu_Y ) + (\bar{X} - \mu_X )(\bar{Y} - \mu_Y )] \\
         &= \dfrac{n}{n-1}COV(X,Y) - \dfrac{2}{n(n-1)}
-        \displaystyle\sum_{i=1}^n E[(X_i - \mu_X )(Y_i - \mu_Y )] \\
-        &\quad\quad\quad\quad + \dfrac{1}{n(n-1)} \displaystyle\sum_{i=1}^n
+        \dsum_{i=1}^n E[(X_i - \mu_X )(Y_i - \mu_Y )] \\
+        &\quad\quad\quad\quad + \dfrac{1}{n(n-1)} \dsum_{i=1}^n
         E[(X_i - \mu_X )(Y_i - \mu_Y )]\\
         &=COV(X, Y )
     \end{align*}
@@ -543,12 +543,34 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 \subsection{Pearson’s Correlation Coefficient ($\rho_P$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: Pearson’s Correlation Coefficient}
 
-\noindent 
-From \cite{ism-1}
-
 \begin{enumerate}
     \item[] $X,Y$: random variables
+    
+    \vspace{0.1cm}
+    \item[] $
+        Z_X = \dfrac{X - \mu_X}{\sigma_X},
+        Z_Y = \dfrac{Y - \mu_Y}{\sigma_Y}
+    $ : standardized random variables
 
+    \vspace{0.2cm}
+    
+    \item[] 
+    \[
+        \rho_P 
+        = CORR(X,Y)
+        = COV(Z_X, Z_Y)
+        = \mathbb{E}\left( \dfrac{X - \mu_X}{\sigma_X} \right) \left( \dfrac{Y - \mu_Y}{\sigma_Y} \right)
+        = \dfrac{COV(X,Y)}{\sqrt{VAR(X)} \sqrt{VAR(Y)}}
+        \hfill \text{\cite{ism-1}}
+    \]
+    
+    \item[] $
+        corr(x,y)
+        = \dfrac{Cov[x,y]}{\sqrt{\mathbb{V}(x) \mathbb{V}(y)}}
+    $ \hfill \cite{mfml-1}
+    
+    \vspace{0.2cm}
+    
     \item Pearson’s correlation coefficient is a way of quantifying how two variables “co-relate”
 
     \item If Pearson’s correlation is positive, the two variables $X$ and $Y$ move in the same direction. If $X$ is increasing then $Y$ should be increasing as well
@@ -559,33 +581,649 @@ From \cite{ism-1}
 
     \item Pearson’s correlation coefficient also measures the concordance or discordance in a certain way
 
+    \item fits very well with the \textbf{bivariate normal distribution}
+
+    \item Pearson’s product-moment estimator is also \textbf{sensitive to outliers}
+
+    \item $1-\rho_P$ is not a distance measure, but $\sqrt{1-\rho_P}$ is a distance measure
+
+    \item The correlation matrix is the covariance matrix of standardized random variables, $x/\sigma(x)$
+
+    \item indicates how two random variables are \textbf{related}
+
+    \item Positive correlation $corr[x, y]$ means that when $x$ grows, then $y$ is also expected to grow. 
+
+    \item Negative correlation means that as $x$ increases, then $y$ decreases.
+
+\end{enumerate}
+
+\subsubsection*{Properties \cite{ism-1}}
+
+\begin{enumerate}
+    \item $CORR(X, Y) \in [-1, 1]$
+
+    \item If $CORR(X, Y) = 1$, then $Y = aX + b$, where $a > 0$
+
+    \item If $CORR(X, Y) = -1$, then $Y = aX + b$, where $a < 0$
+
+    \item $CORR(aX + b, cY + d) = CORR(X, Y)$  for $a, c > 0$ or $a, c < 0$
+
+    
+\end{enumerate}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l l l l} 
+        0.90 & < & $|\rho_P|$ & $\leq$ & 1.00 & \textbf{Very strong} correlation\\
+        0.70 & < & $|\rho_P|$ & $\leq$ & 0.90  & \textbf{Strong} correlation\\
+        0.50 & < & $|\rho_P|$ & $\leq$ & 0.70 &  \textbf{Moderate} correlation\\
+        0.30 & < & $|\rho_P|$ & $\leq$ & 0.50  & \textbf{Low} correlation\\
+        0  &  $\leq$ & $|\rho_P|$ & $\leq$ & 0.30 &  \textbf{Negligible} correlation\\
+    \end{tabular}
+    \caption{Inferring Pearson’s Correlation Coefficient values \cite{ism-1}}
+\end{table}
+
+
+\subsection{Estimate for Product-Moment/ Sample correlation coefficient ($r_P$) \cite{ism-1}} \label{Multivariate Distributions: Estimate for Product-Moment/ Sample correlation coefficient}
+
+\begin{enumerate}
+    \item[] $S_X^2 , S_Y^2$: sample variances
+    \item[] $r_P$: estimator
+
+    \begin{align*}
+        r_P
+        &= \dfrac{S_{XY}}{S_X S_Y}
+        = \dfrac{
+            \dsum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})
+        }{(n-1)S_X S_Y}
+        = \dfrac{
+            \dsum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})
+        }{\sqrt{
+            \dsum_{i=1}^{n} (X_i - \bar{X})^2
+            \dsum_{i=1}^{n} (Y_i - \bar{Y})^2
+        }}\\
+        &= \dfrac{
+            \dsum_{i=1}^{n} X_iY_i - 
+            n\bar{X}\bar{Y}
+        }{(n-1)S_X S_Y}
+        = \dfrac{
+            n\dsum_{i=1}^n X_iY_i - \dsum_{i=1}^n X_i \dsum_{i=1}^n Y_i
+        }{\sqrt{
+            n\dsum_{i=1}^{n} X_i^2 - \left(\dsum_{i=1}^{n} X_i\right)^2
+        }\sqrt{
+            n\dsum_{i=1}^{n} Y_i^2 - \left(\dsum_{i=1}^{n} Y_i\right)^2
+        }}
+    \end{align*}
+
+    \item estimator for Pearson’s correlation
+
+    \item $r_P$ is typically \textbf{not unbiased}, $\mathbb{E}(r_P) \neq \rho_P$
+    
+    \item the expectation of the numerator in $r_P$ is unbiased for the numerator in the definition of Pearson’s correlation $\rho_P$
 \end{enumerate}
 
 
 
+\subsection{Kendall’s Tau Correlation ($\tau_K$) \cite{ism-1}} \label{Multivariate Distributions: Kendall’s Tau Correlation}
+
+\begin{enumerate}
+    \item[] \begin{align*}
+        \tau_K 
+        &= Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - Pr ((X_2 - X_1)(Y_2 - Y_1) < 0)
+        &= 2 Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - 1
+        &= 4 Pr(X_1 < X_2, Y_1 < Y_2) - 1.
+    \end{align*}
+
+    \item $-1 \leq \tau_K \leq 1$
+    \begin{enumerate}
+        \item minimum $-1$ is attained when $F_{XY}$ is equal to the \textbf{Fréchet lower bound}:
+            \[
+                F_{XY}(x, y) = \max\{F_X(x) + F_Y(y) - 1, 0\}
+            \]
+
+        \item maximum $1$ is attained when $F_{XY}$ is equal to the \textbf{Fréchet upper bound}:
+            \[
+                F_{XY}(x, y) = \min\{F_X(x), F_Y(y)\}
+            \]
+
+        \item When $X$ and $Y$ are \textbf{independent}, Kendall’s tau is equal to \textbf{zero}.
+        \begin{enumerate}
+            \item if $X$ and $Y$ are independent, then all four random variables are independent, since we assumed that the two pairs $(X_1, Y_1)$ and $(X_2, Y_2)$ were already independent
+            
+            \item This makes $D_X$ and $D_Y$ independent and this implies that the probability that $D_X D_Y > 0$ is equal to $0.5$, which makes Kendall’s tau equal to zero
+        \end{enumerate}
+    \end{enumerate}
+
+    \item Pearson’s correlation coefficient of $D_X$ and $D_Y$ is given by $CORR(D_X, D_Y) = CORR(X, Y)$
+
+    \item It is a measure of \textbf{concordance}
+
+    \item measures the difference between concordant and discordant pairs
+
+    \item Kendall’s tau measures the strength between the dependency of $D_X$ and $D_Y$
+
+    \item \textit{Maurice Kendall} defined his correlation coefficient on data (thus as an \textbf{estimator} and \textbf{not as a parameter})
+
+    \item population parameter it represents is obvious
+
+    \item fits very well with the continuous \textbf{FGM distributions} and the \textbf{Fréchet family} of distribution function
+    
+    \item Kendall’s tau estimator is \textbf{computationally more intensive}, since it requires the comparisons of pairs with all other pairs. 
+    
+    \item on really large data, Kendall’s tau may lead to numerical issues
+
+    \item \textbf{CANNOT} be applied to nominal data
+
+\end{enumerate}
+
+\subsection{Estimator of Kendall’s tau correlation ($r_K$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Kendall’s tau correlation}
+
+\begin{enumerate}
+    \item[] \begin{align*}
+        r_K
+        &= \dfrac{1}{n(n-1)} \dsum_{i=1}^n \dsum_{j=1}^n
+            sgn(X_j - X_i)sgn(Y_j - Y_i) \\
+        &= \dfrac{2}{n(n-1)} \dsum_{i=1}^{n-1} \dsum_{j=i+1}^n sgn(X_j - X_i)sgn(Y_j - Y_i)
+    \end{align*}
+
+    \item estimator depends only on the signs of $X_j - X_i$ and $Y_j - Y_i$
+
+    \item estimator is independent of monotone transformations (increasing or decreasing functions) of the data
+
+    \item If we apply the estimator on $(\psi_1(X_1), \psi_2(Y_1)), (\psi_1(X_2), \psi_2(Y_2)), \cdots , (\psi_1(X_n), \psi_2(Y_n))$, when both $\psi_1$ and $\psi_2$ are increasing or both decreasing functions, we obtain the exact same estimator
+
+    \item distribution function of this estimator is approximately normal when sample size converges to infinity ($\infty$)
+
+    \item variance of $r_K : [2(2n + 5)]/[3n(n - 1)]$  the pairs are uncorrelated ($\tau_K = 0$)
+
+    \item the variance of $r_K$ is bounded from above with $VAR(r_K) \leq 2(1 - \tau_K^2)/n$
+
+    \item Fisher $z$-transformation
+    \begin{enumerate}
+        \item variance of $r_K$ in the transformed Fisher $z$ scale has been determined at $0.437/(n - 4)$
+
+        \item Confidence interval:
+        \[\left(
+            z_{r_K} - z_{1-\alpha/2}\sqrt{0.437/(n - 4)},
+            z_{r_K} + z_{1-\alpha/2}\sqrt{0.437/(n - 4)}
+        \right]\]
+
+    \end{enumerate}
+
+    \item $z_{r_K} = 0.5[log(1 + r_K) - log(1 - r_K)]$ \& $z_p$ the $p$th quantile of the \textbf{standard normal distribution}, original scale:
+    \[\left(
+        \dfrac{
+            exp(z_{r_K} - z_{1-\alpha/2}\sqrt{0.437/(n - 4)}) - 1
+        }{
+            exp(z_{r_K} - z_{1-\alpha/2}\sqrt{0.437/(n - 4)}) + 1
+        },
+        \dfrac{
+            exp(z_{r_K} + z_{1-\alpha/2}\sqrt{0.437/(n - 4)}) - 1
+        }{
+            exp(z_{r_K} + z_{1-\alpha/2}\sqrt{0.437/(n - 4)}) + 1
+        }
+    \right]\]
+
+    
+\end{enumerate}
 
 
+\subsection{Spearman’s Rho Correlation ($\rho_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s Rho Correlation}
+
+\begin{enumerate}
+    \item use three i.i.d. pairs $(X_1, Y_1)$, $(X_2, Y_2)$, and $(X_3, Y_3)$ of random variables having joint distribution function $F_{XY}$
+
+    \item only the estimator for this dependency parameter
+    \[
+        \rho_S = 2[Pr((X_1 - X_2)(Y_3 - Y_1) > 0) - Pr((X_1 - X_2)(Y_3 - Y_1) < 0)]
+    \]
+
+    \item[] $-1 \leq \rho_S \leq 1$
+    
+    \item Spearman’s rho quantifies concordance of 
+    \begin{enumerate}
+        \item change in one dimension from the first to the second observation
+
+        \item change in the second dimension from the first to the third observation
+    \end{enumerate}
+    
+    \item when $X$ and $Y$ are independent, Spearman’s rho correlation coefficient becomes equal to zero
+    
+    \item fits very well with the \textbf{FGM} and \textbf{Fréchet families} of distribution functions
+    
+    \item \textbf{CANNOT} be applied to \textbf{nominal data}
+\end{enumerate}
+
+\subsection{Spearman’s rank correlation ($r_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s rank correlation}
+
+\begin{enumerate}
+    \item estimator for Spearman’s rho
+
+    \item pairs of random variables $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$, we can define the ranks for the $x$ and $y$ coordinates separately
+
+    \item The rank $R_k^X$ of $X_k$ is the position of $X_k$ in the ordered values $X_{(1)}, X_{(2)}, \cdots, X_{(n)}$ from small to large
+
+    \item we define the rank $R_k^Y$ for $Y_k$ among the random variables $Y_{(1)}, Y_{(2)},\cdots, Y_{(n)}$
+
+    \item if the same value occurs multiple times they all receive the same rank. This is called a \textbf{tie}.
+
+    \item translate the pair $(X_k, Y_k)$ to a pair of ranks $(R_k^X, R_k^Y)$
+    \[
+        \hfill
+        r_S
+        =\dfrac{
+            \dsum_{i=1}^{n} 
+            (R_i^X - \bar{R}^X)(R_i^Y - \bar{R}^Y)
+        }{\sqrt{
+            \dsum_{i=1}^{n} 
+            (R_i^X - \bar{R}^X)^2
+            \dsum_{i=1}^{n} 
+            (R_i^Y - \bar{R}^Y)^2
+        }}
+        \hfill
+        r_S
+        = 1 - 6\dsum_{i=1}^{n}
+        \dfrac{(R_i^Y - R_i^X)^2}{n^3 - n}
+        \hfill
+    \] 
+
+    \item average ranks for variables:
+    \[
+        \hfill
+        \bar{R}^X = \dfrac{1}{n} \dsum_{k=1}^{n} R_k^X
+        \hfill
+        \bar{R}^Y = \dfrac{1}{n} \dsum_{k=1}^{n} R_k^Y
+        \hfill
+    \]
+
+    \item total number of ranks in a sample of $n$ observations = $n(n + 1)/2$
+
+    \item Since Spearman’s rank correlation depends on the ranks of the variables $x$ and $y$, the estimator is independent of monotonic transformations (increasing or decreasing functions) of the data.
+
+    \item Spearman rho’s estimator $r_S$ on $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ is exactly the same as Spearman rho’s estimator $r_S$ on the transformed pairs $(\psi_1(X_1), \psi_2(Y_1)), (\psi_1(X_2), \psi_2(Y_2)), \cdots , (\psi_1(X_n), \psi_2(Y_n))$, when $\psi_1$ and $\psi_2$ are both increasing or both decreasing functions.
+
+\end{enumerate}
+
+\subsection{Relation Between Kendall’s tau ($\tau_K$) \& Spearman’s Rho ($\rho_S$) \cite{ism-1}}\label{Relation Between Kendall’s tau and Spearman’s Rho}
+
+\[
+    \hfill
+    -1 \leq 3\tau_K - 2\rho_S \leq 1
+    \hfill
+\]
 
 
+\subsection{Cohen’s Kappa Statistic ($\kappa_C$) \cite{ism-1}} \label{Multivariate Distributions: Cohen’s Kappa Statistic}
+
+\begin{enumerate}
+    \item[] $X, Y$: random variables ($X, Y \in \{1, 2, 3,\cdots, K\}$) 
+
+    \item[] PDF parameters: $p_{11}, p_{12},\cdots, p_{1K}, p_{21}, p_{22},\cdots, p_{2K},\cdots, p_{K1}, p_{K2},\cdots, p_{KK}$ 
+    
+    \item uses another measure of \textbf{association}, referred to as a measure of agreement
+
+    \item typically developed for nominal data, it has been applied to ordinal random variables as well, including binary random variables
+
+    \item[] \[
+        \hfill
+        Pr(X=x,Y=y) = p_{xy} \geq 0
+        \hfill
+        \dsum_{x=0}^K \dsum_{y=0}^K p_{xy} = 1
+        \hfill
+    \] 
+
+    \item probability $p_{xy}$ represents the probability that a unit is classified by the first rater in class $x$ and by the second rater in class $y$
+
+    \item probability $p_{kk}$ indicates the probability that both raters classify a unit in the same class $k$
+
+    \item when $p_{xy} = 0$ for every $x \neq y$, there will be no difference in classification between the two raters
+
+    \item when the ratings are independent, $Pr(X = x, Y = y) = f_X(x)f_Y(y)$
+
+    \item $P_O = \dsum_{k=1}^K p_{kk}$ represents the probability that both raters classify units in the same classes
+    \begin{enumerate}
+        \item When it is equal to $1$, there is perfect agreement.
+
+        \item the expected probability that both raters classify a unit in the same class $k$ is equal to $f_X(k)f_Y(k)$
+    \end{enumerate}
+
+    \item $P_E = \dsum_{k=1}^K f_X(k)f_Y(k)$ represents probability of correctly classifying units in the same classes, based on independent ratings
+
+    \item When $X$ and $Y$ are further apart, $|X - Y| > 1$, this seems to be a more serious \textbf{misclassification} then when $X$ and $Y$ just differ one class, $|X - Y| = 1$
+    \[
+        \hfill
+        \kappa_C = \dfrac{P_O - P_E}{1 - P_E}
+        \hfill
+        (0 \leq \kappa_C \leq 1)
+    \]
+
+    \item When there is perfect agreement ($P_O = 1$), the kappa statistic reaches its \textbf{maximum} at the value of one $(\kappa_C = 1)$
+
+    \item when the ratings are independent, the kappa statistic is equal to $\kappa_C = 0$
+
+    \item Cohen’s kappa statistic should \textbf{NOT} be used when particular outcomes of $X$ and $Y$ are rare
+
+\end{enumerate}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l l l l}
+    0.80 & < & $\kappa_C$ & $\leq$ & 1.00 &  \textbf{High} agreement\\
+    0.60 & < & $\kappa_C$ & $\leq$ & 0.80  & \textbf{Substantial} agreement \\
+    0.40 & < & $\kappa_C$ & $\leq$ & 0.60 &  \textbf{Moderate} agreement \\
+    0.20 & < & $\kappa_C$ & $\leq$ & 0.40 &  \textbf{Fair} agreement \\
+    0   & < & $\kappa_C$ & $\leq$ & 0.20 &  \textbf{Poor} agreement
+    \end{tabular}
+\end{table}
 
 
+\subsection{Estimator of Cohen’s Kappa ($\hat{\kappa}_C$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Cohen’s Kappa}
 
 
+\begin{enumerate}
+    \item $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ of i.i.d. bivariate random variables as copies of $(X, Y)$ that can take their values in $\{1, 2,\cdots, K\}$
+    \[
+        \hfill
+        N_{xy} = \dsum_{i=1}^{n}
+        \mathbbm{1}_{(x)}(X_i) \mathbbm{1}_{(y)}(Y_i)
+        \hfill
+        \dsum_{x=1}^{K} \dsum_{y=1}^{K} N_{xy} = n
+        \hfill
+        N_{x\cdot} = \dsum_{y=1}^{K} N_{xy}
+        \hfill
+        N_{\cdot y} = \dsum_{x=1}^{K} N_{xy}
+        \hfill
+    \]
+
+    \item distribution function of $N_{xy}$ is binomial with parameters $n$ and 
+    \[
+        p_{xy} = Pr(X = x, Y = y)
+    \]
+
+    \item the multivariate PMF for $N_{11}, N_{12},\cdots, N_{1K}, N_{21}, N_{22},\cdots, N_{2K} , \cdots, N_{K1}, N_{K2},\cdots, N_{KK}$ has a multinomial distribution function given by:
+    \[
+        Pr(N_{11}=n_{11},\cdots,N_{KK}=n_{KK})
+        = n!\dprod_{x=1}^{K} \dprod_{y=1}^{K}
+        \left( \dfrac{p_{xy}^{n_{xy}}}{n_{xy}!} \right)
+    \]
+
+    \item estimators: $
+        \hfill
+        \hat{\kappa}_C = \dfrac{\hat{p}_O - \hat{p}_E}{1 - \hat{p}_E}
+        \hfill
+        \hat{p}_O = \dfrac{1}{n} \dsum_{k=1}^K N_{kk}
+        \hfill
+        \hat{p}_O = \dfrac{1}{n^2} \dsum_{k=1}^K 
+        N_{k\cdot}N_{\cdot k}
+        \hfill
+    $
+    
+    \item $
+        VAR(\hat{\kappa}_C)
+        \approx \dfrac{p_O(1 - p_O)}{n(1 - p_E)^2}
+    $
+
+    \item $100\%(1 - \alpha)$ confidence interval:
+    \[\left(
+        \hat{\kappa}_C - z_{1-\alpha/2}
+        \dfrac{\sqrt{\hat{p}_O(1-\hat{p}_O)}}{(1 - \hat{p}_E)\sqrt{n}},
+        \hat{\kappa}_C + z_{1-\alpha/2}
+        \dfrac{\sqrt{\hat{p}_O(1-\hat{p}_O)}}{(1 - \hat{p}_E)\sqrt{n}}
+    \right]\]
+    $z_p$ the $p$th quantile of the \textbf{standard normal distribution function}
+
+    
+\end{enumerate}
+
+\subsection{Pearson’s chi-square statistic (Nominal Statistic) ($\chi_P^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)}
+
+\begin{enumerate}
+    \item[] $X, Y$: nominal/ ordinal/ binary random variables
+    \[
+        \hfill
+        X \in \{1, 2,\cdots, K\}
+        \hfill
+        Y \in \{1, 2,\cdots, M\}
+        \hfill
+    \]
+
+    \item[] $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ are i.i.d. with CDF $F_{XY}$
+
+    \item represents a measure of departure from independence
+
+    \item $
+        N_{xy}
+        = \dsum_{i=1}^{n} 
+        \mathbbm{1}_{(x)}(X_i)
+        \mathbbm{1}_{(y)}(Y_i)
+        \hfill
+        (x,y) \in [1,\cdots,K] \times [1,\cdots,M]
+    $\\
+    $N_{xy}$ represent the frequencies of the cells in a $K \times M$ contingency table
+    
+    \item row and column totals: $
+        \hfill
+        N_{x\cdot} = \dsum_{y=1}^{K} N_{xy}
+        \hfill
+        N_{\cdot y} = \dsum_{x=1}^{K} N_{xy}
+        \hfill
+    $
+
+    \item joint PMF $Pr(X = x, Y = y)$ can be estimated by $N_{xy}/n$
+
+    \item marginal PMFs $Pr(X = x)$ and $Pr(Y = y)$ can be estimated by $N_{x\cdot}/n$ and $N_{\cdot y}/n$, respectively
+
+    \item quantifies the difference between the observed numbers $N_{xy}$ and their expected numbers $N_{x\cdot}N_{\cdot y}/n$ based on independence
+
+    \item $
+        \hfill
+        \chi_P^2 = \dsum_{x=1}^{K} \dsum_{y=1}^{M}
+        \dfrac{[N_{xy} - N_{x\cdot}N_{\cdot y}/n]^2}{N_{x\cdot}N_{\cdot y}/n}
+        \hfill
+        \chi_P^2 = \dsum_{x=1}^{K} \dsum_{y=1}^{M}
+        \dfrac{[nN_{xy} - N_{x\cdot}N_{\cdot y}]^2}{N_{x\cdot}N_{\cdot y}}
+        \hfill
+    $
+
+    \item \textbf{larger} the value for Pearson’s chi-square statistic, the \textbf{stronger} the association between the two random variables $X$ and $Y$
+
+    \item $(K - 1)(M - 1)$ degrees of freedom when $X$ and $Y$ are independent
+
+    \item cannot be viewed as a correlation coefficient (If we multiply all frequencies in the contingency table with a constant, Pearson’s chi-square increases with the same constant. Thus Pearson’s chi-square statistic is not properly normalized to be viewed as a proper association statistic)
+
+\end{enumerate}
 
 
+\subsection{Pearson’s squared phi-coefficient (Nominal Statistic) ($\phi^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s squared phi-coefficient (Nominal Statistic)}
+
+\begin{enumerate}
+    \item normalized \textbf{pearson’s chi-squared statistic} (SEE: \fullref{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)})
+
+    \item sample size $n$ with $2 \times  2$ contingency tables $(K = M = 2)$
+
+    \item $
+        \hfill
+        \phi^2 = \dfrac{\chi_P^2}{n}
+        \hfill
+        \chi_P^2 = n \dfrac{
+            [N_{11}N_{22} - N_{12}N_{21}]^2
+        }{
+            N_{1\cdot}N_{2\cdot}N_{\cdot 1}N_{\cdot 2}
+        }
+        \hfill
+    $
+
+    \item $
+        \hfill
+        \phi = \dfrac{
+            |N_{11}N_{22} - N_{12}N_{21}|
+        }{
+            \sqrt{N_{1\cdot}N_{2\cdot}N_{\cdot 1}N_{\cdot 2}}
+        }
+        \hfill
+    $
+
+    \item $\phi$ is equal to the absolute value of Pearson’s product-moment estimator applied on the binary pairs $(X_i, Y_i)$
+
+    \item Pearson’s product-moment estimator: $
+        \hfill
+        \rho_P = \dfrac{
+            |N_{11}N_{22} - N_{12}N_{21}|
+        }{
+            \sqrt{N_{1\cdot}N_{2\cdot}N_{\cdot 1}N_{\cdot 2}}
+        }
+        \hfill
+    $
+
+    \item The absolute value of $\rho_P$ is now equal to $\phi$
+\end{enumerate}
 
 
+\subsection{Cramér’s V association measure (Nominal Statistic) ($V$) \cite{ism-1}} \label{Multivariate Distributions: Cramer’s V association measure (Nominal Statistic)}
 
 
+\begin{enumerate}
+    \item based on \textbf{pearson’s chi-squared statistic} (SEE: \fullref{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)})
+
+    \item general $K \times  M$ contingency tables that would have its values in $[0, 1]$
+
+    \item $
+        V = \sqrt{\dfrac{\chi_P^2}{
+        n\min\{K-1,M-1\}
+        }}
+    $
+
+    \item Cramér’s V is equal to Pearson’s $\phi$ coefficient when either the $X$ or the $Y$ variable has just two levels
+
+    \item Cramér’s $V$ is the more general measure of nominal association, since it is properly normalized for all contingency tables
+
+    \item The maximum attainable value for $V$ can be substantially smaller if we keep the row and column totals fixed to the totals that we have observed
+
+    \item under the marginal constraints we cannot make the association any stronger (in this direction)
+
+    \item the fact that it is not close to one does not necessarily imply that the relationship is very weak because the marginal distribution “limits” the possible values of $\phi$ (or other measures of relationship strength)
+
+    \item for nominal random variables it does provide similar interpretations as the sample correlations and often $\phi$ or $V$ are reported together with $X^2$ and a $p$-value of the null-hypothesis test that there is no dependence between variables
+\end{enumerate}
 
 
+\subsection{Pearson’s chi-square ($\chi_P^2$), Pearson’s phi-coefficient ($\phi$), and Cramér’s V ($V$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square, Pearson’s phi-coefficient, and Cramér’s V}
+
+\begin{enumerate}
+    \item meant for contingency tables, they can also be applied to continuous variables $X$ and $Y$
+
+    \item $X$ and $Y$ must be transformed to categorical variables first (forming non-overlapping intervals)
+
+    \item $K$ intervals for the variable $X: (-\infty, \alpha_1], (\alpha_1, \alpha_2],\cdots,(\alpha_{K-2}, \alpha_{K-1}]$, and $(\alpha_{K-1},\infty)$, with $\alpha_1, \alpha_2,\cdots, \alpha_K$ threshold values that are selected by ourselves
+
+    \item $M$ intervals for the variable $Y: (-\infty, \beta_1], (\beta_1, \beta_2],\cdots,(\beta_{M-2}, \beta_{M-1}]$, and $(\beta_{M-1},\infty)$, with $\beta_1, \beta_2,\cdots, \beta_M$ threshold values that are selected by ourselves
+
+    \item The continuous data $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ can then be summarized by $N_{xy}$ 
+
+    \item represent the number of pairs $(X_i, Y_i)$ that falls in the set 
+    \[
+        (\alpha_{x-1}, \alpha_x] \times (\beta_{y-1}, \beta_y] 
+        \hfill
+        (\alpha_0 = \beta_0 = -\infty \text{ and } \alpha_K = \beta_M = \infty)
+    \]
+
+    \item choice of the number of levels and the choice of thresholds can have a strong influence on the calculation of nominal associations
+\end{enumerate}
 
 
+\subsection{Goodman and Kruskal’s Gamma (Ordinal Statistic) ($\gamma$) \cite{ism-1}} \label{Multivariate Distributions: Goodman and Kruskal’s Gamma (Ordinal Statistic)}
 
 
+\begin{enumerate}
+    \item[] $
+        \hfill
+        X \in \{1, 2,\cdots, K\}
+        \hfill
+        Y \in \{1, 2,\cdots, M\}
+        \hfill
+    $
 
+    \vspace{0.2cm}
+    \item[] $
+        \gamma
+        = \dfrac{
+            Pr((X_2 - X_1)(Y_2 - Y_1) > 0) - Pr((X_2 - X_1)(Y_2 - Y_1) < 0)
+        }{
+            Pr((X_2 - X_1)(Y_2 - Y_1) > 0) + Pr((X_2 - X_1)(Y_2 - Y_1) < 0)
+        }
+    $
 
+    \vspace{0.2cm}
+    \item Potentially, Pearson’s rho, Spearman’s rho, and Kendall’s tau estimators may seem to be suitable for this type of data, but they are not ideal
 
+    \begin{enumerate}
+        \item Pearson’s rho will treat the values $1, 2, \cdots, K$ for $X$ and the values $1, 2, \cdots, M$ for $Y$ as numerical, while these numbers are somewhat arbitrary
+
+        \item Spearman’s rho and Kendall’s tau compare the ordinal values with each other, but in many comparisons the values cannot be ordered.
+    \end{enumerate}
+
+    \item Estimator: $
+        \hfill
+        G = \dfrac{N_C - N_D}{N_C + N_D}
+        \hfill
+    $
+
+    \begin{enumerate}
+        \item $N_C$ 
+        = number of concordant pairs 
+        \hfill
+        $
+            N_C
+            =\dsum_{i=1}^n \dsum_{j=1}^n
+            \mathbbm{1}_{(0,\infty)} ((X_j - X_i)(Y_j - Y_i))
+        $
+        \hfill
+    
+        \item $N_D$ 
+        = number of discordant pairs 
+        \hfill
+        $
+            N_D
+            =\dsum_{i=1}^n \dsum_{j=1}^n
+            \mathbbm{1}_{(-\infty,0)} ((X_j - X_i)(Y_j - Y_i))
+        $
+        \hfill
+    
+        \item sample size $n$ is typically larger than the sum of concordant and discordant pairs, i.e., $n > N_C + N_D$, due to the many ties in data of the $K \times M$ contingency table
+    \end{enumerate}
+
+    \item if there are no ties at all, Goodman and Kruskal’s gamma reduces to Kendall’s tau
+
+    \item Distribution function of the estimator G has been studied under the assumption that $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ are i.i.d. with distribution function $F_{XY}$
+
+    \item $\sqrt{n}(G - \gamma)$ is asymptotically normal
+    \begin{enumerate}
+        \item Mean: $0$
+
+        \item variance $
+            \leq
+            \dfrac{2(1 - \gamma^2)}{
+                Pr((X_2 - X_1)(Y_2 - Y_1) > 0) + Pr((X_2 - X_1)(Y_2 - Y_1) < 0)
+            }
+        $
+
+        \item estimator of variance	: $\dfrac{2(1 - G^2)}{N_D + N_C}$
+    \end{enumerate}
+
+    \item asymptotic confidence intervals:
+    $
+        \left(
+            G - z_{1-\alpha/2}\sqrt{
+                \dfrac{2(1-G^2)}{N_D+N_C}
+            },
+            G + z_{1-\alpha/2}\sqrt{
+                \dfrac{2(1-G^2)}{N_D+N_C}
+            }
+        \right]
+    $
+
+    \item $z_p$ the $p$th quantile of the \textbf{standard normal distribution function}
+\end{enumerate}
 
 
 

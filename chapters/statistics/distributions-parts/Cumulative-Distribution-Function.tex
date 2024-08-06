@@ -10,8 +10,8 @@
 \begin{align*}
     F(x) 
     = \begin{cases}
-        Pr(X < x) = \displaystyle\int_{-\infty}^{x} f(z) dz & \text{ (Continuous)}\\[2ex]
-        Pr(X \leq x) = \displaystyle\sum_{k=0}^x f(k) & \text{ (Discrete)}\\
+        Pr(X < x) = \dint_{-\infty}^{x} f(z) dz & \text{ (Continuous)}\\[2ex]
+        Pr(X \leq x) = \dsum_{k=0}^x f(k) & \text{ (Discrete)}\\
     \end{cases}
 \end{align*}
 
@@ -58,9 +58,9 @@
     \vspace{0.1cm} \(
         \mathbb{E}(X) =
         \begin{cases}
-            \displaystyle\int_{-\infty}^\infty xf(x)dx &
+            \dint_{-\infty}^\infty xf(x)dx &
             \text{ (Continuous)}\\[2ex]
-            \displaystyle\sum_{x=0}^\infty xf(x) &
+            \dsum_{x=0}^\infty xf(x) &
             \text{ (Discrete)}\\
         \end{cases}
     \) \vspace{0.1cm} \\
@@ -71,9 +71,9 @@
         \sigma^2 =
         \mathbb{E}(X-\mu)^2 =
         \begin{cases}
-            \displaystyle\int_{-\infty}^\infty (X-\mu)^2 f(x)dx &
+            \dint_{-\infty}^\infty (X-\mu)^2 f(x)dx &
             \text{ (Continuous)}\\[2ex]
-            \displaystyle\sum_{x=0}^\infty (X-\mu)^2 f(x) &
+            \dsum_{x=0}^\infty (X-\mu)^2 f(x) &
             \text{ (Discrete)}\\
         \end{cases}
     \) \vspace{0.1cm} \\
@@ -83,9 +83,9 @@
     \vspace{0.1cm} \(
         \mathbb{E}(X-\mu)^2 =
         \begin{cases}
-            \displaystyle\int_{-\infty}^\infty \psi(X) f(x)dx &
+            \dint_{-\infty}^\infty \psi(X) f(x)dx &
             \text{ (Continuous)}\\[2ex]
-            \displaystyle\sum_{x=0}^\infty \psi(X) f(x) &
+            \dsum_{x=0}^\infty \psi(X) f(x) &
             \text{ (Discrete)}\\
         \end{cases}
     \) \vspace{0.1cm} \\
@@ -97,8 +97,8 @@
     Pr(\psi^{-1}(X) \leq x) 
     &= Pr(x\leq\psi(X)) \\
     &= F(\psi(x)) \\
-    &= \displaystyle\int_{-\infty}^{\psi(x)} f(z)dz\\
-    &= \displaystyle\int_{-\infty}^{\psi(x)} \psi'(x) f(\psi(x))dz &&& \left( \psi'(x) = \dfrac{d(\psi(x))}{dx} \right)\\
+    &= \dint_{-\infty}^{\psi(x)} f(z)dz\\
+    &= \dint_{-\infty}^{\psi(x)} \psi'(x) f(\psi(x))dz &&& \left( \psi'(x) = \dfrac{d(\psi(x))}{dx} \right)\\
 \end{align*}
 
 \textbf{Properties}:

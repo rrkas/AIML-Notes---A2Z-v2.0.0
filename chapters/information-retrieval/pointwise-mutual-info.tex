@@ -43,7 +43,7 @@ For given co-occurrence matrix $F$:
     \begin{enumerate}
         \item $\rcmdXPPMI_{ij} = \rcmdXPPMI(w_i, c_j) = \rcmdXPPMI(w = i, c = j)$ gives the PPMI value of word $w_i$ with context $c_j$
         
-        \item \( \displaystyle P_{ij}=\dfrac{f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}}  \quad\quad P_{i*}=\dfrac{\displaystyle\sum_{j=1}^{C} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \quad\quad P_{*j}=\dfrac{\displaystyle\sum_{i=1}^{W} f_{ij}}{\displaystyle\sum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \)
+        \item \( \displaystyle P_{ij}=\dfrac{f_{ij}}{\dsum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}}  \quad\quad P_{i*}=\dfrac{\dsum_{j=1}^{C} f_{ij}}{\dsum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \quad\quad P_{*j}=\dfrac{\dsum_{i=1}^{W} f_{ij}}{\dsum_{i=1}^{W} \sum_{j=1}^{C} f_{ij}} \)
         
         \item \( \displaystyle \rcmdXPPMI_{ij} = \max\left( \log_2\left( \dfrac{p_{ij}}{p_{i*}p_{*j}} \right),0\right) \)
         
@@ -69,7 +69,7 @@ For given co-occurrence matrix $F$:
 \section{Weighted Unigram Frequency ( $P_\alpha(w)$ )}\label{Weighted Unigram Frequency (p alpha)}
 
 \[
-    P_\alpha(w) = \dfrac{\rcmdXcount(w)^\alpha}{\displaystyle\sum_{w'} \rcmdXcount(w')^\alpha}
+    P_\alpha(w) = \dfrac{\rcmdXcount(w)^\alpha}{\dsum_{w'} \rcmdXcount(w')^\alpha}
 \]
 
 

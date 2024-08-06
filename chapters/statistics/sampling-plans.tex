@@ -47,7 +47,7 @@ A formal or mathematical definition for collecting a random sample of size $n$ f
 
     \item The function $T$ is referred to as the estimator.
 
-    \item Expected population parameter: $\mathbb{E}(T) = \displaystyle\sum_{k=1}^{K} \hat{\theta}_k\pi_k$
+    \item Expected population parameter: $\mathbb{E}(T) = \dsum_{k=1}^{K} \hat{\theta}_k\pi_k$
 \end{enumerate}
 
 
@@ -77,7 +77,7 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
 \section{Mean Squared Error (MSE) \cite{ism-1}}
 \[
     \hfill
-    MSE = \displaystyle\sum_{k=1}^{K}
+    MSE = \dsum_{k=1}^{K}
     (\hat{\theta}_k - \theta)^2 \pi_k
     \hfill
     MSE = SE^2 + (\mathbb{E}(T) - \theta)^2
@@ -121,7 +121,7 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
 \[
     \hfill
     SE = \sqrt{
-        \displaystyle\sum_{k=1}^{K}
+        \dsum_{k=1}^{K}
         (\hat{\theta}_k - \mathbb{E}(T))^2\pi_k
     }
     \hspace{1cm}
@@ -156,10 +156,10 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
         \hline
         
         \textbf{Mean/ Average} & $
-            \eta = \dfrac{1}{N} \displaystyle\sum_{i=1}^N z_i
+            \eta = \dfrac{1}{N} \dsum_{i=1}^N z_i
         $ & $
             \hat{\eta}_k = \dfrac{1}{n} 
-            \displaystyle\sum_{i\in S_k} z_i
+            \dsum_{i\in S_k} z_i
         $\\[2ex]
         \hline
 
@@ -168,13 +168,13 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
             \vspace{0.1cm}
             \[
                 \sigma^2 = \dfrac{1}{N}
-                \displaystyle\sum_{i=1}^{N} (z_i - \eta)^2
+                \dsum_{i=1}^{N} (z_i - \eta)^2
                 = \dfrac{1}{N}
-                \displaystyle\sum_{i=1}^{N} z_i^2 - \eta^2
+                \dsum_{i=1}^{N} z_i^2 - \eta^2
             \]
             \[
                 \sigma^2 = \dfrac{1}{N}
-                \displaystyle\sum_{i=1}^{N} (x_i - \mu)^2
+                \dsum_{i=1}^{N} (x_i - \mu)^2
             \]
             \vspace{0.1cm}
         \end{minipage} & 
@@ -184,7 +184,7 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
                 \item \textbf{Unbiased}
                 \[
                     s_k^2 = \dfrac{1}{n-1}
-                    \displaystyle\sum_{i\in S_k}
+                    \dsum_{i\in S_k}
                     (z_i - \hat{\eta}_k)^2
                     = \dfrac{n\hat{\eta}_k(1-\hat{\eta}_k)}{n-1}
                 \]
@@ -192,7 +192,7 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
                 \item \textbf{Biased}
                 \[
                     s_k^2 = \dfrac{1}{n}
-                    \displaystyle\sum_{i\in S_k}
+                    \dsum_{i\in S_k}
                     (x_i - \hat{x}_k)^2
                 \]
             \end{enumerate}
@@ -210,12 +210,12 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
 
     \textbf{Sample Variance} & \vspace{0.01cm} $
         s_k^2 = \dfrac{1}{n-1}
-        \displaystyle\sum_{i\in S_k} (x_i \bar{x}_k)^2
+        \dsum_{i\in S_k} (x_i \bar{x}_k)^2
     $ \vspace{0.1cm} \\
     \hline
 
     \textbf{Sample Estimator} & \vspace{0.01cm} $
-        \dfrac{N-1}{Nn} \displaystyle\sum_{i\in S_k}
+        \dfrac{N-1}{Nn} \dsum_{i\in S_k}
         (x_i \bar{x}_k)^2
         = \dfrac{(N-1)s_k^2}{N}
     $ \vspace{0.1cm}\\
@@ -249,7 +249,7 @@ If the bias of an estimator is \textbf{zero}, this means that, if we repeatedly 
 
     \textbf{Population excess kurtosis} & $
         \gamma_2 = \dfrac{1}{N\sigma^4}
-        \displaystyle\sum_{i=1}^{N} (x_i-\mu)^4 - 3
+        \dsum_{i=1}^{N} (x_i-\mu)^4 - 3
     $\\
     \hline
 \end{longtable}

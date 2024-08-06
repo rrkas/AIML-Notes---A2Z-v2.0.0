@@ -41,7 +41,7 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
 \end{enumerate}
 
 
-\textbf{Normalized Dot Product}: \( \displaystyle \rcmdXcosine(\mathbf{v,w}) = \dfrac{\mathbf{v\cdot w}}{|\mathbf{v}|\cdot|\mathbf{w}|} = \dfrac{\displaystyle\sum_{i=1}^{N} v_i w_i}{\displaystyle \sqrt{\sum_{i=1}^{N} v_i^2}\sqrt{\sum_{i=1}^{N} w_i^2}} \)
+\textbf{Normalized Dot Product}: \( \displaystyle \rcmdXcosine(\mathbf{v,w}) = \dfrac{\mathbf{v\cdot w}}{|\mathbf{v}|\cdot|\mathbf{w}|} = \dfrac{\dsum_{i=1}^{N} v_i w_i}{\displaystyle \sqrt{\sum_{i=1}^{N} v_i^2}\sqrt{\sum_{i=1}^{N} w_i^2}} \)
 
 
 \section{TF-IDF: Weighing terms in the vector \cite{nlp-1}}\label{TF-IDF: concept}
@@ -75,7 +75,7 @@ Uses \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-con
 
     \item Given $k$ word vectors $w_1,w_2,...,w_k$, the centroid document vector $d$ is:
     \[
-        \displaystyle d = \dfrac{1}{k}\displaystyle\sum_{i=1}^{k} w_i
+        \displaystyle d = \dfrac{1}{k}\dsum_{i=1}^{k} w_i
     \]
 
     

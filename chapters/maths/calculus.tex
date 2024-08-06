@@ -86,11 +86,11 @@ $D_x^kf(x_0)\delta k$ contains $k$-th order polynomial:
     \begin{tabular}{l l}
         $k = 0$ & $D_x^0f(x_0)\delta^0 = f(x_0) \in \mathbb{R}$ \\
          
-        $k = 1$ & \( D_x^1f(x_0)\delta^1 = \underbrace{\nabla_xf(x_0)}_{1\times D} \underbrace{\delta}_{D \times 1} = \displaystyle\sum_{i=1}^{D} \nabla_xf(x_0)[i]\delta [i] \in \mathbb{R} \) \\
+        $k = 1$ & \( D_x^1f(x_0)\delta^1 = \underbrace{\nabla_xf(x_0)}_{1\times D} \underbrace{\delta}_{D \times 1} = \dsum_{i=1}^{D} \nabla_xf(x_0)[i]\delta [i] \in \mathbb{R} \) \\
 
-        $k = 2$ & \( D_x^2f(x_0)\delta^2 = \operatorname{tr}(\underbrace{H(x_0)}_{D\times D} \underbrace{\delta}_{D \times 1} \underbrace{\delta^\top}_{1 \times D}) = \delta^\top H(x_0)\delta = \displaystyle\sum_{i=1}^{D}\displaystyle\sum_{j=1}^{D} H[i,j]\delta [i]\delta [j] \in \mathbb{R} \) \\
+        $k = 2$ & \( D_x^2f(x_0)\delta^2 = \operatorname{tr}(\underbrace{H(x_0)}_{D\times D} \underbrace{\delta}_{D \times 1} \underbrace{\delta^\top}_{1 \times D}) = \delta^\top H(x_0)\delta = \dsum_{i=1}^{D}\dsum_{j=1}^{D} H[i,j]\delta [i]\delta [j] \in \mathbb{R} \) \\
 
-        $k = 3$ & \( D_x^3f(x_0)\delta^3 = \displaystyle\sum_{i=1}^{D} \displaystyle\sum_{j=1}^{D} \displaystyle\sum_{k=1}^{D} D_x^3f(x_0)[i,j,k]\delta [i] \delta [j] \delta [k] \in \mathbb{R} \) \\
+        $k = 3$ & \( D_x^3f(x_0)\delta^3 = \dsum_{i=1}^{D} \dsum_{j=1}^{D} \dsum_{k=1}^{D} D_x^3f(x_0)[i,j,k]\delta [i] \delta [j] \delta [k] \in \mathbb{R} \) \\
          
     \end{tabular}
 \end{table}

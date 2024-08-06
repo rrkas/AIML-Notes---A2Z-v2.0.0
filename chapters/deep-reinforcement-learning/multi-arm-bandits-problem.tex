@@ -65,7 +65,7 @@ Action-value methods are a group of solutions to the Multi-Armed Bandits problem
 The simplest way to estimate the value of any particular action is to average the rewards that were received every time this action was taken. This is called \textbf{sample averaging}\indexlabel{MAB: sample averaging}.
 
 \[
-    Q_t(a) = \displaystyle\dfrac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\dfrac{\displaystyle\sum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\displaystyle\sum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
+    Q_t(a) = \displaystyle\dfrac{\text{sum of rewards when $a$ taken prior to $t$}}{\text{number of times $a$ taken prior to $t$}} = \displaystyle\dfrac{\dsum_{i=1}^{t-1} R_i \cdot \mathbbm{1}_{A_i = a}}{\dsum_{i=1}^{t-1} \mathbbm{1}_{A_i = a}}
 \]
 
 SEE: \fullref{Indicator function}
@@ -83,7 +83,7 @@ $Q_n$ = estimate of this action’s value after it has been selected $n-1$ times
 
 \begin{align*}    
     Q_{n+1} &= \displaystyle\dfrac{1}{n} \sum_{i=1}^{n} R_i = \displaystyle\dfrac{1}{n} \left( R_n + \sum_{i=1}^{n-1} R_i \right) \\
-    &= \displaystyle\dfrac{1}{n} \left( R_n + (n-1) \displaystyle\dfrac{1}{(n-1)}  \left(\displaystyle\sum_{i=1}^{n-1} R_i\right) \right)\\
+    &= \displaystyle\dfrac{1}{n} \left( R_n + (n-1) \displaystyle\dfrac{1}{(n-1)}  \left(\dsum_{i=1}^{n-1} R_i\right) \right)\\
     &= \displaystyle\dfrac{1}{n} (R_n + (n-1)Q_n) = \displaystyle\dfrac{1}{n} (R_n + nQ_n - Q_n)\\
     &= Q_n + \displaystyle\dfrac{1}{n} [R_n - Q_n]
 \end{align*}
@@ -210,7 +210,7 @@ This preference has no interpretation in terms of reward. only the relative pref
 
 The probability of selecting any action is given according to a \textbf{soft-max distribution} (SEE: \fullref{Softmax function}):
 \[
-    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\dfrac{e^{H_t(a)}}{\displaystyle\sum_{i=1}^{k} e^{H_t(i)}}
+    \pi_t(a) = Pr\{A_t = a\} = P(A_t=a) = \displaystyle\dfrac{e^{H_t(a)}}{\dsum_{i=1}^{k} e^{H_t(i)}}
 \]
 
 \begin{enumerate}

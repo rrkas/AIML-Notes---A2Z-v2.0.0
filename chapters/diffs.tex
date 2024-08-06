@@ -644,10 +644,32 @@ Similar to \fullref{Supremum VS Maximum}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Pearson’s Rho ($\rho_P$) VS Spearman’s Rho ($\rho_S$) VS Kendall’s Tau Correlation ($\tau_K$)} \label{Pearson’s Rho VS Spearman’s Rho VS Kendall’s Tau Correlation}
 
+\begin{enumerate}
+    \item They all describe a different aspect of the population and the difference can be quite large depending on the family of CDFs.
 
+    \item product-moment correlation (Pearson’s Rho) provides a measure that is particularly suitable for linear associations between variables.
 
+    \item data is normally distributed:
+    \begin{enumerate}
+        \item when the data are bivariate normally distributed, or when transformations can be applied that would make the data approximately bivariate normal, apply the product-moment estimator on the (transformed) data
 
+        \item Pearson’s estimator $r_P$ is more efficient (i.e., has a smaller asymptotic variance) than Spearman’s estimator $r_S$
+    \end{enumerate}
+
+    \item data is \textbf{NOT} normally distributed:
+    \begin{enumerate}
+        \item Often Pearson’s product-moment estimator is immediately disqualified, since it is affected by transformations of the data. 
+
+        \item prefer Kendall’s tau estimator over Spearman when the data is continuous, while we prefer Spearman’s rank when there are some ties
+    \end{enumerate}
+
+    \item For large datasets Kendall’s tau estimator is more efficient than Spearman’s rank correlation (the variances of $r_K$ and $r_S$ in the Fisher $z$-transformation. For Kendall’s tau this variance was $0.437/(n - 4)$, while it was at least $1/(n - 3)$ for Spearman’s rank correlation)
+
+    \item when the data contain ties (i.e., values among the $x$ variable and/or values among the $y$ variable are equal), Spearman’s rank correlation has a smaller standard error than Kendall’s tau estimator
+
+\end{enumerate}
 
 
 

@@ -1,69 +1,10 @@
 \chapter{Machine Learning (ML)}
 
-\section{Supervised Learning}\label{Supervised Learning}
-
-\begin{enumerate}
-    \item Supervised learning is learning from a training set of labeled examples provided by a knowledgable external supervisor. \cite{drl-1}
-
-    \item Each example is a description of a situation together with a specification - the label - of the correct action the system should take to that situation, which is often to identify a category to which the situation belongs. \cite{drl-1}
-    
-    \item The object of this kind of learning is for the system to extrapolate, or generalize, its responses so that it acts correctly in situations not present in the training set. \cite{drl-1}
-
-    
-\end{enumerate}
-
-\section{Semi-Supervised Learning}\label{Semi-Supervised Learning}
-
-\section{Self-Supervised Learning}\label{Self-Supervised Learning}
-
-\section{Unsupervised Learning}\label{Unsupervised Learning}
-
-\section{Reinforcement Learning \cite{drl-1}} \label{Reinforcement Learning}
-
-\begin{enumerate}
-    \item Reinforcement learning is learning what to do - how to map situations to actions - so as to maximize a numerical reward signal.
-
-    \item The learner is \textbf{NOT} told which actions to take, but instead must discover which actions yield the most reward by trying them.
-
-    \item These two characteristics - \textbf{trial-and-error search} and \textbf{delayed reward} - are the two most important distinguishing features of reinforcement learning.
-
-    \item  Although one might be tempted to think of reinforcement learning as a kind of unsupervised learning because it does not rely on examples of correct behavior, \textbf{reinforcement learning is trying to maximize a reward signal instead of trying to find hidden structure}. 
-    
-    \item Uncovering structure in an agent’s experience can certainly be useful in reinforcement learning, but by itself does not address the reinforcement learning problem of maximizing a reward signal.
-
-    \item  To obtain a lot of reward, a reinforcement learning agent must prefer actions that it has tried in the past and found to be elective in producing reward. 
-    
-    \item But to discover such actions, it has to try actions that it has not selected before. 
-    
-    \item The agent has to \textbf{exploit} what it has already experienced in order to obtain reward, but it also has to \textbf{explore} in order to make better action selections in the future. 
-    
-    \item The dilemma is that neither exploration nor exploitation can be pursued exclusively without failing at the task. 
-    
-    \item The agent must try a variety of actions and progressively favor those that appear to be best. 
-
-    \item On a \textbf{stochastic task}, each action must be tried many times to gain a reliable estimate of its expected reward.
-
-    \item Another key feature of reinforcement learning is that it explicitly considers the \textbf{whole problem} of a \textbf{goal-directed agent} interacting with an uncertain environment.
-
-    \item All reinforcement learning agents have explicit \textbf{goals}, can sense aspects of their \textbf{environments}, and can choose \textbf{actions} to influence their environments
-
-    \item it is usually assumed from the beginning that the agent has to operate despite significant uncertainty about the environment it faces.
-
-    \item  For learning research to make progress, important subproblems have to be isolated and studied, but they should be subproblems that play clear roles in complete, interactive, goal-seeking agents, even if all the details of the complete agent cannot yet be filled in.
-
-    \item When reinforcement learning involves \textbf{supervised learning} (SEE: \fullref{Supervised Learning}), it does so for specific reasons that determine which capabilities are critical and which are not.
-\end{enumerate}
-
-\subsection*{Challenges \cite{drl-1}}
-\begin{enumerate}
-    \item One of the challenges that arise in reinforcement learning, and not in other kinds of learning, is the trade-off between \textbf{exploration} and \textbf{exploitation}.
-
-    
-\end{enumerate}
-
-\vspace{0.2cm}
-\noindent
-\textbf{CHECK}: \fullref{Deep Reinforcement Learning (DRL)}
+\input{chapters/ai_ml/ml-algos/Supervised-Learning}
+\input{chapters/ai_ml/ml-algos/Semi-Supervised-Learning}
+\input{chapters/ai_ml/ml-algos/Self-Supervised-Learning}
+\input{chapters/ai_ml/ml-algos/Unsupervised-Learning}
+\input{chapters/ai_ml/ml-algos/reinforcement-learning-rl}
 
 \section*{SEE}
 

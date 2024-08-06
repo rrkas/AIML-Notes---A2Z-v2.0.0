@@ -76,20 +76,20 @@
 
     \textbf{Mean ($\mathbb{E}(T)$)} & $
         \mathbb{E}(T) = 
-        \dfrac{1}{K} \displaystyle\sum_{k=1}^{K}
+        \dfrac{1}{K} \dsum_{k=1}^{K}
         \bar{x}_k 
         =
-        \dfrac{1}{nK} \displaystyle\sum_{k=1}^{K}
-        \displaystyle\sum_{i \in S_k} x_i
+        \dfrac{1}{nK} \dsum_{k=1}^{K}
+        \dsum_{i \in S_k} x_i
         =
-        \dfrac{1}{N} \displaystyle\sum_{i=1}^{N} x_i
+        \dfrac{1}{N} \dsum_{i=1}^{N} x_i
         = \mu
     $ \\[2ex]
     \hline
 
     \textbf{Estimator of Mean ($\bar{x}_k$)} & $
         \bar{x}_k=
-        \dfrac{1}{n} \displaystyle\sum_{i=1}^{n} x_i
+        \dfrac{1}{n} \dsum_{i=1}^{n} x_i
     $ \\[2ex]
     \hline
 
@@ -115,13 +115,13 @@
     \hline
 
     \textbf{Variance ($\sigma^2$)} & $
-        \sigma^2 = \dfrac{1}{N} \displaystyle\sum_{i=1}^{N}
+        \sigma^2 = \dfrac{1}{N} \dsum_{i=1}^{N}
         (x_i - \mu)^2
     $\\[1ex]
     \hline
 
     \textbf{Estimator of Variance ($s_k^2$)} & $
-        s_k^2 = \left(\dfrac{1}{n-1}\right) \displaystyle\sum_{i\in S_k}
+        s_k^2 = \left(\dfrac{1}{n-1}\right) \dsum_{i\in S_k}
         (x_i - \bar{x}_k)^2
     $\\[1ex]
     \hline
@@ -163,15 +163,15 @@
 
     \textbf{Mean ($\mu$)} & $
         \mu = \dfrac{1}{N}
-        \displaystyle\sum_{h=1}^{m}
-        \displaystyle\sum_{i=1}^{n} 
+        \dsum_{h=1}^{m}
+        \dsum_{i=1}^{n} 
         x_{h+m(i-1)}
     $\\[1ex]
     \hline
 
     \textbf{Estimator of Mean ($\bar{x}_k$)} & $
         \bar{x}_k = 
-        \dfrac{1}{n} \displaystyle\sum_{i=1}^{n}
+        \dfrac{1}{n} \dsum_{i=1}^{n}
         x_{h+m(i-1)}
     $\\[1ex]
     \hline
@@ -179,15 +179,15 @@
     \textbf{Variance ($\sigma^2$)} & $
         \sigma^2 = 
         \dfrac{1}{N}
-        \displaystyle\sum_{k=1}^{m}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{k=1}^{m}
+        \dsum_{i=1}^{n}
         (x_{k+m(i-1)} - \mu)^2
     $\\[1ex]
     \hline
 
     \textbf{Estimator of Variance ($s_k^2$)} & $
         s_k^2 = \left(\dfrac{1}{n-1}\right)
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{i=1}^{n}
         (x_{k+m(i-1)} - \bar{x}_k)^2
     $\\[1ex]
     \hline
@@ -198,8 +198,8 @@
     \textbf{MSE} & $
         MSE = \sigma^2 -
         \dfrac{1}{N}
-        \displaystyle\sum_{h=1}^{m}
-        \displaystyle\sum_{i=1}^{n}
+        \dsum_{h=1}^{m}
+        \dsum_{i=1}^{n}
         (x_{h+m(i-1)} - \bar{x}_h)^2
     $\\[1ex]
     \hline
@@ -231,13 +231,13 @@
         \times
         \dfrac{N_M!}{n_M!(N_M-n_M)!}
         =
-        \displaystyle\prod_{M}^{i=1} \dfrac{N_i!}{ni!(N_i-n_i)!}
+        \dprod_{M}^{i=1} \dfrac{N_i!}{ni!(N_i-n_i)!}
     $
 
     \item[] $
-        \displaystyle\sum_{i=1}^{M} N_i = N
+        \dsum_{i=1}^{M} N_i = N
         \quad\quad
-        \displaystyle\sum_{i=1}^{M} n_i = n
+        \dsum_{i=1}^{M} n_i = n
     $
 
 
@@ -254,38 +254,38 @@
 
     \textbf{Mean ($\mu_h$)} & $
         \mu_h = \dfrac{1}{N_h} 
-        \displaystyle\sum_{i=1}^{N_h} x_{hi}
+        \dsum_{i=1}^{N_h} x_{hi}
     $\\[1ex]
     \hline
 
     \textbf{Estimator of Mean ($\bar{x}_{h,k}$)} & $
         \bar{x}_{h,k} = \dfrac{1}{n_h} 
-        \displaystyle\sum_{i\in S_{h,k}} x_{hi}
+        \dsum_{i\in S_{h,k}} x_{hi}
     $\\[1ex]
     & $
-        \bar{x}_{k} = \displaystyle\sum_{h=1}^{M}
+        \bar{x}_{k} = \dsum_{h=1}^{M}
         w_h\bar{x}_{h,k}
-        = \displaystyle\sum_{h=1}^{M}
+        = \dsum_{h=1}^{M}
         \left(\dfrac{N_h}{N}\right)
         \left(
             \dfrac{1}{n_h} 
-            \displaystyle\sum_{i=1}^{n_h} x_{hi}
+            \dsum_{i=1}^{n_h} x_{hi}
         \right)
     $\\[1ex]
     \hline
 
     \textbf{Variance ($\sigma_h^2$)} & $
         \sigma_h^2=\dfrac{1}{N_h}
-        \displaystyle\sum_{i=1}^{N_h}
+        \dsum_{i=1}^{N_h}
         (x_{hi} - \mu_{h})^2
     $\\[1ex]
     & \begin{minipage}{5cm}
         $\sigma^2 = \dfrac{1}{N}
-        \displaystyle\sum_{h=1}^{M}
-        \displaystyle\sum_{i=1}^{N_h}
+        \dsum_{h=1}^{M}
+        \dsum_{i=1}^{N_h}
         (x_{hi}-\mu)^2$ \\
-        $=\displaystyle\sum_{h=1}^{M} w_h\sigma_h^2 +
-        \displaystyle\sum_{h=1}^{M} w_h(\mu_h - \mu)^2$\\
+        $=\dsum_{h=1}^{M} w_h\sigma_h^2 +
+        \dsum_{h=1}^{M} w_h(\mu_h - \mu)^2$\\
         (within) \& (between) variances\\
         \vspace{0.1cm}
     \end{minipage}
@@ -295,7 +295,7 @@
     \textbf{Estimator of Variance ($s_{h,k}^2$)} & $
         s_{h,k}^2 = 
         \dfrac{1}{n_h - 1}
-        \displaystyle\sum_{i\in S_{h,k}}
+        \dsum_{i\in S_{h,k}}
         (x_{hi} - \bar{x}_{h,k})^2
     $\\
     \hline
@@ -304,7 +304,7 @@
     \hline
 
     \textbf{MSE} & $
-        MSE = \displaystyle\sum_{h=1}^{M}
+        MSE = \dsum_{h=1}^{M}
         \left[
             \left(
                 \dfrac{N_h^2(N_h-n_h)}{n_h(N_h-1)N^2}
@@ -313,16 +313,16 @@
         \right]
     $\\[1ex]
     & $
-        MSE(\bar{x}_k) = \displaystyle\sum_{h=1}^{M}
+        MSE(\bar{x}_k) = \dsum_{h=1}^{M}
         w_h^2 MSE(\bar{x}_{h,k})
-        = \displaystyle\sum_{h=1}^{M}
+        = \dsum_{h=1}^{M}
         \dfrac{N_h(1-f_h)w_h^2\sigma_h^2}{(N_h-1)n_h}
     $\\[1ex]
     \hline
 
     \textbf{Estimator of MSE ($\hat{MSE}$)} & $
         \hat{MSE}(\bar{x}_k) = \dfrac{1}{n_h}
-        \displaystyle\sum_{h=1}^{M}
+        \dsum_{h=1}^{M}
         (1-f_h)w_h^2 s_{h,k}^2
     $\\[1ex]
     \hline
@@ -368,7 +368,7 @@
 
     \item $x_{hi}$ the value on variable $x$ for unit $i$ in cluster $h$
     \[
-        N = \displaystyle\sum_{h=1}^{M} N_h
+        N = \dsum_{h=1}^{M} N_h
     \]
 
     
@@ -382,8 +382,8 @@
 
     \textbf{Mean ($\mu$)} & $
         \mu = \dfrac{1}{N}
-        \displaystyle\sum_{h=1}^{M}
-        \displaystyle\sum_{i=1}^{N_h}
+        \dsum_{h=1}^{M}
+        \dsum_{i=1}^{N_h}
         x_{hi}
     $\\[1ex]
     \hline
@@ -394,7 +394,7 @@
             \bar{x}_h = \mu_h
             \quad\quad
             \bar{x} = \dfrac{1}{m}
-            \displaystyle\sum_{h=1}^{m} \bar{x}_h
+            \dsum_{h=1}^{m} \bar{x}_h
         $\\
         \begin{enumerate}
             \item cluster sizes are all not equal
@@ -408,33 +408,33 @@
                 \right)\bar{x}_h
             \]
             \[
-                \dfrac{1}{M}\displaystyle\sum_{h=1}^{M}\mu_h
+                \dfrac{1}{M}\dsum_{h=1}^{M}\mu_h
                 =
-                \displaystyle\sum_{h=1}^{M}
-                \displaystyle\sum_{i=1}^{N_h}
+                \dsum_{h=1}^{M}
+                \dsum_{i=1}^{N_h}
                 \dfrac{x_{hi}}{MN_h}
             \]
 
             \item cluster sizes are all equal
             \[
                 \dfrac{M}{mN}
-                \displaystyle\sum_{h=1}^{m} N_h\bar{x}_h
+                \dsum_{h=1}^{m} N_h\bar{x}_h
             \]
 
             \item Cluster sizes are fixed
             \[
                 \bar{x}_F =
                 \left( 
-                    \displaystyle\sum_{h=1}^{m} N_h\bar{x}_h
+                    \dsum_{h=1}^{m} N_h\bar{x}_h
                 \right) / \left( 
-                    \displaystyle\sum_{h=1}^{m} N_h
+                    \dsum_{h=1}^{m} N_h
                 \right)
             \]
 
             \item Cluster sizes are random:
             \[
                 \bar{x}_R= \left( \dfrac{M}{mN} \right)
-                \displaystyle\sum_{h=1}^{m} N_h\bar{x}_h
+                \dsum_{h=1}^{m} N_h\bar{x}_h
             \]
         \end{enumerate}
         \vspace{0.01cm}
@@ -458,7 +458,7 @@
             \[
                 \sim\dfrac{M^2}{m(M-1)N^2}
                 \left(1- \dfrac{m}{M} \right)
-                \displaystyle\sum_{h=1}^{M}
+                \dsum_{h=1}^{M}
                 N_h^2(\mu_h - \mu)^2
             \]
 
@@ -466,7 +466,7 @@
             \[
                 \dfrac{M^2}{m(M-1)N^2}
                 \left(1- \dfrac{m}{M} \right)
-                \displaystyle\sum_{h=1}^{M}
+                \dsum_{h=1}^{M}
                 (N_h\mu_h - N\mu/M)^2
             \]
         \end{enumerate}
@@ -481,7 +481,7 @@
             \[
                 \hat{MSE}(\bar{x}_R) =
                 \dfrac{M-m}{N^2Mm(m-1)}
-                \displaystyle\sum_{h=1}^{m}
+                \dsum_{h=1}^{m}
                 (MN_h\bar{x}_h - N\bar{x}_R)^2
             \]
         \end{enumerate}
@@ -534,13 +534,13 @@
         \begin{enumerate}
             \item $2$-stage clustering with all $N_h$ are equal:
             \[
-                \dfrac{M}{mN} \displaystyle\sum_{h=1}^{m}
+                \dfrac{M}{mN} \dsum_{h=1}^{m}
                 N_h\bar{x}_h
             \]
 
             \item $2$-stage clustering with all $N_h$ are \textbf{NOT} equal:
             \[
-                \displaystyle\sum_{h=1}^{m}
+                \dsum_{h=1}^{m}
                 \left( 
                     \frac{N_h}{\sum_{h=1}^{m} N_h} 
                 \right)\bar{x}_h
@@ -570,10 +570,10 @@
                 \dfrac{M}{mN^2} \left[
                     \left(1- \dfrac{m}{M} \right)
                     \left(\dfrac{1}{M-1} \right)
-                    \displaystyle\sum_{h=1}^{M}
+                    \dsum_{h=1}^{M}
                     (N_h\mu_h - N_\mu/M)^2
                     +
-                    \displaystyle\sum_{h=1}^{M}
+                    \dsum_{h=1}^{M}
                     \left(
                         \dfrac{N_h^2 (N_h-n_h)}{n_h(N_h -1)}
                         \sigma_h^2
@@ -587,10 +587,10 @@
                 \dfrac{M}{mN^2} \left[
                     \left(1- \dfrac{m}{M} \right)
                     \left(\dfrac{1}{M-1} \right)
-                    \displaystyle\sum_{h=1}^{M}
+                    \dsum_{h=1}^{M}
                     N_h^2(\mu_h - \mu)^2
                     +
-                    \displaystyle\sum_{h=1}^{M}
+                    \dsum_{h=1}^{M}
                     \left(
                         \dfrac{N_h^2 (N_h-n_h)}{n_h(N_h -1)}
                         \sigma_h^2
@@ -684,12 +684,12 @@
         If $X_i \sim F$:
         \[
             \mathbb{E}(T_n^p) 
-            = \displaystyle\int_{\mathbb{R}}
+            = \dint_{\mathbb{R}}
             t^pf_{T_n}(t)dt =
             \mathbb{E}(T_n^p(X_1,X_2,\cdots,X_n))
         \]
         \[
-            = \displaystyle\int_{\mathbb{R}^n}
+            = \dint_{\mathbb{R}^n}
             T_n^p(x_1,x_2,\cdots,x_n)f(x_1)f(x_2)\cdots f(x_n) dx_1 dx_2 \cdots dx_n
         \]
 
@@ -731,7 +731,7 @@
 \begin{enumerate}
     \item distribution functions converges to the \textbf{standard normal distribution function}
     \[
-        \Phi(z) = \displaystyle\int_{-\infty}^{z}
+        \Phi(z) = \dint_{-\infty}^{z}
         \phi(x)dx
         \quad\quad\quad
         Z_n = \dfrac{\sqrt{n}(\hat{X} - \mu(f))}{\mu(f)}
@@ -744,7 +744,7 @@
     
     \item the distribution function of $\dfrac{\sqrt{n}(\hat{X} - \mu(f))}{\mu(f)}$ converges to the standard normal distribution function
 
-    \item the distribution function of any statistic of the form $S_n = \displaystyle\sum_{i=1}^{n} \psi(X_i)/n$ would also converge to a normal distribution function when the mean $\mu _\psi (f) = E(\psi (X_k))$ and variance $\sigma ^2_\psi (f) = E(\psi (X_k) - \mu _\psi (f))^2$ are finite
+    \item the distribution function of any statistic of the form $S_n = \dsum_{i=1}^{n} \psi(X_i)/n$ would also converge to a normal distribution function when the mean $\mu _\psi (f) = E(\psi (X_k))$ and variance $\sigma ^2_\psi (f) = E(\psi (X_k) - \mu _\psi (f))^2$ are finite
 
     \item Using the central limit theorem, $\psi(X_1), \psi(X_2), \cdots, \psi(X_n)$ are i.i.d. and have a finite variance; thus, the statistic $\sqrt{n}(S_n - \mu_\psi(f))$ converges to a \textbf{normal distribution} with mean zero and variance $\sigma^2_\psi(f)$
 \end{enumerate}
@@ -759,12 +759,12 @@
     \[
         S^2=
         \dfrac{1}{n-1}
-        \displaystyle\sum_{i=1}^{n} (X_i-\mu(f))^2 -
+        \dsum_{i=1}^{n} (X_i-\mu(f))^2 -
         \dfrac{n}{n-1} (\bar{X} - \mu(f))^2
     \]
 
     \item applying CLT on $\dfrac{1}{n}
-        \displaystyle\sum_{i=1}^{n} (X_i-\mu(f))^2$:
+        \dsum_{i=1}^{n} (X_i-\mu(f))^2$:
     \begin{enumerate}
         \item $\psi (x) = (x - \mu (f))2$
     
@@ -783,14 +783,14 @@
     
         \item variance of $
             \dfrac{1}{n}
-            \displaystyle\sum_{i=1}^{n} (X_i -\mu( f ))^2
+            \dsum_{i=1}^{n} (X_i -\mu( f ))^2
             =
             [\gamma_2( f ) + 2]\sigma^4( f )/n
         $
 
         \item $
             \dfrac{1}{\sqrt{n}}
-            \displaystyle\sum_{i=1}^{n}
+            \dsum_{i=1}^{n}
             [(X_i - \mu( f )) ^2 - \sigma^2 ( f )]
             \quad
             \overset{n\to \infty}{\longrightarrow}
@@ -800,7 +800,7 @@
 
         \item $
             \dfrac{1}{n}
-            \displaystyle\sum_{i=1}^{n} (X_i - \mu(f))^2
+            \dsum_{i=1}^{n} (X_i - \mu(f))^2
         $ 
         is approximately \textbf{normally distributed} with
         \[
@@ -809,7 +809,7 @@
         \[
             \Rightarrow
             \dfrac{1}{n}
-            \displaystyle\sum_{i=1}^{n} (X_i - \mu(f))^2
+            \dsum_{i=1}^{n} (X_i - \mu(f))^2
             \approx
             \mathcal{N}(\sigma^2( f ),[\gamma_2( f ) + 2]\sigma^4( f )/N )
         \]

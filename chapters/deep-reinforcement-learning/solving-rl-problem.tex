@@ -25,11 +25,11 @@ First, we start with a random value function $V(s)$. At each step, we update it:
         \While{$\Delta < \theta$}{
             \ForEach{ $s \in S$}{
                 $v \leftarrow V(s)$\;
-                $V(s) \leftarrow \displaystyle\max_a \displaystyle\sum_{s',r'} p(s',r|s,a)[r+\gamma V(s')]$\;
+                $V(s) \leftarrow \displaystyle\max_a \dsum_{s',r'} p(s',r|s,a)[r+\gamma V(s')]$\;
             }
         }
         \Comment{Return optimal policy}
-        return $\pi$ s.t. $\pi(s) = \displaystyle\arg\max_a \displaystyle\sum_{s',r'} p(s',r|s,a)[r+\gamma V(s')]$\;
+        return $\pi$ s.t. $\pi(s) = \displaystyle\arg\max_a \dsum_{s',r'} p(s',r|s,a)[r+\gamma V(s')]$\;
     }
 \end{algorithm}
 
@@ -380,12 +380,12 @@ In this case, we say that learning is from data “off” the target policy, and
         \tau = {S_0,A_0,R_1,...A_{T-1},R_T,S_T}
     \]
     \[
-        Pr(\tau|b) = \displaystyle\sum_{K=0}^{T-1} b(A_K|S_K)p(S_{K+1}|S_K,A_K) 
+        Pr(\tau|b) = \dsum_{K=0}^{T-1} b(A_K|S_K)p(S_{K+1}|S_K,A_K) 
     \]
     \item but $p(S_{K+1}|S_K,A_K)$ is unknown! so, $Pr(\tau|b)$ cannot be computed!
     \item Assuming MC Control:
     \begin{enumerate}
-        \item \(G_t = \displaystyle\sum_{k=t+1}^{T} \gamma^{k-t+1}R_k\)
+        \item \(G_t = \dsum_{k=t+1}^{T} \gamma^{k-t+1}R_k\)
         \item Append $G_t$ to $Returns(S_t,A_t)$
         \item $Q_b(S_t,A_t) \leftarrow \rcmXWeightedAVG(Returns(S_t,A_t))$ \hfill \( \left( \displaystyle \mathbb{E}[X \sim p] = \sum_x p(x)x \right) \)
         \item Computing the weighted average based on the sample probability would reduce variance (eliminate impact of noisy sampling)
@@ -405,7 +405,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
     \item define the importance sampling ratio as $\rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}}$
     \item Computing $\rho$ without $p(S_{K+1}|S_K,A_K)$ 
     \[
-        \rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}} = \displaystyle\dfrac{\displaystyle\prod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\displaystyle\prod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \displaystyle\prod_{k=t}^{T-1}\displaystyle\dfrac{\pi(A_k|S_k)}{b(A_k|S_k)}
+        \rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}} = \displaystyle\dfrac{\dprod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\dprod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \dprod_{k=t}^{T-1}\displaystyle\dfrac{\pi(A_k|S_k)}{b(A_k|S_k)}
     \]
     \item \textbf{Fact}: \( \mathbb{E}_{\tau \sim b}[G_t|S_t=s]=v_b(s) \)
     \item Importance sampling allows us to compute an unbiased estimate of $v_\pi(s)$ by running $b$.
@@ -414,7 +414,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
     \item Assume visiting state $s$ over $M$ episodes using policy $b$
     \item $s$ is first visited during time step $t^m$ during each episode, $m\in M$
     \[
-        v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{M}
+        v_\pi(s) = \displaystyle\dfrac{\dsum_{m\in M} \rho_t m G_t^m}{M}
     \]
 \end{enumerate}
 
@@ -424,7 +424,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
 Importance sampling with a simple average is called ordinary sampling.
 
 \[
-    V(s) = \displaystyle\dfrac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
+    V(s) = \displaystyle\dfrac{\dsum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
 \]
 
 \begin{enumerate}
@@ -437,10 +437,10 @@ Importance sampling with a simple average is called ordinary sampling.
 Importance Sampling with a weighted average is known as weighted importance sampling.
 
 \[
-    V(s) = \displaystyle\dfrac{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{\displaystyle\sum_{t\in J(s)} \rho_{t:t(t)-1}} \hfill \text{\cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}
+    V(s) = \displaystyle\dfrac{\dsum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{\dsum_{t\in J(s)} \rho_{t:t(t)-1}} \hfill \text{\cite{medium/nerd-for-tech/monte-carlo-methods-for-reinforcement-learning-d30d874dd817}}
 \]
 \[
-    v_\pi(s) = \displaystyle\dfrac{\displaystyle\sum_{m\in M} \rho_t m G_t^m}{\displaystyle\sum_{m\in M} \rho_t m} \hfill \text{\cite{bits-pilani-slides}}
+    v_\pi(s) = \displaystyle\dfrac{\dsum_{m\in M} \rho_t m G_t^m}{\dsum_{m\in M} \rho_t m} \hfill \text{\cite{bits-pilani-slides}}
 \]
 
 \begin{enumerate}
