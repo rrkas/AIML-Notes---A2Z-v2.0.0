@@ -1,10 +1,10 @@
-\section{Multivariate Distributions \cite{ism-1,mfml-1}} \label{Multivariate Distributions}
+\chapter{Multivariate Distributions \cite{ism-1,mfml-1}} \label{Multivariate Distributions}
 
 \begin{enumerate}
      \item if all distribution functions are identical, $F_{X_1}(x)=\cdots=F_{X_K}(x)=F(x)$, for all $x$, then $X_1, X_2,\cdots,X_K$ are i.i.d. with distribution function $F$.
 \end{enumerate}
 
-\subsection{Joint PDF/ PMF ($f_{XY}(x, y)$) \cite{ism-1}}\label{Multivariate Distributions: Joint PDF/ PMF}
+\section{Joint PDF/ PMF ($f_{XY}(x, y)$) \cite{ism-1}}\label{Multivariate Distributions: Joint PDF/ PMF}
 
 \[
     f_{XY}(x, y) 
@@ -15,7 +15,7 @@
     \end{cases}
 \]
 
-\subsection{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Marginal PMF/ PDF}
+\section{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Marginal PMF/ PDF}
 
 \begin{table}[H]
     \begin{minipage}{0.49\linewidth}
@@ -49,7 +49,7 @@
 
 \end{enumerate}
 
-\subsection{Joint CDF ($F_{XY}(x, y)$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: joint CDF}
+\section{Joint CDF ($F_{XY}(x, y)$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: joint CDF}
 
 \[
     F_{XY}(x, y)
@@ -98,7 +98,7 @@
     \]
 \end{enumerate}
 
-\subsection{Marginal CDF \cite{ism-1}}\label{Multivariate Distributions: Marginal CDF}
+\section{Marginal CDF \cite{ism-1}}\label{Multivariate Distributions: Marginal CDF}
 \[
     \hfill
     F_X(x) = \lim_{y\to\infty} F_{XY}(x, y)
@@ -108,7 +108,7 @@
 \]
 
 
-\subsection{Conditional PMF of $X$ given $Y = y$ ($f_{X|Y}(x|y)$) \cite{ism-1}}\label{Multivariate Distributions: conditional PMF}
+\section{Conditional PMF of $X$ given $Y = y$ ($f_{X|Y}(x|y)$) \cite{ism-1}}\label{Multivariate Distributions: conditional PMF}
 
 \[
     f_{X|Y}(x|y) = Pr(X=x|Y=y)
@@ -118,7 +118,7 @@
     (f_Y(y) > 0)
 \]
 
-\subsection{Independence of random variables \cite{ism-1}} \label{Multivariate Distributions: Independence of random variables}
+\section{Independence of random variables \cite{ism-1}} \label{Multivariate Distributions: Independence of random variables}
 
 \begin{enumerate}
     \item Two random variables $X$ and $Y$ are called \textbf{independent} when the bivariate distribution function is equal to the product of the marginal distribution functions: $F_{XY}(x, y) = F_X(x)F_Y(y)$
@@ -143,7 +143,7 @@
     \item Intuitively, two random variables $X$ and $Y$ are independent if the value of $y$ (once known) does not add any additional information about $x$ (and vice versa) \cite{mfml-1}
 \end{enumerate}
 
-\subsection{Conditional Independence \cite{mfml-1}} \label{Multivariate Distributions: Conditional Independence}
+\section{Conditional Independence \cite{mfml-1}} \label{Multivariate Distributions: Conditional Independence}
 
 \begin{enumerate}
     \item Two random variables $X$ and $Y$ are conditionally independent given $Z$ if and only if for all $z \in Z$
@@ -165,7 +165,7 @@
 \end{enumerate}
 
 
-\subsection{Conditional expectation \cite{ism-1}} \label{Multivariate Distributions: Conditional expectation}
+\section{Conditional expectation \cite{ism-1}} \label{Multivariate Distributions: Conditional expectation}
 
 \begin{enumerate}
     \item[] $X, Y$ : Random variables
@@ -191,7 +191,7 @@
 \end{enumerate}
 
 
-\subsection{Expected Value \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Expected Value}
+\section{Expected Value \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Expected Value}
 \begin{align*}
     \mathbb{E}(\mu_Y(X))
     &= \dsum_{x=0}^{\infty} \mu_Y(x)f_X(x)
@@ -256,7 +256,7 @@
     \]
 \end{enumerate}
 
-\subsection{Empirical Mean/ Sample Mean \cite{mfml-1}} \label{Multivariate Distributions: Empirical Mean/ Sample Mean}
+\section{Empirical Mean/ Sample Mean \cite{mfml-1}} \label{Multivariate Distributions: Empirical Mean/ Sample Mean}
 
 \begin{enumerate}
     \item we have a \textbf{finite dataset} (of size $N$)
@@ -275,7 +275,7 @@
 \end{enumerate}
 
 
-\subsection{Conditional Variance \cite{ism-1}} \label{Multivariate Distributions: Conditional Variance}
+\section{Conditional Variance \cite{ism-1}} \label{Multivariate Distributions: Conditional Variance}
 
 \begin{enumerate}
     \item[] $g(x, y)$ : general function of x and y
@@ -324,7 +324,7 @@
     &= \sigma_Y^2 - VAR(\mu_Y(X))
 \end{align*}
 
-\subsection{Covariances/ Cross-covariance \cite{ism-1}} \label{Multivariate Distributions: Covariances/ Cross-covariance}
+\section{Covariances/ Cross-covariance \cite{ism-1}} \label{Multivariate Distributions: Covariances/ Cross-covariance}
 
 \begin{enumerate}
     \item $
@@ -350,7 +350,7 @@
 
 \end{enumerate}
 
-\subsubsection*{Properties}
+\subsection*{Properties}
 \begin{enumerate}
     \item $COV(X, X) = VAR(X) = \sigma_X^2$ 
     \hfill \cite{ism-1}
@@ -413,7 +413,7 @@
 
 \end{enumerate}
 
-\subsection{Empirical Covariance ($\Sigma$) \cite{mfml-1}}\label{Multivariate Distributions: Empirical Covariance}
+\section{Empirical Covariance ($\Sigma$) \cite{mfml-1}}\label{Multivariate Distributions: Empirical Covariance}
 
 the empirical covariance matrix is a $D\times D$ matrix:
 \[
@@ -434,7 +434,7 @@ the empirical covariance matrix is a $D\times D$ matrix:
 \]
 
 
-\subsection{Variance \cite{mfml-1}}\label{Multivariate Distributions: Variance}
+\section{Variance \cite{mfml-1}}\label{Multivariate Distributions: Variance}
 
 The variance of a random variable $X$ with states $x \in R^D$ and a mean vector $\mu \in R^D$ is defined as
 \[
@@ -505,7 +505,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     the (total) variance of $X$ is the expected conditional variance plus the variance of a conditional mean
 \end{enumerate}
 
-\subsection{Sample Covariance \cite{ism-1}}\label{Multivariate Distributions: Sample Covariance}
+\section{Sample Covariance \cite{ism-1}}\label{Multivariate Distributions: Sample Covariance}
 
 \begin{enumerate}
     \item[] $(X_i, Y_i) \sim F_{XY}$
@@ -541,7 +541,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \end{align*}
 \end{enumerate}
 
-\subsection{Pearson’s Correlation Coefficient ($\rho_P$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: Pearson’s Correlation Coefficient}
+\section{Pearson’s Correlation Coefficient ($\rho_P$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: Pearson’s Correlation Coefficient}
 
 \begin{enumerate}
     \item[] $X,Y$: random variables
@@ -597,7 +597,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 \end{enumerate}
 
-\subsubsection*{Properties \cite{ism-1}}
+\subsection*{Properties \cite{ism-1}}
 
 \begin{enumerate}
     \item $CORR(X, Y) \in [-1, 1]$
@@ -624,7 +624,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{table}
 
 
-\subsection{Estimate for Product-Moment/ Sample correlation coefficient ($r_P$) \cite{ism-1}} \label{Multivariate Distributions: Estimate for Product-Moment/ Sample correlation coefficient}
+\section{Estimate for Product-Moment/ Sample correlation coefficient ($r_P$) \cite{ism-1}} \label{Multivariate Distributions: Estimate for Product-Moment/ Sample correlation coefficient}
 
 \begin{enumerate}
     \item[] $S_X^2 , S_Y^2$: sample variances
@@ -664,7 +664,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 
 
-\subsection{Kendall’s Tau Correlation ($\tau_K$) \cite{ism-1}} \label{Multivariate Distributions: Kendall’s Tau Correlation}
+\section{Kendall’s Tau Correlation ($\tau_K$) \cite{ism-1}} \label{Multivariate Distributions: Kendall’s Tau Correlation}
 
 \begin{enumerate}
     \item[] \begin{align*}
@@ -716,7 +716,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 \end{enumerate}
 
-\subsection{Estimator of Kendall’s tau correlation ($r_K$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Kendall’s tau correlation}
+\section{Estimator of Kendall’s tau correlation ($r_K$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Kendall’s tau correlation}
 
 \begin{enumerate}
     \item[] \begin{align*}
@@ -768,7 +768,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{enumerate}
 
 
-\subsection{Spearman’s Rho Correlation ($\rho_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s Rho Correlation}
+\section{Spearman’s Rho Correlation ($\rho_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s Rho Correlation}
 
 \begin{enumerate}
     \item use three i.i.d. pairs $(X_1, Y_1)$, $(X_2, Y_2)$, and $(X_3, Y_3)$ of random variables having joint distribution function $F_{XY}$
@@ -794,7 +794,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item \textbf{CANNOT} be applied to \textbf{nominal data}
 \end{enumerate}
 
-\subsection{Spearman’s rank correlation ($r_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s rank correlation}
+\section{Spearman’s rank correlation ($r_S$) \cite{ism-1}} \label{Multivariate Distributions: Spearman’s rank correlation}
 
 \begin{enumerate}
     \item estimator for Spearman’s rho
@@ -844,7 +844,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 \end{enumerate}
 
-\subsection{Relation Between Kendall’s tau ($\tau_K$) \& Spearman’s Rho ($\rho_S$) \cite{ism-1}}\label{Relation Between Kendall’s tau and Spearman’s Rho}
+\section{Relation Between Kendall’s tau ($\tau_K$) \& Spearman’s Rho ($\rho_S$) \cite{ism-1}}\label{Relation Between Kendall’s tau and Spearman’s Rho}
 
 \[
     \hfill
@@ -853,7 +853,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \]
 
 
-\subsection{Cohen’s Kappa Statistic ($\kappa_C$) \cite{ism-1}} \label{Multivariate Distributions: Cohen’s Kappa Statistic}
+\section{Cohen’s Kappa Statistic ($\kappa_C$) \cite{ism-1}} \label{Multivariate Distributions: Cohen’s Kappa Statistic}
 
 \begin{enumerate}
     \item[] $X, Y$: random variables ($X, Y \in \{1, 2, 3,\cdots, K\}$) 
@@ -917,7 +917,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{table}
 
 
-\subsection{Estimator of Cohen’s Kappa ($\hat{\kappa}_C$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Cohen’s Kappa}
+\section{Estimator of Cohen’s Kappa ($\hat{\kappa}_C$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Cohen’s Kappa}
 
 
 \begin{enumerate}
@@ -975,7 +975,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     
 \end{enumerate}
 
-\subsection{Pearson’s chi-square statistic (Nominal Statistic) ($\chi_P^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)}
+\section{Pearson’s chi-square statistic (Nominal Statistic) ($\chi_P^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)}
 
 \begin{enumerate}
     \item[] $X, Y$: nominal/ ordinal/ binary random variables
@@ -1034,7 +1034,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{enumerate}
 
 
-\subsection{Pearson’s squared phi-coefficient (Nominal Statistic) ($\phi^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s squared phi-coefficient (Nominal Statistic)}
+\section{Pearson’s squared phi-coefficient (Nominal Statistic) ($\phi^2$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s squared phi-coefficient (Nominal Statistic)}
 
 \begin{enumerate}
     \item normalized \textbf{pearson’s chi-squared statistic} (SEE: \fullref{Multivariate Distributions: Pearson’s chi-square statistic (Nominal Statistic)})
@@ -1079,7 +1079,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{enumerate}
 
 
-\subsection{Cramér’s V association measure (Nominal Statistic) ($V$) \cite{ism-1}} \label{Multivariate Distributions: Cramer’s V association measure (Nominal Statistic)}
+\section{Cramér’s V association measure (Nominal Statistic) ($V$) \cite{ism-1}} \label{Multivariate Distributions: Cramer’s V association measure (Nominal Statistic)}
 
 
 \begin{enumerate}
@@ -1107,7 +1107,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{enumerate}
 
 
-\subsection{Pearson’s chi-square ($\chi_P^2$), Pearson’s phi-coefficient ($\phi$), and Cramér’s V ($V$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square, Pearson’s phi-coefficient, and Cramér’s V}
+\section{Pearson’s chi-square ($\chi_P^2$), Pearson’s phi-coefficient ($\phi$), and Cramér’s V ($V$) \cite{ism-1}} \label{Multivariate Distributions: Pearson’s chi-square, Pearson’s phi-coefficient, and Cramér’s V}
 
 \begin{enumerate}
     \item meant for contingency tables, they can also be applied to continuous variables $X$ and $Y$
@@ -1131,7 +1131,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \end{enumerate}
 
 
-\subsection{Goodman and Kruskal’s Gamma (Ordinal Statistic) ($\gamma$) \cite{ism-1}} \label{Multivariate Distributions: Goodman and Kruskal’s Gamma (Ordinal Statistic)}
+\section{Goodman and Kruskal’s Gamma (Ordinal Statistic) ($\gamma$) \cite{ism-1}} \label{Multivariate Distributions: Goodman and Kruskal’s Gamma (Ordinal Statistic)}
 
 
 \begin{enumerate}
@@ -1224,6 +1224,230 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
     \item $z_p$ the $p$th quantile of the \textbf{standard normal distribution function}
 \end{enumerate}
+
+
+\section{Similarity Indices (Binary Association Statistics) \cite{ism-1}}\label{Multivariate Distributions: Similarity Indices (Binary Association Statistics)}
+
+\begin{enumerate}
+    \item $n$ \textbf{binary attributes} on two objects: $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ \\
+    pairs may not be independent and/or identically distributed with just one CDF $F_{XY}$
+
+    \item measure or quantify the similarity in a large number of attributes from two objects
+    \[
+        N_{xy}
+        = \dsum_{i=1}^{n} 
+        \mathbbm{1}_{(x)}(X_i)
+        \mathbbm{1}_{(y)}(Y_i)
+        \hfill
+        (x,y) \in \{0,1\} \times \{0,1\}
+    \]
+
+    \item we prefer the values $\{0, 1\}$ for $X$ and $Y$, instead of $\{1, 2\}$
+
+    \item Similarity measures quantify the dependency between $X$ and $Y$. The \textbf{higher} the value the stronger the dependency and \textbf{more similar} the two objects are.
+
+    \item dissimilarity measures can be considered a distance between the objects
+\end{enumerate}
+
+\subsection{Gower and Legendre Similarity Indices ($S_\theta$/ $T_\theta$) \cite{ism-1}} \label{Gower and Legendre Similarity Indices}
+
+\begin{enumerate}
+    \item[] $\theta > 0$ a constant
+
+    \item $
+        S_\theta 
+        = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + \theta[N_{01} + N_{10}]}
+        = \dfrac{\theta}{\theta + S_{SS}}
+        \in [0,1]
+    $
+
+    \item $
+        T_\theta
+        = \dfrac{N_{11}}{N_{11} + \theta[N_{01} + N_{10}]}
+        = \dfrac{\theta}{\theta + T_k}
+        \in [0,1]
+    $
+
+    \item dissimilarity measures:
+    \begin{enumerate}
+        \item $1 - S_\theta$
+
+        \item $1 - T_\theta$
+    \end{enumerate}
+
+    \item $S_\theta$ focuses on the similarity of both the absence as well as the presence of attributes
+
+    \item $T_\theta$ focuses only on the presence of attributes
+
+    \item $S_{SS}$ and $T_K$ are not properly normalized. They can be larger than $1$ and are essentially \textbf{unbounded}.
+
+\end{enumerate}
+
+\subsection{Sokal \& Sneath(3) ($S_{SS}$) \cite{ism-1}}\label{Sokal and Sneath(3)}\index{Sokal and Sneath(3)}
+
+\begin{enumerate}
+    \item[] $S_{SS} = \dfrac{N_{00} + N_{11}}{N_{01} + N_{10}}$
+
+\end{enumerate}
+
+\subsection{Kulcynski ($T_k$) \cite{ism-1}}\label{Kulcynski}
+
+\begin{enumerate}
+    \item[] $T_K = \dfrac{N_{11}}{N_{01} + N_{10}}$
+\end{enumerate}
+
+\begin{table}[H]
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        
+        $\theta$ & 0.5 & 1 & 2\\
+        
+        \hline
+        
+        S & 
+        \begin{minipage}{5cm}
+            \vspace{0.2cm}
+            Sokal \& Sneath(2) \cite{ism-1} \indexlabel{Sokal and Sneath(2)}\\[2ex]
+            \(
+                S_{0.5}
+                = \dfrac{2[N_{00} + N_{11}]}{2[N_{00} + N_{11}] + N_{01} + N_{10}}
+            \)
+            \vspace{0.2cm}
+        \end{minipage} &
+        \begin{minipage}{4.5cm}
+            \vspace{0.2cm}
+            Sokal \& Michener \cite{ism-1} \indexlabel{Sokal and Michener}\\[2ex]
+            \(
+                S_1
+                = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + N_{01} + N_{10}}
+            \)
+            \vspace{0.2cm}
+        \end{minipage} &
+        \begin{minipage}{5cm}
+            \vspace{0.2cm}
+            Roger \& Tanimoto \cite{ism-1} \indexlabel{Roger and Tanimoto}\\[2ex]
+            \(
+                S_2 = \dfrac{N_{00} + N_{11}}{N_{00} + N_{11} + 2[N_{01} + N_{10}]}
+            \)
+            \vspace{0.2cm}
+        \end{minipage}
+        \\
+        \hline
+        
+        T &
+        \begin{minipage}{5cm}
+            \vspace{0.2cm}
+            Czekanowsk \cite{ism-1} \indexlabel{Czekanowsk}\\[2ex]
+            \(
+                T_{0.5}
+                = \dfrac{2N_{11}}{2N_{11} + N_{01} + N_{10}}
+            \)
+            \vspace{0.2cm}
+        \end{minipage} &
+        \begin{minipage}{4.5cm}
+            \vspace{0.2cm}
+            Jaccard \cite{ism-1} \indexlabel{Jaccard}\\[2ex]
+            \(
+                T_1
+                = \dfrac{N_{11}}{N_{11} + N_{01} + N_{10}}
+            \)
+            \vspace{0.2cm}
+        \end{minipage} &
+        \begin{minipage}{5cm}
+            \vspace{0.2cm}
+            Sokal \& Sneath(1)  \cite{ism-1} \indexlabel{Sokal and Sneath(1)}\\[2ex]
+            \(
+                T_2 = \dfrac{N_{11}}{N_{11} + 2[N_{01} + N_{10}]}
+            \)
+            \vspace{0.2cm}
+        \end{minipage}
+        \\
+        \hline
+        
+    \end{tabular}
+\end{table}
+
+\section{L family \cite{ism-1}}\label{L family}
+
+\begin{enumerate}
+    \item[] $S = \lambda + \mu(N_{00} + N_{11})$
+
+    \item $\lambda$ and $\mu$ can only be functions of the row and column totals, i.e., functions of $N_{0\cdot}$, $N_{1\cdot}$, $N_{\cdot 0}$, and $N_{\cdot 1}$
+
+    \item Jaccard similarity measure is not contained in this family, but the Czekanowski index is contained in this family as well as the Sokal \& Michener index 
+
+    \item This class also contains Cohen’s kappa statistic
+
+\end{enumerate}
+
+\renewcommand{\arraystretch}{2.7}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+    
+        & $\lambda$ & $\mu$ \\
+        \hline
+    
+        Sokal \& Michener \cite{ism-1} &  $0$ & $\dfrac{1}{n}$ \\
+        \hline
+    
+        Czekanowski \cite{ism-1} & $1 - \dfrac{1}{N_{1\cdot} + N_{\cdot 1}}$ & $\dfrac{1}{N_{1\cdot} + N_{\cdot 1}}$ \\
+        \hline
+
+        Kappa \cite{ism-1} & $-\dfrac{N_{1\cdot }N_{\cdot 1} + N_{0\cdot }N_{\cdot 0}}{N_{1\cdot }N_{\cdot 0} + N_{\cdot 1}N_{0\cdot }}$ & $\dfrac{1}{N_{1\cdot }N_{\cdot 0} + N_{\cdot 1}N_{0\cdot }}$ \\
+        \hline
+
+        
+    \end{tabular}
+\end{table}
+
+\subsection{corrected index for similarity due to chance \cite{ism-1}} \label{corrected index for similarity due to chance}
+
+\begin{enumerate}
+    \item[] $CS = \dfrac{S - E(S)}{1 - E(S)}$
+    \hfill
+    (S: similarity measure)
+
+    \item after correction these three indices (Czekanowski index, the Sokal \& Michener index, and Cohen’s kappa statistics) are all equivalent
+
+    \item When a chance corrected measure is more appropriate, the similarity measure $S$ can be used
+\end{enumerate}
+
+\section{Yule’s Q statistic (coefficient of association) ($Q$) \cite{ism-1}}\label{Yule’s Q statistic (coefficient of association)}
+
+\begin{enumerate}
+    \item[] $Q = \dfrac{N_{00}N_{11} - N_{01}N_{10}}{N_{00}N_{11} + N_{01}N_{10}} \in [-1,1]$
+
+    \item $Q = 0$, there is no association
+
+    \item Yule’s Q is a special case of Goodman \& Kruskal’s $\gamma$ statistic applied to a $2 \times 2$ contingency table: $Q = \dfrac{\hat{OR} - 1}{\hat{OR} + 1}$
+
+    \item Yule’s Q is a monotone function of the odds ratio, which makes Yule’s Q an attractive measure
+
+    \item It transforms the odds ratio to a measure that is in line with correlation coefficients
+
+    \item if we randomly eliminate attributes from one object, say remove half of all the attributes from object 1, then both $N_{11}$ and $N_{10}$ would reduce by a factor $2$, but Yule’s Q would not reduce
+
+    \item Yule’s Q statistic is robust against the number of features that are present in one object, a characteristic that does not hold for the similarity measures
+
+    \item Confidence intervals on Yule’s Q can easily be determined by using the confidence limits of the odds ratio
+
+    \item when it is important that the measure is robust against the number of features that could be present, Yule’s Q may seem an appropriate choice
+\end{enumerate}
+
+\section{Distance Measure ($d$) \cite{ism-1}}
+
+\begin{enumerate}
+    \item $d(a, b) \geq 0$
+
+    \item $d(a, a) = 0$
+
+    \item $d(a, b) = d(b, a)$
+
+    \item $d(a, b) + d(b, c) \geq d(a, c)$
+\end{enumerate}
+
 
 
 
