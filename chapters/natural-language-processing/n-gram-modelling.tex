@@ -260,10 +260,10 @@ The Kneser-Ney intuition is to base our estimate of $P_{CONTINUATION}$ on the nu
 past are more likely to appear in some new context as well. The number of times a word w appears as a novel continuation can be expressed as:
 
 \[
-    P_{CONTINUATION}(w) \propto |\{v : C(vw) > 0\}|
+    P_{CONTINUATION}(w) \propto |\dCurlyBrac{v : C(vw) > 0}|
 \]
 \[
-    P_{CONTINUATION}(w) = \displaystyle\dfrac{|\{v : C(vw) > 0\}|}{|\{(u',w') : C(u'w') > 0\}| } = \displaystyle\dfrac{|\{v : C(vw) > 0\}|}{\sum_{w'} |\{v : C(vw') > 0\}|}
+    P_{CONTINUATION}(w) = \displaystyle\dfrac{|\dCurlyBrac{v : C(vw) > 0}|}{|\dCurlyBrac{(u',w') : C(u'w') > 0}| } = \displaystyle\dfrac{|\dCurlyBrac{v : C(vw) > 0}|}{\sum_{w'} |\dCurlyBrac{v : C(vw') > 0}|}
 \]
 
 \subsection{Laplace (add-one) Smoothing \cite{nlp-1}}
@@ -306,7 +306,7 @@ For bigram:
 \end{align*}
 where, $\lambda$ is a normalizing constant that is used to distribute the probability mass we’ve discounted:
 \[
-    \lambda(w_{i-1}) = \displaystyle\dfrac{d}{\sum_v C(w_{i-1}v)} |\{w : C(w_{i-1}w) > 0\}|
+    \lambda(w_{i-1}) = \displaystyle\dfrac{d}{\sum_v C(w_{i-1}v)} |\dCurlyBrac{w : C(w_{i-1}w) > 0}|
 \]
 
 General recursive formula:
@@ -332,7 +332,7 @@ At termination:
     \item $\rcmdXcontinuationcount(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
     \item discount: $0 \leq d \leq 1$ 
     \item \(\displaystyle\dfrac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
-    \item \(|\{w : C(w_{i-1}w) > 0\}|\) is number of word types that can follow $w_{i-1}$ or equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount.
+    \item \(|\dCurlyBrac{w : C(w_{i-1}w) > 0}|\) is number of word types that can follow $w_{i-1}$ or equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount.
 \end{enumerate}
 
 \vspace{0.2cm}

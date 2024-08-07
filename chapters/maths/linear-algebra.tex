@@ -273,7 +273,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
 
     \item If at least one of the vectors $\mathbf{x_1, \cdots, x_k}$ is $\mathbf{0}$ then they are linearly dependent. The same holds if two vectors are \textbf{identical}.
 
-    \item The vectors $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k\}$ is \textbf{linearly dependent}.
+    \item The vectors $\dCurlyBrac{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k}, k \geq 2$, are linearly dependent if and only if (at least) one of them is a linear combination of the others. In particular, if one vector is a multiple of another vector, i.e., $\mathbf{x_i} = \lambda\mathbf{x_j} , \lambda \in \mathbb{R}$ then the set $\dCurlyBrac{\mathbf{x_1, \cdots, x_k} : \mathbf{x_i} \neq \mathbf{0}, i = 1, \cdots, k}$ is \textbf{linearly dependent}.
 
     \item A practical way of checking whether vectors $\mathbf{x_1, \cdots, x_k} \in V$ are linearly independent is to use Gaussian elimination: 
     \begin{enumerate}
@@ -297,7 +297,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
         \]
 
         \item \( \displaystyle \sum_{j=1}^{m} \psi_j \mathbf{x}_j = \sum_{j=1}^{m} \psi_j \mathbf{B}\bm{\lambda}_j = \mathbf{B}\sum_{j=1}^{m} \psi_j \bm{\lambda}_j \)\\
-        This means that $\{\mathbf{x_1, \cdots, x_m}\}$ are linearly independent if and only if the column vectors $\{\bm{\lambda_1, \cdots, \lambda_m}\}$ are linearly independent.
+        This means that $\dCurlyBrac{\mathbf{x_1, \cdots, x_m}}$ are linearly independent if and only if the column vectors $\dCurlyBrac{\bm{\lambda_1, \cdots, \lambda_m}}$ are linearly independent.
 
     \end{enumerate}
 
@@ -311,7 +311,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
 
 
 \section{Generating Set ( $\mathbb{A}$ ) \cite{mfml-1}}\label{Generating Set}
-Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\{x_1, \cdots , x_k\}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, \cdots , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
+Consider a vector space $V = (\mathbb{V}, +, \cdot)$ and set of vectors $\mathbb{A} = \mathbf{\dCurlyBrac{x_1, \cdots , x_k}} \subseteq \mathbb{V}$. If every vector $v \in V$ can be expressed as a linear combination of $\mathbf{x_1, \cdots , x_k}$, $\mathbb{A}$ is called a generating set of $V$.
 
 \begin{enumerate}
     \item Generating sets are sets of vectors that span vector (sub)spaces, i.e., every vector can be represented as a linear combination of the vectors in the generating set.
@@ -435,7 +435,7 @@ SEE: projection - TODO
 \begin{align*}
     \displaystyle
     \mathbf{u}_1 &:= \dfrac{\mathbf{b}_1}{||\mathbf{b}_1||}\\
-    \gamma_k &:= \mathbf{b}_k - \left( \sum_{i=1}^{k-1} \langle \mathbf{b}_k, \mathbf{u}_i \rangle \mathbf{u}_i \right)\\
+    \gamma_k &:= \mathbf{b}_k - \dParenBrac{ \sum_{i=1}^{k-1} \langle \mathbf{b}_k, \mathbf{u}_i \rangle \mathbf{u}_i }\\
     \mathbf{u}_k &:= \dfrac{\gamma_k}{||\gamma_k||}\\
 \end{align*}
 
@@ -527,10 +527,10 @@ SEE: projection - TODO
     $\mathbf{T}$ is a \textbf{regular matrix}.
 
     \item \( \displaystyle
-        \Phi(\tilde{\mathbf{b}}_j) = \sum_{k=1}^{m} \tilde{a}_{kj}\textcolor{blue}{\tilde{\mathbf{c}}_k} = \sum_{k=1}^{m} \tilde{a}_{kj} \textcolor{blue}{\sum_{l=1}^{m} t_{lk} \mathbf{c}_l} = \sum_{l=1}^{m}\left( \textcolor{Magenta}{\sum_{k=1}^{m} t_{lk}\tilde{a}_{kj}} \right)\mathbf{c}_l
+        \Phi(\tilde{\mathbf{b}}_j) = \sum_{k=1}^{m} \tilde{a}_{kj}\textcolor{blue}{\tilde{\mathbf{c}}_k} = \sum_{k=1}^{m} \tilde{a}_{kj} \textcolor{blue}{\sum_{l=1}^{m} t_{lk} \mathbf{c}_l} = \sum_{l=1}^{m}\dParenBrac{ \textcolor{Magenta}{\sum_{k=1}^{m} t_{lk}\tilde{a}_{kj}} }\mathbf{c}_l
     \)  \\
     \( \displaystyle
-     \Phi(\textcolor{blue}{\tilde{\mathbf{b}}_j}) = \Phi \left( \textcolor{blue}{\sum_{i=1}^{m} s_{ij}\mathbf{b}_i} \right) = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\Phi(\mathbf{b}_i)} = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\sum_{i=1}^{m} a_{li}\mathbf{c}_l} = \sum_{l=1}^{m}\left( \textcolor{Magenta}{\sum_{i=1}^{n} a_{li}s_{ij}} \right)\mathbf{c}_l
+     \Phi(\textcolor{blue}{\tilde{\mathbf{b}}_j}) = \Phi \dParenBrac{ \textcolor{blue}{\sum_{i=1}^{m} s_{ij}\mathbf{b}_i} } = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\Phi(\mathbf{b}_i)} = \sum_{i=1}^{m} s_{ij} \textcolor{red}{\sum_{i=1}^{m} a_{li}\mathbf{c}_l} = \sum_{l=1}^{m}\dParenBrac{ \textcolor{Magenta}{\sum_{i=1}^{n} a_{li}s_{ij}} }\mathbf{c}_l
     \)
 
     \item \( \displaystyle
@@ -662,7 +662,7 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
 
     \item Moreover, we consider a linear mapping $\Phi : \mathbf{V} \to \mathbf{W}$. 
 
-    \item For $j \in \{1, \cdots , n\}$, \(     \displaystyle \Phi(\mathbf{b}_j) = \alpha_{1j}\mathbf{c}_1 + \cdots + \alpha_{mj}\mathbf{c}_m = \sum_{i=1}^{m} \alpha_{ij}\mathbf{c}_{i} \) is the \textbf{unique} representation of $\Phi(\mathbf{b}_j)$ with respect to $\mathit{C}$. 
+    \item For $j \in \dCurlyBrac{1, \cdots , n}$, \(     \displaystyle \Phi(\mathbf{b}_j) = \alpha_{1j}\mathbf{c}_1 + \cdots + \alpha_{mj}\mathbf{c}_m = \sum_{i=1}^{m} \alpha_{ij}\mathbf{c}_{i} \) is the \textbf{unique} representation of $\Phi(\mathbf{b}_j)$ with respect to $\mathit{C}$. 
 
     \item The $m \times n$-matrix $\mathbf{A}_\Phi$, whose elements are given by \( \mathbf{A}_\Phi(i, j) = \alpha_{ij} \), is called \textbf{transformation matrix} of $\Phi$ (with respect to the ordered bases $\mathit{B}$ of $\mathbf{V}$ and $\mathit{C}$ of $\mathbf{W}$)
 
@@ -737,7 +737,7 @@ For vector spaces $V$, $W$, a mapping $\Phi : V \to W$ is called a linear mappin
 For $\Phi : V \to W$, we define the kernel/ null space 
 \[
     \hfill
-    ker(\Phi) := \Phi^{-1}(0_W) = \{v \in V : \Phi(v) = 0_W\}
+    ker(\Phi) := \Phi^{-1}(0_W) = \dCurlyBrac{v \in V : \Phi(v) = 0_W}
     \hfill
 \]
 
@@ -762,7 +762,7 @@ For $\Phi : V \to W$, we define the kernel/ null space
 For $\Phi : V \to W$, we define the image/ range 
 \[
     \hfill
-    Im(\Phi) := \Phi(V) = \{w \in W | \exists v \in V : \Phi(v) = w\}
+    Im(\Phi) := \Phi(V) = \dCurlyBrac{w \in W | \exists v \in V : \Phi(v) = w}
     \hfill
 \]
 
@@ -795,8 +795,8 @@ Let us consider $\mathbf{A} \in \mathbb{R}^{m\times n}$ and a linear mapping $\P
     \begin{align*}
         \displaystyle
         Im(\Phi) 
-        &= \{ \mathbf{Ax} : \mathbf{x} \in \mathbb{R}^n \} \\
-        &= \left\{ \sum_{i=1}^{n} x_i\mathbf{a}_i : \forall x_i \in \mathbb{R}, i=1,\cdots,n \right\} \\
+        &= \dCurlyBrac{ \mathbf{Ax} : \mathbf{x} \in \mathbb{R}^n } \\
+        &= \dCurlyBrac{ \sum_{i=1}^{n} x_i\mathbf{a}_i : \forall x_i \in \mathbb{R}, i=1,\cdots,n } \\
         &= span[\mathbf{a}_1,\cdots, \mathbf{a}_n] \subseteq \mathbb{R}^m \\
     \end{align*}
 
@@ -860,8 +860,8 @@ Let $V$ be a vector space, $x_0 \in V$ and $U \subseteq V$ a subspace. Then the 
     \begin{minipage}{0.49\linewidth}
         \begin{align*}
             L &= x_0 + U\\
-             &= \{x_0 + u : u \in U\} \\
-             &= \{v \in V | \exists u \in U : v = x_0 + u\} \subseteq V
+             &= \dCurlyBrac{x_0 + u : u \in U} \\
+             &= \dCurlyBrac{v \in V | \exists u \in U : v = x_0 + u} \subseteq V
         \end{align*}
     \end{minipage}
     \hfill
@@ -1063,7 +1063,7 @@ transformations that keep the solution set the same, but that transform the equa
     \item Exchange of two equations (rows in the matrix representing the system of equations)
     \[ R_i \Leftrightarrow R_j \]
 
-    \item Multiplication of an equation (row) with a constant $\lambda \in R\backslash \{0\}$
+    \item Multiplication of an equation (row) with a constant $\lambda \in R\backslash \dCurlyBrac{0}$
     \[ R_i := \lambda R_i \]
 
     \item Addition of two equations (rows)
@@ -1302,7 +1302,7 @@ Let $V$ be a vector space and $\Omega  : V × V \to R$ be a bilinear mapping tha
 \begin{enumerate}
     \item $\Omega$  is called symmetric if $\Omega (x, y) = \Omega (y, x)$ for all $x, y \in  V$ , i.e., the order of the arguments does not matter
 
-    \item $\Omega$  is called positive definite if $\forall x \in  V\backslash \{0\} : \Omega (x, x) > 0 , \Omega (0, 0) = 0$
+    \item $\Omega$  is called positive definite if $\forall x \in  V\backslash \dCurlyBrac{0} : \Omega (x, x) > 0 , \Omega (0, 0) = 0$
 \end{enumerate}
 
 \vspace{0.2cm}

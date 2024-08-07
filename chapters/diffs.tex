@@ -26,14 +26,14 @@
     \textbf{Example} & 
     \begin{minipage}{5cm}
         \vspace{0.1cm}
-        $S = \{x \in R | x < 2\}$ \\
+        $S = \dCurlyBrac{x \in R | x < 2}$ \\
         $sup(S) = 2$\\
         $max(S)$ doesn’t exist
         \vspace{0.1cm}
     \end{minipage} &
     \begin{minipage}{5cm}
         \vspace{0.1cm}
-        $S = \{x \in R | x \leq 2\}$ \\
+        $S = \dCurlyBrac{x \in R | x \leq 2}$ \\
         $sup(S) = 2$\\
         $max(S) = 2$
         \vspace{0.1cm}
@@ -671,12 +671,92 @@ Similar to \fullref{Supremum VS Maximum}
 
 \end{enumerate}
 
+\section{PDF (Probability Density Function) VS PMF (Probability Mass Function) VS CDF (Cumulative Distribution Function)}\label{PDF (Probability Density Function) VS PMF (Probability Mass Function) VS CDF (Cumulative Distribution Function)}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{2cm} | m{4cm} | m{4cm} | m{4cm} |}
+        \hline
+        
+        \textbf{Aspect} & \textbf{PDF (Probability Density Function)} & \textbf{PMF (Probability Mass Function)} & \textbf{CDF (Cumulative Distribution Function)} \\
+        \hline
+        
+        \textbf{Applies to} & Continuous random variables & Discrete random variables & Both continuous and discrete variables \\
+        \hline
+        
+        \textbf{Definition} & Likelihood of the variable taking a specific value & Probability of the variable taking a specific value & Probability that the variable is less than or equal to a specific value \\
+        \hline
+        
+        \textbf{Value Range} & Can be greater than 1 but integrates to 1 over all possible values & Between 0 and 1 & Between 0 and 1 \\
+        \hline
+        
+        \textbf{Probability Calculation} & \(\int_{a}^{b} f_X(x) \, dx\) for interval \([a, b]\) & \(P(X = x)\) & \(P(X \leq x)\) \\
+        \hline
+        
+        \textbf{Integral/ Sum Requirement} & Integral of the PDF over the entire range is 1 & Sum of the PMF over all possible values is 1 & \(\lim_{x \to -\infty} F_X(x) = 0\) and \(\lim_{x \to \infty} F_X(x) = 1\) \\
+        \hline
+        
+        \textbf{Example} & \(f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\) & \(P(X = x) = \frac{1}{6}\) for a fair die & \(F_X(x) = \int_{-\infty}^{x} f_X(t) \, dt\) for continuous, \(F_X(x) = \sum_{x_i \leq x} P(X = x_i)\) for discrete \\
+        \hline
+    \end{tabular}
+\end{table}
 
 
+\section{Sum of Random Variables VS Mixture Distribution \cite{chatgpt}}\label{Sum of Random Variables VS Mixture Distribution}
 
+\begin{longtable}{|p{2.5cm}|p{5cm}|p{5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Sum of Random Variables} & \textbf{Mixture Distribution} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Sum of Random Variables} & \textbf{Mixture Distribution} \\
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+    \textbf{Nature} & 
+    Creates a new random variable by adding the original variables. & 
+    Combines different distributions into one, considering the probabilities of each component. \\
+    \hline
+    
+    \textbf{Definition} & 
+    If \( X \) and \( Y \) are random variables, \( Z = X + Y \). The distribution of \( Z \) is derived from the distributions of \( X \) and \( Y \). & 
+    A weighted sum of component distributions. For example, \( f(x) = \dsum_{i=1}^{k} \pi_i f_i(x) \), where \( \dsum_{i=1}^{k} \pi_i = 1 \). \\
+    \hline
+    
+    \textbf{Independence} & 
+    For independent random variables, the distribution of the sum is the convolution of their distributions. & 
+    Does not require component distributions to be independent. \\
+    \hline
+    
+    \textbf{Dependence} & 
+    For dependent random variables, the sum's distribution depends on their joint distribution. & 
+    Components can be dependent, but the mixture model itself does not model dependence between components. \\
+    \hline
+    
+    \textbf{Central Limit Theorem} & 
+    The sum of a large number of i.i.d. random variables tends to be normally distributed. & 
+    Not directly related to the Central Limit Theorem. \\
+    \hline
+    
+    \textbf{Applications} & 
+    Used in contexts involving additive processes (e.g., total score, aggregated risk). & 
+    Used in modeling populations with inherent heterogeneity (e.g., multi-modal distributions). \\
+    \hline
+    
+    \textbf{Computation} & 
+    Involves convolution for independent variables, which can be mathematically intensive. & 
+    Involves weighted sums, and parameter estimation often uses methods like Expectation-Maximization (EM). \\
+    \hline
 
-
-
+\end{longtable}
 
 
 

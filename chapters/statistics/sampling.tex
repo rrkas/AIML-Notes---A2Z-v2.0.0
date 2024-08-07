@@ -103,14 +103,14 @@
     \textbf{MSE ($MSE(c\bar{x}_k)$)} & $
         MSE(c\bar{x}_k) 
         = [(c-1)\mu]^2 +
-        c^2 \sigma^2 \left(\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} \right)\dfrac{1}{n}
+        c^2 \sigma^2 \dParenBrac{\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} }\dfrac{1}{n}
     $\\[1ex]
     & $MSE(\bar{x}_k) 
-        = \sigma^2 \left(\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} \right)\dfrac{1}{n}$ \\[1ex]
+        = \sigma^2 \dParenBrac{\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} }\dfrac{1}{n}$ \\[1ex]
     \hline
 
     \textbf{Estimator of MSE ($\hat{MSE}(\bar{x}_k)$)} & $
-        \hat{MSE}(\bar{x}_k) = \left(\dfrac{N-n}{Nn} \right)s_k^2
+        \hat{MSE}(\bar{x}_k) = \dParenBrac{\dfrac{N-n}{Nn} }s_k^2
     $\\[1ex]
     \hline
 
@@ -121,14 +121,17 @@
     \hline
 
     \textbf{Estimator of Variance ($s_k^2$)} & $
-        s_k^2 = \left(\dfrac{1}{n-1}\right) \dsum_{i\in S_k}
+        s_k^2 = \dParenBrac{\dfrac{1}{n-1}} \dsum_{i\in S_k}
         (x_i - \bar{x}_k)^2
     $\\[1ex]
     \hline
 
     \textbf{SE ($SE(c\bar{x}_k)$)} & $
         SE(c\bar{x}_k) = \sqrt{
-            c^2 \sigma^2 \left(\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} \right)\dfrac{1}{n}
+            c^2 \sigma^2 
+            \dParenBrac{ \dfrac{N}{N-1} }
+            \dParenBrac{ 1-\dfrac{n}{N} }
+            \dfrac{1}{n}
         }
     $\\[1ex]
     \hline
@@ -141,14 +144,14 @@
 
     \item each group consists of $m$ units (thus the population size is $N = nm$) \textbf{ordered} from $1$ to $m$ in each group.
     \[
-        m \in \{1,2,\cdots,N\}
+        m \in \dCurlyBrac{1,2,\cdots,N}
     \]
 
     \item from each of the $n$ groups the $k$th unit is collected, forming the sample of $n$ units. 
     \[
-        S_k = \{ k, k+m,k+2m,\cdots,k+(n-1)m \}
+        S_k = \dCurlyBrac{ k, k+m,k+2m,\cdots,k+(n-1)m }
         \hfill
-        (k \in \{1,2,\cdots,m\})
+        (k \in \dCurlyBrac{1,2,\cdots,m})
     \]
 \end{enumerate}
 
@@ -186,7 +189,7 @@
     \hline
 
     \textbf{Estimator of Variance ($s_k^2$)} & $
-        s_k^2 = \left(\dfrac{1}{n-1}\right)
+        s_k^2 = \dParenBrac{\dfrac{1}{n-1}}
         \dsum_{i=1}^{n}
         (x_{k+m(i-1)} - \bar{x}_k)^2
     $\\[1ex]
@@ -215,7 +218,7 @@
 
     \item If the ratio of the sample size $n_h$ and stratum size $N_h$ is the same across all strata, each unit in the population has the same probability of being collected in the sample. This type of stratified sampling is called \textbf{proportional stratified sampling}\indexlabel{proportional stratified sampling}.
 
-    \item[] $S_h = \{ S_{h,1}, S_{h,2},\cdots, S_{h,N_h} \}$
+    \item[] $S_h = \dCurlyBrac{ S_{h,1}, S_{h,2},\cdots, S_{h,N_h} }$
 
     \item[] $K_h = \dfrac{N_h!}{n_h!(N_h-n_h)!}$
 
@@ -266,7 +269,7 @@
         \bar{x}_{k} = \dsum_{h=1}^{M}
         w_h\bar{x}_{h,k}
         = \dsum_{h=1}^{M}
-        \left(\dfrac{N_h}{N}\right)
+        \dParenBrac{\dfrac{N_h}{N}}
         \left(
             \dfrac{1}{n_h} 
             \dsum_{i=1}^{n_h} x_{hi}
@@ -433,7 +436,7 @@
 
             \item Cluster sizes are random:
             \[
-                \bar{x}_R= \left( \dfrac{M}{mN} \right)
+                \bar{x}_R= \dParenBrac{ \dfrac{M}{mN} }
                 \dsum_{h=1}^{m} N_h\bar{x}_h
             \]
         \end{enumerate}
@@ -457,7 +460,7 @@
             \item cluster sizes are all not equal:
             \[
                 \sim\dfrac{M^2}{m(M-1)N^2}
-                \left(1- \dfrac{m}{M} \right)
+                \dParenBrac{1- \dfrac{m}{M} }
                 \dsum_{h=1}^{M}
                 N_h^2(\mu_h - \mu)^2
             \]
@@ -465,7 +468,7 @@
             \item cluster sizes are all equal:
             \[
                 \dfrac{M^2}{m(M-1)N^2}
-                \left(1- \dfrac{m}{M} \right)
+                \dParenBrac{1- \dfrac{m}{M} }
                 \dsum_{h=1}^{M}
                 (N_h\mu_h - N\mu/M)^2
             \]
@@ -568,8 +571,8 @@
             \item $2$-stage clustering with all $N_h$ are equal:
             \[
                 \dfrac{M}{mN^2} \left[
-                    \left(1- \dfrac{m}{M} \right)
-                    \left(\dfrac{1}{M-1} \right)
+                    \dParenBrac{1- \dfrac{m}{M} }
+                    \dParenBrac{\dfrac{1}{M-1} }
                     \dsum_{h=1}^{M}
                     (N_h\mu_h - N_\mu/M)^2
                     +
@@ -585,8 +588,8 @@
             \[
                 \sim
                 \dfrac{M}{mN^2} \left[
-                    \left(1- \dfrac{m}{M} \right)
-                    \left(\dfrac{1}{M-1} \right)
+                    \dParenBrac{1- \dfrac{m}{M} }
+                    \dParenBrac{\dfrac{1}{M-1} }
                     \dsum_{h=1}^{M}
                     N_h^2(\mu_h - \mu)^2
                     +
@@ -910,9 +913,9 @@
 
 \subsection{Sample excess kurtosis ($T_n = b_2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^4/S^4 -3$) \cite{ism-1}}
 
-\subsection{Sample minimum $T_n = X_{(1)} = \min\{X_1,\cdots,X_n\}$ \cite{ism-1}}
+\subsection{Sample minimum $T_n = X_{(1)} = \min\dCurlyBrac{X_1,\cdots,X_n}$ \cite{ism-1}}
 
-\subsection{Sample maximum $T_n = X_{(n)} = \max\{X_1,\cdots,X_n\}$ \cite{ism-1}}
+\subsection{Sample maximum $T_n = X_{(n)} = \max\dCurlyBrac{X_1,\cdots,X_n}$ \cite{ism-1}}
 
 \subsection*{}
 

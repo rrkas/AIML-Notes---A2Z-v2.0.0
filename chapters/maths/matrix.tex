@@ -251,7 +251,7 @@ Consider an $n$-dimensional vector space $V$. A symmetric matrix $\mathbf{A} \in
     \hfill
     \mathbf{A^\top = A}
     \hfill
-    \forall \mathbf{x} \in V \backslash \{ 0 \} : \mathbf{x^\top A x} > 0
+    \forall \mathbf{x} \in V \backslash \dCurlyBrac{ 0 } : \mathbf{x^\top A x} > 0
     \hfill
 \]
 
@@ -599,12 +599,12 @@ where, $c_0, \cdots  , c_{n-1} \in R$, is the characteristic polynomial of $A$
 
 \section{Eigenvalues ($\lambda$) and Eigenvectors} \label{Eigenvalues and Eigenvectors}
 
-Let $A \in  R^{n\times n}$ be a \textbf{square matrix}. Then $\lambda  \in  R$ is an eigenvalue of $A$ and $x \in  R^n\backslash \{0\}$ is the corresponding eigenvector of $A$ if $Ax = \lambda x$ (aka \textbf{eigenvalue equation}\indexlabel{eigenvalue equation})
+Let $A \in  R^{n\times n}$ be a \textbf{square matrix}. Then $\lambda  \in  R$ is an eigenvalue of $A$ and $x \in  R^n\backslash \dCurlyBrac{0}$ is the corresponding eigenvector of $A$ if $Ax = \lambda x$ (aka \textbf{eigenvalue equation}\indexlabel{eigenvalue equation})
 
 \begin{enumerate}
     \item $\lambda$  is an eigenvalue of $A \in  R^{n\times n}$
 
-    \item There exists an $x \in  R^n\backslash \{0\}$ with $Ax = \lambda x$, or, $(A - \lambda In)x = 0$ can be solved non-trivially, i.e., $x \neq 0$
+    \item There exists an $x \in  R^n\backslash \dCurlyBrac{0}$ with $Ax = \lambda x$, or, $(A - \lambda In)x = 0$ can be solved non-trivially, i.e., $x \neq 0$
 
     \item \(
         \hfill
@@ -621,7 +621,7 @@ Let $A \in  R^{n\times n}$ be a \textbf{square matrix}. Then $\lambda  \in  R$ i
 
     \item it is often a convention that eigenvalues are sorted in \textbf{descending order}
 
-    \item If x is an eigenvector of $A$ associated with eigenvalue $\lambda$, then for any $c \in  R\backslash \{0\}$ it holds that $cx$ is an eigenvector of $A$ with the same eigenvalue since 
+    \item If x is an eigenvector of $A$ associated with eigenvalue $\lambda$, then for any $c \in  R\backslash \dCurlyBrac{0}$ it holds that $cx$ is an eigenvector of $A$ with the same eigenvalue since 
     \[
         A(cx) = cAx = c\lambda x = \lambda (cx)
     \]
@@ -695,7 +695,7 @@ Then the geometric multiplicity of $\lambda_i$ is the \textbf{number of linearly
 \section{Norms of a Matrix}\label{Norms of a Matrix}
 
 \subsection{Spectral Norm of a Matrix}\label{Spectral Norm of a Matrix}
-For $x \in  R^n\backslash \{0\}$, the spectral norm of a matrix $A \in  R^{m\times n}$ is defined as:
+For $x \in  R^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $A \in  R^{m\times n}$ is defined as:
 \[
     \displaystyle
     ||A||_2 = \max_x \dfrac{||Ax||_2}{||x||_2}
@@ -1046,7 +1046,7 @@ $C, \tilde{C} \in R^m$
                 (Av_i)^\top(Av_j) = v_i^\top (A^\top A)v_j = v_i^\top(\lambda_jv_j) = \lambda_jv_i^\top v_j = 0
             \]
 
-            \item For the case $m \geq r$, it holds that $\{Av_1, \cdots , Av_r\}$ is a basis of an $r$-dimensional subspace of $R^m$
+            \item For the case $m \geq r$, it holds that $\dCurlyBrac{Av_1, \cdots , Av_r}$ is a basis of an $r$-dimensional subspace of $R^m$
 
             \item For $n < m$, Singular value equation holds only for $i \leq  n$, but Singular value equation says nothing about the $u_i$ for $i > n$
 

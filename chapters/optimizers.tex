@@ -63,7 +63,7 @@ Stochastic gradient is evaluated at the next iterate rather than the current one
 \[
     {\displaystyle w^{\text{new}}:=w^{\text{old}}-\eta \,\nabla Q_{i}(w^{\rm {new}})} 
     \hfill 
-    {\displaystyle w^{\text{new}}:=\arg \min _{w}\left\{Q_{i}(w)+{\frac {1}{2\eta }}\left\|w-w^{\text{old}}\right\|^{2}\right\}}
+    {\displaystyle w^{\text{new}}:=\arg \min _{w}\dCurlyBrac{Q_{i}(w)+{\frac {1}{2\eta }}\left\|w-w^{\text{old}}\right\|^{2}}}
 \]
 
 SEE: \fullref{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}
@@ -95,7 +95,7 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 \begin{enumerate}
     \item learning rate = $\eta$
 
-    \item Each $\{G_{(i,i)}\}$ gives rise to a scaling factor for the learning rate that applies to a single parameter $w_i$.
+    \item Each $\dCurlyBrac{G_{(i,i)}}$ gives rise to a scaling factor for the learning rate that applies to a single parameter $w_i$.
 
     \item Since the denominator in this factor, ${\displaystyle {\sqrt {G_{i}}}={\sqrt {\sum _{\tau =1}^{t}g_{\tau }^{2}}}}$ is the $l_2$ norm of previous derivatives, extreme parameter updates get dampened, while parameters that get few or small updates receive higher learning rates.    
 \end{enumerate}

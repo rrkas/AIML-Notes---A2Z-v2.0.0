@@ -74,7 +74,7 @@ since if $\gamma < 1$, the infinite sum has a finite value (as long as the seque
 \end{enumerate}
 
 \[
-    p(s',r \mid s,a) = Pr\{R_{t+1} = r, S_{t+1}=s' \mid S_t,A_t\} \hfill (\text{\textbf{dynamic function p}})
+    p(s',r \mid s,a) = Pr\dCurlyBrac{R_{t+1} = r, S_{t+1}=s' \mid S_t,A_t} \hfill (\text{\textbf{dynamic function p}})
 \]
 
 \begin{enumerate}
@@ -89,7 +89,7 @@ Moreover, if there are only a finite number of states and actions, then it’s c
 
 Next state ($S'$) probability given the current state and action:
 \[
-    p(s' \mid s, a) = \Pr\{S_{t+1} = s' \mid S_t = s, A_t = a\} = \sum_{r \in {R}} p(s', r \mid s, a)
+    p(s' \mid s, a) = \Pr\dCurlyBrac{S_{t+1} = s' \mid S_t = s, A_t = a} = \sum_{r \in {R}} p(s', r \mid s, a)
 \]
 
 Reward for a certain state and action:

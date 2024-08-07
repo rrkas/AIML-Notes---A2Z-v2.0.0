@@ -400,12 +400,12 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
 
 \begin{enumerate}
     \item Given a trajectory $\tau$ drawn by running $b$
-    \item we can define (not compute) the probability $Pr\{\tau|b\}$
-    \item we can also define $Pr\{\tau|\pi\}$
-    \item define the importance sampling ratio as $\rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}}$
+    \item we can define (not compute) the probability $Pr\dCurlyBrac{\tau|b}$
+    \item we can also define $Pr\dCurlyBrac{\tau|\pi}$
+    \item define the importance sampling ratio as $\rho_t = \displaystyle\dfrac{Pr\dCurlyBrac{\tau|\pi}}{Pr\dCurlyBrac{\tau|b}}$
     \item Computing $\rho$ without $p(S_{K+1}|S_K,A_K)$ 
     \[
-        \rho_t = \displaystyle\dfrac{Pr\{\tau|\pi\}}{Pr\{\tau|b\}} = \displaystyle\dfrac{\dprod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\dprod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \dprod_{k=t}^{T-1}\displaystyle\dfrac{\pi(A_k|S_k)}{b(A_k|S_k)}
+        \rho_t = \displaystyle\dfrac{Pr\dCurlyBrac{\tau|\pi}}{Pr\dCurlyBrac{\tau|b}} = \displaystyle\dfrac{\dprod_{k=t}^{T-1} \pi(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}}{\dprod_{k=t}^{T-1} b(A_k|S_k)\cancel{p(S_{K+1}|S_K,A_K)}} = \dprod_{k=t}^{T-1}\displaystyle\dfrac{\pi(A_k|S_k)}{b(A_k|S_k)}
     \]
     \item \textbf{Fact}: \( \mathbb{E}_{\tau \sim b}[G_t|S_t=s]=v_b(s) \)
     \item Importance sampling allows us to compute an unbiased estimate of $v_\pi(s)$ by running $b$.

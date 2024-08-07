@@ -197,9 +197,9 @@
         $\mathbb{S}$ contains corresponding detection scores\\
         $N_t$ is the NMS threshold
     }
-    \Fn{\Fsnms{$ \mathbb{B} = \{ b_1,\cdots, b_N \}, \mathbb{S} = \{ s_1,\cdots, s_N \}, N_t $}}{
+    \Fn{\Fsnms{$ \mathbb{B} = \dCurlyBrac{ b_1,\cdots, b_N }, \mathbb{S} = \dCurlyBrac{ s_1,\cdots, s_N }, N_t $}}{
         \Comment{set of final detections}
-        $\mathbb{D} \gets \{\} $ \\
+        $\mathbb{D} \gets \dCurlyBrac{} $ \\
         \While{$\mathbb{B} \neq$ empty}{
             $m \gets \arg\max S$\\
             $M \gets b_m$\\

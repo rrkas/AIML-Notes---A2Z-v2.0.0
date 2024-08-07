@@ -559,7 +559,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         \rho_P 
         = CORR(X,Y)
         = COV(Z_X, Z_Y)
-        = \mathbb{E}\left( \dfrac{X - \mu_X}{\sigma_X} \right) \left( \dfrac{Y - \mu_Y}{\sigma_Y} \right)
+        = \mathbb{E}\dParenBrac{ \dfrac{X - \mu_X}{\sigma_X} \right) \left( \dfrac{Y - \mu_Y}{\sigma_Y} }
         = \dfrac{COV(X,Y)}{\sqrt{VAR(X)} \sqrt{VAR(Y)}}
         \hfill \text{\cite{ism-1}}
     \]
@@ -649,9 +649,9 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         = \dfrac{
             n\dsum_{i=1}^n X_iY_i - \dsum_{i=1}^n X_i \dsum_{i=1}^n Y_i
         }{\sqrt{
-            n\dsum_{i=1}^{n} X_i^2 - \left(\dsum_{i=1}^{n} X_i\right)^2
+            n\dsum_{i=1}^{n} X_i^2 - \dParenBrac{\dsum_{i=1}^{n} X_i}^2
         }\sqrt{
-            n\dsum_{i=1}^{n} Y_i^2 - \left(\dsum_{i=1}^{n} Y_i\right)^2
+            n\dsum_{i=1}^{n} Y_i^2 - \dParenBrac{\dsum_{i=1}^{n} Y_i}^2
         }}
     \end{align*}
 
@@ -678,12 +678,12 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \begin{enumerate}
         \item minimum $-1$ is attained when $F_{XY}$ is equal to the \textbf{Fréchet lower bound}:
             \[
-                F_{XY}(x, y) = \max\{F_X(x) + F_Y(y) - 1, 0\}
+                F_{XY}(x, y) = \max\dCurlyBrac{F_X(x) + F_Y(y) - 1, 0}
             \]
 
         \item maximum $1$ is attained when $F_{XY}$ is equal to the \textbf{Fréchet upper bound}:
             \[
-                F_{XY}(x, y) = \min\{F_X(x), F_Y(y)\}
+                F_{XY}(x, y) = \min\dCurlyBrac{F_X(x), F_Y(y)}
             \]
 
         \item When $X$ and $Y$ are \textbf{independent}, Kendall’s tau is equal to \textbf{zero}.
@@ -856,7 +856,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \section{Cohen’s Kappa Statistic ($\kappa_C$) \cite{ism-1}} \label{Multivariate Distributions: Cohen’s Kappa Statistic}
 
 \begin{enumerate}
-    \item[] $X, Y$: random variables ($X, Y \in \{1, 2, 3,\cdots, K\}$) 
+    \item[] $X, Y$: random variables ($X, Y \in \dCurlyBrac{1, 2, 3,\cdots, K}$) 
 
     \item[] PDF parameters: $p_{11}, p_{12},\cdots, p_{1K}, p_{21}, p_{22},\cdots, p_{2K},\cdots, p_{K1}, p_{K2},\cdots, p_{KK}$ 
     
@@ -921,7 +921,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 
 \begin{enumerate}
-    \item $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ of i.i.d. bivariate random variables as copies of $(X, Y)$ that can take their values in $\{1, 2,\cdots, K\}$
+    \item $(X_1, Y_1), (X_2, Y_2), \cdots , (X_n, Y_n)$ of i.i.d. bivariate random variables as copies of $(X, Y)$ that can take their values in $\dCurlyBrac{1, 2,\cdots, K}$
     \[
         \hfill
         N_{xy} = \dsum_{i=1}^{n}
@@ -944,7 +944,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \[
         Pr(N_{11}=n_{11},\cdots,N_{KK}=n_{KK})
         = n!\dprod_{x=1}^{K} \dprod_{y=1}^{K}
-        \left( \dfrac{p_{xy}^{n_{xy}}}{n_{xy}!} \right)
+        \dParenBrac{ \dfrac{p_{xy}^{n_{xy}}}{n_{xy}!} }
     \]
 
     \item estimators: $
@@ -981,9 +981,9 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item[] $X, Y$: nominal/ ordinal/ binary random variables
     \[
         \hfill
-        X \in \{1, 2,\cdots, K\}
+        X \in \dCurlyBrac{1, 2,\cdots, K}
         \hfill
-        Y \in \{1, 2,\cdots, M\}
+        Y \in \dCurlyBrac{1, 2,\cdots, M}
         \hfill
     \]
 
@@ -1089,7 +1089,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
     \item $
         V = \sqrt{\dfrac{\chi_P^2}{
-        n\min\{K-1,M-1\}
+        n\min\dCurlyBrac{K-1,M-1}
         }}
     $
 
@@ -1137,9 +1137,9 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \begin{enumerate}
     \item[] $
         \hfill
-        X \in \{1, 2,\cdots, K\}
+        X \in \dCurlyBrac{1, 2,\cdots, K}
         \hfill
-        Y \in \{1, 2,\cdots, M\}
+        Y \in \dCurlyBrac{1, 2,\cdots, M}
         \hfill
     $
 
@@ -1239,10 +1239,10 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         \mathbbm{1}_{(x)}(X_i)
         \mathbbm{1}_{(y)}(Y_i)
         \hfill
-        (x,y) \in \{0,1\} \times \{0,1\}
+        (x,y) \in \dCurlyBrac{0,1} \times \dCurlyBrac{0,1}
     \]
 
-    \item we prefer the values $\{0, 1\}$ for $X$ and $Y$, instead of $\{1, 2\}$
+    \item we prefer the values $\dCurlyBrac{0, 1}$ for $X$ and $Y$, instead of $\dCurlyBrac{1, 2}$
 
     \item Similarity measures quantify the dependency between $X$ and $Y$. The \textbf{higher} the value the stronger the dependency and \textbf{more similar} the two objects are.
 
@@ -1401,6 +1401,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         
     \end{tabular}
 \end{table}
+\renewcommand{\arraystretch}{1}
 
 \subsection{corrected index for similarity due to chance \cite{ism-1}} \label{corrected index for similarity due to chance}
 
