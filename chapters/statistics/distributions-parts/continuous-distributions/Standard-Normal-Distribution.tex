@@ -1,0 +1,57 @@
+\chapter{Standard Normal Distribution ($X \sim \mathcal{N}(0,1)$/ $\mathcal{N}(0, I)$) \cite{ism-1,mfml-1}} \label{Standard Normal Distribution}
+
+\begin{enumerate}
+    \item Normal Distribution with: \\
+    $
+        \hfill
+        \mu = 0
+        \hfill
+        \sigma = 1
+        \hfill
+        x \in \mathbb{R}
+    $
+\end{enumerate}
+
+
+\section{Probability Density Function (PDF) ($\phi(x)$) \cite{ism-1}} \label{Standard Normal Distribution: PDF}
+
+\[
+    \phi(x)
+    = \dfrac{1}{\sqrt{2\pi}}\exp\dParenBrac{-\dfrac{x^2}{2}}
+\]
+
+
+\section{Sampling from Multivariate Standard Normal Distribution \cite{mfml-1}} \label{Sampling from Multivariate Standard Normal Distribution}
+
+\begin{enumerate}
+    \item To obtain samples from a multivariate normal $\mathcal{N} (\mu , \Sigma )$, we can use the properties of a linear transformation of a Gaussian random variable: \\
+    If $x \sim \mathcal{N} (0, I)$, then $y = Ax + \mu $, where $AA^\top  = \Sigma $ is Gaussian distributed with mean $\mu $ and covariance matrix $\Sigma $. One convenient choice of $A$ is to use the Cholesky decomposition of the covariance matrix $\Sigma  = AA^\top $. The Cholesky decomposition has the benefit that $A$ is triangular, leading to efficient computation.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+\chapter{Lognormal Distribution ($X \sim \mathcal{LN}(\mu, \sigma^2)$) \cite{ism-1}} \label{Lognormal Distribution}
+
+\begin{enumerate}
+    \item the lognormal PDF is \textbf{NOT SYMMETRIC} like the normal PDF 
+
+    \item If the population values can be described by a lognormal PDF, the normal PDF would then describe the logarithmic transformation of the population values (using the natural logarithm)
+
+    \item Parameters:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{l l l}
+            $\mu$ & population mean   & $(\mu \in R)$ \\
+            
+            $\sigma$ & standard deviation &   $(\sigma^2 > 0)$ \\
+            
+            $x > 0$ & & \\
+
+        \end{tabular}
+    \end{table}
+
+    \item They do represent the population mean and standard deviation, but only for the logarithmic transformed values of the population
+
+\end{enumerate}
+
+
+\section{Probability Density Function (PDF) ($f_{\mu,\sigma}(x)$) \cite{ism-1}} \label{Lognormal Distribution: PDF}
+
+\[
+    f_{\mu,\sigma}(x)
+    = \begin{cases}
+        \dfrac{1}{x\sigma\sqrt{2\pi}}
+        \exp\dCurlyBrac{-\dfrac{(\log(x) - \mu)^2}{2\sigma^2}} & x > 0 \\[2ex]
+        
+        0 & x \leq 0
+    \end{cases}
+\]
+
+
+\section{Cumulative Distribution Function (CDF) \cite{ism-1}} \label{Lognormal Distribution: CDF}
+
+\begin{align*}
+    Pr(exp{X} ≤ x) 
+    &= Pr(X ≤ log(x)) \\
+    &= \phi\dParenBrac{\dfrac{log(x) − μ}{σ}} \\
+    
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

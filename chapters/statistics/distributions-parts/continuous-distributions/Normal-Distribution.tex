@@ -1,4 +1,4 @@
-\chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1}} \label{Normal (Gaussian) Distribution}
+\chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1,mfml-1}} \label{Normal (Gaussian) Distribution}
 
 \begin{table}[H]
     \centering
@@ -750,14 +750,89 @@ set of realizations : $x_1, \cdots, x_n$
             }
         \end{align*}
         \renewcommand{\arraystretch}{1}
+        uses Scaled inverse chi square distribution
+        \[
+            Z(\mu_0, \kappa_0, \nu_0, \sigma_0^2)
+            = \sqrt{\dfrac{2\pi}{\kappa_0}} 
+            \Gamma\dParenBrac{\dfrac{\nu_0}{2}}
+            \dParenBrac{\dfrac{2}{\nu_0\sigma_0^2}}
+            ^{\dParenBrac{\dfrac{\nu_0}/{2}}}
+        \]
+
+        \item posterior: Normal-inverse-$\chi^2$ distribution
+        \begin{enumerate}[itemsep=0.2cm]
+            \item $
+                f(\mu,\sigma|x_1,\cdots,x_n)
+                = NI\chi^2(\mu_n, \kappa_n, \nu_n, \sigma_n^2) 
+            $
+
+            \item $
+                \hfill
+                \mu_n = \dfrac{\kappa_0\mu_0+n\bar{x}}{\kappa_n}
+                \hfill
+                \kappa_n = \kappa_0 + n
+                \hfill
+                \nu_n = \nu_0 + n
+                \hfill
+            $
+            \[
+                \hfill
+                \sigma_n^2 = \dfrac{1}{\nu_n}
+                \dParenBrac{
+                    \nu_0\sigma_0^2
+                    +\dsum_{i=1}^n (x_i-\bar{x})^2
+                    +\dfrac{n\kappa_0}{\kappa_0 + n}
+                    (\mu_0 + \bar{x})^2
+                }
+                \hfill
+            \]
+
+            \item $
+                f(\sigma^2|x_1,\cdots,x_n) = \chi^{-2}(\nu_n, \sigma_n^2)
+            $ \\[2ex]
+            uses Scaled inverse chi square distribution \\
+            \textbf{scale} = $\nu_n$ \& 
+            \textbf{degrees of freedom} = $\sigma_n^2$
+
+            \item $
+                f(\mu|x_1,\cdots,x_n) 
+                = t(\mu_n,\sigma_n^2/\kappa_n)
+            $ \\[2ex]
+            \textbf{mean} = $\mu_n$   \& 
+            \textbf{degrees of freedom} = $\sigma_n^2/\kappa_n$
+
+        \end{enumerate}
 
     \end{enumerate}
 
 \end{enumerate}
 
 
+\subsubsection{Exponential Family \cite{mfml-1}} \label{Normal distribution: Bivariate/ Multivariate: Exponential Family}
 
+\begin{enumerate}
+    \item Consider the univariate Gaussian distribution $\mathcal{N}(\mu, \sigma^2)$
+    
+    \item $\phi(x) = \begin{bmatrix} x & x^2 \end{bmatrix}^\top$
 
+    \item $p(x | \theta) \propto \exp(\theta_1x + \theta_2x^2)$\\[1ex]
+    setting $\theta = \begin{bmatrix}
+        \dfrac{\mu}{\sigma^2} &
+        -\dfrac{1}{2\sigma^2}
+    \end{bmatrix}^\top$ and substituting, we obtain
+    \[
+        p(x|\theta)
+        \propto \exp\dParenBrac{
+            \dfrac{\mu x}{\sigma^2}
+            -\dfrac{x^2}{2\sigma^2}
+        } 
+        \propto \exp\dParenBrac{
+            -\dfrac{\dParenBrac{x - \mu}^2}{2\sigma^2}
+        } 
+    \]
+    
+
+\end{enumerate}
 
 
 
