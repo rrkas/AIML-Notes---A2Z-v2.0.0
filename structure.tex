@@ -473,10 +473,25 @@ innerbottommargin=5pt]{cBox}
 \vspace{-\baselineskip}\mbox{}}
 
 
+%%%%%%%%%%%%%%%%%%   cheat sheets  %%%%%%%%%%%%%%%%%%%%%
+
+\tikzstyle{cheatSheetBox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
 
 
-
-
+\newcommand{\cheatSheetEntity}[2]{
+    %------------ Heating ---------------
+    \begin{tikzpicture}
+    \node [cheatSheetBox] (box){%
+        \begin{minipage}{0.3\textwidth}
+        #2
+        \end{minipage}
+    };
+    %------------ Heating Header ---------------------
+    \node[fancytitle, right=10pt] at (box.north west) {#1};
+    \end{tikzpicture}
+}
 
 
 

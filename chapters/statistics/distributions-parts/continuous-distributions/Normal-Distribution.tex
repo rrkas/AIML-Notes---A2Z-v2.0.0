@@ -1,33 +1,108 @@
-\chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1,mfml-1}} \label{Normal (Gaussian) Distribution}
+\chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1,mfml-1,wiki/Normal_distribution}} \label{Normal (Gaussian) Distribution}
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l l}
-        $\mu$ & population mean $(\mu \in R)$ \\
-        
-        $\sigma$ & standard deviation ($\sigma^2 > 0$) \\
-        
-        $x \in R$ & input \\
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|m{6cm}|p{9cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Normal (Gaussian) Distribution/ Gauss curve - Info} \cite{wiki/Normal_distribution}} \\
+    \hline\endfirsthead
 
-    \end{tabular}
-\end{table}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Normal (Gaussian) Distribution/ Gauss curve - Info - contd.} \cite{wiki/Normal_distribution}} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \hline
+    \textbf{Notation} & 
+    ${\displaystyle {\mathcal {N}}(\mu ,\sigma ^{2})}$ 
+    \\ \hline
+
+    \textbf{Statistical parameters} & 
+    \tableenumerate{
+        \item ${\displaystyle \mu \in \mathbb {R} }$ = mean (location)
+        
+        \item ${\displaystyle \sigma ^{2}\in \mathbb {R} _{>0}}$ = variance (squared scale)
+    }
+    \\ \hline
+    
+    \textbf{Support} & 
+    ${\displaystyle x\in \mathbb {R} }$
+    \\ \hline
+
+    \textbf{Probability Density Function (PDF)} & 
+    $\vspace{0.1cm}{\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}}$
+    \\[2ex] \hline
+    
+    \textbf{Cumulative distribution function (CDF)} & 
+    ${\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]}$
+    \\ \hline
+
+    \textbf{Quantile} &
+    ${\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)}$
+    \\ \hline
+
+    \textbf{Mean} & 
+    $\mu$
+    \\ \hline
+
+    \textbf{Median} & 
+    $\mu$
+    \\ \hline
+
+    \textbf{Mode} & 
+    $\mu$
+    \\ \hline
+
+    \textbf{Variance} &
+    $\sigma^2$
+    \\ \hline
+
+    \textbf{Mean absolute deviation (MAD)} &
+    ${\displaystyle \sigma {\sqrt {\dfrac{2}{\pi} }}}$ 
+    \\[1ex] \hline
+
+    \textbf{Skewness} &
+    $0$ 
+    \\ \hline
+
+    \textbf{Excess kurtosis} &
+    $0$ 
+    \\ \hline
+
+    \textbf{Entropy} &
+    ${\displaystyle {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})}$
+    \\[1ex] \hline
+
+    \textbf{Moment-generating function (MGF)} &
+    ${\displaystyle \exp(\mu t+\dfrac{\sigma ^{2}t^{2}}{2})}$
+    \\[1ex] \hline
+
+    \textbf{Characteristic function (CF)} &
+    ${\displaystyle \exp(i\mu t-\dfrac{\sigma ^{2}t^{2}}{2})}$
+    \\[1ex] \hline
+
+    \textbf{Fisher information} &
+    \tableenumerate{
+        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
+        \vspace{0.1cm}
+
+        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
+        \vspace{0.1cm}
+    }
+    \\[1ex] \hline
+
+    \textbf{Kullback–Leibler divergence} &
+    ${\displaystyle {1 \over 2}\left\{\left({\frac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\frac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
+    \\[2ex] \hline
+
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
 
 \begin{enumerate}
     \item First introduced explicitly as a PDF by Carl Friedrich Gauss, and it is therefore often referred to as the \textbf{Gauss curve} \indexlabel{Gauss curve}
 \end{enumerate}
-
-
-\begin{table}[H]
-    \begin{tabular}{l l}
-        Mean & $\mu$\\
-
-        Variance & $\sigma^2$\\
-
-        Skewness & 0 \\
-
-        Kurtosis & 0 \\
-    \end{tabular}
-\end{table}
 
 \section{Probability Density Function (PDF) ($f_{\mu,\sigma}(x)$ / $p(x|\mu,\sigma^2)$) \cite{ism-1,mfml-1}} \label{Normal Distribution: PDF}
 
