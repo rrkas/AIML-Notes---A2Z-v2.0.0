@@ -759,7 +759,44 @@ Similar to \fullref{Supremum VS Maximum}
 \end{longtable}
 
 
+\section{Confidence Interval (CI) VS Asymptotic Confidence Interval (Asymptotic CI) \cite{chatgpt}} \label{Confidence Interval (CI) VS Asymptotic Confidence Interval (Asymptotic CI)}
 
+\begin{longtable}{|p{3cm}|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Confidence Interval (CI)} & \textbf{Asymptotic Confidence Interval (Asymptotic CI)} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Confidence Interval (CI)} & \textbf{Asymptotic Confidence Interval (Asymptotic CI)} \\
+    \hline
+    \endhead
+    
+    \hline\endfoot
+    
+    \hline\endlastfoot
+    
+    \textbf{Definition} & A range of values derived from sample data that is likely to contain the true parameter with a certain probability. & A confidence interval that becomes increasingly accurate as the sample size grows, often based on asymptotic properties. \\
+    \hline
+
+    \textbf{Basis} & Often derived from exact statistical methods or models, considering the sample size and distribution. & Derived from asymptotic theory, often assuming large sample sizes and normality of the estimator distribution. \\
+    \hline
+    
+    \textbf{Sample Size} & Can be used for both small and large sample sizes, depending on the method. & Primarily used for large sample sizes where asymptotic properties are valid. \\
+    \hline
+    
+    \textbf{Accuracy} & More accurate for small samples when exact methods are used. & Accuracy improves with larger sample sizes; may be less accurate for small samples. \\
+    \hline
+    
+    \textbf{Distribution} & May use exact distributions (e.g., t-distribution) appropriate to the sample size. & Assumes that the estimator follows a normal distribution as sample size increases (Central Limit Theorem). \\
+    \hline
+    
+    \textbf{Computation} & Can be more complex and involve exact calculations or simulations. & Often simpler and relies on large-sample approximations. \\
+    \hline
+    
+    \textbf{Examples} & Exact t-interval for small sample sizes, exact binomial confidence intervals. & Approximate normal confidence interval for means, large-sample z-intervals. \\
+    \hline
+\end{longtable}
 
 
 

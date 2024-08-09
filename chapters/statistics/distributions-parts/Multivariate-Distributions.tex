@@ -455,7 +455,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \end{bmatrix}
 \end{align*}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item $\mathbb{V}_X[x] := \mathbb{E}_X[(x - \mu)^2]$
 
     \item $\mathbb{V}_X[x] = \mathbb{E}_X[x^2] - (\mathbb{E}X[x])^2$ \hfill (\textbf{raw-score formula for variance}\indexlabel{raw-score formula for variance})
@@ -559,7 +559,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         \rho_P 
         = CORR(X,Y)
         = COV(Z_X, Z_Y)
-        = \mathbb{E}\dParenBrac{ \dfrac{X - \mu_X}{\sigma_X} \right) \left( \dfrac{Y - \mu_Y}{\sigma_Y} }
+        = \mathbb{E}\dParenBrac{ \dfrac{X - \mu_X}{\sigma_X}} \dParenBrac{ \dfrac{Y - \mu_Y}{\sigma_Y} }
         = \dfrac{COV(X,Y)}{\sqrt{VAR(X)} \sqrt{VAR(Y)}}
         \hfill \text{\cite{ism-1}}
     \]
@@ -660,8 +660,72 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item $r_P$ is typically \textbf{not unbiased}, $\mathbb{E}(r_P) \neq \rho_P$
     
     \item the expectation of the numerator in $r_P$ is unbiased for the numerator in the definition of Pearson’s correlation $\rho_P$
+
+    \item if $\rho_P = 0$, pairs $(X_i, Y_i)$ are i.i.d. \textbf{bivariate normally distributed}
+
+    \item distribution function of $r_P$ is related to the t-distribution
+
+    \item CDF of $r_P\sqrt{n-2}/\sqrt{1-r_P}$ has the CDF of a t-distribution with $n - 2$ degrees of freedom
+
+    \item the asymptotic distribution of $r_P$ is \textbf{normal} when the pairs $(X_i, Y_i)$ are i.i.d. $F_{XY}$ with \textbf{finite fourth central moments}.
+    \[
+        \sqrt{n}(r_P - \rho _P ) 
+        \sim 
+        \mathcal{N} (0, n(1 - \rho ^2 _P )^2/(n - 3))
+    \]
+    
+    \item $100\%(1 - \alpha)$ \textbf{confidence interval} by:
+    \[\left(
+        \dfrac{1}{2} \log\dParenBrac{\dfrac{1+r_P}{1-r_P}} - \dfrac{z_{1-\alpha/2}}{\sqrt{n-3}},
+        \dfrac{1}{2} \log\dParenBrac{\dfrac{1+r_P}{1-r_P}} + \dfrac{z_{1-\alpha/2}}{\sqrt{n-3}}
+    \right]\]
+    
+    \begin{enumerate}
+        \item $z_{1-p}$ the $p$th \textbf{upper quantile} of the \textbf{standard normal distribution function}
+    		
+    \end{enumerate}
+    
+    \item transforming limits to original scale using the inverse transformation $[\exp{(2x)} - 1]/[\exp{(2x)} + 1]$ of the Fisher $z$-transformation:
+    \[\left(
+        \dfrac{
+            \exp{2[z_{r_P} - z_{1-\alpha/2}/\sqrt{n - 3}]} - 1
+        }{
+            \exp{2[z_{r_P} - z_{1-\alpha/2}/\sqrt{n - 3}]} + 1
+        },
+        \dfrac{
+            \exp{2[z_{r_P} + z_{1-\alpha/2}/\sqrt{n - 3}]} - 1
+        }{
+            \exp{2[z_{r_P} + z_{1-\alpha/2}/\sqrt{n - 3}]} + 1
+        }
+    \right]\]
+
+    \item If the observed data is not normal and the sample size is relatively large, the \textbf{asymptotic confidence interval} may be applied directly on the product-moment estimator:
+    \[\left(
+        r_P - \dfrac{z_{1-\alpha/2}(1 - r ^2_P )}{\sqrt{n-3}},
+        r_P + \dfrac{z_{1-\alpha/2}(1 - r ^2_P )}{\sqrt{n-3}}
+    \right]\]
+
+
 \end{enumerate}
 
+
+\subsection{Fisher $z$-transformation \cite{ism-1}}\label{Fisher z-transformation}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item For any value of $\rho_P$, but still assuming that the pairs $(X_i, Y_i)$ are \textbf{bivariate normally distributed}: $z_{r_P} = 0.5[\log(1 + r_P ) - log(1 - r_P )]$ is approximately \textbf{normally distributed}
+
+    \begin{enumerate}
+        \item Mean: $0.5[\log(1 + \rho_P ) - \log(1 - \rho_P )]$
+
+        \item Variance: $1/(n - 3)$ 
+
+    \end{enumerate}
+
+    \item This transformation is referred to as the Fisher z-transformation.
+
+    \item Fisher z-transformation is also frequently applied when the underlying data is not normally distributed.    
+
+\end{enumerate}
 
 
 \section{Kendall’s Tau Correlation ($\tau_K$) \cite{ism-1}} \label{Multivariate Distributions: Kendall’s Tau Correlation}
@@ -669,8 +733,8 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \begin{enumerate}
     \item[] \begin{align*}
         \tau_K 
-        &= Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - Pr ((X_2 - X_1)(Y_2 - Y_1) < 0)
-        &= 2 Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - 1
+        &= Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - Pr ((X_2 - X_1)(Y_2 - Y_1) < 0) \\
+        &= 2 Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - 1 \\
         &= 4 Pr(X_1 < X_2, Y_1 < Y_2) - 1.
     \end{align*}
 
@@ -1451,8 +1515,22 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
 
 
+\section{Conjugate Prior Distribution \cite{ism-1}} \label{conjugate prior distribution}
 
+\begin{enumerate}
+    \item Formally, when $\mathcal{F}$ is a class of sampling distribution functions, and $\mathcal{P}$ is a class of \textbf{prior distribution functions}, then the class $\mathcal{P}$ is called \textbf{conjugate} for $\mathcal{F}$ if:
+    \[
+        \hfill
+        p(\theta|x) \in \mathcal{P} 
+        \hfill
+        \forall\; 
+        p(\cdot|\theta) \in \mathcal{F} 
+        \text{ and } 
+        p(\cdot) \in \mathcal{P}
+    \]
 
+    \item If we choose $\mathcal{P}$ as the class of all distribution functions, then $\mathcal{P}$ is \textbf{always conjugate}. However, in practice we are most interested in \textbf{natural conjugate prior families}, which arise by taking $\mathcal{P}$ to be the set of all densities having the same functional form as the sampling distribution (i.e., the likelihood).
+\end{enumerate}
 
 
 

@@ -1,5 +1,23 @@
 \chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1,mfml-1,wiki/Normal_distribution}} \label{Normal (Gaussian) Distribution}
 
+\begin{table}[H]
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Normal_Distribution_PDF.jpg}
+            \caption{Normal distribution: PDF}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Normal_Distribution_CDF.jpg}
+            \caption{Normal distribution: CDF}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
 \renewcommand{\arraystretch}{2}
 \begin{longtable}{|m{6cm}|p{9cm}|}
     \hline
@@ -910,7 +928,35 @@ set of realizations : $x_1, \cdots, x_n$
 \end{enumerate}
 
 
+\section{Standard Normal Distribution ($X \sim \mathcal{N}(0,1)$/ $\mathcal{N}(0, I)$) \cite{ism-1,mfml-1}} \label{Standard Normal Distribution}
 
+\begin{enumerate}
+    \item Normal Distribution with: \\
+    $
+        \hfill
+        \mu = 0
+        \hfill
+        \sigma = 1
+        \hfill
+        x \in \mathbb{R}
+    $
+\end{enumerate}
+
+
+\subsection{Probability Density Function (PDF) ($\phi(x)$) \cite{ism-1}} \label{Standard Normal Distribution: PDF}
+
+\[
+    \phi(x)
+    = \dfrac{1}{\sqrt{2\pi}}\exp\dParenBrac{-\dfrac{x^2}{2}}
+\]
+
+
+\subsection{Sampling from Multivariate Standard Normal Distribution \cite{mfml-1}} \label{Sampling from Multivariate Standard Normal Distribution}
+
+\begin{enumerate}
+    \item To obtain samples from a multivariate normal $\mathcal{N} (\mu , \Sigma )$, we can use the properties of a linear transformation of a Gaussian random variable: \\
+    If $x \sim \mathcal{N} (0, I)$, then $y = Ax + \mu $, where $AA^\top  = \Sigma $ is Gaussian distributed with mean $\mu $ and covariance matrix $\Sigma $. One convenient choice of $A$ is to use the Cholesky decomposition of the covariance matrix $\Sigma  = AA^\top $. The Cholesky decomposition has the benefit that $A$ is triangular, leading to efficient computation.
+\end{enumerate}
 
 
 
