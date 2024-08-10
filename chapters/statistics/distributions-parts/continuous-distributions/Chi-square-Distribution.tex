@@ -80,7 +80,7 @@
     \\[1ex] \hline
 
     \textbf{Moment-generating function (MGF)} &
-    ${\displaystyle (1-2t)^{-k/2}{\text{ for }}t<{\frac {1}{2}}\;}$
+    ${\displaystyle (1-2t)^{-k/2}{\text{ for }}t<{\dfrac {1}{2}}\;}$
     \\[1ex] \hline
 
     \textbf{Characteristic function (CF)} &
@@ -123,6 +123,218 @@
     \end{enumerate}
 
 \end{enumerate}
+
+
+
+\section{Inverse-Chi-square Distribution/ Inverted-chi-square distribution ($X \sim \chi^{-2}$) \cite{wiki/Inverse-chi-squared_distribution}} \label{Inverse-Chi-square Distribution/ Inverted-chi-square distribution}
+
+
+
+\begin{table}[H]
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Inverse_chi_squared_pdf.png}
+            \caption{Inverse-Chi-square Distribution: PDF}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Inverse_chi_squared_cdf.png}
+            \caption{Inverse-Chi-square Distribution: CDF}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|m{6cm}|p{9cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Inverse-Chi-square Distribution - Info} \cite{wiki/Inverse-chi-squared_distribution}} \\
+    \hline\endfirsthead
+
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Inverse-Chi-square Distribution - Info - contd.} \cite{wiki/Inverse-chi-squared_distribution}} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Statistical parameters} & 
+    ${\displaystyle \nu >0\!}$
+    \\ \hline
+    
+    \textbf{Support} &
+    ${\displaystyle x\in (0,\infty )\!}$
+    \\ \hline
+
+    \textbf{Probability Density Function (PDF)} & 
+    ${\displaystyle {\dfrac {2^{-\nu /2}}{\Gamma (\nu /2)}}\,x^{-\nu /2-1}e^{-1/(2x)}\!}$
+    \\[1ex] \hline
+    
+    \textbf{Cumulative distribution function (CDF)} & 
+    ${\displaystyle \Gamma \!\left({\dfrac {\nu }{2}},{\dfrac {1}{2x}}\right){\bigg /}\,\Gamma \!\left({\dfrac {\nu }{2}}\right)\!}$
+    \\ \hline
+
+    \textbf{Mean} & 
+    ${\displaystyle {\dfrac {1}{\nu -2}}\!}$ for ${\displaystyle \nu >2\!}$
+    \\[1ex] \hline
+
+    \textbf{Median} & 
+    ${\displaystyle \approx {\dfrac {1}{\nu {\bigg (}1-{\dfrac {2}{9\nu }}{\bigg )}^{3}}}}$
+    \\[1ex] \hline
+
+    \textbf{Mode} & 
+    ${\displaystyle {\dfrac {1}{\nu +2}}\!}$
+    \\ \hline
+
+    \textbf{Variance} &
+    ${\displaystyle {\dfrac {2}{(\nu -2)^{2}(\nu -4)}}\!}$ for ${\displaystyle \nu >4\!}$
+    \\[1ex] \hline
+
+    \textbf{Skewness} &
+    ${\displaystyle {\dfrac {4}{\nu -6}}{\sqrt {2(\nu -4)}}\!}$ for ${\displaystyle \nu >6\!}$
+    \\[1ex] \hline
+
+    \textbf{Excess kurtosis} &
+    ${\displaystyle {\dfrac {12(5\nu -22)}{(\nu -6)(\nu -8)}}\!}$ for ${\displaystyle \nu >8\!}$
+    \\[1ex] \hline
+
+    \textbf{Entropy} &
+    ${\displaystyle {\dfrac {\nu }{2}}\!+\!\ln \!\left({\dfrac {\nu }{2}}\Gamma \!\left({\dfrac {\nu }{2}}\right)\right)} {\displaystyle \!-\!\left(1\!+\!{\dfrac {\nu }{2}}\right)\psi \!\left({\dfrac {\nu }{2}}\right)}$
+    \\[1ex] \hline
+
+    \textbf{Moment-generating function (MGF)} &
+    ${\displaystyle {\dfrac {2}{\Gamma ({\dfrac {\nu }{2}})}}\left({\dfrac {-t}{2i}}\right)^{\!\!{\dfrac {\nu }{4}}}K_{\dfrac {\nu }{2}}\!\left({\sqrt {-2t}}\right)}$ does not exist as real valued function
+    \\[1ex] \hline
+
+    \textbf{Characteristic function (CF)} &
+    ${\displaystyle {\dfrac {2}{\Gamma ({\dfrac {\nu }{2}})}}\left({\dfrac {-it}{2}}\right)^{\!\!{\dfrac {\nu }{4}}}K_{\dfrac {\nu }{2}}\!\left({\sqrt {-2it}}\right)}$
+    \\[1ex] \hline
+
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+
+
+\begin{enumerate}
+    \item The inverse-chi-squared distribution (or inverted-chi-square distribution) is the probability distribution of a random variable whose multiplicative inverse (reciprocal) has a chi-squared distribution
+
+\end{enumerate}
+
+
+\section{Scaled inverse chi-squared distribution $X \sim \chi^{-2}(\nu, \tau^2)$ \cite{wiki/Scaled_inverse_chi-squared_distribution}} \label{Scaled inverse chi-squared distribution}
+
+\begin{table}[H]
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Scaled_inverse_chi_squared_pdf.jpg}
+            \caption{Scaled inverse chi-squared distribution: PDF}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Scaled_inverse_chi_squared_cdf.jpg}
+            \caption{Scaled inverse chi-squared distribution: CDF}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|m{6cm}|p{9cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Scaled inverse chi-squared distribution - Info} \cite{wiki/Scaled_inverse_chi-squared_distribution}} \\
+    \hline\endfirsthead
+
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Scaled inverse chi-squared distribution - Info - contd.} \cite{wiki/Scaled_inverse_chi-squared_distribution}} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Statistical parameters} & 
+    ${\displaystyle \nu >0\,} \quad\quad {\displaystyle \tau ^{2}>0\,}$
+    \\ \hline
+    
+    \textbf{Support} &
+    ${\displaystyle x\in (0,\infty )}$
+    \\ \hline
+
+    \textbf{Probability Density Function (PDF)} & 
+    ${\displaystyle {\dfrac {(\tau ^{2}\nu /2)^{\nu /2}}{\Gamma (\nu /2)}}~{\dfrac {\exp \left[{\dfrac {-\nu \tau ^{2}}{2x}}\right]}{x^{1+\nu /2}}}}$
+    \\[1ex] \hline
+    
+    \textbf{Cumulative distribution function (CDF)} & 
+    ${\displaystyle \Gamma \left({\dfrac {\nu }{2}},{\dfrac {\tau ^{2}\nu }{2x}}\right)\left/\Gamma \left({\dfrac {\nu }{2}}\right)\right.}$
+    \\ \hline
+
+    \textbf{Mean} & 
+    ${\displaystyle {\dfrac {\nu \tau ^{2}}{\nu -2}}}$ for ${\displaystyle \nu >2\,}$
+    \\[1ex] \hline
+
+    \textbf{Mode} & 
+    ${\displaystyle {\dfrac {\nu \tau ^{2}}{\nu +2}}}$
+    \\ \hline
+
+    \textbf{Variance} &
+    ${\displaystyle {\dfrac {2\nu ^{2}\tau ^{4}}{(\nu -2)^{2}(\nu -4)}}}$ for ${\displaystyle \nu >4\,}$
+    \\[1ex] \hline
+
+    \textbf{Skewness} &
+    ${\displaystyle {\dfrac {4}{\nu -6}}{\sqrt {2(\nu -4)}}}$ for ${\displaystyle \nu >6\,}$
+    \\[1ex] \hline
+
+    \textbf{Excess kurtosis} &
+    ${\displaystyle {\dfrac {12(5\nu -22)}{(\nu -6)(\nu -8)}}}$ for ${\displaystyle \nu >8\,}$
+    \\[1ex] \hline
+
+    \textbf{Entropy} &
+    ${\displaystyle {\dfrac {\nu }{2}}\!+\!\ln \left({\dfrac {\tau ^{2}\nu }{2}}\Gamma \left({\dfrac {\nu }{2}}\right)\right)}{\displaystyle \!-\!\left(1\!+\!{\dfrac {\nu }{2}}\right)\psi \left({\dfrac {\nu }{2}}\right)}$
+    \\[1ex] \hline
+
+    \textbf{Moment-generating function (MGF)} &
+    ${\displaystyle {\dfrac {2}{\Gamma ({\dfrac {\nu }{2}})}}\left({\dfrac {-\tau ^{2}\nu t}{2}}\right)^{\!\!{\dfrac {\nu }{4}}}\!\!K_{\dfrac {\nu }{2}}\left({\sqrt {-2\tau ^{2}\nu t}}\right)}$
+    \\[1ex] \hline
+
+    \textbf{Characteristic function (CF)} &
+    ${\displaystyle {\dfrac {2}{\Gamma ({\dfrac {\nu }{2}})}}\left({\dfrac {-i\tau ^{2}\nu t}{2}}\right)^{\!\!{\dfrac {\nu }{4}}}\!\!K_{\dfrac {\nu }{2}}\left({\sqrt {-2i\tau ^{2}\nu t}}\right)}$
+    \\[1ex] \hline
+
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+\begin{enumerate}
+    \item The scaled inverse chi-squared distribution is the distribution for $x = 1/s^2$, where $s^2$ is a sample mean of the squares of $\nu$ independent normal random variables that have mean $0$ and inverse variance $1/\sigma^2 = \tau^2$
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

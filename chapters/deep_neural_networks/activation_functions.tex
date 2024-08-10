@@ -126,7 +126,7 @@ where, $L=1$ , $k=1$ \& $x_{0}=0$
 \section{Rectifier/ Rectified Linear Unit (ReLU) \cite{wiki-Rectifier}}\label{ReLU}
 In the context of artificial neural networks, the rectifier or ReLU (rectified linear unit) activation function is an activation function defined as the positive part of its argument:
 \[
-    f(x)=x^{+}=\max(0,x)={\displaystyle\frac {x+|x|}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
+    f(x)=x^{+}=\max(0,x)={\displaystyle\frac {x+\dabs{x}}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
 \]
 \[
     \displaystyle\dfrac{d\operatorname{ReLU}(z)}{dz}={\begin{cases}1&{\text{if }}z>0,\\0&{\text{otherwise}}\end{cases}}

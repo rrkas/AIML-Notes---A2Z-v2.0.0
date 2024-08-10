@@ -434,9 +434,9 @@ SEE: projection - TODO
 
 \begin{align*}
     \displaystyle
-    \mathbf{u}_1 &:= \dfrac{\mathbf{b}_1}{||\mathbf{b}_1||}\\
+    \mathbf{u}_1 &:= \dfrac{\mathbf{b}_1}{\dnorm{\mathbf{b}_1}}\\
     \gamma_k &:= \mathbf{b}_k - \dParenBrac{ \sum_{i=1}^{k-1} \langle \mathbf{b}_k, \mathbf{u}_i \rangle \mathbf{u}_i }\\
-    \mathbf{u}_k &:= \dfrac{\gamma_k}{||\gamma_k||}\\
+    \mathbf{u}_k &:= \dfrac{\gamma_k}{\dnorm{\gamma_k}}\\
 \end{align*}
 
 
@@ -1440,7 +1440,7 @@ $R_{ij}(\theta )$ is the identity matrix In with:
 \noindent
 \textbf{Properties}:
 \begin{enumerate}
-    \item Rotations preserve distances, i.e., $||x-y|| = ||R_\theta (x) - R_\theta (y)||$
+    \item Rotations preserve distances, i.e., $\dnorm{x-y} = \dnorm{R_\theta (x) - R_\theta (y)}$
 
     \item rotations leave the distance between any two points unchanged after the transformation
 

@@ -63,7 +63,7 @@ Stochastic gradient is evaluated at the next iterate rather than the current one
 \[
     {\displaystyle w^{\text{new}}:=w^{\text{old}}-\eta \,\nabla Q_{i}(w^{\rm {new}})} 
     \hfill 
-    {\displaystyle w^{\text{new}}:=\arg \min _{w}\dCurlyBrac{Q_{i}(w)+{\frac {1}{2\eta }}\left\|w-w^{\text{old}}\right\|^{2}}}
+    {\displaystyle w^{\text{new}}:=\arg \min _{w}\dCurlyBrac{Q_{i}(w)+{\frac {1}{2\eta }}\dnorm{w-w^{\text{old}}}^{2}}}
 \]
 
 SEE: \fullref{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}

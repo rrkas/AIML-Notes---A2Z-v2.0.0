@@ -26,10 +26,10 @@
     \end{tabular}
 \end{table}
 
-\section{Herdan’s Law ( $|V| = kN^{\beta}$ ) \cite{nlp-1}} \label{Herdan’s Law}
+\section{Herdan’s Law ( $\dabs{V} = kN^{\beta}$ ) \cite{nlp-1}} \label{Herdan’s Law}
 
 \[
-    |V| = kN^{\beta} \hfill (0 < \beta < 1 \text{ and } k > 0)
+    \dabs{V} = kN^{\beta} \hfill (0 < \beta < 1 \text{ and } k > 0)
 \]
 
 \begin{enumerate}
@@ -96,7 +96,7 @@ Example:
     
     \item The term-document matrix was first defined as part of the \textbf{vector space model}\indexlabel{vector space model} of information retrieval. In this model, a document is represented as a count vector.
 
-    \item in term-document matrices, the vectors representing each document would have dimensionality $|V|$ (vocabulary size).
+    \item in term-document matrices, the vectors representing each document would have dimensionality $\dabs{V}$ (vocabulary size).
 
     \item Two documents that are similar will tend to have similar words, and if two documents have similar words their column vectors will tend to be similar.
 
@@ -122,7 +122,7 @@ Example:
 \begin{enumerate}
     \item columns are labeled by words rather than documents. 
     
-    \item Dimensionality $|V|\times|V|$ and each cell records the number of times the row (target) word and the column (context) word co-occur in some context in some training corpus.
+    \item Dimensionality $\dabs{V}\times\dabs{V}$ and each cell records the number of times the row (target) word and the column (context) word co-occur in some context in some training corpus.
 
     \item The context could be the document, in which case the cell represents the number of times the two words appear in the same document.
 

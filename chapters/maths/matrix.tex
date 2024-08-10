@@ -127,7 +127,7 @@ A diagonal matrix is a matrix that has value zero on all off-diagonal elements, 
 \]
 
 \begin{enumerate}
-    \item determinant = $det(\mathbf{D}) = |\mathbf{D}|$ = product of its diagonal entries = $\displaystyle \prod_{k=1}^{n} c_k$
+    \item determinant = $det(\mathbf{D}) = \dabs{\mathbf{D}}$ = product of its diagonal entries = $\displaystyle \prod_{k=1}^{n} c_k$
 
     \item matrix power $\mathbf{D}^k$ is given by each diagonal element raised to the power $k$
     \[
@@ -289,7 +289,14 @@ A square matrix $\mathbf{A} \in \mathbb{R}^{n\times n}$ is an orthogonal matrix 
 \begin{enumerate}
     \item inverse is obtained by simply transposing the matrix
 
-    \item $||Ax||^2 = (Ax)^\top (Ax) = x^\top A^\top Ax = x^\top Ix = x^\top x = ||x||^2$
+    \item $
+        \dnorm{Ax}^2 
+        = (Ax)^\top (Ax) 
+        = x^\top A^\top Ax 
+        = x^\top Ix 
+        = x^\top x 
+        = \dnorm{x}^2
+    $
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -440,7 +447,7 @@ The number of linearly independent columns of a matrix $A \in  R^{m\times n}$ eq
     \item A matrix is said to be \textbf{rank deficient}\indexlabel{matrix: rank deficient} if it does not have full rank
 \end{enumerate}
 
-\section{Determinant (det(A) or |A|)}\label{matrix: Determinant}
+\section{Determinant ($det(A)$ or $\dabs{A}$)}\label{matrix: Determinant}
 The determinant of a square matrix $A \in R^{n\times n}$ is a function that maps $A$ onto a real number.
 \[
     det(A) = \begin{bmatrix}
@@ -698,7 +705,7 @@ Then the geometric multiplicity of $\lambda_i$ is the \textbf{number of linearly
 For $x \in  R^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $A \in  R^{m\times n}$ is defined as:
 \[
     \displaystyle
-    ||A||_2 = \max_x \dfrac{||Ax||_2}{||x||_2}
+    \dnorm{A}_2 = \max_x \dfrac{\dnorm{Ax}_2}{\dnorm{x}_2}
 \]
 
 
@@ -707,12 +714,12 @@ For $x \in  R^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $A \in 
 \end{theorem}
 
 
-\subsection{Frobenius norm of a Matrix ($||x||_F$) \cite{wiki/Matrix_norm}}\label{Frobenius norm of a Matrix}
+\subsection{Frobenius norm of a Matrix ($\dnorm{x}_F$) \cite{wiki/Matrix_norm}}\label{Frobenius norm of a Matrix}
 
 defined as the square root of the sum of the squares of a matrix’s elements:
 \[
     \displaystyle
-    ||X||_F = \sqrt{
+    \dnorm{X}_F = \sqrt{
         \sum_{i=1}^{m} \sum_{j=1}^{n} x_{ij}
     }
 \]
@@ -1006,7 +1013,7 @@ $C, \tilde{C} \in R^m$
 
         \vspace{0.2cm}
         \item \textbf{Getting left-singular matrix (U):}
-        \begin{enumerate}
+        \begin{enumerate}[itemsep=0.2cm]
             \item construct a SPD matrix $AA^\top \in R^{m\times m}$
             
             \item \begin{align*}
@@ -1027,7 +1034,7 @@ $C, \tilde{C} \in R^m$
      
             \item eigenvalues of $AA^\top$ are the squared singular values of $\Sigma$
 
-            \item \( \displaystyle u_i = \dfrac{Av_i}{||Av_i||} = \dfrac{Av_i}{\sqrt{\lambda_i}} = \dfrac{Av_i}{\sigma_i} \)
+            \item \( \displaystyle u_i = \dfrac{Av_i}{\dnorm{Av_i}} = \dfrac{Av_i}{\sqrt{\lambda_i}} = \dfrac{Av_i}{\sigma_i} \)
 
             \item \textbf{singular value equation}\indexlabel{singular value equation}: $ Av_i = \sigma_iu_i  \hfill (i = 1, \cdots , r)$
         \end{enumerate}
@@ -1385,9 +1392,9 @@ All terms $\displaystyle \sum_{i=1}^{r} u_iv^\top$ vanish for $i \neq j$ because
 \begin{theorem}[Eckart-Young Theorem]\indexlabel{rank-k approximation: Eckart-Young Theorem}
     Consider a matrix $A \in R^{m\times n}$ of rank $r$ and let $B \in R^{m\times n}$ be a matrix of rank $k$. For any $k \leq r$ with $\hat{A}(k) = \sum_{i=1}^{k} \sigma_iu_iv^\top$ it holds that:
     \begin{enumerate}
-        \item $\displaystyle \hat{A}(k) = \arg\min_{rk(B)=k} ||A-B||_2$
+        \item $\displaystyle \hat{A}(k) = \arg\min_{rk(B)=k} \dnorm{A-B}_2$
 
-        \item $\displaystyle ||A-\hat{A}(k)||_2 = \sigma_{k+1} \hfill (\text{rank-r approximation error})$\indexlabel{rank-r approximation error}
+        \item $\displaystyle \dnorm{A-\hat{A}(k)}_2 = \sigma_{k+1} \hfill (\text{rank-r approximation error})$\indexlabel{rank-r approximation error}
     \end{enumerate}
 \end{theorem}
 
@@ -1402,9 +1409,9 @@ All terms $\displaystyle \sum_{i=1}^{r} u_iv^\top$ vanish for $i \neq j$ because
 
     \item $\sigma_{k+1}$ : spectral norm of the difference matrix
 
-    \item let matrix $B$ with $rk(B) \leq k$, such that $||A-B||_2 < ||A-\hat{A}(k)||_2$ then there exists an at least $(n - k)$-dimensional null space $Z \subseteq R^n$, such that $x \in Z$ implies that $Bx = 0$. Then it follows that $||Ax||_2=||(A-B)x||_2$ and by using a version of the Cauchy-Schwarz inequality  that encompasses norms of matrices, we obtain $||Ax||_2 \leq ||A-B||_2||x||_2 \leq \sigma_{k+1}||x||_2$
+    \item let matrix $B$ with $rk(B) \leq k$, such that $\dnorm{A-B}_2 < \dnorm{A-\hat{A}(k)}_2$ then there exists an at least $(n - k)$-dimensional null space $Z \subseteq R^n$, such that $x \in Z$ implies that $Bx = 0$. Then it follows that $\dnorm{Ax}_2=\dnorm{(A-B)x}_2$ and by using a version of the Cauchy-Schwarz inequality  that encompasses norms of matrices, we obtain $\dnorm{Ax}_2 \leq \dnorm{A-B}_2\dnorm{x}_2 \leq \sigma_{k+1}\dnorm{x}_2$
 
-    \item there exists a $(k + 1)$-dimensional subspace where $||Ax||_2 \geq \sigma _{k+1}||x||_2$, which is spanned by the right-singular vectors $v_j, j \leq k + 1$ of $A$
+    \item there exists a $(k + 1)$-dimensional subspace where $\dnorm{Ax}_2 \geq \sigma _{k+1}\dnorm{x}_2$, which is spanned by the right-singular vectors $v_j, j \leq k + 1$ of $A$
 
     \item Adding up dimensions of these two spaces yields a number greater than $n$, as there must be a non-zero vector in both spaces. This is a \textbf{contradiction} of the \textbf{rank-nullity theorem}
 

@@ -89,7 +89,7 @@ Since a finite MDP has a finite number of policies, the defined process is finit
             \ForEach{$s \in S$}{
                 $v \leftarrow V(s)$\;
                 $V(s) \leftarrow \sum_{s',r'} p(s',r \mid s,\pi(s))[r+\gamma V(s')]$\;
-                $\Delta \leftarrow \max(\Delta,|v-V(s)|)$\;
+                $\Delta \leftarrow \max(\Delta,\dabs{v-V(s)})$\;
             }
         }
     
@@ -332,8 +332,8 @@ These attempt to evaluate or improve the policy that is used to make decisions, 
             $A^* \leftarrow \displaystyle\arg\max_a Q(s,a)$ (with ties broken arbitrarily)\\
             \ForEach{$a\in A(s)$}{
                 \( \pi(a|s) \leftarrow \begin{cases}
-                    1-\epsilon + \displaystyle\dfrac{\epsilon}{|A(s)|} & \text{ if } a=A^*\\
-                    \displaystyle\dfrac{\epsilon}{|A(s)|} & \text{ if } a\neq A^*\\
+                    1-\epsilon + \displaystyle\dfrac{\epsilon}{\dabs{A(s)}} & \text{ if } a=A^*\\
+                    \displaystyle\dfrac{\epsilon}{\dabs{A(s)}} & \text{ if } a\neq A^*\\
                 \end{cases} \)
             }
         }
@@ -424,7 +424,7 @@ Almost all off-policy learning methods utilize \textbf{importance sampling}, a g
 Importance sampling with a simple average is called ordinary sampling.
 
 \[
-    V(s) = \displaystyle\dfrac{\dsum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{|J(s)|}
+    V(s) = \displaystyle\dfrac{\dsum_{t\in J(s)} \rho_{t:t(t)-1}G_t}{\dabs{J(s)}}
 \]
 
 \begin{enumerate}
@@ -490,7 +490,7 @@ weighted estimator is strongly preferred.
             \ForEach{step of episode $t=T-1,T-2,...,0$}{
                 $G \leftarrow \gamma G + R_{t+1}$\\
                 $C(S_t,A_t) \leftarrow C(S_t,A_t) + W$\\
-                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$\\
+                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}\dabs{G-Q(S_t,A_t)}$\\
                 $W \leftarrow W\displaystyle\dfrac{\pi(A_t|S_t)}{b(A_t|S_t)}$\\
                 \If{$W=0$}{
                     exit For loop
@@ -531,7 +531,7 @@ weighted estimator is strongly preferred.
                 $C(S_t,A_t) \leftarrow C(S_t,A_t) + W$
 
                 \Comment{Incremental update of Q values (waited moving average)}
-                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}|G-Q(S_t,A_t)|$
+                $Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \displaystyle\dfrac{W}{C(S_t,A_t)}\dabs{G-Q(S_t,A_t)}$
 
                 \Comment{update target policy (greedy)}
                 $\pi(S_t) \leftarrow \displaystyle\arg\max_a Q(S_t,a)$ (with ties broken consistently)

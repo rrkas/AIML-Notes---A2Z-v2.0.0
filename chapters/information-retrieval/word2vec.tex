@@ -25,7 +25,7 @@
     \item short \textbf{dense vectors} \indexlabel{dense vectors}\\
     instead of vector entries being sparse, mostly-zero counts or functions of counts, the values will be real-valued numbers that can be negative.
 
-    \item embeddings are \textbf{short}, with number of dimensions $d$ ranging from $50-1000$, rather than the much larger vocabulary size $|V|$ or number of documents $D$
+    \item embeddings are \textbf{short}, with number of dimensions $d$ ranging from $50-1000$, rather than the much larger vocabulary size $\dabs{V}$ or number of documents $D$
 
     \item These $d$ dimensions don’t have a clear interpretation.
 
@@ -121,9 +121,9 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
 
 \begin{table}[H]
     \begin{tabular}{l l l}
-        $\mathbf{W}$ & $\mathbb{R}^{|V|\times 1}$ & target words \\
-        $\mathbf{C}$ & $\mathbb{R}^{|V|\times 1}$ & context \& noise words \\
-        $\bm{\theta}$ & $\mathbb{R}^{2|V|\times 1}$ & \\
+        $\mathbf{W}$ & $\mathbb{R}^{\dabs{V}\times 1}$ & target words \\
+        $\mathbf{C}$ & $\mathbb{R}^{\dabs{V}\times 1}$ & context \& noise words \\
+        $\bm{\theta}$ & $\mathbb{R}^{2\dabs{V}\times 1}$ & \\
     \end{tabular}
 \end{table}        
 

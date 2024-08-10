@@ -115,7 +115,7 @@ The interquartile range (IQR) calculates the difference between the third quarti
 
 \subsection{Mean absolute deviation (MAD) \cite{ism-1}}\label{Mean absolute deviation}
 \[
-    MAD = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \left| x_i - \bar{x} \right|
+    MAD = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \dabs{ x_i - \bar{x} }
 \]
 SEE: \hyperref[abs_value]{Absolute Value}
 
@@ -145,7 +145,7 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
 
 \begin{enumerate}
     \item Compare the mean with the median to get an impression of the skewness, since the median and mean are identical under symmetric data, but this measure is more difficult to interpret than $g_1$
-    \item Data with skewness values of $|g_1| \leq 0.3$ are considered close to symmetry, since it is difficult to demonstrate that data is skewed when the value for g1 is close to zero.
+    \item Data with skewness values of $\dabs{g_1} \leq 0.3$ are considered close to symmetry, since it is difficult to demonstrate that data is skewed when the value for g1 is close to zero.
     \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
 \end{enumerate}
 

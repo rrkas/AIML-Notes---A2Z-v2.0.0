@@ -1,0 +1,221 @@
+\chapter{Bernoulli Distribution ($X \sim \mathcal{B}(p)$) \cite{ism-1,wiki/Bernoulli_distribution}}\label{Bernoulli Distribution}
+
+
+
+\renewcommand{\arraystretch}{2}
+\begin{longtable}{|m{6cm}|p{9cm}|}
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Bernoulli Distribution - Info} \cite{wiki/Bernoulli_distribution}} \\
+    \hline\endfirsthead
+
+    \hline
+    \multicolumn{2}{|c|}{\textbf{Bernoulli Distribution - Info - contd.} \cite{wiki/Bernoulli_distribution}} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \hline
+
+    \textbf{Statistical parameters} & 
+    ${\displaystyle 0\leq p\leq 1} \quad {\displaystyle q=1-p}$
+    \\ \hline
+    
+    \textbf{Support} & 
+    ${\displaystyle k\in \{0,1\}}$
+    \\ \hline
+
+    \textbf{Probability Density Function (PDF)} & 
+    ${\displaystyle {\begin{cases}q=1-p&{\text{if }}k=0\\p&{\text{if }}k=1\end{cases}}}$
+    \\[2ex] \hline
+    
+    \textbf{Cumulative distribution function (CDF)} & 
+    ${\displaystyle {\begin{cases}0&{\text{if }}k<0\\1-p&{\text{if }}0\leq k<1\\1&{\text{if }}k\geq 1\end{cases}}}$
+    \\ \hline
+
+    \textbf{Mean} & 
+    $p$
+    \\ \hline
+
+    \textbf{Median} & 
+    ${\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\\left[0,1\right]&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}$
+    \\ \hline
+
+    \textbf{Mode} & 
+    ${\displaystyle {\begin{cases}0&{\text{if }}p<1/2\\0,1&{\text{if }}p=1/2\\1&{\text{if }}p>1/2\end{cases}}}$
+    \\ \hline
+
+    \textbf{Variance} &
+    ${\displaystyle p(1-p)=pq}$
+    \\ \hline
+
+    \textbf{Mean absolute deviation (MAD)} &
+    ${\displaystyle 2p(1-p)=2pq}$
+    \\[1ex] \hline
+
+    \textbf{Skewness} &
+    ${\displaystyle {\dfrac {q-p}{\sqrt {pq}}}}$
+    \\ \hline
+
+    \textbf{Excess kurtosis} &
+    ${\displaystyle {\dfrac {1-6pq}{pq}}}$
+    \\ \hline
+
+    \textbf{Entropy} &
+    ${\displaystyle -q\ln q-p\ln p}$
+    \\[1ex] \hline
+
+    \textbf{Moment-generating function (MGF)} &
+    ${\displaystyle q+pe^{t}}$
+    \\[1ex] \hline
+
+    \textbf{Characteristic function (CF)} &
+    ${\displaystyle q+pe^{it}}$
+    \\[1ex] \hline
+
+    \textbf{Probability-generating function (PGF)} &
+    ${\displaystyle q+pz}$
+    \\[1ex] \hline
+
+    \textbf{Fisher information} &
+    ${\displaystyle {\dfrac {1}{pq}}}$
+    \\[1ex] \hline
+
+
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+\section{Sample Statistic Average \cite{ism-1}} \label{Bernoulli Distribution: Sample Statistic Average}
+
+\begin{enumerate}
+    \item CDF:
+    \[
+        F_{\bar{X}}(x)
+        = P(\bar{X} \leq x)
+        = P(X_1 + \cdots + X_n \leq nx)
+        = \dsum_{k=0}^{\dfloor{nx}} {^n}C_k p^k (1-p)^{n-k}
+    \]
+
+\end{enumerate}
+
+\section{Maximum Likelihood Estimation \cite{ism-1}} \label{Bernoulli Distribution: Maximum Likelihood Estimation}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item set of random variables $X_1, X_2,\cdots, X_n$ having an i.i.d. Bernoulli $\mathcal{B}(p)$ distribution $(X_i \sim \mathcal{B}(p))$
+
+    \item Likelihood: $
+        L(p) = \dprod_{i=1}^{n} p^{x_i} (1-p)^{1-x_i}
+    $
+
+    \item maximum likelihood estimate: $\hat{p}$
+
+    \item logarithm of the likelihood: $
+        l(p) = \log(L(p)) = \dsum_{i=1}^{n} [{x_i}\log(p) + (1-x_i)\log(1-p)]
+    $
+
+    \[
+        l'(p)
+        = \dsum_{i=1}^{n} \dSquareBrac{\dfrac{x_i}{p} + \dfrac{1-x_i}{1-p}}
+        = 0
+        \Leftrightarrow
+        {(1-p)} \dsum_{i=1}^{n} x_i - np + p \dsum_{i=1}^{n} x_i = 0
+        \Leftrightarrow
+        np = \dsum_{i=1}^{n} x_i
+    \]
+
+    \item maximum likelihood estimate: $\hat{p} = \bar{x}$
+
+    \item Since any value $\bar{x} - \epsilon, \epsilon > 0$, for $p$ in the derivative gives a \textbf{positive value} the solution is a \textbf{maximum}. 
+    
+    \item The ML estimator is now $\hat{p} = \bar{X}$, which is the same as the MME, since the first moment of a Bernoulli random variable is $p$.
+
+\end{enumerate}
+
+
+\section{Bayesian analysis \cite{ism-1}} \label{Bernoulli Distribution: Bayesian analysis}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item $X_1,\cdots, X_n$ as i.i.d. $Bernoulli(\theta)$ 
+        \hfill
+        $\theta = p (0 \leq p \leq 1)$
+
+    \item likelihood:
+    \begin{align*}
+        l(\theta) 
+        &= p(x|\theta)
+        = \dprod_{i=1}^n \theta^{x_i} (1 - \theta)^{1 - x_i} \\
+        &= \theta^{\sum_{i=1}^n x_i} (1 - \theta)^{n - \sum_{i=1}^n x_i}
+        = \theta^{n\bar{x}_n} (1 - \theta)^{n - n\bar{x}_n} \\
+    \end{align*}
+
+    \item prior : \fullref{Beta Distribution}
+\end{enumerate}
+
+\section{Exponential Family \cite{mfml-1}} \label{Bernoulli Distribution: Exponential Family}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Bernoulli distribution: $p(x | \mu) = \mu^x(1 - \mu)^{1-x}$ \hfill $x \in \dCurlyBrac{0, 1}$
+
+    \item exponential family: $p(x | \theta) = h(x) \exp (\langle\theta, \phi(x)\rangle - A(\theta))$
+
+    \item $\begin{aligned}
+        p(x | \mu) 
+        &= \exp[\log(\mu^x (1 - \mu)^{1-x})] \\
+        &= \exp[x \log (\mu) + (1 - x) \log(1 - \mu)] \\
+        &= \exp[x \log (\mu) - x \log(1 - \mu) + \log(1 - \mu)] \\
+        &= \exp\dSquareBrac{
+            x \log\dParenBrac{\dfrac{\mu}{1 - \mu}}
+            + \log(1 - \mu)
+        }
+    \end{aligned}$
+
+    \item $\begin{aligned}
+        h(x) = 1  \\
+        \theta = \log\dParenBrac{\dfrac{\mu}{1-\mu}} \\
+        \phi(x) = x \\
+        A(\theta) = - \log(1 - \mu) = \log(1 + \exp(\theta))\\
+    \end{aligned}$
+
+    \item $\mu = \dfrac{1}{1 + \exp(-\theta)}$ 
+        \hfill 
+        $\mu \in (0, 1) \quad \forall \theta \in R$
+        \hfill 
+        (aka sigmoid or logistic function)
+    
+\end{enumerate}
+
+\subsection{Canonical Conjugate Prior \cite{ism-1}}
+
+\[
+    p(\mu | \alpha, \beta) = \dfrac{\mu }{1 - \mu} \exp \dSquareBrac{\alpha \log \dParenBrac{\dfrac{\mu} {1 - \mu}} + (\beta + \alpha) \log(1 - \mu) - A_c(\gamma) }
+\]
+\begin{enumerate}[itemsep=0.2cm]
+    \item $\gamma := [\alpha, \beta + \alpha]^\top$
+
+    \item $h_c(\mu) := \dfrac{\mu}{(1 - \mu)}$
+
+\end{enumerate}
+
+\[
+    p(\mu | \alpha, \beta) = \exp [(\alpha - 1) \log (\mu) + (\beta - 1) \log(1 - \mu) - A_c(\alpha, \beta)]
+\]
+
+\[
+    p(\mu | \alpha, \beta) \propto \mu^{\alpha-1} (1 - \mu)^{\beta-1}
+    \hfill
+    \text{(Beta Distribution)}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+

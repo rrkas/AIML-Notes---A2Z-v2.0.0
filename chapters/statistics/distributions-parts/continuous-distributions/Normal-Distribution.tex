@@ -231,7 +231,7 @@ if $\rho = 0$, $X \& Y$ are \textbf{independent}
 
     \item $
         p(x|\mu, \Sigma)
-        = (2\pi)^{-D/2} |\Sigma|^{-1/2}
+        = (2\pi)^{-D/2} \dabs{\Sigma}^{-1/2}
         \exp(
             -0.5(x - \mu)^\top\Sigma^{-1}(x - \mu)
         )
@@ -374,7 +374,7 @@ if $\rho = 0$, $X \& Y$ are \textbf{independent}
         \item $
             c_0 
             = (2\pi)^{-D/2}
-            |A + B|^{-1/2}
+            \dabs{A + B}^{-1/2}
             \exp(-0.5(a - b)^\top(A + B)^{-1}(a - b))
             \in \mathbb{R}
         $
@@ -536,7 +536,7 @@ with $f_{X_n} = f_X$, since $X_1, X_2,\cdots, X_n$ are i.i.d. with CDF $F_X$
 
             \item $
                 S_{r_S}^2 
-                = (n-2)^{-1} + \dfrac{|z_{r_S}|}{6n + 4\sqrt{n}}
+                = (n-2)^{-1} + \dfrac{\dabs{z_{r_S}}}{6n + 4\sqrt{n}}
             $ \hfill (Caruso and Cliff 1997)
 
         \end{enumerate}

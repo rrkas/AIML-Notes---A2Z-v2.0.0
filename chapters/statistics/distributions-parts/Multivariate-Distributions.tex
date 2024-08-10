@@ -541,6 +541,36 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \end{align*}
 \end{enumerate}
 
+
+\section{Maximum Likelihood Estimation \cite{ism-1}} \label{Multivariate Distributions: Maximum Likelihood Estimation}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item PDF/ PMF: $f_\theta$
+
+    \item If $X_1, X_2,\cdots, X_n$ are i.i.d. with density $f_\theta$ , the likelihood function is given by $L (\theta|X_1, X_2,\cdots, X_n) = \dsum ^n _{i=1} f_\theta (X_i)$ and the log likelihood function is given by
+    \[
+        l_\theta 
+        \equiv  (\theta|X_1, X_2,\cdots, X_n) 
+        = \dsum_{i=1}^n \log (f_\theta (X_i))        
+    \]
+
+    \item The maximum likelihood estimator $\hat{\theta} = (\hat{\theta}_1, \hat{\theta}_2,\cdots, \hat{\theta}_n)^\top$ is the set of parameters that maximizes the log likelihood function.
+
+    \item It can often be determined by solving the set of equations given by 
+    \[
+        \dfrac{\partial l_\theta}{\partial \theta_k}
+        = \dsum_{i=1}^n \dSquareBrac{
+            \dParenBrac{
+                \dfrac{\partial f_\theta(X_i)}{\partial \theta_k}
+            } /
+            f_\theta(X_i)
+        }
+        = 0
+    \]
+\end{enumerate}
+
+
+
 \section{Pearson’s Correlation Coefficient ($\rho_P$) \cite{ism-1,mfml-1}} \label{Multivariate Distributions: Pearson’s Correlation Coefficient}
 
 \begin{enumerate}
@@ -614,11 +644,11 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \begin{table}[H]
     \centering
     \begin{tabular}{l l l l l l} 
-        0.90 & < & $|\rho_P|$ & $\leq$ & 1.00 & \textbf{Very strong} correlation\\
-        0.70 & < & $|\rho_P|$ & $\leq$ & 0.90  & \textbf{Strong} correlation\\
-        0.50 & < & $|\rho_P|$ & $\leq$ & 0.70 &  \textbf{Moderate} correlation\\
-        0.30 & < & $|\rho_P|$ & $\leq$ & 0.50  & \textbf{Low} correlation\\
-        0  &  $\leq$ & $|\rho_P|$ & $\leq$ & 0.30 &  \textbf{Negligible} correlation\\
+        0.90 & < & $\dabs{\rho_P}$ & $\leq$ & 1.00 & \textbf{Very strong} correlation\\
+        0.70 & < & $\dabs{\rho_P}$ & $\leq$ & 0.90  & \textbf{Strong} correlation\\
+        0.50 & < & $\dabs{\rho_P}$ & $\leq$ & 0.70 &  \textbf{Moderate} correlation\\
+        0.30 & < & $\dabs{\rho_P}$ & $\leq$ & 0.50  & \textbf{Low} correlation\\
+        0  &  $\leq$ & $\dabs{\rho_P}$ & $\leq$ & 0.30 &  \textbf{Negligible} correlation\\
     \end{tabular}
     \caption{Inferring Pearson’s Correlation Coefficient values \cite{ism-1}}
 \end{table}
@@ -953,7 +983,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 
     \item $P_E = \dsum_{k=1}^K f_X(k)f_Y(k)$ represents probability of correctly classifying units in the same classes, based on independent ratings
 
-    \item When $X$ and $Y$ are further apart, $|X - Y| > 1$, this seems to be a more serious \textbf{misclassification} then when $X$ and $Y$ just differ one class, $|X - Y| = 1$
+    \item When $X$ and $Y$ are further apart, $\dabs{X - Y} > 1$, this seems to be a more serious \textbf{misclassification} then when $X$ and $Y$ just differ one class, $\dabs{X - Y} = 1$
     \[
         \hfill
         \kappa_C = \dfrac{P_O - P_E}{1 - P_E}
@@ -1120,7 +1150,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item $
         \hfill
         \phi = \dfrac{
-            |N_{11}N_{22} - N_{12}N_{21}|
+            \dabs{N_{11}N_{22} - N_{12}N_{21}}
         }{
             \sqrt{N_{1\cdot}N_{2\cdot}N_{\cdot 1}N_{\cdot 2}}
         }
@@ -1132,7 +1162,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item Pearson’s product-moment estimator: $
         \hfill
         \rho_P = \dfrac{
-            |N_{11}N_{22} - N_{12}N_{21}|
+            \dabs{N_{11}N_{22} - N_{12}N_{21}}
         }{
             \sqrt{N_{1\cdot}N_{2\cdot}N_{\cdot 1}N_{\cdot 2}}
         }

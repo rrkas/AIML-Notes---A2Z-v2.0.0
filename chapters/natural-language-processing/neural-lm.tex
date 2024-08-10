@@ -126,14 +126,14 @@ For class $k \in \dCurlyBrac{1,2,...,K}$ ($K$ classes),
 Forward inference is the task, given an input, of running a forward pass on the network to produce a probability distribution over possible outputs, in this case next words.
 
 \begin{enumerate}
-    \item We first represent each of the $N$ previous words as a one-hot vector of length one-hot vector $|V|$, i.e., with one dimension for each word in the vocabulary.
+    \item We first represent each of the $N$ previous words as a one-hot vector of length one-hot vector $\dabs{V}$, i.e., with one dimension for each word in the vocabulary.
     \item A \textbf{one-hot vector}\indexlabel{one-hot vector} is a vector that has one element equal to $1$ - in the dimension corresponding to that word’s index in the vocabulary - while all the other elements are set to $0$.
     \item Thus in a one-hot representation for the word “toothpaste”, supposing it is $V_5$, i.e., index $5$ in the vocabulary, $x_5 = 1$, and $x_i = 0 \quad\forall\quad i \neq 5$, as shown here:\\
     \begin{table}[h!]
         \centering
         \begin{tabular}{c c c c c c c c c}
             $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $0$ & ... & $0$\\
-            $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & ... & $|V|$
+            $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & ... & $\dabs{V}$
         \end{tabular}
     \end{table}
 \end{enumerate}
@@ -154,7 +154,7 @@ Forward inference is the task, given an input, of running a forward pass on the 
 
             \item We then multiply these one-hot vectors by the \textbf{embedding matrix} \indexlabel{embedding matrix} $\mathbf{E}$.
 
-            \item The \textbf{embedding weight matrix}\indexlabel{embedding weight matrix} $\mathbf{E}$ has a column for each word, each a column vector of $d$ dimensions, and hence has dimensionality $d \times |V|$. 
+            \item The \textbf{embedding weight matrix}\indexlabel{embedding weight matrix} $\mathbf{E}$ has a column for each word, each a column vector of $d$ dimensions, and hence has dimensionality $d \times \dabs{V}$. 
             
             \item Multiplying by a one-hot vector that has only one non-zero element $x_i = 1$ simply selects out the relevant column vector for word $i$, resulting in the embedding for word $i$.
 
