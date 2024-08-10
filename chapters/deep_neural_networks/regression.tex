@@ -62,7 +62,7 @@
 
 \end{enumerate}
 
-\subsection{Model/ predictor \cite{dnn-1}}
+\subsection*{Model/ predictor \cite{dnn-1}}
 \[
     \hfill
     \hat{y} = w_1x_1 + \cdots + w_dx_d + b
@@ -112,7 +112,7 @@ For multi-dimensional input $X$:
 
 
 
-\subsection{Loss Function \cite{dnn-1}}
+\subsection*{Loss Function \cite{dnn-1}}
 SEE: \fullref{Squared Error}
 
 \[
@@ -142,7 +142,7 @@ across all training examples:
 
 
 
-\subsection{Analytic Solution \cite{dnn-1}}
+\subsection*{Analytic Solution \cite{dnn-1}}
 
 \[
     \hfill
@@ -171,7 +171,7 @@ across all training examples:
 
 
 
-\subsection{Optimizer \cite{dnn-1}}
+\subsection*{Optimizer \cite{dnn-1}}
 SEE: 
 \begin{enumerate}
     \item \fullref{Minibatch Stochastic Gradient Descent (Minibatch SGD)}
@@ -211,12 +211,13 @@ $\begin{aligned}
 \end{enumerate}
 
 
-\subsection{Predictions/ inference \cite{dnn-1}}
+\subsection*{Predictions/ inference \cite{dnn-1}}
 \[
     \hat{y} = \hat{w}^\top x + \hat{b}
 \]
 
-\subsection{The Normal Distribution and Squared Loss \cite{dnn-1}}
+
+\subsection*{The Normal Distribution and Squared Loss \cite{dnn-1}}
 
 \[
     y = \mathbf{w}^\top \mathbf{x} + b + \epsilon 
@@ -242,9 +243,43 @@ without changing anything, we can minimize the negative log-likelihood, which we
     -\log P(\mathbf y \mid \mathbf X) = \sum_{i=1}^n \frac{1}{2} \log(2 \pi \sigma^2) + \frac{1}{2 \sigma^2} \left(y^{(i)} - \mathbf{w}^\top \mathbf{x}^{(i)} - b\right)^2.
 \]
 
+\subsection*{Generalization \cite{dnn-1}}
 
+\begin{customTableWrapper}{1.1}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l p{6cm}}
+        $R_\textrm{emp}$ & training error & statistic calculated on the training dataset \\
+        
+        $R$ & generalization error & expectation taken with respect to the underlying distribution \\
 
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
 
+\[
+    \hfill
+    R_\textrm{emp}[\mathbf{X}, \mathbf{y}, f] 
+    = \frac{1}{n} \sum_{i=1}^n l(\mathbf{x}^{(i)}, y^{(i)}, f(\mathbf{x}^{(i)}))
+    \hfill
+\]
+\[
+    \hfill
+    R[p, f] 
+    = E_{(\mathbf{x}, y) \sim P} [l(\mathbf{x}, y, f(\mathbf{x}))] 
+    = \iint l(\mathbf{x}, y, f(\mathbf{x})) p(\mathbf{x}, y) \;d\mathbf{x} dy
+    \hfill
+\]
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Goal is to truly discovered a general pattern and not simply memorized our data.
+
+    \item In the standard supervised learning setting, we assume that the training data and the test data are drawn independently from identical (i.i.d.) distributions.
+
+    \item we cannot sample an infinite stream of data points. Thus, in practice, we must estimate the generalization error by applying our model to an independent test set constituted of a random selection of examples $\mathbf{X}'$ and labels $\mathbf{y}'$  that were withheld from our training set. This consists of applying the same formula that was used for calculating the empirical training error but to a test set $\mathbf{X}', \mathbf{y}'$.
+
+    \item When we work with more complex models and/or fewer examples, we expect the training error to go down but the generalization gap to grow.
+\end{enumerate}
 
 
 
