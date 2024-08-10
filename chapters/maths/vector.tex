@@ -329,7 +329,7 @@ The Hessian is the collection of all \textbf{second-order partial derivative}.
 
 \section{Gradient/ Derivative Common Formulas}\label{matrix-vector: Gradient/ Derivative Common Formulas}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \subsection{Matrix-vector}
     
     \item \( d(Ax)/dx = A \)
@@ -445,10 +445,12 @@ where
     \end{minipage}
     \hfill
     \begin{minipage}{0.39\linewidth}
+        \begin{alternateColorTable}
         \begin{table}[H]
             \centering
             \renewcommand{\arraystretch}{2}
             \begin{tabular}{p{2.5cm} l}
+                \tableHeaderRow
                 \textbf{Forward propagation} & \textbf{Backward Propagation} \\ \hline
                 
                 $a = x^2$ & $\dfrac{\partial a}{\partial x} = 2x$ \\
@@ -470,13 +472,16 @@ where
                 \dfrac{\partial f}{\partial e} = 1$
             \end{tabular}
         \end{table}
+        \end{alternateColorTable}
     \end{minipage}
 \end{table}
 
+\begin{alternateColorTable}
 \begin{table}[H]
     \renewcommand{\arraystretch}{2}
     \centering
     \begin{tabular}{l l l}
+        \tableHeaderRow
         & \textbf{Calculation} & \textbf{Evaluation} \\
         \hline
     
@@ -523,7 +528,7 @@ where
         $=\dfrac{\partial f}{\partial a}\cdot 2x$
     \end{tabular}
 \end{table}
-
+\end{alternateColorTable}
 
 
 

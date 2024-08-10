@@ -155,6 +155,7 @@
     \]
 \end{enumerate}
 
+\begin{alternateColorTable}
 \begin{longtable}{|p{5cm}|p{9cm}|}
     \hline\endfirsthead
     \hline\endhead
@@ -207,7 +208,7 @@
     $\\[1ex]
     \hline
 \end{longtable}
-
+\end{alternateColorTable}
 
 \section{Stratified Sampling \cite{ism-1}}\label{Stratified Sampling}
 
@@ -246,6 +247,7 @@
 
 \end{enumerate}
 
+\begin{alternateColorTable}
 \begin{longtable}{|p{5cm}|p{9cm}|}
     \hline\endfirsthead
     \hline\endhead
@@ -261,38 +263,46 @@
     $\\[1ex]
     \hline
 
-    \textbf{Estimator of Mean ($\bar{x}_{h,k}$)} & $
-        \bar{x}_{h,k} = \dfrac{1}{n_h} 
-        \dsum_{i\in S_{h,k}} x_{hi}
-    $\\[1ex]
-    & $
-        \bar{x}_{k} = \dsum_{h=1}^{M}
-        w_h\bar{x}_{h,k}
-        = \dsum_{h=1}^{M}
-        \dParenBrac{\dfrac{N_h}{N}}
-        \left(
-            \dfrac{1}{n_h} 
-            \dsum_{i=1}^{n_h} x_{hi}
-        \right)
-    $\\[1ex]
+    \textbf{Estimator of Mean ($\bar{x}_{h,k}$)} & 
+    \tableenumerate{
+        \item $
+            \bar{x}_{h,k} = \dfrac{1}{n_h} 
+            \dsum_{i\in S_{h,k}} x_{hi}
+        $
+
+        \item $
+            \bar{x}_{k} = \dsum_{h=1}^{M}
+            w_h\bar{x}_{h,k}
+            = \dsum_{h=1}^{M}
+            \dParenBrac{\dfrac{N_h}{N}}
+            \left(
+                \dfrac{1}{n_h} 
+                \dsum_{i=1}^{n_h} x_{hi}
+            \right)
+        $ \vspace{0.2cm}
+    } \\
     \hline
 
-    \textbf{Variance ($\sigma_h^2$)} & $
-        \sigma_h^2=\dfrac{1}{N_h}
-        \dsum_{i=1}^{N_h}
-        (x_{hi} - \mu_{h})^2
-    $\\[1ex]
-    & \begin{minipage}{5cm}
-        $\sigma^2 = \dfrac{1}{N}
-        \dsum_{h=1}^{M}
-        \dsum_{i=1}^{N_h}
-        (x_{hi}-\mu)^2$ \\
-        $=\dsum_{h=1}^{M} w_h\sigma_h^2 +
-        \dsum_{h=1}^{M} w_h(\mu_h - \mu)^2$\\
-        (within) \& (between) variances\\
-        \vspace{0.1cm}
-    \end{minipage}
-    \\[2ex]
+    \textbf{Variance ($\sigma_h^2$)} & 
+    \tableenumerate{
+        \item $
+            \sigma_h^2=\dfrac{1}{N_h}
+            \dsum_{i=1}^{N_h}
+            (x_{hi} - \mu_{h})^2
+        $
+
+        \item $
+                \sigma^2 
+                = \dfrac{1}{N}
+                \dsum_{h=1}^{M}
+                \dsum_{i=1}^{N_h}
+                (x_{hi}-\mu)^2
+                =\dsum_{h=1}^{M} w_h\sigma_h^2 +
+                \dsum_{h=1}^{M} w_h(\mu_h - \mu)^2
+        $  \vspace{0.1cm}
+        
+        \item[] (within) \& (between) variances
+    } \\
     \hline
 
     \textbf{Estimator of Variance ($s_{h,k}^2$)} & $
@@ -306,21 +316,26 @@
     \textbf{Bias} & 0\\
     \hline
 
-    \textbf{MSE} & $
-        MSE = \dsum_{h=1}^{M}
-        \left[
-            \left(
-                \dfrac{N_h^2(N_h-n_h)}{n_h(N_h-1)N^2}
-            \right)
-            \sigma_h^2
-        \right]
-    $\\[1ex]
-    & $
-        MSE(\bar{x}_k) = \dsum_{h=1}^{M}
-        w_h^2 MSE(\bar{x}_{h,k})
-        = \dsum_{h=1}^{M}
-        \dfrac{N_h(1-f_h)w_h^2\sigma_h^2}{(N_h-1)n_h}
-    $\\[1ex]
+    \textbf{MSE} & 
+    \tableenumerate{
+        \item $
+            MSE = \dsum_{h=1}^{M}
+            \left[
+                \left(
+                    \dfrac{N_h^2(N_h-n_h)}{n_h(N_h-1)N^2}
+                \right)
+                \sigma_h^2
+            \right]
+        $ \vspace{0.2cm}
+        
+        \item $
+            MSE(\bar{x}_k) = \dsum_{h=1}^{M}
+            w_h^2 MSE(\bar{x}_{h,k})
+            = \dsum_{h=1}^{M}
+            \dfrac{N_h(1-f_h)w_h^2\sigma_h^2}{(N_h-1)n_h}
+        $ \vspace{0.2cm}
+    }
+    \\
     \hline
 
     \textbf{Estimator of MSE ($\hat{MSE}$)} & $
@@ -341,7 +356,7 @@
     $\\[1ex]
     \hline
 \end{longtable}
-
+\end{alternateColorTable}
 
 
 \section{Cluster Sampling \cite{ism-1}}\label{Cluster Sampling}
@@ -836,7 +851,8 @@
 
 \subsection{Asymptotic Confidence Intervals \cite{ism-1}} \label{sample statistic: Asymptotic Confidence Intervals}
 
-\renewcommand{\arraystretch}{1.3}
+\begin{alternateColorTable}
+\renewcommand{\arraystretch}{1.5}
 \begin{longtable}[H]{l l}
     $F_{T_n}$ & sample distribution function \\
 
@@ -856,6 +872,8 @@
 
     $b_2$ & sample excess kurtosis\\
 \end{longtable}
+\renewcommand{\arraystretch}{1}
+\end{alternateColorTable}
 
 
 \begin{align*}

@@ -49,33 +49,44 @@ SEE: \fullref{nn: Linear Layer/ Dense Layer}
 \section{Formula}
 \[
    \displaystyle n_{out} = \left[ \dfrac{n_{in} + 2p - k}{s} \right] + 1
+   \hfill
+   \text{ (sometimes $k=f$)}
 \]
 
-sometimes $k=f$
-
-\begin{table}[h]
+\begin{table}[H]
     \begin{minipage}[t]{0.5\linewidth}
+        \begin{alternateColorTable}
         \begin{table}[H]
-            \begin{tabular}{l l}
+            \begin{tabular}{|l l|}
+                \hline
                 $n_{in}$ & number of input features \\
                 $n_{out}$ & number of output features \\
                 $k$ & kernel size $k\times k$ / $\dParenBrac{k, k}$ \\
                 $p$ & padding size \\
                 $s$ & stride size $s\times s$ / $\dParenBrac{s, s}$ \\
+                \hline
             \end{tabular}
-        \end{table}        
+        \end{table}
+        \end{alternateColorTable}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.5\linewidth}
+        \begin{alternateColorTable}
+        \renewcommand{\arraystretch}{1.3}
         \begin{table}[H]
-            \begin{tabular}{l|l}
-                \multicolumn{2}{c}{Padding Types}\\ \hline
+            \begin{tabular}{|l|l|}
+                \hline
+                \tableHeaderRow
+                \multicolumn{2}{|c|}{Padding Types}\\ \hline
+                \tableHeaderRow
                 \textbf{Type} & $\mathbf{p}$ \textbf{value} \\ \hline
                 Valid & 0 \\
                 Same & \( \displaystyle p = \dfrac{k - 1}{2} \) \\
-                
+                \hline
             \end{tabular}
-        \end{table}        
+        \end{table}
+        \renewcommand{\arraystretch}{1}
+        \end{alternateColorTable}
     \end{minipage}
 \end{table}
 

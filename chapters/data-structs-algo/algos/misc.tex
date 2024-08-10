@@ -37,7 +37,6 @@
 \begin{adjustwidth}{-2cm}{-2cm}
 
 \[
-    \hfill
     x_{inter1} = \max(x_1, x_3) 
     \hfill 
     y_{inter1} = \max(y1, y_3)
@@ -48,32 +47,26 @@
     \hfill
 \]
 \[
-    \hfill
     width_{inter} = (x_{inter2} - x_{inter1})
     \hfill
     height_{inter} = (y_{inter2} - y_{inter1})
     \hfill
 \]
 \[
-    \hfill
     area_{inter} = width_{inter} * height_{inter}
     \hfill
 \]
 \[
-    \hfill
     area_{box1} = (x_2 - x_1) * (y_2 - y_1)
     \hfill
     area_{box2} = (x_4 - x_2) * (y_4 - y_2)
     \hfill
 \]
 \[
-    \hfill
     area_{union} = area_{box1} + area_{box2} - area_{inter}
     \hfill
 \]
 \[
-    \displaystyle
-    \hfill
     IOU = \dfrac{area_{inter}}{area_{union}} \in [0,1]
     \hfill
 \]

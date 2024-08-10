@@ -42,6 +42,8 @@
         
         \begin{enumerate}
             \item[] 
+            \begin{alternateColorTable}
+            \renewcommand{\arraystretch}{1.2}
             \begin{table}[H]
                 \begin{tabular}{l p{5.5cm}}
                     $n_f^{curr}$ & number of filters in current layer \\
@@ -53,6 +55,8 @@
                     $n_f^{prev}$ & number of channels in image/ num of filters in previous layer
                 \end{tabular}
             \end{table}
+            \renewcommand{\arraystretch}{1}
+            \end{alternateColorTable}
             
             \item These layers apply convolutional operations to input images, using filters (also known as kernels) to detect features such as edges, textures, and more complex patterns. 
             

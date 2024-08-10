@@ -12,22 +12,23 @@
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\linewidth}
+        \begin{alternateColorTable}
         \begin{table}[H]
             \begin{tabular}{l l l}
                  $\mathbf{x}$ & $[n_0, 1]$ & input vector \\
                  $\mathbf{h}$ & $[n_1, 1]$ & hidden layer \\
                  $\mathbf{h_i}$ &  & hidden unit \\
                  $\mathbf{W}$ & $[n_1, n_0]$ & weight matrix  ($x \rightarrow h$) \\
-                 $\mathbf{W_{ji}}$ &  & weight ($x_i \rightarrow h_j$) \\
+                 $\mathbf{W}_{ji}$ &  & weight ($x_i \rightarrow h_j$) \\
                  $\mathbf{b}$ & $[n_1, 1]$ & bias vector \\
                  $\sigma(\cdot)$ & & activation function \\
                  $\mathbf{y}$ & $[n_2, 1]$ & output vector \\
                  $\mathbf{U}$ & $[n_2, n_1]$ & weight matrix ($h \rightarrow z$) \\
-                 $\mathbf{U_{i,j}}$ & & weight ($h_j \rightarrow z_i$) \\
+                 $\mathbf{U}_{i,j}$ & & weight ($h_j \rightarrow z_i$) \\
                  $\mathbf{z}$ & $[n_2, 1]$ & intermediate output vector \\
             \end{tabular}
-            \caption{Notations}
         \end{table}
+        \end{alternateColorTable}
     \end{minipage}
 \end{table}
 
@@ -211,6 +212,7 @@ Steps:
 
 \subsection{Training}
 
+\begin{alternateColorTable}
 \begin{table}[H]
     \begin{tabular}{|l|l|}
         \hline
@@ -227,7 +229,7 @@ Steps:
          \hline
     \end{tabular}
 \end{table}
-
+\end{alternateColorTable}
 
 
 

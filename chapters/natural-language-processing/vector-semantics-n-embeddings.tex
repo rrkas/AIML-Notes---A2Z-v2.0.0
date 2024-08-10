@@ -7,25 +7,33 @@
     
 \end{enumerate}
 
+\begin{alternateColorTable}
 \begin{table}[h!]
     \centering
     \begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
         \hline
+        \tableHeaderRow
         \textbf{Feature} & \textbf{Static Word Embeddings} & \textbf{Contextual Word Embeddings} \\
         \hline
+
         \textbf{Examples} & Word2Vec, GloVe, FastText & ELMo, BERT, GPT, RoBERTa \\
         \hline
+        
         \textbf{Context Sensitivity} & Context-independent & Context-dependent \\
         \hline
+        
         \textbf{Model Complexity} & Simpler, faster to compute & More complex, computationally intensive \\
         \hline
+        
         \textbf{Vector Representation} & Single vector per word & Different vectors for the same word in different contexts \\
         \hline
+        
         \textbf{Applications} & Suitable for tasks where context is not crucial & Excels in tasks requiring context understanding (e.g., NER, QA, sentiment analysis) \\
         \hline
     \end{tabular}
     \caption{Comparison of Static and Contextual Word Embeddings \cite{chatgpt}}
 \end{table}
+\end{alternateColorTable}
 
 \section{Synonymy \cite{nlp-1}}\label{Synonymy}
 \begin{enumerate}
@@ -79,6 +87,7 @@
     \textbf{Example}: positive evaluation (great, love) and negative evaluation (terrible, hate). 
 \end{enumerate}
 
+\begin{alternateColorTable}
 \begin{table}[h!]
     \centering
     \begin{tabular}{|l|p{7cm}|}
@@ -91,6 +100,7 @@
         \hline
     \end{tabular}
 \end{table}
+\end{alternateColorTable}
 
 \section{Vector Semantics \cite{nlp-1}}\label{Vector Semantics}
 \begin{enumerate}

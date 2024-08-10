@@ -113,29 +113,6 @@ Since a finite MDP has a finite number of policies, the defined process is finit
     }
 \end{algorithm}
 
-\section{Policy Iteration vs. Value Iteration \cite{baeldung/cs/ml-value-iteration-vs-policy-iteration}}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|p{6cm}|p{6cm}|}
-        \hline
-        \textbf{Policy Iteration} & \textbf{Value Iteration} \\
-        \hline
-        Starts with a random policy & Starts with a random value function \\
-        \hline
-        Algorithm is more complex & Algorithm is simpler \\
-        \hline
-        Guaranteed to converge & Guaranteed to converge \\
-        \hline
-        Cheaper to compute & More expensive to compute \\
-        \hline
-        Requires few iterations to converge & Requires more iterations to converge \\
-        \hline
-        Faster & Slower \\
-        \hline
-    \end{tabular}
-    \caption{RL: Policy Iteration vs. Value Iteration}
-\end{table}
 
 
 \section{Generalized Policy Iteration (GPI) \cite{medium/towardsdatascience.com/introduction-to-reinforcement-learning-rl-part-4-dynamic-programming-6af57e575b3d}}\label{Generalized Policy Iteration (GPI)}
@@ -169,47 +146,6 @@ GPI works as follows:
             \caption{GPI Convergence}
         \end{figure}
     \end{minipage}
-\end{table}
-
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l|p{5cm}|p{5cm}|}
-        \hline
-        \textbf{Aspect} & \textbf{Policy Iteration} & \textbf{Generalized Policy Iteration (GPI)} \\
-        \hline
-        \textbf{Steps} & 
-        \tableitemize{
-            \item Policy Evaluation
-            \item Policy Improvement
-        } & 
-        \tableitemize{
-            \item Policy Evaluation (or Estimation)
-            \item Policy Improvement (or Control)
-        } \\
-        \hline
-        \textbf{Step Completion} & 
-        Each step is performed to completion before moving to the next. & 
-        Steps can be interleaved and performed partially. \\
-        \hline
-        \textbf{Flexibility} & 
-        Less flexible, as it requires full policy evaluation before improvement. & 
-        More flexible, allowing for incremental and simultaneous evaluation and improvement. \\
-        \hline
-        \textbf{Convergence} & 
-        Has well-defined convergence criteria. & 
-        Requires more sophisticated analysis for convergence, especially with incremental or stochastic steps. \\
-        \hline
-        \textbf{Practical Use} & 
-        Suitable for small state and action spaces where exact solutions are feasible. & 
-        Suitable for large-scale or complex problems where exact evaluation and improvement are infeasible. \\
-        \hline
-        \textbf{Example Algorithms} & 
-        Classical Policy Iteration & 
-        Q-learning, SARSA \\
-        \hline
-    \end{tabular}
-    \caption{Comparison of Policy Iteration and Generalized Policy Iteration (GPI)}
 \end{table}
 
 

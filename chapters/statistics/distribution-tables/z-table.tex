@@ -3,6 +3,7 @@
 \changefontsizes{7pt}
 
 \renewcommand{\arraystretch}{1.3}
+\begin{alternateColorTable}
 \begin{table}[H]
     \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
@@ -14,10 +15,9 @@
     \begin{minipage}{0.49\linewidth}
         \begin{table}[H]
             \centering
-            \rowcolors{2}{gray!15}{white}
             \begin{tabular}{ l l l }
                 \hline
-                \rowcolor{gray!30}
+                \tableHeaderRow
                 $z$     & $\Phi(z)$ & \\ \hline
                 1.645   & 0.9500    & Lower limit of right 5\% tail \\
                 1.960   & 0.9750    & Lower limit of right 2.5\% tail \\
@@ -30,13 +30,15 @@
         \end{table}
     \end{minipage}
 \end{table}
+\end{alternateColorTable}
 \renewcommand{\arraystretch}{1}
 
-\rowcolors{2}{gray!15}{white}
+
 \renewcommand{\arraystretch}{1.3}
+\begin{alternateColorTable}
 \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|}
     \hline
-    \rowcolor{gray!30}
+    \tableHeaderRow
     $\mathbf{z}$    & \textbf{0.00}    & \textbf{0.01}    & \textbf{0.02}    & \textbf{0.03}    & \textbf{0.04}    & \textbf{0.05}    & \textbf{0.06}    & \textbf{0.07}    & \textbf{0.08}    & \textbf{0.09}\\
     \hline\endfirsthead
 
@@ -122,6 +124,7 @@
     
     \textbf{3.6}  & 0.9998  & 0.9998  & 0.9999 &         &           &       &           &       &           &       \\ \hline
 \end{longtable}
+\end{alternateColorTable}
 \renewcommand{\arraystretch}{1}
 
 

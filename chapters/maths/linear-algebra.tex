@@ -47,7 +47,7 @@ All properties of Group (SEE: \fullref{lin-alg-Groups}) with additional conditio
 \end{table}
 
 Examples:
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item $(\mathbb{Z}, +)$ is an Abelian group.
     \item $(\mathbb{R}\textbackslash {0}, ·)$ is Abelian.
     \item $(\mathbb{R}^n, +)$, $(Z^n, +)$, $n \in N$ are Abelian if $+$ is defined componentwise, i.e., 
@@ -72,6 +72,7 @@ Examples:
 The set of regular (invertible) matrices $A \in \mathbb{R}^{n \times n}$ is a group with respect to matrix multiplication as defined in and is called \textbf{general linear group} $GL(n, \mathbb{R})$.\\
 However, general linear group since matrix multiplication is not commutative, the group is \textbf{NOT} Abelian.
 
+\begin{alternateColorTable}
 \begin{table}[h]
     \begin{tabular}{l p{7cm}}
         Closure & follow directly from the definition of matrix multiplication \\
@@ -84,6 +85,7 @@ However, general linear group since matrix multiplication is not commutative, th
         
     \end{tabular}
 \end{table}
+\end{alternateColorTable}
 
 
 
@@ -113,7 +115,7 @@ A real-valued vector space $V = (\mathbb{V}, +, \cdot)$ is a set $\mathbb{V}$ wi
 \end{table}
 
 where,
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item $(\mathbb{V}, +)$ is an Abelian group (SEE: \fullref{Abelian Group})
     \item Distributivity:
     \begin{enumerate}
@@ -130,7 +132,7 @@ where,
 \vspace{0.3cm}
 
 \textbf{Notes:}
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item The elements $\mathbf{x}\in\mathbb{V}$ are called \textbf{vectors}\indexlabel{vectors}.
         \item The vector spaces $\mathbb{R}^n$, 
         \begin{enumerate}
@@ -197,7 +199,7 @@ where,
 \section{Vector Subspaces/ linear subspace ( $U = (\mathbb{U}, +, \cdot)$ ) \cite{mfml-1}}\label{Vector Subspaces/ linear subspace}
 Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \mathbb{V}$, $\mathbb{U} \neq \varnothing$. Then $U = (\mathbb{U}, +, \cdot)$ is called vector subspace of $V$ (or linear subspace) if $U$ is a vector space with the vector space operations $+$ linear subspace and $\cdot$ restricted to $\mathbb{U} \times \mathbb{U}$ and $\mathbb{R} \times \mathbb{U}$. We write $U \subseteq V$ to denote a subspace $U$ of $V$.
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item Vector subspace inherits Abelian group properties, the distributivity, the associativity and the neutral element from the vector space.
 
     \item To determine whether $U = (\mathbb{U}, +, \cdot)$ is a subspace of $V$ we still do need to show:
@@ -223,7 +225,7 @@ Let $V = (\mathbb{V}, +, \cdot)$ be a vector space and $\mathbb{U} \subseteq \ma
 
 \section{Dimension of Vector Space ( $\dim(V)$ ) \cite{mfml-1}}\label{lin-alg: Dimension-vector-space}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item The dimension of $V$ is the number of basis vectors of $V$, and we write $\dim(V)$.
 
     \item If $U \subseteq V$ is a subspace of $V$, then $\dim(U) \leq \dim(V)$ and $\dim(U) = \dim(V)$ if and only if $U = V$.
@@ -268,7 +270,7 @@ Let us consider a vector space $V$ with $k \in \mathbb{N}$ and $\mathbf{x_1, \cd
 
 \vspace{0.3cm}
 \noindent\textbf{Properties}:
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item $k$ vectors are either linearly dependent or linearly independent. There is no third option.
 
     \item If at least one of the vectors $\mathbf{x_1, \cdots, x_k}$ is $\mathbf{0}$ then they are linearly dependent. The same holds if two vectors are \textbf{identical}.
@@ -959,15 +961,19 @@ is called affine subspace or linear manifold of $V$.
     }
 \]
 
-
+\begin{alternateColorTable}
 \begin{table}[h]
     \begin{tabular}{l l l}
-        no of \textbf{equations} & $m$ & $(i=1,\cdots,m)$\\
+        no of \textbf{equations} & $m$ & $(i=1,\cdots,m)$ \\
+        
         no of \textbf{variables} & $n$ & $(j=1,\cdots,n)$ \\
-        \textbf{unknowns} & $x = (x_1,\cdots,x_n) \in R^n$\\
-        \textbf{knowns} & $a_{ij}, b_{i} \in R$
+        
+        \textbf{unknowns} & $x$ & $= (x_1,\cdots,x_n) \in R^n$ \\
+
+        \textbf{knowns} & $a_{ij}, b_{i} \in R$ & \\
     \end{tabular}
 \end{table}
+\end{alternateColorTable}
 
 
 \subsection{Homogeneous systems of linear equations ( $\mathbf{Ax = 0}$ ) \cite{mfml-1, chatgpt}}\label{Homogeneous systems of linear equations}
@@ -1074,6 +1080,7 @@ transformations that keep the solution set the same, but that transform the equa
 
 \subsection{Solutions of system of linear equations \cite{mfml-1}}\label{Solutions of system of linear equations}
 
+\begin{alternateColorTable}
 \begin{table}[h]
     \begin{tabular}{l l}
         Original System	& $Ax = b$ \\
@@ -1081,6 +1088,7 @@ transformations that keep the solution set the same, but that transform the equa
         Homogeneous System & $Ax = 0$ \\
     \end{tabular}
 \end{table}
+\end{alternateColorTable}
 
 \begin{align*}
    & Ax = b \\
