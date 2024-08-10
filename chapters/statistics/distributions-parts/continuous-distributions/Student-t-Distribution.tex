@@ -18,16 +18,15 @@
     \end{minipage}
 \end{table}
 
-\begin{alternateColorTable}
-\renewcommand{\arraystretch}{2}
+\begin{customTableWrapper}{2}
 \begin{longtable}{|m{6cm}|p{9cm}|}
     \hline
-    \tableHeaderRow
+    \customTableHeaderColor
     \multicolumn{2}{|c|}{\textbf{Student's t-Distribution - Info} \cite{wiki/Student_t-distribution}} \\
     \hline\endfirsthead
 
     \hline
-    \tableHeaderRow
+    \customTableHeaderColor
     \multicolumn{2}{|c|}{\textbf{Student's t-Distribution - Info - contd.} \cite{wiki/Student_t-distribution}} \\
     \hline\endhead
     
@@ -117,8 +116,7 @@
 
 
 \end{longtable}
-\renewcommand{\arraystretch}{1}
-\end{alternateColorTable}
+\end{customTableWrapper}
 
 \begin{enumerate}
     \item if $Z \sim \mathcal{N}(0,1)$ and $V_n^2 \sim \chi_n^2$ and $Z$ and $V_n^2$ are independent, $Z/(V_n/\sqrt{n})$ has a student t distribution

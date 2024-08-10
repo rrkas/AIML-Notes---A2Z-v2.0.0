@@ -2,6 +2,7 @@
 
 \section*{Notation}
 
+\begin{customTableWrapper}{1.5}
 \begin{table}[h]
     \begin{tabular}{l l}
         $\mathbf{x}$ / $\mathbf{w}$ & input/ parameters \\
@@ -11,6 +12,77 @@
         $\nabla L(\mathbf{x})$ / $\nabla Q(\mathbf{w})$ & Gradient of $L(\mathbf{x})$ wrt $\mathbf{x}$ \\
     \end{tabular}
 \end{table}
+\end{customTableWrapper}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Gradient Descent/ Batch Gradient Descent (Batch GD) \cite{dnn-1}}\label{Batch Gradient Descent (Batch GD)}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The most naive application of gradient descent consists of taking the derivative of the loss function, which is an average of the losses computed on every single example in the dataset.
+
+    \item In practice, this can be extremely slow: we must pass over the entire dataset before making a single update, even if the update steps might be very powerful.
+
+    \item If there is a lot of redundancy in the training data, the benefit of a full update is even lower.
+
+\end{enumerate}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Minibatch Stochastic Gradient Descent (Minibatch SGD) \cite{dnn-1}}\label{Minibatch Stochastic Gradient Descent (Minibatch SGD)}
+
+\begin{customTableWrapper}{1.1}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l}
+        $t$ & iteration \\
+        $B_t$ & minibatch \\
+        $\dabs{B}$ & number of training examples (fixed) \\
+        $\eta$ & learning rate (predetermined) \\
+
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Rather than taking a full batch or only a single sample at a time, we take a minibatch of observations.
+
+    \item The specific choice of the size of the said minibatch depends on many factors, such as the amount of memory, the number of accelerators, the choice of layers, and the total dataset size. 
+    
+    \item Despite all of that, a number between $32$ and $256$, preferably a \textbf{multiple of a large power of $2$}, is a good start.
+
+\end{enumerate}
+
+
+\noindent
+\textbf{Steps:}
+\begin{enumerate}
+    \item initialize the values of the model parameters, typically at random
+
+    \item iteratively sample random minibatches from the data, updating the parameters in the direction of the negative gradient.
+
+\end{enumerate}
+
+\[
+    \hfill
+    (w,b) 
+    \leftarrow
+    (w,b) - \dfrac{\eta}{\dabs{B}} \dsum_{i \in B_t} 
+        \partial_{(w,b)} l^{(i)}(w,b)
+    \hfill
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \section{Gradient Descent/ Stochastic Gradient Descent (SGD) \cite{wiki-Gradient_descent,wiki-Stochastic_gradient_descent}}\label{Gradient Descent (GD)}\label{Stochastic Gradient Descent (SGD)}
@@ -29,6 +101,9 @@
             \item Gradient descent is a method for \textbf{unconstrained} mathematical optimization. 
             
             \item It is a \textbf{first-order iterative algorithm} for finding a local minimum of a differentiable multivariate function.
+
+            \item Consider \textbf{only a single example at a time} and to take update steps based on one observation at a time.
+
         \end{enumerate}        
     \end{minipage}
 \end{table}
@@ -57,6 +132,25 @@ Stochastic gradient descent (often abbreviated SGD) is an \textbf{iterative} met
     }
 \end{algorithm}
 
+\textbf{Disadvantages}:
+\begin{enumerate}[itemsep=0.2cm]
+    \item One problem arises from the fact that processors are a lot faster multiplying and adding numbers than they are at moving data from main memory to processor cache. 
+    
+    \item It is up to an order of magnitude more efficient to perform a matrix-vector multiplication than a corresponding number of vector-vector operations. 
+    
+    \item This means that it can take a lot longer to process one sample at a time compared to a full batch. 
+    
+    \item A second problem is that some of the layers, such as batch normalization, only work well when we have access to more than one observation at a time.
+
+\end{enumerate}
+
+\noindent
+SEE: \fullref{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Implicit updates SGD (ISGD)}\label{Implicit updates SGD (ISGD)}
 Stochastic gradient is evaluated at the next iterate rather than the current one
@@ -66,7 +160,9 @@ Stochastic gradient is evaluated at the next iterate rather than the current one
     {\displaystyle w^{\text{new}}:=\arg \min _{w}\dCurlyBrac{Q_{i}(w)+{\frac {1}{2\eta }}\dnorm{w-w^{\text{old}}}^{2}}}
 \]
 
-SEE: \fullref{Batch Gradient Descent VS Mini-Batch Gradient Descent VS Gradient Descent (SGD)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{SGD with Momentum \cite{wiki-Stochastic_gradient_descent}}\label{SGD with Momentum}
 Stochastic gradient descent with momentum remembers the update $\Delta w$ at each iteration, and determines the next update as a linear combination of the gradient and the previous update:
@@ -75,6 +171,10 @@ Stochastic gradient descent with momentum remembers the update $\Delta w$ at eac
     \hfill
     {\displaystyle w:=w+\Delta w}
 \]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Adaptive gradient (AdaGrad) (2011) \cite{wiki-Stochastic_gradient_descent}}\label{Adaptive gradient (AdaGrad)}
 AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient descent algorithm with per-parameter learning rate.
@@ -99,6 +199,11 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 
     \item Since the denominator in this factor, ${\displaystyle {\sqrt {G_{i}}}={\sqrt {\sum _{\tau =1}^{t}g_{\tau }^{2}}}}$ is the $l_2$ norm of previous derivatives, extreme parameter updates get dampened, while parameters that get few or small updates receive higher learning rates.    
 \end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \section{Resilient backpropagation (Rprop) (1992) \cite{wiki-Rprop,pytorch-Rprop,florian.github.io/rprop}}\label{Resilient backpropagation (Rprop)}
@@ -167,6 +272,11 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 \end{algorithm}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \section{Root Mean Square Propagation (RMSProp) (2012) \cite{wiki-Stochastic_gradient_descent}}\label{Root Mean Square Propagation (RMSProp)}
 
 \[
@@ -186,6 +296,10 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
 
     \item RMSProp can be seen as a \textbf{generalization} of Rprop and is capable to work with mini-batches as well opposed to only full-batches.
 \end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -212,6 +326,10 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \section{Nesterov’s Momentum/ Nesterov Accelerated Gradient (NAG) (1983) \cite{paperswithcode/method/nesterov-accelerated-gradient}}\label{Nesterov’s Momentum/ Nesterov Accelerated Gradient (NAG)}
 
 \[
@@ -226,6 +344,9 @@ Where ${\displaystyle w_{ij}}$ is the weight of input ${\displaystyle i}$ of neu
     
 \end{enumerate}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

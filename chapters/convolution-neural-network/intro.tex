@@ -55,7 +55,7 @@ SEE: \fullref{nn: Linear Layer/ Dense Layer}
 
 \begin{table}[H]
     \begin{minipage}[t]{0.5\linewidth}
-        \begin{alternateColorTable}
+        \begin{customTableWrapper}{1}
         \begin{table}[H]
             \begin{tabular}{|l l|}
                 \hline
@@ -67,26 +67,24 @@ SEE: \fullref{nn: Linear Layer/ Dense Layer}
                 \hline
             \end{tabular}
         \end{table}
-        \end{alternateColorTable}
+        \end{customTableWrapper}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.5\linewidth}
-        \begin{alternateColorTable}
-        \renewcommand{\arraystretch}{1.3}
+        \begin{customTableWrapper}{1.3}
         \begin{table}[H]
             \begin{tabular}{|l|l|}
                 \hline
-                \tableHeaderRow
+                \customTableHeaderColor
                 \multicolumn{2}{|c|}{Padding Types}\\ \hline
-                \tableHeaderRow
+                \customTableHeaderColor
                 \textbf{Type} & $\mathbf{p}$ \textbf{value} \\ \hline
                 Valid & 0 \\
                 Same & \( \displaystyle p = \dfrac{k - 1}{2} \) \\
                 \hline
             \end{tabular}
         \end{table}
-        \renewcommand{\arraystretch}{1}
-        \end{alternateColorTable}
+        \end{customTableWrapper}
     \end{minipage}
 \end{table}
 

@@ -494,13 +494,15 @@ innerbottommargin=5pt]{cBox}
 }
 
 
-\newenvironment{alternateColorTable}{
+\newenvironment{customTableWrapper}[1]{
     \begingroup
     \rowcolors{1}{gray!10}{white}
+    \renewcommand{\arraystretch}{#1}
 }{
+    \renewcommand{\arraystretch}{1}
     \endgroup
 }
-\newcommand{\tableHeaderRow}{\rowcolor{gray!25}}
+\newcommand{\customTableHeaderColor}{\rowcolor{gray!25}}
 
 
 

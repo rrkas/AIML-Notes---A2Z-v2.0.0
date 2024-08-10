@@ -1,36 +1,66 @@
 \chapter{Regression}
 
-\section*{Notations}
+\section*{Notations \cite{dnn-1}}
 
-\begin{alternateColorTable}
-\renewcommand{\arraystretch}{1.3}
 \begin{table}[H]
-    \begin{tabular}{l l}
-        $\mathbf{x}$ & input vector (known) \\
-
-        $X$ & input matrix/ design matrix (known) \\
+    \begin{minipage}[t]{0.49\linewidth}        
+        \begin{customTableWrapper}{1.3}
+        \begin{table}[H]
+            \begin{tabular}{|l l|}
+                \hline
         
-        $y$ & actual output (known) \\
+                $n$ & number of examples \\
+        
+                \hline
+        
+                $\mathbf{x}$ & input vector (known) \\
+                $X$ & input matrix/ design matrix (known) \\
 
-        $w$ & weights (unknown) \\
+                \hline
+        
+                $y$ & actual output (known) \\
+                $\hat{y}$ & predicted output/ predictor (generated) \\
+        
+                \hline
+        
+            \end{tabular}
+        \end{table}
+        \end{customTableWrapper}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \begin{customTableWrapper}{1.3}
+        \begin{table}[H]
+            \begin{tabular}{|l l|}
+                \hline
+        
+                $w$ & weights (unknown) \\
+                $\hat{w}$ & current weights \\
+                $w^\ast$ & optimal weights \\
+        
+                \hline
+        
+                $b$ & bias (unknown) \\
+                $\hat{b}$ & current bias \\
+                $b^\ast$ & optimal bias \\
+        
+                \hline
 
-        $b$ & bias (unknown) \\
-
-        $\hat{y}$ & predicted output/ predictor (generated) \\
-
-        $\hat{w}$ & current weights \\
-
-        $\hat{b}$ & current bias \\
-
-        $w^\ast$ & optimal weights \\
-
-        $b^\ast$ & optimal bias \\
-    \end{tabular}
+            \end{tabular}
+        \end{table}
+        \end{customTableWrapper}
+    \end{minipage}
 \end{table}
-\renewcommand{\arraystretch}{1}
-\end{alternateColorTable}
+
 
 \section{Linear Regression \cite{dnn-1}} \label{Linear Regression}
+
+\begin{enumerate}[itemsep=0.15cm]
+    \item we \textbf{assume} that the relationship between features $x$ and target $y$ is approximately linear, i.e., that the conditional mean $\mathbb{E}[Y | X = x]$ can be expressed as a \textbf{weighted sum of the features} $x$.
+
+    \item target value may still deviate from its expected value on account of observation noise. we can impose the assumption that any such noise is \textbf{well-behaved}, following a \textbf{Gaussian distribution}.
+
+\end{enumerate}
 
 \subsection{Model/ predictor \cite{dnn-1}}
 \[
@@ -60,11 +90,34 @@ For multi-dimensional input $X$:
         b \in \mathbb{R}^n
     )
 \]
+\[
+    \hfill
+    y^{(i)} = w^\top x^{(i)} + b
+    \hfill
+    (i \in \dCurlyBrac{1,\cdots,n})
+\]
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The \textbf{weights} determine the influence of each feature on our prediction. 
+    
+    \item The \textbf{bias} determines the value of the estimate when all features are zero.\\
+    We still need the bias because it allows us to express all linear functions of our features (versus restricting us to lines that pass through the origin).
+
+    \item It is an \textbf{affine transformation} of input features, which is characterized by a linear transformation of features via weighted sum, combined with a \textbf{translation} via the added bias. 
+
+    \item Our \textbf{goal} is to choose the \textbf{weights} $w$ and the \textbf{bias} $b$ that, on average, make our model’s predictions \textbf{fit} the true prices observed in the data as closely as possible.
+
+\end{enumerate}
+
+
+
 
 \subsection{Loss Function \cite{dnn-1}}
 SEE: \fullref{Squared Error}
 
 \[
+    l^{(i)}(w,b) = \frac{1}{2}\left( \hat{y}^{(i)} - y^{(i)}\right)^2
+    \hfill
     {\displaystyle L(\mathbf{w}, b) =\frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b) =\frac{1}{n} \sum_{i=1}^n \frac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2}
 \]
 
@@ -77,17 +130,84 @@ across all training examples:
     \hfill
 \]
 
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Loss functions quantify the \textbf{distance} between the real and predicted values of the target.
+
+    \item The loss will usually be a non-negative number where \textbf{smaller} values are \textbf{better} and perfect predictions incur a loss of $0$.
+
+\end{enumerate}
+
+
+
+
+
 \subsection{Analytic Solution \cite{dnn-1}}
 
-
 \[
+    \hfill
+    \partial\dnorm{y - Xw}^2 = 2X^\top (Xw - y) = 0
+    \hspace{0.2cm}
+    \Rightarrow
+    \hspace{0.2cm}
+    X^\top y = X^\top Xw
+    \hfill
+\]
+\[
+    \hfill
     w^\ast = (X^\top X)^{-1}X^\top y
+    \hfill
 \]
 
 \begin{enumerate}
     \item we can subsume the bias $b$ into the parameter $w$ by appending a column to the design matrix consisting of \textbf{all ones}.
 
     \item $w^\ast$ will only be unique when the matrix $X^\top X$ is invertible, i.e., when the columns of the design matrix are linearly independent
+
+    \item Although analytic solutions allow for nice mathematical analysis, the requirement of an analytic solution is so restrictive that it would exclude almost all exciting aspects of deep learning.
+
+\end{enumerate}
+
+
+
+
+\subsection{Optimizer \cite{dnn-1}}
+SEE: 
+\begin{enumerate}
+    \item \fullref{Minibatch Stochastic Gradient Descent (Minibatch SGD)}
+
+    \item quadratic losses: \fullref{Squared Error}
+\end{enumerate}
+
+\vspace{0.5cm}
+\noindent
+For \textbf{quadratic losses} and affine transformations, this has a closed-form expansion:\\[1ex]
+$\begin{aligned}
+    &w \leftarrow 
+    w - \dfrac{\eta}{\dabs{B}} \dsum_{i \in B_t} 
+        \partial_{w} l^{(i)}(w,b)
+    = w - \dfrac{\eta}{\dabs{B}} \dsum_{i \in B_t} 
+        x^{(i)} \dParenBrac{w^\top x^{(i)} + b - y^{(i)}} \\
+    &b \leftarrow 
+    b - \dfrac{\eta}{\dabs{B}} \dsum_{i \in B_t} 
+        \partial_{b} l^{(i)}(w,b)
+    = b - \dfrac{\eta}{\dabs{B}} \dsum_{i \in B_t} 
+        \dParenBrac{w^\top x^{(i)} + b - y^{(i)}} \\
+\end{aligned}$
+
+\vspace{0.5cm}
+\begin{enumerate}[itemsep=0.2cm]
+    \item Since we pick a minibatch $B$ we need to normalize by its size $\dabs{B}$.
+
+    \item Even if function is truly linear and noiseless, these parameters will \textbf{NOT} be the exact minimizers of the loss, or even deterministic. 
+    
+    \item Although the algorithm converges slowly towards the minimizers it typically \textbf{CANNOT} achieve it exactly in a finite number of steps. 
+    
+    \item The minibatches $B$ used to update the parameters are chosen at \textbf{random}. This \textbf{breaks determinism}.
+
+    \item Linear regression happens to be a learning problem with a \textbf{global minimum} (whenever $X$ is \textbf{full rank}, or equivalently, whenever $X^\top X$ is \textbf{invertible}).
+
+    \item we typically do not care about finding an exact set of parameters but merely any set of parameters that leads to accurate predictions (and thus low loss).
 \end{enumerate}
 
 
