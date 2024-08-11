@@ -2,17 +2,70 @@
 
 \section{Weight Decay \cite{dnn-1}}\label{regularization techniques: Weight Decay}
 
+\begin{enumerate}[itemsep=0.2cm]
+    \item Rather than directly manipulating the \textbf{number of parameters}, weight decay, operates by restricting the \textbf{values} that the parameters can take.
+
+    \item The most common method for ensuring a small weight vector is to add its norm as a \textbf{penalty term} to the problem of minimizing the loss.
+
+    \item We replace our original objective, \textbf{minimizing the prediction loss on the training labels}, with new objective, \textbf{minimizing the sum of the prediction loss and the penalty term}.
+
+    \item Example:
+    \begin{customTableWrapper}{2}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{l l}
+                features & $\mathbf{x}^{(i)}$ \\
+
+                label & $y^{(i)}$ \\
+
+                data example & $i$ \\
+
+                weight and bias parameters & $(\mathbf{w}, b)$ \\
+            
+                Linear Function & $f(\mathbf{x}) = \mathbf{w}^\top \mathbf{x}$ \\
+    
+                Loss Fucntion & $L(\mathbf{w}, b) = \dfrac{1}{n}\dsum_{i=1}^n \dfrac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2$ \\
+
+                regularization constant & $\lambda$ ($\lambda \geq 0$)\\
+
+            \end{tabular}
+        \end{table}
+    \end{customTableWrapper}
+
+    \item Now, if our weight vector grows too large, our learning algorithm might focus on minimizing the weight norm $\dnorm{\mathbf{w}}^2$ rather than minimizing the training error. That is exactly what we want.
+
+    \item Penalized loss function: $L(\mathbf{w}, b) + \dfrac{\lambda}{2} \dnorm{\mathbf{w}}^2$
+    \begin{enumerate}
+        \item For $\lambda = 0$, we recover our original loss function.
+
+        \item For $\lambda > 0$, we restrict the size of $\dnorm{\mathbf{w}}$.
+
+        \item $1/2$ is for mathematical convenience during derivative
+
+    \end{enumerate}
+
+\end{enumerate}
 
 
 
+\subsection{Lasso Regression/ $\ell_1$-regularization \cite{dnn-1,geeksforgeeks.org/regularization-in-machine-learning}} \label{l1 regularization/ Lasso Regression}
+
+\begin{enumerate}
+    \item A regression model which uses the L1 Regularization technique is called \textbf{LASSO (Least Absolute Shrinkage and Selection Operator)} regression.
+
+\end{enumerate}
+
+
+\[
+    Cost = L(\mathbf{w}, b) + \dfrac{\lambda}{2} \dsum_{i=1}^m
+\]
+
+
+\subsection{Ridge Regression/ $\ell_2$-regularization \cite{dnn-1,geeksforgeeks.org/regularization-in-machine-learning}} \label{l1 regularization/ Ridge Regression}
 
 
 
-
-
-
-
-
+\subsection{Elastic Net Regression/ $\ell_2$ \& $\ell_2$-regularization \cite{dnn-1,geeksforgeeks.org/regularization-in-machine-learning}} \label{Elastic Net Regression}
 
 
 

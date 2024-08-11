@@ -306,6 +306,19 @@ without changing anything, we can minimize the negative log-likelihood, which we
     \]
     for estimating the label $y$. This is just a linear regression problem where our features are given by the powers of $x$, the model’s weights are given by $w_i$, and the bias is given by $w_0$ since $x^0 = 1$ for all $x$. 
 
+    \item  The natural extensions of polynomials to multivariate data are called \textbf{monomials}\indexlabel{monomials}, which are simply products of powers of variables. 
+    \begin{enumerate}
+        \item The degree of a monomial is the sum of the powers. 
+
+        \item For example, $x_1^2 x_2$, and $x_3 x_5^2$ are both monomials of degree $3$.
+
+        \item Note that the number of terms with degree $d$ blows up rapidly as $d$ grows larger. 
+        
+        \item Given $k$ variables, the number of monomials of degree $d$ is ${k - 1 + d} \choose {k - 1}$. 
+        
+        \item Even small changes in degree, say from $2$ to $3$, dramatically increase the complexity of our model.
+    \end{enumerate}
+
 \end{enumerate}
 
 
