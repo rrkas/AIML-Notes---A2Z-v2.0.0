@@ -278,7 +278,7 @@ without changing anything, we can minimize the negative log-likelihood, which we
 
     \item we cannot sample an infinite stream of data points. Thus, in practice, we must estimate the generalization error by applying our model to an independent test set constituted of a random selection of examples $\mathbf{X}'$ and labels $\mathbf{y}'$  that were withheld from our training set. This consists of applying the same formula that was used for calculating the empirical training error but to a test set $\mathbf{X}', \mathbf{y}'$.
 
-    \item When we work with more complex models and/or fewer examples, we expect the training error to go down but the generalization gap to grow.
+    
 \end{enumerate}
 
 
@@ -295,9 +295,18 @@ without changing anything, we can minimize the negative log-likelihood, which we
 
 
 
+\section{Polynomial Curve Fitting \cite{dnn-1}}\label{Polynomial Curve Fitting}
 
+\begin{enumerate}[itemsep=0.2cm]
+    \item given training data consisting of a single feature $x$ and a corresponding real-valued label $y$, we try to find the polynomial of degree $d$
+    \[
+        \hfill
+        \hat{y}= \dsum_{i=0}^d x^i w_i
+        \hfill
+    \]
+    for estimating the label $y$. This is just a linear regression problem where our features are given by the powers of $x$, the model’s weights are given by $w_i$, and the bias is given by $w_0$ since $x^0 = 1$ for all $x$. 
 
-
+\end{enumerate}
 
 
 

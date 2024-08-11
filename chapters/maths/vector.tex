@@ -35,7 +35,7 @@ Alternate Definition: SEE \fullref{vectors}
     (a\otimes b)_{ij} = a_i b_j
 \]
 
-\section{Inner/ Scalar /Dot Product ( $\langle a, b \rangle =a\cdot b = \mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml^{-1}wiki/Dot_product}} \label{vector: Inner/ Scalar /Dot Product}
+\section{Inner/ Scalar /Dot Product ( $\langle a, b \rangle =a\cdot b = \mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml-1,wiki/Dot_product}} \label{vector: Inner/ Scalar /Dot Product}
 
 The dot product or scalar product is an algebraic operation that takes two vectors of equal length, and returns a \textbf{single number}.
 the dot product between two vectors $a, b$ is denoted by $a^\top b$ or $\langle a, b\rangle \in R$:
@@ -188,7 +188,7 @@ For a function $f : R^n \to R^n$, $x \to f(x)$, $x \in R^n$ of $n$ variables $x_
 
 If $f(x_1, x_2)$ is a function of $x_1$ and $x_2$, where $x_1(s, t)$ and $x_2(s, t)$ are themselves functions of two variables $s$ and $t$, the chain rule yields the gradient:
 \[
-    \renewcommand{\arraystretch}{2}
+    \begin{customArrayStretch}{2}
     \dfrac{df}{d(s,t)} =
     \dfrac{\partial f}{\partial x}
     \dfrac{\partial x}{\partial (s,t)} =
@@ -202,6 +202,7 @@ If $f(x_1, x_2)$ is a function of $x_1$ and $x_2$, where $x_1(s, t)$ and $x_2(s,
         \textcolor{Maroon}{\dfrac{\partial x_2}{\partial s}} &
         \textcolor{Maroon}{\dfrac{\partial x_2}{\partial t}}\\
     \end{bmatrix}
+    \end{customArrayStretch}
 \]
 
 \section{Vector-Valued Functions}\label{Vector-Valued Functions}
@@ -278,22 +279,27 @@ The collection of all \textbf{first-order partial derivatives} of a vector-value
 
 \section{Higher-Order Derivatives}\label{Higher-Order Derivatives}
 
+\begin{customTableWrapper}{2.2}
 \begin{table}[H]
     \centering
-    \renewcommand{\arraystretch}{2.5}
     \begin{tabular}{|p{3cm}|p{12cm}|}
         \hline
         $\dfrac{\partial^2 f}{\partial x^2}$ & second partial derivative of $f$ with respect to $x$ \\
         \hline
+
         $\dfrac{\partial^n f}{\partial x^n}$ & $n$th partial derivative of $f$ with respect to $x$ \\
         \hline
+
         $\dfrac{\partial^2 f}{\partial y \partial x} = \dfrac{\partial}{\partial y}\dParenBrac{ \dfrac{\partial f}{\partial x} }$ & partial derivative obtained by first partial differentiating with respect to $x$ and then with respect to $y$ \\
         \hline
+
         $\dfrac{\partial^2 f}{\partial x \partial y} = \dfrac{\partial}{\partial x}\dParenBrac{ \dfrac{\partial f}{\partial y} }$ & partial derivative obtained by first partial differentiating by $y$ and then $x$ \\
         \hline
     \end{tabular}
     \caption{Higher-Order Derivatives}
 \end{table}
+\end{customTableWrapper}
+
 
 \begin{enumerate}
     \item If $f(x, y)$ is a twice (continuously) differentiable function, then 
@@ -445,10 +451,9 @@ where
     \end{minipage}
     \hfill
     \begin{minipage}{0.39\linewidth}
-        \begin{customTableWrapper}{1}
+        \begin{customTableWrapper}{2.2}
         \begin{table}[H]
             \centering
-            \renewcommand{\arraystretch}{2}
             \begin{tabular}{p{2.5cm} l}
                 \customTableHeaderColor
                 \textbf{Forward propagation} & \textbf{Backward Propagation} \\ \hline

@@ -91,7 +91,7 @@ For matrices $\mathbf{A, B} \in \mathbb{R}^{m\times n}$, the elements $c_{ij}$ o
 \subsection{Identity Matrix ( $\mathbf{I}_n \in \mathbb{R}^{n\times n}$ ) \cite{mfml-1}}\label{Identity Matrix}
 In $\mathbb{R}^{n\times n}$, we define the identity matrix:
 \[
-    \renewcommand{\arraystretch}{0.6}
+    \begin{customArrayStretch}{0.6}
     \mathbf{I}_n = \begin{bmatrix}
         1 & 0 & \cdots & 0 & \cdots & 0 \\
         0 & 1 & \cdots & 0 & \cdots & 0 \\
@@ -100,6 +100,7 @@ In $\mathbb{R}^{n\times n}$, we define the identity matrix:
         \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
         0 & 0 & \cdots & 0 & \cdots & 1 \\
     \end{bmatrix} \in \mathbb{R}^{n\times n}
+    \end{customArrayStretch}
 \]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,7 +116,7 @@ In $\mathbb{R}^{n\times n}$, we define the identity matrix:
 
 A diagonal matrix is a matrix that has value zero on all off-diagonal elements, i.e., they are of the form:
 \[
-    \renewcommand{\arraystretch}{0.6}
+    \begin{customArrayStretch}{0.6}
     \mathbf{D} = \begin{bmatrix}
         c_1 & 0 & \cdots & 0 & \cdots & 0 \\
         0 & c_2 & \cdots & 0 & \cdots & 0 \\
@@ -124,6 +125,7 @@ A diagonal matrix is a matrix that has value zero on all off-diagonal elements, 
         \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
         0 & 0 & \cdots & 0 & \cdots & c_n \\
     \end{bmatrix} \in \mathbb{R}^{n\times n}
+    \end{customArrayStretch}
 \]
 
 \begin{enumerate}
@@ -132,7 +134,7 @@ A diagonal matrix is a matrix that has value zero on all off-diagonal elements, 
     \item matrix power $\mathbf{D}^k$ is given by each diagonal element raised to the power $k$
     \[
         \displaystyle
-        \renewcommand{\arraystretch}{0.6}
+        \begin{customArrayStretch}{0.6}
         \mathbf{D}^{k} = \begin{bmatrix}
             c_1^k & 0 & \cdots & 0 & \cdots & 0 \\
             0 & {c_2}^k & \cdots & 0 & \cdots & 0 \\
@@ -141,12 +143,13 @@ A diagonal matrix is a matrix that has value zero on all off-diagonal elements, 
             \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
             0 & 0 & \cdots & 0 & \cdots & {c_n}^k \\
         \end{bmatrix} \in \mathbb{R}^{n\times n}
+        \end{customArrayStretch}
     \]
 
     \item inverse $\mathbf{D}^{-1}$ is the reciprocal of its diagonal elements if \textbf{ALL} of them are nonzero:
     \[
         \displaystyle
-        \renewcommand{\arraystretch}{0.6}
+        \begin{customArrayStretch}{0.6}
         \mathbf{D}^{-1} = \begin{bmatrix}
             {1}/{c_1} & 0 & \cdots & 0 & \cdots & 0 \\
             0 & {1}/{c_2} & \cdots & 0 & \cdots & 0 \\
@@ -155,6 +158,7 @@ A diagonal matrix is a matrix that has value zero on all off-diagonal elements, 
             \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
             0 & 0 & \cdots & 0 & \cdots & {1}/{c_n} \\
         \end{bmatrix} \in \mathbb{R}^{n\times n}
+        \end{customArrayStretch}
     \]  
 \end{enumerate}
 
@@ -1135,7 +1139,7 @@ $C, \tilde{C} \in R^m$
 
 
     \[
-        \renewcommand{\arraystretch}{2}
+        \begin{customArrayStretch}{2}
         A A^\top = 
         \begin{bmatrix}
             5 & -2 & 1 \\
@@ -1159,16 +1163,18 @@ $C, \tilde{C} \in R^m$
             -\dfrac{1}{\sqrt{6}} & -\dfrac{2}{\sqrt{6}} & \dfrac{1}{\sqrt{6}}
         \end{bmatrix}
         = PDP^\top
+        \end{customArrayStretch}
     \]
 
     \[
-        \renewcommand{\arraystretch}{2}
+        \begin{customArrayStretch}{2}
         V = P =
         \begin{bmatrix}
             \dfrac{5}{\sqrt{30}} & 0 & -\dfrac{1}{\sqrt{6}} \\
             -\dfrac{2}{\sqrt{30}} & \dfrac{1}{\sqrt{5}} & -\dfrac{2}{\sqrt{6}} \\
             \dfrac{1}{\sqrt{30}} & \dfrac{2}{\sqrt{5}} & \dfrac{1}{\sqrt{6}} \\
         \end{bmatrix}
+        \end{customArrayStretch}
     \]
 
     \vspace{0.5cm}
@@ -1187,7 +1193,7 @@ $C, \tilde{C} \in R^m$
     \item \textbf{Left-singular vectors as the normalized image of the right-singular vectors}
     \[
         \hfill
-        \renewcommand{\arraystretch}{2}
+        \begin{customArrayStretch}{2}
         u_1 = \dfrac{Av_1}{\sigma_1} = \dfrac{1}{\sqrt{6}} 
         \begin{bmatrix}
             1 & 0 & 1 \\
@@ -1203,8 +1209,9 @@ $C, \tilde{C} \in R^m$
             \dfrac{1}{\sqrt{5}} \\
             -\dfrac{2}{\sqrt{5}}
         \end{bmatrix}
+        \end{customArrayStretch}
         \hspace{0.5cm}
-        \renewcommand{\arraystretch}{2}
+        \begin{customArrayStretch}{2}
         u_2 = \dfrac{Av_2}{\sigma_2} = \dfrac{1}{1} 
         \begin{bmatrix}
             1 & 0 & 1 \\
@@ -1220,10 +1227,11 @@ $C, \tilde{C} \in R^m$
             \dfrac{2}{\sqrt{5}} \\
             \dfrac{1}{\sqrt{5}}
         \end{bmatrix}
+        \end{customArrayStretch}
         \hfill
     \]
     \[
-        \renewcommand{\arraystretch}{2}
+        \begin{customArrayStretch}{2}
         U = [u_1, u_2] = 
         \begin{bmatrix}
             \dfrac{1}{\sqrt{5}} & \dfrac{2}{\sqrt{5}} \\
@@ -1235,6 +1243,7 @@ $C, \tilde{C} \in R^m$
             1 & {2} \\
             -{2} & {1} \\
         \end{bmatrix}
+        \end{customArrayStretch}
     \]
     
 \end{enumerate}

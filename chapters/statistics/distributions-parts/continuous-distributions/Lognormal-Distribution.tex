@@ -361,7 +361,7 @@
     \item covariance:
     \begin{enumerate}
         \item 
-        \begin{align*}
+        $\begin{aligned}
             COV(exp(X), exp(Y )) 
             &= E[exp(X) exp(Y )] - E[exp(X)]E[exp(Y )] \\
             &= E[exp(X + Y )] - exp(\mu_X + 0.5\sigma^2_X ) exp(\mu_Y + 0.5\sigma^2_Y ) \\
@@ -369,7 +369,7 @@
                  -exp(\mu_X + 0.5\sigma^2_X ) exp(\mu_Y + 0.5\sigma^2_Y ) \\
             &=exp(\mu_X + 0.5\sigma^2_X + \mu_Y + 0.5\sigma^2_Y )(exp(\rho\sigma_X \sigma_Y ) - 1) \\
             &= E[exp(X)]E[exp(Y )](exp(\rho\sigma_X \sigma_Y ) - 1)
-        \end{align*}
+        \end{aligned}$
 
         \item $COV(X, Y) = \rho\sigma_X\sigma_Y$
     \end{enumerate}

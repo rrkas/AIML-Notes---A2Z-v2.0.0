@@ -5,11 +5,12 @@
     \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/statistics/population-and-sample.png}
 \end{figure}
 
+\begin{customTableWrapper}{1.5}
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|c|c|}
         \hline
-
+        \customTableHeaderColor
         & \textbf{Population} & \textbf{Sample}\\
         \hline
 
@@ -26,6 +27,7 @@
         \hline
     \end{tabular}
 \end{table}
+\end{customTableWrapper}
 
 
 \section{Convenience Sampling \cite{ism-1}} \label{Convenience Sampling}
@@ -58,7 +60,7 @@
 
 \section{Simple Random Sampling \cite{ism-1}}\label{Simple Random Sampling}
 
-\renewcommand{\arraystretch}{2.5}
+\begin{customTableWrapper}{2.5}
 \begin{longtable}{|p{5cm}|p{9cm}|}
     \hline\endfirsthead
     \hline\endhead
@@ -100,13 +102,20 @@
     $ \\[1ex]
     \hline
 
-    \textbf{MSE ($MSE(c\bar{x}_k)$)} & $
-        MSE(c\bar{x}_k) 
-        = [(c-1)\mu]^2 +
-        c^2 \sigma^2 \dParenBrac{\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} }\dfrac{1}{n}
-    $\\[1ex]
-    & $MSE(\bar{x}_k) 
-        = \sigma^2 \dParenBrac{\dfrac{N}{N-1} \right)\left( 1-\dfrac{n}{N} }\dfrac{1}{n}$ \\[1ex]
+    \textbf{MSE ($MSE(c\bar{x}_k)$)} & 
+    \tableenumerate{
+        \item 
+        $
+            MSE(c\bar{x}_k) 
+            = [(c-1)\mu]^2 +
+            c^2 \sigma^2 \dParenBrac{\dfrac{N}{N-1} }\dParenBrac{( 1-\dfrac{n}{N} }\dfrac{1}{n}
+        $
+
+        \item 
+        $MSE(\bar{x}_k) 
+            = \sigma^2 \dParenBrac{\dfrac{N}{N-1} }\dParenBrac{( 1-\dfrac{n}{N} }\dfrac{1}{n}
+        $ 
+    } \\
     \hline
 
     \textbf{Estimator of MSE ($\hat{MSE}(\bar{x}_k)$)} & $
@@ -136,6 +145,7 @@
     $\\[1ex]
     \hline
 \end{longtable}
+\end{customTableWrapper}
 
 \section{Systematic Sampling \cite{ism-1}}\label{Systematic Sampling}
 
@@ -155,7 +165,7 @@
     \]
 \end{enumerate}
 
-\begin{customTableWrapper}{1}
+\begin{customTableWrapper}{2}
 \begin{longtable}{|p{5cm}|p{9cm}|}
     \hline\endfirsthead
     \hline\endhead
