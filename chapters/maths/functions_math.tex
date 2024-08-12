@@ -129,24 +129,24 @@ This gives infinite penalty if the constraint is not satisfied.
 \subsection{tangent ( $\tan(\theta)$ )}\label{tangent (tan)}
 
 \[
-    \tan(\theta) =\displaystyle \frac {\mathrm {opposite} }{\mathrm {adjacent} }
+    \tan(\theta) =\displaystyle \dfrac {\mathrm {opposite} }{\mathrm {adjacent} }
 \]
 \[  \tan(\theta + k\pi ) = \tan(\theta)  \]
 
 \subsection{cosecant ( $\csc(\theta)$ }\label{cosecant (csc)}
 \[
-    \csc(\theta) =\displaystyle\frac {\mathrm {hypotenuse} }{\mathrm {opposite} }
+    \csc(\theta) =\displaystyle\dfrac {\mathrm {hypotenuse} }{\mathrm {opposite} }
 \]
 
 \subsection{secant ( $\sec(\theta)$ )}\label{secant (sec)}
 \[
-    \sec(\theta) =\displaystyle\frac {\mathrm {hypotenuse} }{\mathrm {adjacent} }
+    \sec(\theta) =\displaystyle\dfrac {\mathrm {hypotenuse} }{\mathrm {adjacent} }
 \]
 
 \subsection{cotangent ( $\cot(\theta)$ )}\label{cotangent (cot)}
 
 \[
-    \cot(\theta) =\displaystyle\frac {\mathrm {adjacent} }{\mathrm {opposite} }
+    \cot(\theta) =\displaystyle\dfrac {\mathrm {adjacent} }{\mathrm {opposite} }
 \]
 \[  \cot(\theta + k\pi ) = \cot(\theta)  \]
 
@@ -230,26 +230,52 @@ $x \neq 0$
 \end{customTableWrapper}
 
 
-\section{Softmax function ( $\sigma (\mathbf {z})$ ) \cite{wiki-softmax-function}}\label{Softmax function}
-The softmax function, also known as softargmax or normalized exponential function, converts a vector of $K$ real numbers into a probability distribution of $K$ possible outcomes. It is a generalization of the logistic function to multiple dimensions, and used in multinomial logistic regression. The softmax function is often used as the last activation function of a neural network to normalize the output of a network to a probability distribution over predicted output classes.
+\section{Softmax function/ softargmax ( $\sigma (\mathbf {z})$ ) \cite{wiki-softmax-function,dnn-1}} \label{Softmax function}
+\begin{enumerate}
+    \item The softmax function, also known as softargmax or normalized exponential function, converts a vector of $K$ real numbers into a probability distribution of $K$ possible outcomes. 
+    
+    \item It is a generalization of the logistic function to multiple dimensions, and used in multinomial logistic regression. 
+    
+    \item The softmax function is often used as the last activation function of a neural network to normalize the output of a network to a probability distribution over predicted output classes.
 
-\[
-    {\displaystyle \sigma (\mathbf {z} )_{i}={\displaystyle\frac {e^{z_{i}}}{\sum _{j=1}^{K}e^{z_{j}}}}}
-\]
+    \item $
+        {\displaystyle \sigma (\mathbf {z} )_{i}={\displaystyle\dfrac {\exp({z_{i}})}{\dsum _{j=1}^{K} \exp({z_{j}})}}}
+    $\\
+    Where:
+    \[
+        {\displaystyle \sigma \colon \mathbb {R} ^{K}\to (0,1)^{K}}
+        \hfill
+        {\displaystyle K\geq 1}
+    \]
+    \[
+        {\displaystyle \mathbf {z} =(z_{1},\dotsc ,z_{K})\in \mathbb {R} ^{K}}
+    \]
 
-Where:
-\[
-    {\displaystyle \sigma \colon \mathbb {R} ^{K}\to (0,1)^{K}}
-    \hfill
-    {\displaystyle K\geq 1}
-\]
-\[
-    {\displaystyle \mathbf {z} =(z_{1},\dotsc ,z_{K})\in \mathbb {R} ^{K}}
-\]
-
-
-
-
+    \item \textbf{numerical overflow}: If some of the $z_j$ are very large, i.e., very positive, then $\exp(z_j)$ might be larger than the largest number we can have for certain data types. This is called overflow.
+    
+    \item \textbf{numerical underflow}: if every argument is a very large negative number, we will get underflow.
+    
+    \item A way round this problem is to subtract $\bar{o} \stackrel{\textrm{def}}{=} \max_k o_k$ from all entries:
+    \[
+        \hfill
+        \hat y_j 
+        = \dfrac{\exp (o_j)}{\dsum_k \exp (o_k)} 
+        = \dfrac{\exp(o_j - \bar{o}) \exp (\bar{o})}{\dsum_k \exp (o_k - \bar{o}) \exp (\bar{o})} 
+        = \dfrac{\exp(o_j - \bar{o})}{\dsum_k \exp (o_k - \bar{o})}
+        \hfill
+        (o_j - \bar{o} \leq 0 \quad \forall j)
+    \]
+    denominator: $\in [1, q]$\\
+    numerator: $\leq 1$ \\
+    \[
+        \hfill
+        \log (\hat{y}_j )
+        = \log \dParenBrac{\dfrac{\exp(o_j - \bar{o})}{\dsum_k \exp (o_k - \bar{o})} }
+        = o_j - \bar{o} - \log \dParenBrac{\dsum_k \exp (o_k - \bar{o})}
+        \hfill
+    \]
+    
+\end{enumerate}
 
 
 

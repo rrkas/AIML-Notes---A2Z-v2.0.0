@@ -33,7 +33,7 @@ Essentially, formulas are \textbf{same}.
 \section{Mean Absolute Difference (MAD)/ Mean Absolute Error (MAE)/ $L_1$ Loss}\label{Mean Absolute Difference (MAD)}\label{Mean Absolute Error (MAE)}\label{L1 Loss}
 
 \[
-    MAD = MAE = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} \dabs{ y_i - \hat{y}_i }
+    MAD = MAE = \displaystyle\dfrac{1}{n} \cdot \dsum_{i=1}^{n} \dabs{ y_i - \hat{y}_i }
 \]
 
 \section{Smooth $L_1$ Loss ( $\operatorname{smooth}_{L_1}$ )}
@@ -61,12 +61,12 @@ Essentially, formulas are \textbf{same}.
 
 \section{Mean Square Error (MSE)}\label{Mean Square Error (MSE)}
 \[
-    MSE = \displaystyle\dfrac{1}{n} \cdot \sum_{i=1}^{n} ( y_i - \hat{y}_i )^2
+    MSE = \displaystyle\dfrac{1}{n} \cdot \dsum_{i=1}^{n} ( y_i - \hat{y}_i )^2
 \]
 
 \section{Root Mean Square Error (RMSE)}\label{Root Mean Square Error (RMSE)}
 \[
-    RMSE = \sqrt{MSE} = \displaystyle\sqrt{\dfrac{1}{n} \cdot \sum_{i=1}^{n} ( y_i - \hat{y}_i )^2}
+    RMSE = \sqrt{MSE} = \displaystyle\sqrt{\dfrac{1}{n} \cdot \dsum_{i=1}^{n} ( y_i - \hat{y}_i )^2}
 \]
 
 
@@ -89,8 +89,100 @@ Essentially, formulas are \textbf{same}.
 \section{Mean Average precision (mAP)}\label{Mean Average precision (mAP)}
 
 
+\section{Information Theory: Entropy \cite{dnn-1}} \label{Information Theory: Entropy}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The central idea in information theory is to quantify the amount of information contained in data. 
+    
+    \item This places a limit on our ability to compress data.
+
+    \item For a distribution $P$ its entropy, $H[P]$, is defined as:
+    $
+        \hfill
+        H[P] 
+        = \dsum_j - P(j) \log P(j)
+        \hfill
+    $
+
+    \item One of the fundamental theorems of information theory states that in order to encode data drawn randomly from the distribution $P$, we need at least $H[P]$ “nats” to encode it.
+
+    \item If you wonder what a “nat” is, it is the equivalent of bit but when using a code with base $e$ rather than one with base $2$. \\
+    Thus, one \textbf{nat}\indexlabel{nat (information theory)} is $\dfrac{1}{\log(2)} \approx 1.44$ bit.
+
+    \item if we cannot perfectly predict every event, then we might sometimes be \textbf{surprised}.\\
+    Our \textbf{surprise is greater} when an event is assigned \textbf{lower probability}.\\
+    Entropy is the \textbf{level of surprise} experienced by someone who knows the \textbf{true probability}.
+
+\end{enumerate}
 
 
+
+
+
+\section{Log-Likelihood Loss/ cross-entropy loss \cite{dnn-1}} \label{Log-Likelihood Loss/ cross-entropy loss}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The softmax function gives us a vector $\hat{\mathbf{y}}$, which we can interpret as the (estimated) conditional probabilities of each class, given any input $\mathbf{x}$, such as $\hat{y}_1 = P(y=\textrm{class$_1$} \mid \mathbf{x})$.\\
+    In the following we assume that for a dataset with features $\mathbf{X}$ the labels $\mathbf{Y}$ are represented using a one-hot encoding label vector.\\
+    We can compare the estimates with reality by checking how probable the actual classes are according to our model, given the features:
+    \[
+        \hfill
+        P(\mathbf{Y} \mid \mathbf{X}) 
+        = \prod_{i=1}^n P(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)})
+        \hfill
+    \]
+
+    \item we take the negative logarithm to obtain the equivalent problem of minimizing the negative log-likelihood:
+    \[
+        \hfill
+        -\log P(\mathbf{Y} \mid \mathbf{X}) 
+        = \dsum_{i=1}^n -\log P(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)})
+        = \dsum_{i=1}^n l(\mathbf{y}^{(i)}, \hat{\mathbf{y}}^{(i)})
+        \hfill
+    \]
+
+    \item where for any pair of label $\mathbf{y}$ and model prediction $\hat{\mathbf{y}}$ over $q$ classes, the loss function $l$ is:
+    \[
+        \hfill
+        l(\mathbf{y}, \hat{\mathbf{y}}) = - \dsum_{j=1}^q y_j \log \hat{y}_j
+        \hfill
+    \]
+
+    \item Since $\mathbf{y}$ is a one-hot vector of length $q$, the sum over all its coordinates $j$ vanishes for all but one term.\\
+    Note that the loss $l(\mathbf{y}, \hat{\mathbf{y}})$ is bounded from below by $0$ whenever $\hat{\mathbf{y}}$ is a probability vector: 
+    \begin{enumerate}
+        \item no single entry is larger than $1$, hence their negative logarithm cannot be lower than $0$
+
+        \item $l(\mathbf{y}, \hat{\mathbf{y}}) = 0$ only if we predict the actual label with \textbf{certainty}
+
+    \end{enumerate}
+
+    \item $
+        l(\mathbf{y}, \hat{\mathbf{y}}) 
+        = - \dsum_{j=1}^q y_j \log \dParenBrac{\frac{\exp(o_j)}{\dsum_{k=1}^q \exp(o_k)}}
+        = \dsum_{j=1}^q y_j \log \dParenBrac{\dsum_{k=1}^q \exp(o_k)} - \dsum_{j=1}^q y_j o_j
+        = \log \dParenBrac{\dsum_{k=1}^q \exp(o_k)} - \dsum_{j=1}^q y_j o_j
+    $
+
+    \item $
+        \partial_{o_j} l(\mathbf{y}, \hat{\mathbf{y}}) 
+        = \frac{\exp(o_j)}{\dsum_{k=1}^q \exp(o_k)} - y_j 
+        = \mathrm{softmax}(\mathbf{o})_j - y_j
+    $
+
+    \item cross-entropy from $P$ to $Q$, denoted $H(P, Q)$, is the \textbf{expected surprisal} of an observer with subjective probabilities $Q$ upon seeing data that was actually generated according to probabilities $P$.\\
+    This is given by $H(P, Q) \stackrel{\textrm{def}}{=} \sum_j - P(j) \log Q(j)$\\
+    The lowest possible cross-entropy is achieved when $P=Q$ (cross-entropy = $H(P,P)=H(P)$)
+
+
+    \item we can think of the cross-entropy classification objective in two ways: 
+    \begin{enumerate}
+        \item as \textbf{maximizing} the \textbf{likelihood} of the observed data
+        
+        \item as \textbf{minimizing} our \textbf{surprisal} (and thus the number of bits) required to communicate the labels
+    \end{enumerate}
+
+\end{enumerate}
 
 
 

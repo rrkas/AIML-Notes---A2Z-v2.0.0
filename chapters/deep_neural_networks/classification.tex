@@ -82,18 +82,126 @@ SEE:
 
     \end{enumerate}
 
-    \item Both aspects render the estimation problem difficult to solve and the solution very brittle to outliers.
+    \item Both aspects render the estimation problem difficult to solve and the solution very brittle to outliers (the probability might exceed $1$). We need a mechanism to “squish” the outputs.\\
+    Ways we might accomplish this goal
+    \begin{enumerate}[itemsep=0.2cm]
+
+        \item we could assume that the outputs $o$ are corrupted versions of $y$, where the \textbf{corruption} occurs by means of adding noise $\epsilon$ drawn from a \textbf{normal distribution}. In other words, $y = o+\epsilon$, where $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$. This is the so-called \textbf{probit model}\indexlabel{probit model}.
+    
+        \item we could use an exponential function $P(y = i) \propto \exp o_i$. This does indeed satisfy the requirement that the conditional class probability increases with increasing $o_i$, it is monotonic, and all probabilities are nonnegative. We can then transform these values so that they add up to $1$ by dividing each by their sum. This process is called normalization. Putting these two pieces together gives us the softmax function:
+        \[
+            \hfill
+            \hat{\mathbf{y}} = \mathrm{softmax}(\mathbf{o}) 
+            \quad \textrm{where}\quad 
+            \hat{y}_i = \frac{\exp(o_i)}{\dsum_j \exp(o_j)}
+            \hfill
+        \]
+        the largest coordinate of $\mathbf{o}$ corresponds to the most likely class according to $\hat{\mathbf{y}}$. Moreover, because the softmax operation preserves the ordering among its arguments, we do not need to compute the softmax to determine which class has been assigned the highest probability:
+        \[
+            \hfill
+            \operatorname*{argmax}_j \hat y_j = \operatorname*{argmax}_j o_j
+            \hfill
+        \]
+
+    \end{enumerate}
+
 
 \end{enumerate}
 
 
 
 
+\subsection*{Generalization in Classification \cite{dnn-1}}
+
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l}
+        $f$ & fixed classifier \\
+
+        $\mathcal{D} = {(\mathbf{x}^{(i)},y^{(i)})}_{i=1}^n$ 
+        & fresh dataset of examples \\
+
+        $P(X,Y)$ & distribution\\
+
+        $p(\mathbf{x},y)$ & probability density function \\
+
+        $\mathbbm{1}_{(f(X) \neq Y)} \in \dCurlyBrac{0,1}$ & Bernoulli random variable \\
+
+        
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\begin{customTableWrapper}{2}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l}
+        empirical error of our classifier $f$ on $\mathcal{D}$ &
+        $
+            \epsilon_\mathcal{D}(f) 
+            = \dfrac{1}{n}\dsum_{i=1}^n \mathbbm{1}_{(f(\mathbf{x}^{(i)})} \neq y^{(i)})
+        $ \\
+
+        
+        population error &
+        $
+            \epsilon(f) 
+            =  E_{(\mathbf{x}, y) \sim P} \mathbf{1}(f(\mathbf{x}) \neq y) 
+            = \displaystyle\iint \mathbbm{1}_{(f(\mathbf{x}) \neq y)} p(\mathbf{x}, y) \;d\mathbf{x} dy
+        $ \\
+
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The variance $\sigma^2$ of a Bernoulli depends on its parameter (here, $\epsilon(f)$) according to the expression $\epsilon(f)(1-\epsilon(f))$
+
+    \item While $\epsilon(f)$ is initially unknown, we know that it cannot be greater than $1$
+
+    \item asymptotic standard deviation of our estimate $\epsilon_\mathcal{D}(f)$ of the error $\epsilon(f)$ (over the choice of the $n$ test samples) cannot be any greater than $\sqrt{0.25/n}$
+
+
+
+\end{enumerate}
 
 
 
 
+\vspace{0.5cm}
 
+\textbf{Central Limit Theorem (CLT):}
+\begin{table}[H]
+    \begin{minipage}{0.29\linewidth}
+        \begin{customTableWrapper}{1.5}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{l l}
+                $n$ & number of samples \\
+                
+                $a_1, \cdots, a_n$ & random samples \\
+        
+                $\mu$ & mean \\
+        
+                $\sigma$ & standard deviation \\
+        
+                $\hat{\mu}$ & sample average \\
+            \end{tabular}
+        \end{table}
+        \end{customTableWrapper}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.69\linewidth}
+        \begin{enumerate}[itemsep=0.2cm]
+            \item as the number of samples $n$ approaches infinity, the sample average $\hat{\mu}$ approximately tends towards a normal distribution centered at the true mean ${\mu}$ and with standard deviation $\sigma/\sqrt{n}$
+
+            \item as the number of examples grows large, our test error $\epsilon_\mathcal{D}(f)$ should approach the true error $\epsilon(f)$ at a rate of $\mathcal{O}(1/\sqrt{n})$
+
+            
+        \end{enumerate}
+    \end{minipage}
+\end{table}
 
 
 

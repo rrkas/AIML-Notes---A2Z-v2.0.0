@@ -12,6 +12,9 @@
 \usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Symbol, Chancery and Computer Modern fonts
 \usepackage{mathrsfs}
 
+% to make math characters less curvy
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
 \usepackage{microtype} % Slightly tweak font spacing for aesthetics
 \usepackage[utf8]{inputenc} % Required for including letters with accents
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
@@ -97,7 +100,9 @@
 
 \begin{document}
 
-\setlength{\parindent}{0cm}
+% \setlength{\parindent}{0cm}
+\setlength\parindent{0pt}
+
 
 \input{custom-operators}
 
