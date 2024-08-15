@@ -162,7 +162,12 @@ SEE:
 
     \item asymptotic standard deviation of our estimate $\epsilon_\mathcal{D}(f)$ of the error $\epsilon(f)$ (over the choice of the $n$ test samples) cannot be any greater than $\sqrt{0.25/n}$
 
-
+    \item because our random variable is bounded, we can obtain valid finite sample bounds by applying an inequality due to Hoeffding (1963):
+    \[
+        \hfill
+        P(\epsilon_\mathcal{D}(f) - \epsilon(f) \geq t) < \exp\left( - 2n t^2 \right).
+        \hfill
+    \]
 
 \end{enumerate}
 

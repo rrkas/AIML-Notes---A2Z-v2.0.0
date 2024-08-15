@@ -187,32 +187,328 @@ Essentially, formulas are \textbf{same}.
 
 
 
+\section{Measures of Risk \cite{ism-1}} \label{Measures of Risk}
+
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{7cm}}
+        $D$ & Outcome/ result (event of interest) \\
+        
+        $E$ & Exposure/ risk factor/ explanatory event (event that may affect the outcome)\\
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item bivariate binary data $(X_i, Y_i) \in \dCurlyBrac{0, 1} \times \dCurlyBrac{0, 1}$
+
+    \item summary statistics:
+    $
+        N_{xy}
+        = \dsum_{i=1}^n 1_{\dCurlyBrac{x}}(X_i)1_{\dCurlyBrac{y}}(Y_i)
+        \hfill
+        (x, y) \in \dCurlyBrac{0, 1}\times\dCurlyBrac{0, 1}
+    $
+
+    \item with binary data it is more \textbf{convenient} to use values $0$ and $1$ for $X$ and $Y$, instead of using the values $1$ and $2$.
+
+    \item $N_{x\cdot} = N_{x1} + N_{x0}$ 
+\end{enumerate}
+
+
+\subsection{Risk Difference/ excess risk ( $ER$ ) \cite{ism-1}} \label{Risk Difference/ excess risk}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The risk difference or excess risk is an absolute measure of risk, since it is nothing more than the difference in the conditional probabilities
+    $
+        \hfill
+        ER = Pr(D|E) - Pr(D|E^c)
+        \quad \in [-1, 1]
+        \hfill
+    $
+
+    \item based on an \textbf{additive model}, i.e., $Pr (D|E) = ER + Pr (D|E^c)$
+
+    \item Assume $0 < P(E) < 1$:
+    \begin{align*}
+        ER  
+        &\Leftrightarrow Pr (D|E) = Pr (D|E^c) \\
+        &\Leftrightarrow Pr (E^c) Pr (D \cap E) = Pr (E) Pr (D \cap E^c) \\
+        &\Leftrightarrow [1 - Pr (E)] Pr (D \cap E) = Pr (E)[Pr(D) - Pr (D \cap E)] \\
+        &\Leftrightarrow Pr (D \cap E) = Pr (D) Pr (E)
+    \end{align*}
+
+    \item it can be viewed as the excess number of cases ($D$) as a fraction of the population size
+
+    \item If the complete population (of size $N$) were to be \textbf{exposed}, the number of cases would be equal to $N \cdot Pr (D) = N \cdot Pr (D|E)$.
+
+    \item If the complete population were \textbf{unexposed} the number of cases would be equal to $N \cdot Pr (D) = N \cdot Pr (D|E^c)$.
+
+    \item difference in these numbers of cases indicates how the number of cases were to change if a completely exposed population would change to a completely unexposed population.
+\end{enumerate}
+
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|}
+        \hline
+
+        $ER > 0$ & there is a greater risk of the outcome when exposed ($E$) than when unexposed ($E^c$) \\
+        \hline
+
+        $ER < 0$ & exposure ($E$) is \textbf{protective} for the outcome \\
+        \hline
+
+        $ER = 0$ & outcome ($D$) is \textbf{independent} of the exposure ($E$) \\
+        \hline
+
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\subsubsection{Estimator of Risk Difference ( $\hat{RD}$ ) \cite{ism-1}}\label{Estimator of Risk Difference}
+
+\[
+    \hat{RD} 
+    = \dfrac{N_{11}}{N_{11} + N_{10}} - \dfrac{N_{01}}{N_{01} + N_{00}}
+    = \dfrac{N_{11}N_{00} - N_{10}N_{01}}{(N_{11} + N_{10})(N_{01} + N_{00})}
+\]
+
+
+\subsection{Relative Risk ( $RR$ ) \cite{ism-1}}\label{Relative Risk}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The relative risk would compare the two conditional probabilities $Pr (D|E)$ and $Pr (D|E^c)$ by taking the ratio 
+    $   
+        \hfill
+        RR = \dfrac{Pr (D|E)}{Pr (D|E^c)} 
+        \hfill
+    $
+
+    \item based on a \textbf{multiplicative model}, i.e., $Pr (D|E) = RR \cdot Pr (D|E^c)$
+
+    \item it is common to use the unexposed group as reference group (denominator = outcome $D$)
+
+\end{enumerate}
+
+
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|}
+        \hline
+
+        $RR > 1$ & exposed group has a higher probability of the outcome ($D$) than the unexposed one \\
+        \hline
+
+        $RR = 1$ & outcome and exposure are \textbf{independent} \\
+        \hline
+
+        $RR < 1$ & unexposed group has a higher probability of the outcome \\
+        \hline
+
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\subsubsection{Estimator of Relative Risk ( $\hat{RR}$ ) \cite{ism-1}}\label{Estimator of Relative Risk}
+
+\[
+    \hat{RR}
+    = \dfrac{N_{11}(N_{01} + N_{00})}{N_{01}(N_{11} + N_{10})}
+\]
+
+
+
+\subsection{Odds Ratio ( $OR$ ) \cite{ism-1}} \label{Odds Ratio}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item The odds ratio compares the odds for the exposed group with the odds for the unexposed group.
+
+    \item it is common to use the unexposed group as reference group (denominator = unexposed group $O_{E^c}$)
+
+    \item The odds is a measure of how \textbf{likely} the outcome occurs with respect to not observing this outcome.
+    \[
+        \hfill
+        O = \dfrac{p}{1-p}
+        \hfill
+        O_E = \dfrac{Pr (D|E)}{1 - Pr (D|E)}
+        \hfill
+        O_{E^c} = \dfrac{Pr (D|E^c)}{1 - Pr (D|E^c)}
+        \hfill
+    \]
+
+    \item $
+        OR 
+        = \dfrac{O_E}{O_{E^c}}
+        = \dfrac{Pr (D|E)[1 - Pr (D|E^c)]}{Pr (D|E^c)[1 - Pr (D|E)]}
+        = \dfrac{Pr (D^c|E^c)}{Pr (D^c|E)} \times RR
+    $
+
+\end{enumerate}
+
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{11cm}|}
+        \hline
+
+        $OR > 1$ & exposed group has a higher odds than the unexposed group, which implies that the exposed group has a higher probability of outcome $D$ \\
+        \hline
+
+        $OR = 1$ & outcome is \textbf{independent} of the exposure \\
+        \hline
+
+        $OR < 1$ & unexposed group has a higher probability of the outcome \\
+        \hline
+
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
+
+\subsubsection{Estimator of Odds Ratio ( $\hat{OR}$ ) \cite{ism-1}}\label{Estimator of Odds Ratio}
+
+\[
+    \hat{OR}
+    = \dfrac{N_{11}N_{00}}{N_{10}N_{01}}
+\]
+
+
+
+\subsection{Confidence Interval \cite{ism-1}} \label{Measures of risk: Confidence Interval}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item the coverage of the confidence interval containing the population parameter is close to the intended confidence level $100\%(1 - \alpha)$
+
+    \item 
+    $
+        \hfill
+        \hat{p}_0 = \dfrac{N_{01}}{N_{0\cdot}}
+        \hfill
+        \hat{p}_1 = \dfrac{N_{11}}{N_{1\cdot}}
+        \hfill
+    $
+
+    \[
+        \hfill
+        L_{x}
+        = \dfrac{
+            2N_{x\cdot} \hat{p}_x + z^2_{1 - \alpha/2} 
+            - z_{1 - \alpha/2} \sqrt{4N_{x\cdot} \hat{p}_x (1- \hat{p}_x) + z^2_{1 - \alpha/2}}
+        }{
+            2(N_{x\cdot} + z^2_{1 - \alpha/2} )
+        }
+        \hspace{0.5cm}
+        U_{x}
+        = \dfrac{
+            2N_{x\cdot} \hat{p}_x + z^2_{1 - \alpha/2} 
+            + z_{1 - \alpha/2} \sqrt{4N_{x\cdot} \hat{p}_x (1- \hat{p}_x) + z^2_{1 - \alpha/2}}
+        }{
+            2(N_{x\cdot} + z^2_{1 - \alpha/2} )
+        }
+        \hfill
+    \]
+
+    \subsection*{CI for RD/ ER \cite{ism-1}}
+
+    \item For $x \in \dCurlyBrac{0, 1}$ and $z_p$ the $p$th quantile of the \textbf{standard normal distribution function}. The $100\%(1 - \alpha)$ confidence interval on the risk difference is then given by
+    \[
+        \hfill
+        \left(
+            \hat{RD} - \sqrt{(\hat{p}_1 - L_1)^2 + (\hat{p}_0 - U_0)^2},
+            \hspace{0.5cm}
+            \hat{RD} - \sqrt{(\hat{p}_1 - U_1)^2 + (\hat{p}_0 - L_0)^2}
+        \right]
+        \hfill
+    \]
+
+    \subsection*{CI for RR \cite{ism-1}}
+
+    \item For the relative risk, the confidence interval is calculated in the \textbf{logarithmic scale}. The estimated standard error of the logarithmic transformed relative risk is given by
+    $
+        \hat{SE}_{RR}
+        = \sqrt{
+            \dfrac{1 - \hat{p}_0}{N_{0\cdot}\hat{p}_0}
+            + \dfrac{1 - \hat{p}_1}{N_{1\cdot}\hat{p}_1}
+        }
+    $
+
+    \item Thus the asymptotic $100\%(1 - \alpha)$ confidence interval on the logarithmic transformation of the relative risk is given by
+    $
+        (L_{RR}, \hspace{0.2cm} U_{RR}]
+        = \left( 
+            \log(\hat{RR}) - z_{1 - \alpha/2} \hat{SE}_{RR},
+            \hspace{0.2cm}
+            \log(\hat{RR}) + z_{1 - \alpha/2} \hat{SE}_{RR}
+        \right]
+    $
+
+    \item The $100\%(1 - \alpha)$ confidence interval on the relative risk is then calculated by transforming these confidence limits back to the original scale using $(exp(L _{RR}), exp(U_{RR})]$.
+
+    \subsection*{CI for OR \cite{ism-1}}
+
+    \item The confidence interval on the odds ratio is also calculated in the logarithmic scale using the standard error $
+        \hat{SE}_{OR}
+        = \sqrt{N^{-1}_{00} + N^{-1}_{01} + N^{-1}_{10} + N^{-1}_{11}}
+    $
+
+    \item The $100\%(1 - \alpha)$ confidence interval on the odds ratio in the logarithmic scale is given by
+    \[
+        (L _{O R}, U_{O R}]
+        = \left(
+            \log(\hat{OR}) - z_{1-\alpha/2} \hat{SE}_{O R}, 
+            \hspace{0.2cm}
+            \log(\hat{OR}) + z_{1-\alpha/2} \hat{SE}_{O R}
+        \right]
+    \]
+
+    \item Thus the $100\%(1 - \alpha)$ confidence interval on the odds ratio is then calculated by transforming these confidence limits back to the original scale using $(\exp(L_{O R}), \exp (U_{O R})]$.
+\end{enumerate}
 
 
 
 
+\subsection*{Relation in $RR$ \& $OR$ \cite{ism-1}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item odds ratio is always further away from $1$ than the relative risk, i.e., $1 < RR < OR$ or $OR < RR < 1$
+
+    \item If $RR > 1$, we have that $Pr(D|E) > Pr(D|E^c)$, using its definition. \\
+    Since $Pr(D^c|E) = 1 - Pr(D|E)$ and $Pr(D^c|E^c) = 1 - Pr(D|E^c)$, we obtain that $Pr(D^c|E) < Pr(D^c|E^c)$.\\
+    Combining this inequality with the relation, we see that $OR > RR$.
+
+\end{enumerate}
 
 
+\subsection{Empirical Risk and Risk \cite{dnn-1}} \label{Empirical Risk and Risk}
 
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{7cm}}
+        $\dCurlyBrac{(x_1, y_1), \cdots,(x_n, y_n)}$ & features and associated labels of training data \\
 
+        $f$ & model \\
+    \end{tabular}
+\end{table}
+\end{customTableWrapper}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Risk} is the expectation of the loss over the \textbf{entire population} of data drawn from their \textbf{true distribution} $p(x, y)$:
+    \[
+        E_{p(\mathbf{x}, y)} [l(f(\mathbf{x}), y)] = \iint l(f(\mathbf{x}), y) p(\mathbf{x}, y) \;d\mathbf{x}dy
+    \]
+    
+    \item minimize the loss on the training: 
+    \[
+        \displaystyle\mathop{\mathrm{minimize}}_f \dfrac{1}{n} 
+        \dsum_{i=1}^n l(f(\mathbf{x}_i), y_i)
+    \]
+    where $l$ is the \textbf{loss function} measuring “how bad” the prediction $f(x_i)$ is given the associated label $y_i$. \\
+    The \textbf{empirical risk} is an average loss over the training data to \textbf{approximate the risk}.
+    
+\end{enumerate}
 
 
 

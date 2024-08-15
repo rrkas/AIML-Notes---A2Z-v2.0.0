@@ -508,6 +508,8 @@ innerbottommargin=5pt]{cBox}
 \vspace{-\baselineskip}\mbox{}}
 
 
+
+
 %%%%%%%%%%%%%%%%%%   cheat sheets  %%%%%%%%%%%%%%%%%%%%%
 
 \tikzstyle{cheatSheetBox} = [draw=black, fill=white, very thick,
@@ -545,6 +547,14 @@ innerbottommargin=5pt]{cBox}
     \renewcommand{\arraystretch}{#1}
 }{
     \renewcommand{\arraystretch}{1}
+    \endgroup
+}
+
+
+\newenvironment{fontSizeEnv}[1]{
+    \begingroup
+    \changefontsizes{#1}
+}{
     \endgroup
 }
 

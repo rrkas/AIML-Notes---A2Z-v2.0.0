@@ -1,0 +1,158 @@
+\chapter{Case Studies/ Extra reading materials}
+
+\section{Test Set Reuse \cite{dnn-1}} \label{story: Test Set Reuse}
+
+\begin{fontSizeEnv}{8pt}
+
+\begin{enumerate}
+    \item For any fixed classifier $f$, you know to evaluate its test error $\epsilon_\mathcal{D}(f)$, and know precisely what can (and cannot) be said about its population error $\epsilon(f)$.
+
+    \item Let’s assume that you made sure to preserve the sanctity of the test set by conducting all of your preliminary analysis, hyperparameter tuning, and even selection among multiple competing model architectures on a validation set. 
+
+    \item Finally you evaluate your model $f_1$ on the test set and report an unbiased estimate of the population error with an associated confidence interval.
+
+    \item Let’s assume that you made sure to preserve the sanctity of the test set by conducting all of your preliminary analysis, hyperparameter tuning, and even selection among multiple competing model architectures on a validation set. 
+    
+    \item Finally you evaluate your model $f_1$ on the test set and report an unbiased estimate of the population error with an associated confidence interval.
+
+    \item you code up your new model, tune its hyperparameters on the validation set and not only are you getting your new model $f_2$ to work but it is error rate appears to be much lower than $f_1$’s. But now, You do not have a test set!
+
+    \item Even though the original test set $\mathcal{D}$ is still sitting on your server, you now face two formidable problems. 
+    
+    \item First, when you collected your test set, you determined the required level of precision under the assumption that you were evaluating a single classifier f . However, if you get into the business of evaluating multiple classifiers $f_1, \cdots, f_k$ on the same test set, you must consider the problem of false discovery. 
+
+    \item Before, you might have been $95\%$ sure that $\epsilon_\mathcal{D}(f) \in \epsilon(f) \pm 0.01$ for a single classifier $f$ and thus the probability of a misleading result was a mere $5\%$. 
+    
+    \item With $k$ classifiers in the mix, it can be hard to guarantee that there is not even one among them whose test set performance is misleading.
+
+    \item You might have no power at all to rule out the possibility that at least one among them received a misleading score.
+
+    \item There’s a special reason to distrust the results that you get on subsequent evaluations. Our analysis of test set performance rested on the \textbf{assumption} that the classifier was chosen \textbf{absent any contact with the test set} and thus we could view the test set as drawn randomly from the underlying population. Here, not only are you testing multiple functions, the \textbf{subsequent function} $f_2$ was chosen after you observed the test set performance of $f_1$. Once \textbf{information from the test set has leaked to the modeler}, it can never be a true test set again in the strictest sense. This problem is called \textbf{adaptive overfitting} \indexlabel{adaptive overfitting}.
+
+    \item While it is possible to leak all information out of a holdout set, and the theoretical worst case scenarios are bleak, these analyses may be too conservative. 
+    
+    \item In practice, take care to create real test sets, to consult them as \textbf{infrequently} as possible, to account for multiple hypothesis testing when reporting confidence intervals, and to dial up your vigilance more aggressively when the stakes are high and your dataset size is small. 
+    
+    \item When running a series of benchmark challenges, it is often good practice to maintain several test sets so that after each round, the old test set can be demoted to a validation set.
+\end{enumerate}
+
+\end{fontSizeEnv}
+
+\section{Statistical Learning Theory \cite{dnn-1}} \label{story: Statistical Learning Theory}
+
+\begin{fontSizeEnv}{8pt}
+
+\begin{enumerate}
+    \item At once, test sets are all that we really have, and yet this fact seems strangely unsatisfying. 
+    \begin{enumerate}
+        \item We seldom possess a true test set - unless we are the ones creating the dataset, someone else has probably already evaluated their own classifier on our ostensible “test set”. And even when we get first dibs, we soon find ourselves frustrated, wishing we could evaluate our subsequent modeling attempts without the gnawing feeling that we cannot trust our numbers.
+
+        \item Even a true test set can only tell us \textit{post hoc} whether a classifier has in fact generalized to the population, not whether we have any reason to expect a \textit{priori} that it should generalize.
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{fontSizeEnv}
+
+\section{Model, environment and distribution shift \cite{dnn-1}} \label{story: Model, environment and distribution shift}
+
+\begin{enumerate}
+    \item Insidiously, sometimes the very deployment of a model can be the catalyst that perturbs the data distribution.
+
+    \item Say, for example, that we trained a model to predict who will repay rather than default on a loan, finding that an applicant’s choice of footwear was associated with the risk of default (Oxfords indicate repayment, sneakers indicate default).
+    
+    \item We might be inclined thereafter to grant a loan to any applicant wearing Oxfords and to deny all applicants wearing sneakers.
+    
+    \item Our ill-considered leap from pattern recognition to decision-making and our failure to critically consider the environment might have disastrous consequences. 
+    
+    \item For starters, as soon as we began making decisions based on footwear, customers would catch on and change their behavior. 
+    
+    \item Before long, all applicants would be wearing Oxfords, without any coincident improvement in credit-worthiness. 
+    
+    \item By introducing our model-based decisions to the environment, we might break the model.
+\end{enumerate}
+
+
+\section{Covariate shift: Medical Diagnostics \cite{dnn-1}} \label{Story: Covariate shift: Medical Diagnostics}
+
+\textbf{Goal}: design an algorithm to detect \textbf{cancer}
+
+\begin{enumerate}
+    \item You collect data from healthy and sick people and you train your algorithm. 
+    \begin{enumerate}
+        \item They were developing a blood test for a disease that predominantly affects older men and hoped to study it using blood samples that they had collected from patients.
+
+        \item However, it is considerably more difficult to obtain blood samples from healthy men than from sick patients already in the system. To compensate, the startup solicited blood donations from students on a university campus to serve as healthy controls in developing their test.
+    \end{enumerate}
+
+    \item It works fine, giving you high accuracy and you conclude that you are ready for a successful career in medical diagnostics.
+
+    \item That is because the test subjects differed in age, hormone levels, physical activity, diet, alcohol consumption, and many more factors unrelated to the disease. 
+    
+    \item This was unlikely to be the case with real patients. 
+    
+    \item Due to their sampling procedure, we could expect to encounter \textbf{extreme covariate shift}.
+\end{enumerate}
+
+\section{Distribution Shift: Self-Driving Cars \cite{dnn-1}} \label{story: Distribution Shift: Self-Driving Cars}
+
+\begin{enumerate}
+    \item Say a company wanted to leverage machine learning for developing self-driving cars. 
+    \item One key component here is a roadside detector. Since real annotated data is expensive to get, they had the (smart and questionable) idea to use synthetic data from a game rendering engine as additional training data. 
+    \item This worked really well on “test data” drawn from the rendering engine. Alas, inside a real car it was a disaster. 
+    \item As it turned out, the roadside had been rendered with a very simplistic texture. 
+    \item More importantly, all the roadside had been rendered with the same texture and the roadside detector learned about this “feature” very quickly.
+\end{enumerate}
+
+\noindent
+\textbf{Similar situation}:
+\begin{enumerate}
+    \item US Army when they first tried to detect tanks in the forest. 
+    \item They took aerial photographs of the forest without tanks, then drove the tanks into the forest and took another set of pictures. 
+    \item The classifier appeared to work perfectly. 
+    \item Unfortunately, it had merely learned how to distinguish trees with shadows from trees without shadows - the first set of pictures was taken in the early morning, the second set at noon.
+
+\end{enumerate}
+
+
+\section{Distribution Shift: Nonstationary Distributions \cite{dnn-1}} \label{story: Distribution Shift: Nonstationary Distributions}
+
+A much more subtle situation arises when the distribution changes slowly (also known as nonstationary distribution) and the model is not updated adequately.
+
+\begin{enumerate}
+    \item We train a computational advertising model and then fail to update it frequently (e.g., we forget to incorporate that an obscure new device called an iPad was just launched).
+
+    \item We build a spam filter. It works well at detecting all spam that we have seen so far. But then the spammers wise up and craft new messages that look unlike anything we have seen before.
+
+    \item We build a product recommendation system. It works throughout the winter but then continues to recommend Santa hats long after Christmas.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

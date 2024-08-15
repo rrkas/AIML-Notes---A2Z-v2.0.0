@@ -1,5 +1,70 @@
 \chapter{Machine Learning (ML)}
 
+\section{A Taxonomy of Learning Problems \cite{dnn-1}} \label{A Taxonomy of Learning Problems}
+
+\begin{enumerate}[itemsep=0.3cm]
+    \item \textbf{Batch Learning}
+    \begin{enumerate}
+        \item In batch learning, we have access to training features and labels $\{(\mathbf{x}_1, y_1), \ldots, (\mathbf{x}_n, y_n)\}$ which we use to train a model $f(x)$. 
+        
+        \item Later on, we deploy this model to score new data $(x, y)$ drawn from the same distribution.
+
+    \end{enumerate}
+
+    \item \textbf{Online Learning}
+    \begin{enumerate}
+        \item the data $(x_i, y_i)$ arrives one sample at a time.
+
+        \item assume that we first observe $x_i$ , then we need to come up with an estimate $f(x_i)$ and only once we have done this, we observe $y_i$ and with it, we receive a reward or incur a loss, given our decision.
+
+        \item in online learning, we have the \textit{following cycle} where we are \textbf{continuously improving} our model given new observations:
+        \[
+            \textrm{model } f_t 
+            \longrightarrow 
+            \textrm{data }  \mathbf{x}_t 
+            \longrightarrow 
+            \textrm{estimate } f_t(\mathbf{x}_t) 
+            \longrightarrow
+            \textrm{observation } y_t 
+            \longrightarrow 
+            \textrm{loss } l(y_t, f_t(\mathbf{x}_t)) 
+            \longrightarrow 
+            \textrm{model } f_{t+1}
+        \]
+
+    \end{enumerate}
+
+    \item \textbf{Bandits}
+    \begin{enumerate}
+        \item Bandits are a special case of Online learning.
+
+        \item While in most learning problems we have a continuously parametrized function f where we want to learn its parameters (e.g., a deep network), in a bandit problem we only have a finite number of arms that we can pull, i.e., a finite number of actions that we can take. 
+
+        \item It is not very surprising that for this simpler problem stronger theoretical guarantees in terms of optimality can be obtained. 
+
+        \item This is often (confusingly) treated as if it were a distinct learning setting.
+
+    \end{enumerate}
+
+    \item \textbf{Control}
+    \begin{enumerate}
+        \item the environment remembers what we did
+
+        \item Not necessarily in an adversarial manner but it will just remember and the response will depend on what happened before.
+
+        \item PID (proportional-integral-derivative) controller algorithms are a popular choice there.\\
+        Likewise, a user’s behavior on a news site will depend on what we showed them previously (e.g., they will read most news only once).
+
+        \item Many such algorithms form a model of the environment in which they act so as to make their decisions appear less random. 
+
+        \item For instance, a coffee boiler controller will observe different temperatures depending on whether it was heating the boiler previously.
+
+    \end{enumerate}
+
+    \item \fullref{Reinforcement Learning}
+\end{enumerate}
+
+
 \input{chapters/ai_ml/ml-algos/Supervised-Learning}
 \input{chapters/ai_ml/ml-algos/Semi-Supervised-Learning}
 \input{chapters/ai_ml/ml-algos/Self-Supervised-Learning}
@@ -39,8 +104,7 @@
 
     \item In principle, we should not touch our test set until after we have chosen all our hyperparameters. Were we to use the test data in the model selection process, there is a risk that we might overfit the test data. Then we would be in serious trouble. If we overfit our training data, there is always the evaluation on test data to keep us honest. But if we overfit the test data, how would we ever know?
 
-    \item The common practice for addressing the problem of \textit{training on the test set} is to split our data three ways, incorporating a \textbf{validation set} in addition to the \textbf{training} and \textbf{test datasets}.
-
+    \item The common practice for addressing the problem of \textit{training on the test set} is to split our data three ways, incorporating a \textbf{validation set} in addition to the \textbf{training} and \textbf{test datasets}.    
 \end{enumerate}
 
 
@@ -120,6 +184,32 @@
         \end{enumerate}
     \end{minipage}
 \end{table}
+
+
+\section{Fairness, Accountability, and Transparency in Machine Learning} \label{Fairness, Accountability, and Transparency in Machine Learning}
+
+\begin{enumerate}
+    \item it is important to remember that when you deploy machine learning systems you are not merely optimizing a predictive model—you are typically providing a tool that will be used to (partially or fully) automate decisions. 
+    
+    \item These technical systems can impact the lives of individuals who are subject to the resulting decisions. 
+    
+    \item The leap from considering predictions to making decisions raises not only new technical questions, but also a slew of ethical questions that must be carefully considered.
+
+    \item Overlooking foreseeable risks to the welfare of a subpopulation could cause us to administer inferior care. 
+    
+    \item Moreover, once we contemplate decision-making systems, we must step back and reconsider how we evaluate our technology. 
+    
+    \item Among other consequences of this change of scope, we will find that accuracy is seldom the right measure.\\
+    When translating predictions into actions, we will often want to take into account the potential cost sensitivity of erring in various ways.
+
+    \item If one way of misclassifying an image could be perceived as a racial sleight of hand, while misclassification to a different category would be harmless, then we might want to adjust our thresholds accordingly, accounting for societal values in designing the decision-making protocol.
+
+    \item \textbf{Example}: If we are deploying a medical diagnostic system, we need to know for which populations it may work and for which it may not.
+
+    \item The various mechanisms by which a model’s predictions become coupled to its training data are unaccounted for in the modeling process. This can lead to what researchers call \textbf{runaway feedback loops}\indexlabel{runaway feedback loops}.
+
+    
+\end{enumerate}
 
 
 
