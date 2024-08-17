@@ -539,6 +539,31 @@ Examples:\\
 
 
 
+\section{Layers and modules \cite{dnn-1}}
+
+\begin{enumerate}
+    \item For MLPs, both the entire model and its constituent layers share this structure:\\
+    The \textbf{entire model} takes in raw \textbf{inputs} (the features), generates \textbf{outputs} (the predictions), and possesses \textbf{parameters} (the combined parameters from all constituent layers).\\
+    Likewise, each \textbf{individual layer} ingests \textbf{inputs} (supplied by the previous layer) generates \textbf{outputs} (the inputs to the subsequent layer), and possesses a set of \textbf{tunable parameters} that are updated according to the signal that flows backwards from the subsequent layer.
+
+    \item A \textbf{module} \indexlabel{module} could describe a single layer, a component consisting of multiple layers, or the entire model itself.
+
+    
+\end{enumerate}
+
+
+\section{Parameter Management \cite{dnn-1}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Parameter Access
+    \begin{enumerate}
+        \item Each layer’s parameters are conveniently located in its attribute.
+
+    \end{enumerate}
+
+\end{enumerate}
+
+
 
 
 
