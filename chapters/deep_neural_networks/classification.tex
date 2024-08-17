@@ -210,11 +210,24 @@ SEE:
 
 
 
+\section{$k$-Nearest Neighbor (KNN) Classification (1951) \cite{wiki/K-nearest_neighbors_algorithm, dnn-1}} \label{k-Nearest Neighbor (KNN) Classification}
 
+\begin{enumerate}
+    \item k-nearest neighbors algorithm (k-NN) is a non-parametric supervised learning method
 
+    \item Here, at training time, the learner simply memorizes the dataset. Then, at prediction time, when confronted with a new point $\mathbf{x}$, the learner looks up the $k$ nearest neighbors (the $k$ points $\mathbf{x}_i'$ that minimize some distance $d(\mathbf{x}, \mathbf{x}_i')$).
+    
+\end{enumerate}
 
+\subsection{$1$-nearest neighbors} \label{1-nearest neighbors}
 
+\begin{enumerate}
+    \item When $k=1$, this algorithm is called \textbf{$1$-nearest neighbors}, and the algorithm will always achieve a training error of zero.\\
+    That however, does not mean that the algorithm will not generalize.\\
+    In fact, it turns out that under some mild conditions, the $1$-nearest neighbor algorithm is consistent (eventually converging to the optimal predictor).
 
+    
+\end{enumerate}
 
 
 

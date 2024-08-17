@@ -79,9 +79,9 @@ $u$ refers in all cases to the weighted sum of all the inputs to the neuron
     \caption{Activation Function: Sigmoid Function}
 \end{figure}
 
-General Equation:
+\subsubsection{General Equation \cite{wiki-Logistic_function,wiki-Sigmoid_function}}
 \[
-    f(x) = {\displaystyle\dfrac{L}{1 + e^{-k(x - x_{0})}}}
+    f(x) = {\dfrac{L}{1 + e^{-k(x - x_{0})}}}
 \]
 
 
@@ -93,27 +93,42 @@ General Equation:
     \item $x_{0}$ is the $x$ value of the function's midpoint
 \end{enumerate}
 
-\vspace{0.2cm}
-\noindent Standard logistic function (sigmoid/ expit):\label{sigmoid}
-\(
-\sigma(x) = {\displaystyle\dfrac{1}{1+e^{-x}}} = {\displaystyle\dfrac{e^{x}}{1+e^{x}}} = 1- \sigma(-x)
-\)
 
-where, $L=1$ , $k=1$ \& $x_{0}=0$
-
-
+\subsubsection{Standard logistic function (sigmoid/ expit) \cite{wiki-Logistic_function,wiki-Sigmoid_function,dnn-1}}  \label{sigmoid}\label{expit}\label{Standard logistic function}
 \[
-    \displaystyle\dfrac{d\sigma(z)}{dz} = \sigma(z)(1 - \sigma(z))
+    \sigma(x) 
+    = {\dfrac{1}{1+e^{-x}}} 
+    = {\dfrac{e^{x}}{1+e^{x}}} 
+    = 1- \sigma(-x)
+    \hfill
+    (L=1 , k=1 \& x_{0}=0)
 \]
 
+\[
+    \dfrac{d}{dx} \operatorname{sigmoid}(x) = \dfrac{\exp(-x)}{(1 + \exp(-x))^2} = \operatorname{sigmoid}(x)\left(1-\operatorname{sigmoid}(x)\right)
+\]
 
-\subsection{Hyperbolic tangent ( $tanh(x)$ ) \cite{wiki-Sigmoid_function,wiki-Hyperbolic_functions}}\label{Hyperbolic tangent}
+\begin{enumerate}
+    \item when the input is close to $0$, the sigmoid function approaches a linear transformation
+
+    \item when the input is $0$, the derivative of the sigmoid function reaches a \textbf{maximum} of $0.25$. As the input diverges from $0$ in either direction, the derivative approaches $0$.
+
+    \item sigmoid’s gradient vanishes both when its inputs are large and when they are small. 
+    
+    \item when backpropagating through many layers where the inputs to many of the sigmoids are close to zero, the gradients of the overall product may vanish.
+
+\end{enumerate}
+
+
+\subsection{Hyperbolic tangent ( $tanh(x)$ ) \cite{wiki-Sigmoid_function,wiki-Hyperbolic_functions, dnn-1}}\label{Hyperbolic tangent}
 
 \[
-    f(x)=\tanh(x)={\displaystyle\frac {e^{x}-e^{-x}}{e^{x}+e^{-x}}}
+    \tanh(x)
+    =\dfrac {\exp({x})-\exp({-x})}{\exp({x})+\exp({-x})} 
+    = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}
 \]
 \[
-    \displaystyle\dfrac{d\tanh(z)}{dz} = 1-\tanh^2(z)
+    \dfrac{d\tanh(z)}{dz} = 1-\tanh^2(z)
 \]
 
 
@@ -123,27 +138,27 @@ where, $L=1$ , $k=1$ \& $x_{0}=0$
 \]
 
 
-\section{Rectifier/ Rectified Linear Unit (ReLU) \cite{wiki-Rectifier}}\label{ReLU}
+\section{Rectifier/ Rectified Linear Unit ( $\operatorname{ReLU}(x)$ ) \cite{wiki-Rectifier,dnn-1}}\label{ReLU}
 In the context of artificial neural networks, the rectifier or ReLU (rectified linear unit) activation function is an activation function defined as the positive part of its argument:
 \[
-    f(x)=x^{+}=\max(0,x)={\displaystyle\frac {x+\dabs{x}}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
+    \operatorname{ReLU}(x)=x^{+}=\max(0,x)={\dfrac {x+\dabs{x}}{2}}={\begin{cases}x&{\text{if }}x>0,\\0&{\text{otherwise}}\end{cases}}
 \]
 \[
-    \displaystyle\dfrac{d\operatorname{ReLU}(z)}{dz}={\begin{cases}1&{\text{if }}z>0,\\0&{\text{otherwise}}\end{cases}}
+    \dfrac{d\operatorname{ReLU}(z)}{dz}={\begin{cases}1&{\text{if }}z>0,\\0&{\text{otherwise}}\end{cases}}
 \]
 
 \subsection{Leaky ReLU \cite{wiki-Rectifier}}\label{Leaky ReLU}
 Leaky ReLUs allow a small, positive gradient when the unit is not active, helping to mitigate the vanishing gradient problem
 \[
-f(x)=max(x, \alpha\cdot x)={\begin{cases}x&{\text{if }}x>0,\\\alpha\cdot x&{\text{otherwise}}\end{cases}} 
+    f(x)=max(x, \alpha\cdot x)={\begin{cases}x&{\text{if }}x>0,\\\alpha\cdot x&{\text{otherwise}}\end{cases}} 
 \]
 
 $\alpha$ is a constant
 
-\subsection{Parametric ReLU (PReLU) \cite{wiki-Rectifier}}\label{Parametric ReLU (PReLU)}
+\subsection{Parametric ReLU ($\operatorname{pReLU}(x)$) \cite{wiki-Rectifier,dnn-1}} \label{Parametric ReLU (PReLU)}
 Parametric ReLUs (PReLUs) take this idea further by making the coefficient of leakage into a parameter that is learned along with the other neural-network parameters
 \[
-f(x)=max(x, a\cdot x)={\begin{cases}x&{\text{if }}x>0,\\a\cdot x&{\text{otherwise}}\end{cases}}
+    \operatorname{pReLU}(x)=max(x, a\cdot x)={\begin{cases}x&{\text{if }}x>0,\\a\cdot x&{\text{otherwise}}\end{cases}}
 \]
 
 $a$ is a learnable parameter
@@ -177,10 +192,10 @@ A smooth approximation to the rectifier is the analytic function.
 f(x)=\ln(1+e^{x}) 
 \]
 \[
-f'(x)={\displaystyle\frac {e^{x}}{1+e^{x}}}={\displaystyle \frac {1}{1+e^{-x}}} 
+f'(x)={\dfrac {e^{x}}{1+e^{x}}}={\displaystyle \dfrac {1}{1+e^{-x}}} 
 \]
 \[ 
-    \ln \left(1+e^{x}\right)\approx {\begin{cases}\ln 2,&x=0,\\[6pt]{\displaystyle \frac {x}{1-e^{-x/\ln 2}}},&x\neq 0\end{cases}} 
+    \ln \left(1+e^{x}\right)\approx {\begin{cases}\ln 2,&x=0,\\[6pt]{\displaystyle \dfrac {x}{1-e^{-x/\ln 2}}},&x\neq 0\end{cases}} 
 \]
 
 \subsection{Exponential linear units (ELU) \cite{wiki-Rectifier}}\label{Exponential linear units (ELU)}
@@ -201,7 +216,7 @@ Mish is non-monotonic and self-gated. It was inspired by Swish, itself a variant
 
 \subsection{Squareplus \cite{wiki-Rectifier}}\label{Squareplus}
 \[
-    {\displaystyle \operatorname {squareplus} _{b}(x)={\displaystyle\frac {x+{\sqrt {x^{2}+b}}}{2}}}
+    {\displaystyle \operatorname {squareplus} _{b}(x)={\dfrac {x+{\sqrt {x^{2}+b}}}{2}}}
 \]
 
 where \({\displaystyle b\geq 0}\) is a hyperparameter that determines the "size" of the curved \({\displaystyle x=0}\).
