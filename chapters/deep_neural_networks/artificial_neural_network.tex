@@ -565,10 +565,50 @@ Examples:\\
 
 
 
+\section{Function Classes \cite{dnn-1}} \label{nn: Function Classes}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=3.5cm, keepaspectratio]{Pictures/deep_neural_networks/functionclasses.jpg}
+\end{figure}
+
+\begin{enumerate}[itemsep=0.15cm]
+    \item Consider $\mathcal{F}$, the class of functions that a specific network architecture (together with learning rates and other hyperparameter settings) can reach
+
+    \item for all $f \in \mathcal{F}$ there exists some set of parameters (e.g., weights and biases) that can be obtained through training on a suitable dataset
+
+    \item assume that $f^\ast$ is the “truth” function that we really would like to find
+
+    \item  it is in $\mathcal{F}$, we are in good shape but typically we will not be quite so lucky.\\
+    Instead, we will try to find some $f_\mathcal{F}^\ast$ which is our best bet within $\mathcal{F}$.\\
+    For instance, given a dataset with features $\mathbf{X}$ and labels $\mathbf{y}$, we might try finding it by solving the following optimization problem:
+    $
+        \hfill
+        f^*_\mathcal{F} \stackrel{\textrm{def}}{=} \mathop{\mathrm{argmin}}_f L(\mathbf{X}, \mathbf{y}, f) \textrm{ subject to } f \in \mathcal{F}
+        \hfill
+    $
+
+    \item regularization may control complexity of $\mathcal{F}$ and achieve consistency, so a larger size of training data generally leads to better $f^*_\mathcal{F}$.
+
+    \item It is only reasonable to assume that if we design a different and more powerful architecture $\mathcal{F}'$ we should arrive at a better outcome.\\
+    we would expect that $f^*_{\mathcal{F}'}$ is “better” than $f^*_{\mathcal{F}}$.\\
+    However, if $\mathcal{F} \not\subseteq \mathcal{F}'$ there is no guarantee that this should even happen.\\
+    In fact, $f^*_{\mathcal{F}'}$ might well be worse.
+    \begin{enumerate}
+        \item for non-nested function classes, a larger function class does not always move closer to the “truth” function $f^*$
+
+        \item though $\mathcal{F}_3$ is closer to $f^*$ than $\mathcal{F}_1$, $\mathcal{F}_6$ moves away and there is no guarantee that further increasing the complexity can reduce the distance from $f^*$
+
+        \item With nested function classes $\mathcal{F}_1 \subseteq \cdots \subseteq \mathcal{F}_6$, we can avoid the aforementioned issue from the non-nested function classes.
+
+    \end{enumerate}
+
+    \item only if larger function classes contain the smaller ones are we guaranteed that increasing them strictly increases the expressive power of the network.
+
+    \item if we can train the newly-added layer into an identity function $f(\mathbf{x}) = \mathbf{x}$, the new model will be as effective as the original model. As the new model may get a better solution to fit the training dataset, the added layer might make it easier to reduce training errors.
 
 
-
-
+\end{enumerate}
 
 
 

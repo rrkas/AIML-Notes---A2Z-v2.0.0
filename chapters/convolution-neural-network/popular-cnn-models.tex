@@ -1,12 +1,24 @@
 \chapter{Popular CNN Models}
 
-\section{LeNet/ LeNet-5 (1998) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning,wiki-lenet,ieee/726791/cnn-lenet,medium/lenet-5-complete-architecture-84c6d08215f9}}\label{cnn: LeNet}
+\section{LeNet/ LeNet-5 (1998) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning,wiki-lenet,ieee/726791/cnn-lenet,medium/lenet-5-complete-architecture-84c6d08215f9,dnn-1}} \label{cnn: LeNet}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/LeNet_Original_Image.jpg}
-    \caption{CNN: LeNet}
-\end{figure}
+\begin{table}[H]
+    \begin{minipage}{0.7\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/lenet.jpg}
+            \caption*{CNN: LeNet \cite{dnn-1}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/lenet-vert.jpg}
+            \caption*{CNN: LeNet \cite{dnn-1}}
+        \end{figure}
+    \end{minipage}
+\end{table}
 
 \begin{enumerate}
     \item LeNet is a convolutional neural network structure proposed by LeCun et al. in 1998. \cite{ieee/726791/cnn-lenet}
@@ -15,127 +27,74 @@
     \item In general, LeNet refers to LeNet-5 and is a simple convolutional neural network.
 \end{enumerate}
 
-\begin{customTableWrapper}{1.3}
-\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}c|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
-    \caption{CNN: LeNet-5 Architecture \cite{medium/lenet-5-complete-architecture-84c6d08215f9}}\\
+\begin{lstlisting}[language=Python]
+def init_cnn(module):
+    """Initialize weights for CNNs."""
+    if type(module) == nn.Linear or type(module) == nn.Conv2d:
+        nn.init.xavier_uniform_(module.weight)
 
-    \hline
-    \customTableHeaderColor
-    \textbf{Layer No.} & \textbf{Layer} & \textbf{Feature Map} & \textbf{Size} & \textbf{Kernel Size} & \textbf{Stride} & \textbf{Activation} & \textbf{Trainable Params} \\
-    \hline
-    \endfirsthead
+class LeNet(d2l.Classifier):
+    """The LeNet-5 model."""
+    def __init__(self, lr=0.1, num_classes=10):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.Sequential(
+            nn.LazyConv2d(6, kernel_size=5, padding=2), nn.Sigmoid(),
+            nn.AvgPool2d(kernel_size=2, stride=2),
+            nn.LazyConv2d(16, kernel_size=5), nn.Sigmoid(),
+            nn.AvgPool2d(kernel_size=2, stride=2),
+            nn.Flatten(),
+            nn.LazyLinear(120), nn.Sigmoid(),
+            nn.LazyLinear(84), nn.Sigmoid(),
+            nn.LazyLinear(num_classes))
 
-    \hline
-    \customTableHeaderColor
-    \textbf{Layer No.} & \textbf{Layer} & \textbf{Feature Map} & \textbf{Size} & \textbf{Kernel Size} & \textbf{Stride} & \textbf{Activation} & \textbf{Trainable Params} \\
-    \hline
-    \endhead
+@d2l.add_to_class(d2l.Classifier)
+def layer_summary(self, X_shape):
+    X = torch.randn(*X_shape)
+    for layer in self.net:
+        X = layer(X)
+        print(layer.__class__.__name__, 'output shape:\t', X.shape)
 
-    \hline\endfoot
-    \hline\endlastfoot
-
-    Input & Image & 1 & $32\times 32$ & - & - & - & - \\
-    \hline
-
-    1 & Convolution & 6 & $28\times 28$ & $5\times 5$ & 1 & tanh & 156 \\
-    \hline
-
-    2 & Average Pooling & 6 & $14\times 14$ & $2\times 2$ & 2 & tanh & 0 \\
-    \hline
-
-    3 & Convolution & 16 & $10\times 10$ & $5\times 5$ & 1 & tanh & 2416 \\
-    \hline
-
-    4 & Average Pooling & 16 & $5\times 5$ & $2\times 2$ & 2 & tanh & 0 \\
-    \hline
-
-    5 & Convolution & 120 & $1\times 1$ & $5\times 5$ & 1 & tanh & 48120 \\
-    \hline
-
-    6 & FC & - & 84 & - & - & tanh & 10044 \\
-    \hline
-
-    Output & FC & - & 10 & - & - & softmax & 850 \\
-    \hline
-\end{longtable}
-\end{customTableWrapper}
-
-
-\begin{lstlisting}[language=Python,caption=LeNet - tensorflow - Python]
-import tensorflow as tf
-from tensorflow.keras import layers, models
-
-# Define the model
-model = models.Sequential()
-
-# Layer 1: Convolutional Layer
-model.add(
-    layers.Conv2D(6, (5, 5), 
-    activation='tanh', 
-    input_shape=(32, 32, 1))
-)
-
-# Layer 2: Average Pooling
-model.add(layers.AveragePooling2D((2, 2)))
-
-# Layer 3: Convolutional Layer
-model.add(layers.Conv2D(16, (5, 5), activation='tanh'))
-
-# Layer 4: Average Pooling
-model.add(layers.AveragePooling2D((2, 2)))
-
-# Layer 5: Convolutional Layer
-model.add(layers.Conv2D(120, (5, 5), activation='tanh'))
-
-# Flatten the tensor
-model.add(layers.Flatten())
-
-# Layer 6: Fully Connected Layer
-model.add(layers.Dense(84, activation='tanh'))
-
-# Output Layer: Fully Connected Layer
-model.add(layers.Dense(10, activation='softmax'))
-
-# Print the model summary
-model.summary()
+model = LeNet()
+model.layer_summary((1, 1, 28, 28))
 \end{lstlisting}
 
-\textbf{Output}:
+
 \begin{lstlisting}[numbers=none]
-Model: "sequential"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- conv2d (Conv2D)             (None, 28, 28, 6)         156
- average_pooling2d (Average  (None, 14, 14, 6)         0
- Pooling2D)
- conv2d_1 (Conv2D)           (None, 10, 10, 16)        2416
- average_pooling2d_1 (Avera  (None, 5, 5, 16)          0
- gePooling2D)
- conv2d_2 (Conv2D)           (None, 1, 1, 120)         48120
- flatten (Flatten)           (None, 120)               0
- dense (Dense)               (None, 84)                10164
- dense_1 (Dense)             (None, 10)                850
-=================================================================
-Total params: 61706 (241.04 KB)
-Trainable params: 61706 (241.04 KB)
-Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________
+Conv2d output shape:         torch.Size([1, 6, 28, 28])
+Sigmoid output shape:        torch.Size([1, 6, 28, 28])
+AvgPool2d output shape:      torch.Size([1, 6, 14, 14])
+Conv2d output shape:         torch.Size([1, 16, 10, 10])
+Sigmoid output shape:        torch.Size([1, 16, 10, 10])
+AvgPool2d output shape:      torch.Size([1, 16, 5, 5])
+Flatten output shape:        torch.Size([1, 400])
+Linear output shape:         torch.Size([1, 120])
+Sigmoid output shape:        torch.Size([1, 120])
+Linear output shape:         torch.Size([1, 84])
+Sigmoid output shape:        torch.Size([1, 84])
+Linear output shape:         torch.Size([1, 10])
 \end{lstlisting}
 
 
-\section{AlexNet (2012) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning, medium/@siddheshb008/alexnet-architecture-explained-b6240c528bd5,wiki-AlexNet}}\label{cnn: AlexNet}
 
-\begin{figure}[h]
+
+
+
+
+\section{AlexNet (2012) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning, medium/@siddheshb008/alexnet-architecture-explained-b6240c528bd5,wiki-AlexNet,dnn-1}} \label{cnn: AlexNet}
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/alexnet.jpg}
-    \caption{CNN: AlexNet \cite{medium/@siddheshb008/alexnet-architecture-explained-b6240c528bd5}}
+    \caption*{CNN: AlexNet \cite{dnn-1}}
 \end{figure}
 
 \begin{enumerate}
     \item AlexNet is the name of a convolutional neural network (CNN) architecture, designed by \textbf{Alex Krizhevsky} in collaboration with Ilya Sutskever and Geoffrey Hinton, who was Krizhevsky's Ph.D. advisor at the \textbf{University of Toronto}. \cite{wiki-AlexNet}
 
-    \item This was the first architecture that used GPU to boost the training performance.
+    \item This was the first architecture that used \textbf{GPU} to boost the training performance.
+
+    \item AlexNet changed the sigmoid activation function to a simpler \textbf{ReLU activation function}
 
     \item Architecture:\\
     \(
@@ -163,184 +122,434 @@ _________________________________________________________________
 \end{enumerate}
 
 \begin{lstlisting}[language=Python,caption=AlexNet - tensorflow - Python]
-import tensorflow as tf
-from tensorflow.keras import layers, models
-
-model = models.Sequential()
-
-# 1st Convolutional Layer
-model.add(layers.Conv2D(96, (11, 11), strides=4, activation='relu', 
-        input_shape=(227, 227, 3)))
-model.add(layers.MaxPooling2D((3, 3), strides=2))
-
-# 2nd Convolutional Layer
-model.add(layers.Conv2D(256, (5, 5), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((3, 3), strides=2))
-
-# 3rd Convolutional Layer
-model.add(layers.Conv2D(384, (3, 3), padding='same', activation='relu'))
-
-# 4th Convolutional Layer
-model.add(layers.Conv2D(384, (3, 3), padding='same', activation='relu'))
-
-# 5th Convolutional Layer
-model.add(layers.Conv2D(256, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((3, 3), strides=2))
-
-# Flatten
-model.add(layers.Flatten())
-
-# 1st Fully Connected Layer
-model.add(layers.Dense(4096, activation='relu'))
-model.add(layers.Dropout(0.5))
-
-# 2nd Fully Connected Layer
-model.add(layers.Dense(4096, activation='relu'))
-model.add(layers.Dropout(0.5))
-
-# Output Layer
-model.add(layers.Dense(1000, activation='softmax'))
-
-# Print the model summary
-model.summary()
+class AlexNet(d2l.Classifier):
+    def __init__(self, lr=0.1, num_classes=10):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = tf.keras.models.Sequential([
+            tf.keras.layers.Conv2D(filters=96, kernel_size=11, strides=4,
+                                   activation='relu'),
+            tf.keras.layers.MaxPool2D(pool_size=3, strides=2),
+            tf.keras.layers.Conv2D(filters=256, kernel_size=5, padding='same',
+                                   activation='relu'),
+            tf.keras.layers.MaxPool2D(pool_size=3, strides=2),
+            tf.keras.layers.Conv2D(filters=384, kernel_size=3, padding='same',
+                                   activation='relu'),
+            tf.keras.layers.Conv2D(filters=384, kernel_size=3, padding='same',
+                                   activation='relu'),
+            tf.keras.layers.Conv2D(filters=256, kernel_size=3, padding='same',
+                                   activation='relu'),
+            tf.keras.layers.MaxPool2D(pool_size=3, strides=2),
+            tf.keras.layers.Flatten(),
+            tf.keras.layers.Dense(4096, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(4096, activation='relu'),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(num_classes)])
+AlexNet().layer_summary((1, 224, 224, 1))
 \end{lstlisting}
 
 \textbf{Output}:
 
 \begin{lstlisting}[numbers=none]
-Model: "sequential"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- conv2d (Conv2D)             (None, 55, 55, 96)        34944     
- max_pooling2d (MaxPooling2  (None, 27, 27, 96)        0         
- D)                                                              
- conv2d_1 (Conv2D)           (None, 27, 27, 256)       614656    
- max_pooling2d_1 (MaxPoolin  (None, 13, 13, 256)       0         
- g2D)                                                            
- conv2d_2 (Conv2D)           (None, 13, 13, 384)       885120    
- conv2d_3 (Conv2D)           (None, 13, 13, 384)       1327488   
- conv2d_4 (Conv2D)           (None, 13, 13, 256)       884992    
- max_pooling2d_2 (MaxPoolin  (None, 6, 6, 256)         0         
- g2D)                                                            
- flatten (Flatten)           (None, 9216)              0         
- dense (Dense)               (None, 4096)              37752832  
- dropout (Dropout)           (None, 4096)              0         
- dense_1 (Dense)             (None, 4096)              16781312  
- dropout_1 (Dropout)         (None, 4096)              0         
- dense_2 (Dense)             (None, 1000)              4097000   
-=================================================================
-Total params: 62378344 (237.95 MB)
-Trainable params: 62378344 (237.95 MB)
-Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________
+Conv2D output shape:         (1, 54, 54, 96)
+MaxPooling2D output shape:   (1, 26, 26, 96)
+Conv2D output shape:         (1, 26, 26, 256)
+MaxPooling2D output shape:   (1, 12, 12, 256)
+Conv2D output shape:         (1, 12, 12, 384)
+Conv2D output shape:         (1, 12, 12, 384)
+Conv2D output shape:         (1, 12, 12, 256)
+MaxPooling2D output shape:   (1, 5, 5, 256)
+Flatten output shape:        (1, 6400)
+Dense output shape:  (1, 4096)
+Dropout output shape:        (1, 4096)
+Dense output shape:  (1, 4096)
+Dropout output shape:        (1, 4096)
+Dense output shape:  (1, 10)
 \end{lstlisting}
 
 
-\section{VGG-16 (2014) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning,arxiv-1409.1556,gfg-vgg-16-cnn-model}}\label{cnn: VGG-16}
 
-\begin{figure}[h]
+
+
+
+
+
+
+
+
+
+\section{VGG-16 (2014) \cite{gfg-convolutional-neural-network-cnn-in-machine-learning,arxiv-1409.1556,gfg-vgg-16-cnn-model,dnn-1}}\label{cnn: VGG-16}
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth, height=7cm, keepaspectratio]{Pictures/convolutional-neural-network/vgg-16-1.png}
-    \caption{VGG-16: Architecture - Visual}
-\end{figure}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth, height=2.5cm, keepaspectratio]{Pictures/convolutional-neural-network/vgg-16-2.png}
-    \caption{VGG-16: Architecture - Visual (simplified)}
+    \includegraphics[width=\linewidth, height=7cm, keepaspectratio]{Pictures/convolutional-neural-network/vgg.jpg}
+    \caption*{cnn: VGG-16 \cite{dnn-1}}
 \end{figure}
 
 \begin{enumerate}
     \item The VGG-16 model is a convolutional neural network (CNN) architecture that was proposed by the \textbf{Visual Geometry Group (VGG)} at the \textbf{University of Oxford}.
+
+    \item The key idea was to use multiple convolutions in between downsampling via max-pooling in the form of a block.
+
 \end{enumerate}
 
-\begin{lstlisting}[language=Python,caption=VGG-16 - tensorflow - Python]
-import tensorflow as tf
-from tensorflow.keras import layers, models
+\begin{lstlisting}[language=Python]
+def vgg_block(num_convs, out_channels):
+    layers = []
+    for _ in range(num_convs):
+        layers.append(nn.LazyConv2d(out_channels, kernel_size=3, padding=1))
+        layers.append(nn.ReLU())
+    layers.append(nn.MaxPool2d(kernel_size=2,stride=2))
+    return nn.Sequential(*layers)
 
-model = models.Sequential()
+class VGG(d2l.Classifier):
+    def __init__(self, arch, lr=0.1, num_classes=10):
+        super().__init__()
+        self.save_hyperparameters()
+        conv_blks = []
+        for (num_convs, out_channels) in arch:
+            conv_blks.append(vgg_block(num_convs, out_channels))
+        self.net = nn.Sequential(
+            *conv_blks, nn.Flatten(),
+            nn.LazyLinear(4096), nn.ReLU(), nn.Dropout(0.5),
+            nn.LazyLinear(4096), nn.ReLU(), nn.Dropout(0.5),
+            nn.LazyLinear(num_classes))
+        self.net.apply(d2l.init_cnn)
 
-# Block 1
-model.add(layers.Conv2D(64, (3, 3), padding='same', activation='relu', 
-            input_shape=(224, 224, 3)))
-model.add(layers.Conv2D(64, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
-# Block 2
-model.add(layers.Conv2D(128, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(128, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
-# Block 3
-model.add(layers.Conv2D(256, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(256, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(256, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
-# Block 4
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
-# Block 5
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.Conv2D(512, (3, 3), padding='same', activation='relu'))
-model.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
-# Fully connected layers
-model.add(layers.Flatten())
-model.add(layers.Dense(4096, activation='relu'))
-model.add(layers.Dropout(0.5))
-model.add(layers.Dense(4096, activation='relu'))
-model.add(layers.Dropout(0.5))
-model.add(layers.Dense(1000, activation='softmax'))
-
-
-model.summary()
+VGG(arch=((1, 64), (1, 128), (2, 256), (2, 512), (2, 512))).layer_summary(
+    (1, 1, 224, 224))
 \end{lstlisting}
 
 \begin{lstlisting}[numbers=none]
-Model: "sequential"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- conv2d (Conv2D)             (None, 224, 224, 64)      1792      
- conv2d_1 (Conv2D)           (None, 224, 224, 64)      36928     
- max_pooling2d (MaxPooling2  (None, 112, 112, 64)      0         
- D)                                                              
- conv2d_2 (Conv2D)           (None, 112, 112, 128)     73856     
- conv2d_3 (Conv2D)           (None, 112, 112, 128)     147584    
- max_pooling2d_1 (MaxPoolin  (None, 56, 56, 128)       0         
- g2D)                                                            
- conv2d_4 (Conv2D)           (None, 56, 56, 256)       295168    
- conv2d_5 (Conv2D)           (None, 56, 56, 256)       590080    
- conv2d_6 (Conv2D)           (None, 56, 56, 256)       590080    
- max_pooling2d_2 (MaxPoolin  (None, 28, 28, 256)       0         
- g2D)                                                            
- conv2d_7 (Conv2D)           (None, 28, 28, 512)       1180160   
- conv2d_8 (Conv2D)           (None, 28, 28, 512)       2359808   
- conv2d_9 (Conv2D)           (None, 28, 28, 512)       2359808   
- max_pooling2d_3 (MaxPoolin  (None, 14, 14, 512)       0         
- g2D)                                                            
- conv2d_10 (Conv2D)          (None, 14, 14, 512)       2359808   
- conv2d_11 (Conv2D)          (None, 14, 14, 512)       2359808   
- conv2d_12 (Conv2D)          (None, 14, 14, 512)       2359808   
- max_pooling2d_4 (MaxPoolin  (None, 7, 7, 512)         0         
- g2D)
- flatten (Flatten)           (None, 25088)             0         
- dense (Dense)               (None, 4096)              102764544 
- dropout (Dropout)           (None, 4096)              0         
- dense_1 (Dense)             (None, 4096)              16781312  
- dropout_1 (Dropout)         (None, 4096)              0         
- dense_2 (Dense)             (None, 1000)              4097000   
-=================================================================
-Total params: 138357544 (527.79 MB)
-Trainable params: 138357544 (527.79 MB)
-Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________
+Sequential output shape:     torch.Size([1, 64, 112, 112])
+Sequential output shape:     torch.Size([1, 128, 56, 56])
+Sequential output shape:     torch.Size([1, 256, 28, 28])
+Sequential output shape:     torch.Size([1, 512, 14, 14])
+Sequential output shape:     torch.Size([1, 512, 7, 7])
+Flatten output shape:        torch.Size([1, 25088])
+Linear output shape:         torch.Size([1, 4096])
+ReLU output shape:   torch.Size([1, 4096])
+Dropout output shape:        torch.Size([1, 4096])
+Linear output shape:         torch.Size([1, 4096])
+ReLU output shape:   torch.Size([1, 4096])
+Dropout output shape:        torch.Size([1, 4096])
+Linear output shape:         torch.Size([1, 10])
 \end{lstlisting}
+
+
+
+
+
+
+\section*{LeNet, AlexNet, and VGG \cite{dnn-1}}
+\begin{enumerate}
+    \item all share a common design pattern: extract features exploiting spatial structure via a sequence of convolutions and pooling layers and post-process the representations via fully connected layers.
+
+    \item The improvements upon LeNet by AlexNet and VGG mainly lie in how these later networks widen and deepen these two modules.
+
+    
+\end{enumerate}
+
+
+\subsection*{major challenges \cite{dnn-1}}
+\begin{enumerate}
+    \item the fully connected layers at the end of the architecture consume tremendous numbers of parameters
+
+    \item it is equally impossible to add fully connected layers earlier in the network to increase the degree of nonlinearity: doing so would destroy the spatial structure and require potentially even more memory
+
+\end{enumerate}
+
+
+
+
+
+
+\section{Network In Network (NiN) (2013) \cite{arxiv/1312.4400-nin,medium/towardsdatascience.com/review-nin-network-in-network-image-classification-69e271e499ee,dnn-1}}\label{Network In Network (NiN)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=6.5cm, keepaspectratio]{Pictures/convolutional-neural-network/nin.jpg}
+\end{figure}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item They were proposed based on a very simple insight: 
+    \begin{enumerate}
+        \item use $1\times 1$ convolutions to add local nonlinearities across the channel activations 
+        \item use global average pooling to integrate across all locations in the last representation layer. 
+    \end{enumerate}
+    
+    \item Note that global average pooling would not be effective, were it not for the added nonlinearities. 
+
+\end{enumerate}
+
+
+\begin{lstlisting}[language=Python]
+def nin_block(out_channels, kernel_size, strides, padding):
+    return nn.Sequential(
+        nn.LazyConv2d(out_channels, kernel_size, strides, padding), nn.ReLU(),
+        nn.LazyConv2d(out_channels, kernel_size=1), nn.ReLU(),
+        nn.LazyConv2d(out_channels, kernel_size=1), nn.ReLU())
+
+class NiN(d2l.Classifier):
+    def __init__(self, lr=0.1, num_classes=10):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.Sequential(
+            nin_block(96, kernel_size=11, strides=4, padding=0),
+            nn.MaxPool2d(3, stride=2),
+            nin_block(256, kernel_size=5, strides=1, padding=2),
+            nn.MaxPool2d(3, stride=2),
+            nin_block(384, kernel_size=3, strides=1, padding=1),
+            nn.MaxPool2d(3, stride=2),
+            nn.Dropout(0.5),
+            nin_block(num_classes, kernel_size=3, strides=1, padding=1),
+            nn.AdaptiveAvgPool2d((1, 1)),
+            nn.Flatten())
+        self.net.apply(d2l.init_cnn)
+
+NiN().layer_summary((1, 1, 224, 224))
+\end{lstlisting}
+
+\begin{lstlisting}[numbers=none]
+Sequential output shape:     torch.Size([1, 96, 54, 54])
+MaxPool2d output shape:      torch.Size([1, 96, 26, 26])
+Sequential output shape:     torch.Size([1, 256, 26, 26])
+MaxPool2d output shape:      torch.Size([1, 256, 12, 12])
+Sequential output shape:     torch.Size([1, 384, 12, 12])
+MaxPool2d output shape:      torch.Size([1, 384, 5, 5])
+Dropout output shape:        torch.Size([1, 384, 5, 5])
+Sequential output shape:     torch.Size([1, 10, 5, 5])
+AdaptiveAvgPool2d output shape:      torch.Size([1, 10, 1, 1])
+Flatten output shape:        torch.Size([1, 10])
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\section{Multi-Branch Networks (GoogLeNet) (2015) \cite{arxiv/1409.4842-googlenet,dnn-1}} \label{Multi-Branch Networks (GoogLeNet)}
+
+\begin{table}[H]
+    \begin{minipage}{0.45\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=3.5cm, keepaspectratio]{Pictures/convolutional-neural-network/inception-block.jpg}
+            \caption*{Inception Block}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=3.5cm, keepaspectratio]{Pictures/convolutional-neural-network/inception-full-90-googlenet.jpg}
+            \caption*{GoogleNet}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\subsection{Inception Blocks \cite{dnn-1}} \label{Inception Blocks}
+
+\begin{enumerate}[itemsep=0.1cm]
+    \item the inception block consists of four \textbf{parallel branches}
+    \begin{enumerate}
+        \item The first three branches use convolutional layers with window sizes of $1\times 1$, $3\times 3$, and $5\times 5$ to extract information from different spatial sizes. 
+        
+        \item The middle two branches also add a $1\times 1$ convolution of the input to reduce the number of channels, reducing the model’s complexity. 
+        
+        \item The fourth branch uses a $3\times 3$ max-pooling layer, followed by a $1\times 1$ convolutional layer to change the number of channels.
+
+    \end{enumerate}
+
+    \item The four branches all use appropriate padding to give the input and output the same height and width. 
+
+    \item Finally, the outputs along each branch are concatenated along the channel dimension and comprise the block’s output. 
+
+    \item The commonly-tuned hyper-parameters of the Inception block are the number of output channels per layer, i.e., how to allocate capacity among convolutions of different size.
+
+    \item To gain some intuition for why this network works so well, consider the combination of the filters. They explore the image in a variety of filter sizes.\\
+    This means that details at different extents can be recognized efficiently by filters of different sizes.\\
+    At the same time, we can allocate different amounts of parameters for different filters.
+
+\end{enumerate}
+
+
+\subsection{GoogLeNet Model \cite{dnn-1}}
+
+\begin{enumerate}
+    \item GoogLeNet uses a stack of a total of 9 inception blocks, arranged into three groups with max-pooling in between, and global average pooling in its head to generate its estimates. 
+    
+    \item Max-pooling between inception blocks reduces the dimensionality.
+
+    \item At its stem, the first module is similar to AlexNet and LeNet.
+
+    \item The GoogLeNet model is computationally complex. 
+    
+    \item Note the large number of relatively arbitrary hyperparameters in terms of the number of channels chosen, the number of blocks prior to dimensionality reduction, the relative partitioning of capacity across channels, etc.
+
+    
+\end{enumerate}
+
+
+
+\section{Residual Networks (ResNet) \cite{dnn-1}} \label{Residual Networks (ResNet)}
+
+SEE: \fullref{nn: Function Classes}
+
+\begin{table}[H]
+    \begin{minipage}[b]{0.4\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/resnet-block.jpg}
+            \caption{Resnet Block}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.55\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/resnet18-90.jpg}
+            \caption{ResNet-18 architecture}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\begin{enumerate}
+    \item if we can train the newly-added layer into an identity function $f(\mathbf{x}) = \mathbf{x}$, the new model will be as effective as the original model. As the new model may get a better solution to fit the training dataset, the added layer might make it easier to reduce training errors.
+
+    \item At the heart of the proposed residual network (ResNet) is the idea that every additional layer should more easily contain the identity function as one of its elements. 
+    
+    \item The considerations are rather profound but they led to a surprisingly simple solution, a residual block.
+
+    
+\end{enumerate}
+
+
+
+\subsection{Residual Block \cite{dnn-1}} \label{Residual Block}
+
+\begin{table}[H]
+    \begin{minipage}{0.25\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/convolutional-neural-network/residual-block.jpg}
+            \caption{Residual Block}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\linewidth}
+        \begin{customTableWrapper}{1.3}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{l p{6cm}}
+                    $\mathbf{x}$ & input \\
+                    $f(\mathbf{x})$ & desired underlying mapping we want to obtain by learning\\
+                    $g(\mathbf{x}) = f(\mathbf{x}) - \mathbf{x}$ & residual mapping
+                \end{tabular}
+            \end{table}
+        \end{customTableWrapper}
+    \end{minipage}
+\end{table}
+
+\begin{enumerate}
+    \item If the identity mapping $f(\mathbf{x}) = \mathbf{x}$ is the desired underlying mapping, the residual mapping amounts to $g(\mathbf{x}) = 0$ and it is thus easier to learn: we only need to push the weights and biases of the upper weight layer (e.g., fully connected layer and convolutional layer) within the dotted-line box to zero.
+
+    \item he right figure illustrates the residual block of ResNet, where the solid line carrying the layer input $\mathbf{x}$ to the addition operator is called a \textbf{residual connection}\indexlabel{residual connection} (or \textit{shortcut connection}). 
+    
+    \item With residual blocks, inputs can forward propagate faster through the residual connections across layers. 
+    
+    \item The residual block can be thought of as a \textbf{special case of the multi-branch Inception block}: it has two branches one of which is the identity mapping.
+
+    \item One of the \textbf{challenges} one encounters in the design of ResNet is the trade-off between nonlinearity and dimensionality within a given block.\\
+    That is, we could add more nonlinearity by increasing the number of layers, or by increasing the width of the convolutions.\\
+    An alternative strategy is to increase the number of channels that can carry information between blocks. Unfortunately, the latter comes with a quadratic penalty since the computational cost of ingesting $c_i$ channels and emitting $c_o$ channels is proportional to $\mathcal{O}(c_\textrm{i} \cdot c_\textrm{o})$
+\end{enumerate}
+
+
+
+
+
+
+\section{ResNeXt \cite{dnn-1}} \label{ResNeXt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/resnext-block.jpg}
+    \caption{Resnext Block}
+\end{figure}
+
+
+\begin{enumerate}
+    \item Applying the idea of \textbf{multiple independent groups} to the ResNet block led to the design of ResNeXt. 
+    
+    \item Different from the smorgasbord of transformations in Inception, ResNeXt adopts the same transformation in all branches, thus minimizing the need for manual tuning of each branch.
+
+    \item Breaking up a convolution from $c_i$ to $c_o$ channels into one of $g$ groups of size $c_i/g$ generating $g$ outputs of size $c_o/g$ is called, quite fittingly, a \textbf{grouped convolution} \indexlabel{grouped convolution}.
+
+    \item The computational cost (proportionally) is reduced from $\mathcal{O}(c_\textrm{i} \cdot c_\textrm{o})$ to $\mathcal{O}(g \cdot (c_\textrm{i}/g) \cdot (c_\textrm{o}/g)) = \mathcal{O}(c_\textrm{i} \cdot c_\textrm{o} / g)$, i.e., it is $g$ times faster.
+
+    \item Even better, the number of parameters needed to generate the output is also reduced from a $c_\textrm{i} \times c_\textrm{o}$ matrix to $g$ smaller matrices of size $(c_\textrm{i}/g) \times (c_\textrm{o}/g)$, again a $g$ times reduction.
+
+    \item we assume that both $c_i$ and $c_o$ are divisible by $g$.
+
+    \item The only challenge in this design is that no information is exchanged between the $g$ groups\\
+    The ResNeXt block of Fig. 8.6.5 amends this in two ways:
+    \begin{enumerate}
+        \item the grouped convolution with a $3 \times 3$ kernel is sandwiched in between two $1 \times 1$ convolutions
+
+        \item The second one serves double duty in changing the number of channels back
+
+        \item The benefit is that we only pay the $\mathcal{O}(c \cdot b)$ cost for $1 \times 1$ kernels and can make do with an $\mathcal{O}(b^2 / g)$ cost for $3 \times 3$ kernels
+
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\section{Densely Connected Networks (DenseNet) \cite{dnn-1}} \label{Densely Connected Networks (DenseNet)}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item DenseNet is characterized by both\\
+    the \textbf{connectivity pattern} where each layer connects to all the preceding layers and\\
+    the concatenation operation (rather than the addition operator in ResNet) to preserve and reuse features from earlier layers.
+
+    \item Taylor expansion for functions At the point $x = 0$ :
+    \[
+        \hfill
+        f(x) = f(0) + x \cdot \left[f'(0) + x \cdot \left[\frac{f''(0)}{2!}  + x \cdot \left[\frac{f'''(0)}{3!}  + \cdots \right]\right]\right]
+        \hfill
+    \]
+
+    \item 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Region Based CNNs (R-CNN/ RCNN) (2013) \cite{arxiv-1311.2524v5-rcnn,https://www.geeksforgeeks.org/r-cnn-region-based-cnns/}}\label{Region Based CNNs (R-CNN/ RCNN)}
@@ -348,7 +557,7 @@ _________________________________________________________________
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth, height=3.5cm, keepaspectratio]{Pictures/convolutional-neural-network/rcnn-splash-method.jpg}
-    \caption{R-CNN}
+    \caption*{R-CNN}
 \end{figure}
 
 \begin{enumerate}
@@ -372,7 +581,7 @@ _________________________________________________________________
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth, height=3cm, keepaspectratio]{Pictures/convolutional-neural-network/rcnn-region-proposals.jpg}
-            \caption{RCNN: Region Proposals}
+            \caption*{RCNN: Region Proposals}
         \end{figure}        
     \end{minipage}
     \hfill
@@ -431,12 +640,21 @@ _________________________________________________________________
 \end{enumerate}
 
 
+
+
+
+
+
+
+
+
+
 \section{Fast R-CNN (2015) \cite{arxiv/1504.08083-fast-rcnn,medium/towardsdatascience.com/fast-r-cnn-for-object-detection-a-technical-summary-a0ff94faa022}}\label{Fast R-CNN}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth, height=3cm, keepaspectratio]{Pictures/convolutional-neural-network/fast-rcnn-arch.png}
-    \caption{Fast-RCNN: Architecture \cite{arxiv/1504.08083-fast-rcnn}}
+    \caption*{Fast-RCNN: Architecture \cite{arxiv/1504.08083-fast-rcnn}}
 \end{figure}
 
 \begin{enumerate}
@@ -484,15 +702,30 @@ _________________________________________________________________
 \end{customTableWrapper}
 
 
+
+
+
+
+
+
+
+
 \section{Faster R-CNN (2015) \cite{arxiv/1506.01497-faster-rcnn,gfg/faster-r-cnn-ml}}\label{Faster R-CNN}
 
 \url{https://www.geeksforgeeks.org/faster-r-cnn-ml/}\\
 \url{https://arxiv.org/abs/1506.01497}
 
 
-\section{Network In Network (NiN) \cite{arxiv/1312.4400-nin,medium/towardsdatascience.com/review-nin-network-in-network-image-classification-69e271e499ee}}\label{Network In Network (NiN)}
 
-TODO
+
+
+
+
+
+
+
+
+
 
 
 

@@ -278,8 +278,28 @@ $x \neq 0$
 \end{enumerate}
 
 
+\section{Convolution ( $(f * g)(\mathbf{x})$ ) \cite{dnn-1}} \label{function: Convolution}
 
+\begin{enumerate}
+    \item In mathematics, the convolution between two functions, say $f, g: \mathbb{R}^d \to \mathbb{R}$ is defined as:
+    \[
+        \hfill
+        (f * g)(\mathbf{x}) = 
+        \begin{cases}
+            \dint f(\mathbf{z}) g(\mathbf{x}-\mathbf{z}) d\mathbf{z} & \text{ (continuous)} \\[1ex]
+            \dsum_\mathbf{z} f(\mathbf{z}) g(\mathbf{x}-\mathbf{z}) & \text{ (discrete)} \\
+        \end{cases}
+        \hfill
+    \]
+    we measure the overlap between $f$ and $g$ when one function is “\textbf{flipped}” and \textbf{shifted} by $\mathbf{x}$
 
+    \item For two-dimensional tensors, we have a corresponding sum with indices $(a, b)$ for $f$ and $(i - a, j - b)$ for $g$:
+    \[
+        \hfill
+        (f * g)(i, j) = \dsum_a\dsum_b f(a, b) g(i-a, j-b)
+        \hfill
+    \]
+\end{enumerate}
 
 
 
