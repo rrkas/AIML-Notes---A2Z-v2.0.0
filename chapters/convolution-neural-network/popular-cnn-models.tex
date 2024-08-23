@@ -518,6 +518,26 @@ SEE: \fullref{nn: Function Classes}
 
 \section{Densely Connected Networks (DenseNet) \cite{dnn-1}} \label{Densely Connected Networks (DenseNet)}
 
+
+\begin{table}[H]
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=2cm, keepaspectratio]{Pictures/convolutional-neural-network/densenet-block.jpg}
+            \caption{DenseNet Block}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=2cm, keepaspectratio]{Pictures/convolutional-neural-network/densenet.jpg}
+            \caption{DenseNet}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+
 \begin{enumerate}[itemsep=0.2cm]
     \item DenseNet is characterized by both\\
     the \textbf{connectivity pattern} where each layer connects to all the preceding layers and\\
@@ -530,16 +550,55 @@ SEE: \fullref{nn: Function Classes}
         \hfill
     \]
 
-    \item 
+    \item the key difference between ResNet and DenseNet is that in the latter case outputs are concatenated (denoted by $[,\;]$) rather than added. As a result, we perform a mapping from $\mathbf{x}$ to its values after applying an increasingly complex sequence of functions:
+    \[
+        \hfill
+        \mathbf{x} \to \left[
+        \mathbf{x},
+        f_1(\mathbf{x}),
+        f_2\left(\left[\mathbf{x}, f_1\left(\mathbf{x}\right)\right]\right), f_3\left(\left[\mathbf{x}, f_1\left(\mathbf{x}\right), f_2\left(\left[\mathbf{x}, f_1\left(\mathbf{x}\right)\right]\right)\right]\right), \ldots\right]
+        \hfill
+    \]
+
+    \item In the end, all these functions are combined in MLP to reduce the number of features again.
+    
+    \item In terms of implementation this is quite simple: rather than adding terms, we concatenate them.
+    
+    \item The name DenseNet arises from the fact that the dependency graph between variables becomes quite dense. 
+    
+    \item The final layer of such a chain is densely connected to all previous layers.
+
+    \item The main components that comprise a DenseNet are:
+    \begin{enumerate}
+        \item \textbf{dense blocks}: define how the inputs and outputs are concatenated
+        
+        \item \textbf{transition layers}: control the number of channels so that it is not too large, since the expansion $\mathbf{x} \to \left[\mathbf{x}, f_1(\mathbf{x}), f_2\left(\left[\mathbf{x}, f_1\left(\mathbf{x}\right)\right]\right), \ldots \right]$ can be quite high-dimensional.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Dense Block \cite{dnn-1}}
+
+\begin{enumerate}
+    \item DenseNet uses the modified “batch normalization, activation, and convolution” structure of ResNet
+
+    \item A dense block consists of multiple convolution blocks, each using the same number of output channels. 
+    
+    \item In the forward propagation, however, we concatenate the input and output of each convolution block on the channel dimension.
+
+    \item The number of convolution block channels controls the growth in the number of output channels relative to the number of input channels. This is also referred to as the \textbf{growth rate}.
 \end{enumerate}
 
 
+\subsection{Transition Layers \cite{dnn-1}}
+
+\begin{enumerate}
+    \item Since each dense block will increase the number of channels, adding too many of them will lead to an excessively complex model. A transition layer is used to control the complexity of the model. It reduces the number of channels by using a $1 \times 1$ convolution. 
+    
+    \item Moreover, it halves the height and width via average pooling with a stride of $2$.
 
 
 
-
-
-
+\end{enumerate}
 
 
 
@@ -743,17 +802,208 @@ SEE: \fullref{nn: Function Classes}
 
 
 
+\section{AnyNet Design Space \cite{dnn-1}} \label{AnyNet Design Space}
+
+\begin{table}[H]
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/convolutional-neural-network/anynet.jpg}
+            \caption{The AnyNet design space}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \begin{customTableWrapper}{1.5}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{l p{6cm}}
+                    $(c,r)$ & number of channels and resolution $\mathit{r} \times \mathit{r}$ \\
+                    
+                \end{tabular}
+            \end{table}
+        \end{customTableWrapper}
+        left to right:
+        \begin{enumerate}
+            \item generic network structure composed of stem, body, and head
+            \item body composed of four stages
+            \item detailed structure of a stage
+            \item two alternative structures for blocks, one without downsampling and one that halves the resolution in each dimension. 
+        \end{enumerate}
+
+        Design choices include depth $\mathit{d_i}$, the number of output channels $\mathit{c_i}$, the number of groups $\mathit{g_i}$, and bottleneck ratio $\mathit{k_i}$ for any stage $i$
+    \end{minipage}
+\end{table}
 
 
 
 
+\begin{enumerate}
+    \item we need a template for the family of networks to explore
+
+    \item the networks consist of a stem, a body and a head.
+    \begin{enumerate}
+        \item \textbf{stem}:
+        \begin{enumerate}
+            \item The {stem} performs initial image processing, often through convolutions with a larger window size.
+
+            \item The stem takes as its input RGB images (3 channels), using a $3 \times 3$ convolution with a stride of $2$, followed by a batch norm, to halve the resolution from $r \times r$ to $r/2 \times r/2$
+
+        \end{enumerate}
+
+        \item \textbf{Body}
+        \begin{enumerate}
+            \item The \textbf{body} consists of multiple blocks, carrying out the bulk of the transformations needed to go from raw images to object representations.
+
+            \item consists of multiple stages, operating on the image at decreasing resolutions.
+
+            \item Most of the relevant design decisions are inherent to the body of the network. 
+            
+            \item It proceeds in stages, where each stage is composed of the same type of ResNeXt blocks
+
+            \item The design there is again entirely generic: we begin with a block that halves the resolution by using a stride of $2$
+
+            \item To match this, the residual branch of the ResNeXt block needs to pass through a $1 \times 1$ convolution. 
+            
+            \item This block is followed by a variable number of additional ResNeXt blocks that leave both resolution and the number of channels unchanged.
+
+            \item a common design practice is to add a slight bottleneck in the design of convolutional blocks. As such, with bottleneck ratio $k_i \geq 1$ we afford some number of channels, $c_i/k_i$, within each block for stage $i$ (as the experiments show, this is not really effective and should be skipped).
+
+            \item since we are dealing with ResNeXt blocks, we also need to pick the number of groups $g$ for grouped convolutions at stage $i$.
+
+        \end{enumerate}
+
+        \item \textbf{Head}
+        \begin{enumerate}
+            \item the \textbf{head} converts this into the desired outputs, such as via a softmax regressor for multiclass classification.
+
+            \item the head employs an entirely standard design via global average pooling, similar to NiN, followed by a fully connected layer to emit an  $n$-dimensional vector for $n$-class classification
+
+        \end{enumerate}
+
+        \item both the stem and each subsequent stage quarter the spatial resolution
+
+        \item each stage consists of one or more blocks
+
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Distributions and Parameters of Design Spaces}
+
+\begin{enumerate}[itemsep=0.15cm]
+    \item parameters of a design space are hyperparameters of networks in that design space
+
+    \item A better strategy would be to try to determine general guidelines of how the choices of parameters should be related. For instance, the bottleneck ratio, the number of channels, blocks, groups, or their change between layers should ideally be governed by a collection of simple rules.
+
+    \item The approach in Radosavovic et al. (2019) relies on the following four assumptions:
+    \begin{enumerate}
+        \item We assume that general design principles actually exist, so that many networks satisfying these requirements should offer good performance. \\
+        Consequently, identifying a distribution over networks can be a sensible strategy. \\
+        In other words, we assume that there are many good needles in the haystack.
+
+        \item We need not train networks to convergence before we can assess whether a network is good.\\
+        Instead, it is sufficient to use the intermediate results as reliable guidance for final accuracy.\\
+        Using (approximate) proxies to optimize an objective is referred to as multi-fidelity optimization (Forrester et al., 2007).\\
+        Consequently, design optimization is carried out, based on the accuracy achieved after only a few passes through the dataset, reducing the cost significantly.
+
+        \item Results obtained at a smaller scale (for smaller networks) generalize to larger ones.\\
+        Consequently, optimization is carried out for networks that are structurally similar, but with a smaller number of blocks, fewer channels, etc.\\
+        Only in the end will we need to verify that the so-found networks also offer good performance at scale.
+
+        \item Aspects of the design can be approximately factorized so that it is possible to infer their effect on the quality of the outcome somewhat independently. \\
+        In other words, the optimization problem is moderately easy.
+
+    \end{enumerate}
+
+    \item we can sample uniformly from the space of configurations and evaluate their performance. 
+    
+    \item Subsequently, we can evaluate the quality of the choice of parameters by reviewing the distribution of error/accuracy that can be achieved with said networks. 
+    
+    \item Denote by $F(e)$ the cumulative distribution function (CDF) for errors committed by networks of a given design space, drawn using probability disribution $p$. That is,
+    \[
+        \hfill
+        F(e, p) \stackrel{\textrm{def}}{=} P_{\textrm{net} \sim p} \{e(\textrm{net}) \leq e\}
+        \hfill
+    \]
+
+    \item Our goal is now to find a distribution $p$ over networks such that most networks have a very low error rate and where the support of $p$ is concise.\\
+    Of course, this is computationally infeasible to perform accurately. 
+    
+    \item We resort to a sample of networks $\mathcal{Z} \stackrel{\textrm{def}}{=} \{\textrm{net}_1, \ldots \textrm{net}_n\}$ (with errors $e_1, \ldots, e_n$, respectively) from $p$ and use the empirical CDF $\hat{F}(e, \mathcal{Z})$ instead:
+    \[
+        \hfill
+        \hat{F}(e, \mathcal{Z}) = \dfrac{1}{n}\dsum_{i=1}^n \mathbf{1}(e_i \leq e)
+        \hfill
+    \]
+
+    \item Whenever the CDF for one set of choices majorizes (or matches) another CDF it follows that its choice of parameters is superior (or indifferent).
+
+    \item[] 
+    \begin{customTableWrapper}{1.5}
+    \begin{longtable}{l p{10cm}}
+        $\textrm{AnyNet}_\mathit{A}$ & original design space \\
+    
+        $\textrm{AnyNet}_\mathit{B}$ & ties the bottleneck ratios \\
+    
+        $\textrm{AnyNet}_\mathit{C}$ & also ties group widths \\
+    
+        $\textrm{AnyNet}_\mathit{D}$ & increases the network depth across stages \\
+    \end{longtable}
+    \end{customTableWrapper}
+
+\subsection{AnyNetX series \cite{dnn-1}}
+    \item $\textrm{AnyNetX}_D$
+    \begin{enumerate}
+        \item It is a reasonable assumption that, as we go deeper, the number of channels/ width should increase, i.e., $c_i \geq c_{i-1}$ (or, $w_{i+1} \geq w_i$), yielding $\textrm{AnyNetX}_D$.
+    \end{enumerate}
+
+    \item $\textrm{AnyNetX}_E$
+    \begin{enumerate}
+        \item it is equally reasonable to assume that as the stages progress, they should become deeper, i.e., $d_i \geq d_{i-1}$, yielding $\textrm{AnyNetX}_E$
+    
+        \item The resulting $\textrm{AnyNetX}_E$ design space consists of simple networks following easy-to-interpret design principles:
+        \begin{enumerate}
+            \item Share the bottleneck ratio $k_i = k$ for all stages $i$
+    
+            \item Share the group width $g_i = g$ for all stages $i$
+    
+            \item Increase network width across stages: $c_{i} \leq c_{i+1}$
+    
+            \item Increase network depth across stages: $d_{i} \leq d_{i+1}$
+    
+        \end{enumerate}
+
+        \item the width of the network ideally increases linearly with the block index across the network, i.e., $c_j \approx c_0 + c_a j$, where $j$ is the block index and slope $c_a > 0$. 
+        
+        \item Given that we get to choose a different block width only per stage, we arrive at a piecewise constant function, engineered to match this dependence. 
+        
+        \item Furthermore, experiments also show that a bottleneck ratio of $k = 1$ performs best, i.e., we are advised not to use bottlenecks at all.
+
+        
+    \end{enumerate}
 
 
 
+\end{enumerate}
 
 
+\section{RegNet \cite{dnn-1}} \label{RegNet}
 
+SEE: $\textrm{AnyNetX}_E$ \fullref{AnyNet Design Space}
 
+\begin{enumerate}[itemsep=0.15cm]
+    \item 32-layer RegNetX variant
+    \begin{enumerate}
+        \item $k = 1$ (no bottleneck)
+        \item $g = 16$ (group width is 16)
+        \item $c_1 = 32$ and $c_2 = 80$ channels for the first and second stage, respectively
+        \item $d_1=4$ and $d_2=6$ blocks deep
+
+    \end{enumerate}
+
+    \item RegNetX even holds for Squeeze-and-Excitation (SE) network designs (RegNetY) that have a global channel activation
+
+\end{enumerate}
 
 
 

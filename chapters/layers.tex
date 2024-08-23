@@ -40,7 +40,7 @@ SEE: \fullref{function: Convolution}
             \begin{tabular}{l p{5.5cm}}
                 $n_h$ and $n_w$ & size of input $n_h \times n_w$ \\
                 $n^{out}_h$ and $n^{out}_w$ & size of output $n^{out}_h \times n^{out}_w$ \\
-                $p_h$ and $p_w$ & padding $p_h \times p_w$ \\
+                $p_h$ and $p_w$ & padding $p_h/2 \times p_w/2$ \\
                 $k_h$ and $k_w$ & kernel/ filter $k_h \times k_w$\\
                 $s_h$ and $s_w$ & stride $s_h \times s_w$ \\
 
@@ -68,7 +68,8 @@ SEE: \fullref{function: Convolution}
         n^{out}_w=\dfloor{\dfrac{n_\textrm{w}-k_\textrm{w}+p_\textrm{w}+s_\textrm{w}}{s_\textrm{w}}}
         \hfill
         \text{\cite{dnn-1}}
-    $
+    $\\
+    This means that the height and width of the output will increase by $p_h$ and $p_w$, respectively.
 
     \item[] number of parameters in the layer $= c_o \times ( c_i \times k_h \times k_w + 1)$
     \begin{enumerate}
