@@ -244,7 +244,7 @@ SEE: \url{https://fasttext.cc}
 \begin{enumerate}
     \item the model is based on capturing global corpus statistics.
 
-    \item it is based on ratios of probabilities from the word-word co-occurrence matrix (SEE: \fullref{term-term matrix}), combining the intuitions of count-based models like PPMI (SEE: \fullref{Positive Pointwise Mutual Information (PPMI)}) while also capturing the linear structures used by methods like word2vec.
+    \item it is based on ratios of probabilities from the word-word co-occurrence matrix (SEE: \fullref{Co-occurrence matrix/ term-term matrix/ word-word matrix/ term-context matrix}), combining the intuitions of count-based models like PPMI (SEE: \fullref{Positive Pointwise Mutual Information (PPMI)}) while also capturing the linear structures used by methods like word2vec.
 
     \item It turns out that dense embeddings like word2vec actually have an elegant mathematical relationship with sparse embeddings like PPMI, in which word2vec can be seen as implicitly optimizing a shifted version of a PPMI matrix.
 \end{enumerate}

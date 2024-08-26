@@ -89,7 +89,7 @@ Essentially, formulas are \textbf{same}.
 \section{Mean Average precision (mAP)}\label{Mean Average precision (mAP)}
 
 
-\section{Information Theory: Entropy \cite{dnn-1}} \label{Information Theory: Entropy}
+\section{Information Theory: Entropy \cite{dnn-1,nlp-1}} \label{Information Theory: Entropy}
 
 \begin{enumerate}[itemsep=0.2cm]
     \item The central idea in information theory is to quantify the amount of information contained in data. 
@@ -112,6 +112,19 @@ Essentially, formulas are \textbf{same}.
     \item if we cannot perfectly predict every event, then we might sometimes be \textbf{surprised}.\\
     Our \textbf{surprise is greater} when an event is assigned \textbf{lower probability}.\\
     Entropy is the \textbf{level of surprise} experienced by someone who knows the \textbf{true probability}.
+
+    \item[] From \cite{nlp-1}:
+
+    \item \textbf{Entropy} is a measure of information.
+
+    \item Given a random variable $X$ ranging over whatever we are predicting (words, letters, parts of speech, the set of which we’ll call $\chi$) and with a particular probability function, call it $p(x)$, the entropy of the random variable $X$ is:
+    \[
+        H(\chi) = - \dsum_{x \in \chi} p(x)\log_2p(x)
+    \]
+
+    \item The log can, in principle, be computed in any base. If we use log base 2, the resulting value of entropy will be measured in \textbf{bits}.
+
+    \item One intuitive way to think about entropy is as a lower bound on the number of bits it would take to encode a certain decision or piece of information in the optimal coding scheme.
 
 \end{enumerate}
 
@@ -181,6 +194,43 @@ Essentially, formulas are \textbf{same}.
         
         \item as \textbf{minimizing} our \textbf{surprisal} (and thus the number of bits) required to communicate the labels
     \end{enumerate}
+
+    \item[] from \cite{nlp-1}:
+
+    \item The cross-entropy is useful when we \textbf{don’t know} the actual probability distribution p that generated some data. It allows us to use some $m$, which is a model of $p$ (i.e., an approximation to $p$). 
+    
+    \item The cross-entropy of $m$ on $p$ is defined by:
+    \[
+        H(p,m) = \lim_{n \rightarrow \infty} - \dfrac{1}{n}\sum_{W\in L} p(w_{1:n})\log(m(w_{1:n}))
+    \]
+
+    \item Following the \textbf{Shannon-McMillan-Breiman theorem}, for a stationary ergodic process:
+    \[
+        H(p,m) = \lim_{n \rightarrow \infty} - \dfrac{1}{n}\log(m(w_{1:n}))
+    \]
+    
+    \item This means that, as for entropy, we can estimate the cross-entropy of a model $m$ on some distribution $p$ by taking a single sequence that is long enough instead of summing over all possible sequences.
+
+    \item What makes the cross-entropy useful is that the cross-entropy $H(p,m)$ is an upper bound on the entropy $H(p)$. For any model $m$, \(H(p) \leq H(p,m)\).
+
+    \item This means that we can use some simplified model $m$ to help estimate the true entropy of a sequence of symbols drawn according to probability $p$.\\
+    The more accurate $m$ is, the closer the cross-entropy $H(p,m)$ will be to the true entropy $H(p)$.\\
+    Thus, the difference between $H(p,m)$ and $H(p)$ is a measure of how accurate a model is.\\
+    Between two models $m_1$ and $m_2$, the more accurate model will be the one with the lower cross-entropy.\\
+    (The cross-entropy can never be lower than the true entropy, so a model cannot err by underestimating the true entropy.)
+
+    \item Cross-entropy is defined in the limit as the length of the observed word sequence goes to infinity.\\
+    We will need an approximation to cross-entropy, relying on a (sufficiently long) sequence of fixed length.\\
+    This approximation to the cross-entropy of a model $M = P(w_i|w_{i-N+1:i-1})$ on a sequence of words $W$ is:
+    \[
+        H(W) = -\dfrac{1}{N}\log(P(w_1w_2...w_N))
+    \]
+
+    \item cross-entropy loss averaged over all the $n$ tokens of a sequence: $
+        \dfrac{1}{n} \dsum_{t=1}^n -\log P(x_t \mid x_{t-1}, \cdots, x_1)
+    $ where $P$ is given by a language model and $x_t$ is the actual token observed at time step $t$ from the sequence. \hfill \cite{dnn-1}
+
+    \item This makes the performance on documents of different lengths comparable
 
 \end{enumerate}
 

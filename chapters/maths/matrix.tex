@@ -1437,11 +1437,33 @@ if we compute the gradient of an $m \times  n$ matrix $A$ with respect to a $p \
 
 
 
+\section{Broadcasting in matrices \cite{dnn-1}} \label{Broadcasting in matrices}
 
+\begin{enumerate}
+    \item Under certain conditions, even when shapes differ, we can still perform elementwise binary operations by invoking the broadcasting mechanism. 
+    
+    \item Broadcasting works according to the following two-step procedure: 
+    \begin{enumerate}
+        \item expand one or both arrays by copying elements along axes with length 1 so that after this transformation, the two tensors have the same shape
+        \item perform an elementwise operation on the resulting arrays
+    \end{enumerate}
 
+\end{enumerate}
 
+Example:
+\begin{enumerate}[itemsep=0.1cm]
+    \item $\mathbf{a} = \begin{bmatrix}0 & 1 & 2\end{bmatrix}^\top$
 
+    \item $\mathbf{b} = \begin{bmatrix}0 & 1 \end{bmatrix}$
 
+    \item $\mathbf{a} + \mathbf{b}
+    = \begin{bmatrix}
+        0 & 1 \\
+        1 & 2 \\
+        2 & 3 \\
+    \end{bmatrix}
+    $
+\end{enumerate}
 
 
 

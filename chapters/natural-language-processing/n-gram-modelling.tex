@@ -91,41 +91,59 @@ where,
 
 
 
-\section{Perplexity (PP/ PPL) \cite{nlp-1}}
+\section{Perplexity (PP/ PPL) \cite{nlp-1,dnn-1}}
 
-The perplexity (sometimes abbreviated as PP or PPL) of a language model on a test set is the inverse probability of the test set (one over the probability of the test set), normalized by the number of words. For this reason it’s sometimes called the \textbf{per-word perplexity}\indexlabel{per-word perplexity}.
+\begin{enumerate}
+    \item The perplexity (sometimes abbreviated as PP or PPL) of a language model on a test set is the inverse probability of the test set (one over the probability of the test set), normalized by the number of words. For this reason it’s sometimes called the \textbf{per-word perplexity}\indexlabel{per-word perplexity}.
 
-Let word: \(W = w_1w_2 ...w_N\)
+    \item We might measure the quality of the model by computing the likelihood of the sequence. Unfortunately this is a number that is hard to understand and difficult to compare. After all, shorter sequences are much more likely to occur than the longer ones. \cite{dnn-1}
 
-\[
-    perplexity(W) = P(w_1w_2 ...w_N)^{-\dfrac{1}{N}} = \sqrt[N]{\dfrac{1}{P(w_1w_2 ...w_N)}} = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i|w_1w_2 ...w_{i-1})}}
-\]
+    \item Let word: \(W = w_1w_2 ...w_N\)
+    \begin{enumerate}
+        \item $perplexity(W) = P(w_1w_2 ...w_N)^{-\dfrac{1}{N}} = \sqrt[N]{\dfrac{1}{P(w_1w_2 ...w_N)}} = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i|w_1w_2 ...w_{i-1})}}$
 
-For Unigram:
-\(
-   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i)}}
-\)
+        \item For Unigram:
+        \(
+           \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i)}}
+        \)
+        
+        \item For Bigram:
+        \(
+           \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i|w_{i-1})}}
+        \)
+    \end{enumerate}
 
-\vspace{0.2cm}
+    \item For historical reasons, scientists in natural language processing prefer to use a quantity called perplexity. \cite{dnn-1}
+    \[
+        \exp\left(-\dfrac{1}{n} \dsum_{t=1}^n \log P(x_t \mid x_{t-1}, \ldots, x_1)\right)
+    \]
 
-For Bigram:
-\(
-   \displaystyle perplexity(W) = \sqrt[N]{\prod_{i=1}^{N} \dfrac{1}{P(w_i|w_{i-1})}}
-\)
+    \item Perplexity can be best understood as the reciprocal of the geometric mean of the number of real choices that we have when deciding which token to pick next. Let’s look at a number of cases:
+    \begin{enumerate}
+        \item In the \textbf{best case scenario}, the model always perfectly estimates the probability of the target token as 1. In this case the perplexity of the model is $1$.
+
+        \item In the \textbf{worst case scenario}, the model always predicts the probability of the target token as 0. In this situation, the perplexity is \textbf{positive infinity}.
+
+        \item At the \textbf{baseline}, the model predicts a uniform distribution over all the available tokens of the vocabulary. In this case, the perplexity equals the \textbf{number of unique tokens of the vocabulary}.\\
+        In fact, if we were to store the sequence without any compression, this would be the best we could do for encoding it. Hence, this provides a nontrivial upper bound that any useful model must beat.
+    \end{enumerate}
+
+\end{enumerate}
+
+
+
 
 \subsection{Perplexity’s Relation to Entropy}
+
+SEE:
+\begin{enumerate}
+    \item \fullref{Information Theory: Entropy}
+    \item \fullref{Log-Likelihood Loss/ cross-entropy loss}
+\end{enumerate}
+
 The perplexity measure actually arises from the information-theoretic concept of cross-entropy, which explains otherwise mysterious properties of perplexity.
 
-\subsubsection{Entropy}\label{Entropy}
-\textbf{Entropy} is a measure of information.\\
-Given a random variable $X$ ranging over whatever we are predicting (words, letters, parts of speech, the set of which we’ll call $\chi$) and with a particular probability function, call it $p(x)$, the entropy of the random variable $X$ is:
-\[
-    \displaystyle H(\chi) = - \sum_{x \in \chi} p(x)\log_2p(x)
-\]
-The log can, in principle, be computed in any base. If we use log base 2, the
-resulting value of entropy will be measured in \textbf{bits}.
 
-One intuitive way to think about entropy is as a lower bound on the number of bits it would take to encode a certain decision or piece of information in the optimal coding scheme.
 
 \subsubsection{Entropy for sequence of words}\label{Entropy for sequence of words}
 sequence of words: $W = {w_1,w_2,...,w_n}$\\
@@ -160,33 +178,8 @@ The \textbf{Shannon-McMillan-Breiman theorem}\indexlabel{Shannon-McMillan-Breima
     H(L) = \lim_{n \rightarrow \infty} -\dfrac{1}{n} \log(p(w_{1:n}))
 \]
 
-\subsubsection{Cross-Entropy}
-The cross-entropy is useful when we \textbf{don’t know} the actual probability distribution p that generated some data. It allows us to use some $m$, which is a model of $p$ (i.e., an approximation to $p$). The
-cross-entropy of $m$ on $p$ is defined by:
-\[
-    H(p,m) = \lim_{n \rightarrow \infty} - \dfrac{1}{n}\sum_{W\in L} p(w_{1:n})\log(m(w_{1:n}))
-\]
 
-Following the \textbf{Shannon-McMillan-Breiman theorem}, for a stationary ergodic process:
-
-\[
-    H(p,m) = \lim_{n \rightarrow \infty} - \dfrac{1}{n}\log(m(w_{1:n}))
-\]
-
-This means that, as for entropy, we can estimate the cross-entropy of a model $m$ on some distribution $p$ by taking a single sequence that is long enough instead of summing over all possible sequences.\\
-
-What makes the cross-entropy useful is that the cross-entropy $H(p,m)$ is an upper bound on the entropy $H(p)$. For any model $m$, \(H(p) \leq H(p,m)\).
-
-
-This means that we can use some simplified model $m$ to help estimate the true entropy of a sequence of symbols drawn according to probability $p$. The more accurate $m$ is, the closer the cross-entropy $H(p,m)$ will be to the true entropy $H(p)$. Thus, the difference between $H(p,m)$ and $H(p)$ is a measure of how accurate a model is. Between two models $m_1$ and $m_2$, the more accurate model will be the one with the lower cross-entropy. (The cross-entropy can never be lower than the true entropy, so a model cannot err by underestimating the true entropy.)
-
-Cross-entropy is defined in the limit as the length of the observed word sequence goes to infinity. We will need an approximation to cross-entropy, relying on a (sufficiently long) sequence of fixed length. This approximation to the cross-entropy of a model $M = P(w_i|w_{i-N+1:i-1})$ on a sequence of words $W$ is:
-\[
-    H(W) = -\dfrac{1}{N}\log(P(w_1w_2...w_N))
-\]
-
-
-\subsubsection{Putting pieces together}
+\subsubsection*{Putting pieces together}
 \begin{align*}
     Perplexity(W)       
         &= 2^{H(W)}    \\ 
