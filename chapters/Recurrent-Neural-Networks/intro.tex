@@ -836,7 +836,7 @@ SEE: \fullref{Sequence Models}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth, height=6cm, keepaspectratio]{Pictures/deep-reinforcement-learning/deep-rnn.jpg}
+    \includegraphics[width=\linewidth, height=6cm, keepaspectratio]{Pictures/Recurrent-Neural-Networks/deep-rnn.jpg}
 \end{figure}
 
 
@@ -912,20 +912,67 @@ SEE: \fullref{Sequence Models}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/deep-reinforcement-learning/bidir-rnn.jpg}
+    \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/Recurrent-Neural-Networks/bidir-rnn.jpg}
 \end{figure}
 
 
 \begin{customTableWrapper}{1.5}
 \begin{longtable}{l l p{6cm}}
+    $t$ & $\in \mathbb{R}$ & time step \\
+
+    $n$ & $\in \mathbb{R}$ & number of examples \\
+
+    $d$ & $\in \mathbb{R}$ & number of inputs in each example \\
+
+    $\mathbf{X}_t$ & $\in \mathbb{R}^{n \times d}$ & minibatch input \\
+
+    \hline
+
+    $h$ & $\in \mathbb{R}$ & number of hidden units \\
+
+    $\phi$ & & hidden layer activation function \\
+
+    $\overrightarrow{\mathbf{H}}_t$ & $\in \mathbb{R}^{n \times h}$ & forward hidden state \\
+
+    $\overleftarrow{\mathbf{H}}_t$ & $\in \mathbb{R}^{n \times h}$ & backward hidden state \\
+
+    $\mathbf{H}_t$ & $\in \mathbb{R}^{n \times 2h}$ & hidden state \\
+
+    \hline
+
+    $q$ & $\in \mathbb{R}$ & number of outputs \\
+
+    $\mathbf{W}_{\textrm{hq}}$ & $\in \mathbb{R}^{2h \times q}$ & weight matrix \\
+
+    $\mathbf{b}_\textrm{q}$ & $\in \mathbb{R}^{1 \times q}$ & bias \\
+    
+    $\mathbf{O}_t$ & $\in \mathbb{R}^{n \times q}$ & output \\
+
     
 \end{longtable}
 \end{customTableWrapper}
 
 
 
-\begin{enumerate}
-    \item 
+\begin{enumerate}[itemsep=0.15cm]
+    \item there are many other sequence learning tasks contexts where it is perfectly fine to condition the prediction at every time step on both the leftward and the rightward context.\\
+    \textbf{for example}, part of speech detection. Why shouldn’t we take the context in both directions into account when assessing the part of speech associated with a given word?
+
+    \item We simply implement two unidirectional RNN layers chained together in opposite directions and acting on the same input
+
+    \item For the first RNN layer, the first input is $\mathbf{x}_1$ and the last input is $\mathbf{x}_T$, but for the second RNN layer, the first input is $\mathbf{x}_T$ and the last input is $\mathbf{x}_1$
+
+    \item To produce the output of this bidirectional RNN layer, we simply concatenate together the corresponding outputs of the two underlying unidirectional RNN layers.
+
+    \item $\overrightarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{\textrm{xh}}^{(f)} + \overrightarrow{\mathbf{H}}_{t-1} \mathbf{W}_{\textrm{hh}}^{(f)}  + \mathbf{b}_\textrm{h}^{(f)})$
+
+    \item $\overleftarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{\textrm{xh}}^{(b)} + \overleftarrow{\mathbf{H}}_{t+1} \mathbf{W}_{\textrm{hh}}^{(b)}  + \mathbf{b}_\textrm{h}^{(b)})$
+
+    \item we concatenate the forward and backward hidden states $\overrightarrow{\mathbf{H}}_t$ and $\overleftarrow{\mathbf{H}}_t$ to obtain the hidden state $\mathbf{H}_t$ for feeding into the output layer
+
+    \item $\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{\textrm{hq}} + \mathbf{b}_\textrm{q}$
+
+    \item While technically, the two directions can have different numbers of hidden units, this design choice is seldom made in practice.
 
 \end{enumerate}
 

@@ -563,6 +563,94 @@ Essentially, formulas are \textbf{same}.
 
 
 
+\section{Bilingual Evaluation Understudy (BLEU) \cite{dnn-1}} \label{Bilingual Evaluation Understudy (BLEU)}
+
+
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l p{8cm}}
+
+    $n$ & $n$-gram \\
+
+    $p_n$ & precision of an $n$-gram \\
+
+    $\textrm{len}_{\textrm{label}}$ & numbers of tokens in the target sequence \\
+
+    $\textrm{len}_{\textrm{pred}}$ & numbers of tokens in the predicted sequence \\
+
+    $k$ & longest $n$-gram for matching \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item[] $
+        \hfill
+        \exp\left(\min\left(0, 1 - \dfrac{\textrm{len}_{\textrm{label}}}{\textrm{len}_{\textrm{pred}}}\right)\right) \dprod_{n=1}^k p_n^{1/2^n}
+        \hfill
+    $
+
+    \item for any $n$-gram in the predicted sequence, BLEU evaluates whether this $n$-gram appears in the target sequence.
+
+    \item $p_n$ : defined as the ratio of the number of matched $n$-grams in the predicted and target sequences to the number of $n$-grams in the predicted sequence
+    
+    \item whenever the predicted sequence is the same as the target sequence, BLEU is 1
+
+    \item since matching longer $n$-grams is more difficult, BLEU assigns a greater weight when a longer $n$-gram has high precision
+
+    \item when $p_n$ is fixed $p_n^{1/2^n}$ increases as $n$ grows (the original paper uses $p_n^{1/n}$)
+
+    \item since predicting shorter sequences tends to yield a higher $p_n$ value, the coefficient before the multiplication term penalizes shorter predicted sequences
+
+    \item Example: 
+    $
+        \hfill 
+        \text{target sequence: A, B, C, D, E, F}  
+        \hfill 
+        \text{predicted sequence: A, B, B, C, D} 
+        \hfill
+    $
+    \[
+        \hfill
+        p_1 = 4/5
+        \hfill
+        p_2 = 3/4
+        \hfill
+        p_3 = 1/3
+        \hfill
+        p_4 = 0
+        \hfill
+    \]
+
+    
+\end{enumerate}
+
+\begin{lstlisting}[language=Python, caption=BLEU - Python]
+def bleu(pred_seq, label_seq, k):
+    """Compute the BLEU."""
+    pred_tokens, label_tokens = pred_seq.split(' '), label_seq.split(' ')
+    len_pred, len_label = len(pred_tokens), len(label_tokens)
+    score = math.exp(min(0, 1 - len_label / len_pred))
+    for n in range(1, min(k, len_pred) + 1):
+        num_matches, label_subs = 0, collections.defaultdict(int)
+        for i in range(len_label - n + 1):
+            label_subs[' '.join(label_tokens[i: i + n])] += 1
+        for i in range(len_pred - n + 1):
+            if label_subs[' '.join(pred_tokens[i: i + n])] > 0:
+                num_matches += 1
+                label_subs[' '.join(pred_tokens[i: i + n])] -= 1
+        score *= math.pow(num_matches / (len_pred - n + 1), math.pow(0.5, n))
+    return score
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
 
 
 
