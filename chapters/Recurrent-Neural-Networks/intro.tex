@@ -823,6 +823,119 @@ SEE: \fullref{Sequence Models}
 \end{enumerate}
 
 
+\section*{Additional Materials/ references}
+\begin{enumerate}
+    \item YT: Recurrent Neural Networks (RNNs), Clearly Explained!!!\\
+    \url{https://www.youtube.com/watch?v=AsNTP8Kwu80}
+
+\end{enumerate}
+
+
+
+\section{Deep Recurrent Neural Networks (Deep RNN) \cite{dnn-1}} \label{Deep Recurrent Neural Networks}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=6cm, keepaspectratio]{Pictures/deep-reinforcement-learning/deep-rnn.jpg}
+\end{figure}
+
+
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l l p{8cm}}
+    $T$ & $\in \mathbb{R}$ & number of time steps \\
+
+    $t$ & $\in \mathbb{R}$ & time step \\
+    
+    $n$ & $\in \mathbb{R}$ & number of examples \\
+    
+    $d$ & $\in \mathbb{R}$ & number of inputs in each example \\
+    
+    $\mathbf{X}_t$ & $\in \mathbb{R}^{n \times d}$ & minibatch input \\
+
+    \hline
+    
+    $h$ & $\in \mathbb{R}$ & number of hidden units \\
+    
+    $L$ & $\in \mathbb{R}$ & number of hidden layers \\
+    
+    $l=\dCurlyBrac{1,\ldots,L}$ & $\in \mathbb{R}$ & index of hidden layer \\
+    
+    $\mathbf{W}_{\textrm{xh}}^{(l)}$ & $\in \mathbb{R}^{h \times h}$ & weight parameter \\
+
+    $\mathbf{W}_{\textrm{hh}}^{(l)}$ & $\in \mathbb{R}^{h \times h}$ & weight parameter \\
+
+    $\mathbf{b}_\textrm{h}^{(l)}$ & $\in \mathbb{R}^{1 \times h}$ & bias parameter \\
+    
+    $\phi_l$ & & activation function of $l^{\text{th}}$ hidden layer \\
+    
+    $\mathbf{H}_t^{(l)}$ & $\in \mathbb{R}^{n \times h}$ & hidden state of the $l^{\text{th}}$ hidden layer \\
+
+    \hline
+
+    $q$ & $\in \mathbb{R}$ & number of outputs \\
+
+    $\mathbf{W}_{\textrm{hq}}$ & $\in \mathbb{R}^{h \times q}$ & weight parameter \\
+
+    $\mathbf{b}_\textrm{q}$ & $\in \mathbb{R}^{1 \times q}$ & bias parameter \\
+    
+    $\mathbf{O}_t$ & $\in \mathbb{R}^{n \times q}$ & output layer variable \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+
+\begin{enumerate}[itemsep=0.15cm]
+    \item we often construct RNNs that are deep not only in the time direction but also in the input-to-output direction.
+
+    \item we stack the RNNs on top of each other\\
+    Given a sequence of length $T$, the first RNN produces a sequence of outputs, also of length $T$.\\
+    These, in turn, constitute the inputs to the next RNN layer
+
+    \item $\mathbf{H}_t^{(0)} = \mathbf{X}_t$
+
+    \item $\mathbf{H}_t^{(l)} = \phi_l(\mathbf{H}_t^{(l-1)} \mathbf{W}_{\textrm{xh}}^{(l)} + \mathbf{H}_{t-1}^{(l)} \mathbf{W}_{\textrm{hh}}^{(l)}  + \mathbf{b}_\textrm{h}^{(l)})$
+
+    \item $\mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{\textrm{hq}} + \mathbf{b}_\textrm{q}$
+
+    \item the number of hidden layers $L$ and the number of hidden units $h$ are \textbf{hyperparameters}
+
+    \item we can easily get a \textbf{deep-gated RNN}\indexlabel{deep-gated RNN} by replacing the hidden state computation with that from an LSTM or a GRU.
+
+    
+\end{enumerate}
+
+
+
+
+
+\section{Bidirectional Recurrent Neural Networks \cite{dnn-1}} \label{Bidirectional Recurrent Neural Networks}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/deep-reinforcement-learning/bidir-rnn.jpg}
+\end{figure}
+
+
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l l p{6cm}}
+    
+\end{longtable}
+\end{customTableWrapper}
+
+
+
+\begin{enumerate}
+    \item 
+
+\end{enumerate}
+
+
+
+
+
+
+
+
 
 
 

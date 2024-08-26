@@ -25,6 +25,7 @@
     \multicolumn{3}{c}{Hidden State} \\ \hline
 
     $h$ & $\in \mathbb{R}$ & number of hidden units \\
+    $\mathbf{H}_t$ & $\in \mathbb{R}^{n \times h}$ & hidden state \\
     $\mathbf{H}_{t-1}$ & $\in \mathbb{R}^{n \times h}$ & hidden state of the previous time step \\
 
 
@@ -55,7 +56,20 @@
     $\mathbf{b}_\textrm{o}$ & $\in \mathbb{R}^{1 \times h}$ & bias parameter \\
     $\mathbf{O}_t$ & $\in \mathbb{R}^{n \times h}$ & output gate \\
 
+    \hline
+    \customTableHeaderColor
+    \multicolumn{3}{c}{Input Node} \\ \hline
 
+    $\mathbf{W}_{\textrm{xc}}$ & $\in \mathbb{R}^{d \times h}$ & weight parameter \\
+    $\mathbf{W}_{\textrm{hc}}$ & $\in \mathbb{R}^{h \times h}$ & weight parameter \\
+    $\mathbf{b}_\textrm{c}$ & $\in \mathbb{R}^{1 \times h}$ & bias parameter \\
+    $\tilde{\mathbf{C}}_t$ & $\in \mathbb{R}^{n \times h}$ & input node \\
+
+    \hline
+    \customTableHeaderColor
+    \multicolumn{3}{c}{Memory Cell Internal State} \\ \hline
+
+    $\mathbf{C}_{t-1}$ & $\in \mathbb{R}^{n \times h}$ & old cell internal state \\
 
 \end{longtable}
 \end{customTableWrapper}
@@ -75,7 +89,7 @@
     The weights change slowly during training, encoding general knowledge about the data. \\
     They also have short-term memory in the form of ephemeral activations, which pass from each node to successive nodes. 
 
-    
+    \item this design alleviates the vanishing gradient problem, resulting in models that are much easier to train, especially when facing datasets with long sequence lengths.
 \end{enumerate}
 
 
@@ -108,7 +122,9 @@
 
     \item \textbf{Input node}
     \begin{enumerate}
-        \item 
+        \item $\tilde{\mathbf{C}}_t = \textrm{tanh}(\mathbf{X}_t \mathbf{W}_{\textrm{xc}} + \mathbf{H}_{t-1} \mathbf{W}_{\textrm{hc}} + \mathbf{b}_\textrm{c})$
+
+        \item uses a $tanh$ function with a value range for $(-1, 1)$
 
     \end{enumerate}
 
@@ -121,6 +137,8 @@
         \item Intuitively, the input gate determines how much of the input node’s value should be added to the current memory cell internal state.
 
         \item Note that broadcasting is triggered during the summation. (SEE \fullref{Broadcasting in matrices})
+
+        \item governs how much we take new data into account via $\tilde{\mathbf{C}}_t$
     \end{enumerate}
 
     \item \textbf{Forget Gate}
@@ -132,6 +150,8 @@
         \item The forget gate determines whether to keep the current value of the memory or flush it.
 
         \item Note that broadcasting is triggered during the summation. (SEE \fullref{Broadcasting in matrices})
+
+        \item addresses how much of the old cell internal state $\mathbf{C}_{t-1} \in \mathbb{R}^{n \times h}$ we retain
     \end{enumerate}
 
     \item \textbf{Output Gate}
@@ -146,6 +166,33 @@
     \end{enumerate}
 
 
+    \item \textbf{Memory Cell Internal State}
+    \begin{enumerate}
+        \item $\mathbf{C}_t = \mathbf{F}_t \odot \mathbf{C}_{t-1} + \mathbf{I}_t \odot \tilde{\mathbf{C}}_t$
+
+        \item Using the Hadamard (elementwise) product operator $\odot$ (SEE: \fullref{matrix: Hadamard Product/ element-wise product})
+
+        \item If the forget gate is always 1 and the input gate is always 0, the memory cell internal state $\mathbf{C}_{t-1}$ will remain constant forever, passing unchanged to each subsequent time step.
+
+        \item input gates and forget gates give the model the flexibility of being able to learn when to keep this value unchanged and when to perturb it in response to subsequent inputs.
+    \end{enumerate}
+
+    \item \textbf{Hidden State}
+    \begin{enumerate}
+        \item $\mathbf{H}_t = \mathbf{O}_t \odot \tanh(\mathbf{C}_t)$
+
+        \item values of $\mathbf{H}_t$ are always in the interval $(-1,1)$
+
+        \item Whenever the output gate is close to 1, we allow the memory cell internal state to impact the subsequent layers uninhibited, whereas for output gate values close to 0, we prevent the current memory from impacting other layers of the network at the current time step.
+
+        \item Note that a memory cell can accrue information across many time steps without impacting the rest of the network (as long as the output gate takes values close to 0), and then suddenly impact the network at a subsequent time step as soon as the output gate flips from values close to 0 to values close to 1.
+    \end{enumerate}
+
+    % \item Note:
+    % \begin{enumerate}
+    %     \item 
+    % \end{enumerate}
+
 \end{enumerate}
 
 
@@ -155,7 +202,12 @@
 
 
 
+\section*{Additional Materials/ references}
+\begin{enumerate}
+    \item YT: Long Short-Term Memory (LSTM), Clearly Explained\\
+    \url{https://www.youtube.com/watch?v=YCzL96nL7j0}
 
+\end{enumerate}
 
 
 
