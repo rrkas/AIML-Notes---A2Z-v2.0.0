@@ -1074,8 +1074,46 @@ Similar to \fullref{Supremum VS Maximum}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Attention VS Attention Pooling \cite{chatgpt}} \label{Attention VS Attention Pooling}
 
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{|p{2cm}|p{5cm}|p{5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{Attention} & \textbf{Attention Pooling} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Aspect} & \textbf{Attention} & \textbf{Attention Pooling} \\
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
 
+    \textbf{Purpose} & Focuses on relevant parts of the input dynamically. & Aggregates information into a single vector. \\
+    \hline
+    
+    \textbf{Usage} & Used in tasks like translation to decide focus points. & Used to summarize multiple inputs into one representation. \\
+    \hline
+    
+    \textbf{Operation} & Calculates attention weights for each input element. & Applies attention weights to create a weighted sum. \\
+    \hline
+    
+    \textbf{Context} & Context-dependent; changes dynamically with each step. & Provides a fixed summary based on computed weights. \\
+    \hline
+    
+    \textbf{Example} & Transformer models focusing on different words during decoding. & BERT model creating a single vector representation of a sentence. \\
+    \hline
+
+    \textbf{Output} & Weighted context vectors for each input element. & A single vector summarizing the input set. \\
+    \hline
+
+\end{longtable}
+\end{customTableWrapper}
 
 
 

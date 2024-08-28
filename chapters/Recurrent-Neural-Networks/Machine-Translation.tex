@@ -90,7 +90,7 @@
         \item a decoder that acts as a conditional language model, taking in the encoded input and the leftwards context of the target sequence and predicting the subsequent token in the target sequence.
     \end{enumerate}
 
-    
+    \item the entire input was compressed by the encoder into a single fixed-length vector to be fed into the decoder.     
 \end{enumerate}
 
 
@@ -119,6 +119,26 @@
     For any input token index $i$, the embedding layer fetches the $i^{th}$ row (starting from 0) of the weight matrix to return its feature vector.\\
     Here we implement the encoder with a multilayer GRU.
 \end{enumerate}
+
+
+\subsubsection{Teacher Forcing \cite{dnn-1}} \label{Teacher Forcing}
+
+\begin{enumerate}
+    \item While running the encoder on the input sequence is relatively straightforward, handling the input and output of the decoder requires more care. 
+    
+    \item The most common approach is sometimes called teacher forcing. 
+    
+    \item Here, the original target sequence (token labels) is fed into the decoder as input. 
+    
+    \item More concretely, the special beginning-of-sequence token and the original target sequence, excluding the final token, are concatenated as input to the decoder, while the decoder output (labels for training) is the original target sequence, shifted by one token:\\
+    “<bos>”, “Ils”, “regardent”, “.” $\rightarrow$ “Ils”, “regardent”, “.”, “<eos>”.
+
+    \item An alternative approach is to feed the predicted token from the previous time step as the current input to the decoder.
+
+\end{enumerate}
+
+
+
 
 
 \subsection{Decoder \cite{dnn-1}} \label{rnn: Decoder}
@@ -182,29 +202,95 @@
 
 \subsection{Evaluation of Predicted Sequences}
 
+SEE: \fullref{Bilingual Evaluation Understudy (BLEU)}
 
 
+\section{Searching}
+
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l p{8cm}}
+    $T^\prime$ & maximum number of tokens of an output sequence \\
+    
+    $t^\prime$ & time step \\
+
+    $y_{t^\prime}$ & token \\
+
+    $\mathcal{Y}$ & output vocabulary (including the special end-of-sequence token “\verb|<eos>|”) \\
+\end{longtable}
+\end{customTableWrapper}
 
 
+\subsection{Greedy Search \cite{dnn-1}} \label{nmt: Greedy Search}
 
+\begin{enumerate}[itemsep=0.15cm]
+    \item Our goal is to search for an ideal output from all $\mathcal{O}(\left|\mathcal{Y}\right|^{T'})$ possible output sequences
 
-\section{Teacher Forcing \cite{dnn-1}} \label{Teacher Forcing}
+    \item $y_{t'} = \operatorname*{argmax}_{y \in \mathcal{Y}} P(y \mid y_1, \ldots, y_{t'-1}, \mathbf{c})$
+
+    \item Once our model outputs “\verb|<eos>|” (or we reach the maximum length $T^\prime$) the output sequence is completed
+
+    \item if we put aside efficiency for a minute, it might seem more reasonable to search for the \textbf{most likely sequence}, not the sequence of (greedily selected) \textbf{most likely tokens}.\\
+    It turns out that these two objects can be quite different.\\
+    The most likely sequence is the one that maximizes the expression $\dprod_{t'=1}^{T'} P(y_{t'} \mid y_1, \ldots, y_{t'-1}, \mathbf{c})$
+
+   \item computational cost of greedy search: $\mathcal{O}(\left|\mathcal{Y}\right|T')$\\
+   miraculously cheap but far from optimal
+\end{enumerate}
+
+\subsection{Exhaustive Search \cite{dnn-1}} \label{nmt: Exhaustive Search}
 
 \begin{enumerate}
-    \item While running the encoder on the input sequence is relatively straightforward, handling the input and output of the decoder requires more care. 
-    
-    \item The most common approach is sometimes called teacher forcing. 
-    
-    \item Here, the original target sequence (token labels) is fed into the decoder as input. 
-    
-    \item More concretely, the special beginning-of-sequence token and the original target sequence, excluding the final token, are concatenated as input to the decoder, while the decoder output (labels for training) is the original target sequence, shifted by one token:\\
-    “<bos>”, “Ils”, “regardent”, “.” $\rightarrow$ “Ils”, “regardent”, “.”, “<eos>”.
+    \item enumerate all the possible output sequences with their conditional probabilities, and then output the one that scores the highest predicted probability.
 
-    \item An alternative approach is to feed the predicted token from the previous time step as the current input to the decoder.
+    \item prohibitive computational cost: $\mathcal{O}(\left|\mathcal{Y}\right|^{T'})$
 
 \end{enumerate}
 
 
+\subsection{Beam Search \cite{dnn-1}} \label{nmt: Beam Search}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=5cm, keepaspectratio]{Pictures/Recurrent-Neural-Networks/nmt-beam-search.jpg}
+\end{figure}
+
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l p{8cm}}
+    $k$ & beam size \\
+
+    $L$ & length of the final candidate sequence \\
+
+    $\alpha$ & \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+\begin{enumerate}
+    \item beam search striks a compromise between the efficiency of greedy search and the optimality of exhaustive search.
+
+    \item The most straightforward version of beam search is characterized by a single hyperparameter, the beam size, $k$
+
+    \item At time step 1, we select the $k$ tokens with the highest predicted probabilities.\\
+    Each of them will be the first token of $k$ candidate output sequences, respectively.\\
+    At each subsequent time step, based on the $k$ candidate output sequences at the previous time step, we continue to select $k$ candidate output sequences with the highest predicted probabilities from $k\left|\mathcal{Y}\right|$ possible choices.
+
+    \item In the end, we obtain the set of final candidate output sequences based on these six sequences (e.g., discard portions including and after “\verb|<eos>|”). Then we choose the output sequence which maximizes the following score:
+    
+    \item[] $
+        \hfill
+        \frac{1}{L^\alpha} \log P(y_1, \ldots, y_{L}\mid \mathbf{c}) = \dfrac{1}{L^\alpha} \sum_{t'=1}^L \log P(y_{t'} \mid y_1, \ldots, y_{t'-1}, \mathbf{c})
+        \hfill
+    $
+    
+    \item $\alpha$ is usually set to $0.75$
+
+    \item Since a longer sequence has more logarithmic terms in the summation, the term $L^\alpha$ in the denominator penalizes long sequences.
+
+    \item computational cost of beam search: $\mathcal{O}(k\left|\mathcal{Y}\right|T')$
+
+    \item Greedy search can be treated as a special case of beam search arising when the beam size is set to 1.
+
+\end{enumerate}
 
 
 
