@@ -1,10 +1,157 @@
-\chapter{Artificial Intelligence (AI) - TODO}
+\chapter{Artificial Intelligence (AI) \cite{aci-1}}
 
+\begin{enumerate}[itemsep=0.2cm]
+    \item The field of artificial intelligence, or AI, attempts not just to understand but also to build intelligent entities. 
 
+    \item \textbf{Acting humanly}: \textit{Turing test}
+    \begin{enumerate}
+        \item The \textbf{Turing Test}\indexlabel{Turing Test}, proposed by Alan Turing (1950), was designed to provide a satisfactory operational definition of intelligence.\\
+        A computer passes the test if a human interrogator, after posing some written questions, cannot tell whether the written responses come from a person or from a computer.\\
+        total Turing Test includes a video signal so that the interrogator can test the subject’s perceptual abilities, as well as the opportunity for the interrogator to pass physical objects “through the hatch.”\\
+        To pass the total Turing Test, the computer will need:
+        \begin{enumerate}
+            \item \textbf{computer vision} to perceive objects
 
+            \item \textbf{robotics} to manipulate objects and move about
+        \end{enumerate}
 
+        \item The computer would need to possess the following capabilities: 
+        \begin{enumerate}
+            \item \textbf{natural language processing} to enable it to communicate successfully in English
 
+            \item \textbf{knowledge representation} to store what it knows or hears
 
+            \item \textbf{automated reasoning} to use the stored information to answer questions and to draw new conclusions
+
+            \item \textbf{machine learning} to adapt to new circumstances and to detect and extrapolate patterns
+        \end{enumerate}
+    \end{enumerate}
+
+    \item \textbf{Thinking humanly}: \textit{The cognitive modeling approach} 
+    \begin{enumerate}
+        \item The interdisciplinary field of \textbf{cognitive science}\indexlabel{cognitive science} brings together computer models from AI and experimental techniques from psychology to construct precise and testable theories of the human mind. 
+
+        \item an algorithm performs well on a task and that it is therefore a good model of human performance, or vice versa.
+    \end{enumerate}
+
+    \item \textbf{Thinking rationally}: \textit{The “laws of thought” approach}
+    \begin{enumerate}
+        \item The Greek philosopher Aristotle was one of the first to attempt to codify “right thinking,” that is, irrefutable reasoning processes
+
+        \item His syllogisms/ arguments provided patterns for argument structures that always yielded correct conclusions when given correct premises—for example, \textit{“Socrates is a man; all men are mortal; therefore, Socrates is mortal.”}
+
+        \item logicist tradition within artificial intelligence hopes to build on such programs to create intelligent systems. \\
+        There are two main obstacles to this approach.
+        \begin{enumerate}
+            \item it is not easy to take informal knowledge and state it in the formal terms required by logical notation, particularly when the knowledge is less than 100\% certain
+
+            \item there is a big difference between solving a problem “in principle” and solving it in practice.
+        \end{enumerate}
+    \end{enumerate}
+
+    \item \textbf{Acting rationally}: \textit{The rational agent approach}
+    \begin{enumerate}
+        \item An \textbf{agent}\indexlabel{agent} is just something that acts (agent comes from the Latin agere, to do).\\
+        Of course, all computer programs do something, but computer agents are expected to do more: operate autonomously, perceive their environment, persist over a prolonged time period, adapt to change, and create and pursue goals. 
+        
+        \item A \textbf{rational agent}\indexlabel{rational agent} is one that acts so as to achieve the best outcome or, when there is uncertainty, the best expected outcome.
+
+        \item In the \textit{“laws of thought” approach} to AI, the emphasis was on correct inferences.\\
+        Making correct inferences is sometimes part of being a rational agent, because one way to act rationally is to reason logically to the conclusion that a given action will achieve one’s goals and then to act on that conclusion.\\
+        On the other hand, correct inference is not all of ration-ality; in some situations, there is no provably correct thing to do, but something must still be done.\\
+        There are also ways of acting rationally that cannot be said to involve inference.\\
+        \textbf{For example}, recoiling from a hot stove is a reflex action that is usually more successful than a slower action taken after careful deliberation.
+
+        \item The rational-agent approach has two advantages over the other approaches. 
+        \begin{enumerate}
+            \item it is more general than the “laws of thought” approach because correct inference is just one of several possible mechanisms for achieving rationality. 
+
+            \item it is more amenable to scientific development than are approaches based on human behavior or human thought. 
+        \end{enumerate}
+
+        \item The standard of rationality is mathematically well defined and completely general, and can be “unpacked” to generate agent designs that provably achieve it.\\
+        Human behavior, on the other hand, is well adapted for one specific environment and is defined by, well, the sum total of all the things that humans do.
+
+        \item \textbf{limited rationality}\indexlabel{limited rationality} - acting appropriately when there is not enough time to do all the computations one might like.
+    \end{enumerate}
+\end{enumerate}
+
+\section{Fundamentals of AI \cite{aci-1}}
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item \textbf{Philosophy}
+    % \begin{enumerate}
+    %     \item  Can formal rules be used to draw valid conclusions?
+    %     \begin{enumerate}
+            % \item \textbf{Aristotle} (384–322 B.C.) was the first to formulate a precise set of laws governing the rational part of the mind. \\
+            % He developed an informal system of syllogisms for proper reasoning, which in principle allowed one to generate conclusions mechanically, given initial premises. 
+
+            % \item \textbf{Ramon Lull} (d. 1315) had the idea that useful reasoning could actually be carried out by a mechanical artifact.
+
+            % \item \textbf{Thomas Hobbes} (1588–1679) proposed that reasoning was like numerical computation, that “we add and subtract in our silent thoughts.”
+
+            % \item \textbf{Leonardo da Vinci} (1452–1519) designed but did not build a mechanical calculator; recent reconstructions have shown the design to be functional. 
+
+            % \item The first known calculating machine was constructed around 1623 by the German scientist \textbf{Wilhelm Schickard} (1592–1635).
+            
+            % \item \textit{Pascaline}, built in 1642 by \textbf{Blaise Pascal} (1623–1662), is more famous.
+
+            % \item \textbf{Gottfried Wilhelm Leibniz} (1646–1716) built a mechanical device intended to carry out operations on concepts rather than numbers, but its scope was rather limited.
+
+        %     \item 
+        % \end{enumerate}
+
+    %     \item How does the mind arise from a physical brain? 
+
+    %     \item Where does knowledge come from? 
+
+    %     \item How does knowledge lead to action?
+    % \end{enumerate}
+
+    \item \textbf{Mathematics}
+    % \begin{enumerate}
+    %     \item What are the formal rules to draw valid conclusions?
+
+    %     \item What can be computed?
+
+    %     \item How do we reason with uncertain information?
+    % \end{enumerate}
+
+    \item \textbf{Economics}
+    % \begin{enumerate}
+    %     \item How should we make decisions so as to maximize payoff?
+
+    %     \item How should we do this when others may not go along?
+
+    %     \item How should we do this when the payoff may be far in the future?
+    % \end{enumerate}
+
+    \item \textbf{Neuroscience}
+    % \begin{enumerate}
+    %     \item How do brains process information? 
+    % \end{enumerate}
+
+    \item \textbf{Psychology}
+    % \begin{enumerate}
+    %     \item How do humans and animals think and act?
+    % \end{enumerate}
+
+    \item \textbf{Computer engineering}
+    % \begin{enumerate}
+    %     \item How can we build an efficient computer? 
+    % \end{enumerate}
+
+    \item \textbf{Control theory and cybernetics}
+    % \begin{enumerate}
+    %     \item How can artifacts operate under their own control?
+    % \end{enumerate}
+
+    \item \textbf{Linguistics}
+    % \begin{enumerate}
+    %     \item How does language relate to thought?
+    % \end{enumerate}
+
+\end{enumerate}
 
 
 
