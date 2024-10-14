@@ -1,0 +1,117 @@
+\chapter{AI Agent Solution Searching \cite{aci-1}}
+
+\begin{enumerate}
+    \item A \textbf{solution} is an action sequence, so search algorithms work by considering various possible action sequences. 
+    
+    \item The possible action sequences starting at the initial state form a \textbf{search tree} with:
+    \begin{enumerate}
+        \item the initial state at the root
+        \item the branches are actions
+        \item the nodes correspond to states in the state space of the problem
+    \end{enumerate}
+
+    \item \textbf{expanding} the current state: applying each legal action to the current state, thereby \textbf{generating} a new set of states
+
+    \item  essence of search—following up one option now and putting the others aside for later, in case the first choice does not lead to a solution.
+
+    \item \textbf{leaf node}: a node with no children in the tree.
+
+    \item \textbf{frontier}/ \textbf{open list}: The set of all leaf nodes available for expansion at any given point\\
+    the frontier separates the state-space graph into the explored region and the unexplored region, so that every path from the initial state to an unexplored state has to pass through a state in the frontier
+
+    \item \textbf{explored set} / \textbf{closed list}: remembers every expanded node
+
+    \item The process of expanding nodes on the frontier continues until either a solution is found or there are no more states to expand.
+
+    \item \textbf{search strategy}: how they choose which state to expand next
+\end{enumerate}
+
+
+SEE:
+\begin{enumerate}
+    \item \fullref{Tree Search (generic)}
+    \item \fullref{Graph Search (generic)}
+    
+    \item Uninformed:
+    \begin{enumerate}
+        \item \fullref{Breadth-first search BFS}
+        \item \fullref{Uniform-cost search (UCS)}
+        \item \fullref{Depth-first search (DFS)}
+        \item \fullref{Depth-limited search (DLS)}
+        \item \fullref{Iterative deepening depth-first search/ Iterative deepening search (IDS)}
+        \item \fullref{Iterative Lengthening Search (ILS)}
+        \item \fullref{Bidirectional search}
+    \end{enumerate}
+    
+    \item Informed:
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+\end{enumerate}
+
+
+\section{Node of a tree/ graph (n)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{8cm}}
+        \textit{n}.STATE & the state in the state space to which the node corresponds \\
+        
+        \textit{n}.PARENT & the node in the search tree that generated this node\\
+        
+        \textit{n}.ACTION &  the action that was applied to the parent to generate the node \\
+        
+        \textit{n}.PATH-COST & the cost, traditionally denoted by $g(n)$, of the path from the initial state to the node, as indicated by the parent pointers.
+    \end{tabular}
+\end{table}
+
+
+\begin{algorithm}
+    \caption{ function CHILD-NODE takes a parent node and an action and returns the resulting child node}
+
+    \SetKwFunction{FUNCTION}{CHILD-NODE}
+    \SetKwProg{Fn}{function}{:}{}
+    \Fn{\FUNCTION{problem, parent, action}}{
+        \Return a node with \\
+        \hspace{0.4cm} STATE = \textit{problem}.RESULT(\textit{parent}.STATE, \textit{action}), \\
+        \hspace{0.4cm} PARENT = \textit{parent},  \\
+        \hspace{0.4cm} ACTION = \textit{action},\\
+        \hspace{0.4cm} PATH-COST = \textit{parent}.PATH-COST + \textit{problem}.STEP-COST(\textit{parent}.STATE, \textit{action})
+    }
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

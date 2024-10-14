@@ -225,7 +225,7 @@
 
 \subsection{Linguistics}
 \begin{enumerate}
-    \item \textbf{Noam Chomsk} pointed out that the behaviorist theory did not address the notion of \textit{creativity} in language—it did not explain how a child could understand and make up sentences that he or she had never heard before. 
+    \item \textbf{Noam Chomsk} pointed out that the behaviorist theory did not address the notion of \textit{creativity} in language-it did not explain how a child could understand and make up sentences that he or she had never heard before. 
 
     \item Understanding language requires an understanding of the subject matter and context, not just an understanding of the structure of sentences.
 
@@ -264,7 +264,7 @@
     \item[] The agent function is an abstract mathematical description; the agent program is a concrete implementation, running within some physical system.\\
     SEE: \fullref{Agent Function VS Agent Program}
 
-    \item A \textbf{rational agent} is one that does the right thing—conceptually speaking, every entry in the table for the agent function is filled out correctly. \\
+    \item A \textbf{rational agent} is one that does the right thing-conceptually speaking, every entry in the table for the agent function is filled out correctly. \\
     For each possible percept sequence, a rational agent should select an action that is expected to maximize its performance measure, given the evidence provided by the percept sequence and whatever built-in knowledge the agent has.
 
     \item An \textbf{omniscient agent} knows the actual outcome of its actions and can act accordingly; but omniscience is impossible in reality. 
@@ -272,7 +272,7 @@
     \item Rationality maximizes expected performance, while perfection maximizes actual performance.
 
     \item To the extent that an agent relies on the prior knowledge of its designer rather than on its own percepts, we say that the agent lacks \textbf{autonomy}.\\
-    A rational agent should be autonomous—it should learn what it can to compensate for partial or incorrect prior knowledge. 
+    A rational agent should be autonomous-it should learn what it can to compensate for partial or incorrect prior knowledge. 
 \end{enumerate}
 
 
@@ -360,6 +360,187 @@ Example:
     \end{tabular}
 \end{table}
 \end{customTableWrapper}
+
+\subsection{Properties of Task Environments}
+
+\subsubsection{Observability}
+\begin{enumerate}
+    \item \textbf{Fully observable environment}: agent’s sensors give it access to the complete state of the environment at each point in time\\
+    A task environment is effectively fully observable if the sensors detect all aspects that are relevant to the choice of action; relevance, in turn, depends on the performance measure.\\
+    Fully observable environments are convenient because the agent need not maintain any internal state to keep track of the world. 
+
+    \item \textbf{Partially observable environment}: An environment might be partially observable because of noisy and inaccurate sensors or because parts of the state are simply missing from the sensor data.
+
+    \item \textbf{un-observable environment}: If the agent has no sensors at all then the environment is un-observable.\\
+    One might think that in such cases the agent’s plight is hopeless, but the agent’s goals may still be achievable, sometimes with certainty. 
+
+\end{enumerate}
+
+
+\subsubsection{Single Agent VS Multi-agent}
+\begin{enumerate}
+    \item \textbf{Single Agent}: Only one agent operates on the environment.\\
+    \textbf{For example}: an agent solving a crossword puzzle by itself is clearly in a single-agent environment. 
+
+    \item \textbf{Multi-agent}: Multiple agents operate on same environment.\\
+    \textbf{communication} often emerges as a rational behavior in multi-agent environments
+
+    \begin{enumerate}
+        \item \textbf{Competitive multi-agent environment}: multiple agents compete against each other for their own benefits\\
+        in some competitive environments, \textbf{randomized behavior} is rational because it avoids the pitfalls of predictability\\
+        \textbf{Example}: chess
+
+        \item \textbf{Cooperative multi-agent environment}: multiple agents cooperate with each other for mutual benefits\\
+        \textbf{Example}: multiple self driving cars in same environment
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsubsection{Deterministic VS stochastic}
+\begin{enumerate}
+    \item if next state of the environment is completely determined by the current state and the action executed by the agent, otherwise stochastic.
+
+    \item \textbf{Non-deterministic}: which actions are characterized by their possible outcomes, but no probabilities are attached to them\\
+    Non-deterministic environment descriptions are usually associated with performance measures that require the agent to succeed for all possible outcomes of its actions.
+\end{enumerate}
+
+
+\subsubsection{Uncertainty}
+\begin{enumerate}
+    \item an agent need not worry about \textbf{uncertainty} in a fully observable, deterministic environment
+
+    \item We say an environment is \textbf{uncertain} if it is not fully observable or not deterministic.
+\end{enumerate}
+
+
+\subsubsection{Episodic VS sequential}
+
+\begin{enumerate}
+    \item \textbf{Episodic}: In an episodic task environment, the agent’s experience is divided into atomic episodes.\\
+    In each episode the agent receives a percept and then performs a single action.\\
+    Next episode does not depend on the actions taken in previous episodes.\\
+    Episodic environments are much simpler than sequential environments because the agent does not need to think ahead.
+
+    \item \textbf{Sequential}: In sequential environments, on the other hand, the current decision could affect all future decisions.
+\end{enumerate}
+
+
+\subsubsection{Static VS dynamic}
+\begin{enumerate}
+    \item If the environment can change while an agent is deliberating, then we say the environment is \textbf{dynamic} for that agent; otherwise, it is \textbf{static}.
+
+    \item Static environments are easy to deal with because the agent need not keep looking at the world while it is deciding on an action, nor need it worry about the passage of time.\\
+    \textbf{Example}: Crossword puzzles are static.
+
+    \item Dynamic environments, on the other hand, are continuously asking the agent what it wants to do; if it hasn’t decided yet, that counts as deciding to do nothing. \\
+    \textbf{Example}: Taxi driving is clearly dynamic: the other cars and the taxi itself keep moving while the driving algorithm dithers about what to do next.
+
+    \item If the environment itself does not change with the passage of time but the agent’s performance score does, then we say the environment is \textbf{semi-dynamic}. \\
+    \textbf{Example}: Chess, when played with a clock, is semi-dynamic.
+\end{enumerate}
+
+
+\subsubsection{Discrete vs. continuous}
+\begin{enumerate}
+    \item The discrete/continuous distinction applies to the state of the environment, to the way \textbf{time} is handled, and to the percepts and actions of the agent.
+
+\paragraph*{Examples:}
+
+    \item the chess environment has a finite number of distinct states (excluding the clock).\\
+    Chess also has a discrete set of percepts and actions. 
+    
+    \item Taxi driving is a continuous-state and continuous-time problem: the speed and location of the taxi and of the other vehicles sweep through a range of continuous values and do so smoothly over time.\\
+    Taxi-driving actions are also continuous (steering angles, etc.).\\
+    Input from digital cameras is discrete, strictly speaking, but is typically treated as representing continuously varying intensities and locations.
+\end{enumerate}
+
+
+\subsubsection{Known vs. unknown}
+\begin{enumerate}
+    \item this distinction refers not to the environment itself but to the agent’s (or designer’s) state of knowledge about the “laws of physics” of the environment.
+
+    \item In a \textbf{known environment}, the outcomes (or outcome probabilities if the environment is stochastic) for all actions are given.\\
+    not the same as fully observable environments: It is quite possible for a known environment to be partially observable - for example, in solitaire card games, I know the rules but am still unable to see the cards that have not yet been turned over.
+
+    \item if the environment is \textbf{unknown}, the agent will have to learn how it works in order to make good decisions.\\
+    not the same as partially observable environments: an unknown environment can be fully observable - in a new video game, the screen may show the entire game state but I still don’t know what the buttons do until I try them. 
+\end{enumerate}
+
+
+\subsubsection*{Note}
+\begin{enumerate}
+    \item the hardest case is partially observable, multi-agent, stochastic, sequential, dynamic, continuous,and unknown.\\
+    Taxi driving is hard in all these senses, except that for the most part the driver’s environment is known.\\
+    Driving a rented car in a new country with unfamiliar geography and traffic laws is a lot more exciting. 
+
+    \item \textbf{environment class}\indexlabel{environment class}: collection of environments
+
+    \item \textbf{environment generator}: that selects particular environments (with certain likelihoods) in which to run the agent
+\end{enumerate}
+
+Examples of task environments and their characteristics \cite{aci-1}:
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{|l|llllll|}
+    \customTableHeaderColor
+    \hline
+    \textbf{Task Environment} & \textbf{Observable} & \textbf{Agents} & \textbf{Deterministic} & \textbf{Episodic} & \textbf{Static} & \textbf{Discrete} \\ 
+    \hline\hline
+    \endfirsthead
+
+    \hline\endhead
+    \hline\endfoot
+    \hline\endlastfoot
+
+    Crossword puzzle & Fully &  Single &  Deterministic & Sequential & Static & Discrete \\
+    Chess with a clock & Fully & Multi & Deterministic & Sequential & Semi & Discrete \\
+    
+    \hline
+    
+    Poker & Partially & Multi & Stochastic & Sequential & Static&  Discrete \\
+    Backgammon & Fully& Multi& Stochastic& Sequential& Static& Discrete\\
+    
+    \hline
+    
+    Taxi driving & Partially& Multi&  Stochastic& Sequential& Dynamic& Continuous\\
+    Medical diagnosis& Partially & Single & Stochastic& Sequential& Dynamic& Continuous\\
+    
+    \hline
+    
+    Image analysis & Fully& Single& Deterministic& Episodic& Semi& Continuous\\
+    Part-picking robot & Partially& Single& Stochastic& Episodic& Dynamic& Continuous\\
+    
+    \hline
+    
+    Refinery controller& Partially& Single& Stochastic& Sequential& Dynamic& Continuous\\
+    Interactive English tutor & Partially& Multi& Stochastic& Sequential& Dynamic& Discrete\\
+
+\end{longtable}
+\end{customTableWrapper}
+
+
+\input{chapters/ai_ml/ai-parts/agents}
+\input{chapters/ai_ml/ai-parts/agent-solution-searching}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

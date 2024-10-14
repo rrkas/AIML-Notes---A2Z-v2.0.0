@@ -1,5 +1,12 @@
 \chapter{Algorithms: Search}
 
+\begin{enumerate}
+    \item \textbf{uninformed search/ blind search}: The term means that the strategies have no additional information about states beyond that provided in the problem definition.\\
+    All they can do is generate successors and distinguish a goal state from a non-goal state. 
+
+    \item \textbf{ informed search or heuristic search}: Strategies that know whether one non-goal state is “more promising” than another
+\end{enumerate}
+
 \section{Linear Search Algorithm \cite{gfg-linear-search}}\label{Linear Search Algorithm}
 
 \begin{table}[h]
@@ -12,16 +19,23 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.35\linewidth}
+        \begin{customTableWrapper}{1.2}
         \begin{table}[H]
             \begin{tabular}{l l l}
+                \customTableHeaderColor
                 \multicolumn{3}{c}{\textbf{Time Complexity}} \\
+                 
                  Best Case & $O(1)$ & first index \\
                  Average Case & $O(N)$ &  \\
                  Worst Case & $O(N)$ & last index \\
+
+                 \customTableHeaderColor
                  \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+                 
                  Auxiliary Space & $O(1)$ & iterator \\
             \end{tabular}
         \end{table}
+        \end{customTableWrapper}
     \end{minipage}
 \end{table}
 
@@ -75,17 +89,24 @@ def search(arr: list, N: int, x: object) -> int:
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.55\linewidth}
+        \begin{customTableWrapper}{1.2}
         \begin{table}[H]
             \begin{tabular}{l l l}
+                \customTableHeaderColor
                 \multicolumn{3}{c}{\textbf{Time Complexity}} \\
+                 
                  Best Case & $O(1)$ & \\
                  Average Case & $O(\log(N))$ &  \\
                  Worst Case & $O(\log(N))$ &  \\
+
+                 \customTableHeaderColor
                  \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+                 
                  Auxiliary Space & $O(1)$ & \\
                  Auxiliary Space & $O(\log(N))$ & recursive call stack \\
             \end{tabular}
         \end{table}
+        \end{customTableWrapper}
     \end{minipage}
 \end{table}
 
@@ -174,16 +195,23 @@ def binarySearch(arr: list, low: int, high: int, x: object) -> int:
     \end{minipage}
     \hfill
     \begin{minipage}{0.47\linewidth}
+        \begin{customTableWrapper}{1.2}
         \begin{table}[H]
             \begin{tabular}{l l l}
+                \customTableHeaderColor
                 \multicolumn{3}{c}{\textbf{Time Complexity}} \\
+                 
                  Recursive & $O(2*\log_3(N))$ & \\
                  Iterative & $O(\log_3(N))$ & \\
+
+                 \customTableHeaderColor
                  \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+                 
                  Auxiliary Space & $O(2*\log_3(N))$ & Recursive \\
                  Auxiliary Space & $O(1)$ & Iterative \\
             \end{tabular}
         \end{table}
+        \end{customTableWrapper}
     \end{minipage}
 \end{table}
 
@@ -304,14 +332,19 @@ def ternarySearch(l: int, r: int, key: int, ar: list) -> int:
 
 \section{Exponential Search \cite{gfg-exponential-search}}\label{Exponential Search}
 
+\begin{customTableWrapper}{1.2}
 \begin{table}[h]
     \begin{tabular}{l l l}
          \textbf{Time Complexity} & $O(\log(N))$ &  \\
+
+         \customTableHeaderColor
          \multicolumn{3}{c}{\textbf{Space Complexity}}\\
+         
          Auxiliary Space & $O(1)$ & iterative \\
          Auxiliary Space & $O(\log(N))$ & recursive \\
     \end{tabular}
 \end{table}
+\end{customTableWrapper}
 
 \textbf{Steps}:
 \begin{enumerate}
@@ -376,6 +409,472 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 \end{enumerate}
 
 
+
+
+
+\section{Tree Search (generic) \cite{aci-1}}\label{Tree Search (generic)}
+
+\begin{algorithm}[H]
+    \caption{An informal description of the general tree-search algorithm.}
+
+    \SetKwFunction{FUNCTION}{TREE-SEARCH}
+    \SetKwProg{Fn}{function}{:}{}
+    \Fn{\FUNCTION{problem}}{
+        initialize the frontier using the initial state of problem\\
+        \SetKwBlock{Loop}{Loop do}{}
+        \Loop{
+            \If{frontier is empty}{
+                \Return failure
+            }
+            choose a leaf node and remove it from the frontier\\
+            \If{node contains a goal state}{
+                 \Return corresponding solution
+            }
+            expand the chosen node, adding the resulting nodes to the frontier
+        }
+    }
+\end{algorithm}
+
+
+
+
+
+\section{Graph Search (generic) \cite{aci-1}}\label{Graph Search (generic)}
+
+\begin{algorithm}[H]
+    \caption{An informal description of the general graph-search algorithm.}
+
+    \SetKwFunction{FUNCTION}{GRAPH-SEARCH}
+    \SetKwProg{Fn}{function}{:}{}
+    \Fn{\FUNCTION{problem}}{
+        initialize the frontier using the initial state of problem\\
+        \textbf{initialize the explored set to be empty}\\
+        \SetKwBlock{Loop}{Loop do}{}
+        \Loop{
+            \If{frontier is empty}{
+                \Return failure
+            }
+            choose a leaf node and remove it from the frontier\\
+            \If{node contains a goal state}{
+                 \Return corresponding solution
+            }
+            \textbf{add the node to the explored set}\\
+            expand the chosen node, adding the resulting nodes to the frontier\\
+            \hspace{0.4cm} \textbf{only if not in the frontier or explored set}
+        }
+    }
+\end{algorithm}
+
+
+\section{Breadth-first search (BFS) \cite{aci-1}}\label{Breadth-first search BFS}
+
+\begin{enumerate}
+    \item Blind Search
+    
+    \item Breadth-first search is a simple strategy in which the root node is expanded first, then all the successors of the root node are expanded next, then their successors, and so on. 
+    
+    \item In general, all the nodes are expanded at a given depth in the search tree before any nodes at the next level are expanded.
+
+    \item shallowest unexpanded node is chosen for expansion
+
+    \item There is one slight tweak on the general graph-search algorithm, which is that the goal test is applied to each node when it is generated rather than when it is selected for expansion.
+
+    \item  the memory requirements are a bigger problem for breadth-first search than is the execution time.
+
+    \item nodes in the explored set: $\mathcal{O}(b^{d-1})$
+
+    \item nodes in the frontier: $\mathcal{O}(b^{d})$
+\end{enumerate}
+
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{4cm} p{8cm}}
+    Space Complexity & $\mathcal{O}(b^d)$ \\
+
+    Time Complexity & $\mathcal{O}(b^d)$ \\
+
+    \hline
+    
+    Completeness & YES \textbf{if} \textit{b \& d are finite} \textbf{else} NO\\
+
+    Optimal & YES \textbf{if} \textit{all steps cost same} \textbf{else} NO \\
+
+    Can Handle infinite state space? & NO \\
+\end{longtable}
+\end{customTableWrapper}
+
+
+\begin{algorithm}[H]
+\caption{Breadth-first search on a graph.}
+
+\SetKwFunction{FUNCTION}{BREADTH-FIRST-SEARCH}
+\SetKwProg{Fn}{function}{:}{}
+\Fn{\FUNCTION{problem}}{
+    node $\gets$ a node with STATE = \textit{problem}.INITIAL-STATE, PATH-COST = 0\\
+
+    \If{\textit{problem}.GOAL-TEST(\textit{node}.STATE)}{
+         \Return SOLUTION(\textit{node})
+    }
+
+    frontier $\gets$ a FIFO queue with node as the only element\\
+
+    explored $\gets$ an empty set\\
+    
+    \SetKwBlock{Loop}{Loop do}{}
+    \Loop{
+        \If{EMPTY?(\textit{frontier})}{
+            \Return failure
+        }
+
+        \Comment{chooses the shallowest node in frontier}
+        node $\gets$ POP(\textit{frontier}) \\
+
+        add \textit{node}.STATE to \textit{explored}\\
+
+        \For{\textbf{each} action \textbf{in} problem.ACTIONS(node.STATE)}{
+            \textit{child} $\gets$ CHILD-NODE(\textit{problem, node, action})\\
+            
+            \If{\textit{child}.STATE is not in \textit{explored} or \textit{frontier}}{
+                \If{\textit{problem}.GOAL-TEST(\textit{child}.STATE)}{
+                    \Return SOLUTION(\textit{child})
+                }
+                
+                \textit{frontier} $\gets$ INSERT(\textit{child, frontier})
+            }
+        }
+    }
+}
+\end{algorithm}
+
+
+
+
+\section{Uniform-cost search (UCS) \cite{aci-1}}\label{Uniform-cost search (UCS)}
+
+\begin{enumerate}
+    \item algorithm that is optimal with any step-cost function
+
+    \item Instead of expanding the shallowest node, uniform-cost search expands the node $n$ with the lowest path cost $g(n)$.
+
+    \item stores the frontier as a \textbf{priority queue} ordered by $g$
+
+    \item goal test is applied to a node when it is selected for expansion rather than when it is first generated\\
+    first goal node that is generated may be on a sub-optimal path
+
+    \item a test is added in case a better path is found to a node currently on the frontier
+
+    \item uniform-cost search expands nodes in order of their optimal path cost
+
+    \item Uniform-cost search does not care about the number of steps a path has, but only about their total cost.
+
+    \item 
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{table}[H]
+    \begin{minipage}{0.23\linewidth}
+        \begin{customTableWrapper}{1.2}
+        \begin{longtable}{p{1cm} p{4cm}}
+            $n$ & node \\
+            
+            $g(n)$ & path cost \\
+
+            $\epsilon$ &  every step cost exceeds this small positive constant  \\
+
+            $C$ & cost of the solution \\
+            
+            $C^\ast$ & cost of the optimal solution \\
+        \end{longtable}
+        \end{customTableWrapper}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.63\linewidth}
+        \begin{customTableWrapper}{1.2}
+        \begin{longtable}{p{3cm} p{6cm}}
+            Space Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
+        
+            Time Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
+
+            \hline
+            
+            Completeness & YES \textbf{if} \textit{b \& d are finite \textbf{and} $\epsilon > 0$} \textbf{else} NO\\
+        
+            Optimal & YES \\
+        
+            Can Handle infinite state space? & NO \\
+        \end{longtable}
+        \end{customTableWrapper}
+    \end{minipage}
+\end{table}
+
+
+\begin{algorithm}[H]
+\caption{Uniform-cost search on a graph}
+
+\SetKwFunction{FUNCTION}{UNIFORM-COST-SEARCH}
+\SetKwProg{Fn}{function}{:}{}
+\Fn{\FUNCTION{problem}}{
+    \textit{node} $\gets$ a node with STATE = \textit{problem}.INITIAL-STATE, PATH-COST = 0\\
+    
+    \textit{frontier} $\gets$ a priority queue ordered by PATH-COST, with \textit{node} as the only element \\
+    
+    \textit{explored} $\gets$ an empty set\\
+
+    \SetKwBlock{Loop}{Loop do}{}
+    \Loop{
+        \If{EMPTY?(\textit{frontier})}{
+            \Return failure
+        }
+        \Comment{chooses the lowest-cost node in frontier}
+        \textit{node} $\gets$ POP(\textit{frontier}) \\
+
+        \If{\textit{problem}.GOAL-TEST(\textit{node}.STATE)}{
+            \Return SOLUTION(\textit{node})
+        }
+
+        add \textit{node}.STATE to explored\\
+
+        \For{\textbf{each} action \textbf{in} problem.ACTIONS(node.STATE)}{
+            \textit{child} $\gets$ CHILD-NODE(\textit{problem,node,action})\\
+            
+            \If{child.STATE \textbf{is not in} explored \textbf{or} frontier}{
+                \textit{frontier} $\gets$ INSERT(\textit{child, frontier})
+            }
+            \ElseIf{child.STATE \textbf{is in} frontier with higher PATH-COST}{
+                replace that frontier node with child
+            }
+        }
+    }
+}
+\end{algorithm}
+
+
+
+\section{Depth-first search (DFS) \cite{aci-1}} \label{Depth-first search (DFS)}
+
+\begin{enumerate}
+    \item Depth-first search always expands the deepest node in the current frontier of the search tree.
+
+    \item The search proceeds immediately to the deepest level of the search tree, where the nodes have no successors.\\
+    As those nodes are expanded, they are dropped from the frontier, so then the search “backs up” to the next deepest node that still has unexplored successors.
+
+    \item The graph-search version, which avoids repeated states and redundant paths, is complete in finite state spaces because it will eventually expand every node.\\
+    The tree-search version, on the other hand, is not complete
+
+    \item A variant of depth-first search called \textbf{backtracking search} uses still less memory.\\
+    In backtracking, \textbf{only one successor} is generated at a time rather than all successors; each \textbf{partially expanded} node remembers which successor to generate next.\\
+    In this way, only $\mathcal{O}(m)$ memory is needed rather than $\mathcal{O}(bm)$.
+\end{enumerate}
+
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    Space Complexity & $\mathcal{O}(bm)$ \\
+
+    Time Complexity & $\mathcal{O}(b^m)$ \\
+
+    \hline
+
+    Completeness & YES \textbf{if} \textit{b \& d are finite \textbf{and} algorithm = GRAPH-SEARCH} \textbf{else} NO\\
+
+    Optimal & NO \\
+
+    Can Handle infinite state space? & NO \\
+\end{longtable}
+\end{customTableWrapper}
+
+
+\section{Depth-limited search (DLS) \cite{aci-1}} \label{Depth-limited search (DLS)}
+
+\begin{enumerate}
+    \item The failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a \textbf{predetermined depth limit} $l$.
+    
+    \item Nodes at depth $l$ are treated as if they have no successors. 
+    
+    \item The depth limit solves the infinite-path problem. 
+    
+    \item Unfortunately, it also introduces an additional source of incompleteness if we choose $l < d$, that is, the shallowest goal is beyond the depth limit. (This is likely when d is unknown.) 
+    
+    \item Depth-limited search will also be non-optimal if we choose $l > d$.
+\end{enumerate}
+
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Notation}\\
+
+    $l$ & predetermined depth limit \\
+    $d$ & depth of shallowest goal \\
+
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Analysis} \\
+    Space Complexity & $\mathcal{O}(bl)$ \\
+
+    Time Complexity & $\mathcal{O}(b^l)$ \\
+
+    \hline
+
+    Completeness & YES \textbf{if} \textit{$l \geq d$} \textbf{else} NO \\
+
+    Optimal & NO \\
+
+    Can Handle infinite state space? & YES \\
+\end{longtable}
+\end{customTableWrapper}
+
+
+\begin{algorithm}[H]
+\caption{A recursive implementation of depth-limited tree search.}
+
+\SetKwFunction{FUNCTION}{DEPTH-LIMITED-SEARCH}
+\SetKwProg{Fn}{function}{:}{}
+\Fn{\FUNCTION{problem, limit}}{
+    \Return RECURSIVE-DLS(MAKE-NODE(\textit{problem}.INITIAL-STATE), \textit{problem, limit})
+}
+
+\SetKwFunction{FUNCTION}{RECURSIVE-DLS}
+\SetKwProg{Fn}{function}{:}{}
+\Fn{\FUNCTION{node, problem, limit}}{
+    \If{problem.GOAL-TEST(\textit{node}.STATE) }{
+        \Return SOLUTION(\textit{node})
+    }
+    \ElseIf{limit = 0}{
+        \Return cutoff
+    }
+    \Else{
+        \textit{cutoff\_occurred?} $\gets$ false \\
+
+        \For{\textbf{each} action \textbf{in} \textit{problem}.ACTIONS(\textit{node}.STATE)}{
+            \textit{child} $\gets$ CHILD-NODE(\textit{problem, node, action})\\
+
+            result $\gets$ RECURSIVE-DLS(\textit{child, problem, limit - 1})\\
+
+            \If{result = cutoff}{
+                \textit{cutoff\_occurred?} $\gets$ true
+            }
+            \ElseIf{result $\neq$ failure}{
+                \Return result
+            }
+        }
+        \If{cutoff\_occurred?}{
+            \Return cutoff
+        }
+        \Else{
+            \Return failture
+        }
+    }
+}
+\end{algorithm}
+
+
+\section{Iterative deepening depth-first search/ Iterative deepening search (IDS) \cite{aci-1}} \label{Iterative deepening depth-first search/ Iterative deepening search (IDS)}
+
+\begin{enumerate}
+    \item Iterative deepening search (or iterative deepening depth-first search) is a general strategy, often used in combination with depth-first tree search, that finds the best depth limit. 
+    
+    \item It does this by gradually increasing the limit—first 0, then 1, then 2, and so on—until a goal is found.
+    
+    \item This will occur when the depth limit reaches d, the depth of the shallowest goal node.
+
+    \item iterative deepening is the preferred uninformed search method when the search space is large and the depth of the solution is not known.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Notation}\\
+
+    $d$ & depth of shallowest goal \\
+
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Analysis} \\
+    Space Complexity & $\mathcal{O}(bd)$ \\
+
+    Time Complexity & $\mathcal{O}(b^d)$ \\
+
+    \hline
+
+    Completeness & YES \textbf{if} \textit{finite} \textbf{else} NO \\
+
+    Optimal & YES \textbf{if} \textit{all path costs same} \textbf{else} NO \\
+
+    Can Handle infinite state space? & YES \\
+\end{longtable}
+\end{customTableWrapper}
+
+\begin{algorithm}[H]
+\caption{The iterative deepening search algorithm, which repeatedly applies depth-limited search with increasing limits. It terminates when a solution is found or if the depth-limited search returns failure, meaning that no solution exists.}
+
+\SetKwFunction{FUNCTION}{ITERATIVE-DEEPENING-SEARCH}
+\SetKwProg{Fn}{function}{:}{}
+\Fn{\FUNCTION{problem}}{
+    \For{depth = $0$ \textbf{to} $\infty$}{
+        \textit{result} $\gets$ DEPTH-LIMITED-SEARCH(problem,depth)\\
+
+        \If{result $\neq$ cutoff}{
+            \Return result
+        }
+    }
+}
+\end{algorithm}
+
+
+
+
+\section{Iterative Lengthening Search (ILS) \cite{aci-1}} \label{Iterative Lengthening Search (ILS)}
+
+
+\begin{enumerate}
+    \item The idea is to use increasing path-cost limits instead of increasing depth limits.
+
+    \item uses \fullref{Depth-limited search (DLS)} version of \fullref{Uniform-cost search (UCS)}
+\end{enumerate}
+
+
+\section{Bidirectional search \cite{aci-1}} \label{Bidirectional search}
+
+\begin{enumerate}
+    \item The idea behind bidirectional search is to run two simultaneous searches—one forward from the initial state and the other backward from the goal—hoping that the two searches meet in the middle.
+
+    \item Bidirectional search is implemented by replacing the goal test with a check to see whether the frontiers of the two searches intersect; if they do, a solution has been found.
+
+    \item first such solution found may not be optimal, even if the two searches are both breadth-first; some additional search is required to make sure there isn’t another short-cut across the gap.
+
+    \item The check can be done when each node is generated or selected for expansion and, with a hash table, will take constant time.
+
+    \item Let the predecessors of a state x be all those states that have x as a successor.\\
+    Bidirectional search requires a method for computing predecessors.\\
+    When all the actions in the state space are reversible, the predecessors of x are just its successors.
+
+    \item  if the goal is an abstract description, such as the goal that “no queen attacks another queen” in the n-queens problem, then bidirectional search is difficult to use.
+\end{enumerate}
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Notation}\\
+
+    $d$ & depth of shallowest goal \\
+
+    \customTableHeaderColor
+    \multicolumn{2}{c}{Analysis} \\
+    Space Complexity & $\mathcal{O}(b^{d/2})$ \\
+
+    Time Complexity & $\mathcal{O}(b^{d/2})$ \\
+
+    \hline
+
+    Completeness & YES \textbf{if} \textit{finite} \textbf{else} NO \\
+
+    Optimal & YES \textbf{if} \textit{additional search is done} \textbf{else} NO \\
+
+    Can Handle infinite state space? & NO \\
+\end{longtable}
+\end{customTableWrapper}
 
 
 
