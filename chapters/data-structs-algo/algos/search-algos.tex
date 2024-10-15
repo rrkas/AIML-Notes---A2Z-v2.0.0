@@ -4,8 +4,74 @@
     \item \textbf{uninformed search/ blind search}: The term means that the strategies have no additional information about states beyond that provided in the problem definition.\\
     All they can do is generate successors and distinguish a goal state from a non-goal state. 
 
-    \item \textbf{ informed search or heuristic search}: Strategies that know whether one non-goal state is “more promising” than another
+    \item \textbf{ informed search or heuristic search}: Strategies that know whether one non-goal state is “more promising” than another\\
+    The general approach we consider is called \textbf{best-first search}. (SEE: \fullref{Best-first Search})
 \end{enumerate}
+
+\section*{Notations}
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{l p{8cm}}
+    $b$ & branching factor; max number of children a parent node has\\
+
+    $d$ & depth of the shallowest goal node\\
+
+    $m$ & maximum length of any path in the state space\\
+
+    $C$ & cost of solution\\
+
+    $C^\ast$ & cost of optimal solution\\
+
+    $l$ & predetermined depth limit \\
+
+    $\epsilon$ & very small positive number (least step-cost)\\
+
+    \hline
+
+    $g(n)$ & lowest path cost to reach node $n$ from root node\\
+
+    $f(n)$ & evaluation function \\
+
+    $h(n)$ & heuristic function \\
+\end{longtable}
+\end{customTableWrapper}
+
+\begin{enumerate}
+    \item The evaluation function is construed as a cost estimate, so the node with the lowest evaluation is expanded first.
+
+    \item $h(n)$ = estimated cost of the cheapest path from the state at node n to a goal state.\\
+    $h(n)$ takes a node as input, but, unlike $g(n)$, it depends only on the state at that node.\\
+    Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm.\\
+    if $n$ is a goal node, then $h(n) = 0$
+\end{enumerate}
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{|l|p{4cm}|p{8cm}|}
+    \hline
+    \customTableHeaderColor
+    \textbf{Function} & \textbf{Description} & \textbf{Purpose} \\ 
+    \hline
+    \endfirsthead
+    
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+
+    $g(n)$ & Lowest path cost to reach node $n$ from root & Represents the actual cost incurred to reach the node $n$ \\ \hline
+    
+    $f(n)$ & Evaluation function & Combines both $g(n)$ and $h(n)$ to estimate the total cost (typically $f(n) = g(n) + h(n)$) \\ \hline
+    
+    $h(n)$ & Heuristic function & Provides an estimate of the cost to reach the goal from node $n$ \\ \hline
+    
+\end{longtable}
+\end{customTableWrapper}
+
+
 
 \section{Linear Search Algorithm \cite{gfg-linear-search}}\label{Linear Search Algorithm}
 
@@ -468,9 +534,11 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Breadth-first search (BFS) \cite{aci-1}}\label{Breadth-first search BFS}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
+
 \begin{enumerate}
-    \item Blind Search
-    
     \item Breadth-first search is a simple strategy in which the root node is expanded first, then all the successors of the root node are expanded next, then their successors, and so on. 
     
     \item In general, all the nodes are expanded at a given depth in the search tree before any nodes at the next level are expanded.
@@ -551,6 +619,10 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Uniform-cost search (UCS) \cite{aci-1}}\label{Uniform-cost search (UCS)}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
+
 \begin{enumerate}
     \item algorithm that is optimal with any step-cost function
 
@@ -566,47 +638,25 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
     \item uniform-cost search expands nodes in order of their optimal path cost
 
     \item Uniform-cost search does not care about the number of steps a path has, but only about their total cost.
-
-    \item 
 \end{enumerate}
 
 \vspace{0.5cm}
 
-\begin{table}[H]
-    \begin{minipage}{0.23\linewidth}
-        \begin{customTableWrapper}{1.2}
-        \begin{longtable}{p{1cm} p{4cm}}
-            $n$ & node \\
-            
-            $g(n)$ & path cost \\
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    Space Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
 
-            $\epsilon$ &  every step cost exceeds this small positive constant  \\
+    Time Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
 
-            $C$ & cost of the solution \\
-            
-            $C^\ast$ & cost of the optimal solution \\
-        \end{longtable}
-        \end{customTableWrapper}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.63\linewidth}
-        \begin{customTableWrapper}{1.2}
-        \begin{longtable}{p{3cm} p{6cm}}
-            Space Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
-        
-            Time Complexity & $\mathcal{O}(b^{1 + \dfloor {C^\ast/ \epsilon}})$ \\
+    \hline
+    
+    Completeness & YES \textbf{if} \textit{b \& d are finite \textbf{and} $\epsilon > 0$} \textbf{else} NO\\
 
-            \hline
-            
-            Completeness & YES \textbf{if} \textit{b \& d are finite \textbf{and} $\epsilon > 0$} \textbf{else} NO\\
-        
-            Optimal & YES \\
-        
-            Can Handle infinite state space? & NO \\
-        \end{longtable}
-        \end{customTableWrapper}
-    \end{minipage}
-\end{table}
+    Optimal & YES \\
+
+    Can Handle infinite state space? & NO \\
+\end{longtable}
+\end{customTableWrapper}
 
 
 \begin{algorithm}[H]
@@ -653,6 +703,10 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Depth-first search (DFS) \cite{aci-1}} \label{Depth-first search (DFS)}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
+
 \begin{enumerate}
     \item Depth-first search always expands the deepest node in the current frontier of the search tree.
 
@@ -687,6 +741,10 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Depth-limited search (DLS) \cite{aci-1}} \label{Depth-limited search (DLS)}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
+
 \begin{enumerate}
     \item The failure of depth-first search in infinite state spaces can be alleviated by supplying depth-first search with a \textbf{predetermined depth limit} $l$.
     
@@ -702,14 +760,6 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \begin{customTableWrapper}{1.2}
 \begin{longtable}{p{3cm} p{6cm}}
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Notation}\\
-
-    $l$ & predetermined depth limit \\
-    $d$ & depth of shallowest goal \\
-
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Analysis} \\
     Space Complexity & $\mathcal{O}(bl)$ \\
 
     Time Complexity & $\mathcal{O}(b^l)$ \\
@@ -771,10 +821,14 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Iterative deepening depth-first search/ Iterative deepening search (IDS) \cite{aci-1}} \label{Iterative deepening depth-first search/ Iterative deepening search (IDS)}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
+
 \begin{enumerate}
     \item Iterative deepening search (or iterative deepening depth-first search) is a general strategy, often used in combination with depth-first tree search, that finds the best depth limit. 
     
-    \item It does this by gradually increasing the limit—first 0, then 1, then 2, and so on—until a goal is found.
+    \item It does this by gradually increasing the limit - first 0, then 1, then 2, and so on - until a goal is found.
     
     \item This will occur when the depth limit reaches d, the depth of the shallowest goal node.
 
@@ -785,13 +839,6 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \begin{customTableWrapper}{1.2}
 \begin{longtable}{p{3cm} p{6cm}}
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Notation}\\
-
-    $d$ & depth of shallowest goal \\
-
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Analysis} \\
     Space Complexity & $\mathcal{O}(bd)$ \\
 
     Time Complexity & $\mathcal{O}(b^d)$ \\
@@ -827,6 +874,9 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \section{Iterative Lengthening Search (ILS) \cite{aci-1}} \label{Iterative Lengthening Search (ILS)}
 
+\begin{center}
+    $f(n) = g(n)$
+\end{center}
 
 \begin{enumerate}
     \item The idea is to use increasing path-cost limits instead of increasing depth limits.
@@ -838,7 +888,7 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 \section{Bidirectional search \cite{aci-1}} \label{Bidirectional search}
 
 \begin{enumerate}
-    \item The idea behind bidirectional search is to run two simultaneous searches—one forward from the initial state and the other backward from the goal—hoping that the two searches meet in the middle.
+    \item The idea behind bidirectional search is to run two simultaneous searches - one forward from the initial state and the other backward from the goal - hoping that the two searches meet in the middle.
 
     \item Bidirectional search is implemented by replacing the goal test with a check to see whether the frontiers of the two searches intersect; if they do, a solution has been found.
 
@@ -855,13 +905,6 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 \begin{customTableWrapper}{1.2}
 \begin{longtable}{p{3cm} p{6cm}}
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Notation}\\
-
-    $d$ & depth of shallowest goal \\
-
-    \customTableHeaderColor
-    \multicolumn{2}{c}{Analysis} \\
     Space Complexity & $\mathcal{O}(b^{d/2})$ \\
 
     Time Complexity & $\mathcal{O}(b^{d/2})$ \\
@@ -878,14 +921,131 @@ def exponentialSearch(arr: list, n: int, x: object) -> int:
 
 
 
+\section{Best-first Search \cite{aci-1}} \label{Best-first Search}
+
+\begin{enumerate}
+    \item Best-first search is an instance of the general TREE-SEARCH or GRAPH-SEARCH algorithm in which a node is selected for expansion based on an evaluation function, $f(n)$.
+\end{enumerate}
+
+
+\section{Greedy best-first search (GBFS) \cite{aci-1}} \label{Greedy best-first search (GBFS)}
+
+\begin{center}
+    $f(n) = h(n)$
+\end{center}
+
+\begin{enumerate}
+    \item Greedy best-first search8 tries to expand the node that is closest to the goal, on the grounds that this is likely to lead to a solution quickly.
+
+    \item With a good heuristic function, however, the complexity can be reduced substantially. 
+    
+    \item The amount of the reduction depends on the particular problem and on the quality of the heuristic.
+\end{enumerate}
+
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    Space Complexity & $\mathcal{O}(b^m)$ \\
+
+    Time Complexity & $\mathcal{O}(b^m)$ \\
+
+    \hline
+
+    Completeness & YES \textbf{if} \textit{graph algo} \textbf{else} NO \\
+
+    Optimal & NO \\
+
+    Can Handle infinite state space? & NO (even in finite space) \\
+\end{longtable}
+\end{customTableWrapper}
 
 
 
 
+\section{A* (A-star) search \cite{aci-1}} \label{A* (A-star) search}
+
+\begin{center}
+    $f(n) = g(n) + h(n)$
+\end{center}
 
 
+\begin{enumerate}
+    \item Since $g(n)$ gives the path cost from the start node to node $n$, and $h(n)$ is the estimated cost of the cheapest path from $n$ to the goal, we have \\
+    $f(n)$ = estimated cost of the cheapest solution through $n$
+
+    \item The algorithm is identical to \verb|UNIFORM-COST-SEARCH| except that A* uses $g + h$ instead of $g$.
+
+    
+\end{enumerate}
 
 
+\begin{customTableWrapper}{1.2}
+\begin{longtable}{p{3cm} p{6cm}}
+    Space Complexity & $\mathcal{O}()$ \\
+
+    Time Complexity & $\mathcal{O}()$ \\
+
+    \hline
+
+    Completeness &  YES  \\
+
+    Optimal & YES \\
+
+    Consistent solution & YES \textbf{if} $h(n) \leq c(n, a, n') + h(n')$ \textbf{else} NO \\
+
+    Can Handle infinite state space? &  \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+\subsection{Conditions for optimality: Admissibility and consistency \cite{aci-1}}
+
+\begin{enumerate}
+    \item condition we require for optimality is that $h(n)$ be an admissible heuristic.
+
+    \item An \textbf{admissible heuristic}\indexlabel{admissible heuristic} is one that \textit{never overestimates} the cost to reach the goal.
+    
+    \item Because $g(n)$ is the actual cost to reach $n$ along the current path, and $f(n) = g(n) + h(n)$, we have as an immediate consequence that $f(n)$ never overestimates the true cost of a solution along the current path through $n$.
+
+    \item Admissible heuristics are by nature optimistic because they think the cost of solving the problem is less than it actually is.
+
+    \item Straight-line distance is admissible because the shortest path between any two points is a straight line, so the straight line cannot be an overestimate.
+
+    \item slightly stronger condition called \textbf{consistency} (or sometimes \textbf{monotonicity}) is required only for applications of A* to graph search.
+
+    \item A heuristic $h(n)$ is consistent if, for every node $n$ and every successor $n'$ of $n$ generated by any action $a$, the estimated cost of reaching the goal from $n$ is no greater than the step cost of getting to $n'$ plus the estimated cost of reaching the goal from $n'$
+
+    \item This is a form of the general triangle inequality, which stipulates that each side of a triangle cannot be longer than the sum of the other two sides.\\
+    Here, the triangle is formed by $n$, $n'$, and the goal $G_n$ closest to $n$. 
+
+    \item For an admissible heuristic, the inequality makes perfect sense: if there were a route from n to $G_n$ via $n'$ that was cheaper than $h(n)$, that would violate the property that $h(n)$ is a lower bound on the cost to reach $G_n$.
+\end{enumerate}
+
+\subsection{Optimality of A* \cite{aci-1}}
+
+\begin{enumerate}
+    \item the tree-search version of A* is optimal if $h(n)$ is admissible
+
+    \item graph-search version is optimal if $h(n)$ is consistent
+
+    \item if $h(n)$ is consistent, then the values of $f(n)$ along any path are non-decreasing.
+
+    \item whenever A* selects $a$ node $n$ for expansion, the optimal path to that node has been found
+
+    \item If C* is the cost of the optimal solution path, then we can say the following:
+    \begin{enumerate}
+        \item A* expands all nodes with $f(n) < C*$
+
+        \item A* might then expand some of the nodes right on the “goal contour” (where $f(n) = C*$) before selecting a goal node.
+    \end{enumerate}
+
+    \item among optimal algorithms of this type - algorithms that extend search paths from the root and use the same heuristic information - A* is \textbf{optimally efficient} for any given consistent heuristic.
+
+    \item no other optimal algorithm is guaranteed to expand fewer nodes than A* (except possibly through tie-breaking among nodes with $f(n)$ = C*). 
+    
+    \item any algorithm that does not expand all nodes with $f(n)$ < C* runs the risk of missing the optimal solution.
+
+    \item 
+\end{enumerate}
 
 
 
