@@ -81,12 +81,14 @@ $R_i$ = reward received after the $i^{th}$ selection of this action
 
 $Q_n$ = estimate of this action’s value after it has been selected $n-1$ times
 
-\begin{align*}    
+\[
+\begin{aligned}    
     Q_{n+1} &= \displaystyle\dfrac{1}{n} \sum_{i=1}^{n} R_i = \displaystyle\dfrac{1}{n} \left( R_n + \sum_{i=1}^{n-1} R_i \right) \\
     &= \displaystyle\dfrac{1}{n} \left( R_n + (n-1) \displaystyle\dfrac{1}{(n-1)}  \left(\dsum_{i=1}^{n-1} R_i\right) \right)\\
     &= \displaystyle\dfrac{1}{n} (R_n + (n-1)Q_n) = \displaystyle\dfrac{1}{n} (R_n + nQ_n - Q_n)\\
     &= Q_n + \displaystyle\dfrac{1}{n} [R_n - Q_n]
-\end{align*}
+\end{aligned}
+\]
 
 NewEstimate = OldEstimate + StepSize [ Target - OldEstimate ]
 \vspace{0.2cm}
@@ -222,13 +224,15 @@ The probability of selecting any action is given according to a \textbf{soft-max
 \vspace{0.2cm}
 
 On each step, after selecting the action $A_t$ and receiving the reward $R_t$, the action preferences are updated:
-\begin{align*}
+\[
+\begin{aligned}
     H_{t+1}(a) &= 
     \begin{cases}
         H_t(a) + \alpha(R_t - \bar{R_t})(1-\pi_t(a)) & \text{if } a = A_t \\
         H_t(a) - \alpha(R_t - \bar{R_t})\pi_t(a) & \text{for all } a \neq A_t
     \end{cases}
-\end{align*}
+\end{aligned}
+\]
 
 \begin{enumerate}
     \item The top part of the equation represents the preference update for the action just taken and the bottom part represents the preference updates for all other actions.

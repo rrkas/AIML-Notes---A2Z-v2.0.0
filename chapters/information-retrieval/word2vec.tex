@@ -189,13 +189,15 @@ Embeddings can also be a useful tool for studying how meaning changes over time,
     \end{enumerate}
 
     \item \textbf{Loss}:
-    \begin{align*}
+    \[
+    \begin{aligned}
         L_{CE} 
         &= -\log\left[ P(+|\mathbf{w, c_{pos}}) \prod_{i=1}^{k} P(-|\mathbf{w, c_{neg_i}}) \right]\\ 
         &= -\left[ \log(P(+|\mathbf{w, c_{pos}})) + \sum_{i=1}^{k} \log(P(-|\mathbf{w, c_{neg_i}})) \right]\\ 
         &= -\left[ \log(P(+|\mathbf{w, c_{pos}})) + \sum_{i=1}^{k} \log(1-P(+|\mathbf{w, c_{neg_i}})) \right]\\ 
         &= -\left[ \log(\sigma(\mathbf{c_{pos}\cdot w})) + \sum_{i=1}^{k} \log(\sigma(\mathbf{-c_{neg_i}\cdot w})) \right]\\ 
-    \end{align*}
+    \end{aligned}
+    \]
     \[
         \displaystyle \dfrac{\partial L_{CE}}{\partial c_{pos}} = [\sigma(\mathbf{c_{pos}\cdot w})-1]\cdot \mathbf{w} \hfill \displaystyle \dfrac{\partial L_{CE}}{\partial c_{neg}} = [\sigma(\mathbf{c_{neg}\cdot w})]\cdot \mathbf{w}
     \]
@@ -254,9 +256,42 @@ SEE: \url{https://fasttext.cc}
 
 
 
-\vspace{4cm}
-\url{https://drive.google.com/file/d/14x7oawk84MPvBV7MEU7Q6ovVudMfUHBA/view}\\
-137/577
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

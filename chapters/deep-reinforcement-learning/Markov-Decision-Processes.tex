@@ -60,11 +60,13 @@ where, $0 \leq \gamma \leq 1$ is called \textbf{dscount rate}\\
 $\gamma$ basically says, that a reward received $k$ time steps in the future is only worth $\gamma^{k-1}$ times what it would be worth if it were received immediately.\\
 since if $\gamma < 1$, the infinite sum has a finite value (as long as the sequence of rewards is bounded).
 
-\begin{align*}
+\[
+\begin{aligned}
     G_t &= R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots \\
     &= R_{t+1} + \gamma (R_{t+2} + \gamma R_{t+3} + \cdots)\\
     &= R_{t+1} + \gamma G_{t+1}
-\end{align*}
+\end{aligned}
+\]
 
 \section{Markov Property \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}\label{RL: Markov Property}
 \begin{enumerate}
@@ -124,14 +126,16 @@ In the above example, first row - We can see how in this environment we can go f
 
 
 \section{Bellman equation \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}
-\begin{align*}
+\[
+\begin{aligned}
 v_\pi(s)  &= \mathbb{E}_\pi [G_t \mid S_t = s] \\ 
     &= \mathbb{E}_\pi [R_{t+1} + \gamma V(S_{t+1}) \mid S_t = s] \\ 
     % &= \mathbb{E}_\pi \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \bigg| S_t = s \right] \\
     &= \mathbb{E}_\pi \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} \bigg| S_t = s \right] \hspace{3cm} \left(V(S_{t}) = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \right) \\ 
     &= \sum_a \pi(a \mid s) \sum_{s'} \sum_r p(s', r \mid s, a) \left[ r + \gamma \mathbb{E}_\pi \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} \bigg| S_{t+1} = s' \right] \right] \\ 
     &= \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) \left[ r + \gamma v_\pi(s') \right] 
-\end{align*}
+\end{aligned}
+\]
 
 \begin{enumerate}
     \item $\pi(a|s)$ is the probability of taking action "$a$" in state "$s$" under policy $\pi$
@@ -155,10 +159,12 @@ v_\pi(s)  &= \mathbb{E}_\pi [G_t \mid S_t = s] \\
 \end{table}
 
 Bellman equation for the value of a state:
-\begin{align*}
+\[
+\begin{aligned}
     v_\pi(s) &\doteq \mathbb{E}_\pi [G_t \mid S_t = s] \\
     &= \mathbb{E}_\pi [R_{t+1} + \gamma G_{t+1} \mid S_t = s]
-\end{align*}
+\end{aligned}
+\]
 
 \section{Optimal Value Functions \cite{medium-introduction-to-reinforcement-learning-rl-part-3-finite-markov-decision-processes-51e1f8d3ddb7}}
 
@@ -168,22 +174,25 @@ The Bellman optimality equations are a way of solving for the optimal value of s
 The optimal value of a state is denoted by $V_*(s)$
 
 
-
-\begin{align*}
+\[
+\begin{aligned}
 v_*(s) &= \max_{a \in {A}(s)} q_{\pi_*}(s, a) \\
     &= \max_a \mathbb{E}_{\pi_*} [G_t \mid S_t = s, A_t = a] \\
     &= \max_a \mathbb{E}_{\pi_*} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \mid S_t = s, A_t = a \right] \\
     &= \max_a \mathbb{E}_{\pi_*} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} \mid S_t = s, A_t = a \right] \\
     &= \max_a \mathbb{E} [R_{t+1} + \gamma v_*(S_{t+1}) \mid S_t = s, A_t = a]
-\end{align*}
+\end{aligned}
+\]
 \[
     v_*(s) = \max_{a \in {A}(s)} \sum_{s',r} p(s', r \mid s, a) \left[ r + \gamma v_*(s') \right]
 \]
 
-\begin{align*}
+\[
+\begin{aligned}
     q_*(s,a) &= \mathbb{E}[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1},a') | S_t=s,A_t=a] \\
     &= \sum_{s',r} p(s',r | s,a) \left[ r + \gamma \max_{a'} q_*(s',a') \right]
-\end{align*}
+\end{aligned}
+\]
 
 Quite similar to before, but now we’re taking "$\max(a)$", meaning, the action with the best reward for each state in order to maximize the reward.
 

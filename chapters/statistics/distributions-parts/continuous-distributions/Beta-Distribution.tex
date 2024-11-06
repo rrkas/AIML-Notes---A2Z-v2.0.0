@@ -151,7 +151,8 @@
 
 \begin{enumerate}
     \item Posterior: \cite{ism-1}
-    \begin{align*}
+    \[
+    \begin{aligned}
          f(\theta|x) 
          &\propto p(x|\theta) f (\theta) \\
          &= \theta^{\sum^{n}_{i=1} x_i} 
@@ -160,7 +161,8 @@
             \theta^{\alpha-1} (1 - \theta)^{\beta-1} \\
         &\propto \theta^{(\alpha + \sum^{n}_{i=1} x_i)-1} 
             (1-\theta)^{(\beta + n - \sum^{n}_{i=1} x_i)-1} 
-    \end{align*}
+    \end{aligned}
+    \]
 
     \begin{enumerate}
         \item[] posterior $f (\theta|D)$ is proportional to the density of a $beta(\alpha', \beta')$ distribution:

@@ -281,13 +281,15 @@ Essentially, formulas are \textbf{same}.
     \item based on an \textbf{additive model}, i.e., $Pr (D|E) = ER + Pr (D|E^c)$
 
     \item Assume $0 < P(E) < 1$:
-    \begin{align*}
+    \[
+    \begin{aligned}
         ER  
         &\Leftrightarrow Pr (D|E) = Pr (D|E^c) \\
         &\Leftrightarrow Pr (E^c) Pr (D \cap E) = Pr (E) Pr (D \cap E^c) \\
         &\Leftrightarrow [1 - Pr (E)] Pr (D \cap E) = Pr (E)[Pr(D) - Pr (D \cap E)] \\
         &\Leftrightarrow Pr (D \cap E) = Pr (D) Pr (E)
-    \end{align*}
+    \end{aligned}
+    \]
 
     \item it can be viewed as the excess number of cases ($D$) as a fraction of the population size
 

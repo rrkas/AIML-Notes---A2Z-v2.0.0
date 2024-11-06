@@ -425,21 +425,25 @@ Orthogonal Basis (OGB) : $(\mathbf{u}_1, \cdots ,\mathbf{u}_n)$
 
 \subsubsection*{Method 1 \cite{mfml-1}}
 
-\begin{align*}
+\[
+\begin{aligned}
     \mathbf{u}_1 &:= \mathbf{b}_1 \\
     \mathbf{u}_k &:= \mathbf{b}_k - \pi_{span[\mathbf{u_1, \cdots, u_{k-1}}]}(\mathbf{b}_k) \\
-\end{align*}
+\end{aligned}
+\]
 
 SEE: projection - TODO
 
 \subsubsection*{Method 2 \cite{youtube/UOZjINOGLog-Gram-Schmidt-Orthogonalisation-Process}}
 
-\begin{align*}
+\[
+\begin{aligned}
     \displaystyle
     \mathbf{u}_1 &:= \dfrac{\mathbf{b}_1}{\dnorm{\mathbf{b}_1}}\\
     \gamma_k &:= \mathbf{b}_k - \dParenBrac{ \sum_{i=1}^{k-1} \langle \mathbf{b}_k, \mathbf{u}_i \rangle \mathbf{u}_i }\\
     \mathbf{u}_k &:= \dfrac{\gamma_k}{\dnorm{\gamma_k}}\\
-\end{align*}
+\end{aligned}
+\]
 
 
 
@@ -470,11 +474,11 @@ SEE: projection - TODO
 
     \item $\Xi_{\tilde{C}C} : W \to W$ maps coordinates with respect to $C$ onto coordinates with respect to $\tilde{C}$
 
-    \item  \begin{align}
+    \item  $\begin{aligned}
         \Phi_{\tilde{C}\tilde{B}}  
         &= \Xi_{\tilde{C}C} \circ \Phi_{CB} \circ \Psi_{B\tilde{B}} \\ 
         &= \Xi^{-1}_{C\tilde{C}} \circ \Phi_{CB} \circ \Psi_{B\tilde{B}} \\ 
-    \end{align} 
+    \end{aligned}$ 
     
 \end{enumerate}
 
@@ -795,13 +799,15 @@ Let us consider $\mathbf{A} \in \mathbb{R}^{m\times n}$ and a linear mapping $\P
 
 \begin{enumerate}
     \item For $\mathbf{A} = [\mathbf{a}_1, \cdots , \mathbf{a}_n]$, where $\mathbf{a}_i$ are the columns of $\mathbf{A}$:
-    \begin{align*}
+    \[
+    \begin{aligned}
         \displaystyle
         Im(\Phi) 
         &= \dCurlyBrac{ \mathbf{Ax} : \mathbf{x} \in \mathbb{R}^n } \\
         &= \dCurlyBrac{ \sum_{i=1}^{n} x_i\mathbf{a}_i : \forall x_i \in \mathbb{R}, i=1,\cdots,n } \\
         &= span[\mathbf{a}_1,\cdots, \mathbf{a}_n] \subseteq \mathbb{R}^m \\
-    \end{align*}
+    \end{aligned}
+    \]
 
     the image is the span of the columns of A, also called the \textbf{column space}\indexlabel{column space}. Therefore, the column space (image) is a subspace of $\mathbb{R}^m$, where m is the \textbf{“height” of the matrix}\indexlabel{height of the matrix}.
 
@@ -861,11 +867,13 @@ Let $V$ be a vector space, $x_0 \in V$ and $U \subseteq V$ a subspace. Then the 
 
 \begin{table}[h]
     \begin{minipage}{0.49\linewidth}
-        \begin{align*}
+        \[
+        \begin{aligned}
             L &= x_0 + U\\
              &= \dCurlyBrac{x_0 + u : u \in U} \\
              &= \dCurlyBrac{v \in V | \exists u \in U : v = x_0 + u} \subseteq V
-        \end{align*}
+        \end{aligned}
+        \]
     \end{minipage}
     \hfill
     \begin{minipage}{0.49\linewidth}
@@ -1091,11 +1099,13 @@ transformations that keep the solution set the same, but that transform the equa
 \end{table}
 \end{customTableWrapper}
 
-\begin{align*}
+\[
+\begin{aligned}
    & Ax = b \\
    & \Rightarrow A(x_0 + \lambda _1x_1 + \lambda _2x_2 + \cdots ) = b	&&& (\lambda _i \in R) \\
    & \Rightarrow Ax_0 + \lambda _1Ax_1 + \lambda _2Ax_2 + \cdots  = b + 0 + 0 + \cdots  = b
-\end{align*}
+\end{aligned}
+\]
 
 \begin{table}[h]
     \begin{tabular}{l l l}
@@ -1458,11 +1468,11 @@ $R_{ij}(\theta )$ is the identity matrix In with:
     \item Rotations in three (or more) dimensions are generally not commutative. Therefore, the order in which rotations are applied is important, even if they rotate about the same point. 
 
     \item Only in two dimensions vector rotations are commutative, such that 
-    \[
+    $
         R(\phi)R(\theta ) = R(\theta )R(\phi)
         \hfill
         (\phi, \theta  \in [0, 2\pi))
-    \]
+    $
 
     \item They form an Abelian group (with multiplication) only if they rotate about the same point (e.g., the origin)
 
@@ -1470,18 +1480,86 @@ $R_{ij}(\theta )$ is the identity matrix In with:
 
 
 
+\section{Principal Components Analysis (PCA) \cite{dnn-deep-learning-ian}}\label{Principal Components Analysis (PCA)}
 
+\begin{customTableWrapper}{1.5}
+\begin{longtable}{l p{6cm}}
 
-\vspace{4cm}
-\url{https://drive.google.com/file/d/1JS4tlbMRYv8oHYrLgISR_NV9y6-_2j5h/edit}\\
-76 / 417
+$m$ & number of points \\
 
+$n$ & dimension of each point \\
 
+$l$ & target dimension, usually $(l<n)$ \\
 
+\hline
 
+$\dCurlyBrac{x^{(1)}, \cdots, x^{(m)}} \in \mathbb{R}^n$ & points \\
 
+$x^{(i)} \in \mathbb{R}^n$ & point \\
 
+$c^{(i)} \in \mathbb{R}^l$ & code point \\
 
+\hline
+
+$f:\mathbb{R}^n \to \mathbb{R}^l : f(x) = c$ & encoding function \\
+
+$g:\mathbb{R}^l \to \mathbb{R}^n:g(c) \approx x$ & decoding function \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+\begin{enumerate}
+    \item applies \textbf{lossy compression} to these points.\\
+    Lossy compression means storing the points in a way that requires less memory but may lose some precision.
+
+    \item $g(f(x)) \approx x$
+
+    \item PCA is defined by our choice of the decoding function. \\
+    Specifically, to make the decoder very simple, we choose to use matrix multiplication to map the code back into $\mathbb{R}^n$.\\
+    Let $g(c) = Dc$, where $D \in \mathbb{R}^{n\times l}$ is the matrix defining the decoding.
+
+    \item To keep the encoding problem easy, PCA constrains the columns of D to be orthogonal lto each other.\\
+    (Note that D is still not technically “an orthogonal matrix” unless $l=n$)
+
+    \item many solutions are possible, because we can increase the scale of $D_{:,i}$ if we decrease $c_i$ proportionally for all points.\\
+    To give the problem a \textbf{unique solution}, we constrain all of the columns of $D$ to have unit norm.
+
+    \item algorithm:
+    \begin{enumerate}
+        \item figure out how to generate the optimal code point $c^\ast$ for each input point $x$.\\
+        One way to do this is to minimize the distance between the input point $x$ and its reconstruction, $g(c^\ast)$.\\
+        We can measure this distance using a norm.\\
+        In the principal components algorithm, we use the $L^2$ norm:
+        ${
+            \displaystyle
+            c^\ast
+            = \mathop{\arg\max}_c \dnorm{x - g(c)}_2
+        }$\\
+        switching $L^2$ to squared $L^2$ for simplification of calculations:
+        ${
+            \displaystyle
+            c^\ast
+            = \mathop{\arg\max}_c \dnorm{x - g(c)}_2^2
+        }$\\
+        \textbf{Explanation}: $c^\ast$ stores value of $c$, not $\dnorm{x - g(c)}_2$ or $\dnorm{x - g(c)}_2^2$\\
+        Simplification:
+        \[
+        \begin{aligned}
+            \dnorm{x - g(c)}_2^2 
+            &=(x-g(c))^\top(x-g(c)) & \text{(definition of $L^2$)}\\
+            &= x^\top x - x^\top g(c) - g(c)^\top x + g(c)^\top g(c) & \text{(distributive property)}\\
+            &= x^\top x - 2x^\top g(c) + g(c)^\top g(c) & (a^\top b = b^\top a)\\
+        \end{aligned}
+        \]
+        \[
+            \Rightarrow
+            c^\ast 
+            = \mathop{\arg\max}_c \dParenBrac{- 2x^\top g(c) + g(c)^\top g(c)}
+            \hfill 
+            \text{($x^\top x$ doesn't depend on $c$)}
+        \]
+    \end{enumerate}
+\end{enumerate}
 
 
 

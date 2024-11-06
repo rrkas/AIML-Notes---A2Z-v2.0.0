@@ -369,6 +369,15 @@ agent’s behavior.
 
     \item A \textbf{real-world problem}\indexlabel{real-world problem} is one whose solutions people actually care about.\\
     Such problems tend not to have a single agreed-upon description, but we can give the general flavor of their formulations.
+
+    \item \textbf{relaxed problem}\indexlabel{relaxed problem}: A problem with fewer restrictions on the actions is called a relaxed problem.\\
+    The state-space graph of the relaxed problem is a super-graph of the original state space because the removal of restrictions creates added edges in the graph.
+
+    \item Because the relaxed problem adds edges to the state space, any optimal solution in the original problem is, by definition, also a solution in the relaxed problem; but the relaxed problem may have better solutions if the added edges provide short cuts.\\
+    Hence, the cost of an optimal solution to a relaxed problem is an admissible heuristic for the original problem.\\
+    Furthermore, because the derived heuristic is an exact cost for the relaxed problem, it must obey the triangle inequality and is therefore consistent.
+
+    \item The idea behind \textbf{pattern databases} is to store the exact solution costs for every possible sub-problem instance
 \end{enumerate}
 
 \begin{figure}[H]

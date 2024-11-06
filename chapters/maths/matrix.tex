@@ -335,12 +335,14 @@ To compute the inverse $A^{-1}$ of $A \in R^{n\times n}$, we need to find a matr
 
 \subsubsection{Moore-Penrose pseudo-inverse ( $\mathbf{A^{-1} = (A^\top A)^{-1}A^\top }$ ) \cite{mfml-1}} \label{Moore-Penrose pseudo-inverse}
 
-\begin{align*}
+\[
+\begin{aligned}
     \mathbf{AX} &= \mathbf{I}_n \\
     \mathbf{A^\top AX} &= \mathbf{A^\top} &&&& (\text{ multiplying both sides by } \mathbf{A^\top}) \\
     \mathbf{(A^\top A)^{-1}(A^\top A)X} &= (\mathbf{A^\top A})^{-1}\mathbf{A^\top} &&&& (\text{ multiplying both sides by } (\mathbf{A^\top A)^{-1}}) \\
     \mathbf{X} &= \mathbf{(A^\top A)^{-1}A^\top }
-\end{align*}
+\end{aligned}
+\]
 
 
 \begin{enumerate}
@@ -564,7 +566,7 @@ The trace of a square matrix $A \in R^{n\times n}$ is defined as the trace is th
 \]
 
 \noindent\textbf{Properties}:
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.1cm]
     \item for $A, B \in  R^{n\times n}$,  $tr(A + B) = tr(A) + tr(B)$
 
     \item for $A \in  R^{n\times n}$ and $\alpha  \in  R$,  $tr(\alpha A) = \alpha\cdot tr(A)$
@@ -593,10 +595,10 @@ The trace of a square matrix $A \in R^{n\times n}$ is defined as the trace is th
 \section{Characteristic Polynomial ( $p_A(\lambda)$ )}\label{Characteristic Polynomial}
 
 For $\lambda \in R$ and a square matrix $A \in R^{n\times n}$ 
-\begin{align*}
+\[\begin{aligned}
     p_A(\lambda) &:= det(A - \lambda I)\\
         &= c_0\lambda^0 + c_1\lambda^1  + c_2\lambda^ 2 + \cdots  + c_{n-1}\lambda^{n-1} + (-1)^n\lambda^n
-\end{align*}
+\end{aligned}\]
 
 where, $c_0, \cdots  , c_{n-1} \in R$, is the characteristic polynomial of $A$
 \[
@@ -996,7 +998,7 @@ $C, \tilde{C} \in R^m$
 
             \item $\lambda_i \geq 0$ : eigenvalues of $A^\top A$
 
-            \item \begin{align*}
+            \item \[\begin{aligned}
                 A^\top A 
                 &= (U\Sigma V^\top )^\top (U\Sigma V^\top ) \\
                 &= V\Sigma ^\top U^\top U\Sigma V^\top \\
@@ -1006,7 +1008,7 @@ $C, \tilde{C} \in R^m$
                     \vdots & \ddots & \vdots \\
                     0 & \cdots & \sigma_n^2\\
                 \end{bmatrix} V^\top
-            \end{align*}
+            \end{aligned}\]
 
             \item $V^\top = P^\top \Rightarrow V = P$
 
@@ -1020,7 +1022,7 @@ $C, \tilde{C} \in R^m$
         \begin{enumerate}[itemsep=0.2cm]
             \item construct a SPD matrix $AA^\top \in R^{m\times m}$
             
-            \item \begin{align*}
+            \item \[\begin{aligned}
                 AA^\top 
                 &= (U\Sigma V^\top )(U\Sigma V^\top )^\top \\
                 &= U\Sigma V^\top V\Sigma^\top U^\top  \\
@@ -1030,7 +1032,7 @@ $C, \tilde{C} \in R^m$
                     \vdots & \ddots & \vdots \\
                     0 & \cdots & \sigma_m^2\\
                 \end{bmatrix} U^\top
-            \end{align*}
+            \end{aligned}\]
 
             \item $U^\top = P^\top \Rightarrow  U = P$
      
@@ -1360,6 +1362,28 @@ $C, \tilde{C} \in R^m$
         0 & 0 & 1
     \end{bmatrix}
 \]
+
+
+
+\subsection{Moore-Penrose Pseudoinverse ($A^+ = VD^+U^\top$) \cite{dnn-deep-learning-ian}}\label{Moore-Penrose Pseudoinverse}
+
+\begin{enumerate}[itemsep=0.1cm]
+    \item $Ax = y$ $\rightarrow$ $x = By$
+
+    \item ${\displaystyle A^+ = \lim_{\alpha \rightarrow 0} (A^\top A + \alpha I)^{-1} A^\top}$
+
+    \item Practical algorithms for computing the pseudoinverse are not based on this definition, but rather the formula $A^+ = VD^+U^\top$
+    \begin{enumerate}
+        \item $U,D,V$ are SVD of $A$
+        \item pseudoinverse $D^+$ of a diagonal matrix $D$ is obtained by taking the reciprocal of its non-zero elements then taking the transpose of the resulting matrix.
+    \end{enumerate}
+
+    \item $x = A^+y$
+
+    
+\end{enumerate}
+
+
 
 
 

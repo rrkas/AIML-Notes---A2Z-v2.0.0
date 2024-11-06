@@ -192,7 +192,8 @@
 
 
 \section{Expected Value \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Expected Value}
-\begin{align*}
+\[
+\begin{aligned}
     \mathbb{E}(\mu_Y(X))
     &= \dsum_{x=0}^{\infty} \mu_Y(x)f_X(x)
     &= \dsum_{x=0}^{\infty} 
@@ -203,7 +204,8 @@
         \dsum_{y=0}^{\infty} yf_{Y|X}(y|x)f_X(x) \\
     &= \dsum_{y=0}^{\infty} yf_Y(y) = \mu_Y
     & \text{\cite{ism-1}}
-\end{align*}
+\end{aligned}
+\]
 
 
 \begin{enumerate}
@@ -307,7 +309,8 @@
     \item if $X$ and $Y$ are independent then $\mathbb{E}(XY) = \mathbb{E}(X)\mathbb{E}(Y)$
 \end{enumerate}
 
-\begin{align*}
+\[
+\begin{aligned}
     \mathbb{E}[\sigma^2_Y(X)]
     &= \dsum_{x=0}^{\infty}
         \sigma_Y^2(x)f_X(x)\\
@@ -322,7 +325,8 @@
         - \dsum_{x=0}^{\infty} 
         (\mu_Y (x) - \mu_Y ) ^2 f_X (x)\\
     &= \sigma_Y^2 - VAR(\mu_Y(X))
-\end{align*}
+\end{aligned}
+\]
 
 \section{Covariances/ Cross-covariance \cite{ism-1}} \label{Multivariate Distributions: Covariances/ Cross-covariance}
 
@@ -441,7 +445,8 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \mu = \mathbb{E}_X(x)
 \]
 
-\begin{align*}
+\[
+\begin{aligned}
     \mathbb{V}_X[x] 
     &= Cov_X[x,x]\\
     &= \mathbb{E}_X[(x-\mu)(x-\mu)^\top]
@@ -453,7 +458,8 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         \vdots & \vdots & \ddots & \vdots \\
         Cov[x_D,x_1] & Cov[x_D,x_2] & \cdots & Cov[x_D,x_D]\\
     \end{bmatrix}
-\end{align*}
+\end{aligned}
+\]
 
 \begin{enumerate}[itemsep=0.2cm]
     \item $\mathbb{V}_X[x] := \mathbb{E}_X[(x - \mu)^2]$
@@ -490,12 +496,12 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         $
 
         \item 
-        \begin{align*}
+        $\begin{aligned}
             Cov[x, y] 
             &= \mathbb{E}[x(Ax + b)^\top ] - \mathbb{E}[x]\mathbb{E}[Ax + b]^\top \\
             &= \mathbb{E}[x]b^\top  + \mathbb{E}[xx^\top ]A^\top  - \mu b^\top  - \mu \mu ^\top A^\top \\
             &= \mu b^\top  - \mu b^\top  + (\mathbb{E}[xx^\top ] - \mu \mu ^\top )A =  \Sigma A^\top
-        \end{align*}
+        \end{aligned}$
 
     \end{enumerate}
 
@@ -520,7 +526,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         (X_i - \bar{X})(Y_i - \bar{Y})
     $
 
-    \item \begin{align*}
+    \item $\begin{aligned}
         \mathbb{E}(S_{XY})
         &= \dfrac{1}{n-1}
         \dsum_{i=1}^{n}
@@ -538,7 +544,7 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         &\quad\quad\quad\quad + \dfrac{1}{n(n-1)} \dsum_{i=1}^n
         E[(X_i - \mu_X )(Y_i - \mu_Y )]\\
         &=COV(X, Y )
-    \end{align*}
+    \end{aligned}$
 \end{enumerate}
 
 
@@ -662,7 +668,8 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
     \item[] $S_X^2 , S_Y^2$: sample variances
     \item[] $r_P$: estimator
 
-    \begin{align*}
+    \[
+    \begin{aligned}
         r_P
         &= \dfrac{S_{XY}}{S_X S_Y}
         = \dfrac{
@@ -685,7 +692,8 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         }\sqrt{
             n\dsum_{i=1}^{n} Y_i^2 - \dParenBrac{\dsum_{i=1}^{n} Y_i}^2
         }}
-    \end{align*}
+    \end{aligned}
+    \]
 
     \item estimator for Pearson’s correlation
 
@@ -763,12 +771,12 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \section{Kendall’s Tau Correlation ($\tau_K$) \cite{ism-1}} \label{Multivariate Distributions: Kendall’s Tau Correlation}
 
 \begin{enumerate}
-    \item[] \begin{align*}
+    \item[] $\begin{aligned}
         \tau_K 
         &= Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - Pr ((X_2 - X_1)(Y_2 - Y_1) < 0) \\
         &= 2 Pr ((X_2 - X_1)(Y_2 - Y_1) > 0) - 1 \\
         &= 4 Pr(X_1 < X_2, Y_1 < Y_2) - 1.
-    \end{align*}
+    \end{aligned}$
 
     \item $-1 \leq \tau_K \leq 1$
     \begin{enumerate}
@@ -815,12 +823,12 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
 \section{Estimator of Kendall’s tau correlation ($r_K$) \cite{ism-1}} \label{Multivariate Distributions: Estimator of Kendall’s tau correlation}
 
 \begin{enumerate}
-    \item[] \begin{align*}
+    \item[] $\begin{aligned}
         r_K
         &= \dfrac{1}{n(n-1)} \dsum_{i=1}^n \dsum_{j=1}^n
             sgn(X_j - X_i)sgn(Y_j - Y_i) \\
         &= \dfrac{2}{n(n-1)} \dsum_{i=1}^{n-1} \dsum_{j=i+1}^n sgn(X_j - X_i)sgn(Y_j - Y_i)
-    \end{align*}
+    \end{aligned}$
 
     \item estimator depends only on the signs of $X_j - X_i$ and $Y_j - Y_i$
 

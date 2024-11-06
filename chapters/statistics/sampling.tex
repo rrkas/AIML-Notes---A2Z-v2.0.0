@@ -802,12 +802,14 @@
         \]
         
         \item sample variance:
-        \begin{align*}
+        \[
+        \begin{aligned}
             \sigma ^2_\psi ( f ) 
             &= \mathbb{E}((X_i - \mu( f ))^2 - \sigma ^2( f ))^2
             &= \mathbb{E}(X_i - \mu( f ))^4 - \sigma ^4( f ) 
             &= [\gamma_2( f ) + 2]\sigma ^4( f )
-        \end{align*}
+        \end{aligned}
+        \]
     
         \item variance of $
             \dfrac{1}{n}
@@ -883,20 +885,23 @@
 \end{longtable}
 \end{customTableWrapper}
 
-
-\begin{align*}
+\[
+\begin{aligned}
     Pr(T_n \in (x_p( f_{T_n} ), x_{1-p}( f_{T_n} )]) 
     &= Pr(T_n \leq x_{1-p}( f_{T_n} )) - Pr(T_n \leq x_p( f_{T_n} ))\\
     &= F_{T_n} (x_{1-p}( f_{T_n} )) - F_{T_n} (x_p( f_{T_n} ))\\
     &= 1 - p - p = 1 - 2p
-\end{align*}
+\end{aligned}
+\]
 
-\begin{align*}
+\[
+\begin{aligned}
     Pr(T_n \in (\theta  - z_{1-p}\tau_n, \theta  + z_{1-p}\tau n]) 
     &= Pr((T_n - \theta  )/\tau n \in (-z_{1-p},z_{1-p}])\\
     &\approx \Phi (z_{1-p}) - \Phi (-z_{1-p})\\
     &= 1 - p - p = 1 - 2p
-\end{align*}
+\end{aligned}
+\]
 
 \[
     Pr(T_n \in (\theta  - z_{1-p}\tau n, \theta  + z_{1-p}\tau n]) =

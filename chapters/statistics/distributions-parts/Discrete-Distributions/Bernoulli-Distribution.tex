@@ -141,13 +141,15 @@
         $\theta = p (0 \leq p \leq 1)$
 
     \item likelihood:
-    \begin{align*}
+    \[
+    \begin{aligned}
         l(\theta) 
         &= p(x|\theta)
         = \dprod_{i=1}^n \theta^{x_i} (1 - \theta)^{1 - x_i} \\
         &= \theta^{\sum_{i=1}^n x_i} (1 - \theta)^{n - \sum_{i=1}^n x_i}
         = \theta^{n\bar{x}_n} (1 - \theta)^{n - n\bar{x}_n} \\
-    \end{align*}
+    \end{aligned}
+    \]
 
     \item prior : \fullref{Beta Distribution}
 \end{enumerate}

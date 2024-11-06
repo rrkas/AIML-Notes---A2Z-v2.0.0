@@ -35,6 +35,49 @@ Alternate Definition: SEE \fullref{vectors}
     (a\otimes b)_{ij} = a_i b_j
 \]
 
+
+\section{Norm of vector ($L^p$) \cite{dnn-deep-learning-ian}}\label{Norm of vector}
+
+\[
+    \hfill
+    L^p
+    = \dnorm{x}_p
+    = \dParenBrac{\dsum_{i} \dabs{x_i}^p}^{\dfrac{1}{p}}
+    \hfill
+    ( p \in \mathbb{R},\ p\geq1 )
+\]
+
+\begin{enumerate}[itemsep=0.1cm]
+    \item Norms, including the $L^p$ norm, are functions mapping vectors to non-negative values. 
+    
+    \item On an intuitive level, the norm of a vector $x$ measures the distance from the origin to the point $x$. 
+    
+    \item More rigorously, a norm is any function $f$ that satisfies the following properties:
+    \begin{enumerate}
+        \item $f(x) = 0 \Rightarrow x = 0$
+
+        \item $f(x+y) \leq f(x) + f(y)$ (the triangle inequality)
+
+        \item 
+        $\forall \alpha \in \mathbb{R}$, 
+        $f(\alpha x) = \dabs{\alpha}f(x)$
+    \end{enumerate}
+
+    \item $L^2$ ($p=2$) is known as the \textbf{Euclidean norm}\\
+    It is simply the Euclidean distance from the origin to the point identified by $x$. \\
+    The $L^2$ norm is used so frequently in machine learning that it is often denoted simply as $\dnorm{x}$.
+
+    \item The $L^1$ ($p=1$) norm is commonly used in machine learning when the difference between zero and nonzero elements is very important.\\
+    Every time an element of $x$ moves away from $0$ by $\epsilon$, the $L^1$ norm increases by $\epsilon$.
+
+    \item $L^\infty$ norm, also known as the \textbf{max norm}\indexlabel{max norm}.\\
+    This norm simplifies to the absolute value of the element with the largest magnitude in the vector\\
+    $L^\infty = \dnorm{x}_\infty = \displaystyle\max_i \dabs{x_i}$
+
+    
+\end{enumerate}
+
+
 \section{Inner/ Scalar /Dot Product ( $\langle a, b \rangle =a\cdot b = \mathbf{a^\top b} \in \mathbb{R}$ ) \cite{mfml-1,wiki/Dot_product}} \label{vector: Inner/ Scalar /Dot Product}
 
 The dot product or scalar product is an algebraic operation that takes two vectors of equal length, and returns a \textbf{single number}.
@@ -77,7 +120,6 @@ For a function $f : R^n \to R$, $x \mapsto f(x)$, $x \in R^n$ of $n$ variables $
 where $n$ is the number of variables and $1$ is the dimension of the \textbf{image/ range/ codomain} of $f$ \indexlabel{function of vector: image/ range/ codomain}.
 
 
-\subsection{Rules of Partial Differentiation}
 
 \begin{table}[h]
     \centering

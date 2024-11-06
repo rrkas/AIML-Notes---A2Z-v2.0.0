@@ -7,13 +7,15 @@
 
 \end{enumerate}
 
-\begin{align*}
+\[
+\begin{aligned}
     F(x) 
     = \begin{cases}
         Pr(X < x) = \dint_{-\infty}^{x} f(z) dz & \text{ (Continuous)}\\[2ex]
         Pr(X \leq x) = \dsum_{k=0}^x f(k) & \text{ (Discrete)}\\
     \end{cases}
-\end{align*}
+\end{aligned}
+\]
 
 
 \begin{enumerate}
@@ -95,14 +97,15 @@
 \end{longtable}
 \end{customTableWrapper}
 
-
-\begin{align*}
+\[
+\begin{aligned}
     Pr(\psi^{-1}(X) \leq x) 
     &= Pr(x\leq\psi(X)) \\
     &= F(\psi(x)) \\
     &= \dint_{-\infty}^{\psi(x)} f(z)dz\\
     &= \dint_{-\infty}^{\psi(x)} \psi'(x) f(\psi(x))dz &&& \dParenBrac{ \psi'(x) = \dfrac{d(\psi(x))}{dx} }\\
-\end{align*}
+\end{aligned}
+\]
 
 \textbf{Properties}:
 \begin{enumerate}
