@@ -720,14 +720,15 @@ For $x \in  R^n\backslash \dCurlyBrac{0}$, the spectral norm of a matrix $A \in 
 \end{theorem}
 
 
-\subsection{Frobenius norm of a Matrix ($\dnorm{x}_F$) \cite{wiki/Matrix_norm}}\label{Frobenius norm of a Matrix}
+\subsection{Frobenius norm of a Matrix ($\dnorm{X}_F$) \cite{wiki/Matrix_norm,dnn-deep-learning-ian}}\label{Frobenius norm of a Matrix}
 
 defined as the square root of the sum of the squares of a matrix’s elements:
 \[
-    \displaystyle
-    \dnorm{X}_F = \sqrt{
-        \sum_{i=1}^{m} \sum_{j=1}^{n} x_{ij}
-    }
+    \begin{aligned}
+    \dnorm{X}_F 
+    &= \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n} x_{ij}}\\
+    &= \sqrt{Tr(XX^\top)} & \text{\cite{dnn-deep-learning-ian}}
+    \end{aligned}
 \]
 
 The Frobenius norm behaves as if it were an l2 norm of a matrix-shaped vector.
@@ -776,19 +777,19 @@ A symmetric, positive definite matrix $A$ can be factorized into a product $A = 
     \item $\displaystyle A = LL^\top \Rightarrow det(A) = det(L)det(L^\top) = det(L)^2 = \prod_{i=1}^{n} l_{ii}^2$
 \end{enumerate}
 
-\subsection{Eigen Decomposition/ Eigendecomposition ( $A = A^\top = PDP^{-1} = PDP^\top$ ) \cite{mfml-1}}\label{Eigen Decomposition/ Eigendecomposition}
+\subsection{Eigen Decomposition ( $A = A^\top = PDP^{-1} = PDP^\top$ ) \cite{mfml-1}}\label{Eigen Decomposition/ Eigendecomposition}
 
 \begin{table}[h]
     \begin{minipage}{0.30\linewidth}
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/maths/Eigendecomposition.png}
-            \caption{Eigen Decomposition/ Eigendecomposition}
+            \caption{Eigen Decomposition}
         \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}{0.68\linewidth}
-        \begin{theorem}[Eigen Decomposition/ Eigendecomposition]
+        \begin{theorem}[Eigen Decomposition]
             A square matrix $A \in  R^{n\times n}$ can be factored into
             \[
                \hfill A = PDP^{-1} \hfill

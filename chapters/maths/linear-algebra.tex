@@ -1483,7 +1483,7 @@ $R_{ij}(\theta )$ is the identity matrix In with:
 \section{Principal Components Analysis (PCA) \cite{dnn-deep-learning-ian}}\label{Principal Components Analysis (PCA)}
 
 \begin{customTableWrapper}{1.5}
-\begin{longtable}{l p{6cm}}
+\begin{longtable}{l p{10cm}}
 
 $m$ & number of points \\
 
@@ -1495,7 +1495,10 @@ $l$ & target dimension, usually $(l<n)$ \\
 
 $\dCurlyBrac{x^{(1)}, \cdots, x^{(m)}} \in \mathbb{R}^n$ & points \\
 
-$x^{(i)} \in \mathbb{R}^n$ & point \\
+$X \in \mathbb{R}^{m\times n}$ & matrix defined by stacking all of the vectors describing the points \\
+
+$X_{i,:} = x^{(i)} \in \mathbb{R}^n$ & point \\
+
 
 $c^{(i)} \in \mathbb{R}^l$ & code point \\
 
@@ -1533,13 +1536,13 @@ $g:\mathbb{R}^l \to \mathbb{R}^n:g(c) \approx x$ & decoding function \\
         ${
             \displaystyle
             c^\ast
-            = \mathop{\arg\max}_c \dnorm{x - g(c)}_2
+            = \mathop{\arg\min}_c \dnorm{x - g(c)}_2
         }$\\
         switching $L^2$ to squared $L^2$ for simplification of calculations:
         ${
             \displaystyle
             c^\ast
-            = \mathop{\arg\max}_c \dnorm{x - g(c)}_2^2
+            = \mathop{\arg\min}_c \dnorm{x - g(c)}_2^2
         }$\\
         \textbf{Explanation}: $c^\ast$ stores value of $c$, not $\dnorm{x - g(c)}_2$ or $\dnorm{x - g(c)}_2^2$\\
         Simplification:
@@ -1552,12 +1555,108 @@ $g:\mathbb{R}^l \to \mathbb{R}^n:g(c) \approx x$ & decoding function \\
         \end{aligned}
         \]
         \[
-            \Rightarrow
+            \begin{aligned}
             c^\ast 
-            = \mathop{\arg\max}_c \dParenBrac{- 2x^\top g(c) + g(c)^\top g(c)}
-            \hfill 
-            \text{($x^\top x$ doesn't depend on $c$)}
+            &= \mathop{\arg\min}_c \dParenBrac{- 2x^\top g(c) + g(c)^\top g(c)} & \text{($x^\top x$ doesn't depend on $c$)}\\
+            &= \mathop{\arg\min}_c \dParenBrac{- 2x^\top Dc + c^\top D^\top Dc} & (g(c) = Dc)\\
+            &= \mathop{\arg\min}_c \dParenBrac{- 2x^\top Dc + c^\top I_l c} & \text{(orthogonality and unit norm constraints on $D$)}\\
+            &= \mathop{\arg\min}_c \dParenBrac{- 2x^\top Dc + c^\top c}\\
+            \end{aligned}
         \]
+
+        \item 
+        Finding optimal $c$
+        \[
+        \begin{aligned}
+            &\nabla_c\dParenBrac{-2x^\top Dc + c^\top c} = 0 \\
+            \Rightarrow & -2D^\top x + 2c = 0 \\
+            \Rightarrow & c = D^\top x \\
+            \Rightarrow & f(x) = c = D^\top x \\
+        \end{aligned}
+        \]
+        \[
+            r(x) = g(f(x)) = DD^\top x
+        \]
+
+        \item  Since we will use the same matrix $D$ to decode all of the points, we can no longer consider the points in isolation.\\
+        Instead, we must minimize the \textbf{Frobenius norm} of the matrix of errors computed over all dimensions and all points:
+        \[
+        D^\ast
+        = \mathop{\arg\min}_D 
+            \sqrt{\dsum_{i,j} \dParenBrac{x_j^{(i)} - r(x^{(i)})_j}^2}
+            \text{ subject to }
+            D^\top D = I_l
+        \]
+        if $l=1$, let $D=d$\\
+        \[
+        \begin{aligned}
+        d^\ast
+        &= \mathop{\arg\min}_d 
+            \dsum_{i} \dnorm{x^{(i)} - dd^\top x^{(i)}}_2^2
+            &\text{ subject to }
+            \dnorm{d}_2 = 1 \\
+        &= \mathop{\arg\min}_d 
+            \dsum_{i} \dnorm{x^{(i)} - (d^\top x^{(i)})d}_2^2
+            &\text{ subject to }
+            \dnorm{d}_2 = 1 && \text{(re-arranging scalar)} \\
+        &= \mathop{\arg\min}_d 
+            \dsum_{i} \dnorm{x^{(i)} - (x^{(i)\top} d)d}_2^2
+            &\text{ subject to }
+            \dnorm{d}_2 = 1 && {(a^\top b = b^\top a)} \\
+        \end{aligned}
+        \]
+
+        \item 
+        compact notation
+        \[
+        \begin{aligned}
+        d^\ast
+        &= \mathop{\arg\min}_d 
+            \dnorm{X - Xdd^\top}_F^2
+            \text{ subject to }
+            d^\top d = 1 \\
+        &= \mathop{\arg\min}_d 
+            \dParenBrac{Tr\dParenBrac{
+                \dParenBrac{X - Xdd^\top}^\top
+                \dParenBrac{X - Xdd^\top}
+            }}
+            &\dParenBrac{\dnorm{X}_F= \sqrt{Tr(XX^\top)}} \\
+        &= \mathop{\arg\min}_d 
+            \dParenBrac{Tr\dParenBrac{
+                X^\top X - X^\top Xdd^\top - dd^\top X^\top X + dd^\top X^\top Xdd^\top
+            }}
+            \\
+        &= \mathop{\arg\min}_d 
+            (Tr\dParenBrac{X^\top X} - Tr\dParenBrac{X^\top Xdd^\top}\\
+            &\text{\hspace{1.5cm}} - Tr\dParenBrac{dd^\top X^\top X} + Tr\dParenBrac{dd^\top X^\top Xdd^\top})
+            \\
+        &= \mathop{\arg\min}_d 
+            (- Tr\dParenBrac{X^\top Xdd^\top} - Tr\dParenBrac{dd^\top X^\top X} \\
+            &\text{\hspace{1.5cm}} + Tr\dParenBrac{dd^\top X^\top Xdd^\top
+            })
+            &\dParenBrac{\text{terms not involving $d$ don't affect}}\\
+        &= \mathop{\arg\min}_d 
+            \dParenBrac{- 2Tr\dParenBrac{X^\top Xdd^\top} + Tr\dParenBrac{X^\top X dd^\top dd^\top
+            }}
+            &\dParenBrac{Tr(ABC)=Tr(BCA) \text{ cyclic property}}\\
+        &= \mathop{\arg\min}_d 
+            \dParenBrac{- 2Tr\dParenBrac{X^\top Xdd^\top} + Tr\dParenBrac{X^\top X dd^\top
+            }} 
+            & \text{ $\dParenBrac{d^\top d = 1}$}
+            \\
+        &= \mathop{\arg\min}_d 
+            \dParenBrac{- Tr\dParenBrac{X^\top Xdd^\top}}\\
+        &= \mathop{\arg\max}_d 
+            \dParenBrac{Tr\dParenBrac{X^\top Xdd^\top}} 
+            & \text{(changing signs \textbf{and} min $\to$ max)}\\
+        &= \mathop{\arg\max}_d
+            \dParenBrac{Tr\dParenBrac{d^\top X^\top Xd}}\\
+        &= \mathop{\arg\max}_d
+            \dParenBrac{Tr\dParenBrac{(Xd)^\top Xd}}\\
+        \end{aligned}
+        \]
+
+        
     \end{enumerate}
 \end{enumerate}
 

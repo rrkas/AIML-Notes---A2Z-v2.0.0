@@ -118,6 +118,22 @@
     (f_Y(y) > 0)
 \]
 
+
+\section{Chain Rule of Conditional Probabilities \cite{dnn-deep-learning-ian}}\label{Chain Rule of Conditional Probabilities}
+
+\[
+    P\dParenBrac{x^{(1)},\cdots,x^{(n)}}
+    = P\dParenBrac{x^{(1)}} \dprod_{i=2}^n P\dParenBrac{x^{(i)}|x^{(1)},\cdots,x^{(i-1)}}
+\]
+\[
+    \begin{aligned}
+        P(a,b,c)
+        &= P(a|b,c)P(b,c)\\
+        &= P(a|b,c)P(b|c)P(c)
+    \end{aligned}
+\]
+
+
 \section{Independence of random variables \cite{ism-1}} \label{Multivariate Distributions: Independence of random variables}
 
 \begin{enumerate}
@@ -215,7 +231,8 @@
             \dint_X g(x)p(x)dx \\[2ex]
             \dsum_{x\in X} g(x)p(x)
         \end{cases}
-    $ where $X$ is the set of possible outcomes (the target space) of the random variable $X$
+    $\\
+    where $X$ is the set of possible outcomes (the target space) of the random variable $X$
 
     \item The expected value of a function of a random variable is sometimes referred to as the \textbf{law of the unconscious statistician}\indexlabel{law of the unconscious statistician}
 
@@ -256,6 +273,11 @@
         = A\mathbb{E}_X[x] + b 
         = A\mu + b
     \]
+
+    \item $
+        \mathbb{E}_x[\alpha f(x) + \beta g(x)]
+        = \alpha\mathbb{E}_x[f(x)] + \beta\mathbb{E}_x[g(x)]
+    $ \hfill \cite{dnn-deep-learning-ian}
 \end{enumerate}
 
 \section{Empirical Mean/ Sample Mean \cite{mfml-1}} \label{Multivariate Distributions: Empirical Mean/ Sample Mean}
@@ -274,6 +296,79 @@
     \]
 
     \item $\mathbb{E}[x \pm y] = \mathbb{E}[x] \pm \mathbb{E}[y]$
+\end{enumerate}
+
+\section{Variance \cite{mfml-1}}\label{Multivariate Distributions: Variance}
+
+\[
+\begin{aligned}
+    \mathbb{V}_X[x] 
+    &= Cov_X[x,x]\\
+    &= \mathbb{E}_X[(x-\mu)(x-\mu)^\top]
+    = \mathbb{E}_X[xx^\top]
+    = \mathbb{E}_X[x]\mathbb{E}_X[x]^\top\\
+    &= \begin{bmatrix}
+        Cov[x_1,x_1] & Cov[x_1,x_2] & \cdots & Cov[x_1,x_D]\\
+        Cov[x_2,x_1] & Cov[x_2,x_2] & \cdots & Cov[x_2,x_D]\\
+        \vdots & \vdots & \ddots & \vdots \\
+        Cov[x_D,x_1] & Cov[x_D,x_2] & \cdots & Cov[x_D,x_D]\\
+    \end{bmatrix}
+\end{aligned}
+\]
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item $Var(f(x)) 
+    = \mathbb{E}\dSquareBrac{(f(x) - \mathbb{E}[f(x)])^2}$ \hfill \cite{dnn-deep-learning-ian}
+
+    \item The variance of a random variable $X$ with states $x \in R^D$ and a mean vector $\mu \in R^D$ is defined as $\mu = \mathbb{E}_X(x)$
+
+    \item $\mathbb{V}_X[x] := \mathbb{E}_X[(x - \mu)^2]$
+
+    \item $\mathbb{V}_X[x] = \mathbb{E}_X[x^2] - (\mathbb{E}X[x])^2$ \hfill (\textbf{raw-score formula for variance}\indexlabel{raw-score formula for variance})
+
+    \item $
+        \dfrac{1}{N^2}
+        \dsum_{i,j=1}^{N} (x_i - x_j)^2
+        = 2 \left[ 
+            \dfrac{1}{N}\dsum_{i=1}^{N} x_i^2
+            -
+            \left( 
+                \dfrac{1}{N}\dsum_{i=1}^{N} x_i 
+            \right)^2
+        \right]
+    $
+
+    \item we can express the sum of pairwise distances (of which there are $N^2$ of them) as a sum of deviations from the mean (of which there are $N$)
+
+    \item The $D\times D$ matrix is called the \textbf{covariance matrix}\indexlabel{covariance matrix} of the multivariate random variable $X$
+
+    \item The covariance matrix is symmetric and positive semidefinite and tells us something about the spread of the data
+
+    \item The off-diagonal entries are the cross-covariance terms $Cov[x_i, x_j]$ for $i, j = 1, \cdots , D, i \neq j$
+
+    \item Consider a random variable $X$ with mean $\mu$  and covariance matrix $\Sigma$ ($= \mathbb{E}[xx^\top] - \mu \mu ^\top$) and a (deterministic) affine transformation $y = Ax + b$ of $x$. Then:
+    \begin{enumerate}
+        \item $
+            \mathbb{V}_Y[y] 
+            = \mathbb{V}_X[Ax + b] 
+            = \mathbb{V}_X[Ax] 
+            = A\mathbb{V}_X[x]A^\top = A\Sigma A^\top
+        $
+
+        \item 
+        $\begin{aligned}
+            Cov[x, y] 
+            &= \mathbb{E}[x(Ax + b)^\top ] - \mathbb{E}[x]\mathbb{E}[Ax + b]^\top \\
+            &= \mathbb{E}[x]b^\top  + \mathbb{E}[xx^\top ]A^\top  - \mu b^\top  - \mu \mu ^\top A^\top \\
+            &= \mu b^\top  - \mu b^\top  + (\mathbb{E}[xx^\top ] - \mu \mu ^\top )A =  \Sigma A^\top
+        \end{aligned}$
+
+    \end{enumerate}
+
+    \item If $X$, $Y$ are (statistically) \textbf{independent}, then: $V_{X,Y}[x + y] = V_X[x] + V_Y[y]$
+
+    \item (\textbf{law of total variance}\indexlabel{law of total variance}) $V_X[x] = E_Y[V_X[x|y]]+ V_Y[E_X[x|y]]$ \\
+    the (total) variance of $X$ is the expected conditional variance plus the variance of a conditional mean
 \end{enumerate}
 
 
@@ -330,7 +425,7 @@
 
 \section{Covariances/ Cross-covariance \cite{ism-1}} \label{Multivariate Distributions: Covariances/ Cross-covariance}
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=0.2cm]
     \item $
         COV(X, Y) 
         = \sigma_{XY} 
@@ -350,6 +445,47 @@
         \in R^{D\times E}
     $ \hfill (Multivariate) \cite{mfml-1}
 
+
+    \item $
+        Cov(f(x), g(y))
+        = \mathbb{E}\dSquareBrac{
+            (f(x) - \mathbb{E}[f(x)])
+            (g(y) - \mathbb{E}[g(y)])
+        }
+    $ \hfill \cite{dnn-deep-learning-ian}
+
+    \item High absolute values of the covariance mean that the values change very much and are both far from their respective means at the same time.\\
+    If the sign of the covariance is \textbf{positive}, then both variables tend to take on relatively high values simultaneously.\\
+    If the sign of the covariance is \textbf{negative}, then one variable tends to take on a relatively high value at the times that the other takes on a relatively low value and vice versa. \cite{dnn-deep-learning-ian}
+
+    \item The notions of covariance and dependence are related, but are in fact distinct concepts.\\
+    They are related because two variables that are independent have zero covariance, and two variables that have non-zero covariance are dependent.\\
+    However, independence is a distinct property from covariance.\\
+    For two variables to have zero covariance, there must be no linear dependence between them.\\
+    Independence is a stronger requirement than zero covariance, because independence also excludes nonlinear relationships.\\
+    \textbf{It is possible for two variables to be dependent but have zero covariance.} \hfill \cite{dnn-deep-learning-ian}\\
+    \textbf{Example}: Consider uniform distribution over the interval $[-1, 1]$ and $3$ random variables, such that $s \sim \mathcal{U}(-1,1)$ \textbf{and} $y=sx$\\
+    $x$ and $y$ are not independent, because $x$ completely determines the magnitude of $y$. However, $Cov(x, y) = 0$.\\
+    \textbf{Proof}:\\
+    \[
+        \mathbb{E}[s] = \int_{-1}^1 s \cdot \frac{1}{2} \, ds = 0
+        \hspace{2cm}
+        \mathbb{E}[x] = \int_{-1}^1 x \cdot \frac{1}{2} \, dx = 0
+        \hspace{2cm}
+        \mathbb{E}[y] = \mathbb{E}[s x] = \mathbb{E}[s] \cdot \mathbb{E}[x] = 0 \cdot 0 = 0
+    \]
+    \[
+        \mathbb{E}[xy] 
+        =\mathbb{E}[sx^2]
+        = \mathbb{E}[s] \cdot \mathbb{E}[x^2]
+        = 0 \cdot \mathbb{E}[x^2] = 0
+    \]
+    \[
+        Cov(x, y) 
+        = Cov(x, sx)
+        = \mathbb{E}[xy] - \mathbb{E}[x]\mathbb{E}[y]
+        = 0 - 0 \cdot 0 = 0
+    \]
     
 
 \end{enumerate}
@@ -438,78 +574,6 @@ the empirical covariance matrix is a $D\times D$ matrix:
 \]
 
 
-\section{Variance \cite{mfml-1}}\label{Multivariate Distributions: Variance}
-
-The variance of a random variable $X$ with states $x \in R^D$ and a mean vector $\mu \in R^D$ is defined as
-\[
-    \mu = \mathbb{E}_X(x)
-\]
-
-\[
-\begin{aligned}
-    \mathbb{V}_X[x] 
-    &= Cov_X[x,x]\\
-    &= \mathbb{E}_X[(x-\mu)(x-\mu)^\top]
-    = \mathbb{E}_X[xx^\top]
-    = \mathbb{E}_X[x]\mathbb{E}_X[x]^\top\\
-    &= \begin{bmatrix}
-        Cov[x_1,x_1] & Cov[x_1,x_2] & \cdots & Cov[x_1,x_D]\\
-        Cov[x_2,x_1] & Cov[x_2,x_2] & \cdots & Cov[x_2,x_D]\\
-        \vdots & \vdots & \ddots & \vdots \\
-        Cov[x_D,x_1] & Cov[x_D,x_2] & \cdots & Cov[x_D,x_D]\\
-    \end{bmatrix}
-\end{aligned}
-\]
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item $\mathbb{V}_X[x] := \mathbb{E}_X[(x - \mu)^2]$
-
-    \item $\mathbb{V}_X[x] = \mathbb{E}_X[x^2] - (\mathbb{E}X[x])^2$ \hfill (\textbf{raw-score formula for variance}\indexlabel{raw-score formula for variance})
-
-    \item $
-        \dfrac{1}{N^2}
-        \dsum_{i,j=1}^{N} (x_i - x_j)^2
-        = 2 \left[ 
-            \dfrac{1}{N}\dsum_{i=1}^{N} x_i^2
-            -
-            \left( 
-                \dfrac{1}{N}\dsum_{i=1}^{N} x_i 
-            \right)^2
-        \right]
-    $
-
-    \item we can express the sum of pairwise distances (of which there are $N^2$ of them) as a sum of deviations from the mean (of which there are $N$)
-
-    \item The $D\times D$ matrix is called the \textbf{covariance matrix}\indexlabel{covariance matrix} of the multivariate random variable $X$
-
-    \item The covariance matrix is symmetric and positive semidefinite and tells us something about the spread of the data
-
-    \item The off-diagonal entries are the cross-covariance terms $Cov[x_i, x_j]$ for $i, j = 1, \cdots , D, i \neq j$
-
-    \item Consider a random variable $X$ with mean $\mu$  and covariance matrix $\Sigma$ ($= \mathbb{E}[xx^\top] - \mu \mu ^\top$) and a (deterministic) affine transformation $y = Ax + b$ of $x$. Then:
-    \begin{enumerate}
-        \item $
-            \mathbb{V}_Y[y] 
-            = \mathbb{V}_X[Ax + b] 
-            = \mathbb{V}_X[Ax] 
-            = A\mathbb{V}_X[x]A^\top = A\Sigma A^\top
-        $
-
-        \item 
-        $\begin{aligned}
-            Cov[x, y] 
-            &= \mathbb{E}[x(Ax + b)^\top ] - \mathbb{E}[x]\mathbb{E}[Ax + b]^\top \\
-            &= \mathbb{E}[x]b^\top  + \mathbb{E}[xx^\top ]A^\top  - \mu b^\top  - \mu \mu ^\top A^\top \\
-            &= \mu b^\top  - \mu b^\top  + (\mathbb{E}[xx^\top ] - \mu \mu ^\top )A =  \Sigma A^\top
-        \end{aligned}$
-
-    \end{enumerate}
-
-    \item If $X$, $Y$ are (statistically) \textbf{independent}, then: $V_{X,Y}[x + y] = V_X[x] + V_Y[y]$
-
-    \item (\textbf{law of total variance}\indexlabel{law of total variance}) $V_X[x] = E_Y[V_X[x|y]]+ V_Y[E_X[x|y]]$ \\
-    the (total) variance of $X$ is the expected conditional variance plus the variance of a conditional mean
-\end{enumerate}
 
 \section{Sample Covariance \cite{ism-1}}\label{Multivariate Distributions: Sample Covariance}
 
@@ -573,6 +637,13 @@ The variance of a random variable $X$ with states $x \in R^D$ and a mean vector 
         }
         = 0
     \]
+\end{enumerate}
+
+
+\section{Correlation \cite{dnn-deep-learning-ian}}\label{Multivariate Distributions: Correlation}
+
+\begin{enumerate}
+    \item correlation normalize the contribution of each variable in order to measure only how much the variables are related, rather than also being affected by the scale of the separate variables.
 \end{enumerate}
 
 
