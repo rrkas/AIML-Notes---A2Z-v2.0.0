@@ -267,10 +267,10 @@ These attempt to evaluate or improve the policy that is used to make decisions, 
         \ForEach{$s$ in the episode}{
             $A^* \leftarrow \displaystyle\arg\max_a Q(s,a)$ (with ties broken arbitrarily)\\
             \ForEach{$a\in A(s)$}{
-                \( \pi(a|s) \leftarrow \begin{cases}
+                \( \pi(a|s) \leftarrow \begin{dcases}
                     1-\epsilon + \displaystyle\dfrac{\epsilon}{\dabs{A(s)}} & \text{ if } a=A^*\\
                     \displaystyle\dfrac{\epsilon}{\dabs{A(s)}} & \text{ if } a\neq A^*\\
-                \end{cases} \)
+                \end{dcases} \)
             }
         }
     }

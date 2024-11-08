@@ -113,10 +113,10 @@ Another method is to choose the greedy action most of the time, but choose some 
         $N(a) \gets 0$\;
     }
     \While{true}{
-        $A \gets \begin{cases}
+        $A \gets \begin{dcases}
         \arg\max_a Q(a) & \text{with probability } 1 - \epsilon \text{ (breaking ties randomly)} \\
         \text{a random action} & \text{with probability } \epsilon
-        \end{cases}$\\
+        \end{dcases}$\\
         $R \gets \text{bandit}(A)$\;
         $N(A) \gets N(A) + 1$\;
         $Q(A) \gets Q(A) + \displaystyle\dfrac{1}{N(A)}[R - Q(A)]$\;
@@ -227,10 +227,10 @@ On each step, after selecting the action $A_t$ and receiving the reward $R_t$, t
 \[
 \begin{aligned}
     H_{t+1}(a) &= 
-    \begin{cases}
+    \begin{dcases}
         H_t(a) + \alpha(R_t - \bar{R_t})(1-\pi_t(a)) & \text{if } a = A_t \\
         H_t(a) - \alpha(R_t - \bar{R_t})\pi_t(a) & \text{for all } a \neq A_t
-    \end{cases}
+    \end{dcases}
 \end{aligned}
 \]
 

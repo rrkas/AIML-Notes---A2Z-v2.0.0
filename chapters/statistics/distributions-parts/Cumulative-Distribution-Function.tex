@@ -10,10 +10,10 @@
 \[
 \begin{aligned}
     F(x) 
-    = \begin{cases}
+    = \begin{dcases}
         Pr(X < x) = \dint_{-\infty}^{x} f(z) dz & \text{ (Continuous)}\\[2ex]
         Pr(X \leq x) = \dsum_{k=0}^x f(k) & \text{ (Discrete)}\\
-    \end{cases}
+    \end{dcases}
 \end{aligned}
 \]
 
@@ -60,12 +60,12 @@
     \textbf{expected value of random variable $X$} &
     \vspace{0.1cm} \(
         \mathbb{E}(X) =
-        \begin{cases}
+        \begin{dcases}
             \dint_{-\infty}^\infty xf(x)dx &
             \text{ (Continuous)}\\[2ex]
             \dsum_{x=0}^\infty xf(x) &
             \text{ (Discrete)}\\
-        \end{cases}
+        \end{dcases}
     \) \vspace{0.1cm} \\
     \hline
 
@@ -73,24 +73,24 @@
     \vspace{0.1cm} \(
         \sigma^2 =
         \mathbb{E}(X-\mu)^2 =
-        \begin{cases}
+        \begin{dcases}
             \dint_{-\infty}^\infty (X-\mu)^2 f(x)dx &
             \text{ (Continuous)}\\[2ex]
             \dsum_{x=0}^\infty (X-\mu)^2 f(x) &
             \text{ (Discrete)}\\
-        \end{cases}
+        \end{dcases}
     \) \vspace{0.1cm} \\
     \hline
 
     \textbf{expected value of the random variable $\psi(X)$} &
     \vspace{0.1cm} \(
         \mathbb{E}(X-\mu)^2 =
-        \begin{cases}
+        \begin{dcases}
             \dint_{-\infty}^\infty \psi(X) f(x)dx &
             \text{ (Continuous)}\\[2ex]
             \dsum_{x=0}^\infty \psi(X) f(x) &
             \text{ (Discrete)}\\
-        \end{cases}
+        \end{dcases}
     \) \vspace{0.1cm} \\
     \hline
 

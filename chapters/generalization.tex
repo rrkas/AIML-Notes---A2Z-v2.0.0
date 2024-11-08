@@ -177,10 +177,10 @@
     In other words, with dropout probability $p$, each intermediate activation $h$ is replaced by a random variable $h'$ as follows:
     \[
         h' =
-        \begin{cases}
+        \begin{dcases}
             0 & \textrm{ with probability } p \\
             \dfrac{h}{1-p} & \textrm{ otherwise}
-        \end{cases}
+        \end{dcases}
     \]
     By design, the expectation remains unchanged, i.e., $E[h'] = h$
 

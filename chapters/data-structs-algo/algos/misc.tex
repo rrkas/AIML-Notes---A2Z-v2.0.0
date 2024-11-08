@@ -163,10 +163,10 @@
 \subsection{Soft Non-maximum Suppression (soft-NMS)}\label{Soft Non-maximum Suppression (soft-NMS)}
 
 \[
-    s_i = \begin{cases}
+    s_i = \begin{dcases}
         s_i & IOU(M, b_i) < N_t \\
         s_i(1 - IOU(M, b_i)) & IOU(M, b_i) \geq N_t
-    \end{cases}
+    \end{dcases}
 \]
 
 \begin{enumerate}

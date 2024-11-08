@@ -396,10 +396,10 @@ At termination:
 \begin{enumerate}[itemsep=0.1cm]
     \item $\epsilon$ = empty string
     \item If we want to include an unknown word <UNK>, it’s just included as a regular vocabulary entry with count zero, and hence its probability will be a lambda-weighted uniform distribution \(\dfrac{\lambda(\epsilon)}{V}\)
-    \item \(c_{KN}(\cdot) = \begin{cases}
+    \item \(c_{KN}(\cdot) = \begin{dcases}
         \rcmdXcount(\cdot) & \text{for the highest order} \\
         \rcmdXcontinuationcount(\cdot) & \text{for lower orders}
-    \end{cases}\)
+    \end{dcases}\)
     \item $\rcmdXcontinuationcount(x)$ of a string $x$ is the number of unique single word contexts for that string $x$.
     \item discount: $0 \leq d \leq 1$ 
     \item \(\dfrac{d}{\sum_v C(w_{i-1}v)}\) is normalized discount
@@ -433,10 +433,10 @@ if we’ve seen this n-gram before (i.e., if we have non-zero counts). Otherwise
 
 \[
     P_{BO}(w_n|w_{n-N+1:n-1}) =
-\begin{cases} 
+\begin{dcases} 
     P^*(w_n|w_{n-N+1:n-1}), & \text{if } C(w_{n-N+1:n}) > 0 \\
     \alpha(w_{n-N+1:n-1}) P_{BO}(w_n|w_{n-N+2:n-1}), & \text{otherwise}.
-\end{cases}
+\end{dcases}
 \]
 
 \subsubsection{Good-Turing backoff}
@@ -446,10 +446,10 @@ Katz backoff is often combined with a smoothing method called Good-Turing. The c
 Stupid backoff gives up the idea of trying to make the language model a true probability distribution. There is no discounting of the higher-order probabilities. If a higher-order n-gram has a zero count, we simply backoff to a lower order n-gram, weighed by a fixed (context-independent) weight. This algorithm does not produce a probability distribution.
 
 \[
-    S(w_i|w_{i-N+1:i-1}) = \begin{cases}
+    S(w_i|w_{i-N+1:i-1}) = \begin{dcases}
         \dfrac{count(w_{i-N+1:i})}{count(w_{i-N+1:i-1})} & \text{ if $count(w_{i-N+1:i}) > 0$}\\[0.2cm]
         \lambda S(w_i|w_{i-N+2:i-1}) & \text{ otherwise}
-    \end{cases}
+    \end{dcases}
 \]
 where the termination is:
 \[

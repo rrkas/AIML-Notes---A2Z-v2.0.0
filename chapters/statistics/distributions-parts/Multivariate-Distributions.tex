@@ -9,10 +9,10 @@
 \[
     f_{XY}(x, y) 
     = Pr(X = x, Y = y)
-    \begin{cases}
+    \begin{dcases}
         \in \mathbb{R} & \text{ (Discrete (PMF))}\\
         = 0 \text{ (always)} & \text{ (Continuous (PDF))}
-    \end{cases}
+    \end{dcases}
 \]
 
 \section{Marginal PMF/ PDF ($f_X(x)$ / $f_Y(y)$) \cite{ism-1,mfml-1}}\label{Multivariate Distributions: Marginal PMF/ PDF}
@@ -21,20 +21,20 @@
     \begin{minipage}{0.49\linewidth}
         \[
             f_X(x)
-            = \begin{cases}
+            = \begin{dcases}
                 \dsum_{y=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
                 \dint_{-\infty}^\infty f_{XY}(x,y) dy & \text{ (Continuous)}\\
-            \end{cases}
+            \end{dcases}
         \]
     \end{minipage}
     \hfill
     \begin{minipage}{0.49\linewidth}
         \[
             f_Y(y)
-            = \begin{cases}
+            = \begin{dcases}
                 \dsum_{x=0}^\infty f_{XY}(x,y) & \text{ (Discrete)}\\[2ex]
                 \dint_{-\infty}^\infty f_{XY}(x,y) dx & \text{ (Continuous)}\\
-            \end{cases}
+            \end{dcases}
         \]
     \end{minipage}
 \end{table}
@@ -54,13 +54,13 @@
 \[
     F_{XY}(x, y)
     = Pr(X \leq x, Y \leq y) 
-    = \begin{cases}
+    = \begin{dcases}
         \dsum_{k=0}^{x}
         \dsum_{l=0}^{y} f_{XY}(k,l) & \text{ (discrete)}\\[3ex]
         \dint_{-\infty}^{x}
         \dint_{-\infty}^{y} 
         f_{XY}(u,v)dudv & \text{ (continuous)}\\
-    \end{cases}
+    \end{dcases}
 \]
 \[
     Pr((X,Y)\in A) 
@@ -227,10 +227,10 @@
 \begin{enumerate}
     \item The expected value of a function $g : R \to R$ of a univariate continuous random variable $X \sim p(x)$ is given by $
         \mathbb{E}_X[g(x)] = 
-        \begin{cases}
+        \begin{dcases}
             \dint_X g(x)p(x)dx \\[2ex]
             \dsum_{x\in X} g(x)p(x)
-        \end{cases}
+        \end{dcases}
     $\\
     where $X$ is the set of possible outcomes (the target space) of the random variable $X$
 
@@ -258,12 +258,12 @@
     \]
     \[
         \mathbb{E}_{X_d}[x_d]
-        = \begin{cases}
+        = \begin{dcases}
             \dint_X x_d p(x_d) dx_d
             & \text{if $X$ is a continuous random variable}\\[2ex]
             \dsum_{x_i \in X} x_i p(x_d=x_i)
             & \text{if $X$ is a discrete random variable}
-        \end{cases}
+        \end{dcases}
     \]
 
     \item Consider a random variable $X$ with mean $\mu$ and covariance matrix $\Sigma$ and a (deterministic) affine transformation $y = Ax + b$ of $x$. Then:

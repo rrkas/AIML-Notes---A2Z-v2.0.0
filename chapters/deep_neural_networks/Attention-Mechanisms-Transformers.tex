@@ -119,11 +119,11 @@ SEE: \fullref{Attention VS Attention Pooling}
     $
         \alpha(\mathbf{q}, \mathbf{k}) = 
         \renewcommand{\arraystretch}{2}
-        \begin{cases}
+        \begin{dcases}
             \exp\left(-\dfrac{1}{2} \|\mathbf{q} - \mathbf{k}\|^2 \right) & \textrm{Gaussian} \\
             1 \textrm{ if } \|\mathbf{q} - \mathbf{k}\| \leq 1 & \textrm{Boxcar} \\
             \mathop{\mathrm{max}}\left(0, 1 - \|\mathbf{q} - \mathbf{k}\|\right) & \textrm{Epanechikov}    
-        \end{cases}
+        \end{dcases}
         \renewcommand{\arraystretch}{1}
     $
 

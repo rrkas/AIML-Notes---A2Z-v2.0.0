@@ -215,11 +215,11 @@ AdaGrad (for adaptive gradient algorithm) is a modified stochastic gradient desc
     \text{\cite{florian.github.io/rprop}}
 \]
 \[
-    \displaystyle \eta_i^{(t)} = \begin{cases}
+    \displaystyle \eta_i^{(t)} = \begin{dcases}
     \min(\eta_i^{(t - 1)} * \alpha, \eta_{\max}) & \text{if } \displaystyle\dfrac{\partial E^{(t)}}{\partial w_i^{(t)}} * \displaystyle\dfrac{\partial E^{(t - 1)}}{\partial w_i^{(t - 1)}} > 0 \\
     \max(\eta_i^{(t - 1)} * \beta, \eta_{\min}) & \text{if } \displaystyle\dfrac{\partial E^{(t)}}{\partial w_i^{(t)}} * \displaystyle\dfrac{\partial E^{(t - 1)}}{\partial w_i^{(t - 1)}} < 0 \\
     \eta_i^{(t - 1)} & \text{otherwise}
-    \end{cases}
+    \end{dcases}
     \hfill
     (\alpha > 1 > \beta) \text{ \cite{florian.github.io/rprop}}
 \]

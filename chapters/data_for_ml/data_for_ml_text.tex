@@ -155,10 +155,10 @@ the frequency of the word/ term $t$ in the document $d$.
     \rcmdXtf_{t,d} = \rcmdXcount(t,d) \hfill \text{(raw count)}
 \]
 \[
-    \rcmdXtf_{t,d} = \begin{cases}
+    \rcmdXtf_{t,d} = \begin{dcases}
         1 + \log_{10}(\rcmdXcount(t,d)) & \text{ if } \rcmdXcount(t,d) > 0\\
         0 & \text{ otherwise}
-    \end{cases} \hfill \text{(Squashed raw frequency)}
+    \end{dcases} \hfill \text{(Squashed raw frequency)}
 \]
 
 

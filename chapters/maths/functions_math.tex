@@ -4,10 +4,10 @@
 
 \section{Absolute Value ( $\dabs{x}$ )}\label{abs_value}
 \[
-    \dabs{ x } = \begin{cases}
+    \dabs{ x } = \begin{dcases}
        x & \text{ if } x \geq 0 \\
        -x & \text{ if } x < 0 
-    \end{cases}
+    \end{dcases}
 \]
 
 
@@ -54,11 +54,11 @@ Natural Logarithm Function ($a=e$):
 
 \section{Sign Function ( $\rcmdXsgn(x)$ )}\label{Sign Function}
 \[
-    \rcmdXsgn(x) = \begin{cases}
+    \rcmdXsgn(x) = \begin{dcases}
          1 & \text{ if } x > 0 \\
          0 & \text{ if } x = 0 \\
          -1 & \text{ if } x < 0 
-    \end{cases}
+    \end{dcases}
 \]
 
 
@@ -66,19 +66,19 @@ Natural Logarithm Function ($a=e$):
 \section{Indicator function ( $\mathbbm{1}_x$ )}\label{Indicator function}
 
 \[
-    \mathbbm{1}_x = {\begin{cases}
+    \mathbbm{1}_x = {\begin{dcases}
         1 & \text{ if x is true } \\
         0 & \text{ if x is false }
-    \end{cases}}
+    \end{dcases}}
 \]
 
 \section{Infinite Step Function ( $1(z)$ )}
 
 \[
-    1(z) = {\begin{cases}
+    1(z) = {\begin{dcases}
         0 & \text{ if } z \leq 0 \\
         \infty & \text{ otherwise }
-    \end{cases}}
+    \end{dcases}}
 \]
 
 This gives infinite penalty if the constraint is not satisfied.
@@ -285,10 +285,10 @@ $x \neq 0$
     \[
         \hfill
         (f * g)(\mathbf{x}) = 
-        \begin{cases}
+        \begin{dcases}
             \dint f(\mathbf{z}) g(\mathbf{x}-\mathbf{z}) d\mathbf{z} & \text{ (continuous)} \\[1ex]
             \dsum_\mathbf{z} f(\mathbf{z}) g(\mathbf{x}-\mathbf{z}) & \text{ (discrete)} \\
-        \end{cases}
+        \end{dcases}
         \hfill
     \]
     we measure the overlap between $f$ and $g$ when one function is “\textbf{flipped}” and \textbf{shifted} by $\mathbf{x}$
