@@ -1,0 +1,125 @@
+\chapter{Laplace Distribution ($X \sim Laplace(\mu,b)$) \cite{dnn-deep-learning-ian,wiki/Laplace_distribution}} \label{Laplace Distribution}
+
+\begin{table}[H]
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Laplace_pdf_mod.png}
+            \caption{Laplace distribution: PDF}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth, height=4cm, keepaspectratio]{Pictures/distributions/Laplace_cdf_mod.png}
+            \caption{Laplace distribution: CDF}
+        \end{figure}
+    \end{minipage}
+\end{table}
+
+\begin{customTableWrapper}{2}
+\begin{longtable}{|m{6cm}|p{9cm}|}
+    \hline
+    \customTableHeaderColor
+    \multicolumn{2}{|c|}{\textbf{Laplace Distribution - Info} \cite{wiki/Laplace_distribution}} \\
+    \hline\endfirsthead
+
+    \hline
+    \customTableHeaderColor
+    \multicolumn{2}{|c|}{\textbf{Laplace Distribution - Info - contd.} \cite{wiki/Laplace_distribution}} \\
+    \hline\endhead
+    
+    \hline\endfoot
+    \hline\endlastfoot
+
+    \textbf{Statistical parameters} & 
+    \tableenumerate{
+        \item $\mu$: location
+        \item $b>0$: scale
+    }
+    \\ \hline
+    
+    \textbf{Support} &
+    $\mathbb{R}$
+    \\ \hline
+
+    \textbf{Probability Density Function (PDF)} & 
+    ${\displaystyle {\frac {1}{2b}}\exp \left(-{\frac {|x-\mu |}{b}}\right)}$
+    \\[1ex] \hline
+    
+    \textbf{Cumulative distribution function (CDF)} & 
+    ${\displaystyle {\begin{dcases}{\frac {1}{2}}\exp \left({\frac {x-\mu }{b}}\right)&{\text{if }}x\leq \mu \\[8pt]1-{\frac {1}{2}}\exp \left(-{\frac {x-\mu }{b}}\right)&{\text{if }}x\geq \mu \end{dcases}}}$
+    \\ \hline
+
+    \textbf{Quantile} &
+    ${\displaystyle {\begin{dcases}\mu +b\ln \left(2F\right)&{\text{if }}F\leq {\frac {1}{2}}\\[8pt]\mu -b\ln \left(2-2F\right)&{\text{if }}F\geq {\frac {1}{2}}\end{dcases}}}$
+    \\ \hline
+
+    \textbf{Mean} & 
+    $\mu$
+    \\[1ex] \hline
+
+    \textbf{Median} & 
+    $\mu$
+    \\[1ex] \hline
+
+    \textbf{Mode} & 
+    $\mu$
+    \\ \hline
+
+    \textbf{Variance} &
+    $2b^2$
+    \\[1ex] \hline
+
+    \textbf{Mean Absolute Deviation (MAD)} &
+    $b$
+    \\[1ex] \hline
+
+    \textbf{Skewness} &
+    $0$
+    \\ \hline
+
+    \textbf{Excess kurtosis} &
+    $3$
+    \\ \hline
+
+    \textbf{Entropy} &
+    ${\displaystyle \log(2be)}$
+    \\[1ex] \hline
+
+    \textbf{Moment-generating function (MGF)} &
+    ${\displaystyle {\frac {\exp(\mu t)}{1-b^{2}t^{2}}}{\text{ for }}|t|<1/b}$
+    \\[1ex] \hline
+
+    \textbf{Characteristic function (CF)} &
+    ${\displaystyle {\frac {\exp(\mu it)}{1+b^{2}t^{2}}}}$
+    \\[1ex] \hline
+
+    \textbf{Expected shortfall} &
+    ${\displaystyle {\begin{dcases}\mu +b\left({\frac {p}{1-p}}\right)(1-\ln(2p))&,p<.5\\\mu +b\left(1-\ln \left(2(1-p)\right)\right)&,p\geq .5\end{dcases}}}$
+    \\[1ex] \hline
+
+\end{longtable}
+\end{customTableWrapper}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

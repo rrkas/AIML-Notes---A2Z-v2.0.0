@@ -49,6 +49,27 @@ For $h > 0$ the derivative of $y = f(x)$ at $x$ is defined as the limit \( \disp
     \dParenBrac{ \displaystyle\dfrac{f(x)}{g(x)} }' = \displaystyle\dfrac{[f'(x)g(x) - f(x)g'(x)]}{(g(x))^2}
 \]
 
+
+\section{directional derivative \cite{dnn-deep-learning-ian}} \label{directional derivative}
+
+\begin{enumerate}
+    \item The directional derivative in direction $u$ (a unit vector) is the slope of the function $f$ in direction $u$. 
+    
+    \item In other words, the directional derivative is the derivative of the function $f(x + \alpha u)$ with respect to $\alpha$, evaluated at $\alpha = 0$. 
+    
+    \item Using the chain rule, we can see that $\dfrac{\partial}{\partial\alpha} (x+\alpha u)$ evaluates to $u^\top\nabla_xf(x)$ when $\alpha = 0$.
+
+    \item To minimize $f$, we would like to find the direction in which $f$ decreases the fastest. We can do this using the directional derivative:
+    \[
+        \min_{u,u^\top u = 1} u^\top \nabla_x f(x)
+        = \min_{u,u^\top u = 1} \dnorm{u}_2 \dnorm{\nabla_x f(x)}_2 \cos{(\theta)}
+    \]
+    where $\theta$ is the angle between $u$ and the gradient.
+\end{enumerate}
+
+
+
+
 \section{Power Series}\label{Power Series}
 \[
     f(x) = \sum_{k=0}^{\infty} a_k (x-c)^k

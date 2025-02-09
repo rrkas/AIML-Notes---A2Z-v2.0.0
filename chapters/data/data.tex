@@ -10,34 +10,54 @@
 
 
 \section{Measurement Levels \cite{ism-1}} \label{measurement_levels}
+\begin{customTableWrapper}{1.5}
 \begin{table}[h!]
     \centering
     \begin{tabular}{|p{5cm}|c|c|c|c|}
-        \hline
-        & \multicolumn{2}{c|}{\textbf{Categorical Data}} & \multicolumn{2}{c|}{\textbf{Numerical Data}} \\ \hline
+        \customTableHeaderColor
+        \hline        
+        & \multicolumn{2}{c|}{\textbf{Categorical Data}} & \multicolumn{2}{c|}{\textbf{Numerical Data}} \\ 
         
+        \customTableHeaderColor
+        \hline
         & \textbf{Nominal} & \textbf{Ordinal} & \textbf{Interval} & \textbf{Ratio} \\ \hline
         
-        \textbf{Distinction between groups / individuals} & YES & YES & YES & YES \\ \hline
+        \textbf{Distinction between groups / individuals} & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
         
-        \textbf{Logical Order} & & YES & YES & YES \\ \hline
+        \textbf{Imposes logical Order} & \xmark & \checkmark & \checkmark & \checkmark \\ \hline
         
-        \textbf{Provides a magnitude of the differences in some unit} & & & YES & YES \\ \hline
+        \textbf{Provides a magnitude of the differences in some unit} & \xmark & \xmark & \checkmark & \checkmark \\ \hline
         
-        \textbf{A clear reference point or "0"} & & & & YES \\ \hline
+        \textbf{A clear reference point or "0"} & \xmark & \xmark & \xmark & \checkmark \\ \hline
     \end{tabular}
     \caption{Measurement Levels}
     \label{tab:data_comparison}
 \end{table}
+\end{customTableWrapper}
+
+\subsection{Continuous numerical data \cite{ism-1}}\indexlabel{Continuous numerical data}
+\begin{enumerate}
+    \item Theoretically, continuous variables can assume any value. 
+    
+    \item continuous variable can attain any value between two different values, no matter how close the two values are.
+\end{enumerate}
+
+\subsection{Discrete numerical data \cite{ism-1}}\indexlabel{Discrete numerical data}
+\begin{enumerate}
+    \item discrete variable cannot attain any value between two different values
+\end{enumerate}
+
+
 
 \section{Issues With Data}
 \subsection{Outliers \cite{ism-1}}\label{outliers}
 \begin{enumerate}
     \item very extreme values
+    
     \item Handling outliers
     \begin{enumerate}
         \item Ignoring them
-        \item Removing them
+        \item Deleting them
         \item Substitute them, using statistical methods, with a more plausible alternative (imputation\indexlabel{imputation})
     \end{enumerate}
 \end{enumerate}
@@ -45,6 +65,11 @@
 \subsection{Unrealistic Values \cite{ism-1}}\label{unrealistic_values}
 \begin{enumerate}
     \item erroneous, non-sensical, or otherwise unclear
+    
+    \item Handling unrealistic Values
+    \begin{enumerate}
+        \item Deleting them
+    \end{enumerate}
 \end{enumerate}
 
 \subsection{Missing values \cite{ism-1}}\label{missing_values}
@@ -55,24 +80,27 @@
 \begin{enumerate}
     \item Nominal and ordinal data are often described using frequency tables.
     \item Frequency is just the number of times a value occurs in the dataset.
-    \item Interval and Ratio type data can be tackled using “binning”.
-    \subsubsection{Types of Frequencies}
+    \item Interval and Ratio type data can be tackled using discretizing or “binning”.
+    
+\subsubsection{Types of Frequencies \cite{ism-1}}
+    \begin{customTableWrapper}{2}
     \begin{table}[H]
         \centering
-        \renewcommand{\arraystretch}{1.7}
         \begin{tabular}{|p{3.5cm}|l|}
             \hline
 
             Cumulative Frequency \cite{ism-1} \indexlabel{cumulative frequency} & Cumulative frequency for a specific value xj is given by: \(\sum_{k=1}^{j} f_k\) \\ \hline
             
-            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & \(\displaystyle\dfrac{f_j}{\dsum_{k=1}^{n} f_k}\) \\ 
+            Relative Frequency \cite{ism-1} \indexlabel{relative frequency} & $\dParenBrac{f_j} / \dParenBrac{\dsum_{k=1}^{n} f_k}$ \\ 
             
             \hline
 
-            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \( {\displaystyle\dfrac{\dsum_{k=1}^{j} f_k}{\dsum_{k=1}^{n} f_k}} \)  \\ \hline
+            Relative Cumulative Frequency \cite{ism-1} \indexlabel{relative cumulative frequency} & \( \dParenBrac{\dsum_{k=1}^{j} f_k} / \dParenBrac{\dsum_{k=1}^{n} f_k} \)  \\ \hline
+
         \end{tabular}
         \caption{Types of Data Frequency}
     \end{table}
+    \end{customTableWrapper}
 \end{enumerate}
 
 \subsection{Central Tendency \cite{ism-1}}
@@ -87,6 +115,14 @@ The mode is merely the most frequently occurring value.
 
 \subsubsection{Median \cite{ism-1}}\label{median}
 The median is a value that divides the ordered data from small to large (or large to small) into two equal parts: 50% of the data is below the median and 50% is above. The median is not necessarily a value that is present in the data. Practically, we sort the data and choose the middle-most value when n is odd, or the average of the two middle values when n is even.
+
+\subsubsection{Mean, median, mode relation}\label{mean, median, mode relation}
+
+\begin{enumerate}
+    \item Mode = 3 * Median - 2 * Mean
+    \item Mean - Mode = 3 * (Mean - Median)
+\end{enumerate}
+
 
 \subsubsection{Trimmed Mean \cite{ism-1}}\label{Trimmed Mean}
 A trimmed mean is a compromise between mean and median. A 10\% trimmed mean, for example, would be computed by \textbf{eliminating} the smallest 10\% and the largest 10\% of the sample and then averaging what remains.
@@ -149,7 +185,8 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
 \end{enumerate}
 
-\begin{table}
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|m{13cm}|}
         \hline
@@ -165,6 +202,7 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     \end{tabular}
     \caption{Interpreting skewness ( $g_1$ ) value}
 \end{table}
+\end{customTableWrapper}
 
 \subsection{Kurtosis ( $g_2$ ) \cite{ism-1}}\label{Kurtosis}
 \[
@@ -176,7 +214,8 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     \item unchanged when all values are shifted by a fixed number or when they are multiplied with a fixed number. This means that shifting the data and/or multiplying the data with a fixed number does not change the “shape” of the data.
 \end{enumerate}
 
-\begin{table}
+\begin{customTableWrapper}{1.5}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
@@ -186,15 +225,34 @@ Skewness is used to measure the asymmetry in data and kurtosis is used to measur
     \end{tabular}
     \caption{Interpreting Kurtosis ( $g_2$ ) value}
 \end{table}
+\end{customTableWrapper}
+
 
 \subsection{Aggregated Data \cite{ism-1}}\label{Aggregated Data}
-\[
-    \bar{x} = \displaystyle\dfrac{\sum_{i=1}^{n} x_i \cdot f_i}{\sum_{i=1}^{n} f_i}
-\]
-\[
-    s^2 = \displaystyle\dfrac{\sum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i}{\left( \sum_{i=1}^{n} f_i \right) - 1}
-\]
 
+\begin{enumerate}[itemsep=0.2cm]
+    \item $
+        \bar{x} = 
+        \dfrac{
+            \dsum_{i=1}^{n} x_i \cdot f_i
+        }{
+            \dsum_{i=1}^{n} f_i
+        }
+    $
+
+    \item $
+        s^2 = 
+        \dfrac{
+            \dsum_{i=1}^{n} (x_i - \bar{x})^2 \cdot f_i
+        }{
+            \dParenBrac{\dsum_{i=1}^{n} f_i} - 1
+        }
+    $
+\end{enumerate}
+
+\vspace{1cm}
+
+Note:
 \begin{enumerate}
     \item Frequency $f_j$ for each group $j$
     \item Each group $j$ we need to determine or set the value $x_j$ as a value that belongs to the group, before we can compute these measures.

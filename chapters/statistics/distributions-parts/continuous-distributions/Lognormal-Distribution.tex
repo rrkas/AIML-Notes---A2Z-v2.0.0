@@ -36,77 +36,77 @@
 
     \hline
     \textbf{Notation} & 
-    ${\displaystyle \ \operatorname {Lognormal} \left(\ \mu ,\,\sigma ^{2}\ \right)\ }$
+    ${ \ \operatorname {Lognormal} \left(\ \mu ,\,\sigma ^{2}\ \right)\ }$
     \\ \hline
 
     \textbf{Statistical parameters} & 
     \tableenumerate{
-        \item ${\displaystyle \ \mu \in (\ -\infty ,+\infty \ )\ }$ (logarithm of location)
+        \item ${ \ \mu \in (\ -\infty ,+\infty \ )\ }$ (logarithm of location)
 
-        \item ${\displaystyle \ \sigma >0\ }$ (logarithm of scale)
+        \item ${ \ \sigma >0\ }$ (logarithm of scale)
     }
     \\ \hline
     
     \textbf{Support} & 
-    ${\displaystyle \ x\in (\ 0,+\infty \ )\ }$
+    ${ \ x\in (\ 0,+\infty \ )\ }$
     \\ \hline
 
     \textbf{Probability Density Function (PDF)} & 
-    ${\displaystyle \ {\frac {1}{\ x\sigma {\sqrt {2\pi \ }}\ }}\ \exp \left(-{\frac {\left(\ln x-\mu \ \right)^{2}}{2\sigma ^{2}}}\right)}$
+    ${ \ {\frac {1}{\ x\sigma {\sqrt {2\pi \ }}\ }}\ \exp \left(-{\frac {\left(\ln x-\mu \ \right)^{2}}{2\sigma ^{2}}}\right)}$
     \\[2ex] \hline
     
     \textbf{Cumulative distribution function (CDF)} & 
-    ${\displaystyle \ {\frac {\ 1\ }{2}}\left[1+\operatorname {erf} \left({\frac {\ \ln x-\mu \ }{\sigma {\sqrt {2\ }}}}\right)\right]=\Phi \left({\frac {\ln(x)-\mu }{\sigma }}\right)}$
+    ${ \ {\frac {\ 1\ }{2}}\left[1+\operatorname {erf} \left({\frac {\ \ln x-\mu \ }{\sigma {\sqrt {2\ }}}}\right)\right]=\Phi \left({\frac {\ln(x)-\mu }{\sigma }}\right)}$
     \\ \hline
 
     \textbf{Quantile} &
-    ${\displaystyle \ \exp \left(\mu +{\sqrt {2\sigma ^{2}}}\operatorname {erf} ^{-1}(2p-1)\right)\ }$
+    ${ \ \exp \left(\mu +{\sqrt {2\sigma ^{2}}}\operatorname {erf} ^{-1}(2p-1)\right)\ }$
     \\ \hline
 
     \textbf{Mean} &
-    ${\displaystyle \ \exp \left(\ \mu +{\frac {\sigma ^{2}}{2}}\ \right)\ }$
+    ${ \ \exp \left(\ \mu +{\frac {\sigma ^{2}}{2}}\ \right)\ }$
     \\ \hline
 
     \textbf{Median} & 
-    ${\displaystyle \ \exp(\ \mu \ )\ }$
+    ${ \ \exp(\ \mu \ )\ }$
     \\ \hline
 
     \textbf{Mode} & 
-    ${\displaystyle \ \exp \left(\ \mu -\sigma ^{2}\ \right)\ }$
+    ${ \ \exp \left(\ \mu -\sigma ^{2}\ \right)\ }$
     \\ \hline
 
     \textbf{Variance} &
-    ${\displaystyle \ \left[\ \exp(\sigma ^{2})-1\ \right]\ \exp \left(2\ \mu +\sigma ^{2}\right)\ }$
+    ${ \ \left[\ \exp(\sigma ^{2})-1\ \right]\ \exp \left(2\ \mu +\sigma ^{2}\right)\ }$
     \\ \hline
 
     \textbf{Skewness} &
-    ${\displaystyle \ \left[\ \exp \left(\sigma ^{2}\right)+2\ \right]{\sqrt {\exp(\sigma ^{2})-1\;}}}$
+    ${ \ \left[\ \exp \left(\sigma ^{2}\right)+2\ \right]{\sqrt {\exp(\sigma ^{2})-1\;}}}$
     \\ \hline
 
     \textbf{Excess kurtosis} &
-    ${\displaystyle \ 1\ \exp \left(4\ \sigma ^{2}\right)+2\ \exp \left(3\ \sigma ^{2}\right)+3\ \exp \left(2\sigma ^{2}\right)-6\ }$
+    ${ \ 1\ \exp \left(4\ \sigma ^{2}\right)+2\ \exp \left(3\ \sigma ^{2}\right)+3\ \exp \left(2\sigma ^{2}\right)-6\ }$
     \\ \hline
 
     \textbf{Entropy} &
-    ${\displaystyle \ \log _{2}\left(\ {\sqrt {2\pi \ }}\ \sigma \ e^{\mu +{\tfrac {1}{2}}}\ \right)\ }$
+    ${ \ \log _{2}\left(\ {\sqrt {2\pi \ }}\ \sigma \ e^{\mu +{\tfrac {1}{2}}}\ \right)\ }$
     \\[1ex] \hline
 
     \textbf{Characteristic function (CF)} &
-    representation ${\displaystyle \ \sum _{n=0}^{\infty }{\frac {\ (i\ t)^{n}\ }{n!}}e^{\ n\mu +n^{2}\sigma ^{2}/2}\ }$ is asymptotically divergent, but adequate for most numerical purposes
+    representation ${ \ \sum _{n=0}^{\infty }{\frac {\ (i\ t)^{n}\ }{n!}}e^{\ n\mu +n^{2}\sigma ^{2}/2}\ }$ is asymptotically divergent, but adequate for most numerical purposes
     \\[1ex] \hline
 
     \textbf{Method of moments} &
     \tableenumerate{
-        \item ${\displaystyle \ \mu =\log \left({\frac {\operatorname {\mathbb {E} } [X]\ }{\ {\sqrt {{\dfrac {\ \operatorname {Var} [X]~~}{\ \operatorname {\mathbb {E} } [X]^{2}\ }}+1\ }}\ }}\right)\ }$
+        \item ${ \ \mu =\log \left({\frac {\operatorname {\mathbb {E} } [X]\ }{\ {\sqrt {{\dfrac {\ \operatorname {Var} [X]~~}{\ \operatorname {\mathbb {E} } [X]^{2}\ }}+1\ }}\ }}\right)\ }$
         \vspace{0.1cm}
 
-        \item ${\displaystyle \ \sigma ={\sqrt {\log \left({\dfrac {\ \operatorname {Var} [X]~~}{\ \operatorname {\mathbb {E} } [X]^{2}\ }}+1\ \right)\ }}}$
+        \item ${ \ \sigma ={\sqrt {\log \left({\dfrac {\ \operatorname {Var} [X]~~}{\ \operatorname {\mathbb {E} } [X]^{2}\ }}+1\ \right)\ }}}$
         \vspace{0.1cm}
     }
     \\[1ex] \hline
 
     \textbf{Expected shortfall} &
-    ${\displaystyle \ {\dfrac {\ \operatorname {erfc} \left({\dfrac {s}{\ {\sqrt {2\ }}\ }}-\operatorname {erf} ^{-1}(2p-1)\right)\ }{2}}(1-p)e^{\mu +{{~s^{2}\ }/{2}}}\ }$
+    ${ \ {\dfrac {\ \operatorname {erfc} \left({\dfrac {s}{\ {\sqrt {2\ }}\ }}-\operatorname {erf} ^{-1}(2p-1)\right)\ }{2}}(1-p)e^{\mu +{{~s^{2}\ }/{2}}}\ }$
     \\[2ex] \hline
 
     \textbf{relative standard deviation} & 

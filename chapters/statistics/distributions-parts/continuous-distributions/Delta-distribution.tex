@@ -1,0 +1,64 @@
+\chapter{$\delta$ Distribution/ Dirac delta function \cite{wiki/Dirac_delta_function}} \label{delta distribution/ Dirac delta function}
+
+
+\begin{enumerate}[itemsep=0.2cm]
+    \item Dirac delta function: 
+    ${\displaystyle \delta (x)={\begin{dcases}0,&x\neq 0\\{\infty },&x=0\end{dcases}}}$ 
+    such that 
+    ${\displaystyle \int _{-\infty }^{\infty }\delta (x)=1}$
+\end{enumerate}
+
+\section{PDF \cite{dnn-deep-learning-ian}}
+
+\begin{enumerate}
+    \item specify that all of the mass in a probability distribution clusters around a single point:
+    \[
+        p(x) = \delta(x-\mu) 
+        \hfill
+        \text{\cite{dnn-deep-learning-ian}}
+    \]
+\end{enumerate}
+
+
+\section{Empirical Distribution \cite{dnn-deep-learning-ian}}
+
+\begin{customTableWrapper}{2}
+\begin{longtable}{|l|l|}
+
+    $m$ & number of dataset points \\
+
+    $x^{(i)}$ & dataset point \\
+
+\end{longtable}
+\end{customTableWrapper}
+
+\[
+    \hat{p}
+    = \dfrac{1}{m} \dsum_{i=1}^{m} \delta(x-x^{(i)})
+    \hfill
+    \text{\cite{dnn-deep-learning-ian}}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

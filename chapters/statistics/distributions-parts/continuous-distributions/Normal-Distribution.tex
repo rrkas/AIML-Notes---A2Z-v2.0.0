@@ -1,4 +1,9 @@
-\chapter{Normal (Gaussian) Distribution/ Gauss curve ($X \sim \mathcal{N}(\mu,\sigma^2)$/ $\mathcal{N}(\mu, \Sigma)$) \cite{ism-1,mfml-1,wiki/Normal_distribution}} \label{Normal (Gaussian) Distribution}
+\chapter{
+Normal (Gaussian) Distribution/ Gauss curve 
+($X \sim \mathcal{N}(\mu,\sigma^2)$
+/ $\mathcal{N}(\mu, \Sigma)$ 
+/ $\mathcal{N}(\mu, \beta^{-1})$) 
+\cite{ism-1,mfml-1,wiki/Normal_distribution,dnn-deep-learning-ian}} \label{Normal (Gaussian) Distribution}
 
 \begin{table}[H]
     \begin{minipage}{0.49\linewidth}
@@ -35,31 +40,42 @@
 
     \hline
     \textbf{Notation} & 
-    ${\displaystyle {\mathcal {N}}(\mu ,\sigma ^{2})}$ 
+    $\mathcal{N}(\mu,\sigma^2)$
+    \textbf{OR} 
+    $\mathcal{N}(\mu, \Sigma)$ 
+    \textbf{OR} 
+    $\mathcal{N}(\mu, \beta^{-1})$
     \\ \hline
 
     \textbf{Statistical parameters} & 
     \tableenumerate{
-        \item ${\displaystyle \mu \in \mathbb {R} }$ = mean (location)
+        \item ${ \mu \in \mathbb {R} }$ = mean (location)
+
+        \item ${ \sigma ^{2}\in \mathbb {R} _{>0}} \text{ OR } (0,\infty) $ = variance (squared scale)
         
-        \item ${\displaystyle \sigma ^{2}\in \mathbb {R} _{>0}}$ = variance (squared scale)
+        \item $\beta^{-1} = \sigma ^{2} \in (0,\infty)$ = precision OR inverse variance
     }
     \\ \hline
     
     \textbf{Support} & 
-    ${\displaystyle x\in \mathbb {R} }$
+    ${ x\in \mathbb {R} }$
     \\ \hline
 
     \textbf{Probability Density Function (PDF)} & 
-    $\vspace{0.1cm}{\displaystyle {\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}}$
+    $
+    \dfrac {1}{\sqrt {2\pi \sigma ^{2}}}
+        exp\dParenBrac{-{\dfrac {(x-\mu )^{2}}{2\sigma ^{2}}}}
+    = \sqrt {\dfrac {\beta}{2\pi}}
+        exp\dParenBrac{-{\dfrac {\beta(x-\mu )^{2}}{2}}}
+    $
     \\[2ex] \hline
     
     \textbf{Cumulative distribution function (CDF)} & 
-    ${\displaystyle \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]}$
+    ${ \Phi \left({\dfrac {x-\mu }{\sigma }}\right)={\dfrac {1}{2}}\left[1+\operatorname {erf} \left({\dfrac {x-\mu }{\sigma {\sqrt {2}}}}\right)\right]}$
     \\ \hline
 
     \textbf{Quantile} &
-    ${\displaystyle \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)}$
+    ${ \mu +\sigma {\sqrt {2}}\operatorname {erf} ^{-1}(2p-1)}$
     \\ \hline
 
     \textbf{Mean} & 
@@ -79,7 +95,7 @@
     \\ \hline
 
     \textbf{Mean absolute deviation (MAD)} &
-    ${\displaystyle \sigma {\sqrt {\dfrac{2}{\pi} }}}$ 
+    ${ \sigma {\sqrt {\dfrac{2}{\pi} }}}$ 
     \\[1ex] \hline
 
     \textbf{Skewness} &
@@ -91,29 +107,29 @@
     \\ \hline
 
     \textbf{Entropy} &
-    ${\displaystyle {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})}$
+    ${ {\dfrac {1}{2}}\log(2\pi e\sigma ^{2})}$
     \\[1ex] \hline
 
     \textbf{Moment-generating function (MGF)} &
-    ${\displaystyle \exp(\mu t+\dfrac{\sigma ^{2}t^{2}}{2})}$
+    ${ \exp(\mu t+\dfrac{\sigma ^{2}t^{2}}{2})}$
     \\[1ex] \hline
 
     \textbf{Characteristic function (CF)} &
-    ${\displaystyle \exp(i\mu t-\dfrac{\sigma ^{2}t^{2}}{2})}$
+    ${ \exp(i\mu t-\dfrac{\sigma ^{2}t^{2}}{2})}$
     \\[1ex] \hline
 
     \textbf{Fisher information} &
     \tableenumerate{
-        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
+        \item ${ {\mathcal {I}}(\mu ,\sigma )={\begin{pmatrix}1/\sigma ^{2}&0\\0&2/\sigma ^{2}\end{pmatrix}}}$
         \vspace{0.1cm}
 
-        \item ${\displaystyle {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
+        \item ${ {\mathcal {I}}(\mu ,\sigma ^{2})={\begin{pmatrix}1/\sigma ^{2}&0\\0&1/(2\sigma ^{4})\end{pmatrix}}}$
         \vspace{0.1cm}
     }
     \\[1ex] \hline
 
     \textbf{Kullback–Leibler divergence} &
-    ${\displaystyle {1 \over 2}\left\{\left({\frac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\frac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
+    ${ {1 \over 2}\left\{\left({\frac {\sigma _{0}}{\sigma _{1}}}\right)^{2}+{\frac {(\mu _{1}-\mu _{0})^{2}}{\sigma _{1}^{2}}}-1+\ln {\sigma _{1}^{2} \over \sigma _{0}^{2}}\right\}}$
     \\[2ex] \hline
 
 \end{longtable}
@@ -242,14 +258,19 @@ if $\rho = 0$, $X \& Y$ are \textbf{independent}
     $ \hfill \cite{ism-1}
 
     \item $
-        p(x|\mu, \Sigma)
-        = (2\pi)^{-D/2} \dabs{\Sigma}^{-1/2}
-        \exp(
-            -0.5(x - \mu)^\top\Sigma^{-1}(x - \mu)
-        )
-        \hfill
-        (x \in \mathbb{R}^D)
-    $ \hfill \cite{mfml-1}
+        \begin{aligned}
+        \mathcal{N}(x;\mu,\Sigma)
+        &= p(x|\mu, \Sigma) & (x \in \mathbb{R}^D) \\
+        &= \dfrac{1}{\sqrt{(2\pi)^D det(\Sigma)}} 
+            exp\dParenBrac{
+                -\dfrac{1}{2}(x-\mu)^\top\Sigma^\top(x-\mu)
+            } & \text{\cite{dnn-deep-learning-ian}} \\
+        &= (2\pi)^{-D/2} \dabs{\Sigma}^{-1/2}
+            \exp(
+                -0.5(x - \mu)^\top\Sigma^{-1}(x - \mu)
+            ) & \text{\cite{mfml-1}}
+        \end{aligned}
+    $ \hfill
 
     \item marginal covariance matrix of $x$: $
         \Sigma_{xx} = Co\mathbb{V}[x,x]
@@ -275,6 +296,7 @@ if $\rho = 0$, $X \& Y$ are \textbf{independent}
             \end{bmatrix}
         \right)
     $ \hfill \cite{mfml-1}
+
 \end{enumerate}
 
 \subsection{conditional distribution \cite{mfml-1}} \label{Normal distribution: Bivariate/ Multivariate: conditional distribution}
